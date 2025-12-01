@@ -1,0 +1,117 @@
+pdxmesh = {
+	name = "military_support_chemical_warfare_mesh"
+	file = "military_support_chemical_warfare.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 6 }
+		lod = { index = 2 percent = 2 }
+	}
+
+	meshsettings = {
+		name = "military_props_0Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "chemical_warfare_barrel_tint.dds" index = 5 }
+		additional_shader_defines = { "TINT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "chemical_wafare_Shape0"
+		index = 0
+		texture_diffuse = "chemical_warfare_barrel_diffuse.dds"
+		texture_normal = "chemical_warfare_barrel_normal.dds"
+		texture_specular = "chemical_warfare_barrel_properties.dds"
+		texture = { file = "chemical_warfare_barrel_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_props_1Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "chemical_warfare_barrel_tint.dds" index = 5 }
+		additional_shader_defines = { "TINT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "chemical_wafare_Shape1"
+		index = 0
+		texture_diffuse = "chemical_warfare_barrel_diffuse.dds"
+		texture_normal = "chemical_warfare_barrel_normal.dds"
+		texture_specular = "chemical_warfare_barrel_properties.dds"
+		texture = { file = "chemical_warfare_barrel_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_props_2Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "chemical_warfare_barrel_tint.dds" index = 5 }
+		additional_shader_defines = { "TINT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "chemical_wafare_Shape2"
+		index = 0
+		texture_diffuse = "chemical_warfare_barrel_diffuse.dds"
+		texture_normal = "chemical_warfare_barrel_normal.dds"
+		texture_specular = "chemical_warfare_barrel_properties.dds"
+		texture = { file = "chemical_warfare_barrel_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "military_support_chemical_warfare_entity"
+	pdxmesh = "military_support_chemical_warfare_mesh"
+
+	locator = { name = "locator_vfx_01" position = { 0 0 0 } }
+
+	state = { name = "defend"
+		start_event = { time = 0.0 node = "locator_vfx_01" particle = "arms/chemical_barrel" trigger_once = yes
+			keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/weapons/Support Units/chemical_warfare/chemical_warfare_barrel_active" }
+		}
+
+	}
+	state = { name = "advance"
+		start_event = { time = 0.0 node = "locator_vfx_01" particle = "arms/chemical_barrel" trigger_once = yes
+			keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/weapons/Support Units/chemical_warfare/chemical_warfare_barrel_active" }
+		}
+	}
+}
+
+entity = {
+	name = "military_support_chemical_warfare_cloud_entity"
+
+	locator = { name = "locator_vfx_01" position = { 0 0 0 } }
+	
+	state = { name = "defend"
+		start_event = { time = 0.0 node = "locator_vfx_01" particle = "arms/chemical_smoke" trigger_once = yes
+			keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/weapons/Support Units/chemical_warfare/chemical_warfare_cloud_active" }
+		}
+	}
+	state = { name = "advance"
+		start_event = { time = 0.0 node = "locator_vfx_01" particle = "arms/chemical_smoke" trigger_once = yes
+			keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/weapons/Support Units/chemical_warfare/chemical_warfare_cloud_active" }
+		}
+	}
+}

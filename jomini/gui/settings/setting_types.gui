@@ -20,6 +20,7 @@ template JominiSettingsEnumDropdown
 				upframe = 1
 				downframe = 2
 				overframe = 3
+				activeframe = 2
 				disableframe = 4
 				block "dropdown_active_widget" {}
 				buttonText = {
@@ -44,14 +45,15 @@ template JominiSettingsEnumDropdown
 		widget = {
 			button = {
 				size = { 100% 100% }
-				texture = "gfx/editor_gui/editor_dropdown_item.dds"
+				texture = "gfx/editor_gui/editor_dropdown_item_norm_over_active.png"
 				spriteType = CorneredTiled
 				spriteborder = { 1 1 }
 				gfxtype = framedbuttongfx
 				framesize = { 8 8 }
 				upframe = 1
-				downframe = 2
+				downframe = 3
 				overframe = 2
+				activeframe = 3
 				disableframe = 1
 				button_trigger = none
 				block "dropdown_item" {}
@@ -781,7 +783,7 @@ types Settings
 				}
 
 				settings_save_button = {
-					enabled = "[JominiSettingsWindow.HasInputProfileFileName]"
+					enabled = "[JominiSettingsWindow.HasUserBindingFileName]"
 					text = "SETTINGS_INPUT_SAVE_INPUT_PROFILE"
 					align = center|nobaseline
 					visible = "[JominiSettingsWindow.IsCurrentActivePageId( 'settings_menu_controls' )]"
@@ -789,7 +791,7 @@ types Settings
 				}
 
 				settings_save_button = {
-					enabled = "[JominiSettingsWindow.HasInputProfileFileName]"
+					enabled = "[JominiSettingsWindow.HasUserBindingFileName]"
 					text = "SETTINGS_INPUT_LOAD_INPUT_PROFILE"
 					align = center|nobaseline
 					visible = "[JominiSettingsWindow.IsCurrentActivePageId( 'settings_menu_controls' )]"
@@ -803,7 +805,7 @@ types Settings
 				editbox = {
 					margin_left = 5
 					size = { 200 20 }
-					text = "[JominiSettingsWindow.GetInputProfileFileName]"
+					text = "[JominiSettingsWindow.GetUserBindingFileName]"
 					using = property_editbox
 					multiline = no
 					visible = "[JominiSettingsWindow.IsCurrentActivePageId( 'settings_menu_controls' )]"
@@ -815,7 +817,6 @@ types Settings
 				}
 
 				settings_save_button = {
-					enabled = "[JominiSettingsWindow.HasDefaultProfile]"
 					text = "SETTINGS_INPUT_RESET_INPUT_PROFILE"
 					align = center|nobaseline
 					visible = "[JominiSettingsWindow.IsCurrentActivePageId( 'settings_menu_controls' )]"

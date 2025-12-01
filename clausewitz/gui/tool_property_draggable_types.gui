@@ -24,7 +24,7 @@ types ToolPropertyDraggableTypes
 		}
 	}
 
-	type dialog_property_draggable_value_float = vertical_dialog_property {
+	type dialog_property_draggable_value_float = dialog_property {
 		blockoverride "content"
 		{
 			using = tools_property_draggable_value
@@ -60,7 +60,7 @@ types ToolPropertyDraggableTypes
 		}
 	}
 
-	type dialog_property_draggable_value_int = vertical_dialog_property {
+	type dialog_property_draggable_value_int = dialog_property {
 		blockoverride "content"
 		{
 			using = tools_property_draggable_value
@@ -79,7 +79,7 @@ types ToolPropertyDraggableTypes
 		}
 	}
 
-	type dialog_property_draggable_value_vec2f = vertical_dialog_property {
+	type dialog_property_draggable_value_vec2f = dialog_property {
 		blockoverride "content"
 		{
 			using = tools_property_draggable_value_vec2f_template
@@ -100,7 +100,7 @@ types ToolPropertyDraggableTypes
 		}
 	}
 
-	type dialog_property_draggable_value_vec3f = vertical_dialog_property {
+	type dialog_property_draggable_value_vec3f = dialog_property {
 		blockoverride "content"
 		{
 			using = tools_property_draggable_value_vec3f_template
@@ -121,7 +121,7 @@ types ToolPropertyDraggableTypes
 		}
 	}
 
-	type dialog_property_draggable_value_vec2i = vertical_dialog_property {
+	type dialog_property_draggable_value_vec2i = dialog_property {
 		blockoverride "content"
 		{
 			using = tools_property_draggable_value_vec2i_template
@@ -142,7 +142,7 @@ types ToolPropertyDraggableTypes
 		}
 	}
 
-	type dialog_property_draggable_value_vec3i = vertical_dialog_property {
+	type dialog_property_draggable_value_vec3i = dialog_property {
 		blockoverride "content"
 		{
 			using = tools_property_draggable_value_vec3i_template
@@ -163,7 +163,7 @@ types ToolPropertyDraggableTypes
 		}
 	}
 
-	type dialog_property_draggable_value_vec4i = vertical_dialog_property {
+	type dialog_property_draggable_value_vec4i = dialog_property {
 		blockoverride "content"
 		{
 			using = tools_property_draggable_value_vec4i_template
@@ -188,6 +188,7 @@ template tools_property_draggable_value
 		{
 			block "callbacks"{}
 			editor_textinput = {
+				using = dialog_property_size
 				block "editbox" {}
 				using = tools_property_draggable_editbox_visuals
 			}

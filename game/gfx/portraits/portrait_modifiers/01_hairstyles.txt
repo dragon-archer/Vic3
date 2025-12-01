@@ -310,12 +310,32 @@
                             religion = {
                                 has_discrimination_trait = buddhist
                             }
+                            owner = {
+                                ig:ig_devout = {
+                                    NOT = {
+                                        has_ideology = ideology:ideology_confucian
+                                    }
+                                }
+                            }
                         }
                         clergy_clothes_pop_trigger = yes
                     }
                     AND = {
                         politician_clothes_trigger = yes
                         devout_clothes_trigger = yes
+                        exists = scope:character
+                        scope:character = {
+                            religion = {
+                                has_discrimination_trait = buddhist
+                            }
+                            owner = {
+                                ig:ig_devout = {
+                                    NOT = {
+                                        has_ideology = ideology:ideology_confucian
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -51,7 +51,7 @@ types ToolsProperyTypes
 		}
 		state = {
 			name = _mouse_hierarchy_leave
-			on_start = "[GuiEditorProperties.SetHovering(GetNullProperty())]"
+			on_start = "[GuiEditorProperties.SetHovering('(null)')]"
 		}
 
 		property_dragdrop_widget = {

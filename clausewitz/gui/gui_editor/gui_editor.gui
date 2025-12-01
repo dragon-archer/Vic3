@@ -57,6 +57,7 @@ template editor_dropdown_enum
 				upframe = 1
 				downframe = 2
 				overframe = 3
+				activeframe = 2
 				disableframe = 4
 			}
 			
@@ -74,14 +75,15 @@ template editor_dropdown_enum
 			
 			button = {
 				size = { 100% 100% }
-				texture = "gfx/editor_gui/editor_dropdown_item.dds"
+				texture = "gfx/editor_gui/editor_dropdown_item_norm_over_active.png"
 				spriteType = CorneredTiled
 				spriteborder = { 1 1 }
 				gfxtype = framedbuttongfx
 				framesize = { 8 8 }
 				upframe = 1
-				downframe = 2
+				downframe = 3
 				overframe = 2
+				activeframe = 3
 				disableframe = 1
 				button_trigger = none
 			}
@@ -163,14 +165,15 @@ template WidgetSelectionEditorContextMenuItem
 {
 	button = {
 		size = { 100% 20 }
-		texture = "gfx/editor_gui/editor_dropdown_item.dds"
+		texture = "gfx/editor_gui/editor_dropdown_item_norm_over_active.png"
 		spriteType = CorneredTiled
 		spriteborder = { 1 1 }
 		gfxtype = framedbuttongfx
 		framesize = { 8 8 }
 		upframe = 1
-		downframe = 2
+		downframe = 3
 		overframe = 2
+		activeframe = 3
 		disableframe = 1
 		button_trigger = none
 

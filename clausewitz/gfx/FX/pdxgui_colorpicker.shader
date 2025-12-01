@@ -6,8 +6,10 @@ Includes = {
 ConstantBuffer( PdxConstantBuffer2 )
 {
 	float4 ColorIn;
-	float4 CachedColor; // When dragging the "area" this won't change until mouse up
-	int nActiveColor;
+	float4 OriginalColor; // Original color value. This only changes when the color picker is opened
+	float4 CachedColor; // Does not change while updating, only after color has been set
+	float2 HueSaturation; // Hue and Saturation values to use when undefined
+	int ActiveColor;
 };
 
 VertexStruct VS_OUTPUT_PDX_GUI2
@@ -18,6 +20,14 @@ VertexStruct VS_OUTPUT_PDX_GUI2
 	float2 WidthHeight	: TEXCOORD2;
 	float4 Color		: COLOR;
 };
+
+Code
+[[
+    float2 CalculateOffset( float2 Pos, float2 WidthHeight )
+    {
+		return Pos * WidthHeight / ( WidthHeight - vec2( 1.0 ) ) - float2( 0.5, 0.5 ) / WidthHeight;
+    }
+]]
 
 VertexShader =
 {
@@ -64,62 +74,52 @@ PixelShader =
 		[[
 			PDX_MAIN
 			{
-				float2 scale = Input.WidthHeight / (Input.WidthHeight - vec2( 1.0 ));
-				float2 offset = Input.Pos * scale - float2(0.5, 0.5) / Input.WidthHeight;
+				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
 				
-				float4 ColorBackground = PdxTex2D( Texture, Input.Pos * (Input.WidthHeight / vec2(16.0)) );
-				float4 ColorOut = CachedColor;
-				ColorOut.a = 1.0f;
+				float4 ColorBackground = PdxTex2D( Texture, Input.Pos * ( Input.WidthHeight / vec2( 16.0 ) ) );
+				float4 ColorOut;
 
-				if( nActiveColor == 0 ) // Red
+				if ( ActiveColor == 0 ) // Red
 				{
-					ColorOut.r = CachedColor.r;
-					ColorOut.g = 1.0 - offset.y;
-					ColorOut.b = offset.x;
+					ColorOut = float4( CachedColor.r, 1.0 - Offset.y, Offset.x, 1.0 );
 				}
-				else if( nActiveColor == 1 ) // Green
+				else if ( ActiveColor == 1 ) // Green
 				{
-					ColorOut.r = 1.0 - offset.y;
-					ColorOut.g = CachedColor.g;
-					ColorOut.b = offset.x;
+					ColorOut = float4( 1.0 - Offset.y, CachedColor.g, Offset.x, 1.0 );
 				}
-				else if( nActiveColor == 2 ) // Blue
+				else if ( ActiveColor == 2 ) // Blue
 				{
-					ColorOut.r = offset.x;
-					ColorOut.g = 1.0 - offset.y;
-					ColorOut.b = CachedColor.b;
+					ColorOut = float4( Offset.x, 1.0 - Offset.y, CachedColor.b, 1.0 );
 				}
-				else if( nActiveColor == 3 ) // Alpha
+				else if ( ActiveColor == 3 ) // Alpha
 				{
+					ColorOut = float4( 0.0, 0.0, 0.0, 1.0 );
 				}
-				else if( nActiveColor == 4 ) // Hue
+				else if ( ActiveColor == 4 ) // Hue
 				{
-					float3 HSV = RGBtoHSV( CachedColor.rgb );
-					HSV.g = offset.x;
-					HSV.b = 1.0 - offset.y;
+					float3 HSV = float3( HueSaturation.x, Offset.x, 1.0 - Offset.y );
 					ColorOut.rgb = HSVtoRGB( HSV );
+					ColorOut.a = 1.0;
 				}
-				else if( nActiveColor == 5 ) // Saturation
+				else if ( ActiveColor == 5 ) // Saturation
 				{
-					float3 HSV = RGBtoHSV( CachedColor.rgb );
-					HSV.r = offset.x;
-					HSV.b = 1.0 - offset.y;
+					float3 HSV = float3( Offset.x, 1.0, 1.0 - Offset.y );
 					ColorOut.rgb = HSVtoRGB( HSV );
+					ColorOut.a = 1.0;
 				}
-				else if( nActiveColor == 6 ) // Value
+				else if ( ActiveColor == 6 ) // Value
 				{
-					float3 HSV = RGBtoHSV( CachedColor.rgb );
-					HSV.r = offset.x;
-					HSV.g = 1.0 - offset.y;
+					float3 HSV = float3( Offset.x, 1.0 - Offset.y, 1.0 );
 					ColorOut.rgb = HSVtoRGB( HSV );
+					ColorOut.a = 1.0;
 				}
-				
-			    return DisableColorReturn( ColorOut * ColorOut.a + ColorBackground * (1.0 - ColorOut.a) );
+
+			    return DisableColorReturn( ColorOut * ColorOut.a + ColorBackground * ( 1.0 - ColorOut.a ) );
 			}
 		]]
 	}
 	
-	MainCode PixelShaderSlider
+	MainCode PixelShaderSliderActive
 	{
 		Input = "VS_OUTPUT_PDX_GUI2"
 		Output = "PDX_COLOR"
@@ -127,63 +127,179 @@ PixelShader =
 		[[
 			PDX_MAIN
 			{
-				float2 scale = Input.WidthHeight / (Input.WidthHeight - vec2( 1.0 ));
-				float2 offset = Input.Pos * scale - float2(0.5, 0.5) / Input.WidthHeight;
+				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
 				
-				float4 ColorBackground = PdxTex2D( Texture, Input.Pos * (Input.WidthHeight / float2(16.0, 16.0)) );
-				float4 ColorOut = CachedColor;
-				
-				if( nActiveColor == 0 )
+				float4 ColorOut;
+
+				if ( ActiveColor == 0 ) // Red
 				{
-					ColorOut.r = 1.0 - offset.y;
-					ColorOut.g = CachedColor.g;
-					ColorOut.b = CachedColor.b;
+					ColorOut = float4( 1.0 - Offset.y, 0.0, 0.0, 1.0 );
 				}
-				else if( nActiveColor == 1 )
+				else if ( ActiveColor == 1 ) // Green
 				{
-					ColorOut.r = CachedColor.r;
-					ColorOut.g = 1.0 - offset.y;
-					ColorOut.b = CachedColor.b;
+					ColorOut = float4( 0.0, 1.0 - Offset.y, 0.0, 1.0 );
 				}
-				else if( nActiveColor == 2 )
+				else if ( ActiveColor == 2 ) // Blue
 				{
-					ColorOut.r = CachedColor.r;
-					ColorOut.g = CachedColor.g;
-					ColorOut.b = 1.0 - offset.y;
+					ColorOut = float4( 0.0, 0.0, 1.0 - Offset.y, 1.0 );
 				}
-				else if( nActiveColor == 3 )
+				else if ( ActiveColor == 3 ) // Alpha
 				{
-					ColorOut.r = CachedColor.r;
-					ColorOut.g = CachedColor.g;
-					ColorOut.b = CachedColor.b;
-					ColorOut.a = 1.0 - offset.y;
-					
-					return ColorOut * ColorOut.a + ColorBackground * (1.0 - ColorOut.a);
+					float4 ColorBackground = PdxTex2D( Texture, Input.Pos * ( Input.WidthHeight / vec2( 16.0 ) ) );
+					ColorOut = float4( ColorIn.rgb, 1.0 - Offset.y );
+					return ColorOut * ColorOut.a + ColorBackground * ( 1.0 - ColorOut.a );
 				}
-				else if( nActiveColor == 4 )
+				else if ( ActiveColor == 4 ) // Hue
 				{
-					float3 HSV = float3(  1.0, 1.0, 1.0 );
-					HSV.r = ( 1.0 - offset.y );
+					float3 HSV = float3( 1.0 - Offset.y, 1.0, 1.0 );
 					ColorOut.rgb = HSVtoRGB( HSV );
+					ColorOut.a = 1.0;
 				}
-				else if( nActiveColor == 5 )
+				else if ( ActiveColor == 5 ) // Saturation
 				{
-					float3 HSV = RGBtoHSV( CachedColor.rgb );
-					HSV.g = 1.0 - offset.y;
+					float3 HSV = float3( HueSaturation.x, 1.0 - Offset.y, 1.0 );
 					ColorOut.rgb = HSVtoRGB( HSV );
+					ColorOut.a = 1.0;
 				}
-				else if( nActiveColor == 6 )
+				else if ( ActiveColor == 6 ) // Value
 				{
-					float3 HSV = RGBtoHSV( CachedColor.rgb );
-					HSV.b = 1.0 - offset.y;
+					float3 HSV = float3( HueSaturation.x, HueSaturation.y, 1.0 - Offset.y );
 					ColorOut.rgb = HSVtoRGB( HSV );
+					ColorOut.a = 1.0;
 				}
 				
-			    return DisableColorReturn( ColorOut * CachedColor.a + ColorBackground * (1.0 - CachedColor.a) );
+			    return DisableColorReturn( ColorOut );
 			}
 		]]		
 	}
 	
+	MainCode PixelShaderSliderRed
+	{
+		Input = "VS_OUTPUT_PDX_GUI2"
+		Output = "PDX_COLOR"
+		Code
+		[[
+			PDX_MAIN
+			{
+				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
+				float4 ColorOut = float4( Offset.x, 0.0, 0.0, 1.0 );
+
+			    return DisableColorReturn( ColorOut );
+			}
+		]]		
+	}
+	
+	MainCode PixelShaderSliderGreen
+	{
+		Input = "VS_OUTPUT_PDX_GUI2"
+		Output = "PDX_COLOR"
+		Code
+		[[
+			PDX_MAIN
+			{
+				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );	
+				float4 ColorOut = float4( 0.0, Offset.x, 0.0, 1.0 );
+				
+			    return DisableColorReturn( ColorOut );
+			}
+		]]		
+	}
+	
+	MainCode PixelShaderSliderBlue
+	{
+		Input = "VS_OUTPUT_PDX_GUI2"
+		Output = "PDX_COLOR"
+		Code
+		[[
+			PDX_MAIN
+			{
+				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
+				float4 ColorOut = float4( 0.0, 0.0, Offset.x, 1.0 );
+				
+			    return DisableColorReturn( ColorOut );
+			}
+		]]		
+	}
+	
+	MainCode PixelShaderSliderAlpha
+	{
+		Input = "VS_OUTPUT_PDX_GUI2"
+		Output = "PDX_COLOR"
+		Code
+		[[
+			PDX_MAIN
+			{
+				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
+				
+				float4 ColorBackground = PdxTex2D( Texture, Input.Pos * ( Input.WidthHeight / vec2( 16.0 ) ) );
+				float4 ColorOut = float4( ColorIn.rgb, Offset.x );
+				
+				return ColorOut * ColorOut.a + ColorBackground * ( 1.0 - ColorOut.a );
+			}
+		]]		
+	}
+
+	MainCode PixelShaderSliderHue
+	{
+		Input = "VS_OUTPUT_PDX_GUI2"
+		Output = "PDX_COLOR"
+		Code
+		[[
+			PDX_MAIN
+			{
+				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
+				float4 ColorOut;
+
+				float3 HSV = float3( Offset.x, 1.0, 1.0 );
+				ColorOut.rgb = HSVtoRGB( HSV );
+				ColorOut.a = 1.0;
+				
+				return DisableColorReturn( ColorOut );
+			}
+		]]		
+	}
+
+	MainCode PixelShaderSliderSaturation
+	{
+		Input = "VS_OUTPUT_PDX_GUI2"
+		Output = "PDX_COLOR"
+		Code
+		[[
+			PDX_MAIN
+			{
+				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
+				float4 ColorOut;
+
+				float3 HSV = float3( HueSaturation.x, Offset.x, 1.0 );
+				ColorOut.rgb = HSVtoRGB( HSV );
+				ColorOut.a = 1.0;
+				
+				return DisableColorReturn( ColorOut );
+			}
+		]]		
+	}
+
+	MainCode PixelShaderSliderValue
+	{
+		Input = "VS_OUTPUT_PDX_GUI2"
+		Output = "PDX_COLOR"
+		Code
+		[[
+			PDX_MAIN
+			{
+				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
+				
+				float4 ColorOut;
+
+				float3 HSV = float3( HueSaturation.x, HueSaturation.y, Offset.x );
+				ColorOut.rgb = HSVtoRGB( HSV );
+				ColorOut.a = 1.0;
+				
+				return DisableColorReturn( ColorOut );
+			}
+		]]		
+	}
+
 	MainCode PixelShaderButton
 	{
 		Input = "VS_OUTPUT_PDX_GUI2"
@@ -193,9 +309,33 @@ PixelShader =
 		[[
 			PDX_MAIN
 			{
-				float4 ColorBackground = PdxTex2D( Texture, Input.Pos * (Input.WidthHeight / float2(16.0, 16.0)) );
+				float4 ColorBackground = PdxTex2D( Texture, Input.Pos * ( Input.WidthHeight / vec2( 16.0 ) ) );
+				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
 				float4 ColorOut = ColorIn;
-				return DisableColorReturn( ColorOut * ColorIn.a + ColorBackground * (1.0 - ColorIn.a) );
+				ColorOut.a = 1.0;
+				float Mask1 = floor( ( Offset.x + Offset.y ) );
+				float Mask2 = ( 1.0 - floor( ( Offset.x + Offset.y ) ) );
+				return DisableColorReturn( ColorOut * Mask2 + ( ColorBackground * ( 1.0 - ColorIn.a ) + ColorOut * ColorIn.a ) * Mask1 );
+			}
+		]]
+	}
+	
+	MainCode PixelShaderOriginal
+	{
+		Input = "VS_OUTPUT_PDX_GUI2"
+		Output = "PDX_COLOR"
+		
+		Code
+		[[
+			PDX_MAIN
+			{
+				float4 ColorBackground = PdxTex2D( Texture, Input.Pos * ( Input.WidthHeight / vec2( 16.0 ) ) );
+				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
+				float4 ColorOut = OriginalColor;
+				ColorOut.a = 1.0;
+				float Mask1 = floor( ( Offset.x + Offset.y ) );
+				float Mask2 = ( 1.0 - floor( ( Offset.x + Offset.y ) ) );
+				return DisableColorReturn( ColorOut * Mask2 + ( ColorBackground * ( 1.0 - OriginalColor.a ) + ColorOut * OriginalColor.a ) * Mask1 );
 			}
 		]]
 	}
@@ -229,20 +369,124 @@ Effect PdxGuiColorAreaDisabled
 }
 
 
-Effect PdxGuiColorSlider
+Effect PdxGuiColorSliderActive
 {
 	VertexShader = "VertexShader"
-	PixelShader = "PixelShaderSlider"
+	PixelShader = "PixelShaderSliderActive"
 }
 
-Effect PdxGuiColorSliderDisabled
+Effect PdxGuiColorSliderActiveDisabled
 {
 	VertexShader = "VertexShader"
-	PixelShader = "PixelShaderSlider"
+	PixelShader = "PixelShaderSliderActive"
 	
 	Defines = { "DISABLED" }
 }
 
+
+Effect PdxGuiColorSliderRed
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderRed"
+}
+
+Effect PdxGuiColorSliderRedDisabled
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderRed"
+	
+	Defines = { "DISABLED" }
+}
+
+
+Effect PdxGuiColorSliderGreen
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderGreen"
+}
+
+Effect PdxGuiColorSliderGreenDisabled
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderGreen"
+	
+	Defines = { "DISABLED" }
+}
+
+
+Effect PdxGuiColorSliderBlue
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderBlue"
+}
+
+Effect PdxGuiColorSliderBlueDisabled
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderBlue"
+	
+	Defines = { "DISABLED" }
+}
+
+
+Effect PdxGuiColorSliderAlpha
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderAlpha"
+}
+
+Effect PdxGuiColorSliderAlphaDisabled
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderAlpha"
+	
+	Defines = { "DISABLED" }
+}
+
+
+Effect PdxGuiColorSliderHue
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderHue"
+}
+
+Effect PdxGuiColorSliderHueDisabled
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderHue"
+	
+	Defines = { "DISABLED" }
+}
+
+
+Effect PdxGuiColorSliderSaturation
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderSaturation"
+}
+
+Effect PdxGuiColorSliderSaturationDisabled
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderSaturation"
+	
+	Defines = { "DISABLED" }
+}
+
+
+Effect PdxGuiColorSliderValue
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderValue"
+}
+
+Effect PdxGuiColorSliderValueDisabled
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderSliderValue"
+	
+	Defines = { "DISABLED" }
+}
 
 Effect PdxGuiColorButton
 {
@@ -254,6 +498,20 @@ Effect PdxGuiColorButtonDisabled
 {
 	VertexShader = "VertexShader"
 	PixelShader = "PixelShaderButton"
+	
+	Defines = { "DISABLED" }
+}
+
+Effect PdxGuiColorOriginal
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderOriginal"
+}
+
+Effect PdxGuiColorOriginalDisabled
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderOriginal"
 	
 	Defines = { "DISABLED" }
 }

@@ -6,7 +6,7 @@ template NodeGraphLine
 	line_cap = yes
 	line_feather_distance = 1
 	
-	animation_speed = { 0.75 0.0 }
+	animation_speed = "[NodeLine.GetAnimationSpeed]"
 	uv_scale = { 0.015 1.0 }
 	texture = "[GraphPanel.GetNodeLineTexture( NodeLine.Highlighted )]"
 	mask = "gfx/lines/white.dds"
@@ -102,6 +102,7 @@ types NodeEditor
 			using = tools_editbox
 			align = left|nobaseline
 			ontextchanged = "[NodeEditorSearch.Search]"
+			focus_on_visible = yes
 			alwaystransparent = no
 			text = "[NodeEditorSearch.GetSearchText]"
 			size = { 150 20 }
@@ -115,9 +116,18 @@ types NodeEditor
 				parentanchor = vcenter|right
 				size = { 16 16 }
 				texture = "gfx/editor_gui/editor_layout_window_close.dds"
-				tooltipwidget = { 
+				tooltipwidget = {
 					using = dockable_tooltip
 				}
+			}
+
+			# Toggles visibility of the editbox off and then immediately on again, to trigger its focus_on_visible, when the user uses the search-shortcut while the search widget is already visible.
+			button = {
+				size = { 0.1 0.1 }
+				visible = yes
+				onclick = "[PdxGuiWidget.AccessParent.Hide]"
+				onclick = "[PdxGuiWidget.AccessParent.Show]"
+				shortcut = "node_search_show"
 			}
 		}
 
@@ -126,7 +136,7 @@ types NodeEditor
 			size = { 0 25 }
 			visible = "[NodeEditorSearch.HasOccurrences]"
 			# We offset 1 so we don't have 0 index in the UI
-			text = "[Add_int32( NodeEditorSearch.CurrentNodeIndex, '(int32)1' )] of [NodeEditorSearch.NumOccurrences]"
+			text = "[Add_int32( NodeEditorSearch.CurrentResultIndex, '(int32)1' )] of [NodeEditorSearch.NumOccurrences]"
 			autoresize = yes
 			align = left|nobaseline
 			alpha = 0.7
@@ -135,7 +145,7 @@ types NodeEditor
 
 		editor_toolbar_button = {
 			raw_tooltip = "Next Node"
-			onclick = "[NodeEditorSearch.GoToNextNode]"
+			onclick = "[NodeEditorSearch.GoToNextResult]"
 			enabled = "[NodeEditorSearch.HasOccurrences]"
 			shortcut = "node_search_go_to_next"
 			position = { 250 7 }
@@ -145,14 +155,14 @@ types NodeEditor
 				texture = "gfx/tools/log_viewer/arrow_down.png"
 			}
 
-			tooltipwidget = { 
+			tooltipwidget = {
 				using = dockable_tooltip
 			}
 		}
 
 		editor_toolbar_button = {
 			raw_tooltip = "Previous Node"
-			onclick = "[NodeEditorSearch.GoToPreviousNode]"
+			onclick = "[NodeEditorSearch.GoToPreviousResult]"
 			enabled = "[NodeEditorSearch.HasOccurrences]"
 			shortcut = "node_search_go_to_prev"
 			position = { 270 7 }
@@ -162,7 +172,7 @@ types NodeEditor
 				texture = "gfx/tools/log_viewer/arrow_up.png"
 			}
 			
-			tooltipwidget = { 
+			tooltipwidget = {
 				using = dockable_tooltip
 			}
 		}
@@ -173,8 +183,9 @@ types NodeEditor
 			size = { 16 16 }
 			onclick = "[NodeEditorSearch.Hide]"
 			texture = "gfx/editor_gui/editor_layout_window_close.dds"
+			shortcut = "node_search_hide"
 
-			tooltipwidget = { 
+			tooltipwidget = {
 				using = dockable_tooltip
 			}
 		}
@@ -274,7 +285,9 @@ widget = {
 				margin = { 4 0 }
 			}
 
+			# Only one "Show Node Search"-button will be visible at a time. The one that does not have a shortcut is visible when the search widget is visible, to avoid shortcut collisions.
 			editor_toolbar_button = {
+				visible = "[Not(GraphPanel.IsNodeEditorSearchVisible)]"
 				editor_toolbar_icon = {
 					texture = "gfx/social/magnifier.dds"
 				}
@@ -285,10 +298,21 @@ widget = {
 			}
 
 			editor_toolbar_button = {
+				visible = "[GraphPanel.IsNodeEditorSearchVisible]"
+				editor_toolbar_icon = {
+					texture = "gfx/social/magnifier.dds"
+				}
+				size = { 25 25 }
+				raw_tooltip = "Show Node Search"
+				onclick = "[GraphPanel.ShowNodeEditorSearch]"
+			}
+
+
+			editor_toolbar_button = {
 				editor_toolbar_icon = {
 					texture = "gfx/tools/material/settings.png"
 				}
-				raw_tooltip = "Properties"
+				raw_tooltip = "System Properties"
 				onclick = "[GraphPanel.Properties]"
 				enabled = "[GraphPanel.IsButtonEnabled('Properties')]"
 				#shortcut = "nodes_save_as"
@@ -300,7 +324,7 @@ widget = {
 				}
 				raw_tooltip = "Node Editor Preferences"
 				# Opens the settings in the 'Tools' category
-				onclick = "[ExecuteConsoleCommand( 'settings Tools' )]"
+				onclick = "[GraphPanel.OnEditorPreferencesClicked]"
 			}
 			
 			editor_toolbar_button = {
@@ -479,6 +503,7 @@ widget = {
 	}
 
 	node_editor_search = {
+		datacontext = "[GraphPanel.AccessAnimationEditorSearch]"
 		name = "node_search"
 		widgetanchor = top|left
 		position = { 5 40 }

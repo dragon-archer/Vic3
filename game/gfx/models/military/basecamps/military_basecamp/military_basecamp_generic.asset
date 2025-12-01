@@ -1,0 +1,201 @@
+pdxmesh = {
+	name = "military_basecamp_generic_mesh"
+	file = "military_basecamp_generic.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 8.0 }
+		lod = { index = 2 percent = 4.0 }
+		lod = { index = 3 percent = 2.0 }
+		lod = { index = 4 percent = 1.0 }
+	}
+
+	meshsettings = {
+		name = "tent_0Shape"
+		index = 0
+		texture_diffuse = "military_basecamp_generic_diffuse.dds"
+		texture_normal = "military_basecamp_generic_normal.dds"
+		texture_specular = "military_basecamp_generic_properties.dds"
+		texture = { file = "military_basecamp_generic_masks.dds" index = 6 }
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "BACKLIGHT" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "prop_0Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	meshsettings = {
+		name = "cloth_0Shape"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	meshsettings = {
+		name = "tent_1Shape"
+		index = 0
+		texture_diffuse = "military_basecamp_generic_diffuse.dds"
+		texture_normal = "military_basecamp_generic_normal.dds"
+		texture_specular = "military_basecamp_generic_properties.dds"
+		texture = { file = "military_basecamp_generic_masks.dds" index = 6 }
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "BACKLIGHT" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "prop_1Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "cloth_1Shape"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent_2Shape"
+		index = 0
+		texture_diffuse = "military_basecamp_generic_diffuse.dds"
+		texture_normal = "military_basecamp_generic_normal.dds"
+		texture_specular = "military_basecamp_generic_properties.dds"
+		texture = { file = "military_basecamp_generic_masks.dds" index = 6 }
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "BACKLIGHT" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "prop_2Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "cloth_2Shape"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent_3Shape"
+		index = 0
+		texture_diffuse = "military_basecamp_generic_diffuse.dds"
+		texture_normal = "military_basecamp_generic_normal.dds"
+		texture_specular = "military_basecamp_generic_properties.dds"
+		texture = { file = "military_basecamp_generic_masks.dds" index = 6 }
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "BACKLIGHT" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "prop_3Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "cloth_3Shape"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent_4Shape"
+		index = 0
+		texture_diffuse = "military_basecamp_generic_diffuse.dds"
+		texture_normal = "military_basecamp_generic_normal.dds"
+		texture_specular = "military_basecamp_generic_properties.dds"
+		texture = { file = "military_basecamp_generic_masks.dds" index = 6 }
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "BACKLIGHT" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "prop_4Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "cloth_4Shape"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

@@ -1,0 +1,256 @@
+pdxmesh = {
+	name = "military_medical_fieldhospitals_mesh"
+	file = "military_medical_fieldhospitals.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 8.0 }
+		lod = { index = 2 percent = 4.0 }
+		lod = { index = 3 percent = 2.0 }
+		lod = { index = 4 percent = 1.0 }
+	}
+
+	meshsettings = {
+		name = "tent0Shape"
+		index = 0
+		texture_diffuse = "military_medical_fieldhospitals_diffuse.dds"
+		texture_normal = "military_medical_fieldhospitals_normal.dds"
+		texture_specular = "military_medical_fieldhospitals_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent0Shape"
+		index = 1
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_medical_fieldhospitals|LOD_0|cart0|cart0Shape"
+		index = 0
+		texture_diffuse = "military_medical_firstaidcart_diffuse.dds"
+		texture_normal = "military_medical_firstaidcart_normal.dds"
+		texture_specular = "military_medical_firstaidcart_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_medical_fieldhospitals|LOD_0|cloth0|cloth0Shape"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR"}
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	meshsettings = {
+		name = "tent1Shape"
+		index = 0
+		texture_diffuse = "military_medical_fieldhospitals_diffuse.dds"
+		texture_normal = "military_medical_fieldhospitals_normal.dds"
+		texture_specular = "military_medical_fieldhospitals_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent1Shape"
+		index = 1
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_medical_fieldhospitals|LOD_1|cart1|cart1Shape"
+		index = 0
+		texture_diffuse = "military_medical_firstaidcart_diffuse.dds"
+		texture_normal = "military_medical_firstaidcart_normal.dds"
+		texture_specular = "military_medical_firstaidcart_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_medical_fieldhospitals|LOD_1|cloth1|cloth1Shape"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR"}
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent2Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_medical_fieldhospitals|LOD_2|props2|props2Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_medical_fieldhospitals|LOD_2|cart2|cart2Shape"
+		index = 0
+		texture_diffuse = "military_medical_firstaidcart_diffuse.dds"
+		texture_normal = "military_medical_firstaidcart_normal.dds"
+		texture_specular = "military_medical_firstaidcart_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_medical_fieldhospitals|LOD_2|cloth2|cloth2Shape"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR"}
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent3Shape"
+		index = 0
+		texture_diffuse = "military_medical_fieldhospitals_diffuse.dds"
+		texture_normal = "military_medical_fieldhospitals_normal.dds"
+		texture_specular = "military_medical_fieldhospitals_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent3Shape"
+		index = 1
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_medical_fieldhospitals|LOD_3|cart3|cart3Shape"
+		index = 0
+		texture_diffuse = "military_medical_firstaidcart_diffuse.dds"
+		texture_normal = "military_medical_firstaidcart_normal.dds"
+		texture_specular = "military_medical_firstaidcart_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_medical_fieldhospitals|LOD_3|cloth3|cloth3Shape"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR"}
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent4Shape"
+		index = 0
+		texture_diffuse = "military_medical_fieldhospitals_diffuse.dds"
+		texture_normal = "military_medical_fieldhospitals_normal.dds"
+		texture_specular = "military_medical_fieldhospitals_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent4Shape"
+		index = 1
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "cart4Shape"
+		index = 0
+		texture_diffuse = "military_medical_firstaidcart_diffuse.dds"
+		texture_normal = "military_medical_firstaidcart_normal.dds"
+		texture_specular = "military_medical_firstaidcart_properties.dds"
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "cloth4Shape"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		texture = { file = "military_medical_camp_tint.dds" index = 5 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR"}
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

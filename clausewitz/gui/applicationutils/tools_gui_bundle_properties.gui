@@ -176,6 +176,25 @@ types ToolsProperyBundleTypes
 		}
 	}
 	
+	type bundle_property_uint16 = bundle_property {
+		blockoverride "content"
+		{
+			editor_textinput = {
+				using = bundle_property_size
+				text = "[ToolsUndoableValueBundleUint16.GetTextboxDisplayValue]"
+				oneditingstart = "[ToolsUndoableValueBundleUint16.SetIsFocused('(bool)yes')]"
+				onfocusout = "[ToolsUndoableValueBundleUint16.SetIsFocused('(bool)no')]"
+				onfocusout = "[ToolsUndoableValueBundleUint16.SetValueOnFocusOut]"
+				onreturnpressed = "[ToolPropertyUint16.SetUint16]"
+
+				bundle_standard_multiple_values_overlay = {
+					visible = "[ToolsUndoableValueBundleUint16.ShouldDisplayMixedValuesOverlay]"
+				}
+			}
+			block "extension" {}
+		}
+	}
+
 	type bundle_property_uint = bundle_property {
 		blockoverride "content"
 		{
@@ -348,6 +367,30 @@ types ToolsProperyBundleTypes
 				}
 			}
 			block "extension" {}
+		}
+	}
+
+	type bundle_property_vec3f_as_color = bundle_property {
+		blockoverride "content"
+		{
+			tools_colorpicker = {
+				using = bundle_property_size
+				color = "[Vector3fToColor( ToolsUndoableValueBundleVec3f.GetValue )]"
+				oneditingfinished_with_changes = "[ToolsUndoableValueBundleVec3f.SetValueFromColor]"
+				# remove alpha components
+				blockoverride "alpha_checkbutton"
+				{
+					visible = no
+				}
+				blockoverride "alpha_editbox"
+				{
+					visible = no
+				}
+				blockoverride "alpha_slider"
+				{
+					visible = no
+				}
+			}
 		}
 	}
 

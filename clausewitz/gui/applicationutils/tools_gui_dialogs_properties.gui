@@ -221,6 +221,16 @@ types ToolsProperyTypes
 		}
 	}
 	
+	type dialog_property_vec4i_as_color = dialog_property {
+		blockoverride "content"
+		{
+			tools_colorpicker = {
+				color = "[Vector4iToColor( ToolPropertyVec4i.GetValue )]"
+				oneditingfinished_with_changes = "[ToolPropertyVec4i.SetValueFromColor]"
+			}
+		}
+	}
+
 	type dialog_property_vec4i = dialog_property {
 		blockoverride "content"
 		{
@@ -258,6 +268,29 @@ types ToolsProperyTypes
 		}
 	}
 	
+	type dialog_property_vec3f_as_color = dialog_property {
+		blockoverride "content"
+		{
+			tools_colorpicker = {
+				color = "[Vector3fToColor( ToolPropertyVec3f.GetValue )]"
+				oneditingfinished_with_changes = "[ToolPropertyVec3f.SetValueFromColor]"
+				# remove alpha components
+				blockoverride "alpha_checkbutton"
+				{
+					visible = no
+				}
+				blockoverride "alpha_editbox"
+				{
+					visible = no
+				}
+				blockoverride "alpha_slider"
+				{
+					visible = no
+				}
+			}
+		}
+	}
+
 	type dialog_property_vec3f = dialog_property {
 		blockoverride "content"
 		{
@@ -288,6 +321,29 @@ types ToolsProperyTypes
 		}
 	}
 	
+	type dialog_property_vec3i_as_color = dialog_property {
+		blockoverride "content"
+		{
+			tools_colorpicker = {
+				color = "[Vector3iToColor( ToolPropertyVec3i.GetValue )]"
+				oneditingfinished_with_changes = "[ToolPropertyVec3i.SetValueFromColor]"
+				# remove alpha components
+				blockoverride "alpha_checkbutton"
+				{
+					visible = no
+				}
+				blockoverride "alpha_editbox"
+				{
+					visible = no
+				}
+				blockoverride "alpha_slider"
+				{
+					visible = no
+				}
+			}
+		}
+	}
+
 	type dialog_property_vec3i = dialog_property {
 		blockoverride "content"
 		{

@@ -10,19 +10,20 @@ ConstantBuffer( PdxFlipbookConstants )
 
 VertexStruct VS_INPUT_PARTICLE
 {
-	float2 UV0              				: TEXCOORD0;
-	float3 Position							: TEXCOORD1;	 
-	float4 RotQ             				: TEXCOORD2;	// Rotation relative to world or camera when billboarded.
-	float4 SizeAndOffset    				: TEXCOORD3;	// SizeAndOffset.zw contains the local pivot offset
-	float4 BillboardAxisAndFlipbookTime		: TEXCOORD4;	//	Position.w contains the flipbook time.
-	float4 Color            				: TEXCOORD5;
+	float2 UV0							: TEXCOORD0;
+	float3 Position						: TEXCOORD1;
+	uint RotQ							: TEXCOORD2;	// Rotation relative to world or camera when billboarded.
+	float4 SizeAndOffset				: TEXCOORD3;	// SizeAndOffset.zw contains the local pivot offset
+	float4 BillboardAxisAndFlipbookTime : TEXCOORD4;	//	Position.w contains the flipbook time.
+	float4 Color						: TEXCOORD5;
+	
 };
 
 VertexStruct VS_OUTPUT_PARTICLE
 {
-    float4 Pos     			: PDX_POSITION;
-	float4 Color   			: COLOR;
-	float2 UV0     			: TEXCOORD0;
+	float4 Pos				: PDX_POSITION;
+	float4 Color			: COLOR;
+	float2 UV0				: TEXCOORD0;
 	float2 UV1				: TEXCOORD1;
 	float3 WorldSpacePos	: TEXCOORD2;
 	float FrameBlend		: TEXCOORD3;
@@ -30,6 +31,14 @@ VertexStruct VS_OUTPUT_PARTICLE
 
 Code
 [[
+	static const float3 ZERO = float3( 0.0, 0.0, 0.0 );
+	static const float3 POS_X = float3( 1.0, 0.0, 0.0 );
+	static const float3 POS_Y = float3( 0.0, 1.0, 0.0 );
+	static const float3 POS_Z = float3( 0.0, 0.0, 1.0 );
+	static const float3 NEG_X = float3( -1.0, 0.0, 0.0 );
+	static const float3 NEG_Y = float3( 0.0, -1.0, 0.0 );
+	static const float3 NEG_Z = float3( 0.0, 0.0, -1.0 );
+
 	uint CalcCurrentFrame( int Columns, int Rows, float Time )
 	{
 		int TotalFrames = ( Columns * Rows );
@@ -53,6 +62,55 @@ Code
 		
 		return CellUV + UV;
 	}
+
+	#define RED_MASK	0xFFC00000
+	#define GREEN_MASK	0x003FF000
+	#define BLUE_MASK	0x00000FFC
+	#define INDEX_MASK	0x00000003
+
+	// Use this function to fill "empty" bits with MS bit (i.e. sign bit on a negative number)
+	int ArithmeticRightShift( int x, int n )
+	{
+		if ( x < 0 && n > 0 )
+		{
+			return x >> n | ~( ~0U >> n );
+		}
+		else
+		{
+			return x >> n;
+		}
+	}
+
+	float4 DecodeQuaternion( int RotQ )
+	{
+		// Use the stored index to reconstruct the full quaternion
+		int MaxIndex = RotQ & INDEX_MASK;
+	
+		// Read the other three fields and derive the value of the omitted field
+		int divisor = 1 << 9; // We have 9 bits of precision in a 10 bit signed field
+		float a = float( ArithmeticRightShift( ( RotQ & RED_MASK ), 22 ) ) / divisor;
+	
+		// The following two components do not have their sign bit as MSB so left shift
+		// first to preserve the sign bit before shifting right!
+		float b = float( ArithmeticRightShift( ( ( RotQ & GREEN_MASK ) << 10 ), 22 ) ) / divisor;
+		float c = float( ArithmeticRightShift( ( ( RotQ & BLUE_MASK ) << 20 ), 22 ) ) / divisor;
+		float d = sqrt( 1.f - ( a * a + b * b + c * c ) );
+
+		if ( MaxIndex == 0 )
+		{
+			return float4( d, a, b, c );
+		}
+		else if ( MaxIndex == 1 )
+		{
+			return float4( a, d, b, c );
+		}
+		else if ( MaxIndex == 2 )
+		{
+			return float4( a, b, d, c );
+		}
+
+		return float4( a, b, c, d );
+	}
 ]]
 
 VertexShader =
@@ -67,7 +125,9 @@ VertexShader =
 			{
 				VS_OUTPUT_PARTICLE Out;
 				float3 InitialOffset = float3( ( Input.UV0 - Input.SizeAndOffset.zw - 0.5f ) * Input.SizeAndOffset.xy, 0 );
-				float3 Offset = RotateVector( Input.RotQ, InitialOffset );
+
+				float4 RotQ = DecodeQuaternion( Input.RotQ );
+				float3 Offset = RotateVector( RotQ, InitialOffset );
 				float Alpha = 0.0f;
 
 				#ifdef BILLBOARD
@@ -77,7 +137,7 @@ VertexShader =
 						Input.BillboardAxisAndFlipbookTime.y != 0.0 || 
 						Input.BillboardAxisAndFlipbookTime.z != 0.0 )
 					{
-						float3 Up = normalize( RotateVector( Input.RotQ, Input.BillboardAxisAndFlipbookTime.xyz ) );
+						float3 Up = normalize( RotateVector( RotQ, Input.BillboardAxisAndFlipbookTime.xyz ) );
 						float3 ToCameraDir = normalize( CameraPosition - Input.Position.xyz );
 						float3 Right = normalize( cross( ToCameraDir, Up ) );
 						WorldPos = Input.Position.xyz + InitialOffset.x * Right + InitialOffset.y * Up;
@@ -101,7 +161,7 @@ VertexShader =
 					Alpha = Input.Color.a;
 				#endif
 
-				uint CurrentFrame = CalcCurrentFrame( FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
+				uint CurrentFrame = CalcCurrentFrame(FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w);
 				Out.Pos = FixProjectionAndMul( ViewProjectionMatrix, float4( WorldPos, 1.0f ) );
 				Out.UV0 = CalcCellUV( CurrentFrame, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
 				Out.UV1 = CalcCellUV( CurrentFrame + 1, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );

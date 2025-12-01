@@ -1,0 +1,17 @@
+pdxmesh = {
+	name = "military_arms_machinegun_maxim_mesh"
+	file = "military_arms_machinegun_maxim.mesh"
+
+	meshsettings = {
+		name = "maxim_Shape0"
+		index = 0
+		texture_diffuse = "military_arms_machinegun_maxim_diffuse.dds"
+		texture_normal = "military_arms_machinegun_maxim_normal.dds"
+		texture_specular = "military_arms_machinegun_maxim_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	animation = { id = "defensive_animation" 				type = "military_arms_machinegun_maxim_defensive.anim" }
+
+}

@@ -44,7 +44,8 @@ entity = {
 	state = { name = "defeat" 
 		animation = 	"artillery_defeat_animation"
 		looping = 		no
-		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/cannon/anm_cannon_artillery_defeat_animation" }}
+		event = { time = 0.0 particle = "arms/artillery_defeat" trigger_once = no keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/cannon/anm_cannon_artillery_defeat_animation" }}
+
 	}
 }
 
@@ -131,7 +132,8 @@ entity = {
 	state = { name = "defeat"  
 		animation = 		"tank_defeat_animation"
 		looping = 			no 
-		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/anm_heavy_tank_defeat_animation" }}
+		event = { time = 0.0 particle = "arms/heavy_tank_defeat" keep_particle = no trigger_once = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/anm_heavy_tank_defeat_animation" }}
+
 		}
 
 

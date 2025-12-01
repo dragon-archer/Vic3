@@ -204,3 +204,27 @@ Effect GreyedOutDisabled
 	
 	Defines = { "DISABLED" "NO_HIGHLIGHT" }
 }
+
+Effect NoGrayoutOnDisableUp
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShader"
+}
+
+Effect NoGrayoutOnDisableOver
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShader"
+}
+
+Effect NoGrayoutOnDisableDown
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShader"
+}
+
+Effect NoGrayoutOnDisableDisabled
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShader"
+}

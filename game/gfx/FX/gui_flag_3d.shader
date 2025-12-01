@@ -171,6 +171,10 @@ PixelShader =
 			{
 				return Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 1 ];
 			}
+			float4 GetFadeValues( uint InstanceIndex )
+			{
+				return Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 2 ];
+			}
 			PDX_MAIN
 			{
 				float4 Diffuse = PdxTex2D( DiffuseMap, Input.UV0 );
@@ -205,9 +209,19 @@ PixelShader =
 				HSV_.z *= 1.00f;	// Value
 				FinalColor.rgb = HSVtoRGB( HSV_ );
 				FinalColor.rgb = saturate( FinalColor.rgb * float3( 1.03f, 0.77f, 0.74f ) );
-
 				FinalColor.rgb = ToGamma( FinalColor.rgb );
 				FinalColor.rgb = saturate( FinalColor.rgb );
+
+				// Gradient Fade
+				float4 FadeValues = GetFadeValues( Input.InstanceIndex );
+				if ( length( FadeValues ) > 0.0 )
+				{
+					float2 Vector = FadeValues.xy - FadeValues.zw;
+					float Fade = dot( Input.UV0 - FadeValues.zw, Vector) / dot( Vector, Vector );
+					Fade = smoothstep( 0.0, 1.0, clamp( Fade, 0.0, 1.0 ) );
+					FinalColor.a *= lerp( 0.0, 1.0, Fade );
+				}
+
 				return FinalColor;
 			}
 		]]

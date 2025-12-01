@@ -107,14 +107,15 @@ types ToolsTypes
 				
 				button = {
 					size = { 100% 100% }
-					texture = "gfx/editor_gui/editor_dropdown_item.dds"
+					texture = "gfx/editor_gui/editor_dropdown_item_norm_over_active.png"
 					spriteType = CorneredTiled
 					spriteborder = { 1 1 }
 					gfxtype = framedbuttongfx
 					framesize = { 8 8 }
 					upframe = 1
-					downframe = 2
+					downframe = 3
 					overframe = 2
+					activeframe = 3
 					disableframe = 1
 					button_trigger = none
 				}
@@ -135,14 +136,15 @@ types ToolsTypes
 				
 				button = {
 					size = { 100% 100% }
-					texture = "gfx/editor_gui/editor_dropdown_item.dds"
+					texture = "gfx/editor_gui/editor_dropdown_item_norm_over_active.png"
 					spriteType = CorneredTiled
 					spriteborder = { 1 1 }
 					gfxtype = framedbuttongfx
 					framesize = { 8 8 }
 					upframe = 1
-					downframe = 2
+					downframe = 3
 					overframe = 2
+					activeframe = 3
 					disableframe = 1
 					button_trigger = none
 				}
@@ -619,7 +621,7 @@ types ToolsTypes
 			size = { 18 18 }
 			shaderfile = "gfx/FX/pdxgui_colorpicker.shader"
 			effectname = "PdxGuiColorButton"
-			texture = "gfx/editor_gui/editor_transparent.dds"
+			texture = "gfx/editor_gui/editor_icon_checkerbox.png"
 			alwaystransparent = no
 			spriteType = corneredtiled
 		}
@@ -630,7 +632,7 @@ types ToolsTypes
 			name = "colorpicker_window"
 			resizable = no
 			reorder_on_mouse = "presstop"
-			size = { 394 296 }
+			size = { 650 390 }
 	
 			editor_textbox = {
 				position = { 10 4 }
@@ -638,25 +640,89 @@ types ToolsTypes
 				raw_text = "Color Picker"
 				name = "label_color_picker"
 			}
-				
+
+			editor_button = {
+				raw_text = "x"
+				position = { 636 15 }
+				widgetanchor = center|center
+				name = "colorpicker_close"
+			}
+
+			editor_textbox = {
+				position = { 328 28 }
+				size = { 16 16 }
+				raw_text = "Previous"
+				name = "label_original"
+				align = center
+				raw_tooltip = "Previous color (before changes)"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+			}
+
 			icon = {
-				position = { 268 32 }
-				size = { 32 256 }
+				name = "colorpicker_original"
+				position = { 304 50 }
+				size = { 64 32 }
 				shaderfile = "gfx/FX/pdxgui_colorpicker.shader"
-				effectname = "PdxGuiColorSlider"
-				texture = "gfx/editor_gui/editor_transparent.dds"
+				effectname = "PdxGuiColorOriginal"
+				texture = "gfx/editor_gui/editor_icon_checkerbox.png"
 				alwaystransparent = no
 				spriteType = corneredtiled
-				name = "color_slider"
-				
-				icon = {
-					position = { 0 40 }
-					alwaystransparent = yes
-					size = { 32 1 }
-					texture = "gfx/editor_gui/editor_pixel.dds"
-					spriteType = corneredtiled
-					spriteborder = { 1 1 }
-					name = "color_slider_picker"
+				raw_tooltip = "Original color value. Click to reset to this value"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+			}
+
+			editor_textbox = {
+				position = { 396 28 }
+				size = { 16 16 }
+				raw_text = "New"
+				name = "label_new"
+				align = center
+				raw_tooltip = "New color (preview)"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+			}
+
+			icon = {
+				name = "colorpicker_preview"
+				position = { 372 50 }
+				size = { 64 32 }
+				shaderfile = "gfx/FX/pdxgui_colorpicker.shader"
+				effectname = "PdxGuiColorButton"
+				texture = "gfx/editor_gui/editor_icon_checkerbox.png"
+				alwaystransparent = no
+				spriteType = corneredtiled
+				raw_tooltip = "Color preview"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+			}
+
+			editor_textbox = {
+				position = { 558 158 }
+				size = { 16 16 }
+				raw_text = "##"
+				name = "label_color_hex"
+				raw_tooltip = "Hexadecimal color value"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+			}
+			
+			editor_editbox = {
+				using = property_editbox
+				position = { 572 160 }
+				size = { 52 16 }
+				text = ""
+				name = "editbox_color_hex"
+				maxcharacters = 6
+				raw_tooltip = "Hexadecimal color value"
+				tooltipwidget = {
+					using = dockable_tooltip
 				}
 			}
 	
@@ -669,6 +735,10 @@ types ToolsTypes
 				alwaystransparent = no
 				spriteType = corneredtiled
 				name = "color_area"
+				raw_tooltip = "Hue/Saturation"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
 				
 				icon = {
 					position = { 0 0 }
@@ -680,198 +750,401 @@ types ToolsTypes
 					name = "color_area_picker"
 				}
 			}
-	
-			editor_editbox = {
-				using = property_editbox
-				position = { 348 33 }
-				size = { 32 16 }
-				text = ""
-				name = "editbox_color_hue"
-				maxcharacters = 3
+
+			icon = {
+				position = { 268 32 }
+				size = { 32 256 }
+				shaderfile = "gfx/FX/pdxgui_colorpicker.shader"
+				effectname = "PdxGuiColorSliderActive"
+				texture = "gfx/editor_gui/editor_icon_checkerbox.png"
+				alwaystransparent = no
+				spriteType = corneredtiled
+				name = "color_slider_active"
+				raw_tooltip = "Active component"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+				
+				icon = {
+					position = { 0 40 }
+					alwaystransparent = yes
+					size = { 32 1 }
+					texture = "gfx/editor_gui/editor_pixel.dds"
+					spriteType = corneredtiled
+					spriteborder = { 1 1 }
+					name = "color_slider_picker_active"
+				}
 			}
-	
-			editor_editbox = {
-				using = property_editbox
-				position = { 348 56 }
-				size = { 32 16 }
-				text = ""
-				name = "editbox_color_saturation"
-				maxcharacters = 3
+
+			icon = {
+				position = { 304 202 }
+				size = { 256 20 }
+				shaderfile = "gfx/FX/pdxgui_colorpicker.shader"
+				effectname = "PdxGuiColorSliderRed"
+				texture = "gfx/editor_gui/editor_transparent.dds"
+				alwaystransparent = no
+				spriteType = corneredtiled
+				name = "color_slider_red"
+				raw_tooltip = "Red"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+				
+				icon = {
+					position = { 0 40 }
+					alwaystransparent = yes
+					size = { 1 20 }
+					texture = "gfx/editor_gui/editor_pixel.dds"
+					spriteType = corneredtiled
+					spriteborder = { 1 1 }
+					name = "color_slider_picker_red"
+				}
 			}
-	
+
 			editor_editbox = {
 				using = property_editbox
-				position = { 348 80 }
-				size = { 32 16 }
-				text = ""
-				name = "editbox_color_value"
-				maxcharacters = 3
-			}
-	
-			editor_editbox = {
-				using = property_editbox
-				position = { 348 128 }
+				position = { 572 204 }
 				size = { 32 16 }
 				text = ""
 				name = "editbox_color_red"
-				maxcharacters = 3
+				raw_tooltip = "Red"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
 			}
-	
+
+			editor_checkbutton = {
+				position = { 610 203 }
+				blockoverride "checkbutton"
+				{
+						name = "radio_color_red"
+				}
+				blockoverride "label"
+				{
+						raw_text = "R"
+				}
+			}
+
+			icon = {
+				position = { 304 224 }
+				size = { 256 20 }
+				shaderfile = "gfx/FX/pdxgui_colorpicker.shader"
+				effectname = "PdxGuiColorSliderGreen"
+				texture = "gfx/editor_gui/editor_transparent.dds"
+				alwaystransparent = no
+				spriteType = corneredtiled
+				name = "color_slider_green"
+				raw_tooltip = "Green"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+				
+				icon = {
+					position = { 0 40 }
+					alwaystransparent = yes
+					size = { 1 20 }
+					texture = "gfx/editor_gui/editor_pixel.dds"
+					spriteType = corneredtiled
+					spriteborder = { 1 1 }
+					name = "color_slider_picker_green"
+				}
+			}
+
 			editor_editbox = {
 				using = property_editbox
-				position = { 348 152 }
+				position = { 572 226 }
 				size = { 32 16 }
 				text = ""
 				name = "editbox_color_green"
-				maxcharacters = 3
+				raw_tooltip = "Green"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
 			}
-	
+
 			editor_checkbutton = {
-				position = { 308 32 }
-				
+				position = { 610 225 }
 				blockoverride "checkbutton"
 				{
-					name = "radio_color_hue"
+						name = "radio_color_green"
 				}
-				
 				blockoverride "label"
 				{
-					raw_text = "H"
+						raw_text = "G"
 				}
 			}
-	
-			editor_checkbutton = {
-				position = { 308 152 }
-				
-				blockoverride "checkbutton"
-				{
-					name = "radio_color_green"
+
+			icon = {
+				position = { 304 246 }
+				size = { 256 20 }
+				shaderfile = "gfx/FX/pdxgui_colorpicker.shader"
+				effectname = "PdxGuiColorSliderBlue"
+				texture = "gfx/editor_gui/editor_transparent.dds"
+				alwaystransparent = no
+				spriteType = corneredtiled
+				name = "color_slider_blue"
+				raw_tooltip = "Blue"
+				tooltipwidget = {
+					using = dockable_tooltip
 				}
 				
-				blockoverride "label"
-				{
-					raw_text = "G"
-				}
-			}
-	
-			editor_checkbutton = {
-				position = { 308 128 }
-				
-				blockoverride "checkbutton"
-				{
-					name = "radio_color_red"
-				}
-				
-				blockoverride "label"
-				{
-					raw_text = "R"
+				icon = {
+					position = { 0 40 }
+					alwaystransparent = yes
+					size = { 1 20 }
+					texture = "gfx/editor_gui/editor_pixel.dds"
+					spriteType = corneredtiled
+					spriteborder = { 1 1 }
+					name = "color_slider_picker_blue"
 				}
 			}
-	
-			editor_checkbutton = {
-				position = { 308 80 }
-				
-				blockoverride "checkbutton"
-				{
-					name = "radio_color_value"
-				}
-				
-				blockoverride "label"
-				{
-					raw_text = "V"
-				}
-			}
-	
-			editor_checkbutton = {
-				position = { 308 56 }
-				
-				blockoverride "checkbutton"
-				{
-					name = "radio_color_saturation"
-				}
-				
-				blockoverride "label"
-				{
-					raw_text = "S"
-				}
-			}
-	
-			editor_checkbutton = {
-				position = { 308 174 }
-				
-				blockoverride "checkbutton"
-				{
-					name = "radio_color_blue"
-				}
-				
-				blockoverride "label"
-				{
-					raw_text = "B"
-				}
-			}
-	
+
 			editor_editbox = {
 				using = property_editbox
-				position = { 348 174 }
+				position = { 572 248 }
 				size = { 32 16 }
 				text = ""
 				name = "editbox_color_blue"
-				maxcharacters = 3
+				raw_tooltip = "Blue"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
 			}
-			
+
 			editor_checkbutton = {
-				position = { 308 196 }
-				
+				position = { 610 247 }
 				blockoverride "checkbutton"
 				{
-					name = "radio_color_alpha"
+						name = "radio_color_blue"
 				}
-				
 				blockoverride "label"
 				{
-					raw_text = "A"
+						raw_text = "B"
 				}
 			}
-			
+
+			icon = {
+				block "alpha_slider" {}
+				position = { 304 268 }
+				size = { 256 20 }
+				shaderfile = "gfx/FX/pdxgui_colorpicker.shader"
+				effectname = "PdxGuiColorSliderAlpha"
+				texture = "gfx/editor_gui/editor_icon_checkerbox.png"
+				alwaystransparent = no
+				spriteType = corneredtiled
+				name = "color_slider_alpha"
+				raw_tooltip = "Alpha"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+				
+				icon = {
+					position = { 0 40 }
+					alwaystransparent = yes
+					size = { 1 20 }
+					texture = "gfx/editor_gui/editor_pixel.dds"
+					spriteType = corneredtiled
+					spriteborder = { 1 1 }
+					name = "color_slider_picker_alpha"
+				}
+			}
+
 			editor_editbox = {
+				block "alpha_editbox" {}
 				using = property_editbox
-				position = { 348 196 }
+				position = { 572 270 }
 				size = { 32 16 }
 				text = ""
 				name = "editbox_color_alpha"
-				maxcharacters = 3
+				raw_tooltip = "Alpha"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
 			}
-			
-			editor_textbox = {
-				position = { 308 268 }
-				size = { 16 16 }
-				raw_text = "##"
-				name = "label_color_hex"
+
+			editor_checkbutton = {
+				block "alpha_checkbutton" {}
+				position = { 610 269 }
+				blockoverride "checkbutton"
+				{
+						name = "radio_color_alpha"
+				}
+				blockoverride "label"
+				{
+						raw_text = "A"
+				}
 			}
-			
+
+			icon = {
+				position = { 8 294 }
+				size = { 552 20 }
+				shaderfile = "gfx/FX/pdxgui_colorpicker.shader"
+				effectname = "PdxGuiColorSliderHue"
+				texture = "gfx/editor_gui/editor_icon_checkerbox.png"
+				alwaystransparent = no
+				spriteType = corneredtiled
+				name = "color_slider_hue"
+				raw_tooltip = "Hue"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+				
+				icon = {
+					position = { 0 40 }
+					alwaystransparent = yes
+					size = { 1 20 }
+					texture = "gfx/editor_gui/editor_pixel.dds"
+					spriteType = corneredtiled
+					spriteborder = { 1 1 }
+					name = "color_slider_picker_hue"
+				}
+			}
+
 			editor_editbox = {
 				using = property_editbox
-				position = { 328 268 }
-				size = { 52 16 }
+				position = { 572 296 }
+				size = { 32 16 }
 				text = ""
-				name = "editbox_color_hex"
-				maxcharacters = 6
+				name = "editbox_color_hue"
+				raw_tooltip = "Hue"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
 			}
-			
+
+			editor_checkbutton = {
+				position = { 610 295 }
+				blockoverride "checkbutton"
+				{
+						name = "radio_color_hue"
+				}
+				blockoverride "label"
+				{
+						raw_text = "H"
+				}
+			}
+
 			icon = {
-				position = { 345 242 }
+				position = { 8 316 }
+				size = { 552 20 }
+				shaderfile = "gfx/FX/pdxgui_colorpicker.shader"
+				effectname = "PdxGuiColorSliderSaturation"
+				texture = "gfx/editor_gui/editor_icon_checkerbox.png"
+				alwaystransparent = no
+				spriteType = corneredtiled
+				name = "color_slider_saturation"
+				raw_tooltip = "Saturation"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+				
+				icon = {
+					position = { 0 40 }
+					alwaystransparent = yes
+					size = { 1 20 }
+					texture = "gfx/editor_gui/editor_pixel.dds"
+					spriteType = corneredtiled
+					spriteborder = { 1 1 }
+					name = "color_slider_picker_saturation"
+				}
+			}
+
+			editor_editbox = {
+				using = property_editbox
+				position = { 572 318 }
+				size = { 32 16 }
+				text = ""
+				name = "editbox_color_saturation"
+				raw_tooltip = "Saturation"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+			}
+
+			editor_checkbutton = {
+				position = { 610 317 }
+				blockoverride "checkbutton"
+				{
+						name = "radio_color_saturation"
+				}
+				blockoverride "label"
+				{
+						raw_text = "S"
+				}
+			}
+
+			icon = {
+				position = { 8 338 }
+				size = { 552 20 }
+				shaderfile = "gfx/FX/pdxgui_colorpicker.shader"
+				effectname = "PdxGuiColorSliderValue"
+				texture = "gfx/editor_gui/editor_icon_checkerbox.png"
+				alwaystransparent = no
+				spriteType = corneredtiled
+				name = "color_slider_value"
+				raw_tooltip = "Value"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+				
+				icon = {
+					position = { 0 40 }
+					alwaystransparent = yes
+					size = { 1 20 }
+					texture = "gfx/editor_gui/editor_pixel.dds"
+					spriteType = corneredtiled
+					spriteborder = { 1 1 }
+					name = "color_slider_picker_value"
+				}
+			}
+
+			editor_editbox = {
+				using = property_editbox
+				position = { 572 340 }
+				size = { 32 16 }
+				text = ""
+				name = "editbox_color_value"
+				raw_tooltip = "Value"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+			}
+
+			editor_checkbutton = {
+				position = { 610 339 }
+				blockoverride "checkbutton"
+				{
+						name = "radio_color_value"
+				}
+				blockoverride "label"
+				{
+						raw_text = "V"
+				}
+			}
+
+			editor_button = {
+				name = "button_toggle_int_float_display"
+				raw_text = ""
+				raw_tooltip = "Toggle int/float input"
+				position = { 568 182 }
+				size = { 36 20 }
+				fontsize = 12
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+			}
+
+			icon = {
+				position = { 618 192 }
 				alwaystransparent = no
 				texture = "gfx/editor_gui/editor_picker.dds"
 				spriteType = stretched
 				widgetanchor = center|center
 				name = "color_selector"
-			}
-			
-			editor_button = {
-				raw_text = "x"
-				position = { 378 15 }
-				widgetanchor = center|center
-				name = "colorpicker_close"
+				raw_tooltip = "Click and drag to select color of the pixel under the mouse cursor"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
 			}
 		}
 	}
@@ -886,14 +1159,15 @@ template EditorContextMenuItem
 {
 	button = {
 		size = { 100% 20 }
-		texture = "gfx/editor_gui/editor_dropdown_item.dds"
+		texture = "gfx/editor_gui/editor_dropdown_item_norm_over_active.png"
 		spriteType = CorneredTiled
 		spriteborder = { 1 1 }
 		gfxtype = framedbuttongfx
 		framesize = { 8 8 }
 		upframe = 1
-		downframe = 2
+		downframe = 3
 		overframe = 2
+		activeframe = 3
 		disableframe = 1
 		button_trigger = none
 	
@@ -998,12 +1272,16 @@ types EditorTypes
 				autoresizeviewport = yes
 				
 				# TODO: Set context by default?
-				#maximumsize = [GuiContext.GetScreenResolution]
-				maximumsize = { 256 512 }
-				# Force min width to avoid autoresizescrollarea "permenently" setting the width to 0
-				# if the menu ends up with 0 entries at some point
-				min_width = 256
-				size = { 256 512 }
+
+				block "size_properties"
+				{
+					#maximumsize = [GuiContext.GetScreenResolution]
+					maximumsize = { 256 512 }
+					# Force min width to avoid autoresizescrollarea "permenently" setting the width to 0
+					# if the menu ends up with 0 entries at some point
+					min_width = 256
+					size = { 256 512 }
+				}
 				
 				background = {
 					margin = { 2 2 }

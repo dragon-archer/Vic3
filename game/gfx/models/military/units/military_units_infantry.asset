@@ -258,6 +258,34 @@ entity = {
 	}
 }
 
+entity = {
+	clone =		 "military_infantry_european_mechanized_entity"
+	name =		 "military_support_european_machinegunner_entity"
+	
+	
+	attach = { name = weapon 		root = "military_arms_machinegun_maxim_entity" }
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend"
+		animation = 		"infantry_machinegun_maxim_fire_defensive_animation"
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_defensive_01" }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/infantry/maxim_mg/anm_fire_defensive_maxim_mg" }}
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"
+		animation = 		"infantry_machinegun_maxim_fire_defensive_animation" 
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_aggressive_01" }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/infantry/maxim_mg/anm_fire_aggressive_maxim_mg" }}
+
+	}
+}
+
 
 
 
@@ -304,6 +332,12 @@ entity = {
 entity = {
 	clone =		 "military_support_european_flamethrower_entity"
 	name =		 "military_support_african_flamethrower_entity"
+	pdxmesh =	 "military_infantry_african_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_support_european_machinegunner_entity"
+	name =		 "military_support_african_machinegunner_entity"
 	pdxmesh =	 "military_infantry_african_t3_mesh"
 }
 
@@ -354,6 +388,11 @@ entity = {
 entity = {
 	clone =		 "military_support_european_flamethrower_entity"
 	name =		 "military_support_arabic_flamethrower_entity"
+	pdxmesh =	 "military_infantry_arabic_t3_mesh"
+}
+entity = {
+	clone =		 "military_support_european_machinegunner_entity"
+	name =		 "military_support_arabic_machinegunner_entity"
 	pdxmesh =	 "military_infantry_arabic_t3_mesh"
 }
 
@@ -407,6 +446,11 @@ entity = {
 	name =		 "military_support_eastasian_flamethrower_entity"
 	pdxmesh =	 "military_infantry_eastasian_t3_mesh"
 }
+entity = {
+	clone =		 "military_support_european_machinegunner_entity"
+	name =		 "military_support_eastasian_machinegunner_entity"
+	pdxmesh =	 "military_infantry_eastasian_t3_mesh"
+}
 
 
 
@@ -457,6 +501,11 @@ entity = {
 	name =		 "military_support_southasian_flamethrower_entity"
 	pdxmesh =	 "military_infantry_southasian_t3_mesh"
 }
+entity = {
+	clone =		 "military_support_european_machinegunner_entity"
+	name =		 "military_support_southasian_machinegunner_entity"
+	pdxmesh =	 "military_infantry_southasian_t3_mesh"
+}
 
 
 
@@ -487,5 +536,10 @@ entity = {
 entity = {
 	clone =		 "military_support_european_flamethrower_entity"
 	name =		 "military_support_nativeamerican_flamethrower_entity"
+	pdxmesh =	 "military_infantry_nativeamerican_t1_mesh"
+}
+entity = {
+	clone =		 "military_support_european_machinegunner_entity"
+	name =		 "military_support_nativeamerican_machinegunner_entity"
 	pdxmesh =	 "military_infantry_nativeamerican_t1_mesh"
 }

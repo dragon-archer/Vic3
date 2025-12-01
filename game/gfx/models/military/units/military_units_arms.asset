@@ -1,4 +1,4 @@
-
+﻿
 #################################################
 ###       			Rifles     				  ###
 #################################################
@@ -160,6 +160,28 @@ entity = {
 	pdxmesh =	 "military_arms_flamethrower_tank_mesh"
 }
 
+
+
+entity = {
+	clone =		 "military_arms_blunderbuss_entity"	
+	name =		 "military_arms_machinegun_maxim_entity"
+	pdxmesh =	 "military_arms_machinegun_maxim_mesh"
+
+	state = { name = "fire_defensive_01"
+		animation = 		"defensive_animation"
+		event = { time = 3.133    	node = "loc_vfx" particle = "arms/maxim_machinegun" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/maxim_mg/wpn_infantry_maxim_burst_7rounds" }}
+		event = { time = 5.6    	node = "loc_vfx" particle = "arms/maxim_machinegun" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/maxim_mg/wpn_infantry_maxim_burst_7rounds" }}
+		event = { time = 7.667    	node = "loc_vfx" particle = "arms/maxim_machinegun" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/maxim_mg/wpn_infantry_maxim_burst_7rounds" }}
+		event = { time = 11.467    	node = "loc_vfx" particle = "arms/maxim_machinegun" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/maxim_mg/wpn_infantry_maxim_burst_7rounds" }}
+	}
+	state = { name = "fire_aggressive_01"
+		animation = 		"defensive_animation"
+		event = { time = 3.133  	node = "loc_vfx" particle = "arms/maxim_machinegun" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/maxim_mg/wpn_infantry_maxim_burst_7rounds" }}
+		event = { time = 5.6      	node = "loc_vfx" particle = "arms/maxim_machinegun" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/maxim_mg/wpn_infantry_maxim_burst_7rounds" }}
+		event = { time = 7.667  	node = "loc_vfx" particle = "arms/maxim_machinegun" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/maxim_mg/wpn_infantry_maxim_burst_7rounds" }}
+		event = { time = 11.467 	node = "loc_vfx" particle = "arms/maxim_machinegun" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/maxim_mg/wpn_infantry_maxim_burst_7rounds" }}
+	}
+}
 
 
 

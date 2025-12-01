@@ -64,7 +64,7 @@ Code
 	
 	struct SDirectionalLight
 	{
-		float3	_Direction;
+		float3	_ToLightDirection;
 		float3	_Color;
 		uint	_ShadowIndex;
 	};
@@ -83,10 +83,10 @@ Code
 		float		_CosOuterConeHalfAngle;
 	};
 
-	SDirectionalLight BuildDirectionalLight( float3 Direction, float3 Color, uint ShadowIndex )
+	SDirectionalLight BuildDirectionalLight( float3 ToLightDirection, float3 Color, uint ShadowIndex )
 	{
 		SDirectionalLight DirectionalLight;
-		DirectionalLight._Direction = Direction;
+		DirectionalLight._ToLightDirection = ToLightDirection;
 		DirectionalLight._Color = Color;
 		DirectionalLight._ShadowIndex = ShadowIndex;
 		return DirectionalLight;
@@ -367,7 +367,7 @@ PixelShader =
 		void CalculateLightingFromDirectionalLight( SDirectionalLight DirectionalLight, float3 WorldSpacePos, float ShadowTerm, SMaterialProperties MaterialProps, inout float3 DiffuseLightOut, inout float3 SpecularLightOut )
 		{
 			float3 ToCameraDir = normalize( CameraPosition - WorldSpacePos );
-			float3 ToLightDir = DirectionalLight._Direction;
+			float3 ToLightDir = DirectionalLight._ToLightDirection;
 
 			float3 DiffuseLight;
 			float3 SpecularLight;

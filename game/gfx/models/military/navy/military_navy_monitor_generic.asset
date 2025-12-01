@@ -17,7 +17,7 @@ pdxmesh = {
 		texture = { file = "military_navy_monitor_generic_masks.dds" index = 6 }
 		shader = "standard"
 		shader_file = "gfx/FX/pdxmesh.shader"
-		additional_shader_defines = { "UNIT_COLOR" }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT"  }
 	}
 
 	meshsettings = {
@@ -50,7 +50,7 @@ pdxmesh = {
 		texture = { file = "military_navy_monitor_generic_masks.dds" index = 6 }
 		shader = "standard"
 		shader_file = "gfx/FX/pdxmesh.shader"
-		additional_shader_defines = { "UNIT_COLOR" }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT"  }
 	}
 
 	meshsettings = {
@@ -83,7 +83,7 @@ pdxmesh = {
 		texture = { file = "military_navy_monitor_generic_masks.dds" index = 6 }
 		shader = "standard"
 		shader_file = "gfx/FX/pdxmesh.shader"
-		additional_shader_defines = { "UNIT_COLOR" }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT"  }
 	}
 
 	meshsettings = {
@@ -106,7 +106,7 @@ pdxmesh = {
 		texture = { file = "military_navy_monitor_generic_masks.dds" index = 6 }
 		shader = "standard"
 		shader_file = "gfx/FX/pdxmesh.shader"
-		additional_shader_defines = { "UNIT_COLOR" }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT"  }
 	}
 
 	animation = { id = "ship_idle_animation" 					type = "military_navy_monitor_generic_idle.anim" }

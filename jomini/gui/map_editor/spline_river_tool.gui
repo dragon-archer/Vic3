@@ -76,7 +76,51 @@ hbox = {
             size = { 24 24 }
         }
     }#mode_strip_creation
+	
+	tooloptions_divider = {
+	}
 
+	toolbox_button = {
+		enabled = "[SplineStripTool.CanDeleteSelection]"
+		visible = "[Or(SplineStripTool.IsAnchorSelectionSelected, SplineStripTool.IsStripSelectionSelected)]"
+		onclick = "[SplineStripTool.DeleteSelected]"
+		raw_tooltip = "Delete selected strips or anchors"
+		
+		shortcut = "mapobjects_tool_delete"
+		toolbox_icon = {
+			texture = "gfx/editor_terrain/delete_objects.dds"
+			size = { 24 24 }
+		}
+	}
+	
+	tooloptions_divider = {
+	}
+	
+	toolbox_button = {
+		onclick = "[SplineRiverTool.ModifyWidth( '(float)-2.0' )]"
+		raw_tooltip = "Decrease river width at selected anchors by 2.0"
+		raw_text = "--"
+		shortcut = "spline_river_tool_decrease_width_large"
+	}
+	toolbox_button = {
+		onclick = "[SplineRiverTool.ModifyWidth( '(float)-0.5' )]"
+		raw_tooltip = "Decrease river width at selected anchors by 0.5"
+		raw_text = "-"
+		shortcut = "spline_river_tool_decrease_width_small"
+	}
+	toolbox_button = {
+		onclick = "[SplineRiverTool.ModifyWidth( '(float)0.5' )]"
+		raw_tooltip = "Increase river width at selected anchors by 0.5"
+		raw_text = "+"
+		shortcut = "spline_river_tool_increase_width_small"
+	}
+	toolbox_button = {
+		onclick = "[SplineRiverTool.ModifyWidth( '(float)2.0' )]"
+		raw_tooltip = "Increase river width at selected anchors by 2.0"
+		raw_text = "++"
+		shortcut = "spline_river_tool_increase_width_large"
+	}
+		
     widget = {
         layoutpolicy_horizontal = expanding
     }#expander

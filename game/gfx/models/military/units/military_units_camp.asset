@@ -7,7 +7,7 @@ entity = {
 	name = "military_basecamp_generic_entity"
 	pdxmesh = "military_basecamp_generic_mesh"
 
-	attach = { "loc_vfx_01" = "vfx_entity_campfire" }
+	attach = { loc_vfx_01 = "vfx_entity_campfire" }
 
 	locator = { name = "locator_decal_01" 
 		position = { 0 0 0 } 
@@ -29,5 +29,27 @@ entity = {
 		name = "audio"
 		start_event = { keep_sound = yes sound  = { soundeffect = "event:/SFX/Ambience/3D/Hub/War/basecamp_diorama" }
 		}
+	}
+}
+
+entity = {
+	name = "military_medical_fieldhospitals_entity"
+	pdxmesh = "military_medical_fieldhospitals_mesh"
+
+	locator = { name = "locator_decal_01" 
+		position = { 0 0 0 } 
+		rotation = { 0 0 0 } 
+		scale = 2
+	}
+}
+
+entity = {
+	name = "military_medical_firstaid_entity"
+	pdxmesh = "military_medical_firstaid_mesh"
+
+	locator = { name = "locator_decal_01" 
+		position = { 0 0 0 } 
+		rotation = { 0 0 0 } 
+		scale = 2
 	}
 }

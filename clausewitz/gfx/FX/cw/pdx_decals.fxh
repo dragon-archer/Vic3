@@ -1,5 +1,6 @@
 Includes = {
 	"cw/utility.fxh"
+	"cw/upscale_utils.fxh"
 }
 
 ConstantBuffer( PdxDecalCullingConstants )
@@ -181,8 +182,8 @@ Code
 			
 			float2 DecalUV = DecalUVZ.xy;
 			float FadeFactor = CalcFadeFactor( DecalUVZ.z );
-			float2 DecalUVDx = mul( Decal._DecalMatrix, float4( WorldSpacePosDx, 0.0 ) ).xy;
-			float2 DecalUVDy = mul( Decal._DecalMatrix, float4( WorldSpacePosDy, 0.0 ) ).xy;
+			float2 DecalUVDx = ApplyUpscaleLodBiasMultiplier( mul( Decal._DecalMatrix, float4( WorldSpacePosDx, 0.0 ) ).xy );
+			float2 DecalUVDy = ApplyUpscaleLodBiasMultiplier( mul( Decal._DecalMatrix, float4( WorldSpacePosDy, 0.0 ) ).xy );
 			
 			uint DecalIndex = Decal._DecalIndex;
 			float4 Diffuse = PdxSampleTex2DGrad( DecalAlbedoTextures[ NonUniformResourceIndex( DecalIndex) ], DecalSampler, DecalUV, DecalUVDx, DecalUVDy );

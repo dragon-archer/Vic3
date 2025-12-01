@@ -197,6 +197,7 @@ editor_window = {
 								upframe = 1
 								downframe = 2
 								overframe = 3
+								activeframe = 2
 								disableframe = 4
 							}
 
@@ -217,14 +218,15 @@ editor_window = {
 
 							button = {
 								size = { 100% 100% }
-								texture = "gfx/editor_gui/editor_dropdown_item.dds"
+								texture = "gfx/editor_gui/editor_dropdown_item_norm_over_active.png"
 								spriteType = CorneredTiled
 								spriteborder = { 1 1 }
 								gfxtype = framedbuttongfx
 								framesize = { 8 8 }
 								upframe = 1
-								downframe = 2
+								downframe = 3
 								overframe = 2
+								activeframe = 3
 								disableframe = 1
 								button_trigger = none
 							}

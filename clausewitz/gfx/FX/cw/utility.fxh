@@ -212,6 +212,17 @@ Code
 		return UnpackNormal( PdxTex2D( NormalTex, uv ) );
 	}
 
+	float4 IntToNiceColor( int TheInt )
+	{
+		const int HueDivision = 6; // As in how many times the color wheel is divided
+		const int SatDivision = 5;
+
+		float Hue = mod( TheInt / (float)HueDivision, 1.0 );
+		float Saturation = 1.0 - ( 1.0 / (float)SatDivision ) * ( TheInt / HueDivision );
+		float Value = Saturation;
+		return float4( HSVtoRGB( Hue, Saturation, Value ), 1 );
+	}
+
 	float3 UnpackRRxGNormal( float4 NormalMapSample )
 	{
 		float x = NormalMapSample.g * 2.0 - 1.0;

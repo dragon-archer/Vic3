@@ -288,6 +288,17 @@ pops_login_create_account = {
 	decline_text = JOMINI_MULTIPLAYER_GUI_POPUP_DECLINE
 }
 
+jomini_dlc_manager_outdated_mods_alert = {
+	level = alert
+	category = system
+	window_file = @default_window_file
+	window_name = @default_window_name
+
+	title_text = JOMINI_DLC_MANAGER_OUTDATED_MODS_ALERT_TITLE
+	text = JOMINI_DLC_MANAGER_OUTDATED_MODS_ALERT_DESC
+	accept_text = CLOSE
+}
+
 default_dialog = {
 	level = dialog
 	window_file = "gui/notifications/jomini_message.gui"

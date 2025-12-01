@@ -101,6 +101,7 @@ types POPS
 										block "reset_password_button" {}
 										text = "POPS_LOGIN_RESET_PASSWORD"
 										onclick = "[POPSLoginView.SetState( 'password_reset' )]"
+										enabled = "[Not(POPSStatusIsLoggingIn)]"
 									}
 								}
 

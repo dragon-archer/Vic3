@@ -1,5 +1,6 @@
 Includes = {
 	"cw/camera.fxh"
+	"cw/heightmap.fxh"
 }
 ConstantBuffer( JominiRiver )
 {
@@ -64,11 +65,14 @@ VertexShader =
 				Out.Tangent 		= Input.Tangent;
 				Out.Normal			= Input.Normal;
 				Out.WorldSpacePos 	= Input.Position;
+				#ifdef SNAP_TO_TERRAIN
+				Out.WorldSpacePos.y = GetHeight( Out.WorldSpacePos.xz );
+				#endif
 				Out.Transparency 	= Input.Transparency;
 				Out.Width 			= Input.Width * max( JOMINIRIVER_MapSize.x, JOMINIRIVER_MapSize.y );
 				Out.DistanceToMain	= Input.DistanceToMain;
 				
-				Out.Position = FixProjectionAndMul( ViewProjectionMatrix, float4( Input.Position, 1.0f ) );
+				Out.Position = FixProjectionAndMul( ViewProjectionMatrix, float4( Out.WorldSpacePos, 1.0f ) );
 			
 				return Out;
 			}		

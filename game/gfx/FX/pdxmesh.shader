@@ -918,7 +918,7 @@ Effect standard_flag_revolution
 	VertexShader = "VS_sine_animation"
 	PixelShader = "PS_standard"
 
-	Defines = { "REVOLUTIONFLAG" "IG_USERDATA" }
+	Defines = { "REVOLUTIONFLAG" }
 }
 Effect standard_flag_revolutionShadow
 {
@@ -1019,7 +1019,7 @@ Effect standard_flag_revolution_mapobject
 	VertexShader = "VS_sine_animation_mapobject"
 	PixelShader = "PS_standard"
 
-	Defines = { "REVOLUTIONFLAG" "IG_USERDATA" }
+	Defines = { "REVOLUTIONFLAG" }
 }
 Effect standard_flag_revolutionShadow_mapobject
 {

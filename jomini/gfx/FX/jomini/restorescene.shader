@@ -7,6 +7,8 @@ Includes = {
 	"jomini/jomini_dof.fxh"
 }
 
+# This adds up to 1024 shader permutations, and supports Marius and Justinian.
+# At some point, we'll have to solve this properly.
 supports_additional_shader_options = {
 	LUMA_AS_ALPHA
 	ADDITIONAL_LENS_FLARE_ENABLED
@@ -17,6 +19,7 @@ supports_additional_shader_options = {
 	EXPOSURE_FIXED
 	TONEMAP_UNCHARTED
 	MULTI_SAMPLED
+	TONEMAP_FILMICACES_HILL
 }
 
 PixelShader =
@@ -131,14 +134,14 @@ PixelShader =
 
 				return color;
 			}
-			
+
 			float4 RestoreScene( float3 inColor )
 			{
 				float3 color = inColor;
 			#ifdef LUT_ENABLED
 				color = SampleColorCube( color );
 			#endif
-			
+
 				float3 HSV_ = RGBtoHSV( color.rgb );
 				HSV_.yz *= HSV.yz;
 				HSV_.x += HSV.x;
@@ -154,21 +157,38 @@ PixelShader =
 			PDX_MAIN
 			{
 				float4 color = PdxTex2DLod0( MainScene, Input.uv );
-				
+
 			#ifdef DOF_ENABLED
 				float4 DofColor = PdxTex2DLod0( DepthOfFieldTexture, Input.uv );
 				float DofCoc = PdxTex2DLod0( DepthOfFieldCocTexture, Input.uv ).r;
 				DofCoc = smoothstep( _BlurBlendMin, _BlurBlendMax, DofCoc );	// Tweak to avoid using the low resolution image at small blur values
 				color.rgb = lerp( color.rgb, DofColor.rgb, DofCoc );
-			#endif			
+			#endif
 
 			#ifdef PDX_DEBUG_NO_HDR
 				return float4( ToGamma( saturate(color.rgb) ), 1 );
 			#endif
-				
+
 			#ifdef BLOOM_ENABLED
-				float3 bloom = PdxTex2DLod0( RestoreBloom, Input.uv ).rgb;
-				color.rgb = bloom.rgb + color.rgb; // todo * bloomscale?
+				/*				
+				When using PBR the dynamic range is usually very high, so you don’t need to threshold. 
+				The blurred bloom layer is set to a low value, which means that only very bright pixels will bloom noticeably. 
+				That said, the whole image will receive some softness, which can be good or bad, depending on the artistic direction. 
+				But in general, it leads to more photorealistic results.
+				Note: We still do thresholding, as all our rendering has assumed that, this fixes bloom glow around transparant edges amongst others
+				*/
+				float bloomStrength = BloomParams.x;		// 0.05;
+				float BrightPassSteepness = BloomParams.y;	// 1.5f;
+				float ThresholdOffset = BloomParams.z; 		// 0.1f;
+				
+				float3 bloom = PdxTex2DLod0( RestoreBloom, Input.uv ).rgb;	
+				//return float4( bloom.rgb, 1 );
+				
+				float lumaBloom = dot(LUMINANCE_VECTOR, bloom.rgb);									
+				
+				bloom *= smoothstep(0, 1, saturate(sqrt(lumaBloom) / (BrightPassSteepness + 1) - ThresholdOffset));
+				
+				color.rgb = lerp(color.rgb, bloom.rgb, bloomStrength);	
 
 				#ifdef LENS_FLARE_ENABLED
 					float3 LensFlare = PdxTex2DLod0( LensFlareTexture, Input.uv ).rgb;
@@ -195,7 +215,7 @@ PixelShader =
 			#else
 				color = RestoreScene( saturate(color.rgb) );
 			#endif
-			
+
 			#ifdef PDX_DEBUG_TONEMAP_CURVE
 				float2 uvScale = float2( ddx(Input.uv.x), ddy(Input.uv.y) );
 				const float2 AREA_START = float2( 0.8, 0.25 );
@@ -217,11 +237,11 @@ PixelShader =
 
 			#if defined( LUMA_AS_ALPHA ) && !defined( ALPHA )
 				float lumaM = dot(LUMINANCE_VECTOR, color.rgb);
-				
+
 				return float4(color.rgb, lumaM);
-			#else 
+			#else
 				return color;
-			#endif			
+			#endif
 			}
 		]]
 	}

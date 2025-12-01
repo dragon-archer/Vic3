@@ -14,8 +14,8 @@ pdxmesh = {
 		texture_normal = "tree_cypress_mediterranean_01_normal.dds"
 		texture_specular = "tree_cypress_mediterranean_solid_01_properties.dds"
 		texture = { file = "tree_cypress_mediterranean_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_TALL" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_TALL" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -26,8 +26,8 @@ pdxmesh = {
 		texture_normal = "tree_cypress_mediterranean_solid_01_normal.dds"
 		texture_specular = "tree_cypress_mediterranean_solid_01_properties.dds"
 		texture = { file = "tree_cypress_mediterranean_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_TALL" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_TALL" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -38,8 +38,8 @@ pdxmesh = {
 		texture_normal = "tree_cypress_mediterranean_01_normal.dds"
 		texture_specular = "tree_cypress_mediterranean_solid_01_properties.dds"
 		texture = { file = "tree_cypress_mediterranean_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_TALL" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_TALL" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -50,8 +50,8 @@ pdxmesh = {
 		texture_normal = "tree_cypress_mediterranean_01_normal.dds"
 		texture_specular = "tree_cypress_mediterranean_solid_01_properties.dds"
 		texture = { file = "tree_cypress_mediterranean_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_TALL" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_TALL" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 }

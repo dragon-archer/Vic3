@@ -77,5 +77,29 @@ PixelShader =
 		#define LOWER_EDGE_FALLOFF 0.6f
 		#define LOWER_EDGE_MIN 0.08f
 		#define LOWER_EDGE_MAX 0.2f
+
+		// Escalation borders
+		#define SMOKE_LOWER_EDGE_FALLOFF		0.6
+		#define SMOKE_LOWER_EDGE_MIN 			0.08
+		#define SMOKE_LOWER_EDGE_MAX 			0.2
+
+		#define SMOKE_TEXTURE_PAN_SPEED_01 float2( 0.0, 0.1 )
+		#define SMOKE_TEXTURE_PAN_SPEED_02 float2( 0.0, 0.1 )
+		#define SMOKE_TEXTURE_UV_01 0.1
+		#define SMOKE_TEXTURE_UV_02 0.25
+		#define SMOKE_TEXTURE_DISTORTION 0.015
+
+		#define SMOKE_TEXTURE_HEIGHT_MIN 0.2
+		#define SMOKE_TEXTURE_HEIGHT_MAX 1.2
+
+		#define SMOKE_NOISE_PAN_SPEED_01 float2( 0.1, 0.1 )
+		#define SMOKE_NOISE_PAN_SPEED_02 float2( -0.1, 0.1 )
+		#define SMOKE_NOISE_PAN_SPEED_03 float2( -0.2, 0.1 )
+
+		#define SMOKE_NOISE_UV_01 0.5
+		#define SMOKE_NOISE_UV_02 0.45
+		#define SMOKE_NOISE_UV_03 0.25
+
+		#define SMOKE_TINT float3( 0.45, 0.45, 0.55 )
 	]]
 }

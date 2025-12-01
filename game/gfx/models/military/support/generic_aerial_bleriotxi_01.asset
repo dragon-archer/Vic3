@@ -84,26 +84,27 @@ entity = {
 	
 	default_state = "moving"
 	state = { name = "moving"
+		time_offset = { 0.0 10.0 } 
 		animation = "moving_animation"
-		event = { time = 0.0 node = root keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/wpn_carrier_plane_carrier_recon" }}
+		event = { time = 0.0 node = root keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/wpn_carrier_plane_carrier_recon" }}
 	}
 	state = { name = "carrier_idle"
 		animation = "carrier_idle_animation"
 	}
 	state = { name = "carrier_recon"
 		animation = "carrier_recon_animation"
-		event = { time = 0.0 node = "root" keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/wpn_carrier_plane_carrier_recon" }}
+		event = { time = 0.0 node = "root" keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/wpn_carrier_plane_carrier_recon" }}
 	}
 
 	# Frontline States
 	state = { name = "defend"
 		time_offset = { 0.0 10.0 }  
 		animation = "moving_animation"
-		event = { time = 0.0 node = "root" keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/wpn_carrier_plane_carrier_recon" }}
+		event = { time = 0.0 node = "root" keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/wpn_carrier_plane_carrier_recon" }}
 	}
 	state = { name = "advance"
 		time_offset = { 0.0 10.0 }  
 		animation = "moving_animation"
-		event = { time = 0.0 node = "root" keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/wpn_carrier_plane_carrier_recon" }}
+		event = { time = 0.0 node = "root" keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/wpn_carrier_plane_carrier_recon" }}
 	}
 }

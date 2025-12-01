@@ -15,8 +15,8 @@ pdxmesh = {
 		texture_normal = "tree_rainforest_001_normal.dds"
 		texture_specular = "tree_rainforest_001_properties.dds"
 		texture = { file = "tree_rainforest_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_TALL" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_TALL" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -38,8 +38,8 @@ pdxmesh = {
 		texture_normal = "tree_rainforest_001_normal.dds"
 		texture_specular = "tree_rainforest_001_properties.dds"
 		texture = { file = "tree_rainforest_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_TALL" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_TALL" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -61,8 +61,8 @@ pdxmesh = {
 		texture_normal = "tree_rainforest_001_normal.dds"
 		texture_specular = "tree_rainforest_001_properties.dds"
 		texture = { file = "tree_rainforest_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_TALL" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_TALL" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -73,8 +73,8 @@ pdxmesh = {
 		texture_normal = "rainforest_billboard_normal.dds"
 		texture_specular = "rainforest_billboard_properties.dds"
 		texture = { file = "tree_billboard_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_TALL" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_TALL" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 }

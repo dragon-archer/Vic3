@@ -216,7 +216,7 @@ types Tweakable
 
 		editor_button = {
 			raw_text = "Remove"
-			shortcut = "tweaker_snapshots_remove"
+			input_action = "tweaker_remove_snapshots"
 			size = {70 20}
 			fontsize = 12
 			
@@ -355,6 +355,8 @@ vbox = {
 
 	layoutpolicy_horizontal = expanding
 	layoutpolicy_vertical = expanding
+
+	input_context = "tweaker"
 
 	using = tools_spacing
 	spacing = 10

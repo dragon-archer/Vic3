@@ -150,13 +150,13 @@ types EntityEditor
                                         
                                         editor_button = {
                                             icon = {
-                                                using = animation_control_icon
+                                                using = tools_centred_anchor
                                                 texture = "gfx/editor_gui/loop.dds"
                                                 alpha = "[Select_float(EntityEditor.Entity.IsLooping, '(float)1.0', '(float)0.3')]"
                                             }
                                             size = { 30 28 }
                                             onclick = [EntityEditor.Entity.ToggleLooping]
-                                            shortcut = "entity_viewer_loop"
+                                            input_action = "entity_editor_loop"
                                             raw_tooltip = "Toggle Loop Animation"
                                             tooltipwidget = {
                                                 using = dockable_tooltip
@@ -166,12 +166,12 @@ types EntityEditor
                                         #Rollback button
                                         editor_button = {
                                             icon = {
-                                                using = animation_control_icon
+                                                using = tools_centred_anchor
                                                 texture = "gfx/editor_gui/rollback.dds"
                                             }
                                             size = { 30 28 }
                                             onclick = "[EntityEditor.Entity.Rollback]"
-                                            shortcut = "entity_viewer_rollback"
+                                            input_action = "entity_editor_rollback"
                                             raw_tooltip = "Rollback Animation"
                                             tooltipwidget = {
                                                 using = dockable_tooltip
@@ -181,12 +181,12 @@ types EntityEditor
                                         #Step Backwards button
                                         editor_button = {
                                             icon = {
-                                                using = animation_control_icon
+                                                using = tools_centred_anchor
                                                 texture = "gfx/editor_gui/step_backwards.dds"
                                             }
                                             size = { 30 28 }
                                             onclick = "[EntityEditor.Entity.StepBackwards]"
-                                            shortcut = "entity_viewer_step_backwards"
+                                            input_action = "entity_editor_step_backwards"
                                             raw_tooltip = "Step forward 1 frame in the animation"
                                             tooltipwidget = {
                                                 using = dockable_tooltip
@@ -196,10 +196,10 @@ types EntityEditor
                                         #Pause/Play Button
                                         editor_button = {
                                             icon = {
-                                                using = animation_control_icon
+                                                using = tools_centred_anchor
                                                 visible = "[EntityEditor.Entity.IsPlaying]"
                                                 texture = "gfx/editor_gui/pause.dds"
-                                                shortcut = "entity_viewer_play_pause"
+                                                input_action = "entity_editor_play_pause"
                                                 raw_tooltip = "Pause Animation"
                                                 tooltipwidget = {
                                                     using = dockable_tooltip
@@ -207,16 +207,16 @@ types EntityEditor
                                             }
 
                                             icon = {
-                                                using = animation_control_icon
+                                                using = tools_centred_anchor
                                                 visible = "[Not( EntityEditor.Entity.IsPlaying )]"
                                                 texture = "gfx/editor_gui/play.dds"
-                                                shortcut = "entity_viewer_play_pause"
+                                                input_action = "entity_editor_play_pause"
                                                 raw_tooltip = "Resume Animation"
                                                 tooltipwidget = { 
                                                     using = dockable_tooltip
                                                 }
                                             }
-                                            shortcut = "entity_viewer_play_pause"
+                                            input_action = "entity_editor_play_pause"
 
                                             size = { 30 28 }
                                             onclick = "[EntityEditor.Entity.TogglePausePlay]"
@@ -225,12 +225,12 @@ types EntityEditor
                                         #Step Forwards button
                                         editor_button = {
                                             icon = {
-                                                using = animation_control_icon
+                                                using = tools_centred_anchor
                                                 texture = "gfx/editor_gui/step_forward.dds"
                                             }
                                             size = { 30 28 }
                                             onclick = "[EntityEditor.Entity.StepForward]"
-                                            shortcut = "entity_viewer_step_forward"
+                                            input_action = "entity_editor_step_forward"
                                             raw_tooltip = "Step forward 1 frame in the animation"
                                             tooltipwidget = {
                                                 using = dockable_tooltip
@@ -240,12 +240,12 @@ types EntityEditor
                                         #Rollforward button
                                         editor_button = {
                                             icon = {
-                                                using = animation_control_icon
+                                                using = tools_centred_anchor
                                                 texture = "gfx/editor_gui/rollforward.dds"
                                             }
                                             size = { 30 28 }
                                             onclick = "[EntityEditor.Entity.RollForward]"
-                                            shortcut = "entity_viewer_rollforward"
+                                            input_action = "entity_editor_rollforward"
                                             raw_tooltip = "Rollback Animation"
                                             tooltipwidget = {
                                                 using = dockable_tooltip
@@ -264,7 +264,7 @@ types EntityEditor
                                     raw_tooltip = "Toggle to make the needle move when moving a keyframe."
                                     checked = "[EntityEditor.MovePlayerWithKeyframe]"
                                     onclick = "[EntityEditor.ToggleMovePlayerWithKeyframe]"
-                                    shortcut = "entity_viewer_keyframe_needle_lock_toggle"
+                                    input_action = "entity_editor_keyframe_needle_lock_toggle"
                                     toolbox_icon = {
                                         texture = "gfx/editor_gui/editor_keyframe_player_lock.dds"
                                         size = { 24 24 }
@@ -342,25 +342,25 @@ types EntityEditor
                                         editor_button = {
                                             size = { 0 0 }
                                             onclick = "[EntityEditor.AddAudioLayer]"
-                                            shortcut = "entity_viewer_add_audio_layer"
+                                            input_action = "entity_editor_add_audio_layer"
                                         }
 
                                         editor_button = {
                                             size = { 0 0 }
                                             onclick = "[EntityEditor.AddVfxLayer]"
-                                            shortcut = "entity_viewer_add_vfx_layer"
+                                            input_action = "entity_editor_add_vfx_layer"
                                         }
 
                                         editor_button = {
                                             size = { 0 0 }
                                             onclick = "[EntityEditor.AddEntitySpawnLayer]"
-                                            shortcut = "entity_viewer_add_entity_spawn_layer"
+                                            input_action = "entity_editor_add_entity_spawn_layer"
                                         }
 
                                         editor_button = {
                                             size = { 0 0 }
                                             onclick = "[EntityEditor.AddEntityRemovalLayer]"
-                                            shortcut = "entity_viewer_add_entity_removal_layer"
+                                            input_action = "entity_editor_add_entity_removal_layer"
                                         }
                                     }
                                 }

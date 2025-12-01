@@ -10,7 +10,7 @@ Includes = {
 
 VertexShader =
 {
-	MainCode VertexShader_Caligula
+	MainCode VS_Standard
 	{
 		Input = "VS_INPUT_PDX_BORDER"
 		Output = "VS_OUTPUT_PDX_BORDER"
@@ -178,7 +178,7 @@ PixelShader =
 		]]
 	}
 
-	MainCode PixelShader_4x
+	MainCode PS_Vertical_Warborder
 	{
 		Input = "VS_OUTPUT_PDX_BORDER"
 		Output = "PDX_COLOR"
@@ -198,7 +198,7 @@ PixelShader =
 				// Particles
 				float TopAlpha2 = LevelsScan( Input.UV0.y, LAYER2_TOPALPHA_POSITION, LAYER1_TOPALPHA_CONTRAST );
 				float3 ParticlesCol = saturate( LayeredParticles( Input.UV0, SIZE_MOD, ALPHA_MOD, LAYERS_COUNT, 1.0f ) );
-				float ParticlesAlpha = ( (ParticlesCol.r + ParticlesCol.g + ParticlesCol.b ) / 3.0f ) * TopAlpha2;
+				float ParticlesAlpha = ( ( ParticlesCol.r + ParticlesCol.g + ParticlesCol.b ) / 3.0f ) * TopAlpha2;
 
 				float FireUVDistortionStrength = 0.5f;
 				float2 PanSpeedA = float2( 0.005, 0.001 );
@@ -281,6 +281,66 @@ PixelShader =
 			}
 		]]
 	}
+
+	MainCode PS_Vertical_Escalation_Border
+	{
+		Input = "VS_OUTPUT_PDX_BORDER"
+		Output = "PDX_COLOR"
+		Code
+		[[
+			PDX_MAIN
+			{
+				// Find control settings in pdxverticalborder.fxh
+				float4 Diffuse = vec4( 0.0 );
+				float2 UV = CalcDetailUV( float2( Input.WorldSpacePos.x, Input.WorldSpacePos.z ) );
+
+				// Textures
+				float2 UvPanning01 = GlobalTime * SMOKE_TEXTURE_PAN_SPEED_01;
+				float2 UvPanning02 = GlobalTime * SMOKE_TEXTURE_PAN_SPEED_02;
+				float2 Uv01 =  Input.UV0 + UvPanning01;
+				float2 Uv02 =  Input.UV0 + UvPanning02;
+
+				// UV & UV Panning Properties
+				float2 NoiseUvPanning01 = GlobalTime * SMOKE_NOISE_PAN_SPEED_01;
+				float2 NoiseUvPanning02 = GlobalTime * SMOKE_NOISE_PAN_SPEED_02;
+				float2 NoiseUvPanning03 = GlobalTime * SMOKE_NOISE_PAN_SPEED_03;
+				float2 NoiseUv01 = Input.UV0 + NoiseUvPanning01;
+				float2 NoiseUv02 = Input.UV0 + NoiseUvPanning02;
+				float2 NoiseUv03 = Input.UV0 + NoiseUvPanning03;
+
+				// Noise
+				float Noise01 = vec3( ToLinear( PdxTex2D( DevastationPollution, NoiseUv01 * SMOKE_NOISE_UV_01 ).a ) );
+				float Noise02 = vec3( ToLinear( PdxTex2D( BorderTexture0, NoiseUv02 * SMOKE_NOISE_UV_02 ).a ) );
+				float Noise03 = vec3( ToLinear( PdxTex2D( BorderTexture0, NoiseUv03 * SMOKE_NOISE_UV_03 ).a ) );
+				float NoiseSum = Noise01 + Noise02 + Noise03;
+				NoiseSum = smoothstep( -0.5, 1.0, NoiseSum );
+
+				// Color
+				float Color01 = vec3( PdxTex2D( BorderTexture0, Uv01 * SMOKE_TEXTURE_UV_01 + NoiseSum * SMOKE_TEXTURE_DISTORTION ).r );
+				float Color02 = vec3( PdxTex2D( BorderTexture0, Uv02 * SMOKE_TEXTURE_UV_02 + NoiseSum * SMOKE_TEXTURE_DISTORTION ).b );
+
+				float3 Color = SoftLight( Color01, Color02 );
+				Color = Overlay( Color, SMOKE_TINT );
+
+				// Alpha
+				float FadeDistance = min( 15.0f, Input.DistanceToStart + Input.DistanceToEnd );
+				float EdgeFade = saturate( Input.DistanceToStart / FadeDistance ) * saturate( Input.DistanceToEnd / FadeDistance );
+				float EdgeAlpha = saturate( pow( EdgeFade, 1.2f ) );
+				float LowerEdgeMask = saturate( Input.UV0.y - SMOKE_LOWER_EDGE_FALLOFF );
+				float LowerCut = smoothstep( SMOKE_LOWER_EDGE_MIN,  SMOKE_LOWER_EDGE_MAX, LowerEdgeMask * LowerEdgeMask );
+
+				float Height = smoothstep( SMOKE_TEXTURE_HEIGHT_MIN, SMOKE_TEXTURE_HEIGHT_MAX, Input.UV0.y );
+				float Alpha = saturate( Height * NoiseSum );
+				Alpha = saturate( Alpha - LowerCut );
+				Alpha *= EdgeAlpha * ( 1.0f - _FlatmapLerp );
+
+				// Output
+				Diffuse.rgb = Color;
+				Diffuse.a = Alpha;
+				return ApplyVerticalBordersFog( Diffuse, Input.WorldSpacePos );
+			}
+		]]
+	}
 }
 
 Effect VerticalBorder_1x
@@ -289,9 +349,16 @@ Effect VerticalBorder_1x
 	PixelShader = "PixelShader_1x"
 }
 
-Effect VerticalBorder_4x
+Effect Vertical_War_Border
 {
-	VertexShader = "VertexShader_Caligula"
-	PixelShader = "PixelShader_4x"
+	VertexShader = "VS_Standard"
+	PixelShader = "PS_Vertical_Warborder"
+	Defines = { "PDX_BORDER_UV1" "PDX_BORDER_UV2" "PDX_BORDER_UV3" }
+}
+
+Effect Vertical_Escalation_Border
+{
+	VertexShader = "VS_Standard"
+	PixelShader = "PS_Vertical_Escalation_Border"
 	Defines = { "PDX_BORDER_UV1" "PDX_BORDER_UV2" "PDX_BORDER_UV3" }
 }

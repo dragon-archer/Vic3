@@ -19,20 +19,29 @@ entity = {
 	pdxmesh = "male_headgear_slavic_agitator_lenin_mesh"
 
 
-game_data = {
-
-        portrait_entity_user_data = {
+	game_data = {
+	        portrait_entity_user_data = {
 			portrait_accessory = {
 				pattern_mask = "gfx/models/portraits/attachments/male_headgear/slavic/male_headgear_slavic_agitator_lenin/male_headgear_slavic_agitator_lenin_masks.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
 
-				
-
-			variation = "male_headgear_slavic_agitator_lenin"	#A "variation" object in gfx/portraits/accessory_variations/
-
+				variation = "male_headgear_slavic_agitator_lenin"	#A "variation" object in gfx/portraits/accessory_variations/
 			}
-
-        }
-
+		}
 	}
+}
 
+entity = {
+	name = "male_headgear_slavic_agitator_mexican_american_cap_entity"
+	pdxmesh = "male_headgear_slavic_agitator_lenin_mesh"
+
+
+	game_data = {
+	        portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_headgear/slavic/male_headgear_slavic_agitator_lenin/male_headgear_slavic_agitator_lenin_masks.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+
+				variation = "male_headgear_slavic_agitator_mexican_american_cap"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+		}
+	}
 }

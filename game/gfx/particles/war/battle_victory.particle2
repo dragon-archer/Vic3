@@ -86,78 +86,6 @@ graph={
 				}
 			}
 		}
-		pdxns:cast:ColorToVector4fNode={
-			id=4
-			node={
-			}
-			inputs={
-				link={
-					pin_id="operand"
-					linked_node=206
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:cast:ColorToVector4fNode={
-			id=5
-			node={
-			}
-			inputs={
-				link={
-					pin_id="operand"
-					linked_node=207
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:cast:ColorToVector4fNode={
-			id=6
-			node={
-			}
-			inputs={
-				link={
-					pin_id="operand"
-					linked_node=208
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:cast:ColorToVector4fNode={
-			id=7
-			node={
-			}
-			inputs={
-				link={
-					pin_id="operand"
-					linked_node=209
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:cast:ColorToVector4fNode={
-			id=8
-			node={
-			}
-			inputs={
-				link={
-					pin_id="operand"
-					linked_node=210
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:cast:ColorToVector4fNode={
-			id=9
-			node={
-			}
-			inputs={
-				link={
-					pin_id="operand"
-					linked_node=205
-					linked_pin="value"
-				}
-			}
-		}
 		pdxns:common:compound={
 			id=10
 			node={
@@ -1106,6 +1034,24 @@ graph={
 				}
 			}
 		}
+		pdxns:common:compound={
+			id=485
+			node={
+				graph="random_int"
+			}
+			inputs={
+				link={
+					pin_id="Value Limit 1"
+					linked_node=484
+					linked_pin="value"
+				}
+				link={
+					pin_id="Value Limit 2"
+					linked_node=483
+					linked_pin="value"
+				}
+			}
+		}
 		pdxns:gfx:HSVA={
 			id=46
 			node={
@@ -1412,112 +1358,45 @@ graph={
 				}
 			}
 		}
-		pdxns:logic:SelectV4F={
-			id=64
+		pdxns:logic:SelectFromIntV4F={
+			id=491
 			node={
+				input_count=6
 			}
 			inputs={
 				link={
-					pin_id="select"
-					linked_node=82
+					pin_id="select_int"
+					linked_node=485
+					linked_pin="Random Int"
+				}
+				link={
+					pin_id="input0"
+					linked_node=489
 					linked_pin="value"
 				}
 				link={
-					pin_id="true_value"
-					linked_node=68
-					linked_pin="selected_value"
-				}
-				link={
-					pin_id="false_value"
-					linked_node=66
-					linked_pin="selected_value"
-				}
-			}
-		}
-		pdxns:logic:SelectV4F={
-			id=65
-			node={
-			}
-			inputs={
-				link={
-					pin_id="select"
-					linked_node=79
+					pin_id="input1"
+					linked_node=65
 					linked_pin="value"
 				}
 				link={
-					pin_id="true_value"
+					pin_id="input2"
+					linked_node=488
+					linked_pin="value"
+				}
+				link={
+					pin_id="input3"
+					linked_node=487
+					linked_pin="value"
+				}
+				link={
+					pin_id="input4"
+					linked_node=486
+					linked_pin="value"
+				}
+				link={
+					pin_id="input5"
 					linked_node=64
-					linked_pin="selected_value"
-				}
-				link={
-					pin_id="false_value"
-					linked_node=67
-					linked_pin="selected_value"
-				}
-			}
-		}
-		pdxns:logic:SelectV4F={
-			id=66
-			node={
-			}
-			inputs={
-				link={
-					pin_id="select"
-					linked_node=81
-					linked_pin="value"
-				}
-				link={
-					pin_id="true_value"
-					linked_node=5
-					linked_pin="value"
-				}
-				link={
-					pin_id="false_value"
-					linked_node=4
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:logic:SelectV4F={
-			id=67
-			node={
-			}
-			inputs={
-				link={
-					pin_id="select"
-					linked_node=80
-					linked_pin="value"
-				}
-				link={
-					pin_id="true_value"
-					linked_node=6
-					linked_pin="value"
-				}
-				link={
-					pin_id="false_value"
-					linked_node=7
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:logic:SelectV4F={
-			id=68
-			node={
-			}
-			inputs={
-				link={
-					pin_id="select"
-					linked_node=83
-					linked_pin="value"
-				}
-				link={
-					pin_id="true_value"
-					linked_node=9
-					linked_pin="value"
-				}
-				link={
-					pin_id="false_value"
-					linked_node=8
 					linked_pin="value"
 				}
 			}
@@ -1689,91 +1568,6 @@ graph={
 					pin_id="op2"
 					linked_node=199
 					linked_pin="y"
-				}
-			}
-		}
-		pdxns:math:GreaterThanF={
-			id=79
-			node={
-			}
-			inputs={
-				link={
-					pin_id="op1"
-					linked_node=110
-					linked_pin="value"
-				}
-				link={
-					pin_id="op2"
-					linked_node=247
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:GreaterThanF={
-			id=80
-			node={
-			}
-			inputs={
-				link={
-					pin_id="op1"
-					linked_node=112
-					linked_pin="value"
-				}
-				link={
-					pin_id="op2"
-					linked_node=371
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:GreaterThanF={
-			id=81
-			node={
-			}
-			inputs={
-				link={
-					pin_id="op1"
-					linked_node=113
-					linked_pin="value"
-				}
-				link={
-					pin_id="op2"
-					linked_node=374
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:GreaterThanF={
-			id=82
-			node={
-			}
-			inputs={
-				link={
-					pin_id="op1"
-					linked_node=114
-					linked_pin="value"
-				}
-				link={
-					pin_id="op2"
-					linked_node=375
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:GreaterThanF={
-			id=83
-			node={
-			}
-			inputs={
-				link={
-					pin_id="op1"
-					linked_node=111
-					linked_pin="value"
-				}
-				link={
-					pin_id="op2"
-					linked_node=377
-					linked_pin="value"
 				}
 			}
 		}
@@ -2205,91 +1999,6 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=359
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:randomF={
-			id=110
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=348
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=249
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:randomF={
-			id=111
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=248
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=382
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:randomF={
-			id=112
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=370
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=369
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:randomF={
-			id=113
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=379
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=378
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:randomF={
-			id=114
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=381
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=380
 					linked_pin="value"
 				}
 			}
@@ -3767,7 +3476,7 @@ graph={
 			inputs={
 				link={
 					pin_id="value"
-					linked_node=65
+					linked_node=491
 					linked_pin="selected_value"
 				}
 			}
@@ -3810,72 +3519,6 @@ graph={
 			node={
 				value={
 					0.855000 0.276000 0.099000 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=205
-			node={
-				value={
-					0.694118 0.286275 0.098039 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=206
-			node={
-				value={
-					0.733333 0.588235 0.101961 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=207
-			node={
-				value={
-					0.137255 0.447059 0.980392 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=208
-			node={
-				value={
-					0.800000 0.070588 0.070588 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=209
-			node={
-				value={
-					0.070588 0.800000 0.483732 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=210
-			node={
-				value={
-					0.184314 0.800000 0.129412 1.000000
 				}
 
 			}
@@ -4069,6 +3712,54 @@ graph={
 			inputs={
 			}
 		}
+		pdxns:values:ConstVector4f={
+			id=64
+			node={
+				value={ 0.070588 0.800000 0.482353 1.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector4f={
+			id=65
+			node={
+				value={ 0.184314 0.800000 0.129412 1.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector4f={
+			id=489
+			node={
+				value={ 0.694118 0.286275 0.098039 1.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector4f={
+			id=488
+			node={
+				value={ 0.137255 0.447059 0.980392 1.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector4f={
+			id=487
+			node={
+				value={ 0.733333 0.588235 0.101961 1.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector4f={
+			id=486
+			node={
+				value={ 0.800000 0.070588 0.070588 1.000000 }
+			}
+			inputs={
+			}
+		}
 		pdxns:values:Curve={
 			id=234
 			node={
@@ -4251,7 +3942,23 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=247
+			id=372
+			node={
+				value=0.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=373
+			node={
+				value=0.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=376
 			node={
 				value=1.000000
 			}
@@ -4259,17 +3966,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=248
+			id=383
 			node={
-				value=-1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=249
-			node={
-				value=3.000000
+				value=7.000000
 			}
 			inputs={
 			}
@@ -5059,14 +4758,6 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=348
-			node={
-				value=0.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
 			id=349
 			node={
 				value=2.000000
@@ -5226,122 +4917,18 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Float={
-			id=369
+		pdxns:values:Int32={
+			id=484
 			node={
-				value=1.000000
+				value=0
 			}
 			inputs={
 			}
 		}
-		pdxns:values:Float={
-			id=370
+		pdxns:values:Int32={
+			id=483
 			node={
-				value=-1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=371
-			node={
-				value=0.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=372
-			node={
-				value=0.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=373
-			node={
-				value=0.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=374
-			node={
-				value=0.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=375
-			node={
-				value=1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=376
-			node={
-				value=1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=377
-			node={
-				value=0.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=378
-			node={
-				value=1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=379
-			node={
-				value=-1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=380
-			node={
-				value=1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=381
-			node={
-				value=-1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=382
-			node={
-				value=1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=383
-			node={
-				value=7.000000
+				value=5
 			}
 			inputs={
 			}
@@ -5483,28 +5070,6 @@ graph={
 			}
 		}
 		pdxns:values:Vector3f={
-			id=401
-			node={
-			}
-			inputs={
-				link={
-					pin_id="x"
-					linked_node=340
-					linked_pin="value"
-				}
-				link={
-					pin_id="y"
-					linked_node=156
-					linked_pin="value"
-				}
-				link={
-					pin_id="z"
-					linked_node=338
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Vector3f={
 			id=402
 			node={
 			}
@@ -5522,6 +5087,28 @@ graph={
 				link={
 					pin_id="z"
 					linked_node=104
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Vector3f={
+			id=401
+			node={
+			}
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=340
+					linked_pin="value"
+				}
+				link={
+					pin_id="y"
+					linked_node=156
+					linked_pin="value"
+				}
+				link={
+					pin_id="z"
+					linked_node=338
 					linked_pin="value"
 				}
 			}

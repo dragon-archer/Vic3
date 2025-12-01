@@ -37,7 +37,7 @@ PixelShader =
 			PDX_MAIN
 			{
 				uint2 WriteIndex = Input.position.xy;
-				uint2 ReadIndex = uint2( WriteIndex ) * 2;
+				uint2 ReadIndex = WriteIndex * 2;
 				
 				float4 Values = float4( ReadValue( ReadIndex ).x, 
 										ReadValue( ReadIndex + uint2(1,0) ).x,

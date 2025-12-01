@@ -699,7 +699,7 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
 
 ruler_environment = {
 cubemap = "gfx/portraits/environments/castle_interior_01.dds"
- 	cubemap_intensity = 1.2
+ 	cubemap_intensity = 1.6
 
  	lights = {
  		#########################################################################
@@ -709,32 +709,35 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.6 7 }	# Hue, saturation, value. Increase value for more intense lights
- 			position = cylindrical{ 140 270 -70 }	# Radius, height, angle
+ 			color = hsv{ 0.1 0.2 3 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 140 170 -50 }	# Radius, height, angle
 
  			# For spot lights and directional lights
  			look_at = { 0 0 0 }
 			look_at_node = camera_torso_look_at
 
+ 			#
  			# For spot lights and point lights
-			radius = 350
+			radius = 280
  			falloff = 40
 
 
  			# For point lights
- 			outer_cone_angle = 30
-			inner_cone_angle = 0
+ 			outer_cone_angle = 50
+			inner_cone_angle = 35
  		}
 
  		#########################################################################
  		#							RIGHT RIM LIGHT								#
  		#########################################################################
+ 		#	RIM LIGHT FROM THE LEFT
+
  		1 = {
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.02 0.6 10 }
- 			position = cylindrical{ 500 180 160 }
+ 			color = hsv{ 0.02 0.2 1 }
+ 			position = cylindrical{ 300 180 160 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
@@ -753,8 +756,8 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.7 0.3 20 }
- 			position = cylindrical{ 170 250 -130 }
+ 			color = hsv{ 0.7 0.3 6 }
+ 			position = cylindrical{ 160 250 -50 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
@@ -768,11 +771,11 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  	}
 
  	shadow_camera = {
- 		position = cylindrical{ 80 315 -15 }
- 		look_at = { 0 0 0 }
+ 		position = cylindrical{ 580 45 -75 }
+ 		look_at = { 20 0 0 }
  		look_at_node = camera_torso_look_at
- 		fov = 50
- 		camera_near_far = { 10 400 }
+ 		fov = 120
+ 		camera_near_far = { 10 200 }
 	}
  }
 

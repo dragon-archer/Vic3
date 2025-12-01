@@ -1,0 +1,60 @@
+﻿layouts = {
+    {
+        name = editor_mode_dependency
+        root = {
+            children = {
+                {
+                    lock = no
+                    horizontal = no
+                    fullscreen = yes
+                    size = 1706.667
+                    children = {
+                        {
+                            size = 959.031
+                            dockable = {
+                                id = GraphDependencyNodeEditor
+                            }
+                            children = {}
+                        }
+                        {
+                            size = 0.969
+                            dockable = {
+                                id = Viewport
+                            }
+                            children = {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+    {
+        name = editor_mode_particle
+        root = {
+            children = {
+                {
+                    lock = no
+                    horizontal = no
+                    fullscreen = yes
+                    size = 1706.667
+                    children = {
+                        {
+                            size = 959.031
+                            dockable = {
+                                id = ParticleEditor.NodeGraph
+                            }
+                            children = {}
+                        }
+                        {
+                            size = 0.969
+                            dockable = {
+                                id = Viewport
+                            }
+                            children = {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

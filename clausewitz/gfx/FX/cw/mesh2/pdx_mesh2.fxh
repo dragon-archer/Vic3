@@ -5,12 +5,6 @@ BufferTexture GeometryDataBuffer
 	type = uint
 }
 
-BufferTexture GeometryTypeBuffer
-{
-	Ref = PdxGeometryTypeBuffer
-	type = uint
-}
-
 BufferTexture Mesh2InstanceBuffer
 {
 	Ref = PdxMesh2InstanceBuffer
@@ -40,7 +34,6 @@ Code
 		uint _GeometryDataBufferOffset;
 		uint _Numindices;
 		uint _IndexDataOffset;
-		uint _NumVertices;
 		
 		uint _PositionDataOffset;
 		
@@ -135,62 +128,61 @@ Code
 	}
 	
 
-	// Note that offsets are known at compile time so even tho it looks like we always load all this data the compiler should throw away all field that are unused
+	// Note that offsets are known at compile time so even tho it looks like we always load all this data the compiler should throw away all fields that are unused
 	STypeData LoadTypeData( uint TypeDataOffset )
 	{
 		STypeData TypeData;
 		
-		TypeData._BoundingSphereCenter = asfloat( Read3( GeometryTypeBuffer, TypeDataOffset ) );
+		TypeData._BoundingSphereCenter = asfloat( Read3( GeometryDataBuffer, TypeDataOffset ) );
 		TypeDataOffset += 3;
-		TypeData._BoundingSphereRadius = asfloat( GeometryTypeBuffer[TypeDataOffset++] );
+		TypeData._BoundingSphereRadius = asfloat( GeometryDataBuffer[TypeDataOffset++] );
 		
-		TypeData._BoundingBoxMin = asfloat( Read3( GeometryTypeBuffer, TypeDataOffset ) );
+		TypeData._BoundingBoxMin = asfloat( Read3( GeometryDataBuffer, TypeDataOffset ) );
 		TypeDataOffset += 3;
-		TypeData._BoundingBoxMax = asfloat( Read3( GeometryTypeBuffer, TypeDataOffset ) );
+		TypeData._BoundingBoxMax = asfloat( Read3( GeometryDataBuffer, TypeDataOffset ) );
 		TypeDataOffset += 3;
 		
-		TypeData._Numindices = GeometryTypeBuffer[TypeDataOffset++];
-		TypeData._IndexDataOffset = GeometryTypeBuffer[TypeDataOffset++];
-		TypeData._NumVertices = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._Numindices = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._IndexDataOffset = GeometryDataBuffer[TypeDataOffset++];
 		
-		TypeData._PositionDataOffset = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._PositionDataOffset = GeometryDataBuffer[TypeDataOffset++];
 		
 	#ifdef PDX_MESH2_QTANGENT
-		TypeData._QTangentDataOffset = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._QTangentDataOffset = GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	
 	#ifdef PDX_MESH2_NORMAL
-		TypeData._NormalDataOffset = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._NormalDataOffset = GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	#ifdef PDX_MESH2_TANGENT
-		TypeData._TangentDataOffset = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._TangentDataOffset = GeometryDataBuffer[TypeDataOffset++];
 	#endif
 		
 	#ifdef PDX_MESH2_UV0
-		TypeData._Uv0DataOffset = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._Uv0DataOffset = GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	#ifdef PDX_MESH2_UV1
-		TypeData._Uv1DataOffset = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._Uv1DataOffset = GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	#ifdef PDX_MESH2_UV2
-		TypeData._Uv2DataOffset = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._Uv2DataOffset = GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	#ifdef PDX_MESH2_UV3
-		TypeData._Uv3DataOffset = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._Uv3DataOffset = GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	
 	#ifdef PDX_MESH2_COLOR0
-		TypeData._Color0DataOffset = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._Color0DataOffset = GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	#ifdef PDX_MESH2_COLOR1
-		TypeData._Color1DataOffset = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._Color1DataOffset = GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	
 	#ifdef PDX_MESH2_SKIN
-		TypeData._SkinVertexDataOffset = GeometryTypeBuffer[TypeDataOffset++];
+		TypeData._SkinVertexDataOffset = GeometryDataBuffer[TypeDataOffset++];
 		
 		#ifdef PDX_MESH2_SKIN_EXTERNAL
-			TypeData._SkinExternalDataOffset = GeometryTypeBuffer[TypeDataOffset++];
+			TypeData._SkinExternalDataOffset = GeometryDataBuffer[TypeDataOffset++];
 		#endif
 	#endif
 	
@@ -404,7 +396,7 @@ Code
 		uint _NumBones;
 		
 		// In this mode just store the data read from the "vertex stream"
-	#ifdef PDX_MESH2_SKIN_RGBA_UINT8_RGB_FLOAT
+	#ifdef PDX_MESH2_SKIN_RGBA_UINT16_RGB_FLOAT
 		uint4 _BoneIndices;
 		float4 _BoneWeights;
 	#else
@@ -457,7 +449,7 @@ Code
 		#if defined( PDX_MESH2_SKIN_EXTERNAL_8_UINT_24_UNORM ) || defined ( PDX_MESH2_SKIN_EXTERNAL_16_UINT_16_UNORM )
 			SkinningData._BoneDataOffset = TypeData._SkinExternalDataOffset + Unpacked.y;
 		#else
-			// Uncompressed each bone influence stores 1 uint32 and one float, see SPdxMesh2SkinningData::SBoneInfluence
+			// Uncompressed each bone influence stores 1 uint32 and one float, see SMesh2BoneInfluence
 			SkinningData._BoneDataOffset = TypeData._SkinExternalDataOffset + Unpacked.y * 2;
 		#endif
 		return SkinningData;
@@ -470,14 +462,16 @@ Code
 		
 		SSkinningData SkinningData;
 	#ifdef PDX_MESH2_SKIN
-		#ifdef PDX_MESH2_SKIN_RGBA_UINT8_RGB_FLOAT
+		#ifdef PDX_MESH2_SKIN_RGBA_UINT16_RGB_FLOAT
 		
-			uint DataBufferOffset = TypeData._SkinVertexDataOffset + VertexID * 4;
-			uint4 Data = Read4( GeometryDataBuffer, DataBufferOffset );
-			float3 BoneWeights = asfloat( Data.yzw );
+			uint DataBufferOffset = TypeData._SkinVertexDataOffset + VertexID * 5;
+			uint2 Data = Read2( GeometryDataBuffer, DataBufferOffset );
+			DataBufferOffset += 2;
+			float3 BoneWeights = Read3Float( GeometryDataBuffer, DataBufferOffset );
 			
 			SkinningData._NumBones = 4;
-			SkinningData._BoneIndices = UnpackUint8_x4( Data.x );
+			SkinningData._BoneIndices.xy = UnpackUint16_x2( Data.x );
+			SkinningData._BoneIndices.zw = UnpackUint16_x2( Data.y );
 			SkinningData._BoneWeights = float4( BoneWeights, 1.0 - BoneWeights.x - BoneWeights.y - BoneWeights.z );
 		
 		#else
@@ -497,7 +491,7 @@ Code
 	void GetBoneIndexAndWeightForType( SSkinningData SkinningData, uint Index, out uint BoneIndexOut, out float BoneWeightOut )
 	{
 	#ifdef PDX_MESH2_SKIN		
-		#ifdef PDX_MESH2_SKIN_RGBA_UINT8_RGB_FLOAT
+		#ifdef PDX_MESH2_SKIN_RGBA_UINT16_RGB_FLOAT
 			BoneIndexOut = SkinningData._BoneIndices[Index];
 			BoneWeightOut = SkinningData._BoneWeights[Index];
 		#else
@@ -512,7 +506,7 @@ Code
 					UnpackUint16_Unorm16( CompressedBoneInfluence, BoneIndexOut, BoneWeightOut );
 				#endif
 			#else
-				uint DataBufferOffset = SkinningData._BoneDataOffset + Index * 2; // Uncompressed each bone influence stores 1 uint32 and one float, see SPdxMesh2SkinningData::SBoneInfluence
+				uint DataBufferOffset = SkinningData._BoneDataOffset + Index * 2; // Uncompressed each bone influence stores 1 uint32 and one float, see SMesh2BoneInfluence
 				BoneIndexOut = GeometryDataBuffer[DataBufferOffset];
 				BoneWeightOut = asfloat( GeometryDataBuffer[DataBufferOffset + 1] );
 			#endif

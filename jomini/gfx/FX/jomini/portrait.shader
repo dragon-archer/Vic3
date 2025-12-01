@@ -146,6 +146,12 @@ VertexStruct VS_INPUT_PDXMESHSTANDARD_ID
 };
 
 # Portrait constants (SPortraitConstants)
+VertexStruct LightDirT
+{
+	float3		vDirection	: COMMENT;
+	uint		Type 		: COMMENT;
+};
+
 ConstantBuffer( 5 )
 {
 	float4 		vPaletteColorSkin;
@@ -156,12 +162,12 @@ ConstantBuffer( 5 )
 	float4		vHairPropertyMult;
 	
 	float4 		Light_Color_Falloff[3];
-	float4 		Light_Position_Radius[3]
-	float4 		Light_Direction_Type[3];
+	float4 		Light_Position_Radius[3];
+	LightDirT	Light_Direction_Type[3];
 	float4 		Light_InnerCone_OuterCone_AffectedByShadows[3];
 	
 	int			DecalCount;
-	int         PreSkinColorDecalCount
+	int         PreSkinColorDecalCount;
 	int			TotalDecalCount;
 	int 		_; // Alignment
 
@@ -432,23 +438,23 @@ PixelShader =
 				float4 Color_Fallof = Light_Color_Falloff[i];
 				float LightShadowTerm = Light_InnerCone_OuterCone_AffectedByShadows[i].z > 0.5 ? ShadowTerm : 1.0;
 				
-				if( Light_Direction_Type[i].w == LIGHT_TYPE_SPOTLIGHT )
+				if( Light_Direction_Type[i].Type == LIGHT_TYPE_SPOTLIGHT )
 				{
 					float InnerAngle = Light_InnerCone_OuterCone_AffectedByShadows[i].x;
 					float OuterAngle = Light_InnerCone_OuterCone_AffectedByShadows[i].y;
-					SPortraitSpotLight Spot = GetPortraitSpotLight( Light_Position_Radius[i], Color_Fallof, Light_Direction_Type[i].xyz, InnerAngle, OuterAngle );
+					SPortraitSpotLight Spot = GetPortraitSpotLight( Light_Position_Radius[i], Color_Fallof, Light_Direction_Type[i].vDirection, InnerAngle, OuterAngle );
 					GGXSpotLight( Spot, WorldSpacePos, LightShadowTerm, MaterialProps, DiffuseLight, SpecularLight );
 				}
-				else if( Light_Direction_Type[i].w == LIGHT_TYPE_POINTLIGHT )
+				else if( Light_Direction_Type[i].Type == LIGHT_TYPE_POINTLIGHT )
 				{
 					SPortraitPointLight Light = GetPortraitPointLight( Light_Position_Radius[i], Color_Fallof );
 					GGXPointLight( Light, WorldSpacePos, LightShadowTerm, MaterialProps, DiffuseLight, SpecularLight );
 				}
-				else if( Light_Direction_Type[i].w == LIGHT_TYPE_DIRECTIONAL )
+				else if( Light_Direction_Type[i].Type == LIGHT_TYPE_DIRECTIONAL )
 				{
 					SLightingProperties LightingProps;
 					LightingProps._ToCameraDir = normalize( CameraPosition - WorldSpacePos );
-					LightingProps._ToLightDir = -Light_Direction_Type[i].xyz;
+					LightingProps._ToLightDir = -Light_Direction_Type[i].vDirection;
 					LightingProps._LightIntensity = Color_Fallof.rgb;
 					LightingProps._ShadowTerm = LightShadowTerm;
 					LightingProps._CubemapIntensity = 0.0;

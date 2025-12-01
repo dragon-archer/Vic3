@@ -1,0 +1,99 @@
+﻿compound_node={
+	id="random_int"
+	node_context=5
+	graph={
+		nodes={
+			pdxns:cast:Int32ToFloat={
+				id=6
+				node={
+				}
+				inputs={
+					link={
+						pin_id="operand"
+						linked_node=0
+						linked_pin="Value Limit 2"
+					}
+				}
+			}
+			pdxns:cast:Int32ToFloat={
+				id=4
+				node={
+				}
+				inputs={
+					link={
+						pin_id="operand"
+						linked_node=0
+						linked_pin="Value Limit 1"
+					}
+				}
+			}
+			pdxns:common:GraphInterface={
+				id=0
+				node={
+					output_pins={
+						pin={
+							name="Value Limit 1"
+							display_text="Value limit"
+							type="Int"
+						}
+						pin={
+							name="Value Limit 2"
+							display_text="Value limit"
+							type="Int"
+						}
+					}
+				}
+				inputs={
+				}
+			}
+			pdxns:common:GraphInterface={
+				id=10
+				node={
+					input_pins={
+						pin={
+							name="Random Int"
+							display_text="Random Int"
+							type="Int"
+						}
+					}
+				}
+				inputs={
+					link={
+						pin_id="Random Int"
+						linked_node=8
+						linked_pin="value"
+					}
+				}
+			}
+			pdxns:math:RoundF={
+				id=8
+				node={
+				}
+				inputs={
+					link={
+						pin_id="operand"
+						linked_node=1
+						linked_pin="value"
+					}
+				}
+			}
+			pdxns:math:randomF={
+				id=1
+				node={
+				}
+				inputs={
+					link={
+						pin_id="limit1"
+						linked_node=4
+						linked_pin="value"
+					}
+					link={
+						pin_id="limit2"
+						linked_node=6
+						linked_pin="value"
+					}
+				}
+			}
+		}
+	}
+}

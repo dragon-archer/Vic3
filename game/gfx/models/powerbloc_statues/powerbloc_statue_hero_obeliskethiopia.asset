@@ -1,0 +1,54 @@
+pdxmesh = {
+	name = "powerbloc_statue_hero_obeliskethiopia_mesh"
+	file = "powerbloc_statue_hero_obeliskethiopia.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 6.0 }
+		lod = { index = 2 percent = 3.0 }
+		lod = { index = 3 percent = 1.5 }
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_obeliskethiopia|LOD_0|hero0|hero0Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_obeliskethiopia_diffuse.dds"
+		texture_normal = "powerbloc_hero_obeliskethiopia_normal.dds"
+		texture_specular = "powerbloc_hero_obeliskethiopia_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "BACKLIGHT" }
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_obeliskethiopia|LOD_1|hero1|hero1Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_obeliskethiopia_diffuse.dds"
+		texture_normal = "powerbloc_hero_obeliskethiopia_normal.dds"
+		texture_specular = "powerbloc_hero_obeliskethiopia_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "BACKLIGHT" }
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_obeliskethiopia|LOD_2|hero2|hero2Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_obeliskethiopia_diffuse.dds"
+		texture_normal = "powerbloc_hero_obeliskethiopia_normal.dds"
+		texture_specular = "powerbloc_hero_obeliskethiopia_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "BACKLIGHT" }
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_obeliskethiopia|LOD_3|hero3|hero3Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_obeliskethiopia_diffuse.dds"
+		texture_normal = "powerbloc_hero_obeliskethiopia_normal.dds"
+		texture_specular = "powerbloc_hero_obeliskethiopia_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "BACKLIGHT" }
+	}
+}

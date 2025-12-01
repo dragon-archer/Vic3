@@ -359,16 +359,52 @@ vbox = {
                 }
             }
 		}
-        editor_editbox = {
-            margin_left = 4
-            using = tools_editbox
-            align = left|top
+
+        scrollarea = {
+            name = "scrollarea_log"
+            visible = "[LogViewer.IsAnyEntrySelected]"
+
+            background = {
+                margin = { 0 0 }
+                texture = "gfx/editor_gui/editor_field.dds"
+                spriteType = CorneredStretched
+                spriteborder = { 4 4 }
+                shaderfile = "gfx/FX/pdxgui_default.shader"
+            }
+
             size = "[LogViewer.GetLogInfoExpandSizeVector('(float)60')]"
-            multiline = yes
-            fontsize = 13
-            layoutpolicy_vertical = fixed
+            layoutpolicy_vertical = expanding
             layoutpolicy_horizontal = preferred
-            raw_text = "[LogViewer.GetSelectedLogEntry.GetTimestampLong]([LogViewer.GetSelectedLogEntry.GetFilename]:[LogViewer.GetSelectedLogEntry.GetFileLineNo]): [LogViewer.GetSelectedLogEntry.GetMessage]"
+    
+            autoresizeviewport = yes
+    
+            viewportwidget = {
+                widget = {
+                    scissor = yes
+                }
+            }
+            
+            scrollbar_vertical = {
+                using = editor_vertical_scrollbar
+            }
+            
+            scrollbar_horizontal = {
+                using = editor_horizontal_scrollbar
+            }
+            
+            scrollwidget = {
+                textbox = {
+                    using = tools_font
+
+                    layoutpolicy_vertical = expanding
+                    layoutpolicy_horizontal = fixed
+                    autoresize = yes
+                    alwaystransparent = no
+                    align = left|top
+                    margin = { 4 4 }
+                    text = "[LogViewer.GetSelectedLogEntry.GetTimestampLong]([LogViewer.GetSelectedLogEntry.GetFilename]:[LogViewer.GetSelectedLogEntry.GetFileLineNo]): [LogViewer.GetSelectedLogEntry.GetMessage]"
+                }
+            }
         }
 	}
 }

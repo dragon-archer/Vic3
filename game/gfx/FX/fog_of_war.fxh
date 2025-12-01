@@ -284,7 +284,7 @@ PixelShader = {
 			// Paralax offset
 			float3 ToCam = normalize( CameraPosition - Coordinate );
 			float ParalaxDist = ( _FoWCloudHeight - Coordinate.y ) / ToCam.y;
-			float3 ParalaxCoord = Coordinate + ToCam * ParalaxDist;
+			float3 ParallaxCoord = Coordinate + ToCam * ParalaxDist;
 
 			// Sun shadow offset
 			float ShadowCordDist = ( _FoWCloudHeight - Coordinate.y ) / ToSunDir.y;
@@ -293,10 +293,10 @@ PixelShader = {
 			// Cloud and shadow texture
 			float3 Normal = float3( 0.0, 1.0, 0.0 );
 			#ifdef LOW_QUALITY_SHADERS
-				float CloudTex = smoothstep( _FoWMasterStart, _FoWMasterStop, SampleFowNoiseLowSpec( ParalaxCoord ) );
+				float CloudTex = smoothstep( _FoWMasterStart, _FoWMasterStop, SampleFowNoiseLowSpec( ParallaxCoord ) );
 				float ShadowTex = smoothstep( _FoWShadowTexStart, _FoWShadowTexStop, SampleFowNoiseLowSpec( Coordinate ) );
 			#else
-				float CloudTex = smoothstep( _FoWMasterStart, _FoWMasterStop, SampleFowNoise( ParalaxCoord, Normal ) );
+				float CloudTex = smoothstep( _FoWMasterStart, _FoWMasterStop, SampleFowNoise( ParallaxCoord, Normal ) );
 				float ShadowTex = smoothstep( _FoWShadowTexStart, _FoWShadowTexStop, SampleFowNoiseShadow( Coordinate ) );
 			#endif
 

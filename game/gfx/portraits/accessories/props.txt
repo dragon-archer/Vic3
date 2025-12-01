@@ -33,6 +33,12 @@ prop_glasses = {
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "prop_glasses_entity" }	
 }
 
+
+props_glasses_02_dracula = {
+	entity = { required_tags = ""					shared_pose_entity = head		entity = "props_glasses_02_dracula_entity" }	
+}
+
+
 male_glasses = {
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "male_glasses_entity" }	
 }
@@ -57,6 +63,8 @@ prop_walkingcane = {
 prop_shovel = {
 	entity = { required_tags = ""					node = "bn_r_prop"		entity = "prop_shovel_entity" }	
 }
+
+
 
 
 prop_shackles = {
@@ -119,6 +127,30 @@ prop_grid = {
 	entity = { required_tags = ""					shared_pose_entity = torso		entity = "grid_entity" }	
 }
 
+male_prop_pipe1_01 = {
+	entity = { required_tags = ""					node = "bn_h_mouth_l_lowerLip"		entity = "male_prop_pipe1_01_entity" }	
+}
+
+male_prop_pipe1_02 = {
+	entity = { required_tags = ""					node = "bn_h_mouth_r_lowerLip"		entity = "male_prop_pipe1_02_entity" }	
+}
+
+male_prop_pipe2_01 = {
+	entity = { required_tags = ""					node = "bn_h_mouth_l_lowerLip"		entity = "male_prop_pipe2_01_entity" }	
+}
+
+male_prop_pipe2_02 = {
+	entity = { required_tags = ""					node = "bn_h_mouth_r_lowerLip"		entity = "male_prop_pipe2_02_entity" }	
+}
+
+male_prop_cigar_01 = {
+	entity = { required_tags = ""					node = "bn_h_mouth_r_lowerLip"		entity = "male_prop_cigar_01_entity" }	
+}
+
+male_prop_cigar_02 = {
+	entity = { required_tags = ""					node = "bn_h_mouth_l_lowerLip"		entity = "male_prop_cigar_02_entity" }	
+}
+
 ## FEMALE ##
 
 
@@ -131,5 +163,6 @@ female_prop_large_sack = {
 #female_prop_apron = {
 #	entity = { required_tags = ""					node = "bn_r_prop"		entity = #"female_prop_apron_entity" }	
 #}
+
 
 

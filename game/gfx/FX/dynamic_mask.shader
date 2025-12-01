@@ -2,7 +2,7 @@ Includes = {
 	"cw/fullscreen_vertexshader.fxh"
 }
 
-PixelShader = 
+PixelShader =
 {
 	TextureSampler IndirectionMap
 	{
@@ -46,7 +46,7 @@ PixelShader =
 	{
 		Input = "VS_OUTPUT_FULLSCREEN"
 		Output = "PDX_COLOR"
-		Code 
+		Code
 		[[
 			float3 GetParameter(float2 UV)
 			{
@@ -56,11 +56,11 @@ PixelShader =
 
 			PDX_MAIN
 			{
-				float3 ParameterValue = GetParameter(Input.uv);
+				float3 ParameterValue = GetParameter( Input.uv );
 
-				float Noise = PdxTex2D(NoiseTexture, Input.uv).r;
-				float ExclusionMask = PdxTex2D(ExclusionMaskTexture, Input.uv).r;
-				return float4( ParameterValue.r, ParameterValue.g, ExclusionMask , Noise );
+				float Noise = PdxTex2D( NoiseTexture, Input.uv ).r;
+				float ExclusionMask = PdxTex2D( ExclusionMaskTexture, Input.uv ).r;
+				return float4( ParameterValue.r, ParameterValue.g, ExclusionMask, Noise );
 			}
 		]]
 	}

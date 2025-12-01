@@ -3,7 +3,7 @@ Includes = {
 }
 
 PixelShader =
-{	
+{
 	MainCode PS_Pattern
 	{
 		Input = "VS_OUTPUT_COA_ATLAS"
@@ -22,11 +22,10 @@ Effect coa_create_colored_pattern
 {
 	VertexShader = VertexShaderCOAPattern
 	PixelShader = PS_Pattern
+	BlendState = BlendStateAlphaBlendMax
 }
-
-Effect coa_create_colored_pattern_blend
+Effect coa_create_colored_pattern_main
 {
 	VertexShader = VertexShaderCOAPattern
 	PixelShader = PS_Pattern
-	BlendState = BlendStateNoAlpha
 }

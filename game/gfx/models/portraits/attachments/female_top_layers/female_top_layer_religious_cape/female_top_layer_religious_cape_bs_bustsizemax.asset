@@ -1,0 +1,16 @@
+pdxmesh = {
+	name = "female_top_layer_religious_cape_bs_bustsizemax_mesh"
+	file = "female_top_layer_religious_cape_bs_bustsizemax.mesh"
+
+	meshsettings = {
+		name = "female_top_layer_religious_cape_bs_bustsizemaxShape"
+		index = 0
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "female_top_layer_religious_cape_bs_bustsizemax_entity"
+	pdxmesh = "female_top_layer_religious_cape_bs_bustsizemax_mesh"
+}

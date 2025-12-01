@@ -2,6 +2,7 @@ Includes = {
 	"jomini/posteffect_base.fxh"
 }
 
+# Note: This shader is only being used for the lensflares today, actual bloom is using `advanced_samplers`
 
 VertexStruct VS_OUTPUT_BLOOM
 {

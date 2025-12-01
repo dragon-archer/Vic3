@@ -2,7 +2,7 @@ types "UndoHistoryViewer" {
 
 	type undo_button = toolbox_button {
 		name = "undo_btn"
-		shortcut = tools_undo
+		input_action = "history_tool_undo"
 		onclick = "[UndoStack.Undo]"
 		enabled = "[UndoStack.IsUndoable]"
 		raw_tooltip = "Undo"
@@ -13,7 +13,7 @@ types "UndoHistoryViewer" {
 
 	type redo_button = toolbox_button {
 		name = "redo_btn"
-		shortcut = tools_redo
+		input_action = "history_tool_redo"
 		onclick = "[UndoStack.Redo]"
 		enabled = "[UndoStack.IsRedoable]"
 		raw_tooltip = "Redo"
@@ -25,7 +25,7 @@ types "UndoHistoryViewer" {
 	type history_button = toolbox_button {
 	    visible = yes
 		name = "history_btn"
-		shortcut = tools_history
+		input_action = "tools_history"
 		raw_tooltip = "Toggle undo history window."
 		toolbox_icon = {
 			texture = "gfx/undo_history_viewer/history.png"

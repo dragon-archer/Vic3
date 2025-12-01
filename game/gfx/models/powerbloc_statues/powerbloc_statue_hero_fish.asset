@@ -1,0 +1,66 @@
+pdxmesh = {
+	name = "powerbloc_statue_hero_fish_mesh"
+	file = "powerbloc_statue_hero_fish.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 6.0 }
+		lod = { index = 2 percent = 3.0 }
+		lod = { index = 3 percent = 1.5 }
+		lod = { index = 4 percent = 0.8 }
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_fish_0Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_batch_05_diffuse.dds"
+		texture_normal = "powerbloc_hero_batch_05_normal.dds"
+		texture_specular = "powerbloc_hero_batch_05_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_fish_1Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_batch_05_diffuse.dds"
+		texture_normal = "powerbloc_hero_batch_05_normal.dds"
+		texture_specular = "powerbloc_hero_batch_05_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_fish_2Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_batch_05_diffuse.dds"
+		texture_normal = "powerbloc_hero_batch_05_normal.dds"
+		texture_specular = "powerbloc_hero_batch_05_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_fish_3Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_batch_05_diffuse.dds"
+		texture_normal = "powerbloc_hero_batch_05_normal.dds"
+		texture_specular = "powerbloc_hero_batch_05_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_fish_4Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_batch_05_diffuse.dds"
+		texture_normal = "powerbloc_hero_batch_05_normal.dds"
+		texture_specular = "powerbloc_hero_batch_05_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

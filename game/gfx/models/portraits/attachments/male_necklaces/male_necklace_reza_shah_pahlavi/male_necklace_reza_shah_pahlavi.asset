@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "male_necklace_reza_shah_pahlavi_mesh"
+	file = "male_necklace_reza_shah_pahlavi.mesh"
+
+	meshsettings = {
+		name = "male_necklace_reza_shah_pahlaviShape"
+		index = 0
+		texture_diffuse = "male_necklace_reza_shah_pahlavi_diffuse.dds"
+		texture_normal = "male_necklace_reza_shah_pahlavi_normal.dds"
+		texture_specular = "male_necklace_reza_shah_pahlavi_properties.dds"
+		shader = "portrait_attachment_alpha_to_coverage"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "male_necklace_reza_shah_pahlavi_entity"
+	pdxmesh = "male_necklace_reza_shah_pahlavi_mesh"
+}

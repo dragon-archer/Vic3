@@ -71,6 +71,22 @@ PixelShader =
 		#define CloudReflectionNormalDistortionMin 150.0
 		#define CloudReflectionNormalDistortionMax 1000.0
 		#define CloudReflectionStrength 0.05
+
+		// Pond
+		#define PondGlossScale 		0.5
+		#define PondSpecular 		0.75
+
+		#define PondNormalUvScale 	3.0
+		#define PondNormalFlatten 	0.1
+		#define PondWaveSpeed 		0.5
+
+		#define PondDepthScale 		0.45
+		#define PondDepthContrast 	1.25
+
+		#define PondFoamScale 			8.0
+		#define PondFoamDistortFactor 	0.1
+		#define PondFoamSpeed			0.03
+		#define PondCausticsStrength 	5.0
 	]]
 
 }
@@ -289,6 +305,36 @@ PixelShader =
 			return saturate( FoamResult );
 		}
 
+		float GameCalcPondFoam( float2 UV01, float2 WorldSpacePosXZ, float Depth, float FlowFoamMask, float3 FlowNormal )
+		{
+			// Foam calculation
+			float FoamMaskLarge = LevelsScanP( 1.0f - Depth, CausticsMaskLargeContrast, CausticsMaskLargePosition );
+
+			float FoamMaskInnerRemove = LevelsScanP( Depth, CausticsInnerFadeContrast, CausticsInnerFadePosition );
+			FoamMaskLarge *= FoamMaskInnerRemove;
+
+			float3 Foam = PdxTex2D( FoamTexture, WorldSpacePosXZ * PondFoamScale + FlowNormal.xz * PondFoamDistortFactor ).rgb;
+
+			float3 FoamRamp = PdxTex2DLod0( FoamRampTexture, float2( FoamMaskLarge, 0.5 ) ).rgb;
+
+			// Break apart noise
+			float2 NoiseUV = WorldSpacePosXZ;
+			float FoamNoise = PdxTex2D( FoamNoiseTexture, NoiseUV + float2( 1.0f, 1.0f ) * JOMINIWATER_GlobalTime * PondFoamSpeed  ).r;
+
+			float2 LargeNoiseUV = WorldSpacePosXZ * LargeNoiseScale;
+			float LargeNoise = PdxTex2D( FoamNoiseTexture, LargeNoiseUV + float2( 1.0f, -1.0f ) * JOMINIWATER_GlobalTime * LargeNoiseSpeed ).r;
+			float LargeNoise2 = PdxTex2D( FoamNoiseTexture, LargeNoiseUV + float2( -1.0f, 1.0f ) * JOMINIWATER_GlobalTime * LargeNoiseSpeed ).r;
+			LargeNoise = Overlay( LargeNoise2, LargeNoise );
+			LargeNoise = LevelsScanP( LargeNoise, LargeNoisePosition, LargeNoiseContrast );
+
+			// Large waves
+			float FoamResult = dot( Foam, FoamRamp ) * FoamMaskLarge;
+			float Strength = 100.0f * _WaterFoamStrength * PondCausticsStrength;
+			FoamResult = FoamResult * Strength * FoamNoise * LargeNoise;
+
+			return saturate( FoamResult );
+		}
+
 		float3 GameCalcRefraction( float3 WorldSpacePos, float3 Normal, float2 ScreenPos, float3 WaterColor, float Depth )
 		{
 			float3 WaterColorMap = lerp( WaterColor, _WaterColorMapTint, _WaterColorMapTintFactor ) * _NightWaterAdjustment;
@@ -341,7 +387,6 @@ PixelShader =
 			float4 WaterColorAndSpec = PdxTex2D( WaterColorTexture, Input._WorldUV );
 			float GlossMap = WaterColorAndSpec.a;
 
-
 			float3 ToCamera = CameraPosition.xyz - Input._WorldSpacePos;
 			float3 ToCameraDir = normalize( ToCamera );
 
@@ -378,7 +423,7 @@ PixelShader =
 
 			// Calc Depth
 			float Depth = Input._Depth;
-			#if defined( RIVER ) && defined( JOMINI_REFRACTION_ENABLED )
+			#if ( defined( RIVER ) ) && defined( JOMINI_REFRACTION_ENABLED )
 				float4 RefractionSample = PdxTex2DLod0( RefractionTexture, Input._ScreenSpacePos.xy / _ScreenResolution );
 				float3 RefractionWorldSpacePos = DecompressWorldSpace( Input._WorldSpacePos, RefractionSample.a );
 				float RefractionDepth = Input._WorldSpacePos.y - RefractionWorldSpacePos.y;
@@ -446,6 +491,66 @@ PixelShader =
 			float3 Reflection = CalcReflection( Normal, ToCameraDir ) * _NightWaterAdjustment;
 			float FresnelFactor = Fresnel( abs( dot( lightingProperties._ToCameraDir, Normal ) ), _WaterFresnelBias, _WaterFresnelPow ) * WaterFade;
 			FinalColor += lerp( Refraction, Reflection, FresnelFactor );
+
+			// Fade
+			#ifdef JOMINIWATER_BORDER_LERP
+				float ExtraFade = 1.0f - ( Input._WorldUV.x - 1.0f ) / JOMINIWATER_BorderLerpSize;
+				WaterFade *= ExtraFade;
+			#endif
+
+			return float4( FinalColor, WaterFade );
+		}
+
+		float4 GameCalcWaterPond( in SWaterParameters Input )
+		{
+			float4 WaterColorAndSpec = PdxTex2D( WaterColorTexture, Input._WorldUV );
+			float GlossMap = WaterColorAndSpec.a;
+
+			float3 ToCamera = CameraPosition.xyz - Input._WorldSpacePos;
+			float3 ToCameraDir = normalize( ToCamera );
+
+			// Normals
+			float2 UVCoord = Input._WorldSpacePos.xz * float2( 1.0, -1.0 ) * Input._NoiseScale * PondNormalUvScale;
+			float3 NormalMap1 = SampleNormalMapTexture( AmbientNormalTexture, UVCoord, _WaterWave1Scale, _WaterWave1Rotation, JOMINIWATER_GlobalTime * _WaterWave1Speed * Input._WaveSpeedScale * PondWaveSpeed, _WaterWave1NormalFlatten * Input._WaveNoiseFlattenMult * PondNormalFlatten );
+			float3 NormalMap2 = SampleNormalMapTexture( AmbientNormalTexture, UVCoord, _WaterWave2Scale, _WaterWave2Rotation, JOMINIWATER_GlobalTime * _WaterWave2Speed * Input._WaveSpeedScale * PondWaveSpeed, _WaterWave2NormalFlatten * Input._WaveNoiseFlattenMult * PondNormalFlatten );
+			float3 NormalMap3 = SampleNormalMapTexture( AmbientNormalTexture, UVCoord, _WaterWave3Scale, _WaterWave3Rotation, JOMINIWATER_GlobalTime * _WaterWave3Speed * Input._WaveSpeedScale * PondWaveSpeed, _WaterWave3NormalFlatten * Input._WaveNoiseFlattenMult * PondNormalFlatten );
+			float3 Normal = normalize( NormalMap1 + NormalMap2 + NormalMap3 );
+
+			// Depth Transparency
+			float WaterFade = 1.0f - saturate( ( PondDepthScale - Input._Depth) * PondDepthContrast ) ;
+
+			// Color
+			float3 WaterColorMap = lerp( WaterColorAndSpec.rgb, _WaterColorMapTint, _WaterColorMapTintFactor ) * _NightWaterAdjustment;
+
+			// Foam
+			float FoamFactor = GameCalcPondFoam( Input._WorldUV, Input._WorldSpacePos.xz, Input._Depth, Input._FlowFoamMask, Input._FlowNormal );
+
+			// Prelight color
+			float Facing = 1.0f - max( dot( Normal, ToCameraDir ), 0.0f );
+			float3 WaterDiffuse = lerp( _WaterColorDeep, _WaterColorShallow, Facing );
+			WaterDiffuse *= _WaterDiffuseMultiplier;
+
+			// Light
+			SWaterLightingProperties lightingProperties;
+			lightingProperties._WorldSpacePos = Input._WorldSpacePos;
+			lightingProperties._ToCameraDir = ToCameraDir;
+			lightingProperties._Normal = Normal;
+			lightingProperties._Diffuse = WaterDiffuse + FoamFactor;
+			lightingProperties._Glossiness = lerp( PondGlossScale, GlossMap, _WaterZoomedInZoomedOutFactor );
+			lightingProperties._SpecularColor = vec3( PondSpecular );
+			lightingProperties._NonLinearGlossiness = GetNonLinearGlossiness( lightingProperties._Glossiness ) * _WaterGlossScale;
+
+			// Ocean specular
+			float3 DiffuseLight = vec3( 0.0f );
+			float3 SpecularLight = vec3( 0.0f );
+			CalculateSunLight( lightingProperties, 1.0f, _WaterToSunDir, DiffuseLight, SpecularLight );
+			float3 FinalColor = ComposeLight( lightingProperties, 1.0f, _WaterToSunDir, DiffuseLight, SpecularLight * _WaterSpecularFactor );
+			FinalColor *= WaterFade;
+
+			// Cubemap reflection
+			float3 Reflection = CalcReflection( Normal, ToCameraDir ) * _NightWaterAdjustment;
+			float FresnelFactor = Fresnel( abs( dot( lightingProperties._ToCameraDir, Normal ) ), _WaterFresnelBias, _WaterFresnelPow ) * WaterFade;
+			FinalColor += lerp( WaterColorMap, Reflection, FresnelFactor );
 
 			// Fade
 			#ifdef JOMINIWATER_BORDER_LERP

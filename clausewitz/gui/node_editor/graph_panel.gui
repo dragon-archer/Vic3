@@ -24,6 +24,31 @@ types NodeEditor
 	{
 		using = NodeGraphLine
 		line_type = nodeline
+		alwaystransparent = no
+		raw_tooltip = "[NodeLine.Tooltip]"
+		tooltipwidget = {
+			using = dockable_tooltip
+		}
+
+		state = {
+			name = "_mouse_hierarchy_enter"
+			on_start = "[NodeLine.SetHighlightedDirectly('(bool)yes')]"
+		}
+
+		state = {
+			name = "_mouse_hierarchy_leave"
+			on_start = "[NodeLine.SetHighlightedDirectly('(bool)no')]"
+		}
+		
+		state = {
+			name = "default"
+			on_start = "[NodeLine.SetSelected('(bool)no')]"
+		}
+
+		state = {
+			name = "selected"
+			on_start = "[NodeLine.SetSelected('(bool)yes')]"
+		}
 	}
 
 	type node_editor_error_icon = icon {
@@ -127,7 +152,7 @@ types NodeEditor
 				visible = yes
 				onclick = "[PdxGuiWidget.AccessParent.Hide]"
 				onclick = "[PdxGuiWidget.AccessParent.Show]"
-				shortcut = "node_search_show"
+				input_action = "tools_search"
 			}
 		}
 
@@ -147,7 +172,7 @@ types NodeEditor
 			raw_tooltip = "Next Node"
 			onclick = "[NodeEditorSearch.GoToNextResult]"
 			enabled = "[NodeEditorSearch.HasOccurrences]"
-			shortcut = "node_search_go_to_next"
+			input_action = "tools_search_go_to_next"
 			position = { 250 7 }
 			size = { 18 18 }
 			editor_toolbar_icon = {
@@ -164,7 +189,7 @@ types NodeEditor
 			raw_tooltip = "Previous Node"
 			onclick = "[NodeEditorSearch.GoToPreviousResult]"
 			enabled = "[NodeEditorSearch.HasOccurrences]"
-			shortcut = "node_search_go_to_prev"
+			input_action = "tools_search_go_to_prev"
 			position = { 270 7 }
 			size = { 18 18 }
 			editor_toolbar_icon = {
@@ -183,7 +208,7 @@ types NodeEditor
 			size = { 16 16 }
 			onclick = "[NodeEditorSearch.Hide]"
 			texture = "gfx/editor_gui/editor_layout_window_close.dds"
-			shortcut = "node_search_hide"
+			input_action = "tools_close_search"
 
 			tooltipwidget = {
 				using = dockable_tooltip
@@ -197,6 +222,8 @@ widget = {
 	name = "node_graph_panel"
 
 	size = { 1280 720 }
+
+	input_context = "node_editor"
 
 	layoutpolicy_horizontal = expanding
 	layoutpolicy_vertical = expanding
@@ -216,7 +243,7 @@ widget = {
 				raw_tooltip = "New"
 				size = { 32 25 }
 				onclick = "[GraphPanel.New]"
-				shortcut = "nodes_new"
+				input_action = "tools_new"
 				enabled = "[GraphPanel.IsButtonEnabled('New')]"
 			}
 
@@ -225,7 +252,7 @@ widget = {
 				raw_tooltip = "Open"
 				size = { 32 25 }
 				onclick = "[GraphPanel.Load]"
-				shortcut = "nodes_open"
+				input_action = "tools_open"
 				enabled = "[GraphPanel.IsButtonEnabled('Open')]"
 			}
 
@@ -235,7 +262,7 @@ widget = {
 				size = { 32 25 }
 				onclick = "[GraphPanel.Save]"
 				enabled = "[GraphPanel.IsSaveable]"
-				shortcut = "nodes_save"
+				input_action = "tools_save"
 			}
 
 			editor_toolbar_button = {
@@ -243,7 +270,7 @@ widget = {
 				raw_tooltip = "Save as"
 				size = { 64 25 }
 				onclick = "[GraphPanel.SaveAs]"
-				shortcut = "nodes_save_as"
+				input_action = "tools_save_as"
 				enabled = "[GraphPanel.IsButtonEnabled('SaveAs')]"
 			}
 
@@ -252,7 +279,7 @@ widget = {
 				raw_tooltip = "Copy selection"
 				size = { 32 25 }
 				onclick = "[GraphPanel.Copy]"
-				shortcut = "nodes_copy"
+				input_action = "tools_copy"
 			}
 
 			editor_toolbar_button = {
@@ -260,7 +287,7 @@ widget = {
 				raw_tooltip = "Cut selection"
 				size = { 32 25 }
 				onclick = "[GraphPanel.Cut]"
-				shortcut = "nodes_cut"
+				input_action = "tools_cut"
 			}
 
 			editor_toolbar_button = {
@@ -269,7 +296,7 @@ widget = {
 				size = { 32 25 }
 				enabled = "[GraphPanel.IsPasteable]"
 				onclick = "[GraphPanel.Paste]"
-				shortcut = "nodes_paste"
+				input_action = "tools_paste"
 			}
 
 			editor_toolbar_button = {
@@ -278,7 +305,7 @@ widget = {
 				size = { 88 25 }
 				enabled = "[GraphPanel.IsPasteable]"
 				onclick = "[GraphPanel.PasteConnectedToExisting]"
-				shortcut = "nodes_paste_connected_to_existing"
+				input_action = "node_editor_paste_connected_to_existing"
 			}
 
 			editor_toolbar_divider = {
@@ -294,7 +321,7 @@ widget = {
 				size = { 25 25 }
 				raw_tooltip = "Show Node Search"
 				onclick = "[GraphPanel.ShowNodeEditorSearch]"
-				shortcut = "node_search_show"
+				input_action = "tools_search"
 			}
 
 			editor_toolbar_button = {
@@ -350,7 +377,7 @@ widget = {
 				raw_tooltip = "Fit"
 				size = { 32 25 }
 				onclick = "[GraphPanel.Fit]"
-				shortcut = "nodes_fit"
+				input_action = "node_editor_nodes_fit"
 			}
 
 			editor_toolbar_button = {
@@ -358,7 +385,7 @@ widget = {
 				raw_tooltip = "Set zoom level to 100%"
 				size = { 32 25 }
 				onclick = "[GraphPanel.SetZoom('(int32)100')]"
-				shortcut = "nodes_100%"
+				input_action = "node_editor_nodes_100%"
 			}
 
 			editor_toolbar_divider = {
@@ -370,15 +397,15 @@ widget = {
 				raw_tooltip = "Add node"
 				size = { 32 25 }
 				onclick = "[GraphPanel.ShowNodeSearch]"
-				shortcut = "nodes_add"
+				input_action = "node_editor_nodes_add"
 			}
 
 			editor_toolbar_button = {
 				raw_text = "Del"
-				raw_tooltip = "Delete selected nodes"
+				raw_tooltip = "Delete selected"
 				size = { 32 25 }
 				onclick = "[GraphPanel.Delete]"
-				shortcut = "nodes_remove"
+				input_action = "node_editor_selected_remove"
 			}
 
 			editor_toolbar_divider = {
@@ -387,23 +414,23 @@ widget = {
 
 			editor_toolbar_button = {
 				raw_text = "All"
-				raw_tooltip = "Select all"
-				onclick = "[GraphPanel.SelectAll]"
-				shortcut = "selection_all"
+				raw_tooltip = "Select all nodes"
+				onclick = "[GraphPanel.SelectAllNodes]"
+				input_action = "node_editor_select_all_nodes"
 			}
 
 			editor_toolbar_button = {
 				raw_text = "Clr"
 				raw_tooltip = "Clear selection"
 				onclick = "[GraphPanel.ClearSelection]"
-				shortcut = "selection_clear"
+				input_action = "node_editor_selection_clear"
 			}
 
 			editor_toolbar_button = {
 				raw_text = "Inv"
 				raw_tooltip = "Invert selection"
 				onclick = "[GraphPanel.InvertSelection]"
-				shortcut = "selection_invert"
+				input_action = "node_editor_selection_invert"
 			}
 
 			editor_toolbar_divider = {
@@ -414,28 +441,28 @@ widget = {
 				raw_text = "IBox"
 				raw_tooltip = "Create Commentable Info Box Node"
 				onclick = "[GraphPanel.CreateInfoBoxNode]"
-				shortcut = "create_infobox_node"
+				input_action = "node_editor_create_infobox_node"
 			}
 			
 			editor_toolbar_button = {
 				raw_text = "Grp"
 				raw_tooltip = "Collapse selection into a group node"
 				onclick = "[GraphPanel.SelectionToGroupNode]"
-				shortcut = "create_group_node"
+				input_action = "node_editor_create_group_node"
 			}				
 			
 			editor_toolbar_button = {
 				raw_text = "Cmp"
 				raw_tooltip = "Collapse selection into a reusable compound node"
 				onclick = "[GraphPanel.SelectionToCompoundNode]"
-				shortcut = "create_compound_node"
+				input_action = "node_editor_create_compound_node"
 			}		
 			
 			editor_toolbar_button = {
 				raw_text = "Shtr"
 				raw_tooltip = "Shatter a group or compound node in-place"
 				onclick = "[GraphPanel.ShatterSelectedGroup]"
-				shortcut = "shatter_selected_group"
+				input_action = "node_editor_shatter_selected_group"
 			}
 
 			widget = {

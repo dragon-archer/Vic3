@@ -75,19 +75,11 @@ PixelShader =
 		}
 	]]
 }
-			
 
-BlendState BlendState
+BlendState BlendStateAlphaBlendMax
 {
 	BlendEnable = yes
 	SourceBlend = "SRC_ALPHA"
 	DestBlend = "INV_SRC_ALPHA"
-}
-
-BlendState BlendStateNoAlpha
-{
-	BlendEnable = yes
-	SourceBlend = "SRC_ALPHA"
-	DestBlend = "INV_SRC_ALPHA"
-	WriteMask = "RED|GREEN|BLUE"
+	BlendOpAlpha = "max"
 }

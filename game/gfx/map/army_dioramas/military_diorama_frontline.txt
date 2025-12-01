@@ -113,6 +113,12 @@
 				rotation = { 0.0 0.0 0.0 } 
 				scale = 1.0 }
 
+	#####		BALLOONRECON LOCATORS		#####
+	locator = { name = "balloonrecon_01_loc" 
+				position = { 0.0 0.0 0.0 } 
+				rotation = { 0.0 0.0 0.0 } 
+				scale = 1.0 }
+
 
 
 	# Attach all the correct units to locators
@@ -141,7 +147,7 @@
 	attach = { name = props_artillery_04 		locator = props_artillery_04_loc 		combat_unit_group = combat_unit_group_artillery 	entity_group = "props_artillery_02" 	is_visible = { scope:num_units > 1 }}
 
 	#####		05 CAVALRY		#####
-	attach = { name = cavalry_01 		locator = cavalry_01_loc 		combat_unit_group = combat_unit_group_cavalry 		entity_group = "cavalry" 	 		is_visible = { scope:num_units > 0 } }
+	attach = { name = cavalry_01 		locator = cavalry_01_loc 		combat_unit_group = combat_unit_group_cavalry 		entity_group = "cavalry" 	 		is_visible = { scope:num_units > 0 }}
 
 	#####		06 GENERAL		#####
 	attach = { name = general_01 		locator = general_01_loc 		entity_group = "general"		general = yes }
@@ -150,7 +156,10 @@
 	attach = { name = flag_01 			locator = flag_01_loc 			entity_group = "flag" }
 
 	#####		08 AERIALRECON 		#####
-	attach = { name = aerialrecon_01 	locator = aerialrecon_01_loc 	entity_group = "aerialrecon" }
+	attach = { name = aerialrecon_01 	locator = aerialrecon_01_loc 	entity_group = "aerialrecon"	ignore_terrain = yes }
+
+	#####		09 BALLOONRECON 		#####
+	attach = { name = balloonrecon_01 	locator = balloonrecon_01_loc 	entity_group = "balloonrecon"	ignore_terrain = yes }
 }
 
 
@@ -307,6 +316,12 @@ front_diorama_basecamp_01 = {
 				rotation = { 0.0 0.0 0.0 } 
 				scale = 1.0 }
 
+	#####		BALLOONRECON LOCATORS		#####
+	locator = { name = "balloonrecon_01_loc" 
+				position = { 0.0 0.0 0.0 } 
+				rotation = { 0.0 0.0 0.0 } 
+				scale = 1.0 }
+
 
 
 	# Attach all the correct units to locators
@@ -348,14 +363,17 @@ front_diorama_basecamp_01 = {
 	attach = { name = flag_01 			locator = flag_01_loc 			entity_group = "flag" }
 
 	#####		08 AERIALRECON 		#####
-	attach = { name = aerialrecon_01 	locator = aerialrecon_01_loc 	entity_group = "aerialrecon" }
+	attach = { name = aerialrecon_01 	locator = aerialrecon_01_loc 	entity_group = "aerialrecon"	ignore_terrain = yes }
 
-	#####		08 BASECAMP		#####
+	#####		09 BALLOONRECON 		#####
+	attach = { name = balloonrecon_01 	locator = balloonrecon_01_loc 	entity_group = "balloonrecon"	ignore_terrain = yes }
+
+	#####		10 BASECAMP		#####
 	attach = { name = basecamp 			locator = basecamp_loc 			entity_group = "basecamp" 		ignore_terrain = yes }
 
-	#####		09 MEDICALCAMP	    #####
-	attach = { name = medical_fieldhospital 		locator = medical_fieldhospital_loc 	entity_group = "fieldhospital"}
-	attach = { name = medical_firstaid 				locator = medical_firstaid_loc 			entity_group = "firstaid"}
+	#####		11 MEDICALCAMP	    #####
+	attach = { name = medical_fieldhospital 		locator = medical_fieldhospital_loc 	entity_group = "fieldhospital"		ignore_terrain = yes }
+	attach = { name = medical_firstaid 				locator = medical_firstaid_loc 			entity_group = "firstaid"		ignore_terrain = yes }
 }
 
 

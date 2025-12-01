@@ -1,0 +1,59 @@
+pdxmesh = {
+	name = "powerbloc_statue_attachment_gun_mesh"
+	file = "powerbloc_statue_attachment_gun.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 2.0 }
+		lod = { index = 2 percent = 1.0 }
+		lod = { index = 3 percent = 0.5 }
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_attachment_gun|LOD_0|attachment0|attachment0Sh"
+		index = 0
+		texture_diffuse = "powerbloc_attachment_01_diffuse.dds"
+		texture_normal = "powerbloc_attachment_01_normal.dds"
+		texture_specular = "powerbloc_attachment_01_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "BACKLIGHT" }
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_attachment_gun|LOD_1|attachment1|attachment1Sh"
+		index = 0
+		texture_diffuse = "powerbloc_attachment_01_diffuse.dds"
+		texture_normal = "powerbloc_attachment_01_normal.dds"
+		texture_specular = "powerbloc_attachment_01_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "BACKLIGHT" }
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_attachment_gun|LOD_2|attachment2|attachment2Sh"
+		index = 0
+		texture_diffuse = "powerbloc_attachment_01_diffuse.dds"
+		texture_normal = "powerbloc_attachment_01_normal.dds"
+		texture_specular = "powerbloc_attachment_01_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "BACKLIGHT" }
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_attachment_gun|LOD_3|attachment3|attachment3Sh"
+		index = 0
+		texture_diffuse = "powerbloc_attachment_01_diffuse.dds"
+		texture_normal = "powerbloc_attachment_01_normal.dds"
+		texture_specular = "powerbloc_attachment_01_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "BACKLIGHT" }
+	}
+}
+
+entity = {
+	name = "powerbloc_statue_attachment_gun_entity"
+	pdxmesh = "powerbloc_statue_attachment_gun_mesh"
+}

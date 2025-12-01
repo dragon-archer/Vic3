@@ -8,12 +8,23 @@ pdxmesh = {
 		texture_diffuse = "prop_bundleofflowers_diffuse.dds"
 		texture_normal = "prop_bundleofflowers_normal.dds"
 		texture_specular = "prop_bundleofflowers_properties.dds"
-		shader = "portrait_attachment_alpha_to_coverage"
+		shader = "portrait_attachment_pattern"
 		shader_file = "gfx/FX/jomini/portrait.shader"
+		additional_shader_defines = { "BACKLIGHT" }
 	}
 }
 
 entity = {
 	name = "prop_bundleofflowers_entity"
 	pdxmesh = "prop_bundleofflowers_mesh"
+    
+    
+        game_data = {
+			portrait_entity_user_data = {
+            portrait_accessory = {
+                pattern_mask = "gfx/models/portraits/attachments/props/bundleofflowers/prop_bundleofflowers_masks.dds" 
+            variation = "flowers_01" 
+			}
+        }
+    }
 }

@@ -299,7 +299,7 @@ PixelShader =
 
 				// Color overlay, pre light
 				#ifndef UNDERWATER
-					#ifndef NO_BORDERS
+					#ifndef NO_COLOROVERLAY
 						float3 ColorOverlay;
 						float PreLightingBlend;
 						float PostLightingBlend;
@@ -310,7 +310,7 @@ PixelShader =
 
 				// Effects, post light
 				#ifndef UNDERWATER
-					#ifndef NO_BORDERS
+					#ifndef NO_COLOROVERLAY
 						Color = ApplyColorOverlay( Color, ColorOverlay, PostLightingBlend );
 					#endif
 					#ifndef NO_FOG
@@ -340,7 +340,7 @@ PixelShader =
 				Out.Color = float4( Color, Alpha );
 				float3 SSAOColor_ = _SSAOColorMesh.rgb + GameCalculateDistanceFogFactor( Input.WorldSpacePos );
 				#ifndef UNDERWATER
-					#ifndef NO_BORDERS
+					#ifndef NO_COLOROVERLAY
 						SSAOColor_ = SSAOColor_ + PostLightingBlend;
 					#endif
 				#endif
@@ -396,7 +396,7 @@ PixelShader =
 
 				// Color overlay, pre light
 				#ifndef UNDERWATER
-					#ifndef NO_BORDERS
+					#ifndef NO_COLOROVERLAY
 						float3 ColorOverlay;
 						float PreLightingBlend;
 						float PostLightingBlend;
@@ -407,7 +407,7 @@ PixelShader =
 
 				// Effects, post light
 				#ifndef UNDERWATER
-					#ifndef NO_BORDERS
+					#ifndef NO_COLOROVERLAY
 						Color = ApplyColorOverlay( Color, ColorOverlay, PostLightingBlend );
 					#endif
 					#ifndef NO_FOG
@@ -437,7 +437,7 @@ PixelShader =
 				Out.Color = float4( Color, Alpha );
 				float3 SSAOColor_ = _SSAOColorMesh.rgb + GameCalculateDistanceFogFactor( Input.WorldSpacePos );
 				#ifndef UNDERWATER
-					#ifndef NO_BORDERS
+					#ifndef NO_COLOROVERLAY
 						SSAOColor_ = SSAOColor_ + PostLightingBlend;
 					#endif
 				#endif

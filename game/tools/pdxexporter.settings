@@ -8,9 +8,8 @@ materials = {
 	{ shader = "standard_alpha_to_coverage"								shader_file = "gfx/FX/pdxmesh.shader" }
 	{ shader = "standard_flag_basic"									shader_file = "gfx/FX/pdxmesh.shader" }
 	{ shader = "standard_flag_revolution"								shader_file = "gfx/FX/pdxmesh.shader" }
-	{ shader = "flatmap_alpha_blend_no_borders"							shader_file = "gfx/FX/pdxmesh.shader" }
 	{ shader = "lake"													shader_file = "gfx/FX/pdxwater.shader" }
-	{ shader = "tree"													shader_file = "gfx/FX/tree.shader" }
+	{ shader = "tree_colormap"													shader_file = "gfx/FX/tree.shader" }
 
 	{
 		shader = "decal_world" 											shader_file = "gfx/FX/pdxmesh_decal.shader"		subpass = "Decals"

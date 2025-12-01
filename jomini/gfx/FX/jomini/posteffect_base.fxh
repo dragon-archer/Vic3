@@ -4,28 +4,30 @@ Includes = {
 	"cw/camera.fxh"
 }
 
-ConstantBuffer( 1 )
+ConstantBuffer( PdxConstantBuffer1 )
 {
-	float2 InvDownSampleSize;
-	float2 ScreenResolution;
-	float2 InvScreenResolution;
-	float LumWhite2;
-	float FixedExposureValue;
-	float3 HSV;
-	float BrightThreshold;
-	float3 ColorBalance;
-	float EmissiveBloomStrength;
-	float3 LevelsMin;
-	float MiddleGrey;
-	float3 LevelsMax;
-	
-	float TonemapShoulderStrength;
-	float TonemapLinearStrength;
-	float TonemapLinearAngle;
-	float TonemapToeStrength;
-	float TonemapToeNumerator;
-	float TonemapToeDenominator;
-	float TonemapLinearWhite;
+	float2 InvDownSampleSize;		//0
+	float2 ScreenResolution;		//8
+	float2 InvScreenResolution;		//16
+	float LumWhite2;				//24
+	float FixedExposureValue;		//28	
+	float3 HSV;						//32
+	float BrightThreshold;			//44
+	float3 ColorBalance;			//48
+	float Dummy2;					//60	
+	float3 LevelsMin;				//64
+	float MiddleGrey;				//76
+	float3 LevelsMax;				//80
+	float Dummy3;					//92
+	float3 BloomParams;				//96		
+	                                
+	float TonemapShoulderStrength;	//108
+	float TonemapLinearStrength;	//112
+	float TonemapLinearAngle;		//116
+	float TonemapToeStrength;		//120
+	float TonemapToeNumerator;		//124
+	float TonemapToeDenominator;	//128	
+	float TonemapLinearWhite;		//132
 };
 
 PixelShader = 

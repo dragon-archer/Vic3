@@ -36,24 +36,24 @@ struct EdgeOfWorldConstants
 
 struct MapCoaConstants
 {
-	float _MapCoaAngle;
-	float _MapCoaAspectRatio;
-	float _MapCoaSize;
-	float _MapCoaSizeFlatmap;
+	float _Angle;
+	float _AspectRatio;
+	float _Size;
+	float _SizeFlatmap;
 
-	float _MapCoaBlend;
-	float _MapCoaBlendFlatmap;
-	float _MapCoaBlendOccupation;
-	float _MapCoaBlendOccupationFlatmap;
+	float _Blend;
+	float _BlendFlatmap;
+	float _BlendStripes;
+	float _BlendStripesFlatmap;
 
-	float _MapCoaBlendFadeStart;
-	float _MapCoaBlendFadeEnd;
-	float _MapCoaRowOffset;
-	float _MapCoaRowCount;
+	float _RowOffset;
+	float _RowCount;
+	float _StripeScale;
+	float _StripeScaleFlatmap;
 
-	float _MapCoaStripeScale;
-	float _MapCoaStripeScaleFlatmap;
-	bool  _MapCoaEnabled;
+	bool  _Enabled;
+	float _Padding02;
+	float _Padding03;
 	float _Padding04;
 }
 
@@ -115,7 +115,7 @@ ConstantBuffer( GameSharedConstants )
 
 	int _FlatmapEquatorTiling;
 	int _ImpassableTerrainTiling
-	float _ImpassableTerrainHeight
+	float _ParallaxHeight
 	float _DistanceFadeStart
 
 	float _DistanceFadeEnd
@@ -140,27 +140,30 @@ ConstantBuffer( GameSharedConstants )
 
 	bool _UsePrimaryRedAsGradient;
 	bool _UseStripeOccupation;
+	bool _EnableMapPowerBloc;
 	float _NightWaterAdjustment;
-	float _DayNightBrightness;
 
+	float _DayNightBrightness;
 	float _DayNightValue;
 	float _DayValue;
 	float _NightValue;
-	float _LightsFadeTime;
 
+	float _LightsFadeTime;
 	float _LightsActivateBegin;
 	float _LightsActivateEnd;
 	float _SolHighTintHeight;
-	float _SolHighTintContrast;
 
+	float _SolHighTintContrast;
 	float _SolHighHue;
 	float _SolHighSaturation;
 	float _SolHighValue;
-	float _SolLowTintHeight;
 
+	float _SolLowTintHeight;
 	float _SolLowTintContrast;
 	float _SolDebugHigh;
 	float _SolDebugLow;
+
+	bool _AlternateCountryBorders;
 };
 
 
@@ -293,14 +296,13 @@ Code
 		return p;
 	}
 
-	float CalculateStripeMask( float2 UV, float Offset, float Width )
+	float CalculateStripeMask( float2 UV, float Offset, float Tiling )
 	{
 		// Diagonal
 		float t = 3.14159 / ( 8.0 );
-		float w = 3000 * Width;			  // larger value gives smaller width
+		float w = 3000 * Tiling;			// larger value gives smaller Tiling
 
-		float StripeMask = cos( ( UV.x * cos( t ) * w ) + ( UV.y * sin( t ) * w ) + Offset );
-		StripeMask = smoothstep( 0.0, 1.0, StripeMask * 2.2f );
+		float StripeMask = cos( ( UV.x * cos( t ) * w ) + ( UV.y * sin( t ) * w ) + 1.0 );
 		return StripeMask;
 	}
 

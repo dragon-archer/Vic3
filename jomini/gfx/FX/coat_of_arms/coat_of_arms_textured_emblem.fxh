@@ -53,8 +53,8 @@ VertexShader = {
 			VertexOut.position = float4( Input.position, 1.0, 1.0 );
 			VertexOut.uvEmblem.x = VertexOut.position.x > -1 ? 1 : 0;
 			VertexOut.uvEmblem.y = VertexOut.position.y < 1 ? 1 : 0;
-			
-			
+
+
 			if ( EmblemSize.x < 0 )
 				VertexOut.uvEmblem.x *= -1;
 			if ( EmblemSize.y < 0 )
@@ -63,7 +63,7 @@ VertexShader = {
 			// Rotate
 			float2 vSinCos;
 			sincos( Rotation, vSinCos.x, vSinCos.y );
-			VertexOut.position.xy = float2( vSinCos.y * VertexOut.position.x - vSinCos.x * VertexOut.position.y, 
+			VertexOut.position.xy = float2( vSinCos.y * VertexOut.position.x - vSinCos.x * VertexOut.position.y,
 												vSinCos.x * VertexOut.position.x + vSinCos.y * VertexOut.position.y	);
 			// Convert to [0,1]
 			VertexOut.position.x = VertexOut.position.x * 0.5 + 0.5;
@@ -76,15 +76,15 @@ VertexShader = {
 			// Offset
 			VertexOut.position.x += ( EmblemOffset.x - EmblemWidth / 2 );
 			VertexOut.position.y += ( EmblemOffset.y - EmblemHeight / 2 );
-			
+
 			VertexOut.uvPattern.x = VertexOut.position.x;
 			VertexOut.uvPattern.y = VertexOut.position.y;
-		
+
 			// Convert back to [-1,1]
 			VertexOut.position.x = VertexOut.position.x * 2 - 1;
 			VertexOut.position.y = -1 * (VertexOut.position.y * 2 - 1);
 
-		
+
 			// VertexOut.position.xy += TileOffset;
 
 			return VertexOut;
@@ -118,9 +118,9 @@ PixelShader =
 		float4 Emblem( VS_OUTPUT_COA_ATLAS Input, float4 EmblemTex )
 		{
 			float4 OutColor = EmblemTex;
-			
+
 		#ifdef USE_PATTERN_MASK
-			
+
 			// Mask using the pattern
 			float4 PatternColor = PdxTex2D( PatternMap, Input.uvPattern );
 			PatternColor.r = clamp( PatternColor.r - PatternColor.g - PatternColor.b, 0.0, 1.0 );
@@ -129,12 +129,12 @@ PixelShader =
 			float t = saturate( masked.r + masked.g + masked.b );
 
 			OutColor.a *= t;
-		
-		#endif
-			
-		#ifdef COLORED_EMBLEM		
 
-			OutColor.rgb = Color1.rgb;     
+		#endif
+
+		#ifdef COLORED_EMBLEM
+
+			OutColor.rgb = Color1.rgb;
 			OutColor.rgb = lerp( OutColor.rgb, Color2.rgb, EmblemTex.g );
 			OutColor.rgb = lerp( OutColor.rgb, Color3.rgb, EmblemTex.r );
 
@@ -142,7 +142,7 @@ PixelShader =
 			OutColor.rgb = GetOverlay( OutColor.rgb, EmblemTex.bbb, 1.0 );
 
 		#endif
-		
+
 			return OutColor;
 		}
 		float4 Emblem( VS_OUTPUT_COA_ATLAS Input )
@@ -157,5 +157,5 @@ BlendState BlendState
 	BlendEnable = yes
 	SourceBlend = "src_alpha"
 	DestBlend = "inv_src_alpha"
-	WriteMask = "RED|GREEN|BLUE"
+	BlendOpAlpha = "max"
 }

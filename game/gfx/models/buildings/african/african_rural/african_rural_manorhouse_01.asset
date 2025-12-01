@@ -1,0 +1,203 @@
+pdxmesh = {
+	name = "african_rural_manorhouse_01_mesh"
+	file = "african_rural_manorhouse_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 8.0 }
+		lod = { index = 3 percent = 4.0 }
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_decallocal_0Shape"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_decallocal_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_decallocal_normal.dds"
+		texture_specular = "african_rural_manorhouse_decallocal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_decalworld_0Shape"
+		index = 0
+		texture_diffuse = "decal_rural_farm_hub_diffuse.dds"
+		texture_normal = "decal_rural_farm_hub_normal.dds"
+		texture_specular = "decal_rural_farm_hub_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_Shape0"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_normal.dds"
+		texture_specular = "african_rural_manorhouse_properties.dds"
+		texture = { file = "african_rural_manorhouse_01_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_foliage_Shape0"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_foliage_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_foliage_normal.dds"
+		texture_specular = "african_rural_manorhouse_foliage_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = no }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_MEDIUM" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_decallocal_1Shape"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_decallocal_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_decallocal_normal.dds"
+		texture_specular = "african_rural_manorhouse_decallocal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_decalworld_1Shape"
+		index = 0
+		texture_diffuse = "decal_rural_farm_hub_diffuse.dds"
+		texture_normal = "decal_rural_farm_hub_normal.dds"
+		texture_specular = "decal_rural_farm_hub_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_Shape1"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_normal.dds"
+		texture_specular = "african_rural_manorhouse_properties.dds"
+		texture = { file = "african_rural_manorhouse_01_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_foliage_Shape1"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_foliage_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_foliage_normal.dds"
+		texture_specular = "african_rural_manorhouse_foliage_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = no }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_MEDIUM" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_decallocal_2Shape"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_decallocal_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_decallocal_normal.dds"
+		texture_specular = "african_rural_manorhouse_decallocal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_decalworld_2Shape"
+		index = 0
+		texture_diffuse = "decal_rural_farm_hub_diffuse.dds"
+		texture_normal = "decal_rural_farm_hub_normal.dds"
+		texture_specular = "decal_rural_farm_hub_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_Shape2"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_normal.dds"
+		texture_specular = "african_rural_manorhouse_properties.dds"
+		texture = { file = "african_rural_manorhouse_01_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_foliage_Shape2"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_foliage_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_foliage_normal.dds"
+		texture_specular = "african_rural_manorhouse_foliage_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = no }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_MEDIUM" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_decallocal_3Shape"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_decallocal_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_decallocal_normal.dds"
+		texture_specular = "african_rural_manorhouse_decallocal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_decalworld_3Shape"
+		index = 0
+		texture_diffuse = "decal_rural_farm_hub_diffuse.dds"
+		texture_normal = "decal_rural_farm_hub_normal.dds"
+		texture_specular = "decal_rural_farm_hub_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_foliage_3Shape"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_foliage_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_foliage_normal.dds"
+		texture_specular = "african_rural_manorhouse_foliage_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = no }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_MEDIUM" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "african_rural_manorhouse_Shape3"
+		index = 0
+		texture_diffuse = "african_rural_manorhouse_diffuse.dds"
+		texture_normal = "african_rural_manorhouse_normal.dds"
+		texture_specular = "african_rural_manorhouse_properties.dds"
+		texture = { file = "african_rural_manorhouse_01_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "african_rural_manorhouse_01_entity"
+	pdxmesh = "african_rural_manorhouse_01_mesh"
+}

@@ -1,0 +1,66 @@
+pdxmesh = {
+	name = "powerbloc_statue_hero_dancinglady_mesh"
+	file = "powerbloc_statue_hero_dancinglady.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 8.0 }
+		lod = { index = 3 percent = 4.0 }
+		lod = { index = 4 percent = 2.0 }
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_dancinglady_0Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_batch_05_diffuse.dds"
+		texture_normal = "powerbloc_hero_batch_05_normal.dds"
+		texture_specular = "powerbloc_hero_batch_05_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_dancinglady_1Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_batch_05_diffuse.dds"
+		texture_normal = "powerbloc_hero_batch_05_normal.dds"
+		texture_specular = "powerbloc_hero_batch_05_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_dancinglady_2Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_batch_05_diffuse.dds"
+		texture_normal = "powerbloc_hero_batch_05_normal.dds"
+		texture_specular = "powerbloc_hero_batch_05_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_dancinglady_3Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_batch_05_diffuse.dds"
+		texture_normal = "powerbloc_hero_batch_05_normal.dds"
+		texture_specular = "powerbloc_hero_batch_05_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_statue_hero_dancinglady_4Shape"
+		index = 0
+		texture_diffuse = "powerbloc_hero_batch_05_diffuse.dds"
+		texture_normal = "powerbloc_hero_batch_05_normal.dds"
+		texture_specular = "powerbloc_hero_batch_05_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

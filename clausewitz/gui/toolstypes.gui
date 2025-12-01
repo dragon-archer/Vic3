@@ -1382,6 +1382,14 @@ types EditorTypes
 		spriteborder = { 3 3 }
 	}
 
+	type editor_expand_checkbutton = checkbutton {
+		gfxtype = checkbuttongfx
+		shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
+		texture = "gfx/editor_gui/editor_expand_checkbox.dds"
+		framesize = { 16 16 }
+		size = { 10 10 }
+	}
+
 	type editor_colormap_picker = colormap_picker {
 		layoutpolicy_horizontal = expanding
 		layoutpolicy_vertical = expanding

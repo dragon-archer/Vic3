@@ -1,0 +1,66 @@
+pdxmesh = {
+	name = "powerbloc_supportelement_halo_01_mesh"
+	file = "powerbloc_supportelement_halo_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 3.0 }
+		lod = { index = 2 percent = 1.5 }
+		lod = { index = 3 percent = 0.8 }
+		lod = { index = 4 percent = 0.3 }
+	}
+
+	meshsettings = {
+		name = "powerbloc_supportelement_halo_01_Shape0"
+		index = 0
+		texture_diffuse = "powerbloc_supportelement_batch_4_diffuse.dds"
+		texture_normal = "powerbloc_supportelement_batch_4_normal.dds"
+		texture_specular = "powerbloc_supportelement_batch_4_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_supportelement_halo_01_Shape1"
+		index = 0
+		texture_diffuse = "powerbloc_supportelement_batch_4_diffuse.dds"
+		texture_normal = "powerbloc_supportelement_batch_4_normal.dds"
+		texture_specular = "powerbloc_supportelement_batch_4_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_supportelement_halo_01_Shape2"
+		index = 0
+		texture_diffuse = "powerbloc_supportelement_batch_4_diffuse.dds"
+		texture_normal = "powerbloc_supportelement_batch_4_normal.dds"
+		texture_specular = "powerbloc_supportelement_batch_4_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_supportelement_halo_01_Shape3"
+		index = 0
+		texture_diffuse = "powerbloc_supportelement_batch_4_diffuse.dds"
+		texture_normal = "powerbloc_supportelement_batch_4_normal.dds"
+		texture_specular = "powerbloc_supportelement_batch_4_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_supportelement_halo_01_4Shape"
+		index = 0
+		texture_diffuse = "powerbloc_supportelement_batch_4_diffuse.dds"
+		texture_normal = "powerbloc_supportelement_batch_4_normal.dds"
+		texture_specular = "powerbloc_supportelement_batch_4_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "powerbloc_supportelement_halo_01_entity"
+	pdxmesh = "powerbloc_supportelement_halo_01_mesh"
+}

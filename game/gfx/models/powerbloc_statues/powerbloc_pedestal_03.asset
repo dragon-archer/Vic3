@@ -1,0 +1,346 @@
+pdxmesh = {
+	name = "powerbloc_pedestal_03_mesh"
+	file = "powerbloc_pedestal_03.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 8.0 }
+		lod = { index = 3 percent = 4.0 }
+		lod = { index = 4 percent = 2.0 }
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_decal_03_0Shape"
+		index = 0
+		texture_diffuse = "powerbloc_pedestal_decal_03_diffuse.dds"
+		texture_normal = "powerbloc_pedestal_decal_03_normal.dds"
+		texture_specular = "powerbloc_pedestal_decal_03_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_mesh_03_Shape0"
+		index = 0
+		texture_diffuse = "powerbloc_pedestal_granite_01_diffuse.dds"
+		texture_normal = "powerbloc_pedestal_granite_01_normal.dds"
+		texture_specular = "powerbloc_pedestal_granite_01_properties.dds"
+		texture = { file = "powerbloc_pedestal_03_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape0"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_01" "PB_TEXTURE_MEMBER_01" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape0"
+		index = 1
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_02" "PB_TEXTURE_MEMBER_02" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape0"
+		index = 2
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_03" "PB_TEXTURE_MEMBER_03" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape0"
+		index = 3
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_04" "PB_TEXTURE_MEMBER_04" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape0"
+		index = 4
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_05" "PB_TEXTURE_MEMBER_05" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_decal_03_1Shape"
+		index = 0
+		texture_diffuse = "powerbloc_pedestal_decal_03_diffuse.dds"
+		texture_normal = "powerbloc_pedestal_decal_03_normal.dds"
+		texture_specular = "powerbloc_pedestal_decal_03_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_mesh_03_Shape1"
+		index = 0
+		texture_diffuse = "powerbloc_pedestal_granite_01_diffuse.dds"
+		texture_normal = "powerbloc_pedestal_granite_01_normal.dds"
+		texture_specular = "powerbloc_pedestal_granite_01_properties.dds"
+		texture = { file = "powerbloc_pedestal_03_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape1"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_01" "PB_TEXTURE_MEMBER_01" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape1"
+		index = 1
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_02" "PB_TEXTURE_MEMBER_02" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape1"
+		index = 2
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_03" "PB_TEXTURE_MEMBER_03" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape1"
+		index = 3
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_04" "PB_TEXTURE_MEMBER_04" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape1"
+		index = 4
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_05" "PB_TEXTURE_MEMBER_05" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_decal_03_2Shape"
+		index = 0
+		texture_diffuse = "powerbloc_pedestal_decal_03_diffuse.dds"
+		texture_normal = "powerbloc_pedestal_decal_03_normal.dds"
+		texture_specular = "powerbloc_pedestal_decal_03_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_mesh_03_Shape2"
+		index = 0
+		texture_diffuse = "powerbloc_pedestal_granite_01_diffuse.dds"
+		texture_normal = "powerbloc_pedestal_granite_01_normal.dds"
+		texture_specular = "powerbloc_pedestal_granite_01_properties.dds"
+		texture = { file = "powerbloc_pedestal_03_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape2"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_01" "PB_TEXTURE_MEMBER_01" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape2"
+		index = 1
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_02" "PB_TEXTURE_MEMBER_02" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape2"
+		index = 2
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_03" "PB_TEXTURE_MEMBER_03" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape2"
+		index = 3
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_04" "PB_TEXTURE_MEMBER_04" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape2"
+		index = 4
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_05" "PB_TEXTURE_MEMBER_05" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_decal_03_3Shape"
+		index = 0
+		texture_diffuse = "powerbloc_pedestal_decal_03_diffuse.dds"
+		texture_normal = "powerbloc_pedestal_decal_03_normal.dds"
+		texture_specular = "powerbloc_pedestal_decal_03_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_mesh_03_Shape3"
+		index = 0
+		texture_diffuse = "powerbloc_pedestal_granite_01_diffuse.dds"
+		texture_normal = "powerbloc_pedestal_granite_01_normal.dds"
+		texture_specular = "powerbloc_pedestal_granite_01_properties.dds"
+		texture = { file = "powerbloc_pedestal_03_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape3"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_01" "PB_TEXTURE_MEMBER_01" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape3"
+		index = 1
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_02" "PB_TEXTURE_MEMBER_02" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape3"
+		index = 2
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_03" "PB_TEXTURE_MEMBER_03" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape3"
+		index = 3
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_04" "PB_TEXTURE_MEMBER_04" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_flag_03_Shape3"
+		index = 4
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "HUB_BUILDING" "COA_TEXTURE" "BACKLIGHT" "FLAGWAVE_SETTINGS_BUILDING" "SEED_05" "PB_TEXTURE_MEMBER_05" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_decal_03_4Shape"
+		index = 0
+		texture_diffuse = "powerbloc_pedestal_decal_03_diffuse.dds"
+		texture_normal = "powerbloc_pedestal_decal_03_normal.dds"
+		texture_specular = "powerbloc_pedestal_decal_03_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "powerbloc_pedestal_mesh_03_Shape4"
+		index = 0
+		texture_diffuse = "powerbloc_pedestal_granite_01_diffuse.dds"
+		texture_normal = "powerbloc_pedestal_granite_01_normal.dds"
+		texture_specular = "powerbloc_pedestal_granite_01_properties.dds"
+		texture = { file = "powerbloc_pedestal_03_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

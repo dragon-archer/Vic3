@@ -398,7 +398,7 @@ types GuiAnimationEditorTypes
 
 		gui_animation_editor_toggle_button = {
 			icon = {
-				using = animation_control_icon
+				using = tools_centred_anchor
 				texture = "gfx/editor_gui/loop.dds"
 				size = { 20 20 }
 			}
@@ -412,7 +412,7 @@ types GuiAnimationEditorTypes
 		#Rollback button
 		gui_animation_editor_button = {
 			icon = {
-				using = animation_control_icon
+				using = tools_centred_anchor
 				texture = "gfx/editor_gui/rollback.dds"
 			}
 			size = { @gui_animation_editor_common_btn_size @gui_animation_editor_common_btn_size }
@@ -425,7 +425,7 @@ types GuiAnimationEditorTypes
 		#Step Backwards button
 		gui_animation_editor_button = {
 			icon = {
-				using = animation_control_icon
+				using = tools_centred_anchor
 				texture = "gfx/editor_gui/step_backwards.dds"
 			}
 			size = { @gui_animation_editor_common_btn_size @gui_animation_editor_common_btn_size }
@@ -439,7 +439,7 @@ types GuiAnimationEditorTypes
 		#Pause/Play Button
 		gui_animation_editor_button = {
 			icon = {
-				using = animation_control_icon
+				using = tools_centred_anchor
 				visible = "[GuiAnimationEditorPlayer.IsPlaying]"
 				texture = "gfx/editor_gui/pause.dds"
 				raw_tooltip = "Pause Animation"
@@ -447,7 +447,7 @@ types GuiAnimationEditorTypes
 			}
 
 			icon = {
-				using = animation_control_icon
+				using = tools_centred_anchor
 				visible = "[Not(GuiAnimationEditorPlayer.IsPlaying)]"
 				texture = "gfx/editor_gui/play.dds"
 				raw_tooltip = "Resume Animation"
@@ -461,7 +461,7 @@ types GuiAnimationEditorTypes
 		#Step Forwards button
 		gui_animation_editor_button = {
 			icon = {
-				using = animation_control_icon
+				using = tools_centred_anchor
 				texture = "gfx/editor_gui/step_forward.dds"
 			}
 			size = { @gui_animation_editor_common_btn_size @gui_animation_editor_common_btn_size }
@@ -475,7 +475,7 @@ types GuiAnimationEditorTypes
 		#Rollforward button
 		gui_animation_editor_button = {
 			icon = {
-				using = animation_control_icon
+				using = tools_centred_anchor
 				texture = "gfx/editor_gui/rollforward.dds"
 			}
 			onclick = "[GuiAnimationEditorPlayer.SetCurrentTime( GuiAnimationEditorPlayer.GetMaxDuration )]"

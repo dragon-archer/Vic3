@@ -16,8 +16,8 @@ pdxmesh = {
 		texture_normal = "palm_tree_01_normal.dds"
 		texture_specular = "palm_tree_01_properties.dds"
 		texture = { file = "tree_palm_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_MEDIUM" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_MEDIUM" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -39,8 +39,8 @@ pdxmesh = {
 		texture_normal = "palm_tree_01_normal.dds"
 		texture_specular = "palm_tree_01_properties.dds"
 		texture = { file = "tree_palm_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_MEDIUM" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_MEDIUM" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -62,8 +62,8 @@ pdxmesh = {
 		texture_normal = "palm_tree_01_normal.dds"
 		texture_specular = "palm_tree_01_properties.dds"
 		texture = { file = "tree_palm_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_MEDIUM" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_MEDIUM" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -85,8 +85,8 @@ pdxmesh = {
 		texture_normal = "palm_tree_01_normal.dds"
 		texture_specular = "palm_tree_01_properties.dds"
 		texture = { file = "tree_palm_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_MEDIUM" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_MEDIUM" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -97,8 +97,8 @@ pdxmesh = {
 		texture_normal = "palm_tree_01_normal.dds"
 		texture_specular = "palm_tree_01_properties.dds"
 		texture = { file = "tree_palm_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_MEDIUM" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_MEDIUM" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 }

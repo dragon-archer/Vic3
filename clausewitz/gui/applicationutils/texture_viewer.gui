@@ -311,6 +311,24 @@ widget = {
                 size = { 10 0 }
                 layoutpolicy_horizontal = Fixed
             }
+			
+            editor_checkbutton = {
+                blockoverride "checkbutton"
+                {
+                    checked = "[TextureViewer.GetAutoFit]"
+                    onclick = "[TextureViewer.SetAutoFit(Not(TextureViewer.GetAutoFit))]"
+                }
+                
+                blockoverride "label"
+                {
+                    raw_text = "Auto Fit"
+                }
+            }
+            
+            widget = {
+                size = { 10 0 }
+                layoutpolicy_horizontal = Fixed
+            }
         }
         
         hbox = {

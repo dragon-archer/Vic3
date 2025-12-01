@@ -113,6 +113,33 @@ pattern_textures = {
 	properties	= "gfx/portraits/accessory_variations/textures/patterns/arabic/arabic_silk_pattern_02_properties.dds"
 }
 
+pattern_textures = {
+	name = "generic_medal_metals_01"
+	colormask	= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_medal_metals_01_masks.dds"
+	normal		= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_medal_metals_01_normal.dds"
+	properties	= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_medal_metals_01_properties.dds"
+}
+
+pattern_textures = {
+	name = "generic_leather_standard_plain_01"
+	colormask	= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_leather_standard_plain_01_masks.dds"
+	normal		= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_leather_standard_plain_01_normal.dds"
+	properties	= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_leather_standard_plain_01_properties.dds"
+}
+
+pattern_textures = {
+	name = "generic_leather_standard_agitator_01"
+	colormask	= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_leather_standard_plain_01_masks.dds"
+	normal		= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_leather_standard_plain_01_normal.dds"
+	properties	= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_silk_hat_plain_01_properties.dds"
+}
+
+pattern_textures = {
+	name = "generic_leather_standard_fine_01"
+	colormask	= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_leather_standard_fine_01_masks.dds"
+	normal		= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_leather_standard_fine_01_normal.dds"
+	properties	= "gfx/portraits/accessory_variations/textures/patterns/generic/generic_leather_standard_fine_01_properties.dds"
+}
 
 # pattern_textures = {
 # 	name = "european_silk_brocade_01"
@@ -231,6 +258,60 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_headgear_african_common_01.dds" }	
 }
 
+
+
+
+variation = {
+	name = "male_top_layer_african_zulu_dingane_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "circumpolar_fur_pattern_02" 		layout = "plain_fabric_layout" }
+		g = { textures = "circumpolar_fur_pattern_02" 		layout = "plain_fabric_layout" }
+		b = { textures = "circumpolar_fur_pattern_02" 				layout = "plain_fabric_layout" }
+		a = { textures = "circumpolar_fur_pattern_02" 		layout = "plain_fabric_layout" }
+		}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_top_layer_african_zulu_dingane_01.dds" }	
+}
+
+
+variation = {
+	name = "male_leagwear_african_zulu_dingane_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "circumpolar_fur_pattern_02" 		layout = "plain_fabric_layout" }
+		g = { textures = "circumpolar_fur_pattern_02" 		layout = "plain_fabric_layout" }
+		b = { textures = "royal_velvet_01" 				layout = "plain_fabric_layout" }
+		a = { textures = "generic_leather_standard_plain_01" 		layout = "plain_fabric_layout" }
+		}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_leagwear_african_zulu_dingane_01.dds" }	
+}
+
+variation = {
+	name = "male_necklace_zulu_dingane_01"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "circumpolar_fur_pattern_02" 		layout = "plain_fabric_layout" }
+		g = { textures = "circumpolar_fur_pattern_02" 		layout = "plain_fabric_layout" }
+		b = { textures = "circumpolar_fur_pattern_02" 				layout = "plain_fabric_layout" }
+		a = { textures = "circumpolar_fur_pattern_02" 		layout = "plain_fabric_layout" }
+		}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_necklace_african_zulu_dingane_01.dds" }	
+}
 
 variation = {
 	name = "male_outfit_african_common_01"
@@ -489,4 +570,76 @@ variation = {
 	}		
 
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_trade_unions_agitator_01.dds" }	
+}
+
+variation = {
+	name = "male_headgear_zulu_impi_01"
+	
+
+	pattern = { 
+		weight = 1
+		 
+		r = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 					layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_leather_standard_plain_01" 				layout = "plain_fabric_layout" }
+	}	
+
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_zulu_impi_01.dds" }	
+}
+
+variation = {
+	name = "male_top_layer_zulu_impi_01"
+	
+
+	pattern = { 
+		weight = 1
+		 
+		r = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		g = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_plain_01" 					layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"					layout = "plain_fabric_layout" }
+	}	
+
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_top_layer_zulu_impi_01.dds" }	
+}
+
+variation = {
+	name = "male_legwear_zulu_impi_01"
+	
+
+	pattern = { 
+		weight = 1
+		 
+		r = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 					layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_plain_01" 					layout = "plain_fabric_layout" }
+		a = { textures = "generic_gold_trim_01" 		layout = "plain_fabric_layout" }
+	}	
+
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_legwear_zulu_impi_01.dds" }	
+}
+
+variation = {
+	name = "prop_zulu_weapon_01"
+	
+
+	pattern = { 
+		weight = 1
+		 
+		r = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 					layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_plain_01" 					layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"					layout = "plain_fabric_layout" }
+	}	
+
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_prop_zulu_weapon_01.dds" }	
 }

@@ -499,19 +499,17 @@ entity = {
 	state = { name = "defend"	animation = "ship_idle_animation"	time_offset = { 0.0 10.0 }
 		event = { time = 0.0 node = "locator_root" particle = "ships/carrier_waves_idle" 	trigger_once = yes keep_particle = yes }
 		propagate_state = 	{ plane = "carrier_recon" }
-		event = { time = 0.0 keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_animation_defend" }}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_animation_defend" }}
 	}
 
 	state = { name = "advance"	animation = "ship_idle_animation"	time_offset = { 0.0 10.0 }
 		event = { time = 0.0 node = "locator_root" particle = "ships/carrier_waves_idle" 	trigger_once = yes keep_particle = yes }
 		propagate_state = 	{ plane = "carrier_recon" }
-		event = { time = 0.0 keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_animation_advance" }}
-		event = { time = 0.0 keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_idle_animation" }}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_animation_advance" }}
 	}
 
 	state = { name = "defeat"	animation = "ship_defeat_animation" looping = no
 		propagate_state = 	{ plane = "carrier_idle" }
 		event = { time = 0.0 node = "locator_root"	particle = "ships/carrier_defeat"		trigger_once = yes keep_particle = yes	keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_defeat_animation" }}
-		event = { time = 0.0 keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_idle_animation" }}
 	}
 }

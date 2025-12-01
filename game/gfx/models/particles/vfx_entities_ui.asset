@@ -13,7 +13,7 @@ entity =
 		event = 
 		{ 
 			time = 0 
-			particle = "particle_ui_mobilize" 
+			particle = "ui/mobilize"
 			trigger_once = yes 
 			keep_particle = yes
 		}
@@ -38,6 +38,188 @@ entity =
 			particle = "revolution/particle_revolution_ui_alert" 
 			trigger_once = yes 
 			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_powerbloc_map_marker_name_label"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "ui/powerbloc_map_marker_name_label" 
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_powerbloc_principles_slot"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "ui/powerbloc_principles_slot" 
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_powerbloc_rank_01_map_marker"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "ui/powerbloc_rank_01_map_marker" 
+			trigger_once = yes 
+			keep_particle = no
+			skip_forward = 3 
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_powerbloc_rank_02_map_marker"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "ui/powerbloc_rank_02_map_marker" 
+			trigger_once = yes 
+			keep_particle = no
+			skip_forward = 3 
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_powerbloc_rank_03_map_marker"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "ui/powerbloc_rank_03_map_marker" 
+			trigger_once = yes 
+			keep_particle = no
+			skip_forward = 3 
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_powerbloc_rank_01_rulers"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "ui/powerbloc_rank_01_rulers" 
+			trigger_once = yes 
+			keep_particle = no
+			skip_forward = 2 
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_powerbloc_rank_02_rulers"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "ui/powerbloc_rank_02_rulers" 
+			trigger_once = yes 
+			keep_particle = no
+			skip_forward = 2 
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_powerbloc_rank_03_rulers"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "ui/powerbloc_rank_03_rulers" 
+			trigger_once = yes 
+			keep_particle = no
+			skip_forward = 2 
 		}
 	}
 }

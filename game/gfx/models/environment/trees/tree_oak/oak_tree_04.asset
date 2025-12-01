@@ -13,8 +13,8 @@ pdxmesh = {
 		texture_normal = "tree_oak_001_normal.dds"
 		texture_specular = "tree_oak_001_properties.dds"
 		texture = { file = "tree_oak_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_MEDIUM" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_MEDIUM" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -35,8 +35,8 @@ pdxmesh = {
 		texture_normal = "tree_oak_001_normal.dds"
 		texture_specular = "tree_oak_001_properties.dds"
 		texture = { file = "tree_oak_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_MEDIUM" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_MEDIUM" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 

@@ -1,0 +1,16 @@
+pdxmesh = {
+	name = "female_coat_european_military_01_bs_fat_mesh"
+	file = "female_coat_european_military_01_bs_fat.mesh"
+
+	meshsettings = {
+		name = "female_coat_european_military_01_bs_fatShape"
+		index = 0
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "female_coat_european_military_01_bs_fat_entity"
+	pdxmesh = "female_coat_european_military_01_bs_fat_mesh"
+}

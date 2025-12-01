@@ -14,8 +14,8 @@ pdxmesh = {
 		texture_normal = "tree_savanna_001_normal.dds"
 		texture_specular = "tree_savanna_001_properties.dds"
 		texture = { file = "tree_savanna_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_TALL" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_TALL" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -37,8 +37,8 @@ pdxmesh = {
 		texture_normal = "tree_savanna_001_normal.dds"
 		texture_specular = "tree_savanna_001_properties.dds"
 		texture = { file = "tree_savanna_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_TALL" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_TALL" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 
@@ -49,8 +49,8 @@ pdxmesh = {
 		texture_normal = "tree_savanna_001_normal.dds"
 		texture_specular = "tree_savanna_001_properties.dds"
 		texture = { file = "tree_savanna_tint_01.dds" index = 3 srgb = yes }
-		shader = "tree"
-		additional_shader_defines = { "TREE_TALL" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_TALL" "SHARPEN_05" }
 		shader_file = "gfx/FX/tree.shader"
 	}
 }

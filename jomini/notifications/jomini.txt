@@ -116,6 +116,54 @@ jomini_savegame_load_failed = {
 	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
 }
 
+jomini_savegame_load_incompatible_game = {
+	level = dialog
+	category = system
+	window_file = @default_window_file
+	window_name = @default_window_name
+
+	title_text = JOMINI_LOAD_INCOMPATIBLE_GAME_TITLE
+	text = JOMINI_LOAD_INCOMPATIBLE_GAME_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_OOS_MESSAGE_CONTINUE_CLIENT
+	decline_text = JOMINI_MULTIPLAYER_GUI_POPUP_DECLINE
+}
+
+jomini_savegame_delete_playthrough = {
+	level = dialog
+	category = system
+	window_file = @default_window_file
+	window_name = @default_window_name
+
+	title_text = JOMINI_DELETE_PLAYTHROUGH_CONFIRMATION_TITLE
+	text = JOMINI_DELETE_PLAYTHROUGH_CONFIRMATION_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+	decline_text = JOMINI_MULTIPLAYER_GUI_POPUP_DECLINE
+}
+
+jomini_savegame_delete_savegame = {
+	level = dialog
+	category = system
+	window_file = @default_window_file
+	window_name = @default_window_name
+
+	title_text = JOMINI_DELETE_SAVEGAME_CONFIRMATION_TITLE
+	text = JOMINI_DELETE_SAVEGAME_CONFIRMATION_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+	decline_text = JOMINI_MULTIPLAYER_GUI_POPUP_DECLINE
+}
+
+jomini_savegame_overwrite_savegame = {
+	level = dialog
+	category = system
+	window_file = @default_window_file
+	window_name = @default_window_name
+
+	title_text = JOMINI_OVERWRITE_SAVEGAME_CONFIRMATION_TITLE
+	text = JOMINI_OVERWRITE_SAVEGAME_CONFIRMATION_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+	decline_text = JOMINI_MULTIPLAYER_GUI_POPUP_DECLINE
+}
+
 jomini_social_account_created = {
 	level = dialog
 	category = social
@@ -220,6 +268,18 @@ jomini_social_account_connect_failed = {
 	decline_text = JOMINI_SOCIAL_CONNECT_FAIL_CANCEL
 }
 
+jomini_social_account_connect_failed_not_set = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+
+	title_text = JOMINI_SOCIAL_CONNECT_FAIL_NOT_SET
+	text = JOMINI_SOCIAL_CONNECT_FAIL_NOT_SET_DESC
+	accept_text = JOMINI_SOCIAL_CONNECT_FAIL_NOT_SET_RETRY
+	decline_text = JOMINI_SOCIAL_CONNECT_FAIL_NOT_SET_CANCEL
+}
+
 jomini_third_party_auto_login_prompt = {
 	level = dialog
 	category = social
@@ -286,6 +346,17 @@ pops_login_create_account = {
 	text = POPS_LOGIN_CREATE_ACCOUNT_DESC
 	accept_text = POPS_LOGIN_CREATE_ACCOUNT_ACCEPT
 	decline_text = JOMINI_MULTIPLAYER_GUI_POPUP_DECLINE
+}
+
+jomini_dlc_manager_disabled_mods_crash = {
+	level = alert
+	category = system
+	window_file = @default_window_file
+	window_name = @default_window_name
+
+	title_text = JOMINI_DLC_MANAGER_DISABLED_MODS_CRASH_TITLE
+	text = JOMINI_DLC_MANAGER_DISABLED_MODS_CRASH_DESC
+	accept_text = CLOSE
 }
 
 jomini_dlc_manager_outdated_mods_alert = {

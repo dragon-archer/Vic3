@@ -8,7 +8,7 @@ ConstantBuffer( PdxCamera )
 	float4x4	InvProjectionMatrix;
 
 	float4x4 	ShadowMapTextureMatrix;
-	
+
 	float3		CameraPosition;
 	float		ZNear;
 	float3		CameraLookAtDir;
@@ -31,22 +31,22 @@ Code
 		float ZLinear = 2.0 * ZNear * ZFar / (ZFar + ZNear - Depth * (ZFar - ZNear));
 		return ZLinear;
 	}
-	
+
 	float3 ViewSpacePosFromDepth( float Depth, float2 UV )
 	{
 		float x = UV.x * 2.0 - 1.0;
 		float y = (1.0 - UV.y) * 2.0 - 1.0;
-		
+
 		float4 ProjectedPos = float4( x, y, Depth, 1.0 );
-		
+
 		float4 ViewSpacePos = mul( InvProjectionMatrix, ProjectedPos );
-		
+
 		return ViewSpacePos.xyz / ViewSpacePos.w;
 	}
-	
+
 	float3 WorldSpacePositionFromDepth( float Depth, float2 UV )
 	{
-		float3 WorldSpacePos = mul( InvViewMatrix, float4( ViewSpacePosFromDepth( Depth, UV ), 1.0 ) ).xyz;		
-		return WorldSpacePos;  
+		float3 WorldSpacePos = mul( InvViewMatrix, float4( ViewSpacePosFromDepth( Depth, UV ), 1.0 ) ).xyz;
+		return WorldSpacePos;
 	}
 ]]

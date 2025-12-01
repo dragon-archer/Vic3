@@ -415,6 +415,14 @@ types "ToolsSaveDialog" {
 													}
 												}
 											}
+
+											editor_toolbar_button = {
+												size = { 40 32 }
+												raw_text = "..."
+												fontsize = 18
+												visible = "[Savable.AllowsFileDialog]"
+												onclick = "[Savable.FolderSelect]"
+											}
 										}
 									}
 								}

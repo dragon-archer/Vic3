@@ -1,0 +1,71 @@
+pdxmesh = {
+	name = "powerbloc_supportelement_royalcape_01_mesh"
+	file = "powerbloc_supportelement_royalcape_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 8.0 }
+		lod = { index = 2 percent = 4.0 }
+		lod = { index = 3 percent = 2.0 }
+		lod = { index = 4 percent = 1.0 }
+	}
+
+	meshsettings = {
+		name = "powerbloc_supportelement_royalcape_01_Shape0"
+		index = 0
+		texture_diffuse = "powerbloc_supportelement_batch_2_diffuse.dds"
+		texture_normal = "powerbloc_supportelement_batch_2_normal.dds"
+		texture_specular = "powerbloc_supportelement_batch_2_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_supportelement_royalcape_01_Shape1"
+		index = 0
+		texture_diffuse = "powerbloc_supportelement_batch_2_diffuse.dds"
+		texture_normal = "powerbloc_supportelement_batch_2_normal.dds"
+		texture_specular = "powerbloc_supportelement_batch_2_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_supportelement_royalcape_01_Shape2"
+		index = 0
+		texture_diffuse = "powerbloc_supportelement_batch_2_diffuse.dds"
+		texture_normal = "powerbloc_supportelement_batch_2_normal.dds"
+		texture_specular = "powerbloc_supportelement_batch_2_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_supportelement_royalcape_01_Shape3"
+		index = 0
+		texture_diffuse = "powerbloc_supportelement_batch_2_diffuse.dds"
+		texture_normal = "powerbloc_supportelement_batch_2_normal.dds"
+		texture_specular = "powerbloc_supportelement_batch_2_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "powerbloc_supportelement_royalcape_01_Shape4"
+		index = 0
+		texture_diffuse = "powerbloc_supportelement_batch_2_diffuse.dds"
+		texture_normal = "powerbloc_supportelement_batch_2_normal.dds"
+		texture_specular = "powerbloc_supportelement_batch_2_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "powerbloc_supportelement_royalcape_01_entity"
+	pdxmesh = "powerbloc_supportelement_royalcape_01_mesh"
+}

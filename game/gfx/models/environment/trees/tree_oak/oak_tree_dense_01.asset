@@ -13,8 +13,8 @@ pdxmesh = {
 		texture_diffuse = "tree_oak_003_diffuse.dds"
 		texture_normal = "tree_oak_003_normal.dds"
 		texture_specular = "tree_oak_003_properties.dds"
-		shader = "tree"
-		additional_shader_defines = { "TREE_MEDIUM" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_MEDIUM" "SHARPEN_05" }
 		texture = { file = "tree_oak_tint_01.dds" index = 3 srgb = yes }
 		shader_file = "gfx/FX/tree.shader"
 	}
@@ -25,8 +25,8 @@ pdxmesh = {
 		texture_diffuse = "tree_oak_003_diffuse.dds"
 		texture_normal = "tree_oak_003_normal.dds"
 		texture_specular = "tree_oak_003_properties.dds"
-		shader = "tree"
-		additional_shader_defines = { "TREE_MEDIUM" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_MEDIUM" "SHARPEN_05" }
 		texture = { file = "tree_oak_tint_01.dds" index = 3 srgb = yes }
 		shader_file = "gfx/FX/tree.shader"
 	}
@@ -37,8 +37,8 @@ pdxmesh = {
 		texture_diffuse = "tree_oak_003_diffuse.dds"
 		texture_normal = "tree_oak_003_normal.dds"
 		texture_specular = "tree_oak_003_properties.dds"
-		shader = "tree"
-		additional_shader_defines = { "TREE_MEDIUM" }
+		shader = "tree_colormap"
+		additional_shader_defines = { "TREE_MEDIUM" "SHARPEN_05" }
 		texture = { file = "tree_oak_tint_01.dds" index = 3 srgb = yes }
 		shader_file = "gfx/FX/tree.shader"
 	}

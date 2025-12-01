@@ -44,15 +44,6 @@ types EntityViewer
 			shaderfile = "gfx/FX/pdxgui_default.shader"
 		}
 	}
-
-	type editor_expand_checkbutton = checkbutton
-	{
-		gfxtype = checkbuttongfx
-		shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
-		texture = "gfx/editor_gui/editor_expand_checkbox.dds"
-		framesize = { 16 16 }
-		size = { 10 10 }
-	}
 }
 
 template frame_background_properties
@@ -88,16 +79,14 @@ template lod_label_margin
 	autoresize = yes
 }
 
-template animation_control_icon
-{
-	parentanchor = vcenter|hcenter
-}
-
 hbox = {
 	layoutpolicy_vertical = expanding
 	layoutpolicy_horizontal = expanding
 	minimumsize = { 1100 1000 }
 	name = "entity_editor" #Don't change, used in code.
+
+	input_context = "entity_editor"
+
 
 	vbox = {
 		visible = "[And( EntityEditor.HasEntities, Not( EntityEditor.IsLoading ) )]"
@@ -111,13 +100,13 @@ hbox = {
 			editor_toolbar_button = {   
 				size = { 0 0 }
 				onclick = "[EntityEditor.AddKeyframeOnMouseToHoveredLane]"
-				shortcut = "entity_viewer_add_keyframe_on_mouse"
+				input_action = "entity_editor_add_keyframe_on_mouse"
 			}
 
 			editor_toolbar_button = {   
 				size = { 0 0 }
 				onclick = "[EntityEditor.AddKeyframeOnNeedleToHoveredLane]"
-				shortcut = "entity_viewer_add_keyframe_on_needle"
+				input_action = "entity_editor_add_keyframe_on_needle"
 			}
 		}
 
@@ -154,9 +143,9 @@ hbox = {
 							visible = no #TODO Muting not working.
 							icon = {
 								visible = "[Not( EntityEditor.IsWorldMuted )]"
-								using = animation_control_icon
+								using = tools_centred_anchor
 								texture = "gfx/editor_gui/sound_on.dds"
-								shortcut = "entity_viewer_mute"
+								input_action = "entity_editor_mute"
 								raw_tooltip = "Mute everything except this tool"
 								tooltipwidget = {
 									using = dockable_tooltip
@@ -165,10 +154,10 @@ hbox = {
 
 							icon = {
 								visible = "[EntityEditor.IsWorldMuted]"
-								using = animation_control_icon
+								using = tools_centred_anchor
 								texture = "gfx/editor_gui/sound_off.dds"
 								raw_tooltip = "Unmute everything"
-								shortcut = "entity_viewer_mute"
+								input_action = "entity_editor_mute"
 								tooltipwidget = {
 									using = dockable_tooltip
 								}
@@ -176,7 +165,7 @@ hbox = {
 
 							size = { 35 35 }
 							onclick = "[EntityEditor.ToggleMuteWorld]"
-							shortcut = "entity_viewer_mute"
+							input_action = "entity_editor_mute"
 							
 							tooltipwidget = {
 								using = dockable_tooltip
@@ -198,7 +187,7 @@ hbox = {
 							size = { 130 25 }
 							onclick = "[EntityEditor.FitCamera]"
 							raw_tooltip = "Move and Rotate the camera so it fits the Entity"
-							shortcut = "entity_viewer_fit_camera"
+							input_action = "entity_editor_fit_camera"
 							tooltipwidget = { 
 								using = dockable_tooltip
 							}
@@ -278,7 +267,7 @@ hbox = {
 				fontsize = 12
 				size = { 125 25 }
 				onclick = "[EntityEditor.SaveChanges]"
-				shortcut = "entity_viewer_save"
+				input_action = "tools_save"
 			}
 		}
 	}

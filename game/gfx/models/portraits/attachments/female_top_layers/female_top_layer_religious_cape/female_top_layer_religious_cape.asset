@@ -1,0 +1,52 @@
+pdxmesh = {
+	name = "female_top_layer_religious_cape_mesh"
+	file = "female_top_layer_religious_cape.mesh"
+
+
+	blend_shape = { id = "female_top_layer_religious_cape_bs_fat"		type = "female_top_layer_religious_cape_bs_fat.mesh" }
+	blend_shape = { id = "female_top_layer_religious_cape_bs_gaunt"		type = "female_top_layer_religious_cape_bs_gaunt.mesh" }
+	blend_shape = { id = "female_top_layer_religious_cape_bs_old"		type = "female_top_layer_religious_cape_bs_old.mesh" }
+	blend_shape = { id = "female_top_layer_religious_cape_bs_bustsizemin"		type = "female_top_layer_religious_cape_bs_bustsizemin.mesh" }
+	blend_shape = { id = "female_top_layer_religious_cape_bs_bustsizemax"		type = "female_top_layer_religious_cape_bs_bustsizemax.mesh" }
+	blend_shape = { id = "female_top_layer_religious_cape_bs_thick"		type = "female_top_layer_religious_cape_bs_thick.mesh" }
+	blend_shape = { id = "female_top_layer_religious_cape_bs_thin"		type = "female_top_layer_religious_cape_bs_thin.mesh" }
+
+
+	meshsettings = {
+		name = "female_top_layer_religious_capeShape"
+		index = 0
+		texture_diffuse = "male_top_layer_religious_cape_01_diffuse.dds"
+		texture_normal = "male_top_layer_religious_cape_01_normal.dds"
+		texture_specular = "male_top_layer_religious_cape_01_properties.dds"
+		shader = "portrait_attachment_pattern_alpha_to_coverage"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+
+
+entity = {
+	name = "female_top_layer_religious_cape_entity"
+	pdxmesh = "female_top_layer_religious_cape_mesh"
+
+
+attribute = { name = "body_bs_fat"					blend_shape = "female_top_layer_religious_cape_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "female_top_layer_religious_cape_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "female_top_layer_religious_cape_bs_old" }
+		attribute = { name = "body_bs_bustsizemin"			blend_shape = "female_top_layer_religious_cape_bs_bustsizemin" }
+		attribute = { name = "body_bs_bustsizemax"			blend_shape = "female_top_layer_religious_cape_bs_bustsizemax" }
+		attribute = { name = "body_bs_thick"				blend_shape = "female_top_layer_religious_cape_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "female_top_layer_religious_cape_bs_thin" }
+
+
+
+game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_top_layers/male_top_layer_religious_cape/male_top_layer_religious_cape_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_top_layer_religious_cape"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}

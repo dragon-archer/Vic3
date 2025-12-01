@@ -12,6 +12,11 @@ template tools_font
 	fontcolor = { 1 1 1 1 }
 }
 
+template tools_centred_anchor
+{
+    parentanchor = vcenter|hcenter
+}
+
 template tools_editbox
 {
 	using = tools_font

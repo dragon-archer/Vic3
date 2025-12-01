@@ -40,6 +40,8 @@ types Types
 	type curve_editor = widget {
 		size = { 640 480}
 
+		input_context = "curve_editor"
+		
 		layoutpolicy_vertical = expanding
 		layoutpolicy_horizontal = expanding
 
@@ -58,7 +60,7 @@ types Types
 					}
 					raw_tooltip = "Delete selected points"
 					onclick = "[CurveEditor.Delete]"
-					shortcut = "curve_editor_remove"
+					input_action = "curve_editor_remove"
 				}
 		
 				#editor_toolbar_divider = {

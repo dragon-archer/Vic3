@@ -1,13 +1,19 @@
 ﻿increase_relations = {
+	groups= {
+		general
+	}
+	
 	requires_approval = no
 	show_confirmation_box = no
-
-	potential = {
+	
+	selectable = {
 		NOT = { is_country_type = decentralized }
+	}
+	
+	potential = {
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 		}
-		is_revolutionary = no
 	}
 
 	possible = {
@@ -21,6 +27,10 @@
 		
 		relations_progress_per_day = 3 # At 100, +1 relations
 		relations_improvement_max = 50
+		
+		first_modifier = {
+			country_pact_leverage_generation_add = 300
+		}		
 		
 		requirement_to_maintain = {
 			trigger = {
@@ -53,7 +63,10 @@
 			trigger = {
 				custom_tooltip = {
 					text = DIPLO_ACTION_RELATIONS_AMICABLE_OR_GREATER_NOT
-					scope:target_country.relations:root < relations_threshold:amicable
+					OR = {
+						scope:target_country = { is_power_bloc_leader = yes }
+						scope:target_country.relations:root < relations_threshold:amicable
+					}
 				}
 			}
 		}
@@ -73,6 +86,10 @@
 	
 	ai = {
 		max_influence_spending_fraction = 0.25
+	
+		evaluation_chance = {
+			value = 0.5
+		}	
 	
 		propose_score = {
 			value = 5
@@ -136,43 +153,64 @@
 				has_attitude = {
 					who = scope:target_country
 					attitude = protective
-				}	
+				}					
 			}
 		}	
 		
-		will_break = { 
-			NOR = {
-				has_attitude = {
-					who = scope:target_country
-					attitude = genial
-				}	
-				has_attitude = {
-					who = scope:target_country
-					attitude = conciliatory
-				}	
-				has_attitude = {
-					who = scope:target_country
-					attitude = cooperative
+		will_break = {
+			OR = {
+				NOR = {
+					has_attitude = {
+						who = scope:target_country
+						attitude = genial
+					}	
+					has_attitude = {
+						who = scope:target_country
+						attitude = conciliatory
+					}	
+					has_attitude = {
+						who = scope:target_country
+						attitude = cooperative
+					}
+					has_attitude = {
+						who = scope:target_country
+						attitude = protective
+					}					
+				}			
+				AND = {
+					scope:target_country.relations:root >= relations_threshold:amicable	
+					OR = {
+						country_rank >= rank_value:minor_power
+						NOT = {
+							has_attitude = {
+								who = scope:target_country
+								attitude = genial
+							}					
+						}						
+					}
 				}
-				has_attitude = {
-					who = scope:target_country
-					attitude = protective
-				}					
-			}		
+			}
+		
 		}
 	}
 }
 
-damage_relations = {
+damage_relations = {	
+	groups= {
+		general
+	}
+	
 	requires_approval = no
 	show_confirmation_box = no
 	
+	selectable = {
+		NOT = { is_country_type = decentralized }	
+	}
+	
 	potential = {
-		NOT = { is_country_type = decentralized }
 		scope:target_country = {
 			NOT = { is_country_type = decentralized }
 		}
-		is_revolutionary = no
 	}
 	
 	possible = {
@@ -181,6 +219,7 @@ damage_relations = {
 
 	pact = {	
 		cost = 100
+		is_hostile = yes
 		is_two_sided_pact = no
 		infamy_affects_maintenance = no
 		show_in_outliner = yes
@@ -218,6 +257,10 @@ damage_relations = {
 	
 	ai = {
 		max_influence_spending_fraction = 0.15
+	
+		evaluation_chance = {
+			value = 0.5
+		}	
 	
 		propose_score = {
 			value = 10

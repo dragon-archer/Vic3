@@ -46,18 +46,20 @@ struct SStandardMeshUserData
 {
 	float _CountryIndex;
 	float _RandomValue;
-	float _Padding02;
+	float _PowerBlocIndex;
 	float _Padding03;
-	float4 _OffsetAndScale;
 };
 
 struct SBuildingMeshUserdata
 {
 	float4 _LightColor;
-	float _SolValue;
+	float _CountryIndex;
 	float _RandomValue;
+	float _SolValue;
 	float _ShouldLightActivate;
-	float _Padding04;
+
+	float _HasCompanyTexture;
+	float _PowerBlocIndex;
 };
 
 struct SRevolutionMeshUserdata
@@ -68,8 +70,66 @@ struct SRevolutionMeshUserdata
 	float _Padding03;
 };
 
+struct WaveAnimationSettings
+{
+	float LargeWaveFrequency;		// Higher values simulates higher wind speeds / more turbulence
+	float SmallWaveFrequency;		// Higher values simulates higher wind speeds / more turbulence
+	float WaveLenghtPow;			// Higher values gives higher frequency at the end of the flag
+	float WaveLengthInvScale;		// Higher values gives higher frequency overall
+	float WaveScale;				// Higher values gives a stretchier flag
+	float AnimationSpeed;			// Speed
+};
+
 Code
 [[
+	float GetSeed()
+	{
+		#if defined( HIGH_QUALITY_SHADERS )
+			#if defined( SEED_01 )
+				return 1;
+			#elif defined( SEED_02 )
+				return 2;
+			#elif defined( SEED_03 )
+				return 3;
+			#elif defined( SEED_04 )
+				return 4;
+			#elif defined( SEED_05 )
+				return 5;
+			#elif defined( SEED_06 )
+				return 6;
+			#elif defined( SEED_07 )
+				return 7;
+			#elif defined( SEED_08 )
+				return 8;
+			#elif defined( SEED_09 )
+				return 9;
+			#elif defined( SEED_10 )
+				return 10;
+			#elif defined( SEED_11 )
+				return 11;
+			#elif defined( SEED_12 )
+				return 12;
+			#elif defined( SEED_13 )
+				return 13;
+			#elif defined( SEED_14 )
+				return 14;
+			#elif defined( SEED_15 )
+				return 15;
+			#elif defined( SEED_16 )
+				return 16;
+			#elif defined( SEED_17 )
+				return 17;
+			#elif defined( SEED_18 )
+				return 18;
+			#elif defined( SEED_19 )
+				return 19;
+			#elif defined( SEED_20 )
+				return 20;
+			#endif
+		#endif
+
+		return 546546;
+	}
 	uint GetUserDataUint( uint InstanceIndex )
 	{
 		return uint( Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 0 ].x );
@@ -104,7 +164,23 @@ Code
 		SStandardMeshUserData UserData;
 		UserData._CountryIndex = Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 0 ].x;
 		UserData._RandomValue = Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 0 ].y;
-		UserData._OffsetAndScale = Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 1 ];
+		UserData._PowerBlocIndex = Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 0 ].z;
+		return UserData;
+	}
+
+	SBuildingMeshUserdata GetBuildingMeshUserData( uint InstanceIndex )
+	{
+		SBuildingMeshUserdata UserData;
+		UserData._LightColor = Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 0 ];
+
+		UserData._CountryIndex = Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 1 ].x;
+		UserData._RandomValue = Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 1 ].y;
+		UserData._SolValue = Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 1 ].z;
+		UserData._ShouldLightActivate = Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 1 ].w;
+
+		UserData._HasCompanyTexture = Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 2 ].x;
+		UserData._PowerBlocIndex = Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 2 ].y;
+
 		return UserData;
 	}
 ]]
@@ -113,28 +189,51 @@ VertexShader =
 {
 	Code
 	[[
+		WaveAnimationSettings GetWaveAnimationSettingsDefault()
+		{
+			WaveAnimationSettings WaveAnimSettings;
+			WaveAnimSettings.LargeWaveFrequency = 3.14f;
+			WaveAnimSettings.SmallWaveFrequency = 9.0f;
+			WaveAnimSettings.WaveLenghtPow = 1.0f;
+			WaveAnimSettings.WaveLengthInvScale = 7.0f;
+			WaveAnimSettings.WaveScale = 0.2f;
+			WaveAnimSettings.AnimationSpeed = 0.5f;
+
+			return WaveAnimSettings;
+		}
+		WaveAnimationSettings GetWaveAnimationSettingsBuilding()
+		{
+			WaveAnimationSettings WaveAnimSettings;
+			WaveAnimSettings.LargeWaveFrequency = 2.0f;
+			WaveAnimSettings.SmallWaveFrequency = 7.0f;
+			WaveAnimSettings.WaveLenghtPow = 1.0f;
+			WaveAnimSettings.WaveLengthInvScale = 5.0f;
+			WaveAnimSettings.WaveScale = 0.08f;
+			WaveAnimSettings.AnimationSpeed = 0.5f;
+
+			return WaveAnimSettings;
+		}
 
 		void CalculateSineAnimation( float2 UV, inout float3 Position, inout float3 Normal, inout float4 Tangent, float Seed )
 		{
+			#if defined( FLAGWAVE_SETTINGS_BUILDING )
+			WaveAnimationSettings AnimSettings = GetWaveAnimationSettingsBuilding();
+			#else
+				WaveAnimationSettings AnimSettings = GetWaveAnimationSettingsDefault();
+			#endif
+
 			float AnimSeed = UV.x;
-			const float LARGE_WAVE_FREQUENCY = 3.14f;	// Higher values simulates higher wind speeds / more turbulence
-			const float SMALL_WAVE_FREQUENCY = 9.0f;	// Higher values simulates higher wind speeds / more turbulence
-			const float WAVE_LENGTH_POW = 1.0f;			// Higher values gives higher frequency at the end of the flag
-			const float WAVE_LENGTH_INV_SCALE = 7.0f;	// Higher values gives higher frequency overall
-			const float WAVE_SCALE = 0.2f;				// Higher values gives a stretchier flag
-			const float ANIMATION_SPEED = 0.5f;			// Speed
+			float RandomOffset = CalcRandom( Seed + GetSeed() );
+			float Time = ( GlobalTime + RandomOffset ) * AnimSettings.AnimationSpeed;
 
-			float RandomOffset = CalcRandom( Seed );
-			float Time = ( GlobalTime + RandomOffset ) * ANIMATION_SPEED;
-
-			float LargeWave = sin( Time * LARGE_WAVE_FREQUENCY );
-			float SmallWaveV = Time * SMALL_WAVE_FREQUENCY - pow( AnimSeed, WAVE_LENGTH_POW ) * WAVE_LENGTH_INV_SCALE;
-			float SmallWaveD = -( WAVE_LENGTH_POW * pow( AnimSeed, WAVE_LENGTH_POW ) * WAVE_LENGTH_INV_SCALE );
+			float LargeWave = sin( Time * AnimSettings.LargeWaveFrequency );
+			float SmallWaveV = Time * AnimSettings.SmallWaveFrequency - pow( AnimSeed, AnimSettings.WaveLenghtPow ) * AnimSettings.WaveLengthInvScale;
+			float SmallWaveD = -( AnimSettings.WaveLenghtPow * pow( AnimSeed, AnimSettings.WaveLenghtPow ) * AnimSettings.WaveLengthInvScale );
 			float SmallWave = sin( SmallWaveV );
 			float CombinedWave = SmallWave + LargeWave;
 
-			float Wave = WAVE_SCALE * AnimSeed * CombinedWave;
-			float Derivative = WAVE_SCALE * ( LargeWave + SmallWave + cos( SmallWaveV ) * SmallWaveD );
+			float Wave = AnimSettings.WaveScale * AnimSeed * CombinedWave;
+			float Derivative = AnimSettings.WaveScale * ( LargeWave + SmallWave + cos( SmallWaveV ) * SmallWaveD );
 			float3 AnimationDir = cross( Tangent.xyz, float3( 0.0, 1.0, 0.0 ) );
 
 			Position += AnimationDir * Wave;

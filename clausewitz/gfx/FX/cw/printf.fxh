@@ -56,7 +56,10 @@ Code
 		WritePos++; // Skip over counter (PdxPrintfBuffer[0])
 		if ( ( WritePos + NumWrites ) > ( _PrintfBufferSize - 1 ) ) // -1 since we allocate one spare for notifying full buffer
 		{
-			PdxPrintfBuffer[WritePos] = EType::Type_BufferFull;
+			if ( WritePos < _PrintfBufferSize )
+			{
+				PdxPrintfBuffer[WritePos] = EType::Type_BufferFull;
+			}
 			return false;
 		}
 		return true;

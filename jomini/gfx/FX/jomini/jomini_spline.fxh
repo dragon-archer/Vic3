@@ -1,5 +1,6 @@
 Includes = {
 	"cw/camera.fxh"
+	"cw/heightmap.fxh"
 	"cw/utility.fxh"
 }
 
@@ -13,6 +14,9 @@ VertexStruct VS_INPUT
 	float2  UV				: TEXCOORD1;
 	float3	Tangent 		: TEXCOORD2;
 	float3	Normal			: TEXCOORD3;
+	float	Transparency 	: TEXCOORD4;
+	float	Width			: TEXCOORD5;
+	float	DistanceToMain	: TEXCOORD6;
 };
 
 VertexStruct VS_OUTPUT
@@ -23,6 +27,9 @@ VertexStruct VS_OUTPUT
 	float3 Normal			: TEXCOORD2;
 	float3 WorldSpacePos	: TEXCOORD3;
 	float  MaxU				: TEXCOORD4;
+	float  Transparency 	: TEXCOORD5;
+	float  Width			: TEXCOORD6;
+	float  DistanceToMain	: TEXCOORD7;
 };
 
 ConstantBuffer( 3 )
@@ -40,6 +47,10 @@ VertexShader =
 		Output = "VS_OUTPUT"
 		Code
 		[[
+			#ifndef JOMINIRIVER_MapSize
+			#define JOMINIRIVER_MapSize MapSize
+			#endif
+
 			PDX_MAIN
 			{
 				VS_OUTPUT Out;
@@ -49,7 +60,11 @@ VertexShader =
 				Out.Normal			= Input.Normal;
 				Out.WorldSpacePos 	= Input.Position;
 				Out.MaxU 			= Input.MaxU;
-				
+
+				Out.Transparency 	= Input.Transparency;
+				Out.Width 			= Input.Width * max( JOMINIRIVER_MapSize.x, JOMINIRIVER_MapSize.y );
+				Out.DistanceToMain	= Input.DistanceToMain;
+
 				Out.Position = FixProjectionAndMul( ViewProjectionMatrix, float4( Input.Position, 1.0f ) );
 			
 				return Out;

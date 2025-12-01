@@ -2,6 +2,9 @@ Includes = {
 	"jomini/posteffect_base.fxh"
 }
 
+supports_additional_shader_options = {
+	LUMINANCE_SAMPLE_ALPHA
+}
 
 VertexShader =
 {

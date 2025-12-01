@@ -22,6 +22,28 @@ entity =
 
 entity = 
 {
+	name = "vfx_entity_ui_revolution_map_marker"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "revolution/particle_revolution_ui_alert" 
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
 	name = "vfx_entity_ui_situations"
 	scale = 1
 	default_state = "idle"

@@ -1,6 +1,6 @@
 Includes = {
 	"cw/heightmap.fxh"
-	"cw/pdxterrain.fxh"
+	"cw/terrain.fxh"
 	"jomini/mapeditor/mapeditor_gruvbox.fxh"
 }
 
@@ -21,7 +21,7 @@ PixelShader
 
 		bool MapEditorIsHighlighted( float2 WorldSpacePosXZ )
 		{
-			float2 DetailIndexCoordinates = WorldSpacePosXZ * WorldSpaceToDetail + DetailTexelSize * 0.5;
+			float2 DetailIndexCoordinates = WorldSpacePosXZ * _WorldSpaceToDetail + _DetailTexelSize * 0.5;
 			
 			float4 DetailIndex = PdxTex2D( DetailIndexTexture, DetailIndexCoordinates ) * 255.0;
 
@@ -108,7 +108,7 @@ Code
 			return;
 
 	#ifdef TERRAIN_WRAP_X
-		float WorldWidth = 1.0f / WorldSpaceToTerrain0To1.x;
+		float WorldWidth = 1.0f / _WorldSpaceToTerrain0To1.x;
 		if( TerrainEditorBrushOutlineInternal( ColorOut, float2( CursorPos.x - WorldWidth, CursorPos.y ), FragmentPos, OutlineWidth ) )
 			return;
 		if( TerrainEditorBrushOutlineInternal( ColorOut, float2( CursorPos.x + WorldWidth, CursorPos.y ), FragmentPos, OutlineWidth ) )

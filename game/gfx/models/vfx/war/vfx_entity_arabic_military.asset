@@ -1,72 +1,111 @@
 entity = 
 {
-	name = "arabic_mobile_artillery_pm_mobile_artillery_entity"
-	pdxmesh = "arabic_mobile_artillery_mesh"
+	name = "arabic_irregular_infantry_pm_irregular_infantry_entity"
+	pdxmesh = "arabic_irregular_infantry_mesh"
 	
-	default_state = "start"
+	locator = { name = "locator_vfx_01" position = { -1.2 0.3 -1.9 } rotation = { 15 0 0 } scale = 1.0}
+	locator = { name = "locator_vfx_02" position = { 1.7 0.3 -1.5 }	 rotation = { -15 0 0 } scale = 1.0}
+	locator = { name = "impact_site" position = { 0.0 0.0 -10.0}	rotation = { 0 0 0} scale = 1.0}
 	
-	state =
-	{
-		name = "start"
-		chance = 1
-		animation = "attack_animation"
-		looping = no
-		
-		time_offset = 0.7
-		
-		event = { time = 0 node = "loc_cannon_right" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { time = 0 node = "loc_cannon_middle" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { time = 0 node = "loc_cannon_left" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/artillery/mobile/generic" } }
-		
-		
-		next_state = "idle"
-	}
-	
-	state =
-	{
-		name = "start"
-		chance = 1
-		animation = "attack_animation"
-		looping = no
-		time_offset = 0.5
-		
-		event = { time = 0 node = "loc_cannon_right" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { time = 0 node = "loc_cannon_middle" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { time = 0 node = "loc_cannon_left" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/artillery/mobile/generic" } }
-		
-		
-		next_state = "idle"
-	}
-	
-	state =
-	{
-		name = "start"
-		chance = 1
-		animation = "attack_animation"
-		looping = no
-		time_offset = 0.1
-		
-		event = { time = 0 node = "loc_cannon_right" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { time = 0 node = "loc_cannon_middle" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { time = 0 node = "loc_cannon_left" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/artillery/mobile/generic" } }
-		
-		
-		next_state = "idle"
-	}
+	default_state = "idle"
 	
 	state = 
 	{ 
 		name = "idle" 
-		animation = "attack_animation"
+		chance = 1
+		state_time = 4
+		looping = no 
+	
+		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_irregular_infantry" trigger_once = yes keep_particle = yes}			
+		event = { time = 0 node = "locator_vfx_02" particle = "war/rifle_pm_irregular_infantry" trigger_once = yes keep_particle = yes}	
+		event = { time = 0.1 node = "impact_site" particle = "war/bullet_impacts_rifle" trigger_once = yes keep_particle = yes}			
+
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/irregular/generic" } }
+		
+		next_state = "idle"
+	}
+
+	state = 
+	{ 
+		name = "idle" 
+		chance = 1
+		state_time = 5
+		looping = no 
+	
+		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_irregular_infantry" trigger_once = yes keep_particle = yes}			
+		event = { time = 0 node = "locator_vfx_02" particle = "war/rifle_pm_irregular_infantry" trigger_once = yes keep_particle = yes}
+		event = { time = 0.1 node = "impact_site" particle = "war/bullet_impacts_rifle" trigger_once = yes keep_particle = yes}		
+
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/irregular/generic" } }
+		
+		next_state = "idle"
+	}
+}
+
+entity = 
+{
+	name = "arabic_irregular_infantry_pm_machine_gunners_entity"
+	pdxmesh = "arabic_irregular_infantry_mesh"
+	
+	locator = { name = "locator_vfx_01" position = { -1.2 0.1 -1.9 } rotation = { 10 0 0 } scale = 1.0}
+	locator = { name = "locator_vfx_02" position = { 2.4 0.1 -1.5 }	 rotation = { -10 0 0 } scale = 1.0}
+	locator = { name = "locator_vfx_03" position = { 0.5 0.1 -2 }	 rotation = { 0 0 0 } scale = 1.0}
+	locator = { name = "impact_site" position = { 0.0 0.0 -10.0}	rotation = { 0 0 0} scale = 1.0}
+	
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 10
 		looping = yes 
 
-		event = { time = 0 node = "loc_cannon_right" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { time = 0 node = "loc_cannon_middle" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { time = 0 node = "loc_cannon_left" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/artillery/mobile/generic" } }
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/irregular/machine_gunners" } }
+	
+		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_irregular_machine_gunners" trigger_once = yes keep_particle = no}			
+		event = { time = 0 node = "locator_vfx_02" particle = "war/rifle_pm_irregular_machine_gunners" trigger_once = yes keep_particle = no}		
+		event = { time = 0 node = "locator_vfx_03" particle = "war/rifle_pm_irregular_machine_gunners" trigger_once = yes keep_particle = no}
+		event = { time = 0 node = "impact_site" particle = "war/bullet_impacts" trigger_once = yes keep_particle = no}
+		
+		next_state = "idle"
+	}
+}
+
+entity = 
+{
+	name = "arabic_line_infantry_pm_line_infantry_entity"
+	pdxmesh = "arabic_line_infantry_mesh"
+	
+	locator = { name = "locator_vfx_01" position = { 0.0 0.6 -1 }	rotation = { 0 0 0} scale = 1.0}
+	locator = { name = "impact_site" position = { 0.0 0.0 -10.0}	rotation = { 0 0 0} scale = 1.0}
+	
+	default_state = "idle"
+
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 4
+		looping = no 
+	
+		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_line_infantry" trigger_once = yes keep_particle = yes}
+		event = { time = 0.1 node = "impact_site" particle = "war/bullet_impacts_rifle" trigger_once = yes keep_particle = yes}
+
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/generic" } }
+		
+		next_state = "idle"
+	}
+
+	state = 
+	{ 
+		name = "idle" 
+		chance = 1
+		state_time = 5
+		looping = no 
+	
+		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_line_infantry" trigger_once = yes keep_particle = yes}
+		event = { time = 0.1 node = "impact_site" particle = "war/bullet_impacts_rifle" trigger_once = yes keep_particle = yes}
+
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/generic" } }
 		
 		next_state = "idle"
 	}
@@ -78,6 +117,7 @@ entity =
 	pdxmesh = "arabic_line_infantry_mesh"
 	
 	locator = { name = "locator_vfx_01" position = { 0.0 0.4 -0.6 }	rotation = { 0 0 0} scale = 1.0}
+	locator = { name = "impact_site" position = { 0.0 0.0 -10.0}	rotation = { 0 0 0} scale = 1.0}
 		
 	default_state = "idle"
 	
@@ -89,42 +129,90 @@ entity =
 
 		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/machine_gunners" } }
 	
-		event = { time = 0 node = "locator_vfx_01" particle = "particle_rifle_pm_machine_gunners" trigger_once = yes keep_particle = no}	
+		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_line_machine_gunners" trigger_once = yes keep_particle = no}
+		event = { time = 0 node = "impact_site" particle = "war/bullet_impacts" trigger_once = yes keep_particle = no}
 		
 		next_state = "idle"
 	}
 }
 
-
 entity = 
 {
-	name = "arabic_line_infantry_pm_flamethrower_company_entity"
+	name = "arabic_line_infantry_pm_skirmish_infantry_entity"
 	pdxmesh = "arabic_line_infantry_mesh"
-	
-	locator = { name = "locator_vfx_01" position = { 0.0 0.9 -0.6 }	rotation = { 0 0 0} scale = 1.0}
+
+	locator = { name = "locator_vfx_01" position = { -1.0 0.7 -0.6 } rotation = { -5 0 0} scale = 1.0}
+	locator = { name = "locator_vfx_02" position = { 1.0 0.7 -0.6 }	rotation = { 5 0 0} scale = 1.0}
+	locator = { name = "impact_site" position = { 0.0 0.0 -10.0}	rotation = { 0 0 0} scale = 1.0}
 		
 	default_state = "idle"
 	
 	state = 
 	{ 
 		name = "idle" 
-		state_time = 10
-		looping = yes 
+		chance = 1
+		state_time = 4
+		looping = no 
 
-		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/flamethrower_company" } }
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/skirmish" } }
 	
-		event = { time = 0 node = "locator_vfx_01" particle = "particle_rifle_pm_flamethrower_company" trigger_once = yes keep_particle = no}	
+		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = no}			
+		event = { time = 0 node = "locator_vfx_02" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = no}
+		event = { time = 0.1 node = "impact_site" particle = "war/bullet_impacts_rifle" trigger_once = yes keep_particle = yes}
+		
+		next_state = "idle"
+	}
+
+	state = 
+	{ 
+		name = "idle" 
+		chance = 1
+		state_time = 5
+		looping = no 
+
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/skirmish" } }
+	
+		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = no}			
+		event = { time = 0 node = "locator_vfx_02" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = no}
+		event = { time = 0.1 node = "impact_site" particle = "war/bullet_impacts_rifle" trigger_once = yes keep_particle = yes}
 		
 		next_state = "idle"
 	}
 }
 
+entity = 
+{
+	name = "arabic_line_infantry_pm_skirmish_machine_gunners_entity"
+	pdxmesh = "arabic_line_infantry_mesh"
+
+	locator = { name = "locator_vfx_01" position = { -1.0 0.4 -0.6 } rotation = { -5 0 0} scale = 1.0}
+	locator = { name = "locator_vfx_02" position = { 1.0 0.4 -0.6 }	rotation = { 5 0 0} scale = 1.0}
+	locator = { name = "impact_site" position = { 0.0 0.0 -10.0}	rotation = { 0 0 0} scale = 1.0}
+	
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 4
+		looping = yes 
+
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/machine_gunners" } }
+	
+		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_skirmish_machine_gunners" trigger_once = yes keep_particle = no}	
+		event = { time = 0 node = "locator_vfx_02" particle = "war/rifle_pm_skirmish_machine_gunners" trigger_once = yes keep_particle = no}
+		event = { time = 0 node = "impact_site" particle = "war/bullet_impacts" trigger_once = yes keep_particle = no}
+		
+		next_state = "idle"
+	}
+}
 
 entity = 
 {
 	name = "arabic_line_infantry_pm_cannon_artillery_entity"
 	pdxmesh = "arabic_line_infantry_mesh"
 	
+	locator = { name = "impact_site" position = { 0.0 0.0 -10.0}	rotation = { 0 0 0} scale = 1.0}
 	locator = { name = "locator_vfx_01" position = { -1.2 0.6 0.5 } rotation = { 30 0 0 } scale = 1.0}
 	locator = { name = "locator_vfx_02" position = { 1.4 0.6 -0.2 }	 rotation = { -30 0 0 } scale = 1.0}
 	locator = { name = "locator_vfx_03" position = { 0.0 0.6 -1.2 }	 rotation = { 0 0 0 } scale = 1.0}
@@ -148,7 +236,8 @@ entity =
 		
 		next_state = "idle"
 	}
-		state =
+
+	state =
 	{
 		name = "start"
 		chance = 1
@@ -165,7 +254,8 @@ entity =
 		
 		next_state = "idle"
 	}
-		state =
+
+	state =
 	{
 		name = "start"
 		chance = 1
@@ -183,7 +273,6 @@ entity =
 		next_state = "idle"
 	}
 	
-	
 	state = 
 	{ 
 		name = "idle" 
@@ -193,7 +282,9 @@ entity =
 		event = { time = 0.1 node = "locator_vfx_01" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
 		event = { time = 0.2 node = "locator_vfx_02" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
 		event = { time = 0.25 node = "locator_vfx_03" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		
+		event = { time = 0.4 node = "impact_site" particle = "war/artillery_cannon_parent"	 trigger_once = no keep_particle = no}
+
+		event = {  time = 0.4 keep_sound = no trigger_once = no sound = { soundeffect = "event:/SFX/VFX/war/artillery_mobile" } }
 		event = { time = 0.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/cannon_artillery" } }	
 		event = { time = 0.2 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/cannon_artillery" } }	
 		event = { time = 0.25 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/cannon_artillery" } }	
@@ -202,40 +293,96 @@ entity =
 	}
 }
 
-
-
 entity = 
 {
-	name = "arabic_line_infantry_pm_skirmish_infantry_entity"
-	pdxmesh = "arabic_line_infantry_mesh"
+	name = "arabic_mobile_artillery_pm_mobile_artillery_entity"
+	pdxmesh = "arabic_mobile_artillery_mesh"
 	
-	locator = { name = "locator_vfx_01" position = { 0.0 0.4 -0.6 }	rotation = { 0 0 0} scale = 1.0}
+	locator = { name = "impact_site" position = { 0.0 0.0 -10.0}	rotation = { 0 0 0} scale = 1.0}
 		
-	default_state = "idle"
+	default_state = "start"
 	
+	state =
+	{
+		name = "start"
+		chance = 1
+		animation = "attack_animation"
+		looping = no
+		
+		time_offset = 0.7
+		
+		event = { time = 0.0 node = "loc_cannon_right" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 0.0 node = "loc_cannon_middle" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 0.0 node = "loc_cannon_left" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+
+		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/artillery/mobile/generic" } }
+				
+		next_state = "idle"
+	}
+	
+	state =
+	{
+		name = "start"
+		chance = 1
+		animation = "attack_animation"
+		looping = no
+		time_offset = 0.5
+		
+		event = { time = 0.0 node = "loc_cannon_right" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 0.0 node = "loc_cannon_middle" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 0.0 node = "loc_cannon_left" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+
+		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/artillery/mobile/generic" } }
+				
+		next_state = "idle"
+	}
+	
+	state =
+	{
+		name = "start"
+		chance = 1
+		animation = "attack_animation"
+		looping = no
+		time_offset = 0.1
+		
+		event = { time = 0.0 node = "loc_cannon_right" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 0.0 node = "loc_cannon_middle" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 0.0 node = "loc_cannon_left" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+
+		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/artillery/mobile/generic" } }
+				
+		next_state = "idle"
+	}
+	
+		
 	state = 
 	{ 
 		name = "idle" 
-		state_time = 4
+		animation = "attack_animation"
 		looping = yes 
 
-		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/skirmish" } }
-	
-		event = { time = 0 node = "locator_vfx_01" particle = "particle_rifle_pm_skirmish_infantry" trigger_once = yes keep_particle = no}	
+		event = { time = 0.0 node = "loc_cannon_right" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 0.0 node = "loc_cannon_middle" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 0.0 node = "loc_cannon_left" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 0.3 node = "impact_site" particle = "war/artillery_mobile_parent" trigger_once = no keep_particle = no}
+
+		event = {  time = 0.3 keep_sound = no trigger_once = no sound = { soundeffect = "event:/SFX/VFX/war/artillery_mobile" } }
+		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/artillery/mobile/generic" } }
 		
 		next_state = "idle"
 	}
 }
 
+
+
+
 entity = 
 {
-	name = "arabic_irregular_infantry_pm_irregular_infantry_entity"
-	pdxmesh = "arabic_irregular_infantry_mesh"
+	name = "arabic_line_infantry_pm_flamethrower_company_entity"
+	pdxmesh = "arabic_line_infantry_mesh"
 	
-	locator = { name = "locator_vfx_01" position = { -1.2 0.1 -1.9 } rotation = { 30 0 0 } scale = 1.0}
-	locator = { name = "locator_vfx_02" position = { 1.4 0.1 -1.9 }	 rotation = { -30 0 0 } scale = 1.0}
-	locator = { name = "locator_vfx_03" position = { 0.0 0.1 -2.5 }	 rotation = { 0 0 0 } scale = 1.0}
-	
+	locator = { name = "locator_vfx_01" position = { 0.0 0.9 -0.6 }	rotation = { 0 0 0} scale = 1.0}
+		
 	default_state = "idle"
 	
 	state = 
@@ -243,40 +390,15 @@ entity =
 		name = "idle" 
 		state_time = 10
 		looping = yes 
-	
-		event = { time = 0 node = "locator_vfx_01" particle = "particle_rifle_pm_irregular_infantry" trigger_once = yes keep_particle = no}	
-		
-		event = { time = 0 node = "locator_vfx_02" particle = "particle_rifle_pm_irregular_infantry" trigger_once = yes keep_particle = no}	
-		
-		event = { time = 0 node = "locator_vfx_03" particle = "particle_rifle_pm_irregular_infantry" trigger_once = yes keep_particle = no}	
 
-		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/irregular/generic" } }
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/flamethrower_company" } }
+	
+		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_flamethrower_company" trigger_once = yes keep_particle = no}	
 		
 		next_state = "idle"
 	}
 }
 
-entity = 
-{
-	name = "arabic_line_infantry_pm_line_infantry_entity"
-	pdxmesh = "arabic_line_infantry_mesh"
-	
-	locator = { name = "locator_vfx_01" position = { -1.0 0.4 -0.6 }	rotation = { -15 0 0} scale = 1.0}
-	locator = { name = "locator_vfx_02" position = { 1.0 0.4 -0.6 }	rotation = { 15 0 0} scale = 1.0}
-	
-	default_state = "idle"
-	
-	state = 
-	{ 
-		name = "idle" 
-		state_time = 10
-		looping = yes 
-	
-		event = { time = 0 node = "locator_vfx_01" particle = "particle_rifle_pm_line_infantry_focusfire" trigger_once = yes keep_particle = no}	
-		event = { time = 0 node = "locator_vfx_02" particle = "particle_rifle_pm_line_infantry_focusfire" trigger_once = yes keep_particle = no}
 
-		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/generic" } }
-		
-		next_state = "idle"
-	}
-}
+
+

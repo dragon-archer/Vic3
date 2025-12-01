@@ -50,7 +50,6 @@ entity =
 entity = 
 {
 	name = "scaffolding_01_entity"
-	#pdxmesh = "scaffolding_01_mesh"
 	
 	locator = { name = center position = { 0 0 0 } rotation = { 0 0 0 }}
 	
@@ -59,9 +58,8 @@ entity =
 	state = 
 	{
 		name = "start"
-		#animation = ""
 		looping = no
-		state_time = 6
+		state_time = 2
 			
 			
 		#VFX Particle
@@ -69,9 +67,7 @@ entity =
 		{ 
 			time = 0 
 			node = "center" 
-			#particle = "infrastructure/building_construction_begin_small"
 			particle = "infrastructure/construction_begin_small"
-			#particle = "whale_exhalation"
 			trigger_once = yes 
 			keep_particle = yes 
 		}
@@ -81,10 +77,10 @@ entity =
 		{
 			time = 0
 			node = "center" 
-			#attachment_id = "scaffolding_01_mesh_entity_attachment"
 			entity = "scaffolding_01_mesh_entity"
-			life = 6
-			#entity_fade_speed = 1
+			attachment_id = "scaffolding_01_mesh_entity_attachment"
+			life = 2
+			entity_fade_speed = 2
 		}
 				
 		next_state = "idle"

@@ -56,6 +56,11 @@ graph={
 					linked_node=28
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=387
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:HasTag={
@@ -1219,6 +1224,11 @@ graph={
 					linked_node=63
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=420
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1632,6 +1642,11 @@ graph={
 				link={
 					pin_id="billboard_axis"
 					linked_node=124
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=437
 					linked_pin="value"
 				}
 			}
@@ -2677,11 +2692,6 @@ graph={
 					pin_id="tag"
 					linked_node=189
 					linked_pin="value"
-				}
-				link={
-					pin_id="effect_flags"
-					linked_node=209
-					linked_pin="effect_id"
 				}
 				link={
 					pin_id="angular_velocity"
@@ -4312,6 +4322,11 @@ graph={
 					linked_node=313
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=525
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:ConstVector3f={
@@ -4955,6 +4970,11 @@ graph={
 					linked_node=326
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=551
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
@@ -5352,6 +5372,46 @@ graph={
 					linked_node=285
 					linked_pin="value"
 				}
+			}
+		}
+		pdxns:values:Bool={
+			id=387
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=437
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=551
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=525
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=420
+			node={
+				value=no
+			}
+			inputs={
 			}
 		}
 	}

@@ -19,11 +19,12 @@ types Tweakable
 				
 				text = "[TweakableUiEntry.GetFriendlyName]"
 
-				raw_tooltip = "'[Tweakable.GetTweakableId]' Right click to copy this Id to the clipboard."
+				raw_tooltip = "[Tweakable.GetDescription]"
 				tooltip_type = "mouse"
 				tooltipwidget = {
 					using = dockable_tooltip
 				}
+				tooltip_widgetanchor = "bottom"
 
 				align = nobaseline
 
@@ -66,45 +67,56 @@ types Tweakable
 		}
 	}
 
-	type expand_button = checkbutton {
-		gfxtype = checkbuttongfx
-		shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
+	type expand_button_icon = icon {
+		shaderfile = "gfx/FX/pdxgui_default.shader"
 		texture = "gfx/editor_gui/editor_tree_expand.dds"
 		framesize = { 16 16 }
+		frame = "[Select_int32(TweakableCategory.IsExpanded, '(int32)2', '(int32)1')]"
 	}
 
 	# Type is created from code, don't change the name.
 	type category_header = widget {
 
 		hbox = {
-			spacing = 3
-			layoutpolicy_horizontal = expanding
 
-			margin_left = "[TweakableCategory.GetMargin]"
-
-			expand_button = {
-				onclick = "[TweakableCategory.ToggleExpanded]"
-				onclick = "[Tweaker.RebuildTree]" # It's easier to rebuild the entire tree, which is quite fast anyway
-				checked = "[TweakableCategory.IsExpanded]"
-			}
-
-			editor_textbox = {
-				layoutpolicy_horizontal = preferred
-				fontsize = 13
-				fontweight = bold
-				autoresize = yes
-				text = "[TweakableCategory.GetName]"
-				elide = right
-				align = nobaseline
-			}
-
-			widget = {
+			checkbutton = {
+				gfxtype = checkbuttongfx
 				layoutpolicy_horizontal = expanding
-				icon = {
-					alpha = 0.3
-					texture = "gfx/editor_gui/separator.dds"
-					size = { 100% 3 }
-					position = { 0 55% }
+			
+				click_modifiers = {
+					ondefault = "[TweakableCategory.ToggleExpanded]"
+					ondefault = "[Tweaker.RebuildTree]" # It's easier to rebuild the entire tree, which is quite fast anyway
+					onalt = "[TweakableCategory.ToggleTreeExpanded]"
+					onalt = "[Tweaker.RebuildTree]"
+				}
+				checked = "[TweakableCategory.IsExpanded]"
+
+				hbox = {
+					spacing = 3
+					layoutpolicy_horizontal = expanding
+					margin_left = "[TweakableCategory.GetMargin]"
+			
+					expand_button_icon = {}
+
+					editor_textbox = {
+						layoutpolicy_horizontal = preferred
+						fontsize = 13
+						fontweight = bold
+						autoresize = yes
+						text = "[TweakableCategory.GetName]"
+						elide = right
+						align = nobaseline
+					}
+
+					widget = {
+						layoutpolicy_horizontal = expanding
+						icon = {
+							alpha = 0.3
+							texture = "gfx/editor_gui/separator.dds"
+							size = { 100% 3 }
+							position = { 0 50% }
+						}
+					}
 				}
 			}
 		}
@@ -330,6 +342,7 @@ vbox = {
 		using = tools_spacing
 
 		editor_scrollarea = {
+			alwaystransparent = no
 
 			blockoverride "Properties"
 			{

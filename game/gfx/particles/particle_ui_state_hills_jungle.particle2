@@ -14,7 +14,7 @@ graph={
 		pdxns:values:ConstVector3f={
 			id=1
 			node={
-				value={ 25.000000 -5.000000 20.000000 }
+				value={ 25.000000 -2.000000 20.000000 }
 			}
 			inputs={
 			}
@@ -1269,11 +1269,6 @@ graph={
 					linked_pin="value"
 				}
 				link={
-					pin_id="effect_flags"
-					linked_node=89
-					linked_pin="effect_id"
-				}
-				link={
 					pin_id="angular_velocity"
 					linked_node=62
 					linked_pin="value"
@@ -2039,7 +2034,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=264
+					linked_node=219
 					linked_pin="value"
 				}
 			}
@@ -2605,7 +2600,7 @@ graph={
 			}
 		}
 		pdxns:logic:SelectB={
-			id=221
+			id=189
 			node={
 			}
 			inputs={
@@ -2616,7 +2611,7 @@ graph={
 				}
 				link={
 					pin_id="true_value"
-					linked_node=230
+					linked_node=220
 					linked_pin="value"
 				}
 				link={
@@ -2627,7 +2622,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetUserData={
-			id=231
+			id=190
 			node={
 				user_data={
 					id="usr:lifetime"
@@ -2639,7 +2634,7 @@ graph={
 			}
 		}
 		pdxns:values:ConstVector3f={
-			id=223
+			id=191
 			node={
 				value={ 0.000000 -1.500000 0.000000 }
 			}
@@ -2647,24 +2642,24 @@ graph={
 			}
 		}
 		pdxns:particle:ApplyForce={
-			id=224
+			id=192
 			node={
 			}
 			inputs={
 				link={
 					pin_id="force"
-					linked_node=223
+					linked_node=191
 					linked_pin="value"
 				}
 				link={
 					pin_id="condition"
-					linked_node=221
+					linked_node=189
 					linked_pin="selected_value"
 				}
 			}
 		}
 		pdxns:values:Float={
-			id=225
+			id=193
 			node={
 				value=0.500000
 			}
@@ -2672,7 +2667,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetAge={
-			id=232
+			id=194
 			node={
 			}
 			inputs={
@@ -2703,18 +2698,18 @@ graph={
 			}
 		}
 		pdxns:math:MulF={
-			id=227
+			id=198
 			node={
 			}
 			inputs={
 				link={
 					pin_id="factor1"
-					linked_node=231
+					linked_node=190
 					linked_pin="value"
 				}
 				link={
 					pin_id="factor2"
-					linked_node=225
+					linked_node=193
 					linked_pin="value"
 				}
 			}
@@ -2761,7 +2756,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=266
+					linked_node=216
 					linked_pin="value"
 				}
 			}
@@ -2994,7 +2989,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=266
+			id=216
 			node={
 				value=no
 			}
@@ -3022,7 +3017,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=264
+			id=219
 			node={
 				value=no
 			}
@@ -3030,18 +3025,18 @@ graph={
 			}
 		}
 		pdxns:math:GreaterThanF={
-			id=230
+			id=220
 			node={
 			}
 			inputs={
 				link={
 					pin_id="op1"
-					linked_node=232
+					linked_node=194
 					linked_pin="age"
 				}
 				link={
 					pin_id="op2"
-					linked_node=227
+					linked_node=198
 					linked_pin="product"
 				}
 			}

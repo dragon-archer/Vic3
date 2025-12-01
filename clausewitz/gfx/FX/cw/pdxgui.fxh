@@ -7,7 +7,9 @@ ConstantBuffer( PdxGuiConstants )
 ConstantBuffer( PdxGuiWidgetConstants )
 {
 	float4 TextTintColor; 		#Maybe this should just be TintColor?
+	float4 TextOutlineColor;
 	float2 WidgetLeftTop;
+	int TextOutlineWidth;
 };
 
 VertexStruct VS_INPUT_PDX_GUI

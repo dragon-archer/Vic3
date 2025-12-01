@@ -64,28 +64,42 @@ window = {
 						dockable_button = {
 							onclick = [ToolsSearchResult.Callback]
 
-							vbox = {
-								margin = { 6 6 }
-								spacing = 2
+							tooltip = "[ToolsSearchResult.Tooltip]"
 
-								editor_textbox = {
-									align = left|top
-									raw_text = "#COLOR:{1,1,1} [ToolsSearchResult.Text] #!"
-									fontsize = 12
-									autoresize = yes
-
-									layoutpolicy_vertical = preferred
-									layoutpolicy_horizontal = expanding
+							hbox = {
+								icon = {
+									texture = "gfx/interface/white.dds"
+									size = { 3 0 }
+									color = { 0.827 0.525 0.608 1.0 } # Same color used for fomatting item text and description.
+									visible = "[ToolsSearchResult.DoesTooltipMatch]"
+									layoutpolicy_vertical = expanding
+									layoutpolicy_horizontal = preferred 
 								}
 
-								editor_textbox = {
-									align = left|top
-									raw_text = "#BOLD;COLOR:{0.7,0.7,0.7} [ToolsSearchResult.Description] #!"
-									fontsize = 10
-									autoresize = yes
-
-									layoutpolicy_vertical = expanding
+								vbox = {
+									margin = { 6 6 }
+									spacing = 2
 									layoutpolicy_horizontal = expanding
+
+									editor_textbox = {
+										align = left|top
+										raw_text = "#COLOR:{1,1,1} [ToolsSearchResult.Text] #!"
+										fontsize = 12
+										autoresize = yes
+
+										layoutpolicy_vertical = preferred
+										layoutpolicy_horizontal = expanding
+									}
+
+									editor_textbox = {
+										align = left|top
+										raw_text = "#BOLD;COLOR:{0.7,0.7,0.7} [ToolsSearchResult.Description] #!"
+										fontsize = 10
+										autoresize = yes
+
+										layoutpolicy_vertical = expanding
+										layoutpolicy_horizontal = expanding
+									}
 								}
 							}
 						}
@@ -170,11 +184,21 @@ window = {
 						dockable_button = {
 							onclick = [ToolsSearchResult.Callback]
 
-							tooltip = "[ToolsSearchResult.Text]"
+							tooltip = "[ToolsSearchResult.Tooltip]"
 
 							hbox = {
 								margin = { 6 6 }
 								spacing = 2
+
+								icon = {
+									texture = "gfx/interface/white.dds"
+									size = { 3 0 }
+									color = { 0.827 0.525 0.608 1.0 } # Same color used for fomatting item text and description.
+									visible = "[ToolsSearchResult.DoesTooltipMatch]"
+									
+									layoutpolicy_vertical = expanding
+									layoutpolicy_horizontal = preferred 
+								}
 
 								editor_textbox = {
 									align = left|top

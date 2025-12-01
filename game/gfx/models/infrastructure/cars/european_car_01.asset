@@ -56,9 +56,8 @@ entity = {
 		name = "moving" animation = "moving_animation" looping = yes
 		start_event = { sound  = { soundeffect = "event:/SFX/Vehicles/car" } keep_sound = yes }
 
-		event = { time = 0 node = "locator_exhaust"       particle = "infrastructure/vehicle_smoke" trigger_once = yes}
-		event = { time = 0 node = "locator_wheel_back_01" particle = "infrastructure/vehicle_dust" trigger_once = yes}
-		event = { time = 0 node = "locator_wheel_back_02" particle = "infrastructure/vehicle_dust" trigger_once = yes}
+		#event = { time = 0 node = "locator_exhaust"       particle = "infrastructure/vehicle_smoke" trigger_once = yes}
+		event = { time = 0 node = "locator_wheel_back_02" particle = "vehicles/car_dust" trigger_once = yes}
 	}
 
 	scale = 0.16

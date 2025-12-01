@@ -1,9 +1,9 @@
 Includes = {
 	"cw/pdxmesh.fxh"
-	"cw/pdxterrain.fxh"
+	"cw/terrain.fxh"
 	"cw/utility.fxh"
 	"cw/pdxgui.fxh"
-	"jomini/jomini_fog.fxh"	
+	"jomini/jomini_fog.fxh"
 	"jomini/jomini_lighting.fxh"
 	"jomini/jomini_mapobject.fxh"
 	"coloroverlay.fxh"
@@ -32,12 +32,12 @@ VertexShader =
 		VS_OUTPUT_EDGEOFWORLD ConvertOutput( VS_OUTPUT_PDXMESH MeshOutput )
 		{
 			VS_OUTPUT_EDGEOFWORLD Output;
-				
+
 			Output.WorldSpacePos = MeshOutput.WorldSpacePos;
 			Output.WorldSpacePos.y += 1.0f;
 			Output.Position = FixProjectionAndMul( ViewProjectionMatrix, float4( Output.WorldSpacePos, 1.0 ) );
 			Output.UV01 = float2( MeshOutput.WorldSpacePos.x / MapSize.x, 1.0 - MeshOutput.WorldSpacePos.z / MapSize.y );
-			
+
 			return Output;
 		}
 	]]
@@ -61,7 +61,7 @@ VertexShader =
 		[[
 			PDX_MAIN
 			{
-				return ConvertOutput( PdxMeshVertexShader( PdxMeshConvertInput( Input ), 0, UnpackAndGetMapObjectWorldMatrix( Input.InstanceIndex24_Opacity8 ) ) );				
+				return ConvertOutput( PdxMeshVertexShader( PdxMeshConvertInput( Input ), 0, UnpackAndGetMapObjectWorldMatrix( Input.InstanceIndex24_Opacity8 ) ) );
 			}
 		]]
 	}
@@ -80,34 +80,34 @@ PixelShader =
 
 				float2 UV = Input.UV01;
 
-				float Alpha = 1.0f - FlatMapLerp;
+				float Alpha = 1.0f - FlatmapLerp;
 				PdxMeshApplyDitheredOpacity( Alpha, UV );
 				clip( Alpha - 0.001f );
-				
+
 				// Base cloud layer
 				float2 BaseCloudUV = float2( UV.x * BaseCloudTileFactor, UV.y * ( BaseCloudTileFactor / 2.0f ) );
 				float2 BaseCloudOffset = GlobalTime * BaseCloudScrolling;
 				float2 AnimatedBaseCloudUV = BaseCloudUV + BaseCloudOffset;
-				
+
 				// Cloud layers
-				float CloudAlpha = PdxTex2D( EdgeOfWorldTexture, AnimatedBaseCloudUV ).r;				
+				float CloudAlpha = PdxTex2D( EdgeOfWorldTexture, AnimatedBaseCloudUV ).r;
 				float CloudAlpha2 = PdxTex2D( EdgeOfWorldTexture, ( AnimatedBaseCloudUV + GlobalTime * Cloud1Scrolling ) * Cloud1TileFactor ).r;
 				float CloudAlpha3 = PdxTex2D( EdgeOfWorldTexture, ( AnimatedBaseCloudUV + GlobalTime * Cloud2Scrolling ) * Cloud2TileFactor ).r;
 				CloudAlpha = LevelsScan( CloudAlpha, BaseCloudPosition, BaseCloudContrast );
 				CloudAlpha2 = LevelsScan( CloudAlpha2, Cloud1Position, Cloud1Contrast );
 				CloudAlpha3 = LevelsScan( CloudAlpha3, Cloud2Position, Cloud2Contrast );
-				
+
 				// Color
 				float3 CloudColor = lerp( LowCloudColor.rgb, HighCloudColor.rgb, CloudAlpha * BaseCloudStrength + CloudAlpha2 * Cloud1Strength + CloudAlpha3 * Cloud2Strength );
-				
+
 				float3 Normal = normalize( float3( 0.0f, 1.0f, 0.0f ) );
 				SMaterialProperties MaterialProps = GetMaterialProperties( CloudColor, Normal, 0.8, 0.16, 1.0 );
 				SLightingProperties LightingProps = GetSunLightingProperties( Input.WorldSpacePos, 1.0 );
-				
+
 				float3 Color = CalculateSunLighting( MaterialProps, LightingProps, EnvironmentMap );
 				Color = ApplyDistanceFog( Color, Input.WorldSpacePos );
 				Color *= ColorMultiply;
-				
+
 				// Edge fade
 				float FadeDist = FadeDistance;
 				float FadeTop = Input.WorldSpacePos.z - MapSize.y + 10.0f + FadeDist;
@@ -115,7 +115,7 @@ PixelShader =
 				float FadeBottom = FadeDist - Input.WorldSpacePos.z + 10.0f;
 				FadeBottom = smoothstep( 0.0f, FadeDist, FadeBottom);
 				Alpha *= FadeTop + FadeBottom;
-				
+
 				return float4( Color, Alpha );
 			}
 		]]
@@ -135,14 +135,14 @@ PixelShader =
 				float ColorMult = 1.0f;
 				float SizeMult = 0.2f;
 				float LightWeight = 0.0f;
-				
+
 				// Paralx Coord
 				float3 ToCam = normalize( CameraPosition - Input.WorldSpacePos );
 				float ParalaxDist = ( -2000.0f - Input.WorldSpacePos.y ) / ToCam.y;
 				float ParalaxDist2 = ( -1000.0f - Input.WorldSpacePos.y ) / ToCam.y;
 				float ParalaxDist3 = ( -300.0f - Input.WorldSpacePos.y ) / ToCam.y;
 				float ParalaxDist4 = ( 300.0f - Input.WorldSpacePos.y ) / ToCam.y;
-				
+
 				float2 uv = float2( ( Input.UV01.x * 2.0f ) - 0.5f, Input.UV01.y );
 
 				float2 p = ( ( uv - 0.5f ) * 200000 * SizeMult );
@@ -162,7 +162,7 @@ PixelShader =
 				BokehLayerSmall( color, p + float2( 100000.0, 100000.0 ), 0.02 * ColorMult * float3( 0.5, 0.3, 0.1 ), LightWeight );
 				Rotate2( p, 0.5 );
 				BokehLayerSmall( color, p + float2( 100000.0, 100000.0 ), 0.001 * ColorMult * float3( 0.5, 0.3, 0.1 ), LightWeight );
-				
+
 				Rotate2( p2, 1.0 );
 				BokehLayerMedium( color, p2 + float2( 100000.0, 100000.0 ), 0.004 * ColorMult * float3( 0.5, 0.3, 0.1 ), LightWeight );
 				Rotate2( p2, 2.0 );
@@ -172,7 +172,7 @@ PixelShader =
 				BokehLayerMedium2( color, p3 + float2( 100000.0, 100000.0 ), 0.004 * ColorMult * float3( 0.5, 0.3, 0.1 ), LightWeight );
 				Rotate2( p3, 8.0 );
 				BokehLayerMedium2( color, p3 + float2( 100000.0, 100000.0 ), 0.004 * ColorMult * float3( 0.5, 0.3, 0.1 ), LightWeight );
-				
+
 				Rotate2( p4, 0.1 );
 				BokehLayerLarge( color, p4 + float2( 100000.0, 100000.0 ), 0.008 * ColorMult * float3( 0.5, 0.3, 0.1 ), LightWeight );
 				Rotate2( p4, 0.5 );
@@ -196,7 +196,7 @@ PixelShader =
 				float FadeLeft = FadeDistance - Input.WorldSpacePos.x;
 				FadeLeft = smoothstep( FadeDistance, 0.0f, FadeLeft );
 				LightWeight *= FadeRight * FadeLeft;
-				
+
 				Color = lerp( defaultcolor, Color, saturate( LightWeight ) );
 
 				return float4( Color, 1.0 );

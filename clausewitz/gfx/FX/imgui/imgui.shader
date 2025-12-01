@@ -45,9 +45,13 @@ PixelShader =
 {
 	MainCode PixelShader
 	{
-		TextureSampler Texture
+		Texture Texture
 		{
 			Ref = ImGuiTexture
+		}
+
+		Sampler DefaultSampler
+		{
 			MagFilter = "Linear"
 			MinFilter = "Linear"
 			MipFilter = "Linear"
@@ -61,7 +65,7 @@ PixelShader =
 		[[
 			PDX_MAIN
 			{
-				float4 Ret = Input.Color * PdxTex2D( Texture, Input.UV ).r;
+				float4 Ret = Input.Color * PdxSampleTex2D( Texture, DefaultSampler, Input.UV ).r;
 				return Ret;
 			}
 		]]

@@ -276,6 +276,7 @@ widget = {
 				}
 				raw_tooltip = "Properties"
 				onclick = "[GraphPanel.Properties]"
+				enabled = "[GraphPanel.IsButtonEnabled('Properties')]"
 				#shortcut = "nodes_save_as"
 			}
 
@@ -410,6 +411,7 @@ widget = {
 			zoom_step = 0.35
 			zoom_min = 0.2
 			zoom_max = 2.0
+			max_update_rate = 25
 			pan_position = { 0 0 }
 
 			scissor = yes

@@ -220,7 +220,7 @@ PixelShader =
 				
 				// PSSL compiler does not like this array and gives "not enough registers available for the entire program."
 				// Lets keep it for other platforms since it gives slightly better performance
-				#ifndef PDX_PROSPERO
+				#ifndef PDX_PSSL
 					// To make sure no borders are missed, we need to check a 8x8 area around our TexelAreaCenter
 					float4 ColorSamples[8*8];
 					for( int y = 0; y < 8; ++y )
@@ -234,7 +234,7 @@ PixelShader =
 				
 				// Main color deduced from the 2x2 source texels that lie closest to TexelAreaCenter
 				float4 MainColor = CalcMainColor( 
-				#ifdef PDX_PROSPERO
+				#ifdef PDX_PSSL
 					GetProvinceColor( TexelAreaCenter + Offset + float2(3,3) ),
 					GetProvinceColor( TexelAreaCenter + Offset + float2(4,3) ),
 					GetProvinceColor( TexelAreaCenter + Offset + float2(3,4) ),
@@ -266,7 +266,7 @@ PixelShader =
 							float2 SamplePoint = abs( float2(x, y) + Offset );
 							float SampleDistanceSq = dot( SamplePoint, SamplePoint );
 							
-							#ifdef PDX_PROSPERO
+							#ifdef PDX_PSSL
 								float IsBorder = DifferentColor( MainColor, GetProvinceColor( TexelAreaCenter + Offset + float2(x,y) ) );
 							#else
 								float IsBorder = DifferentColor( MainColor, ColorSamples[x + ( y * 8 )] );

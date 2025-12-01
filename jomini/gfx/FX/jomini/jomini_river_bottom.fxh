@@ -1,5 +1,5 @@
 Includes = {
-	"cw/pdxterrain.fxh"
+	"cw/terrain.fxh"
 	"cw/upscale_utils.fxh"
 	"jomini/jomini_river.fxh"
 }

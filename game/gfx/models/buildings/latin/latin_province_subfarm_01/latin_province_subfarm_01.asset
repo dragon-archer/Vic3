@@ -17,7 +17,8 @@ lod_percentages = {
 		texture_diffuse = "latin_province_subfarm_decal_01_diffuse.dds"
 		texture_normal = "latin_province_subfarm_decal_01_normal.dds"
 		texture_specular = "latin_province_subfarm_decal_01_properties.dds"
-		shader = "snap_to_terrain_alpha_to_coverage"
+		shader = "standard_alpha_to_coverage"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -27,7 +28,8 @@ lod_percentages = {
 		texture_diffuse = "latin_province_subfarm_01_diffuse.dds"
 		texture_normal = "latin_province_subfarm_01_normal.dds"
 		texture_specular = "latin_province_subfarm_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -37,7 +39,8 @@ lod_percentages = {
 		texture_diffuse = "latin_province_subfarm_decal_01_diffuse.dds"
 		texture_normal = "latin_province_subfarm_decal_01_normal.dds"
 		texture_specular = "latin_province_subfarm_decal_01_properties.dds"
-		shader = "snap_to_terrain_alpha_to_coverage"
+		shader = "standard_alpha_to_coverage"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -47,7 +50,8 @@ lod_percentages = {
 		texture_diffuse = "latin_province_subfarm_01_diffuse.dds"
 		texture_normal = "latin_province_subfarm_01_normal.dds"
 		texture_specular = "latin_province_subfarm_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -57,7 +61,8 @@ lod_percentages = {
 		texture_diffuse = "latin_province_subfarm_decal_01_diffuse.dds"
 		texture_normal = "latin_province_subfarm_decal_01_normal.dds"
 		texture_specular = "latin_province_subfarm_decal_01_properties.dds"
-		shader = "snap_to_terrain_alpha_to_coverage"
+		shader = "standard_alpha_to_coverage"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -67,7 +72,8 @@ lod_percentages = {
 		texture_diffuse = "latin_province_subfarm_01_diffuse.dds"
 		texture_normal = "latin_province_subfarm_01_normal.dds"
 		texture_specular = "latin_province_subfarm_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -77,7 +83,8 @@ lod_percentages = {
 		texture_diffuse = "latin_province_subfarm_decal_01_diffuse.dds"
 		texture_normal = "latin_province_subfarm_decal_01_normal.dds"
 		texture_specular = "latin_province_subfarm_decal_01_properties.dds"
-		shader = "snap_to_terrain_alpha_to_coverage"
+		shader = "standard_alpha_to_coverage"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -87,7 +94,8 @@ lod_percentages = {
 		texture_diffuse = "latin_province_subfarm_01_diffuse.dds"
 		texture_normal = "latin_province_subfarm_01_normal.dds"
 		texture_specular = "latin_province_subfarm_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -97,7 +105,8 @@ lod_percentages = {
 		texture_diffuse = "latin_province_subfarm_decal_01_diffuse.dds"
 		texture_normal = "latin_province_subfarm_decal_01_normal.dds"
 		texture_specular = "latin_province_subfarm_decal_01_properties.dds"
-		shader = "snap_to_terrain_alpha_to_coverage"
+		shader = "standard_alpha_to_coverage"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -107,7 +116,8 @@ lod_percentages = {
 		texture_diffuse = "latin_province_subfarm_01_diffuse.dds"
 		texture_normal = "latin_province_subfarm_01_normal.dds"
 		texture_specular = "latin_province_subfarm_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }

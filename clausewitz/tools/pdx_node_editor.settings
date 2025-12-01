@@ -1,0 +1,46 @@
+@ubuntu_black = 0x000000
+@ubuntu_red = 0xcc0000
+@ubuntu_green = 0x4e9a06
+@ubuntu_yellow = 0xc4a000
+@ubuntu_blue = 0x729fcf
+@ubuntu_magenta = 0x75507b
+@ubuntu_cyan = 0x06989a
+@ubuntu_white = 0xd3d7cf
+@ubuntu_bright_black = 0x555753
+@ubuntu_bright_red = 0xef2929
+@ubuntu_bright_green = 0x8ae234
+@ubuntu_bright_yellow = 0xfce94f
+@ubuntu_bright_blue = 0x32afff
+@ubuntu_bright_magenta = 0xad7fa8
+@ubuntu_bright_cyan = 0x34e2e2
+@ubuntu_bright_white = 0xffffff
+
+node_editor_settings = {
+
+    node_color_schemes = {
+
+        default = "Ubuntu"
+
+        #"Ubuntu" = {
+        #    "math" = 0xff00ff
+        #    "entity_designer" = { 1 0 1 1 }
+        #}
+
+        "Ubuntu" = {
+            default = @ubuntu_bright_black
+            "logic" = @ubuntu_green
+            "math" = @ubuntu_red
+            "gfx" = @ubuntu_green
+            "particle" = @ubuntu_bright_green
+            "shader" = @ubuntu_bright_green
+            "ecs" = @ubuntu_cyan
+            "entity_designer" = @ubuntu_blue
+            "debug" = @ubuntu_bright_red
+            "text" = @ubuntu_white
+        }
+
+        #"your_scheme_name" = {
+        #    ...
+        #}
+    }
+}

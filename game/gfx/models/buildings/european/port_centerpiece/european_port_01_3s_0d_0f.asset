@@ -24,7 +24,8 @@ lod_percentages = {
 		texture_diffuse = "general_unit_ship_01_diffuse.dds"
 		texture_normal = "general_unit_ship_01_normal.dds"
 		texture_specular = "general_unit_ship_01_properties.dds"
-		shader = "standard_alpha_to_coverage_snap_to_water"
+		shader = "standard_alpha_to_coverage"
+		additional_shader_defines = { "SNAP_TO_WATER" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -61,7 +62,8 @@ lod_percentages = {
 		texture_diffuse = "general_unit_ship_01_diffuse.dds"
 		texture_normal = "general_unit_ship_01_normal.dds"
 		texture_specular = "general_unit_ship_01_properties.dds"
-		shader = "standard_alpha_to_coverage_snap_to_water"
+		shader = "standard_alpha_to_coverage"
+		additional_shader_defines = { "SNAP_TO_WATER" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -89,7 +91,8 @@ lod_percentages = {
 		texture_diffuse = "general_unit_ship_01_diffuse.dds"
 		texture_normal = "general_unit_ship_01_normal.dds"
 		texture_specular = "general_unit_ship_01_properties.dds"
-		shader = "standard_alpha_to_coverage_snap_to_water"
+		shader = "standard_alpha_to_coverage"
+		additional_shader_defines = { "SNAP_TO_WATER" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }

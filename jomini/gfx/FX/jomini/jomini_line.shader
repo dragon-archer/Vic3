@@ -144,8 +144,6 @@ Effect standard_alpha_blend
 	PixelShader = "PS_standard"
 	
 	BlendState = BlendStateAlphaBlend
-	
-	Defines = { "DIFFUSE_TEXTURE DiffuseTexture" "MASK_TEXTURE MaskTexture" }
 }
 Effect standard_alpha_blend_depth
 {
@@ -154,8 +152,6 @@ Effect standard_alpha_blend_depth
 	
 	BlendState = BlendStateAlphaBlend
 	DepthStencilState = DepthStencilStateEnabled
-	
-	Defines = { "DIFFUSE_TEXTURE DiffuseTexture" "MASK_TEXTURE MaskTexture" }
 }
 
 Effect standard_additive
@@ -164,8 +160,6 @@ Effect standard_additive
 	PixelShader = "PS_standard"
 	
 	BlendState = BlendStateAdditiveBlend
-	
-	Defines = { "DIFFUSE_TEXTURE DiffuseTexture" "MASK_TEXTURE MaskTexture" }
 }
 Effect standard_additive_depth
 {
@@ -174,8 +168,6 @@ Effect standard_additive_depth
 	
 	BlendState = BlendStateAdditiveBlend
 	DepthStencilState = DepthStencilStateEnabled
-	
-	Defines = { "DIFFUSE_TEXTURE DiffuseTexture" "MASK_TEXTURE MaskTexture" }
 }
 
 Effect standard_shadow
@@ -185,8 +177,6 @@ Effect standard_shadow
 	
 	RasterizerState = RasterizerStateShadow
 	DepthStencilState = DepthStencilStateShadow
-	
-	Defines = { "DIFFUSE_TEXTURE DiffuseTexture" "MASK_TEXTURE MaskTexture" }
 }
 
 Effect lighting

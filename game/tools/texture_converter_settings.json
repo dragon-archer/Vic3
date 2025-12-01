@@ -1,7 +1,7 @@
 [
   {
     "base_directory": "",
-    "name": "standard",
+    "name": "Standard",
     "outputs": [
       {
         "channel_count": 4,
@@ -45,7 +45,7 @@
           },
           {
             "input_channel": "blue",
-            "map": "color2",
+            "map": "lightmask",
             "output_channel": "blue"
           },
           {
@@ -72,7 +72,7 @@
           },
           {
             "input_channel": "blue",
-            "map": "metalness",
+            "map": "metallic",
             "output_channel": "blue"
           },
           {
@@ -88,127 +88,35 @@
   },
   {
     "base_directory": "",
-    "name": "standard_substance",
+    "name": "Env Tint",
     "outputs": [
       {
-        "channel_count": 4,
+        "channel_count": 3,
         "inputs": [
           {
             "input_channel": "red",
-            "map": "basecolor",
+            "map": "tint",
             "output_channel": "red"
           },
           {
             "input_channel": "green",
-            "map": "basecolor",
+            "map": "tint",
             "output_channel": "green"
           },
           {
             "input_channel": "blue",
-            "map": "basecolor",
+            "map": "tint",
             "output_channel": "blue"
-          },
-          {
-            "input_channel": "blue",
-            "map": "height",
-            "output_channel": "alpha"
           }
         ],
-        "name": "_diffuse",
+        "name": "_tint",
         "trim": true
-      },
-      {
-        "channel_count": 4,
-        "inputs": [
-          {
-            "input_channel": "red",
-            "map": "normal",
-            "output_channel": "red"
-          },
-          {
-            "input_channel": "red",
-            "map": "normal",
-            "output_channel": "green"
-          },
-          {
-            "input_channel": "blue",
-            "map": "color2",
-            "output_channel": "blue"
-          },
-          {
-            "input_channel": "green",
-            "map": "normal",
-            "output_channel": "alpha"
-          }
-        ],
-        "name": "_normal",
-        "trim": false
       }
     ]
   },
   {
     "base_directory": "",
-    "name": "standard_portrait_decal",
-    "outputs": [
-      {
-        "channel_count": 4,
-        "inputs": [
-          {
-            "input_channel": "red",
-            "map": "basecolor",
-            "output_channel": "red"
-          },
-          {
-            "input_channel": "green",
-            "map": "basecolor",
-            "output_channel": "green"
-          },
-          {
-            "input_channel": "blue",
-            "map": "basecolor",
-            "output_channel": "blue"
-          },
-          {
-            "input_channel": "blue",
-            "map": "color1",
-            "output_channel": "alpha"
-          }
-        ],
-        "name": "_diffuse",
-        "trim": true
-      },
-      {
-        "channel_count": 4,
-        "inputs": [
-          {
-            "input_channel": "red",
-            "map": "normal",
-            "output_channel": "red"
-          },
-          {
-            "input_channel": "red",
-            "map": "normal",
-            "output_channel": "green"
-          },
-          {
-            "input_channel": "blue",
-            "map": "opacity",
-            "output_channel": "blue"
-          },
-          {
-            "input_channel": "green",
-            "map": "normal",
-            "output_channel": "alpha"
-          }
-        ],
-        "name": "_normal",
-        "trim": false
-      }
-    ]
-  },
-  {
-    "base_directory": "",
-    "name": "standard_substance_terrain",
+    "name": "Env Terrain",
     "outputs": [
       {
         "channel_count": 4,
@@ -269,94 +177,7 @@
         "inputs": [
           {
             "input_channel": "blue",
-            "map": "color",
-            "output_channel": "red"
-          },
-          {
-            "input_channel": "blue",
-            "map": "specular",
-            "output_channel": "green"
-          },
-          {
-            "input_channel": "blue",
-            "map": "metallic",
-            "output_channel": "blue"
-          },
-          {
-            "input_channel": "blue",
-            "map": "roughness",
-            "output_channel": "alpha"
-          }
-        ],
-        "name": "_properties",
-        "trim": false
-      }
-    ]
-  },
-    {
-    "base_directory": "",
-    "name": "standard_substance_vegetation",
-    "outputs": [
-      {
-        "channel_count": 4,
-        "inputs": [
-          {
-            "input_channel": "red",
-            "map": "basecolor",
-            "output_channel": "red"
-          },
-          {
-            "input_channel": "green",
-            "map": "basecolor",
-            "output_channel": "green"
-          },
-          {
-            "input_channel": "blue",
-            "map": "basecolor",
-            "output_channel": "blue"
-          },
-          {
-            "input_channel": "blue",
-            "map": "opacity",
-            "output_channel": "alpha"
-          }
-        ],
-        "name": "_basecolor",
-        "trim": true
-      },
-      {
-        "channel_count": 4,
-        "inputs": [
-          {
-            "input_channel": "red",
-            "map": "normal",
-            "output_channel": "red"
-          },
-          {
-            "input_channel": "red",
-            "map": "normal",
-            "output_channel": "green"
-          },
-          {
-            "input_channel": "blue",
-            "map": "normal",
-            "output_channel": "blue"
-          },
-          {
-            "input_channel": "green",
-            "map": "normal",
-            "output_channel": "alpha"
-          }
-        ],
-        "name": "_normal",
-        "trim": false
-      },
-      {
-        "channel_count": 4,
-        "inputs": [
-          {
-            "input_channel": "blue",
-            "map": "color",
+            "map": "color1",
             "output_channel": "red"
           },
           {
@@ -382,7 +203,7 @@
   },
   {
     "base_directory": "",
-    "name": "Substance Painter",
+    "name": "Character Decal",
     "outputs": [
       {
         "channel_count": 4,
@@ -404,7 +225,7 @@
           },
           {
             "input_channel": "blue",
-            "map": "opacity",
+            "map": "color1",
             "output_channel": "alpha"
           }
         ],
@@ -426,7 +247,7 @@
           },
           {
             "input_channel": "blue",
-            "map": "color2",
+            "map": "opacity",
             "output_channel": "blue"
           },
           {
@@ -436,40 +257,13 @@
           }
         ],
         "name": "_normal",
-        "trim": false
-      },
-      {
-        "channel_count": 4,
-        "inputs": [
-          {
-            "input_channel": "blue",
-            "map": "color1",
-            "output_channel": "red"
-          },
-          {
-            "input_channel": "blue",
-            "map": "specular",
-            "output_channel": "green"
-          },
-          {
-            "input_channel": "blue",
-            "map": "metallic",
-            "output_channel": "blue"
-          },
-          {
-            "input_channel": "blue",
-            "map": "roughness",
-            "output_channel": "alpha"
-          }
-        ],
-        "name": "_properties",
         "trim": false
       }
     ]
   },
    {
     "base_directory": "",
-    "name": "Substance Painter Skin",
+    "name": "Character Skin",
     "outputs": [
       {
         "channel_count": 4,
@@ -556,7 +350,7 @@
   },
   {
     "base_directory": "",
-    "name": "Substance Painter Hair",
+    "name": "Character Hair",
     "outputs": [
       {
         "channel_count": 4,
@@ -643,7 +437,7 @@
   },
   {
     "base_directory": "",
-    "name": "Substance Painter Clothing",
+    "name": "Character Clothing",
     "outputs": [
       {
         "channel_count": 4,
@@ -757,7 +551,7 @@
   },
   {
     "base_directory": "",
-    "name": "Substance Painter Eye",
+    "name": "Character Eye",
     "outputs": [
       {
         "channel_count": 4,
@@ -844,7 +638,7 @@
   },
   {
     "base_directory": "",
-    "name": "Substance Material Tiles",
+    "name": "Character Tiling Material",
     "outputs": [
       {
         "channel_count": 4,
@@ -1019,67 +813,6 @@
           }
         ],
         "name": "",
-        "trim": true
-      }
-    ]
-  },
-  {
-    "base_directory": "",
-    "name": "Raw Texture",
-    "outputs": [
-      {
-        "channel_count": 4,
-        "inputs": [
-          {
-            "input_channel": "red",
-            "map": "diffuse",
-            "output_channel": "red"
-          },
-          {
-            "input_channel": "green",
-            "map": "diffuse",
-            "output_channel": "green"
-          },
-          {
-            "input_channel": "blue",
-            "map": "diffuse",
-            "output_channel": "blue"
-          },
-          {
-            "input_channel": "alpha",
-            "map": "diffuse",
-            "output_channel": "alpha"
-          }
-        ],
-        "name": "",
-        "trim": true
-      }
-    ]
-  },
-  {
-    "base_directory": "",
-    "name": "Hub Building Tint",
-    "outputs": [
-      {
-        "channel_count": 3,
-        "inputs": [
-          {
-            "input_channel": "red",
-            "map": "tint",
-            "output_channel": "red"
-          },
-          {
-            "input_channel": "green",
-            "map": "tint",
-            "output_channel": "green"
-          },
-          {
-            "input_channel": "blue",
-            "map": "tint",
-            "output_channel": "blue"
-          }
-        ],
-        "name": "_tint",
         "trim": true
       }
     ]

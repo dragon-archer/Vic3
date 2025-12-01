@@ -12,9 +12,9 @@ entity = {
 	{ 
 		name = "idle" 
 		state_time = 10
-		looping = no 
+		looping = yes 
 	
-		event = { time = 0 node = "root" particle = "particle_campfire" trigger_once = yes keep_particle = no}	
+		event = { time = 0 node = "root" particle = "particle_campfire" trigger_once = yes keep_particle = yes}	
 	}
 }
 
@@ -34,27 +34,6 @@ entity = {
 		looping = yes 
 	
 		event = { time = 0 node = "root" particle = "particle_warunits_chimneysmoke" trigger_once = yes keep_particle = yes }	
-	}
-
-}
-
-entity = {
-	name = "vfx_entity_rifle_parent"
-	pdxmesh = "cube_test_mesh"
-	
-	scale = 1
-	
-	locator = { name = "root" position = { 0 0 0 } }
-	
-	default_state = "idle"
-
-	state = 
-	{ 
-		name = "idle" 
-		state_time = 10
-		looping = yes 
-	
-		event = { time = 0 node = "root" particle = "particle_rifle_parent" trigger_once = yes keep_particle = no}	
 	}
 
 }

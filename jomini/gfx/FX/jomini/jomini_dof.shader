@@ -2,6 +2,9 @@ Includes = {
 	"jomini/jomini_dof.fxh"
 }
 
+supports_additional_shader_options = {
+	USE_CENTER_DEPTH
+}
 
 PixelShader =
 {

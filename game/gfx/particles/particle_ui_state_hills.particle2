@@ -736,8 +736,8 @@ graph={
 				}
 				link={
 					pin_id="α"
-					linked_node=75
-					linked_pin="result"
+					linked_node=382
+					linked_pin="product"
 				}
 			}
 		}
@@ -1269,11 +1269,6 @@ graph={
 					linked_pin="value"
 				}
 				link={
-					pin_id="effect_flags"
-					linked_node=89
-					linked_pin="effect_id"
-				}
-				link={
 					pin_id="angular_velocity"
 					linked_node=62
 					linked_pin="value"
@@ -1448,7 +1443,7 @@ graph={
 		pdxns:values:Float={
 			id=111
 			node={
-				value=0.250000
+				value=1.250000
 			}
 			inputs={
 			}
@@ -2039,7 +2034,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=350
+					linked_node=219
 					linked_pin="value"
 				}
 			}
@@ -2605,7 +2600,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=261
+			id=189
 			node={
 				value=0.000000
 			}
@@ -2613,7 +2608,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=262
+			id=190
 			node={
 				value=0.000000
 			}
@@ -2621,19 +2616,19 @@ graph={
 			}
 		}
 		pdxns:gfx:HsvaComponents={
-			id=263
+			id=191
 			node={
 			}
 			inputs={
 				link={
 					pin_id="hsva"
-					linked_node=264
+					linked_node=192
 					linked_pin="value"
 				}
 			}
 		}
 		pdxns:particle:GetUserData={
-			id=264
+			id=192
 			node={
 				user_data={
 					id="usr:StartColor"
@@ -2645,14 +2640,14 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=265
+			id=193
 			node={
 				graph="ScaledCurveSampler"
 			}
 			inputs={
 				link={
 					pin_id="curve"
-					linked_node=267
+					linked_node=198
 					linked_pin="value"
 				}
 				link={
@@ -2673,7 +2668,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=393
+			id=194
 			node={
 				value=no
 			}
@@ -2705,7 +2700,7 @@ graph={
 			}
 		}
 		pdxns:values:Curve={
-			id=267
+			id=198
 			node={
 				type="Catmull-Rom-Centripetal"
 				curve={
@@ -2761,7 +2756,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=378
+					linked_node=216
 					linked_pin="value"
 				}
 			}
@@ -2994,7 +2989,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=378
+			id=216
 			node={
 				value=no
 			}
@@ -3022,7 +3017,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=350
+			id=219
 			node={
 				value=no
 			}
@@ -3147,7 +3142,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=393
+					linked_node=194
 					linked_pin="value"
 				}
 			}
@@ -3476,7 +3471,7 @@ graph={
 			inputs={
 				link={
 					pin_id="factor1"
-					linked_node=265
+					linked_node=193
 					linked_pin="result"
 				}
 				link={
@@ -3501,17 +3496,17 @@ graph={
 			inputs={
 				link={
 					pin_id="hue"
-					linked_node=263
+					linked_node=191
 					linked_pin="hue"
 				}
 				link={
 					pin_id="saturation"
-					linked_node=263
+					linked_node=191
 					linked_pin="saturation"
 				}
 				link={
 					pin_id="value"
-					linked_node=263
+					linked_node=191
 					linked_pin="value"
 				}
 				link={
@@ -3581,12 +3576,12 @@ graph={
 				}
 				link={
 					pin_id="value_variation"
-					linked_node=261
+					linked_node=189
 					linked_pin="value"
 				}
 				link={
 					pin_id="alpha_variation"
-					linked_node=262
+					linked_node=190
 					linked_pin="value"
 				}
 			}
@@ -3623,6 +3618,31 @@ graph={
 				value=0.100000
 			}
 			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=384
+			node={
+				value=0.750000
+			}
+			inputs={
+			}
+		}
+		pdxns:math:MulF={
+			id=382
+			node={
+			}
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=75
+					linked_pin="result"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=384
+					linked_pin="value"
+				}
 			}
 		}
 	}

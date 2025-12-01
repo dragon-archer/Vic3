@@ -20,15 +20,15 @@ ConstantBuffer( PdxLightCullingConstants )
 
 
 # Only one of these are used depending on ELightListMode
-# They contain light data (a point light uses 2 float4, a spotlight uses 3 float4). "ListEntry"._LightDataIndex specifies at what index to start reading data for a light
+# They contain light data (a point light uses NLightCulling::NumVectorPerPointLight uint4, a spotlight uses NLightCulling::NumVectorPerSpotLight uint4). "ListEntry"._LightDataIndex specifies at what index to start reading data for a light
 ConstantBuffer( PdxLightList )
 {
-	float4 _LightData[4]; # This buffer is larger than "4" but setting it to large values increases shader compilation times by at least an order of magnitude :(
+	uint4 _LightData[4]; # This buffer is larger than "4" but setting it to large values increases shader compilation times by at least an order of magnitude :(
 }
 BufferTexture LightList
 {
 	Ref = PdxLightList
-	type = float4
+	type = uint4
 }
 
 # This one effectively contains a list of "ListEntry", where each entry specifies the lights for that entry, an entry is either a tile or a cluster depending on what culling mode is active
@@ -54,11 +54,14 @@ BufferTexture ScreenTileToLightsPerTileList
 
 Code
 [[
+	#define PDX_LIGHTS_NO_SHADOW_INDEX UINT32_MAX
+	
 	struct SPointLight
 	{
 		float3	_Position;
 		float	_Radius;
 		float3	_Color;
+		uint	_ShadowIndex;
 	};
 	struct SSpotLight
 	{
@@ -68,23 +71,40 @@ Code
 		float		_CosOuterConeHalfAngle;
 	};
 
-	SPointLight BuildPointLight( float4 PositionAndRadius, float3 Color )
+	SPointLight BuildPointLight( float4 PositionAndRadius, float3 Color, uint ShadowIndex )
 	{
 		SPointLight PointLight;
 		PointLight._Position = PositionAndRadius.xyz;
 		PointLight._Radius = PositionAndRadius.w;
 		PointLight._Color = Color.xyz;
+		PointLight._ShadowIndex = ShadowIndex;
 		return PointLight;
 	}
+	SPointLight BuildPointLight( float4 PositionAndRadius, float3 Color )
+	{
+		return BuildPointLight( PositionAndRadius, Color, PDX_LIGHTS_NO_SHADOW_INDEX );
+	}
+	SPointLight BuildPointLight( uint4 Data1, uint4 Data2 )
+	{
+		return BuildPointLight( asfloat( Data1 ), asfloat( Data2.xyz ),	Data2.w );
+	}
 	
-	SSpotLight BuildSpotLight( float4 PositionAndRadius, float4 ColorAndInnerCosAngle, float4 DirectionAndOuterCosAngle )
+	SSpotLight BuildSpotLight( float4 PositionAndRadius, float4 ColorAndInnerCosAngle, float4 DirectionAndOuterCosAngle, uint ShadowIndex )
 	{
 		SSpotLight SpotLight;
-		SpotLight._PointLight = BuildPointLight( PositionAndRadius, ColorAndInnerCosAngle.xyz );
+		SpotLight._PointLight = BuildPointLight( PositionAndRadius, ColorAndInnerCosAngle.xyz, ShadowIndex );
 		SpotLight._ConeDirection = DirectionAndOuterCosAngle.xyz;
 		SpotLight._CosInnerConeHalfAngle = ColorAndInnerCosAngle.w;
 		SpotLight._CosOuterConeHalfAngle = DirectionAndOuterCosAngle.w;
 		return SpotLight;
+	}
+	SSpotLight BuildSpotLight( float4 PositionAndRadius, float4 ColorAndInnerCosAngle, float4 DirectionAndOuterCosAngle )
+	{
+		return BuildSpotLight( PositionAndRadius, ColorAndInnerCosAngle, DirectionAndOuterCosAngle, PDX_LIGHTS_NO_SHADOW_INDEX );
+	}
+	SSpotLight BuildSpotLight( uint4 Data1, uint4 Data2, uint4 Data3, uint4 Data4 )
+	{
+		return BuildSpotLight( asfloat( Data1 ), asfloat( Data2 ), asfloat( Data3 ), Data4.x );
 	}
 
 	
@@ -126,7 +146,7 @@ Code
 #endif
 #if defined( DYNAMIC_LIGHT_LIST ) || defined ( CONSTANT_LIGHT_LIST )
 		{
-			return BuildPointLight( _LightData[LightDataIndex], _LightData[LightDataIndex+1].xyz );
+			return BuildPointLight( _LightData[LightDataIndex], _LightData[LightDataIndex+1] );
 		}
 		
 #endif // defined( DYNAMIC_LIGHT_LIST ) || defined ( CONSTANT_LIGHT_LIST )
@@ -135,10 +155,7 @@ Code
 #endif
 #if defined( DYNAMIC_LIGHT_LIST ) || defined ( BUFFER_LIGHT_LIST )
 		{
-			return BuildPointLight( 
-				PdxReadBuffer4( LightList, LightDataIndex ),
-				PdxReadBuffer4( LightList, LightDataIndex + 1 ).xyz
-			);
+			return BuildPointLight( PdxReadBuffer4( LightList, LightDataIndex ), PdxReadBuffer4( LightList, LightDataIndex + 1 ) );
 		}
 #endif // defined( DYNAMIC_LIGHT_LIST ) || defined ( BUFFER_LIGHT_LIST )
 	}
@@ -151,7 +168,7 @@ Code
 #endif
 #if defined( DYNAMIC_LIGHT_LIST ) || defined ( CONSTANT_LIGHT_LIST )
 		{
-			return BuildSpotLight( _LightData[LightDataIndex], _LightData[LightDataIndex + 1], _LightData[LightDataIndex + 2] );
+			return BuildSpotLight( _LightData[LightDataIndex], _LightData[LightDataIndex + 1], _LightData[LightDataIndex + 2], _LightData[LightDataIndex + 3] );
 		}
 		
 #endif // defined( DYNAMIC_LIGHT_LIST ) || defined ( CONSTANT_LIGHT_LIST )
@@ -160,11 +177,7 @@ Code
 #endif
 #if defined( DYNAMIC_LIGHT_LIST ) || defined ( BUFFER_LIGHT_LIST )
 		{
-			return BuildSpotLight( 
-				PdxReadBuffer4( LightList, LightDataIndex ),
-				PdxReadBuffer4( LightList, LightDataIndex + 1 ),
-				PdxReadBuffer4( LightList, LightDataIndex + 2 )
-			);
+			return BuildSpotLight( PdxReadBuffer4( LightList, LightDataIndex ), PdxReadBuffer4( LightList, LightDataIndex + 1 ), PdxReadBuffer4( LightList, LightDataIndex + 2 ), PdxReadBuffer4( LightList, LightDataIndex + 3 ) );
 		}
 #endif // defined( DYNAMIC_LIGHT_LIST ) || defined ( BUFFER_LIGHT_LIST )
 	}

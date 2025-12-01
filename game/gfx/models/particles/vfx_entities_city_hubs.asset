@@ -63,93 +63,47 @@ entity = {
 }
 
 entity = {
-	name = "pollution_stage_3"
-	#pdxmesh = "cube_test_mesh"
+	name = "pollution_stage_1"
 
-	locator = { name = part1 position = { 0 0 0 } }
+	locator = { name = "center" position = { 0 0 0 } }
 	
-	#locator = { name = smoke1 position = { -1 0 0 } scale = 0.9 }
-	#locator = { name = smoke2 position = { 0 0 0.4 } scale = 0.9 }
-	#locator = { name = smoke3 position = { 0.2 0 -0.2 } scale = 0.9 }
-	
-	#locator = { name = smoke4 position = { -1 0 0.2 } scale = 0.9 }
-	#locator = { name = smoke5 position = { -1 0 0.4 } scale = 0.9 }
-	#locator = { name = smoke6 position = { 1.0 0 -0.4 }scale = 0.9 }
-	
-	#locator = { name = smoke7 position = { 1 0 1 } scale = 0.9 }
-	#locator = { name = smoke8 position = { 1 0 -0.4 } scale = 0.9 }
-	#locator = { name = smoke9 position = { 0.5 0 1.1 } scale = 0.9 }
-
 	default_state = "idle"
-	state = { name = "idle" state_time = 5
-		event = { time = 0 node = "part1" particle = "infrastructure/pollution_base" trigger_once = yes}
-		
-		event = { time = 0 node = "part1" particle = "pollution_smoke_stage_3" trigger_once = yes}
-			
-		#event = { time = 0 node = "smoke1" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke2" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke3" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke4" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke5" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke6" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke7" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke8" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke9" particle = "pollution_smoke_pillar" trigger_once = yes}
 
+	state = { 
+		name = "idle" 
+		state_time = 5
+
+		event = { time = 0 node = "center" particle = "infrastructure/pollution_stage_1" trigger_once = yes}
 	}
 }
 
 entity = {
 	name = "pollution_stage_2"
-	#pdxmesh = "cube_test_mesh"
 
-	locator = { name = part1 position = { 0 0 0 } }
+	locator = { name = "center" position = { 0 0 0 } }
 	
-	#locator = { name = smoke1 position = { -1 0 0 } scale = 0.9 }
-	#locator = { name = smoke2 position = { 0 0 0.4 } scale = 0.9 }
-	#locator = { name = smoke3 position = { 0.2 0 -0.2 } scale = 0.9 }
-	
-	#locator = { name = smoke4 position = { -1 0 0.2 } scale = 0.9 }
-	#locator = { name = smoke5 position = { -1 0 1.4 } scale = 0.9 }
-	#locator = { name = smoke6 position = { 1.0 0 -0.4 }scale = 0.9 }
-	
-
 	default_state = "idle"
-	state = { name = "idle" state_time = 5
-		event = { time = 0 node = "part1" particle = "infrastructure/pollution_base" trigger_once = yes}
-		
-		event = { time = 0 node = "part1" particle = "pollution_smoke_stage_2" trigger_once = yes}
+	
+	state = { 
+		name = "idle" 
+		state_time = 5
 
-		#event = { time = 0 node = "smoke1" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke2" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke3" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke4" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke5" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke6" particle = "pollution_smoke_pillar" trigger_once = yes}
-
+		event = { time = 0 node = "center" particle = "infrastructure/pollution_stage_2" trigger_once = yes}
 	}
 }
 
 entity = {
-	name = "pollution_stage_1"
-	#pdxmesh = "cube_test_mesh"
+	name = "pollution_stage_3"
 
-	locator = { name = part1 position = { 0 0 0 } }
+	locator = { name = "center" position = { 0 0 0 } }
 	
-	
-	#locator = { name = smoke1 position = { -1 0 0 } scale = 0.9 }
-	#locator = { name = smoke2 position = { 0 0 0.4 } scale = 0.9 }
-	#locator = { name = smoke3 position = { 0.2 0 -0.2 } scale = 0.9 }
-
 	default_state = "idle"
-	state = { name = "idle" state_time = 5
-		event = { time = 0 node = "part1" particle = "infrastructure/pollution_base" trigger_once = yes}
+	
+	state = { 
+		name = "idle" 
+		state_time = 5
 
-		event = { time = 0 node = "part1" particle = "pollution_smoke_stage_1" trigger_once = yes}
-		
-		#event = { time = 0 node = "smoke1" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke2" particle = "pollution_smoke_pillar" trigger_once = yes}
-		#event = { time = 0 node = "smoke3" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "center" particle = "infrastructure/pollution_stage_3" trigger_once = yes}
 	}
 }
 

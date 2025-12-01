@@ -3,14 +3,6 @@
 	
 	type = diplomatic
 	
-	wanted_army_ratio = {
-		value = 200000
-	}
-	
-	wanted_navy_ratio = {
-		value = 400000
-	}
-	
 	undesirable_infamy_level = {
 		value = 25
 	}
@@ -116,7 +108,18 @@
 		if = {
 			limit = { country_rank < rank_value:major_power }
 			add = 10
-		}		
+		}
+
+		if = {
+			limit = { 
+				exists = c:FRA
+				c:FRA = this
+				ruler = {
+					has_variable = legitimist_leader # strict adherence to the Congress of Vienna
+				}
+			}
+			add = 20
+		}
 	}
 }
 
@@ -124,14 +127,6 @@ ai_strategy_territorial_expansion = {
 	icon = "gfx/interface/icons/ai_strategy_icons/territorial_expansion.dds"
 	
 	type = diplomatic
-	
-	wanted_army_ratio = {
-		value = 150000
-	}
-	
-	wanted_navy_ratio = {
-		value = 400000
-	}
 	
 	undesirable_infamy_level = {
 		value = 50
@@ -226,6 +221,17 @@ ai_strategy_territorial_expansion = {
 
 	weight = {
 		value = 10
+
+		if = {
+			limit = { 
+				exists = c:FRA
+				c:FRA = this
+				ruler = {
+					has_variable = bonapartist_leader
+				}
+			}
+			add = 5
+		}
 			
 		if = {
 			limit = { ig:ig_armed_forces = { is_powerful = yes } }
@@ -243,14 +249,6 @@ ai_strategy_colonial_expansion = {
 	icon = "gfx/interface/icons/ai_strategy_icons/colonial_expansion.dds"
 	
 	type = diplomatic
-	
-	wanted_army_ratio = {
-		value = 200000
-	}
-	
-	wanted_navy_ratio = {
-		value = 300000
-	}
 	
 	undesirable_infamy_level = {
 		value = 25
@@ -415,6 +413,17 @@ ai_strategy_colonial_expansion = {
 
 	weight = {
 		value = 10
+
+		if = {
+			limit = { 
+				exists = c:FRA
+				c:FRA = this
+				ruler = {
+					has_variable = bonapartist_leader
+				}
+			}
+			add = 10
+		}
 		
 		if = {
 			limit = { country_rank = rank_value:major_power }
@@ -447,15 +456,7 @@ ai_strategy_armed_isolationism = {
 	icon = "gfx/interface/icons/ai_strategy_icons/armed_isolationism.dds"
 	
 	type = diplomatic
-	
-	wanted_army_ratio = {
-		value = 150000
-	}
-	
-	wanted_navy_ratio = {
-		value = 500000
-	}
-	
+
 	undesirable_infamy_level = {
 		value = 1
 	}
@@ -543,14 +544,6 @@ ai_strategy_economic_imperialism = {
 	icon = "gfx/interface/icons/ai_strategy_icons/economic_imperialism.dds"
 	
 	type = diplomatic
-	
-	wanted_army_ratio = {
-		value = 200000
-	}
-	
-	wanted_navy_ratio = {
-		value = 300000
-	}
 	
 	undesirable_infamy_level = {
 		value = 25
@@ -770,6 +763,20 @@ ai_strategy_economic_imperialism = {
 		}
 
 		if = {
+			limit = { 
+				exists = c:FRA
+				c:FRA = this
+				ruler = {
+					OR = {
+						has_variable = bonapartist_leader
+						has_variable = orleanist_leader
+					}
+				}
+			}
+			add = 10
+		}
+
+		if = {
 			limit = {
 				exists = c:JAP
 				has_strategic_adjacency = c:JAP
@@ -795,14 +802,6 @@ ai_strategy_unify_germany = {
 	
 	type = diplomatic
 	
-	wanted_army_ratio = {
-		value = 150000
-	}
-	
-	wanted_navy_ratio = {
-		value = 400000
-	}
-	
 	undesirable_infamy_level = {
 		value = 25
 	}
@@ -816,7 +815,7 @@ ai_strategy_unify_germany = {
 	}
 	
 	wargoal_maneuvers_fraction = {
-		value = 0.1
+		value = 0.2
 	}		
 	
 	diplomatic_play_neutrality = {
@@ -1019,14 +1018,6 @@ ai_strategy_unify_italy = {
 	icon = "gfx/interface/icons/ai_strategy_icons/unification.dds"
 	
 	type = diplomatic
-	
-	wanted_army_ratio = {
-		value = 150000
-	}
-	
-	wanted_navy_ratio = {
-		value = 400000
-	}
 		
 	undesirable_infamy_level = {
 		value = 25
@@ -1041,7 +1032,7 @@ ai_strategy_unify_italy = {
 	}
 	
 	wargoal_maneuvers_fraction = {
-		value = 0.1
+		value = 0.2
 	}		
 	
 	diplomatic_play_neutrality = {
@@ -1245,14 +1236,6 @@ ai_strategy_unify_ethiopia = {
 	
 	type = diplomatic
 	
-	wanted_army_ratio = {
-		value = 150000
-	}
-	
-	wanted_navy_ratio = {
-		value = 400000
-	}
-	
 	undesirable_infamy_level = {
 		value = 50
 	}
@@ -1264,7 +1247,7 @@ ai_strategy_unify_ethiopia = {
 	ideological_opinion_effect_mult = 0.5
 	
 	wargoal_maneuvers_fraction = {
-		value = 0.1
+		value = 0.2
 	}		
 		
 	diplomatic_play_neutrality = {
@@ -1447,14 +1430,6 @@ ai_strategy_unify_china = {
 	
 	type = diplomatic
 	
-	wanted_army_ratio = {
-		value = 150000
-	}
-	
-	wanted_navy_ratio = {
-		value = 400000
-	}
-	
 	undesirable_infamy_level = {
 		value = 50
 	}
@@ -1468,7 +1443,7 @@ ai_strategy_unify_china = {
 	}
 	
 	wargoal_maneuvers_fraction = {
-		value = 0.1
+		value = 0.2
 	}		
 		
 	diplomatic_play_neutrality = {

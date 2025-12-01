@@ -7,6 +7,10 @@ Includes = {
 	"jomini/jomini_water.fxh"
 }
 
+supports_additional_shader_options = {
+	JOMINI_REFRACTION_ENABLED
+}
+
 Code
 [[
 	#ifndef JOMINIWATER_MapSize

@@ -4,6 +4,13 @@ Includes = {
 	"cw/pdxmesh_buffers.fxh"
 }
 
+supports_additional_shader_options = {
+	PDX_MESH_SKINNED
+	PDX_MESH_UV1
+	PDX_MESH_UV2
+	PDX_MESH_BLENDSHAPES
+}
+
 VertexShader =
 {
 	Code

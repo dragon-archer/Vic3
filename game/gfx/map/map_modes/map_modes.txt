@@ -85,7 +85,7 @@ mm_default = {
 	map_painting_mode = countries
 	map_painting_mode_alternate = colonizable_provinces
 	map_names = countries
-	map_markers = { battle_marker construction_marker construction_queue_marker event_marker front_marker city_marker input_shortage_marker state_effect_marker sea_node_marker colony_marker }
+	map_markers = { battle_marker construction_marker construction_queue_marker event_marker front_marker city_marker input_shortage_marker state_effect_marker sea_node_marker colony_marker revolutionary_movement_marker }
 	map_tooltip_offset = state
 
 	is_visible = no 					# special behaviour, overriden in code
@@ -98,7 +98,7 @@ mm_ongoing_diplo_play = {
 	map_painting_mode = countries
 	map_painting_mode_alternate = colonizable_provinces
 	map_names = countries
-	map_markers = { strategic_objective_marker battle_marker hq_marker diplomatic_play_marker construction_marker construction_queue_marker event_marker front_marker input_shortage_marker state_effect_marker sea_node_marker }
+	map_markers = { strategic_objective_marker battle_marker hq_marker diplomatic_play_marker construction_marker construction_queue_marker event_marker front_marker input_shortage_marker state_effect_marker sea_node_marker revolutionary_movement_marker }
 	map_tooltip_offset = state
 
 	is_visible = no 					# special behaviour, overriden in code
@@ -121,7 +121,7 @@ mm_strategic_region = {
 mm_state = {
 	map_painting_mode = states
 	map_names = states
-	map_markers = { construction_marker construction_queue_marker event_marker }
+	map_markers = { construction_marker construction_queue_marker event_marker revolutionary_movement_marker }
 
 	is_visible = yes
 
@@ -220,7 +220,8 @@ mm_peace_deal = {
 
 mm_interest_group = {
 	map_painting_mode = ig_strength
-	map_markers = { interestgroup_marker }
+	map_names = states
+	map_markers = { interestgroup_marker revolutionary_movement_marker }
 
 	gradient_border_settings = heatmap
 	has_fog_of_war = no
@@ -230,7 +231,7 @@ mm_interest_group = {
 
 mm_population_nationally = {
 	map_painting_mode = player_population
-	map_markers = { }
+	map_markers = { revolutionary_movement_marker }
 
 	gradient_border_settings = heatmap
 	has_fog_of_war = no
@@ -900,7 +901,7 @@ mm_budget = {
 mm_political = {
 	map_painting_mode = clout_nationally
 	map_names = states
-	map_markers = { interestgroup_marker decree_marker }
+	map_markers = { interestgroup_marker decree_marker revolutionary_movement_marker }
 
 	gradient_border_settings = heatmap
 	show_occupation = yes
@@ -968,7 +969,7 @@ mm_standard_of_living = {
 mm_radicals = {
 	map_painting_mode = state_gradient
 	map_painting_mode_secondary = radicals
-	map_markers = { colony_marker state_effect_marker }
+	map_markers = { colony_marker state_effect_marker revolutionary_movement_marker }
 	map_names = states
 
 	is_visible = yes
@@ -980,7 +981,7 @@ mm_radicals = {
 }
 
 mm_production = {
-	map_painting_mode = states
+	map_painting_mode = gdp
 	map_names = states
 	map_markers = { construction_marker construction_queue_marker input_shortage_marker employment_marker event_marker production_marker }
 
@@ -990,7 +991,7 @@ mm_production = {
 mm_gdp = {
 	map_painting_mode = gdp
 	map_names = states
-	map_markers = { construction_marker construction_queue_marker event_marker production_marker }
+	map_markers = { construction_marker construction_queue_marker event_marker }
 	is_visible = yes
 
 	gradient_border_settings = heatmap
@@ -1000,7 +1001,7 @@ mm_gdp = {
 mm_gdp_nationally = {
 	map_painting_mode = gdp_nationally
 	map_names = states
-	map_markers = { construction_marker construction_queue_marker event_marker production_marker }
+	map_markers = { event_marker }
 	is_visible = yes
 	is_visible_to_countryless_observer = no
 	gradient_border_settings = heatmap

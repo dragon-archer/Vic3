@@ -8,6 +8,7 @@ pdxmesh = {
 		texture_diffuse = "flat_map_objects_01_diffuse.dds"
 		texture_normal = "flat_map_objects_01_normal.dds"
 		texture_specular = "noproperties.dds"
+		additional_shader_defines = { "FLATLIGHT" }
 		shader = "standard"
 	}
 
@@ -17,6 +18,7 @@ pdxmesh = {
 		texture_diffuse = "flat_map_objects_01_decal_diffuse.dds"
 		texture_normal = "nonormal.dds"
 		texture_specular = "noproperties.dds"
+		additional_shader_defines = { "FLATLIGHT" }
 		shader = "standard_alpha_blend"
 	}
 }

@@ -15,7 +15,7 @@ VertexShader =
 		[[
 			PDX_MAIN
 			{
-				VS_OUTPUT_MAPNAME Out = MapNameVertexShader( Input, FlatMapHeight, FlatMapLerp );
+				VS_OUTPUT_MAPNAME Out = MapNameVertexShader( Input, FlatmapHeight, FlatmapLerp );
 				return Out;
 			}
 		]]
@@ -50,7 +50,7 @@ PixelShader =
 				Color = ApplyFogOfWar( Color, Input.WorldSpacePos );
 
 				// Flatmap color
-				Color = lerp( Color, FlatmapColor, FlatMapLerp);
+				Color = lerp( Color, FlatmapColor, FlatmapLerp);
 
 				return float4( Color, Alpha );
 			}

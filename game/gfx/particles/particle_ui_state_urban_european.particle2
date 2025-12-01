@@ -415,11 +415,6 @@ graph={
 					linked_pin="value"
 				}
 				link={
-					pin_id="effect_flags"
-					linked_node=49
-					linked_pin="effect_id"
-				}
-				link={
 					pin_id="angular_velocity"
 					linked_node=83
 					linked_pin="value"
@@ -522,7 +517,7 @@ graph={
 			}
 		}
 		pdxns:values:ConstVector3f={
-			id=362
+			id=34
 			node={
 				value={ 0.000000 0.000000 0.000000 }
 			}
@@ -565,7 +560,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetUserData={
-			id=363
+			id=37
 			node={
 				user_data={
 					id="usr:lifetime"
@@ -778,7 +773,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetUserData={
-			id=364
+			id=50
 			node={
 				user_data={
 					id="usr:StartColor"
@@ -1128,13 +1123,13 @@ graph={
 			}
 		}
 		pdxns:gfx:HsvaComponents={
-			id=365
+			id=74
 			node={
 			}
 			inputs={
 				link={
 					pin_id="hsva"
-					linked_node=364
+					linked_node=50
 					linked_pin="value"
 				}
 			}
@@ -1172,7 +1167,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetUserData={
-			id=366
+			id=79
 			node={
 				user_data={
 					id="usr:particlerandom"
@@ -1184,7 +1179,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=548
+			id=80
 			node={
 				value=no
 			}
@@ -4413,7 +4408,7 @@ graph={
 				}
 				link={
 					pin_id="scale_x"
-					linked_node=363
+					linked_node=37
 					linked_pin="value"
 				}
 				link={
@@ -4430,12 +4425,12 @@ graph={
 			inputs={
 				link={
 					pin_id="hue"
-					linked_node=365
+					linked_node=74
 					linked_pin="hue"
 				}
 				link={
 					pin_id="saturation"
-					linked_node=365
+					linked_node=74
 					linked_pin="saturation"
 				}
 				link={
@@ -4597,7 +4592,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=548
+					linked_node=80
 					linked_pin="value"
 				}
 			}
@@ -4783,7 +4778,7 @@ graph={
 				}
 				link={
 					pin_id="scale_x"
-					linked_node=363
+					linked_node=37
 					linked_pin="value"
 				}
 				link={
@@ -4828,7 +4823,7 @@ graph={
 				}
 				link={
 					pin_id="Per Particle Random"
-					linked_node=366
+					linked_node=79
 					linked_pin="value"
 				}
 			}
@@ -4943,7 +4938,7 @@ graph={
 				}
 				link={
 					pin_id="angular_velocity"
-					linked_node=362
+					linked_node=34
 					linked_pin="value"
 				}
 				link={

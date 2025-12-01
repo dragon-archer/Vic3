@@ -201,14 +201,14 @@ window = {
 						size = { 200 125 }
 						text = "[MusicPlayer.GetCategoryName( MusicPlayerCategory.Self )]"
 						onclick = "[MusicPlayer.OnSelectCategory( MusicPlayerCategory.AccessSelf )]"
-						fontcolor = "[Select_Vec4f( MusicPlayer.IsSelectedCategory( MusicPlayerCategory.Self ), '(CVector4f)1.0,1.0,1.0,1.0', '(CVector4f)0.5,0.5,0.5,1.0' )]"
+						fontcolor = "[Select_CVector4f( MusicPlayer.IsSelectedCategory( MusicPlayerCategory.Self ), '(CVector4f)1.0,1.0,1.0,1.0', '(CVector4f)0.5,0.5,0.5,1.0' )]"
 
 						button = {
 							parentanchor = bottom
 							size = { 100% 30 }
 							text = "[MusicPlayer.GetCategoryEnabledText( MusicPlayerCategory.Self )]"
 							onclick = "[MusicPlayer.OnToggleCategoryEnabled( MusicPlayerCategory.AccessSelf )]"
-							fontcolor = "[Select_Vec4f( MusicPlayer.IsSelectedCategory( MusicPlayerCategory.Self ), '(CVector4f)1.0,1.0,1.0,1.0', '(CVector4f)0.5,0.5,0.5,1.0' )]"
+							fontcolor = "[Select_CVector4f( MusicPlayer.IsSelectedCategory( MusicPlayerCategory.Self ), '(CVector4f)1.0,1.0,1.0,1.0', '(CVector4f)0.5,0.5,0.5,1.0' )]"
 						}
 					}
 				}

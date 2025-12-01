@@ -125,6 +125,99 @@ PixelShader =
 			}
 		]]
 	}
+
+	MainCode PixelShaderTextOutlined
+	{
+		Input = "VS_OUTPUT_PDX_GUI"
+		Output = "PDX_COLOR"
+		Code 
+		[[
+			PDX_MAIN
+			{
+				// Early returns generates the following warning in hlsl:
+				// - warning X4000: use of potentially uninitialized variable
+				// Use condition variable instead.
+				
+				int RenderCondition = 0;
+
+				float TextureAlphaThreshold = 0.3f;
+				float SampledAlpha = PdxTex2D( Texture, Input.UV0 ).r;
+
+				// Linearly interplate between the colors of glyph and outline
+				float3 Color = 0.0f;
+				Color += SampledAlpha * Input.Color.rgb;
+				Color += ( 1.0f - SampledAlpha ) * TextOutlineColor.rgb;
+
+				// Is fragment in glyph?
+				if (SampledAlpha > TextureAlphaThreshold)
+				{
+					RenderCondition = 1;
+				}
+				else // is fragment in outline?
+				{
+					float2 TexelOffset;
+					{
+						float2 AtlasSize;
+						PdxTex2DSize( Texture, AtlasSize );
+						TexelOffset[0] = 1.0f / (float)AtlasSize.x;
+						TexelOffset[1] = 1.0f / (float)AtlasSize.y;
+					}
+
+					// This loop will search for a glyph in the following pattern,
+					// ( in this case with TextOutlineWidth = 3 ) and will check 8
+					// spots in each iteration.
+					//                             
+					//  17          18          19
+					//                            
+					//       9      10      11    
+					//                            
+					//           1   2   3        
+					//                            
+					//  20  12   4       5  13  21
+					//                            
+					//           6   7   8        
+					//                            
+					//      14      15      16    
+					//                            
+					//  22          23          24
+
+					float2 OffsetDirections[8] =
+					{
+						// Upper row, left to right
+						TexelOffset * float2( -1, -1 ),
+						TexelOffset * float2( 0, -1 ),
+						TexelOffset * float2( 1, -1 ),
+
+						// Middle row, left to right
+						TexelOffset * float2( -1, 0 ),
+						TexelOffset * float2( 1, 0 ),
+
+						// Lower row, left to right
+						TexelOffset * float2( -1, 1 ),
+						TexelOffset * float2( 0, 1 ),
+						TexelOffset * float2( 1, 1 )
+					};
+
+					[ unroll( /*maximum of*/ 8 ) ]
+					for ( int OutlineIndex = 1; OutlineIndex <= TextOutlineWidth && RenderCondition == 0; ++OutlineIndex )
+					{
+						[ unroll ]
+						for (int Direction = 0; Direction < 8 && RenderCondition == 0; ++Direction )
+						{
+							float2 UV = Input.UV0 + OutlineIndex * OffsetDirections[Direction];
+							if ( PdxTex2D( Texture, UV ).r > TextureAlphaThreshold )
+							{
+								RenderCondition = 1;
+							}
+						}
+					}
+				}
+
+				// If neither glyph or outline, let alpha be 0
+				return RenderCondition * TextTintColor * float4( Color, Input.Color.a );
+			}
+		]]
+	}
 	
 	MainCode PixelShaderTextUnderline
 	{
@@ -147,11 +240,11 @@ PixelShader =
 		[[
 			PDX_MAIN
 			{	
-				return PdxTex2D( Texture, Input.UV0 ) * Input.Color;
+				return PdxTex2D( Texture, Input.UV0 ) *  Input.Color;
 			}
 		]]
 	}
-	
+		
 	MainCode PixelShaderOutsideRect
 	{
 		ConstantBuffer( PdxConstantBuffer2 )
@@ -227,6 +320,12 @@ Effect PdxDefaultGUITextGlow
 {
 	VertexShader = "VertexShader"
 	PixelShader = "PixelShaderTextGlow"
+}
+
+Effect PdxDefaultGUITextOutlined
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderTextOutlined"
 }
 
 Effect PdxDefaultGUITextUnderline

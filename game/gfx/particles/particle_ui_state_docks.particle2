@@ -210,7 +210,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=342
+					linked_node=30
 					linked_pin="value"
 				}
 			}
@@ -437,7 +437,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=342
+			id=30
 			node={
 				value=no
 			}
@@ -1415,7 +1415,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=390
+					linked_node=201
 					linked_pin="value"
 				}
 			}
@@ -2681,7 +2681,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=390
+			id=201
 			node={
 				value=no
 			}
@@ -2689,7 +2689,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=330
+			id=202
 			node={
 				value=5
 			}
@@ -2721,7 +2721,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=331
+			id=206
 			node={
 				value=4
 			}
@@ -2845,11 +2845,6 @@ graph={
 					linked_pin="value"
 				}
 				link={
-					pin_id="effect_flags"
-					linked_node=136
-					linked_pin="effect_id"
-				}
-				link={
 					pin_id="angular_velocity"
 					linked_node=203
 					linked_pin="value"
@@ -2887,7 +2882,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetUserData={
-			id=332
+			id=211
 			node={
 				user_data={
 					id="usr:lifetime"
@@ -2917,7 +2912,7 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=333
+			id=213
 			node={
 				graph="Base with Variation"
 			}
@@ -2982,7 +2977,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=334
+			id=217
 			node={
 				value=0.000000
 			}
@@ -3456,12 +3451,12 @@ graph={
 			inputs={
 				link={
 					pin_id="hue"
-					linked_node=335
+					linked_node=288
 					linked_pin="hue"
 				}
 				link={
 					pin_id="saturation"
-					linked_node=335
+					linked_node=288
 					linked_pin="saturation"
 				}
 				link={
@@ -3810,7 +3805,7 @@ graph={
 				}
 				link={
 					pin_id="amount"
-					linked_node=334
+					linked_node=217
 					linked_pin="value"
 				}
 			}
@@ -3878,12 +3873,12 @@ graph={
 			inputs={
 				link={
 					pin_id="x"
-					linked_node=330
+					linked_node=202
 					linked_pin="value"
 				}
 				link={
 					pin_id="y"
-					linked_node=331
+					linked_node=206
 					linked_pin="value"
 				}
 			}
@@ -3897,7 +3892,7 @@ graph={
 			}
 		}
 		pdxns:gfx:HsvaComponents={
-			id=335
+			id=288
 			node={
 			}
 			inputs={
@@ -4011,11 +4006,6 @@ graph={
 					linked_pin="value"
 				}
 				link={
-					pin_id="effect_flags"
-					linked_node=302
-					linked_pin="effect_id"
-				}
-				link={
 					pin_id="angular_velocity"
 					linked_node=325
 					linked_pin="value"
@@ -4042,7 +4032,7 @@ graph={
 				}
 				link={
 					pin_id="usr:lifetime"
-					linked_node=333
+					linked_node=213
 					linked_pin="output_id"
 				}
 			}
@@ -4394,7 +4384,7 @@ graph={
 				}
 				link={
 					pin_id="scale_x"
-					linked_node=332
+					linked_node=211
 					linked_pin="value"
 				}
 				link={
@@ -4416,7 +4406,7 @@ graph={
 				}
 				link={
 					pin_id="factor2"
-					linked_node=335
+					linked_node=288
 					linked_pin="value"
 				}
 			}

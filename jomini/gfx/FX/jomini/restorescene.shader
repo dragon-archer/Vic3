@@ -7,6 +7,17 @@ Includes = {
 	"jomini/jomini_dof.fxh"
 }
 
+supports_additional_shader_options = {
+	LUMA_AS_ALPHA
+	ADDITIONAL_LENS_FLARE_ENABLED
+	LENS_FLARE_ENABLED
+	DOF_ENABLED
+	BLOOM_ENABLED
+	LUT_ENABLED
+	EXPOSURE_FIXED
+	TONEMAP_UNCHARTED
+	MULTI_SAMPLED
+}
 
 PixelShader =
 {

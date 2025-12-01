@@ -35,12 +35,24 @@ law_child_labor_allowed = {
 			value = 0.25
 		}
 	}
-
 	
 	ai_will_do = {
 		exists = ruler
 		ruler = {
-			has_ideology = ideology_market_liberal
+			has_ideology = ideology:ideology_market_liberal
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
 		}
 	}
 }
@@ -91,9 +103,22 @@ law_restricted_child_labor = {
 			AND = {
 				exists = ruler
 				ruler = {
-					has_ideology = ideology_market_liberal
+					has_ideology = ideology:ideology_market_liberal
 				}			
 			}
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
 		}
 	}
 }
@@ -105,6 +130,10 @@ law_compulsory_primary_school = {
 	
 	progressiveness = 50
 
+	disallowing_laws = {
+		law_no_schools
+	}
+
 	unlocking_technologies = {
 		human_rights
 	}
@@ -115,5 +144,18 @@ law_compulsory_primary_school = {
 
 	pop_support = {
 		value = 0
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 }

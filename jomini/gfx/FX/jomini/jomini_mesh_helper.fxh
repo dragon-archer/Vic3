@@ -6,6 +6,11 @@ Includes = {
 	"jomini/jomini_fog.fxh"
 }
 
+supports_additional_shader_options = {
+	UNDERWATER
+	JOMINI_MAP_OBJECT
+}
+
 PixelShader =
 {
 	Code

@@ -5,6 +5,7 @@
 		any_scope_building = {
 			is_under_construction = no
 			is_farm_building = yes
+			can_queue_building_levels = 1
 		}
 	}
 	
@@ -31,6 +32,7 @@
 					any_scope_building = {
 						is_under_construction = no
 						is_farm_building = yes
+						can_queue_building_levels = 1
 					}					
 				}
 			}
@@ -39,6 +41,7 @@
 					limit = {	
 						is_under_construction = no
 						is_farm_building = yes
+						can_queue_building_levels = 1
 					}
 					save_scope_as = tutorial_building_target
 
@@ -52,6 +55,7 @@
 					any_scope_building = {
 						is_under_construction = no
 						is_farm_building = yes
+						can_queue_building_levels = 1
 					}					
 				}				
 			}
@@ -62,6 +66,7 @@
 					any_scope_building = {
 						is_under_construction = no
 						is_farm_building = yes
+						can_queue_building_levels = 1
 					}
 				}
 				
@@ -69,6 +74,7 @@
 					limit = {	
 						is_under_construction = no
 						is_farm_building = yes
+						can_queue_building_levels = 1
 					}
 					save_scope_as = tutorial_building_target
 				}						
@@ -79,10 +85,13 @@
 				limit = {	
 					is_under_construction = no
 					is_farm_building = yes
+					can_queue_building_levels = 1
 				}
 				save_scope_as = tutorial_building_target
 			}	
 		}
+
+		set_variable = tut_customs_union_block
 		
 		add_journal_entry = {
 			type = je_tutorial_expand_basic_building
@@ -674,10 +683,11 @@ sg_promote_ig = {
 	category = sgcat_tutorial
 	
 	unlocking_subgoals_any = {
-		sg_improve_consumer_goods_access
+		sg_establish_trade_route
 	}
 
 	on_start = {
+		remove_variable = tut_customs_union_block
 		add_journal_entry = {
 			type = je_tutorial_promote_ig
 			objective_subgoal = sg_promote_ig
@@ -832,15 +842,6 @@ sg_establish_trade_route = {
 		sg_expand_productive_building
 	}
 	
-	# low chance to trigger each day unless sg_fix_unproductive_building is complete
-	chance = {
-		value = 0.02
-		if = {
-			limit = { has_completed_subgoal = sg_fix_unproductive_building }
-			add = 1
-		}
-	}
-
 	trigger = {
 		market = {
 			custom_tooltip = {
@@ -891,6 +892,9 @@ sg_improve_supply_network = {
 	}
 
 	trigger = {
+		any_scope_state = {
+			is_coastal = yes
+		}
 		supply_network_strength < 1
 	}
 

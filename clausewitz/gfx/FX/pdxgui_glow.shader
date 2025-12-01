@@ -68,4 +68,5 @@ Effect PdxDefaultGlow
 {
 	VertexShader = "VertexShader"
 	PixelShader = "DistanceField"
+	Defines = { "PDX_GUI_SPRITE_EFFECT" }
 }

@@ -64,7 +64,8 @@ types NodeEditor
 		framesize = { 64 64 }
 		frame = 1
 		gfxtype = windowgfx
-
+		tooltipwidget = { using = editor_tooltip }
+		tooltip = [Node.Tooltip]
 		filter_mouse = left
 		alwaystransparent = no
 
@@ -117,7 +118,9 @@ types NodeEditor
 		}
 
 		vbox = {
+			
 			restrictparent_min = yes
+			set_parent_size_to_minimum = yes
 			margin_bottom = 8
 			# Titlebar
 			hbox = {
@@ -129,7 +132,7 @@ types NodeEditor
 					background = { 
 						texture = "gfx/editor_gui/node_editor/node_editor_title_background.dds" 
 						margin_top = 4
-						color = { 0.05 0.05 0.05 1 }
+						color = [Node.ContextColor]
 					}
 				}
 
@@ -144,7 +147,7 @@ types NodeEditor
 							position = { 0 0 }
 							size = { 8 8 }
 							texture = "[Node.Texture]"
-							tooltip = "[Node.TypeName]"
+							tooltip = [Node.Tooltip]
 							tooltipwidget = { 
 								using = editor_tooltip 
 							}
@@ -153,21 +156,38 @@ types NodeEditor
 				}
 				
 				editor_textbox = {
+					name = "node_name_textbox"
 					autoresize = yes
 					maximumsize = { 160 24 }
 					fontsize = 12
 					fontweight = bold
+					fontcolor = [Node.TextColor]
 					text = [Node.Name]
 					align = left|vcenter|nobaseline
 					elide = right
 					using = editor_toolbar_font
-					fontcolor = [Node.ErrorColor]
 					tooltip = [Node.Tooltip]
 					tooltipwidget = { using = editor_tooltip }
 				}
 
 				widget = {
 					layoutpolicy_horizontal = expanding
+				}
+
+				icon = {
+					visible = [Node.HasError]
+					size = { 16 16 }
+					color = [Node.TextColor]
+					tooltip = [Node.ErrorTooltip]
+					texture = "gfx/tools/material/circle.dds"
+
+					vbox = {
+						icon = {
+							size = { 14 14 }
+							color = { 1 0 0 1}
+							texture = "gfx/tools/material/info_icon.png"
+						}
+					}
 				}
 
 				flowcontainer = {
@@ -184,7 +204,7 @@ types NodeEditor
 						blockoverride "icon"
 						{
 							texture = "gfx/editor_gui/16px/node_editor_icon_edit_name.png"
-							color = { 0.5 0.5 0.5 1 }
+							color = [Node.TextColor]
 						}
 					}
 
@@ -198,7 +218,7 @@ types NodeEditor
 						blockoverride "icon"
 						{
 							texture = "gfx/editor_gui/16px/node_editor_icon_edit_description.png"
-							color = { 0.5 0.5 0.5 1 }
+							color = [Node.TextColor]
 						}
 					}
 
@@ -213,7 +233,7 @@ types NodeEditor
 						blockoverride "icon"
 						{
 							texture = "gfx/editor_gui/16px/node_editor_icon_close.png"
-							color = { 0.5 0.5 0.5 1 }
+							color = [Node.TextColor]
 						}
 					}
 				}
@@ -501,6 +521,13 @@ types NodeEditor
 			texture = "gfx/editor_gui/add.dds"
 		}
 	}
+
+	type remove_pin_button = node_window_button {
+		blockoverride "icon"
+		{
+			texture = "gfx/editor_gui/remove.dds"
+		}
+	}
 }
 
 node_window_type = {
@@ -579,3 +606,4 @@ icon = {
 		using = dockable_tooltip
 	}
 }
+

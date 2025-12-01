@@ -3,6 +3,12 @@ Includes = {
 	"cw/camera.fxh"
 }	
 
+Code 
+[[
+	static const int NUM_THREADS_X = 16;
+	static const int NUM_THREADS_Y = 16;
+]]
+
 ComputeShader =
 {
 	ConstantBuffer( PdxConstantBuffer0 )
@@ -56,6 +62,9 @@ ComputeShader =
 			//#define DO_TILE_FRUSTUM_DEPTH_TEST
 			
 			#define MAX_NUM_LIGHTS_PER_TILE 256
+			
+			#define NUM_VECTORS_FOR_POINTLIGHT 2
+			#define NUM_VECTORS_FOR_SPOTLIGHT 4
 			
 			groupshared uint DepthMinAsUint; // Min depth of the tile (uint so we can do atomics)
 			groupshared uint DepthMaxAsUint; // Max depth of the tile (uint so we can do atomics)
@@ -386,7 +395,7 @@ ComputeShader =
 				{
 					for ( uint LightIndex = Input.LocalIndex; LightIndex < _NumPointLights; LightIndex += NUM_THREADS )
 					{
-						uint LightDataIndex = LightIndex * 2; // Each pointlight takes 2 entries, and pointlights comes first
+						uint LightDataIndex = LightIndex * NUM_VECTORS_FOR_POINTLIGHT; // Each pointlight takes NUM_VECTORS_FOR_POINTLIGHT entries, and pointlights comes first
 						if ( !HandlePointLightIntersection( LightDataIndex, FrustumAABBCenter, FrustumAABBHalfSize, DepthMin, DepthMax, FrustumPlanes ) )
 						{
 							break;
@@ -398,7 +407,7 @@ ComputeShader =
 					
 					for ( uint LightIndex = Input.LocalIndex; LightIndex < _NumSpotLights; LightIndex += NUM_THREADS )
 					{
-						uint LightDataIndex = _NumPointLights * 2 + LightIndex * 3; // Each spotlight takes 3 entries, and comes after pointlights
+						uint LightDataIndex = _NumPointLights * NUM_VECTORS_FOR_POINTLIGHT + LightIndex * NUM_VECTORS_FOR_SPOTLIGHT; // Each spotlight takes NUM_VECTORS_FOR_SPOTLIGHT entries, and comes after pointlights
 						if ( !HandleSpotLightIntersection( LightDataIndex, FrustumAABBCenter, FrustumAABBHalfSize, DepthMin, DepthMax, FrustumPlanes ) )
 						{
 							break;
@@ -451,8 +460,6 @@ ComputeShader =
 	}
 }
 
-
-# User needs to supply 2 defines NUM_THREADS_X/NUM_THREADS_Y specifying the threadcount
 Effect TiledCulling
 {
 	ComputeShader = "TiledCulling"

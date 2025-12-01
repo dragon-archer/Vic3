@@ -14,7 +14,8 @@ pdxmesh = {
 		texture_diffuse = "factories_01_m_generic_manufactory_diffuse.dds"
 		texture_normal = "factories_01_m_generic_manufactory_normal.dds"
 		texture_specular = "factories_01_m_generic_manufactory_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -24,7 +25,8 @@ pdxmesh = {
 		texture_diffuse = "latin_rural_residential_mid_01_diffuse.dds"
 		texture_normal = "latin_rural_residential_mid_01_normal.dds"
 		texture_specular = "latin_rural_residential_mid_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -57,7 +59,8 @@ pdxmesh = {
 		texture_diffuse = "factories_01_m_generic_manufactory_diffuse.dds"
 		texture_normal = "factories_01_m_generic_manufactory_normal.dds"
 		texture_specular = "factories_01_m_generic_manufactory_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -67,7 +70,8 @@ pdxmesh = {
 		texture_diffuse = "latin_rural_residential_mid_01_diffuse.dds"
 		texture_normal = "latin_rural_residential_mid_01_normal.dds"
 		texture_specular = "latin_rural_residential_mid_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 

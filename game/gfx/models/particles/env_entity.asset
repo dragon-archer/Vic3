@@ -88,6 +88,84 @@ entity = {
 	}
 }
 entity = {
+	name = "entity_factory_smoke_medium"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "factory_smoke_medium" trigger_once = yes}
+	
+	}
+}
+entity = {
+	name = "entity_factory_smoke_big"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "factory_smoke_big" trigger_once = yes}
+	
+	}
+}
+entity = {
+	name = "entity_factory_smoke_coal"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "factory_smoke_coal" trigger_once = yes}
+	
+	}
+}
+entity = {
+	name = "entity_factory_smoke_chemical"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "factory_smoke_chemical" trigger_once = yes}
+	
+	}
+}
+entity = {
+	name = "entity_utility_sparks"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "utility_sparks" trigger_once = yes}
+	
+	}
+}
+entity = {
+	name = "entity_plantation_flowers"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "plantation_flowers" trigger_once = yes}
+	
+	}
+}
+entity = {
 	name = "env_rough_water"
 	pdxmesh = "cube_test_mesh"
 	
@@ -171,12 +249,13 @@ entity = {
 	locator = { name = "temp" position = { 0 -10 0 } }
 	
 	locator = { name = part1 }
+
+	cull_radius = 20
 	
 	default_state = "idle"
 	state = { name = "idle" state_time = 5
-		event = { time = 0 node = "part1" particle = "god_rays" trigger_once = yes}
-	
-}
+		event = { time = 0 node = "part1" particle = "god_rays" trigger_once = yes}	
+	}
 }
 
 entity = {
@@ -274,6 +353,8 @@ entity = {
 	locator = { name = part1 }
 	
 	default_state = "idle"
+	cull_radius = 10
+	
 	state = { name = "idle" state_time = 5
 		event = { time = 0 node = "part1" particle = "environment/jungle_mist_large" trigger_once = yes}
 	}

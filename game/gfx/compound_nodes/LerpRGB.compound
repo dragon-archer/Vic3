@@ -1,29 +1,26 @@
 ﻿compound_node={
 	id="LerpRGB"
-	node_context=0
+	node_context=7
 	graph={
 		nodes={
 			pdxns:common:GraphInterface={
 				id=0
 				node={
-					pins={
+					output_pins={
 						pin={
-							name=ColourA
+							name="ColourA"
 							display_text="ColourA"
-							input=no
-							type=Color
+							type="Color"
 						}
 						pin={
-							name=ColourB
+							name="ColourB"
 							display_text="ColourB"
-							input=no
-							type=Color
+							type="Color"
 						}
 						pin={
-							name=LerpAmount
+							name="LerpAmount"
 							display_text="LerpAmount"
-							input=no
-							type=Float
+							type="Float"
 						}
 					}
 				}
@@ -33,21 +30,20 @@
 			pdxns:common:GraphInterface={
 				id=1
 				node={
-					pins={
+					input_pins={
 						pin={
-							name=Color
+							name="Color"
 							display_text="Color"
-							input=yes
-							flags=optional
-							type=Color
+							flags="optional"
+							type="Color"
 						}
 					}
 				}
 				inputs={
 					link={
-						pin_index=0
+						pin_id="Color"
 						linked_node=2
-						linked_pin_index=0
+						linked_pin="rgba"
 					}
 				}
 			}
@@ -57,24 +53,24 @@
 				}
 				inputs={
 					link={
-						pin_index=0
+						pin_id="red"
 						linked_node=3
-						linked_pin_index=0
+						linked_pin="value"
 					}
 					link={
-						pin_index=1
+						pin_id="green"
 						linked_node=4
-						linked_pin_index=0
+						linked_pin="value"
 					}
 					link={
-						pin_index=2
+						pin_id="blue"
 						linked_node=8
-						linked_pin_index=0
+						linked_pin="value"
 					}
 					link={
-						pin_index=3
-						linked_node=13
-						linked_pin_index=0
+						pin_id="α"
+						linked_node=6
+						linked_pin="value"
 					}
 				}
 			}
@@ -84,19 +80,19 @@
 				}
 				inputs={
 					link={
-						pin_index=0
+						pin_id="x"
 						linked_node=7
-						linked_pin_index=0
+						linked_pin="red"
 					}
 					link={
-						pin_index=1
+						pin_id="y"
 						linked_node=5
-						linked_pin_index=0
+						linked_pin="red"
 					}
 					link={
-						pin_index=2
+						pin_id="s"
 						linked_node=0
-						linked_pin_index=2
+						linked_pin="LerpAmount"
 					}
 				}
 			}
@@ -106,19 +102,19 @@
 				}
 				inputs={
 					link={
-						pin_index=0
+						pin_id="x"
 						linked_node=7
-						linked_pin_index=1
+						linked_pin="green"
 					}
 					link={
-						pin_index=1
+						pin_id="y"
 						linked_node=5
-						linked_pin_index=1
+						linked_pin="green"
 					}
 					link={
-						pin_index=2
+						pin_id="s"
 						linked_node=0
-						linked_pin_index=2
+						linked_pin="LerpAmount"
 					}
 				}
 			}
@@ -128,14 +124,14 @@
 				}
 				inputs={
 					link={
-						pin_index=0
+						pin_id="rgba"
 						linked_node=0
-						linked_pin_index=1
+						linked_pin="ColourB"
 					}
 				}
 			}
 			pdxns:values:Float={
-				id=13
+				id=6
 				node={
 					value=1.000000
 				}
@@ -148,9 +144,9 @@
 				}
 				inputs={
 					link={
-						pin_index=0
+						pin_id="rgba"
 						linked_node=0
-						linked_pin_index=0
+						linked_pin="ColourA"
 					}
 				}
 			}
@@ -160,19 +156,19 @@
 				}
 				inputs={
 					link={
-						pin_index=0
+						pin_id="x"
 						linked_node=7
-						linked_pin_index=2
+						linked_pin="blue"
 					}
 					link={
-						pin_index=1
+						pin_id="y"
 						linked_node=5
-						linked_pin_index=2
+						linked_pin="blue"
 					}
 					link={
-						pin_index=2
+						pin_id="s"
 						linked_node=0
-						linked_pin_index=2
+						linked_pin="LerpAmount"
 					}
 				}
 			}

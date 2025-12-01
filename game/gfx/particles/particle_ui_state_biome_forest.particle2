@@ -464,7 +464,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=220
+					linked_node=110
 					linked_pin="value"
 				}
 			}
@@ -889,7 +889,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=205
+			id=63
 			node={
 				value=-300.000000
 			}
@@ -993,7 +993,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=206
+			id=72
 			node={
 				value=300.000000
 			}
@@ -1125,7 +1125,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=296
+			id=81
 			node={
 				value=no
 			}
@@ -1521,7 +1521,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=220
+			id=110
 			node={
 				value=no
 			}
@@ -1683,11 +1683,6 @@ graph={
 					pin_id="tag"
 					linked_node=140
 					linked_pin="value"
-				}
-				link={
-					pin_id="effect_flags"
-					linked_node=1
-					linked_pin="effect_id"
 				}
 				link={
 					pin_id="angular_velocity"
@@ -2222,12 +2217,12 @@ graph={
 			inputs={
 				link={
 					pin_id="limit1"
-					linked_node=205
+					linked_node=63
 					linked_pin="value"
 				}
 				link={
 					pin_id="limit2"
-					linked_node=206
+					linked_node=72
 					linked_pin="value"
 				}
 			}
@@ -2286,7 +2281,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=296
+					linked_node=81
 					linked_pin="value"
 				}
 			}

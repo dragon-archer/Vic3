@@ -3,6 +3,10 @@ Includes = {
 	"jomini/jomini_water_default.fxh"
 }
 
+supports_additional_shader_options = {
+	JOMINI_REFRACTION_ENABLED
+}
+
 PixelShader =
 {
 	Code

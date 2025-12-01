@@ -10,6 +10,19 @@
 	pop_support = {
 		value = 0
 	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
 }
 
 law_migration_controls = {
@@ -25,7 +38,79 @@ law_migration_controls = {
 	possible_political_movements = {
 		law_no_migration_controls
 		law_closed_borders
-	}	
+	}
+
+	pop_support = {
+		value = 0
+		add = {
+			desc = "POP_UNEMPLOYED_STATE"
+			if = {
+				limit = { 
+					owner = { 
+						NOT = { 
+							has_law = law_type:law_closed_borders
+						} 
+					}
+					state = {
+						state_unemployment_rate >= 0.1
+					}
+				}
+				value = 0.1
+			}
+			if = {
+				limit = {
+					owner = { 
+						NOT = { 
+							has_law = law_type:law_closed_borders
+						} 
+					}
+					state = {
+						state_unemployment_rate >= 0.2
+					}
+				}
+				value = 0.1
+			}
+			if = {
+				limit = { 
+					owner = { 
+						NOT = { 
+							has_law = law_type:law_closed_borders
+						} 
+					}
+					state = {
+						state_unemployment_rate >= 0.3
+					}
+				}
+				value = 0.1
+			}
+			if = {
+				limit = {
+					owner = { 
+						NOT = { 
+							has_law = law_type:law_closed_borders
+						} 
+					}
+					state = {
+						state_unemployment_rate >= 0.4
+					}
+				}
+				value = 0.1
+			}
+			if = {
+				limit = {
+					owner = { 
+						NOT = { 
+							has_law = law_type:law_closed_borders
+						} 
+					}
+					state = {
+						state_unemployment_rate >= 0.5
+					}
+				}
+				value = 0.1
+			}
+		}	
+	}
 
 	pop_support = {
 		value = 0
@@ -98,6 +183,19 @@ law_migration_controls = {
 			}
 		}
 	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
 }
 
 law_closed_borders = {
@@ -106,13 +204,61 @@ law_closed_borders = {
 
 	modifier = {
 		country_disallow_migration = yes
+		country_disallow_agitator_invites = yes
 	}
 	
 	progressiveness = -50
 	
 	possible_political_movements = {
 		law_closed_borders
-	}	
+	}
+
+	pop_support = {
+		value = 0
+		add = {
+			desc = "POP_UNEMPLOYED_STATE"
+			if = {
+				limit = { 
+					state = {
+						state_unemployment_rate >= 0.1
+					}
+				}
+				value = 0.1
+			}
+			if = {
+				limit = {
+					state = {
+						state_unemployment_rate >= 0.2
+					}
+				}
+				value = 0.1
+			}
+			if = {
+				limit = { 
+					state = {
+						state_unemployment_rate >= 0.3
+					}
+				}
+				value = 0.1
+			}
+			if = {
+				limit = {
+					state = {
+						state_unemployment_rate >= 0.4
+					}
+				}
+				value = 0.1
+			}
+			if = {
+				limit = {
+					state = {
+						state_unemployment_rate >= 0.5
+					}
+				}
+				value = 0.1
+			}
+		}	
+	}
 
 	pop_support = {
 		value = 0
@@ -158,6 +304,19 @@ law_closed_borders = {
 				}
 				value = 0.1
 			}
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
 		}
 	}
 }

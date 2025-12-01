@@ -398,6 +398,11 @@ graph={
 					linked_node=30
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=706
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Bool={
@@ -427,7 +432,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=31
 			node={
-				texture_file="gfx/particles/textures/mist_3.dds" 
+				texture_file="gfx/particles/textures/mist_3.dds"
 			}
 			inputs={
 			}
@@ -1187,7 +1192,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=91
 			node={
-				texture_file="gfx/particles/textures/cloud.dds" 
+				texture_file="gfx/particles/textures/cloud.dds"
 			}
 			inputs={
 			}
@@ -1283,22 +1288,22 @@ graph={
 				}
 				link={
 					pin_id="usr:StartColor"
-					linked_node=742
+					linked_node=697
 					linked_pin="value"
 				}
 				link={
 					pin_id="usr:lifetime"
-					linked_node=743
+					linked_node=698
 					linked_pin="value"
 				}
 				link={
 					pin_id="usr:size"
-					linked_node=744
+					linked_node=210
 					linked_pin="value"
 				}
 				link={
 					pin_id="usr:particlerandom"
-					linked_node=745
+					linked_node=695
 					linked_pin="value"
 				}
 			}
@@ -1329,6 +1334,11 @@ graph={
 				link={
 					pin_id="billboard_axis"
 					linked_node=122
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=731
 					linked_pin="value"
 				}
 			}
@@ -2285,6 +2295,11 @@ graph={
 					linked_node=156
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=763
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:HasTag={
@@ -2556,7 +2571,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=188
 			node={
-				texture_file="gfx/particles/textures/leaf_single.dds" 
+				texture_file="gfx/particles/textures/leaf_single.dds"
 			}
 			inputs={
 			}
@@ -2707,6 +2722,11 @@ graph={
 				link={
 					pin_id="billboard_axis"
 					linked_node=223
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=771
 					linked_pin="value"
 				}
 			}
@@ -2947,7 +2967,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=744
+			id=210
 			node={
 				value=0.000000
 			}
@@ -3074,7 +3094,7 @@ graph={
 				}
 				link={
 					pin_id="scale_y"
-					linked_node=818
+					linked_node=696
 					linked_pin="value"
 				}
 			}
@@ -4056,6 +4076,11 @@ graph={
 					linked_node=398
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=828
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -4090,7 +4115,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=290
 			node={
-				texture_file="gfx/particles/textures/leaf_single.dds" 
+				texture_file="gfx/particles/textures/leaf_single.dds"
 			}
 			inputs={
 			}
@@ -5013,6 +5038,11 @@ graph={
 					linked_node=308
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=872
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Int32={
@@ -5034,7 +5064,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=352
 			node={
-				texture_file="gfx/particles/textures/mist_stripes.dds" 
+				texture_file="gfx/particles/textures/mist_stripes.dds"
 			}
 			inputs={
 			}
@@ -5720,7 +5750,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=418
 			node={
-				texture_file="gfx/particles/textures/leaf_single.dds" 
+				texture_file="gfx/particles/textures/leaf_single.dds"
 			}
 			inputs={
 			}
@@ -6780,6 +6810,11 @@ graph={
 				link={
 					pin_id="billboard_axis"
 					linked_node=369
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=919
 					linked_pin="value"
 				}
 			}
@@ -8461,6 +8496,11 @@ graph={
 					linked_node=551
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=968
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
@@ -8534,7 +8574,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=639
 			node={
-				texture_file="gfx/particles/textures/leaf_single.dds" 
+				texture_file="gfx/particles/textures/leaf_single.dds"
 			}
 			inputs={
 			}
@@ -8755,7 +8795,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=654
 			node={
-				texture_file="gfx/particles/textures/bird_5x4.dds" 
+				texture_file="gfx/particles/textures/bird_5x4.dds"
 			}
 			inputs={
 			}
@@ -8941,11 +8981,6 @@ graph={
 					pin_id="tag"
 					linked_node=449
 					linked_pin="value"
-				}
-				link={
-					pin_id="effect_flags"
-					linked_node=671
-					linked_pin="effect_id"
 				}
 				link={
 					pin_id="angular_velocity"
@@ -9483,7 +9518,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=745
+			id=695
 			node={
 				value=0.000000
 			}
@@ -9491,7 +9526,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=818
+			id=696
 			node={
 				value=0.200000
 			}
@@ -9499,7 +9534,7 @@ graph={
 			}
 		}
 		pdxns:values:Color={
-			id=742
+			id=697
 			node={
 				value={
 					1.000000 1.000000 1.000000 1.000000
@@ -9510,9 +9545,73 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=743
+			id=698
 			node={
 				value=0.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=771
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=763
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=828
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=731
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=968
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=872
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=919
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=706
+			node={
+				value=no
 			}
 			inputs={
 			}

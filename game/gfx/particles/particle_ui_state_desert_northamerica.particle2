@@ -44,7 +44,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=198
+					linked_node=154
 					linked_pin="value"
 				}
 			}
@@ -571,7 +571,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetAge={
-			id=193
+			id=45
 			node={
 			}
 			inputs={
@@ -616,7 +616,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=221
+					linked_node=174
 					linked_pin="value"
 				}
 			}
@@ -797,7 +797,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetUserData={
-			id=194
+			id=66
 			node={
 				user_data={
 					id="usr:lifetime"
@@ -1119,7 +1119,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetAge={
-			id=195
+			id=87
 			node={
 			}
 			inputs={
@@ -1262,7 +1262,7 @@ graph={
 			}
 		}
 		pdxns:particle:SetFlipbookTime={
-			id=196
+			id=98
 			node={
 			}
 			inputs={
@@ -1540,7 +1540,7 @@ graph={
 				}
 				link={
 					pin_id="x"
-					linked_node=195
+					linked_node=87
 					linked_pin="age"
 				}
 				link={
@@ -1550,7 +1550,7 @@ graph={
 				}
 				link={
 					pin_id="scale_y"
-					linked_node=197
+					linked_node=153
 					linked_pin="product"
 				}
 			}
@@ -1797,12 +1797,12 @@ graph={
 				}
 				link={
 					pin_id="x"
-					linked_node=193
+					linked_node=45
 					linked_pin="age"
 				}
 				link={
 					pin_id="scale_x"
-					linked_node=194
+					linked_node=66
 					linked_pin="value"
 				}
 				link={
@@ -2041,7 +2041,7 @@ graph={
 			}
 		}
 		pdxns:math:MulF={
-			id=197
+			id=153
 			node={
 			}
 			inputs={
@@ -2058,7 +2058,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=198
+			id=154
 			node={
 				value=no
 			}
@@ -2303,7 +2303,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=221
+			id=174
 			node={
 				value=no
 			}
@@ -2569,11 +2569,6 @@ graph={
 					pin_id="tag"
 					linked_node=177
 					linked_pin="value"
-				}
-				link={
-					pin_id="effect_flags"
-					linked_node=170
-					linked_pin="effect_id"
 				}
 				link={
 					pin_id="angular_velocity"

@@ -84,15 +84,9 @@ entity = {
 entity = {
 	name = "war_center_active_entity"
 	pdxmesh = "cube_test_mesh"
-	
-	locator = { name = "temp" position = { 0 -10 0 } }
-	
-	locator = { name = part1 position = { -2 0 0 } }
-	locator = { name = part2 position = { 2 0 2 } }
-	locator = { name = part3 position = { 3 0 -2 } }
-	locator = { name = part4 position = { -3 0 1.5 } }
-	
 	default_state = "idle"
+
+	locator = { name = part1 position = { 0 0 0 } }	
 	state = 
 	{ 
 		name = "idle" 
@@ -100,13 +94,7 @@ entity = {
 		looping = no
 		
 		event = { entity = "vfx_entity_war_start" }
-		
-		start_event = { node = "part1" particle = "war/war_active_center_ground_effect" trigger_once = yes}
-		
-		start_event = { node = "part1" particle = "war_smoke_pillars" trigger_once = yes }
-		start_event = { node = "part2" particle = "war_smoke_pillars" trigger_once = yes }
-		start_event = { node = "part3" particle = "war_smoke_pillars" trigger_once = yes }
-		start_event = { node = "part4" particle = "war_smoke_pillars" trigger_once = yes }
+		start_event = { node = "part1" particle = "war_ground_fire_parent" trigger_once = yes }	
 	}
 }
 
@@ -131,9 +119,6 @@ entity = {
 		state_time = 5
 		looping = no
 		
-		start_event = { node = "location1" particle = "war/war_after_center_smoke" keep_particle = yes trigger_once = yes}
-		start_event = { node = "location2" particle = "war/war_after_center_smoke" keep_particle = yes trigger_once = yes}
-		start_event = { node = "location3" particle = "war/war_after_center_smoke" keep_particle = yes trigger_once = yes}
 		start_event = { node = "part1" particle = "war/war_after_center_ground" keep_particle = yes trigger_once = yes}
 		
 		event = { sound = { soundeffect = "event:/SFX/VFX/war/zone_center" } }

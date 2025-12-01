@@ -141,10 +141,10 @@ PixelShader
 				float ProgressFactor = Progress - Input.UV0To1.x;
 				clip( ProgressFactor );
 				
-				float4 Diffuse = PdxTex2D( DIFFUSE_TEXTURE, Input.UV );
+				float4 Diffuse = PdxTex2D( DiffuseTexture, Input.UV );
 				Diffuse *= TintColor;
 				
-				float4 Mask = SampleMask( Input.MaskUV, MASK_TEXTURE );
+				float4 Mask = SampleMask( Input.MaskUV, MaskTexture );
 
 				return float4( Diffuse * Mask );
 			}
@@ -162,8 +162,8 @@ PixelShader
 				float ProgressFactor = Progress - Input.UV0To1.x;
 				clip( ProgressFactor );
 				
-				float Diffuse = PdxTex2D( DIFFUSE_TEXTURE, Input.UV ).a;
-				float Mask = SampleMask( Input.MaskUV, MASK_TEXTURE ).a;
+				float Diffuse = PdxTex2D( DiffuseTexture, Input.UV ).a;
+				float Mask = SampleMask( Input.MaskUV, MaskTexture ).a;
 				
 				float Alpha = Diffuse * TintColor.a * Mask;
 				clip( Alpha - 0.5 );

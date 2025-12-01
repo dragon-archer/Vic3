@@ -1,4 +1,5 @@
 #define UINT16_MAX 0xffff
+#define UINT32_MAX 0xffffffff
 #define PI 3.14159265359
 
 float2x2 Create2x2( float a, float b, float c, float d ) { return Create2x2( float2( a, b ), float2( c, d ) ); }
@@ -6,6 +7,8 @@ float2x2 Create2x2( float a, float b, float c, float d ) { return Create2x2( flo
 #define PdxSampleTex2DLod0(tex,samp,uv) PdxSampleTex2DLod( (tex), (samp), (uv), 0 )
 
 #define PdxTexture2DLoad0(tex,uv) PdxTexture2DLoad( (tex), (uv), 0 )
+
+#define PdxTexture2DArrayLoad0(tex,uv,arrayindex) PdxTexture2DArrayLoad( (tex), (uv), (arrayindex), 0)
 
 #define PdxTex2DProj(samp,uv_proj) PdxTex2DLod0( (samp), (uv_proj).xy / (uv_proj).w )
 #define PdxTex2DLod0(samp,uv) PdxTex2DLod( (samp), (uv), 0 )

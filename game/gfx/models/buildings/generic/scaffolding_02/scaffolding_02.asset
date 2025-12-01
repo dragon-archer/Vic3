@@ -18,7 +18,8 @@ pdxmesh = {
 		texture_diffuse = "scaffolding_01_diffuse.dds"
 		texture_normal = "scaffolding_01_normal.dds"
 		texture_specular = "scaffolding_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -28,7 +29,8 @@ pdxmesh = {
 		texture_diffuse = "scaffolding_01_diffuse.dds"
 		texture_normal = "scaffolding_01_normal.dds"
 		texture_specular = "scaffolding_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -38,16 +40,17 @@ pdxmesh = {
 		texture_diffuse = "scaffolding_01_diffuse.dds"
 		texture_normal = "scaffolding_01_normal.dds"
 		texture_specular = "scaffolding_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }
 
-entity = 
+entity =
 {
 	name = "scaffolding_02_mesh_entity"
 	pdxmesh = "scaffolding_02_mesh"
-	
+
 	default_state = "start"
 
 	state = {
@@ -57,11 +60,11 @@ entity =
 	}
 }
 
-entity = 
+entity =
 {
 	name = "scaffolding_02_mesh_working_entity"
 	pdxmesh = "scaffolding_02_mesh"
-	
+
 	default_state = "start"
 
 	state = {
@@ -75,100 +78,96 @@ entity =
 entity = {
 	name = "scaffolding_02_entity"
 	locator = { name = center position = { 0 0 0 } rotation = { 0 0 0 }}
-	
+
 	default_state = "start"
 
-	state = 
+	state =
 	{
 		name = "start"
 		state_time = 2
 		looping = no
-		
-		event = 
-		{ 
-			time = 0 
-			node = "center" 
+
+		event =
+		{
+			time = 0
+			node = "center"
 			particle = "infrastructure/construction_begin_big"
-			trigger_once = yes 
-			keep_particle = no 
+			trigger_once = yes
+			keep_particle = no
 		}
 
 		#Scaffolding Mesh Fade In
-		event = 
+		event =
 		{
 			time = 0
-			node = "center" 
+			node = "center"
 			entity = "scaffolding_02_mesh_entity"
-			#attachment_id = "scaffolding_02_mesh_entity_attachment"
-			#life = 2
-			#entity_fade_speed = 1
+			attachment_id = "scaffolding_02_mesh_entity_attachment"
+			life = 2
+			entity_fade_speed = 2
 		}
-		
+
 		next_state = "idle"
 	}
-	
+
 	state = {
 		name = "idle"
 		state_time = 2
 		looping = no
-				
-		event = 
-		{ 
-			time = 0 
-			node = "center" 
-			particle = "infrastructure/construction_dust_big" 
-			trigger_once = yes 
+
+		event =
+		{
+			time = 0
+			node = "center"
+			particle = "infrastructure/construction_dust_big"
+			trigger_once = yes
 			keep_particle = yes
 		}
-		
+
 		#Scaffolding Mesh
-		start_event = 
-		{ 
-			node = "center" 
+		start_event =
+		{
+			node = "center"
 			entity = "scaffolding_02_mesh_working_entity"
 		}
 
 		#start_event = { sound  = { soundeffect = "event:/SFX/Ambience/3D/Entity/scaffolding/sml_start" }  }
 		#sounds are disabled until https://beta.paradoxplaza.com/browse/PRCAL-12652 is resolved
-		
-		#next_state = "idle"
 	}
-	
-	state = 
+
+	state =
 	{
 		name = "end"
-		state_time = 5 
+		state_time = 5
 		looping = no
-		
-		event = 
-		{ 
-			time = 0 
-			node = "center" 
-			particle = "infrastructure/construction_complete_big" 
-			trigger_once = yes 
-			keep_particle = no 
-		}
-		
-		#Scaffolding Mesh Fade In
-		event = 
-		{ 
+
+		event =
+		{
 			time = 0
-			node = "center" 
+			node = "center"
+			particle = "infrastructure/construction_complete_big"
+			trigger_once = yes
+			keep_particle = no
+		}
+
+		#Scaffolding Mesh
+		event =
+		{
+			time = 0
+			node = "center"
 			attachment_id = "scaffolding_02_mesh_entity_attachment"
 			entity = "scaffolding_02_mesh_working_entity"
-			#life = 1
-			#entity_fade_speed = 4.0
 		}
-		
+
 		#Scaffolding Mesh Fade Out
-		event = 
-		{ 
+		event =
+		{
 			time = 0.7
-			node = "center" 
+			node = "center"
 			remove_attachment = "scaffolding_02_mesh_entity_attachment"
 			entity_fade_speed = 8.0
 		}
-		
+
 		#start_event = { sound  = { soundeffect = "event:/SFX/Ambience/3D/Entity/scaffolding/sml_stop" }  }
 	}
 }

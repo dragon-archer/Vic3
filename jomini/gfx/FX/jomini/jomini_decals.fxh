@@ -5,6 +5,9 @@ Includes = {
 	"jomini/jomini_mapobject.fxh"
 }
 
+supports_additional_shader_options = {
+	JOMINI_MAP_OBJECT
+}
 
 VertexStruct VS_OUTPUT
 {

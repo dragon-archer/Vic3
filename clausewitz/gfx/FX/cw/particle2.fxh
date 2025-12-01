@@ -1,5 +1,6 @@
 Includes = {
 	"cw/camera.fxh"
+	"cw/quaternion.fxh"
 }
 
 ConstantBuffer( PdxFlipbookConstants )
@@ -29,18 +30,13 @@ VertexStruct VS_OUTPUT_PARTICLE
 
 Code
 [[
-	float3 QRotVector( float4 RotQ, float3 V )
-	{
-		return V + 2.0 * cross( RotQ.xyz, cross( RotQ.xyz, V ) + RotQ.w * V );
-	}
-
 	uint CalcCurrentFrame( int Columns, int Rows, float Time )
 	{
 		int TotalFrames = ( Columns * Rows );
 		return uint( TotalFrames * Time );
 	}
 
-float CalcFrameBlend(int Columns, int Rows, float Time)
+	float CalcFrameBlend(int Columns, int Rows, float Time)
 	{
 		uint TotalFrames = ( Columns * Rows );
 		return frac(TotalFrames * Time);
@@ -71,7 +67,7 @@ VertexShader =
 			{
 				VS_OUTPUT_PARTICLE Out;
 				float3 InitialOffset = float3( (Input.UV0 - 0.5f) * Input.Size, 0 );
-				float3 Offset = QRotVector( Input.RotQ, InitialOffset );
+				float3 Offset = RotateVector( Input.RotQ, InitialOffset );
 				float Alpha = 0.0f;
 
 				#ifdef BILLBOARD
@@ -80,31 +76,14 @@ VertexShader =
 					if( Input.BillboardAxis.x != 0.0 || 
 						Input.BillboardAxis.y != 0.0 || 
 						Input.BillboardAxis.z != 0.0 )
-					{
-						float3 TextureAxis = float3(1,0,0);
-						float4 Q;
-						
-						float DotProduct = dot(TextureAxis, Input.BillboardAxis);
-						if(DotProduct < -0.999999f)
-						{
-							Q.xyzw = float4(0,0,1,0);
-						}
-						else
-						{
-							Q.xyz = cross(Input.BillboardAxis, TextureAxis);
-							Q.w = sqrt(1 + DotProduct);
-							Q = normalize(Q);
-						}
-						
-						Offset = QRotVector( Q, InitialOffset );
-						
-						float3 RotatedBillboardAxis = QRotVector( Input.RotQ, Input.BillboardAxis );
+					{						
+						float3 Up = normalize( RotateVector( Input.RotQ, Input.BillboardAxis ) );
 						float3 ToCameraDir = normalize(CameraPosition - Input.Pos.xyz);
-						float3 Direction = normalize(RotatedBillboardAxis);
-						float3 Up = normalize(cross(Direction, ToCameraDir));
-						WorldPos = Input.Pos.xyz + Offset.x * Direction + Offset.y * Up;
+						float3 Right = normalize( cross( Up, ToCameraDir ) );
+						WorldPos = Input.Pos.xyz + InitialOffset.x * Right + InitialOffset.y * Up;
 
 						#ifdef FADE_STEEP_ANGLES
+							float3 Direction = cross( Right, Up );
 							float fresnel = saturate(pow( 1.0f - abs(dot(ToCameraDir, Direction)), 2.0f ) * 2.5f);
 							Alpha = Input.Color.a * fresnel;
 						#else

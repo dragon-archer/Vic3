@@ -526,7 +526,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=161
+					linked_node=136
 					linked_pin="value"
 				}
 			}
@@ -721,7 +721,7 @@ graph={
 				}
 				link={
 					pin_id="y"
-					linked_node=142
+					linked_node=81
 					linked_pin="value"
 				}
 			}
@@ -791,12 +791,12 @@ graph={
 				}
 				link={
 					pin_id="size"
-					linked_node=141
+					linked_node=72
 					linked_pin="value"
 				}
 				link={
 					pin_id="position"
-					linked_node=144
+					linked_node=113
 					linked_pin="value"
 				}
 				link={
@@ -811,7 +811,7 @@ graph={
 				}
 				link={
 					pin_id="color"
-					linked_node=145
+					linked_node=130
 					linked_pin="value"
 				}
 				link={
@@ -865,7 +865,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=140
+			id=63
 			node={
 				value=172
 			}
@@ -965,7 +965,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=141
+			id=72
 			node={
 				value=0.000000
 			}
@@ -1075,7 +1075,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=142
+			id=81
 			node={
 				value=4
 			}
@@ -1239,7 +1239,7 @@ graph={
 			inputs={
 				link={
 					pin_id="tag"
-					linked_node=140
+					linked_node=63
 					linked_pin="value"
 				}
 			}
@@ -1346,7 +1346,7 @@ graph={
 			inputs={
 				link={
 					pin_id="tag"
-					linked_node=140
+					linked_node=63
 					linked_pin="value"
 				}
 			}
@@ -1414,7 +1414,7 @@ graph={
 				}
 				link={
 					pin_id="α"
-					linked_node=143
+					linked_node=112
 					linked_pin="result"
 				}
 			}
@@ -1530,7 +1530,7 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=143
+			id=112
 			node={
 				graph="ScaledCurveSampler"
 			}
@@ -1558,7 +1558,7 @@ graph={
 			}
 		}
 		pdxns:values:ConstVector3f={
-			id=144
+			id=113
 			node={
 				value={ -1.000000 0.500000 0.000000 }
 			}
@@ -1681,13 +1681,8 @@ graph={
 				}
 				link={
 					pin_id="tag"
-					linked_node=140
+					linked_node=63
 					linked_pin="value"
-				}
-				link={
-					pin_id="effect_flags"
-					linked_node=8
-					linked_pin="effect_id"
 				}
 				link={
 					pin_id="angular_velocity"
@@ -1818,7 +1813,7 @@ graph={
 			}
 		}
 		pdxns:values:Color={
-			id=145
+			id=130
 			node={
 				value={
 					0.000000 0.000000 0.000000 1.000000
@@ -1896,7 +1891,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=161
+			id=136
 			node={
 				value=no
 			}

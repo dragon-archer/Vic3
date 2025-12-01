@@ -25,6 +25,19 @@ law_chiefdom = {
 	pop_support = {
 		value = 0
 	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
 }
 
 law_monarchy = {
@@ -67,7 +80,59 @@ law_monarchy = {
 	ai_will_do = {
 		exists = ruler
 		ruler = {
-			has_ideology = ideology_royalist
+			has_monarchist_ideology = yes
+		}
+	}
+
+	on_activate = {
+		if = {
+			limit = {
+				c:FRA ?= this
+				NOT = {
+					has_variable = one_true_french_dynasty
+				}
+				has_dlc_feature = voice_of_the_people_content
+				game_date > 1836.1.1
+			}
+			if = {
+				limit = {
+					has_variable = fra_divided_monarchists_freeze
+				}
+				remove_variable = fra_divided_monarchists_freeze
+			}
+			add_journal_entry = { type = je_divided_monarchists }
+		}
+		# Generates French monarch upon enaction.
+		hidden_effect = {
+			if = {
+				limit = {
+					c:FRA ?= this
+					NOT = {
+						has_variable = one_true_french_dynasty
+					}
+					has_dlc_feature = voice_of_the_people_content
+					game_date > 1836.1.1
+					NOR = {
+						ruler_is_bonapartist = yes
+						ruler_is_orleanist = yes
+						ruler_is_legitimist = yes
+					}
+				}
+				fra_handle_republic_monarch_assignment = yes
+			}
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
 		}
 	}
 }
@@ -84,13 +149,27 @@ law_presidential_republic = {
 	}
 	
 	modifier = {
-		country_legitimacy_govt_total_votes_add = 20
+		country_legitimacy_headofstate_add = 10
+		country_legitimacy_govt_total_votes_add = 10
 		country_legitimacy_ideological_incoherence_mult = 0.2
 		country_authority_add = 100
+	}
+
+	on_activate = {
+		if = {
+			limit = {
+				has_variable = fra_republic_counter
+			}
+			change_variable = {
+				name = fra_republic_counter
+				add = 1
+			}
+		}
 	}
 	
 	possible_political_movements = {
 		law_council_republic
+		law_monarchy
 	}
 
 	pop_support = {
@@ -109,7 +188,20 @@ law_presidential_republic = {
 	ai_will_do = {
 		exists = ruler
 		ruler = {
-			has_ideology = ideology_republican_leader
+			has_ideology = ideology:ideology_republican_leader
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
 		}
 	}
 }
@@ -121,6 +213,11 @@ law_parliamentary_republic = {
 	
 	progressiveness = 100
 	
+	# Has major legitimacy issues with autocracies, so should be oligarchy instead
+	disallowing_laws = {
+		law_autocracy
+	}
+	
 	unlocking_technologies = {
 		democracy
 	}
@@ -130,8 +227,21 @@ law_parliamentary_republic = {
 		country_legitimacy_govt_size_add = 1
 	}
 	
+	on_activate = {
+		if = {
+			limit = {
+				has_variable = fra_republic_counter
+			}
+			change_variable = {
+				name = fra_republic_counter
+				add = 1
+			}
+		}
+	}
+
 	possible_political_movements = {
 		law_council_republic
+		law_monarchy
 	}
 
 	pop_support = {
@@ -150,7 +260,20 @@ law_parliamentary_republic = {
 	ai_will_do = {
 		exists = ruler
 		ruler = {
-			has_ideology = ideology_republican_leader
+			has_ideology = ideology:ideology_republican_leader
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
 		}
 	}
 }
@@ -197,7 +320,20 @@ law_theocracy = {
 	ai_will_do = {
 		exists = ruler
 		ruler = {
-			has_ideology = ideology_theocrat
+			has_ideology = ideology:ideology_theocrat
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
 		}
 	}
 }
@@ -224,6 +360,7 @@ law_council_republic = {
 	}		
 
 	modifier = {
+		country_legitimacy_govt_total_votes_add = 10
 		country_legitimacy_govt_size_add = 1
 		country_legitimacy_ideological_incoherence_mult = -0.1
 		interest_group_ig_trade_unions_pol_str_mult = 0.25
@@ -251,10 +388,23 @@ law_council_republic = {
 		exists = ruler
 		ruler = {
 			OR = {
-				has_ideology = ideology_communist
-				has_ideology = ideology_anarchist
-				has_ideology = ideology_vanguardist
+				has_ideology = ideology:ideology_communist
+				has_ideology = ideology:ideology_anarchist
+				has_ideology = ideology:ideology_vanguardist
 			}
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
 		}
 	}
 }

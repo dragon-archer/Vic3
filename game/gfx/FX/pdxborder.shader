@@ -1,5 +1,5 @@
 Includes = {
-	"cw/pdxterrain.fxh"
+	"cw/terrain.fxh"
 	"cw/camera.fxh"
 	"cw/shadow.fxh"
 	"jomini/jomini_flat_border.fxh"
@@ -44,7 +44,7 @@ VertexShader =
 				VS_OUTPUT_PDX_BORDER Out;
 
 				float3 position = Input.Position.xyz;
-				position.y = lerp( position.y, FlatMapHeight, FlatMapLerp );
+				position.y = lerp( position.y, FlatmapHeight, FlatmapLerp );
 				position.y += _HeightOffset;
 
 				Out.WorldSpacePos = position;
@@ -88,7 +88,7 @@ PixelShader =
 		CompareFunction = less_equal
 		SamplerType = "Compare"
 	}
-	
+
 	MainCode BorderPs
 	{
 		Input = "VS_OUTPUT_PDX_BORDER"
@@ -104,20 +104,20 @@ PixelShader =
 				#ifdef COUNTRY_COLOR
 					float4 CountryColor = PdxTex2DLoad0( CountryColors, int2( _UserId, 0 ) );
 					Diffuse.rgb *= CountryColor.rgb;
-					Diffuse.rgb *= 1.0f - FlatMapLerp;
-					Diffuse.a = lerp( Diffuse.a, 0.5f, FlatMapLerp );
+					Diffuse.rgb *= 1.0f - FlatmapLerp;
+					Diffuse.a = lerp( Diffuse.a, 0.5f, FlatmapLerp );
 				#endif
 
 				#ifdef IMPASSABLE_BORDER
 					Diffuse.rgb *= ImpassableTerrainColor.rgb;
 				#endif
 
-				if( FlatMapLerp < 1.0f )
+				if( FlatmapLerp < 1.0f )
 				{
 					float3 Unfogged = Diffuse.rgb;
 					Diffuse.rgb = ApplyFogOfWar( Diffuse.rgb, Input.WorldSpacePos );
 					Diffuse.rgb = GameApplyDistanceFog( Diffuse.rgb, Input.WorldSpacePos );
-					Diffuse.rgb = lerp( Diffuse.rgb, Unfogged, FlatMapLerp );
+					Diffuse.rgb = lerp( Diffuse.rgb, Unfogged, FlatmapLerp );
 				}
 
 				// Close fadeout
@@ -169,7 +169,7 @@ PixelShader =
 
 			#define EDGE_FADE_DISTANCE 0.8
 			#define EDGE_FADE_SHARPNESS 5.0
-		
+
 			// Ground flames
 			#define FLAME_FADE_DISTANCE 0.64
 			#define FLAME_FADE_SHARPNESS 10.0
@@ -201,23 +201,23 @@ PixelShader =
 				// Noise
 				float NoiseLayer = PdxTex2D( BorderTexture, AnimUVs ).a;
 				NoiseLayer = saturate( LevelsScan( NoiseLayer, NOISE_MASK_POSITION, NOISE_MASK_CONTRAST ) );
-				
+
 				// Color
 				float4 BottomLayer = float4( COLOR_1, 1.0f );
 				float4 Color1Layer = float4( COLOR_2, NoiseLayer );
 				BottomLayer.rgb *= COLOR_INTENSITY;
 				Color1Layer.rgb *= COLOR_INTENSITY;
 				float3 FlatmapDiffuse =  AlphaBlendAOverB( Color1Layer, BottomLayer );
-				
+
 				// Alpha
 				float FadeRight = UV.y;
 				FadeRight = saturate( ( EDGE_FADE_DISTANCE - FadeRight) * EDGE_FADE_SHARPNESS );
 				float FadeLeft = 1.0f - UV.y;
 				FadeLeft = saturate( ( EDGE_FADE_DISTANCE - FadeLeft ) * EDGE_FADE_SHARPNESS );
 				float FlatmapAlpha = FadeRight * FadeLeft;
-				
-				Diffuse = lerp( Diffuse, FlatmapDiffuse, FlatMapLerp );
-				Alpha = lerp( Alpha, FlatmapAlpha, FlatMapLerp );
+
+				Diffuse = lerp( Diffuse, FlatmapDiffuse, FlatmapLerp );
+				Alpha = lerp( Alpha, FlatmapAlpha, FlatmapLerp );
 			}
 
 			float GetFade( float2 UV, float Distance, float Sharpness )
@@ -279,7 +279,7 @@ PixelShader =
 				float Alpha = 1.0f;
 
 				// UVs
-				float2 MapCoordinates = Input.WorldSpacePos.xz * WorldSpaceToTerrain0To1;
+				float2 MapCoordinates = Input.WorldSpacePos.xz * _WorldSpaceToTerrain0To1;
 				float2 DetailUV = CalcDetailUV( Input.WorldSpacePos.xz );
 
 				// Get terrain material
@@ -287,7 +287,7 @@ PixelShader =
 				float3 Normal;
 				float4 Properties;
 				CalculateDetails( Input.WorldSpacePos.xz, Diffuse, Normal, Properties );
-				
+
 				float3 ColorMap = PdxTex2D( ColorTexture, float2( MapCoordinates.x, 1.0 - MapCoordinates.y ) ).rgb;
 				Diffuse.rgb = SoftLight( Diffuse.rgb, ColorMap, ( 1.0 - Diffuse.r ) );
 
@@ -331,14 +331,14 @@ PixelShader =
 				Diffuse.rgb += ApplyDevastationMaterialVFXBorder( Diffuse, DetailUV, FlameMask );
 
 				// Effects
-				if( FlatMapLerp < 1.0f )
+				if( FlatmapLerp < 1.0f )
 				{
 					Diffuse.rgb = ApplyFogOfWar( Diffuse.rgb, Input.WorldSpacePos, 1.0 - FlameMask );
 					Diffuse.rgb = GameApplyDistanceFog( Diffuse.rgb, Input.WorldSpacePos );
 				}
-				
+
 				// Fade alpha
-				float EdgeFade = lerp( FlameFade, GetFade( Input.UV, EDGE_FADE_DISTANCE, EDGE_FADE_SHARPNESS ), FlatMapLerp );
+				float EdgeFade = lerp( FlameFade, GetFade( Input.UV, EDGE_FADE_DISTANCE, EDGE_FADE_SHARPNESS ), FlatmapLerp );
 				Alpha *= EdgeFade;
 
 				// Flatmap

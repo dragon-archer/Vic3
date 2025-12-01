@@ -178,7 +178,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=13
 			node={
-				texture_file="gfx/particles/textures/bird_5x4.dds" 
+				texture_file="gfx/particles/textures/bird_5x4.dds"
 			}
 			inputs={
 			}
@@ -704,6 +704,11 @@ graph={
 					linked_node=75
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=163
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:Emitter={
@@ -774,11 +779,6 @@ graph={
 					pin_id="tag"
 					linked_node=6
 					linked_pin="value"
-				}
-				link={
-					pin_id="effect_flags"
-					linked_node=37
-					linked_pin="effect_id"
 				}
 				link={
 					pin_id="angular_velocity"
@@ -1853,6 +1853,14 @@ graph={
 			id=139
 			node={
 				value={ 0.000000 0.300000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=163
+			node={
+				value=no
 			}
 			inputs={
 			}

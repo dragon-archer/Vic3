@@ -1254,11 +1254,6 @@ graph={
 					linked_pin="output_id"
 				}
 				link={
-					pin_id="color"
-					linked_node=114
-					linked_pin="value"
-				}
-				link={
 					pin_id="texture"
 					linked_node=133
 					linked_pin="texture"
@@ -1267,11 +1262,6 @@ graph={
 					pin_id="tag"
 					linked_node=132
 					linked_pin="value"
-				}
-				link={
-					pin_id="effect_flags"
-					linked_node=89
-					linked_pin="effect_id"
 				}
 				link={
 					pin_id="angular_velocity"
@@ -1499,13 +1489,10 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Color={
-			id=114
+		pdxns:values:ConstVector3f={
+			id=211
 			node={
-				value={
-					1.000000 0.000000 0.000000 0.000000
-				}
-
+				value={ 0.000000 0.000000 0.000000 }
 			}
 			inputs={
 			}
@@ -2039,7 +2026,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=297
+					linked_node=199
 					linked_pin="value"
 				}
 			}
@@ -2613,7 +2600,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=212
+			id=190
 			node={
 				value=2.000000
 			}
@@ -2621,7 +2608,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=325
+			id=191
 			node={
 				value=no
 			}
@@ -2629,7 +2616,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=213
+			id=192
 			node={
 				value=-45.000000
 			}
@@ -2637,7 +2624,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=214
+			id=193
 			node={
 				value=0
 			}
@@ -2645,7 +2632,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=215
+			id=194
 			node={
 				value=-50.000000
 			}
@@ -2653,7 +2640,7 @@ graph={
 			}
 		}
 		pdxns:math:randomF={
-			id=216
+			id=195
 			node={
 			}
 			inputs={
@@ -2694,7 +2681,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=297
+			id=199
 			node={
 				value=no
 			}
@@ -2743,7 +2730,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=325
+					linked_node=191
 					linked_pin="value"
 				}
 			}
@@ -2829,12 +2816,12 @@ graph={
 				}
 				link={
 					pin_id="usr:lifetime"
-					linked_node=216
+					linked_node=195
 					linked_pin="value"
 				}
 				link={
 					pin_id="usr:size"
-					linked_node=212
+					linked_node=190
 					linked_pin="value"
 				}
 				link={
@@ -2860,17 +2847,17 @@ graph={
 			inputs={
 				link={
 					pin_id="RotationMin"
-					linked_node=213
+					linked_node=192
 					linked_pin="value"
 				}
 				link={
 					pin_id="RotationMax"
-					linked_node=215
+					linked_node=194
 					linked_pin="value"
 				}
 				link={
 					pin_id="Seed"
-					linked_node=214
+					linked_node=193
 					linked_pin="value"
 				}
 			}
@@ -2914,14 +2901,6 @@ graph={
 			id=210
 			node={
 				value=0.500000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=211
-			node={
-				value={ 0.000000 0.000000 0.000000 }
 			}
 			inputs={
 			}

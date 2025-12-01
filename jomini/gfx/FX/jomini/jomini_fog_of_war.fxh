@@ -2,6 +2,10 @@ Includes = {
 	#"cw/utility.fxh"
 }
 
+supports_additional_shader_options = {
+	JOMINI_DISABLE_FOG_OF_WAR
+}
+
 ConstantBuffer( JominiFogOfWar )
 {
 	float2	FogOfWarAlphaMapSize;

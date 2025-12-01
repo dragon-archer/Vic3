@@ -8,7 +8,8 @@ pdxmesh = {
 		texture_diffuse = "table_texture_diffuse.dds"
 		texture_normal = "table_texture_normal.dds"
 		texture_specular = "noproperties.dds"
-		shader = "standard_flat"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
 	}
 }
 

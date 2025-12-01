@@ -37,12 +37,13 @@ types outliner_types {
 					}
 				}
 				
-				outliner_situations = {}
+				outliner_events = {}
 				outliner_diplomatic_plays = {}
 				outliner_diplomatic_pacts = {}
 				outliner_civil_wars = {}
 				outliner_law_enactment = {}
-				outliner_political_movement = {}
+				outliner_revolutionary_political_movement_item = {}
+				outliner_non_revolutionary_political_movement_list = {}
 				outliner_election = {}
 			}
 
@@ -66,6 +67,21 @@ types outliner_types {
 				}
 				
 				outliner_interest_groups = {
+					blockoverride "visibility" {
+						visible = "[OutlinerEntry.IsShownPinned]"
+					}
+					blockoverride "title_click" {
+						onclick = "[OutlinerEntry.TogglePinnedExpanded]"
+					}
+					blockoverride "list_visibility" {
+						visible = "[OutlinerEntry.IsPinnedExpanded]"
+					}
+					blockoverride "pinnable_expand_buttons" {
+						pinned_expand_buttons = {}
+					}
+					using = outliner_entry_animation
+				}
+				outliner_agitators = {
 					blockoverride "visibility" {
 						visible = "[OutlinerEntry.IsShownPinned]"
 					}

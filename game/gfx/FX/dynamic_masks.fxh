@@ -1,6 +1,6 @@
 Includes = {
 	"cw/utility.fxh"
-	"cw/pdxterrain.fxh"
+	"cw/terrain.fxh"
 	"cw/curve.fxh"
 	"cw/camera.fxh"
 	"cw/lighting.fxh"
@@ -352,7 +352,7 @@ PixelShader =
 		void ApplyDevastationRoads( inout float4 Diffuse, float2 WorldSpacePosXZ )
 		{
 			// UVs
-			float2 MapCoordinates = WorldSpacePosXZ * WorldSpaceToTerrain0To1;
+			float2 MapCoordinates = WorldSpacePosXZ * _WorldSpaceToTerrain0To1;
 			float2 DetailUV = CalcDetailUV( WorldSpacePosXZ ) * DevastationTextureTiling;
 
 			// Devastation area
@@ -371,7 +371,7 @@ PixelShader =
 			float DevAlpha = PdxTex2D( DetailTextures, float3( DetailUV, DevastationTexIndex + DevastationTexIndexOffset ) ).a;
 			DevAlpha = lerp( 1.0, DevAlpha, 1.0 - DevastationHeightWeight );
 			Devastation = clamp( Devastation, 0.0, ROAD_DEVASTATION_MAX );
-			float2 BlendFactors = CalcHeightBlendFactors( float2( 1.0, DevAlpha ), float2( 1.0 - Devastation, Devastation ), DetailBlendRange * DevastationHeightContrast );
+			float2 BlendFactors = CalcHeightBlendFactors( float2( 1.0, DevAlpha ), float2( 1.0 - Devastation, Devastation ), _DetailBlendRange * DevastationHeightContrast );
 
 			// Return
 			Diffuse.a = saturate( Diffuse.a - BlendFactors.y );
@@ -380,7 +380,7 @@ PixelShader =
 		void ApplyDevastationWater( inout float3 Color, float2 WorldSpacePosXZ )
 		{
 			// UVs
-			float2 MapCoordinates = WorldSpacePosXZ * WorldSpaceToTerrain0To1;
+			float2 MapCoordinates = WorldSpacePosXZ * _WorldSpaceToTerrain0To1;
 			float2 DetailUV = CalcDetailUV( WorldSpacePosXZ ) * DevastationTextureTiling;
 
 			// Devastation area
@@ -396,7 +396,7 @@ PixelShader =
 		void ApplyDevastationShore( inout float3 Color, float2 WorldSpacePosXZ )
 		{
 			// UVs
-			float2 MapCoordinates = WorldSpacePosXZ * WorldSpaceToTerrain0To1;
+			float2 MapCoordinates = WorldSpacePosXZ * _WorldSpaceToTerrain0To1;
 			float2 DetailUV = CalcDetailUV( WorldSpacePosXZ ) * DevastationTextureTiling;
 
 			// Devastation area
@@ -412,7 +412,7 @@ PixelShader =
 		void ApplyDevastationBuilding( inout float3 Diffuse, float2 WorldSpacePosXZ, float Height, float2 UV )
 		{
 			// UVs
-			float2 MapCoordinates = WorldSpacePosXZ * WorldSpaceToTerrain0To1;
+			float2 MapCoordinates = WorldSpacePosXZ * _WorldSpaceToTerrain0To1;
 			float2 DetailUV = CalcDetailUV( float2( UV.x, UV.y * 2.0f ) ) * BUILDING_DEVASTATION_UV_SCALE;
 
 			// Devastation area
@@ -437,7 +437,7 @@ PixelShader =
 		void ApplyDevastationDecal( inout float4 Diffuse, float2 WorldSpacePosXZ, float Blend )
 		{
 			// UVs
-			float2 MapCoordinates = WorldSpacePosXZ * WorldSpaceToTerrain0To1;
+			float2 MapCoordinates = WorldSpacePosXZ * _WorldSpaceToTerrain0To1;
 			float2 DetailUV = CalcDetailUV( WorldSpacePosXZ ) * DevastationTextureTiling;
 
 			// Devastation area
@@ -450,7 +450,7 @@ PixelShader =
 			// Terrain material blend
 			float DevAlpha = PdxTex2D( DetailTextures, float3( DetailUV, DevastationTexIndex + DevastationTexIndexOffset ) ).a;
 			DevAlpha = lerp( 1.0, DevAlpha, 1.0 - DevastationHeightWeight );
-			float2 BlendFactors = CalcHeightBlendFactors( float2( Blend, DevAlpha ), float2( 1.0 - Devastation, Devastation ), DetailBlendRange * DevastationHeightContrast );
+			float2 BlendFactors = CalcHeightBlendFactors( float2( Blend, DevAlpha ), float2( 1.0 - Devastation, Devastation ), _DetailBlendRange * DevastationHeightContrast );
 
 			// Diffuse coloration
 			float3 DevastatedDiffuse = Overlay( Diffuse.rgb, DECAL_DEVASTATION_COLOR );
@@ -463,7 +463,7 @@ PixelShader =
 		void ApplyDevastationMaterial( inout float4 Diffuse, inout float3 Normal, inout float4 Properties, float2 WorldSpacePosXZ )
 		{
 			// UVs
-			float2 MapCoordinates = WorldSpacePosXZ * WorldSpaceToTerrain0To1;
+			float2 MapCoordinates = WorldSpacePosXZ * _WorldSpaceToTerrain0To1;
 			float2 DetailUV = CalcDetailUV( WorldSpacePosXZ ) * DevastationTextureTiling;
 
 			// Devastation area
@@ -495,7 +495,7 @@ PixelShader =
 			// Terrain material blend
 			Diffuse.a = lerp( 0.0, Diffuse.a, DevastationHeightWeight );
 			DevDiffuse.a = lerp( 1.0, DevDiffuse.a, 1.0 - DevastationHeightWeight );
-			float2 BlendFactors = CalcHeightBlendFactors( float2( Diffuse.a, DevDiffuse.a), float2( 1.0 - Devastation, Devastation ), DetailBlendRange * DevastationHeightContrast );
+			float2 BlendFactors = CalcHeightBlendFactors( float2( Diffuse.a, DevDiffuse.a), float2( 1.0 - Devastation, Devastation ), _DetailBlendRange * DevastationHeightContrast );
 
 			// Return
 			Diffuse = Diffuse * BlendFactors.x + DevDiffuse * BlendFactors.y;
@@ -510,7 +510,7 @@ PixelShader =
 		void ApplyPollutionMaterial( inout float4 Diffuse, inout float3 Normal, inout float4 Properties, float2 WorldSpacePosXZ, inout float IridescenceMask )
 		{
 			// UVs
-			float2 MapCoordinates = WorldSpacePosXZ * WorldSpaceToTerrain0To1;
+			float2 MapCoordinates = WorldSpacePosXZ * _WorldSpaceToTerrain0To1;
 			float2 DetailUV = CalcDetailUV( WorldSpacePosXZ ) * PollutionTextureTiling;
 
 			// Pollution area
@@ -548,7 +548,7 @@ PixelShader =
 			// Terrain material blend
 			Diffuse.a = lerp( 0.0, Diffuse.a, PollutionHeightWeight );
 			PolDiffuse.a = lerp( 1.0, PolDiffuse.a, 1.0 - PollutionHeightWeight );
-			float2 BlendFactors = CalcHeightBlendFactors( float2( Diffuse.a, PolDiffuse.a), float2( 1.0 - Pollution, Pollution ), DetailBlendRange * PollutionHeightContrast );
+			float2 BlendFactors = CalcHeightBlendFactors( float2( Diffuse.a, PolDiffuse.a), float2( 1.0 - Pollution, Pollution ), _DetailBlendRange * PollutionHeightContrast );
 			BlendFactors.x += BlendFactors.y * ( 1.0f - PollutionAlpha );
 			BlendFactors.y -= BlendFactors.y * ( 1.0f - PollutionAlpha );
 
@@ -562,7 +562,7 @@ PixelShader =
 		void GetIridescense( inout SMaterialProperties MaterialProps, float NdotV, PdxTextureSamplerCube EnvironmentMap, float3 WorldSpacePos, inout float IridescenceMask )
 		{
 			// UVs
-			float2 MapCoordinates = WorldSpacePos.xz * WorldSpaceToTerrain0To1;
+			float2 MapCoordinates = WorldSpacePos.xz * _WorldSpaceToTerrain0To1;
 			float2 DetailUV = CalcDetailUV( WorldSpacePos.xz ) * PollutionTextureTiling;
 
 			// Pollution area

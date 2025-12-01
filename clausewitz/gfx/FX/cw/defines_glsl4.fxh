@@ -18,6 +18,8 @@
 #define bool3 bvec3
 #define bool2 bvec2
 
+#define Quaternion float4
+
 #define static 
 
 float2x2 Create2x2( in float2 x, in float2 y )

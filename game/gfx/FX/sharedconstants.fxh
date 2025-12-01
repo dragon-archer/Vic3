@@ -3,7 +3,7 @@ Includes = {
 	"cw/camera.fxh"
 	"cw/lighting.fxh"
 	"cw/lighting_util.fxh"
-	"cw/pdxterrain.fxh"
+	"cw/terrain.fxh"
 }
 
 ConstantBuffer( GameSharedConstants )
@@ -16,21 +16,30 @@ ConstantBuffer( GameSharedConstants )
 	float4 DecentralizedCountryColor;
 	float4 ImpassableTerrainColor;
 
+	float4 _FlatmapFoldsColor;
+	float4 _FlatmapLinesColor;
+	float4 _FlatmapDetailsColor;
+
 	float3 _SecondSunDiffuse;
 	float _SecondSunIntensity
 	float3 _SecondSunDir;
 
 	float GlobalTime;
-	float FlatMapHeight;
-	float FlatMapLerp;
+	float FlatmapHeight;
+	float FlatmapLerp;
 
 	float ShorelineMaskBlur;
 	float ShorelineExtentStr;
 	float ShorelineAlpha;
 	int	  ShoreLinesUVScale;
 
+	float _FlatmapOverlayLandOpacity;
+	float _FlatmapEquatorPosition;
+	int _FlatmapEquatorTiling;
+
 	int ImpassableTerrainTiling
 	float ImpassableTerrainHeight
+
 	float DistanceFadeStart
 	float DistanceFadeEnd
 
@@ -48,13 +57,15 @@ ConstantBuffer( GameSharedConstants )
 	float DistanceRoughnessPosition;
 	float DistanceRoughnessBlend;
 	float DistanceRoughnessScale;
-	
+
 	float _OverlayOpacity;
 
 	int _MapPaintingTextureTiling;
 	int _MapPaintingFlatmapTextureTiling;
 	bool _UseMapmodeTextures;
 	bool _UsePrimaryRedAsGradient;
+
+	bool _UseStripeOccupation;
 };
 
 PixelShader =
@@ -111,9 +122,9 @@ PixelShader =
 		{
 			return GameCalculateSunLighting( MaterialProps, LightingProps );
 		}
-		
+
 		float ScaleRoughnessByDistance( float Roughness, float3 WorldSpacePos )
-		{	
+		{
 			float3 Intersection = CameraPosition - WorldSpacePos;
 			float Scalar = Intersection.y;
 			float Distance = length( Intersection );
@@ -123,7 +134,7 @@ PixelShader =
 
 			return ReducedRoughness;
 		}
-		
+
 	]]
 }
 Code
@@ -184,6 +195,17 @@ Code
 		float c = cos( deg );
 		p = mul( Create2x2( s, c, -c, s ), p );
 		return p;
+	}
+
+	float CalculateStripeMask( float2 UV, float Offset, float Width )
+	{
+		// Diagonal
+		float t = 3.14159 / ( 8.0 );
+		float w = 3000 * Width;			  // larger value gives smaller width
+
+		float StripeMask = cos( ( UV.x * cos( t ) * w ) + ( UV.y * sin( t ) * w ) + Offset );
+		StripeMask = smoothstep( 0.0, 1.0, StripeMask * 2.2f );
+		return StripeMask;
 	}
 
 ]]

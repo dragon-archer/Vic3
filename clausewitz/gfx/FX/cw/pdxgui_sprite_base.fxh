@@ -2,20 +2,37 @@ Includes = {
 	"cw/utility.fxh"
 }
 
+supports_additional_shader_options = {
+	PDX_GUI_SPRITE_EFFECT
+	PDX_GUI_FRAME_BLEND_EFFECT
+}
+
+Code
+[[
+	// Previously PDX_GUI_MAX_NUM_SPRITES, however this is just a hard coded constant and is directly reflected here instead. 
+	// See NPdxGuiHelpers::MaxSprites in code..
+	
+	static const int MaxSprites = 11;
+]]
+
 PixelShader =
 {
 	ConstantBuffer( PdxGuiSpriteConstants )
 	{
-		float4 SpriteTextureAndFrameUVSize[PDX_GUI_MAX_NUM_SPRITES];
-		float4 SpriteBorder[PDX_GUI_MAX_NUM_SPRITES];
-		float4 SpriteTranslateRotateUVAndAlpha[PDX_GUI_MAX_NUM_SPRITES];
+		#TODO [FM]: PSGE-5875
+		#All instances of '11' here represent the value in the MaxSprites variable. However, due to our 
+		#current shader reordering of code, we can't declare our constant in a way that it appears above the constant buffers. 
+		
+		float4 SpriteTextureAndFrameUVSize[11];
+		float4 SpriteBorder[11];
+		float4 SpriteTranslateRotateUVAndAlpha[11];
 		float4 SpriteSize;
 		float4 SpriteUVRect;
-		int4   SpriteFramesTypeBlendMode[PDX_GUI_MAX_NUM_SPRITES];
-		int4   SpriteFrameAndGridSize[PDX_GUI_MAX_NUM_SPRITES];
-		float4 SpriteModifyTexturesColors[PDX_GUI_MAX_NUM_SPRITES];
-		float4 SpriteFrameBlendAlpha[PDX_GUI_MAX_NUM_SPRITES/4+PDX_GUI_MAX_NUM_SPRITES%2];
-		uint4  MirrorFlags[PDX_GUI_MAX_NUM_SPRITES/4+PDX_GUI_MAX_NUM_SPRITES%2];
+		int4   SpriteFramesTypeBlendMode[11];
+		int4   SpriteFrameAndGridSize[11];
+		float4 SpriteModifyTexturesColors[11];
+		float4 SpriteFrameBlendAlpha[11/4+11%2];
+		uint4  MirrorFlags[11/4+11%2];
 		int    ModifyTexturesCount;
 		float  SamplerBias;
 	};
@@ -313,74 +330,81 @@ PixelShader =
 		
 		void ApplyModifyTextures( inout float4 Base, float2 UV )
 		{
-#ifdef PDX_GUI_SPRITE_EFFECT
-			float4 ModifyTextures[PDX_GUI_MAX_NUM_SPRITES-1];
+#ifdef PDX_GUI_SPRITE_EFFECT			
+			float4 ModifyTextures[MaxSprites-1];
 
 			float BlendMask = 1.0f;
 
-		#if PDX_GUI_MAX_NUM_SPRITES > 11
-			NOT CURRENTLY SUPPORTED
-		#endif
-		#if PDX_GUI_MAX_NUM_SPRITES > 10
+		if ( MaxSprites > 10 )
+		{
 			if ( ModifyTexturesCount > 9 )
 			{
 				ModifyTextures[9] = SampleSpriteTexture( ModifyTexture9, GetUVForIndex( 10, UV ), 10 );
 			}
-		#endif
-		#if PDX_GUI_MAX_NUM_SPRITES > 9
+		}
+		if ( MaxSprites > 9 )
+		{
 			if ( ModifyTexturesCount > 8 )
 			{
 				ModifyTextures[8] = SampleSpriteTexture( ModifyTexture8, GetUVForIndex( 9, UV ), 9 );
 			}
-		#endif
-		#if PDX_GUI_MAX_NUM_SPRITES > 8
+		}
+		if ( MaxSprites > 8 )
+		{
 			if ( ModifyTexturesCount > 7 )
 			{
 				ModifyTextures[7] = SampleSpriteTexture( ModifyTexture7, GetUVForIndex( 8, UV ), 8 );
 			}
-		#endif
-		#if PDX_GUI_MAX_NUM_SPRITES > 7
+		}
+		if ( MaxSprites > 7 )
+		{
 			if ( ModifyTexturesCount > 6 )
 			{
 				ModifyTextures[6] = SampleSpriteTexture( ModifyTexture6, GetUVForIndex( 7, UV ), 7 );
 			}
-		#endif
-		#if PDX_GUI_MAX_NUM_SPRITES > 6
+		}
+		if ( MaxSprites > 6 )
+		{
 			if ( ModifyTexturesCount > 5)
 			{
 				ModifyTextures[5] = SampleSpriteTexture( ModifyTexture5, GetUVForIndex( 6, UV ), 6 );
 			}
-		#endif
-		#if PDX_GUI_MAX_NUM_SPRITES > 5
+		}
+		if ( MaxSprites > 5 )
+		{
 			if ( ModifyTexturesCount > 4 )
 			{
 				ModifyTextures[4] = SampleSpriteTexture( ModifyTexture4, GetUVForIndex( 5, UV ), 5 );
 			}
-		#endif
-		#if PDX_GUI_MAX_NUM_SPRITES > 4
+		}
+		if ( MaxSprites > 4 )
+		{
 			if ( ModifyTexturesCount> 3 )
 			{
 				ModifyTextures[3] = SampleSpriteTexture( ModifyTexture3, GetUVForIndex( 4, UV ), 4 );
 			}
-		#endif
-		#if PDX_GUI_MAX_NUM_SPRITES > 3
+		}
+		if ( MaxSprites > 3 )
+		{
 			if ( ModifyTexturesCount > 2 )
 			{
 				ModifyTextures[2] = SampleSpriteTexture( ModifyTexture2, GetUVForIndex( 3, UV ), 3 );
 			}
-		#endif
-		#if PDX_GUI_MAX_NUM_SPRITES > 2
+		}
+		if ( MaxSprites > 2 )
+		{
 			if ( ModifyTexturesCount > 1 )
 			{
 				ModifyTextures[1] = SampleSpriteTexture( ModifyTexture1, GetUVForIndex( 2, UV ), 2 );
 			}
-		#endif
-		#if PDX_GUI_MAX_NUM_SPRITES > 1
+		}
+		if ( MaxSprites > 10 )
+		{
 			if ( ModifyTexturesCount > 0 )
 			{
 				ModifyTextures[0] = SampleSpriteTexture( ModifyTexture0, GetUVForIndex( 1, UV ), 1 );
 			}
-		#endif
+		}
 				
 			for ( int i = 0; i < ModifyTexturesCount; ++i )
 			{

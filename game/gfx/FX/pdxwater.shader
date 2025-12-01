@@ -1,5 +1,5 @@
 Includes = {
-	"cw/pdxterrain.fxh"
+	"cw/terrain.fxh"
 	"cw/shadow.fxh"
 	"jomini/jomini_water_pdxmesh.fxh"
 	"jomini/jomini_mapobject.fxh"
@@ -25,9 +25,9 @@ DepthStencilState DepthStencilStateBorderLerp
 
 PixelShader =
 {
-	TextureSampler FlatMapTexture
+	TextureSampler FlatmapTexture
 	{
-		Ref = TerrainFlatMap
+		Ref = Flatmap
 		MagFilter = "Linear"
 		MinFilter = "Linear"
 		MipFilter = "Linear"
@@ -107,12 +107,12 @@ PixelShader =
 				Water.rgb = GameApplyDistanceFog( Water.rgb, Input.WorldSpacePos );
 
 				// Flatmap texture and style
-				if( FlatMapLerp > 0.0f )
+				if( FlatmapLerp > 0.0f )
 				{
-					float3 FlatMap = PdxTex2D( FlatMapTexture, Input.UV01 ).rgb;
-					FlatMap = ApplyDynamicFlatmap( FlatMap, ProvinceCoords, Input.WorldSpacePos.xz );
+					float3 Flatmap = PdxTex2D( FlatmapTexture, Input.UV01 ).rgb;
+					Flatmap = ApplyDynamicFlatmap( Flatmap, ProvinceCoords, Input.WorldSpacePos.xz );
 
-					Water.rgb = lerp( Water.rgb, FlatMap, FlatMapLerp );
+					Water.rgb = lerp( Water.rgb, Flatmap, FlatmapLerp );
 				}
 
 				// Output

@@ -1,0 +1,63 @@
+﻿compound_node={
+	id="Random Float"
+	node_context=3
+	graph={
+		nodes={
+			pdxns:common:GraphInterface={
+				id=0
+				node={
+					output_pins={
+						pin={
+							name="Value Limit"
+							display_text="Value Limit"
+							type="Float"
+						}
+						pin={
+							name="Value Limit 2"
+							display_text="Value Limit"
+							type="Float"
+						}
+					}
+				}
+				inputs={
+				}
+			}
+			pdxns:common:GraphInterface={
+				id=1
+				node={
+					input_pins={
+						pin={
+							name="Value"
+							display_text="Random Numbers"
+							type="Float"
+						}
+					}
+				}
+				inputs={
+					link={
+						pin_id="Value"
+						linked_node=2
+						linked_pin="value"
+					}
+				}
+			}
+			pdxns:math:randomF={
+				id=2
+				node={
+				}
+				inputs={
+					link={
+						pin_id="limit1"
+						linked_node=0
+						linked_pin="Value Limit"
+					}
+					link={
+						pin_id="limit2"
+						linked_node=0
+						linked_pin="Value Limit 2"
+					}
+				}
+			}
+		}
+	}
+}

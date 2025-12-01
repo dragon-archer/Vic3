@@ -37,7 +37,23 @@ law_consumption_based_taxation = {
 	possible_political_movements = {
 		law_per_capita_based_taxation
 		law_land_based_taxation
-	}	
+	}
+
+	pop_support = {
+		value = 0
+		add = {
+			desc = "POP_PEASANTS"
+			if = {
+				limit = {
+					owner = {
+						has_law = law_type:law_land_based_taxation
+					}
+					is_pop_type = peasants
+				}
+				value = 0.75
+			}
+		}
+	}
 
 	pop_support = {
 		value = 0
@@ -58,6 +74,19 @@ law_consumption_based_taxation = {
 	# AI shouldn't change to consumption-based-taxation as it's likely to wreck their economy
 	ai_will_do = {
 		always = no
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 }
 
@@ -102,6 +131,20 @@ law_land_based_taxation = {
 		law_per_capita_based_taxation
 		law_proportional_taxation
 	}
+
+	pop_support = {
+		value = 0
+		
+		add = {
+			desc = "POP_ARISTOCRATS"
+			if = {
+				limit = { 
+					is_pop_type = aristocrats
+				}
+				value = 0.33
+			}
+		}
+	}
 	
 	pop_support = {
 		value = 0
@@ -120,6 +163,19 @@ law_land_based_taxation = {
 	# AI shouldn't change to land based taxation from more advanced taxation forms
 	ai_will_do = {
 		has_law = law_type:law_consumption_based_taxation
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
 	}
 }
 
@@ -193,6 +249,19 @@ law_per_capita_based_taxation = {
 			}
 		}
 	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
 }
 
 law_proportional_taxation = {
@@ -213,31 +282,31 @@ law_proportional_taxation = {
 	tax_modifier_very_low = {
 		tax_consumption_add = 0.20
 		tax_income_add = 0.15
-		tax_dividends_add = 0.15
+		tax_dividends_add = 0.025
 	}	
 	
 	tax_modifier_low = {
 		tax_consumption_add = 0.275
 		tax_income_add = 0.20
-		tax_dividends_add = 0.20
+		tax_dividends_add = 0.05
 	}
 	
 	tax_modifier_medium = {
 		tax_consumption_add = 0.35
 		tax_income_add = 0.25
-		tax_dividends_add = 0.25
+		tax_dividends_add = 0.1
 	}	
 	
 	tax_modifier_high = {
 		tax_consumption_add = 0.425
 		tax_income_add = 0.30
-		tax_dividends_add = 0.30
+		tax_dividends_add = 0.15
 	}
 	
 	tax_modifier_very_high = {
 		tax_consumption_add = 0.50
 		tax_income_add = 0.35
-		tax_dividends_add = 0.35
+		tax_dividends_add = 0.20
 	}	
 
 	possible_political_movements = {
@@ -260,6 +329,19 @@ law_proportional_taxation = {
 			}
 		}
 	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
+		}
+	}
 }
 
 law_graduated_taxation = {
@@ -280,31 +362,31 @@ law_graduated_taxation = {
 	tax_modifier_very_low = {
 		tax_consumption_add = 0.20
 		tax_income_add = 0.10
-		tax_dividends_add = 0.30
+		tax_dividends_add = 0.1
 	}	
 	
 	tax_modifier_low = {
 		tax_consumption_add = 0.275
 		tax_income_add = 0.125
-		tax_dividends_add = 0.35
+		tax_dividends_add = 0.15
 	}
 	
 	tax_modifier_medium = {
 		tax_consumption_add = 0.35
 		tax_income_add = 0.15
-		tax_dividends_add = 0.40
+		tax_dividends_add = 0.2
 	}	
 	
 	tax_modifier_high = {
 		tax_consumption_add = 0.425
 		tax_income_add = 0.175
-		tax_dividends_add = 0.45
+		tax_dividends_add = 0.25
 	}
 	
 	tax_modifier_very_high = {
 		tax_consumption_add = 0.50
 		tax_income_add = 0.20
-		tax_dividends_add = 0.50
+		tax_dividends_add = 0.3
 	}
 
 	possible_political_movements = {
@@ -324,6 +406,19 @@ law_graduated_taxation = {
 				}
 				value = 0.75
 			}
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+		
+		if = {
+			limit = { 
+				has_journal_entry = je_government_petition
+				has_variable = desired_law_var
+                scope:law = var:desired_law_var
+			}
+			add = 750
 		}
 	}
 }

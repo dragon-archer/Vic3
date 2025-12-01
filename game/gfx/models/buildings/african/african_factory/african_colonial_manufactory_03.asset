@@ -14,7 +14,8 @@ pdxmesh = {
 		texture_diffuse = "african_urban_city_barracks_01_diffuse.dds"
 		texture_normal = "african_urban_city_barracks_01_normal.dds"
 		texture_specular = "african_urban_city_barracks_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -24,7 +25,8 @@ pdxmesh = {
 		texture_diffuse = "factories_01_m_generic_manufactory_sandstone_diffuse.dds"
 		texture_normal = "factories_01_m_generic_manufactory_normal.dds"
 		texture_specular = "factories_01_m_generic_manufactory_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -68,7 +70,8 @@ pdxmesh = {
 		texture_diffuse = "african_urban_city_barracks_01_diffuse.dds"
 		texture_normal = "african_urban_city_barracks_01_normal.dds"
 		texture_specular = "african_urban_city_barracks_01_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -78,7 +81,8 @@ pdxmesh = {
 		texture_diffuse = "factories_01_m_generic_manufactory_sandstone_diffuse.dds"
 		texture_normal = "factories_01_m_generic_manufactory_normal.dds"
 		texture_specular = "factories_01_m_generic_manufactory_properties.dds"
-		shader = "snap_to_terrain"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -98,6 +102,6 @@ pdxmesh = {
 entity = {
 	name = "african_colonial_manufactory_03_entity"
 	pdxmesh = "african_colonial_manufactory_03_mesh"
-	
+
 	attach = { locator_chimney = "entity_factory_smoke" }
 }

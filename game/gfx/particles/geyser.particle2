@@ -1195,7 +1195,7 @@ graph={
 			inputs={
 				link={
 					pin_id="condition"
-					linked_node=88
+					linked_node=668
 					linked_pin="value"
 				}
 			}
@@ -2167,7 +2167,7 @@ graph={
 		pdxns:values:Int32={
 			id=161
 			node={
-				value=4
+				value=3
 			}
 			inputs={
 			}
@@ -2515,7 +2515,7 @@ graph={
 		pdxns:values:Float={
 			id=187
 			node={
-				value=1.000000
+				value=5.000000
 			}
 			inputs={
 			}
@@ -2625,7 +2625,7 @@ graph={
 				}
 				link={
 					pin_id="z"
-					linked_node=671
+					linked_node=325
 					linked_pin="output_id"
 				}
 			}
@@ -2954,7 +2954,8 @@ graph={
 				type="Catmull-Rom"
 				curve={
 					{ x = 0.003165 y = 0.013544 }
-					{ x = 0.140054 y = 0.892484 }
+					{ x = 0.117089 y = 0.106095 }
+					{ x = 0.231826 y = 0.339436 }
 					{ x = 0.501581 y = 0.205417 }
 					{ x = 1.000000 y = 0.000000 }
 				}
@@ -3403,7 +3404,9 @@ graph={
 			node={
 				type="Catmull-Rom"
 				curve={
-					{ x = 0.001582 y = 0.448898 }
+					{ x = 0.000000 y = 0.003386 }
+					{ x = 0.149525 y = 0.251693 }
+					{ x = 0.242880 y = 0.513544 }
 					{ x = 0.530063 y = 0.620767 }
 					{ x = 0.814873 y = 0.753950 }
 					{ x = 1.000000 y = 0.641084 }
@@ -3464,6 +3467,11 @@ graph={
 				link={
 					pin_id="billboard_axis"
 					linked_node=104
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=673
 					linked_pin="value"
 				}
 			}
@@ -3554,7 +3562,7 @@ graph={
 		pdxns:values:ConstVector3f={
 			id=276
 			node={
-				value={ 1.000000 0.000000 0.000000 }
+				value={ 0.000000 0.000000 0.000000 }
 			}
 			inputs={
 			}
@@ -3650,7 +3658,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=667
+			id=282
 			node={
 				value=1
 			}
@@ -3666,9 +3674,9 @@ graph={
 			}
 		}
 		pdxns:values:ConstVector3f={
-			id=668
+			id=284
 			node={
-				value={ 0.000000 1.000000 0.000000 }
+				value={ 0.000000 0.000000 0.000000 }
 			}
 			inputs={
 			}
@@ -3805,7 +3813,7 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=669
+			id=292
 			node={
 				graph="ScaledCurveSampler"
 			}
@@ -4065,7 +4073,7 @@ graph={
 			}
 		}
 		pdxns:particle:HasTag={
-			id=670
+			id=308
 			node={
 			}
 			inputs={
@@ -4331,7 +4339,7 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=671
+			id=325
 			node={
 				graph="Base with Variation"
 			}
@@ -4349,7 +4357,7 @@ graph={
 			}
 		}
 		pdxns:particle:ParticleSystem={
-			id=672
+			id=326
 			node={
 				value="environment/whirlwind"
 			}
@@ -5027,6 +5035,11 @@ graph={
 				link={
 					pin_id="billboard_axis"
 					linked_node=276
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=671
 					linked_pin="value"
 				}
 			}
@@ -5820,6 +5833,11 @@ graph={
 					linked_node=376
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=670
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:HasTag={
@@ -5928,6 +5946,11 @@ graph={
 				link={
 					pin_id="billboard_axis"
 					linked_node=442
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=669
 					linked_pin="value"
 				}
 			}
@@ -6285,6 +6308,11 @@ graph={
 				link={
 					pin_id="billboard_axis"
 					linked_node=143
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=674
 					linked_pin="value"
 				}
 			}
@@ -6783,8 +6811,8 @@ graph={
 			node={
 				type="Catmull-Rom"
 				curve={
-					{ x = 0.003165 y = 0.875847 }
-					{ x = 0.095750 y = 0.682551 }
+					{ x = 0.000000 y = 0.667043 }
+					{ x = 0.115528 y = 0.577585 }
 					{ x = 0.308544 y = 0.467269 }
 					{ x = 0.742088 y = 0.406320 }
 					{ x = 1.000000 y = 0.399549 }
@@ -8023,6 +8051,11 @@ graph={
 					linked_node=554
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=667
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:And={
@@ -8680,7 +8713,12 @@ graph={
 				}
 				link={
 					pin_id="billboard_axis"
-					linked_node=668
+					linked_node=284
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=672
 					linked_pin="value"
 				}
 			}
@@ -8816,7 +8854,7 @@ graph={
 				}
 				link={
 					pin_id="render_order"
-					linked_node=667
+					linked_node=282
 					linked_pin="value"
 				}
 				link={
@@ -8890,14 +8928,78 @@ graph={
 			inputs={
 				link={
 					pin_id="size"
-					linked_node=669
+					linked_node=292
 					linked_pin="result"
 				}
 				link={
 					pin_id="condition"
-					linked_node=670
+					linked_node=308
 					linked_pin="value"
 				}
+			}
+		}
+		pdxns:values:Bool={
+			id=667
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=668
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=669
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=670
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=671
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=672
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=673
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=674
+			node={
+				value=no
+			}
+			inputs={
 			}
 		}
 	}

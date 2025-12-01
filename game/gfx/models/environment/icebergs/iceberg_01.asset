@@ -14,7 +14,8 @@ pdxmesh = {
 		texture_diffuse = "icerberg_diffuse.dds"
 		texture_normal = "icerberg_normal.dds"
 		texture_specular = "icerberg_properties.dds"
-		shader = "standard_singlesun"
+		shader = "standard"
+		additional_shader_defines = { "SINGLESUN" }
 	}
 
 	meshsettings = {
@@ -41,7 +42,8 @@ pdxmesh = {
 		texture_diffuse = "icerberg_diffuse.dds"
 		texture_normal = "icerberg_normal.dds"
 		texture_specular = "icerberg_properties.dds"
-		shader = "standard_singlesun"
+		shader = "standard"
+		additional_shader_defines = { "SINGLESUN" }
 	}
 
 	meshsettings = {
@@ -50,7 +52,8 @@ pdxmesh = {
 		texture_diffuse = "icerberg_diffuse.dds"
 		texture_normal = "icerberg_normal.dds"
 		texture_specular = "icerberg_properties.dds"
-		shader = "standard_singlesun"
+		shader = "standard"
+		additional_shader_defines = { "SINGLESUN" }
 	}
 
 	meshsettings = {

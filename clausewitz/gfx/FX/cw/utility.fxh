@@ -65,6 +65,12 @@ Code
 		return Base * Blend * Opacity + Base * ( 1.0 - Opacity );
 	}
 
+	// Screen blend mode
+	float3 Screen( float3 Base, float3 Blend )
+	{
+		return 1.0 - ( ( 1.0 - Base ) * ( 1.0 - Blend ) );
+	}
+
 	// Overlay blend mode
 	float Overlay( float Base, float Blend )
 	{

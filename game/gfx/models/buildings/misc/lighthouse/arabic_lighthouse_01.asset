@@ -15,7 +15,8 @@ pdxmesh = {
 		texture_normal = "arabic_lighthouse_01_normal.dds"
 		texture_specular = "arabic_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
-		shader = "snap_to_terrain_atlas"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -26,7 +27,8 @@ pdxmesh = {
 		texture_normal = "arabic_lighthouse_01_normal.dds"
 		texture_specular = "arabic_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
-		shader = "standard_atlas"
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -37,7 +39,8 @@ pdxmesh = {
 		texture_normal = "arabic_lighthouse_01_normal.dds"
 		texture_specular = "arabic_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
-		shader = "snap_to_terrain_atlas"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -48,7 +51,8 @@ pdxmesh = {
 		texture_normal = "arabic_lighthouse_01_normal.dds"
 		texture_specular = "arabic_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
-		shader = "standard_atlas"
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -59,7 +63,8 @@ pdxmesh = {
 		texture_normal = "arabic_lighthouse_01_normal.dds"
 		texture_specular = "arabic_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
-		shader = "snap_to_terrain_atlas"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -70,7 +75,8 @@ pdxmesh = {
 		texture_normal = "arabic_lighthouse_01_normal.dds"
 		texture_specular = "arabic_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
-		shader = "standard_atlas"
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -81,7 +87,8 @@ pdxmesh = {
 		texture_normal = "arabic_lighthouse_01_normal.dds"
 		texture_specular = "arabic_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
-		shader = "standard_atlas"
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }
@@ -89,18 +96,18 @@ pdxmesh = {
 entity = {
 	name = "arabic_lighthouse_01_entity"
 	pdxmesh = "arabic_lighthouse_01_mesh"
-	
+
 	default_state = "idle"
-	
+
 	locator = { name = "birds" position = { 0 3 0 } }
-	
+
 	state =
 	{
 		name = "idle"
 		chance = 1
 		state_time = 5
 		looping = no
-		
+
 		event =
 		{
 			time = 0
@@ -109,7 +116,7 @@ entity = {
 			trigger_once = yes
 		}
 	}
-	
+
 	state =
 	{
 		name = "idle"

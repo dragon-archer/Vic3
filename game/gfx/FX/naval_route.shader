@@ -97,20 +97,20 @@ PixelShader =
 			PDX_MAIN
 			{
 				float2 UV = Input.UV;
-				
+
 				float4 Diffuse;
 				float4 Material;
 				float4 NormalSample;
 
 				// Sample the textures
-				// We only need to sample both texture sets when FlatMapLerp is between 0 and 1
-				if( FlatMapLerp <= 0.0f )
+				// We only need to sample both texture sets when FlatmapLerp is between 0 and 1
+				if( FlatmapLerp <= 0.0f )
 				{
 					Diffuse = PdxTex2D( DiffuseTexture0, UV );
 					Material = PdxTex2D( MaterialTexture0, UV );
 					NormalSample = PdxTex2D( NormalTexture0, UV );
 				}
-				else if( FlatMapLerp >= 1.0f )
+				else if( FlatmapLerp >= 1.0f )
 				{
 					Diffuse = PdxTex2D( DiffuseTexture1, UV );
 					Material = PdxTex2D( MaterialTexture1, UV );
@@ -122,9 +122,9 @@ PixelShader =
 					Material = PdxTex2D( MaterialTexture0, UV );
 					NormalSample = PdxTex2D( NormalTexture0, UV );
 
-					Diffuse = lerp( Diffuse, PdxTex2D( DiffuseTexture1, UV ), FlatMapLerp );
-					Material = lerp( Material, PdxTex2D( MaterialTexture1, UV ), FlatMapLerp );
-					NormalSample = lerp( NormalSample, PdxTex2D( NormalTexture1, UV ), FlatMapLerp );
+					Diffuse = lerp( Diffuse, PdxTex2D( DiffuseTexture1, UV ), FlatmapLerp );
+					Material = lerp( Material, PdxTex2D( MaterialTexture1, UV ), FlatmapLerp );
+					NormalSample = lerp( NormalSample, PdxTex2D( NormalTexture1, UV ), FlatmapLerp );
 				}
 
 				// Normals
@@ -145,7 +145,7 @@ PixelShader =
 				#endif
 
 				// Fog of war
-				Color = lerp( ApplyFogOfWar( Color, Input.WorldSpacePos ), Color, FlatMapLerp );
+				Color = lerp( ApplyFogOfWar( Color, Input.WorldSpacePos ), Color, FlatmapLerp );
 
 				// Distance fog
 				Color = GameApplyDistanceFog( Color, Input.WorldSpacePos );

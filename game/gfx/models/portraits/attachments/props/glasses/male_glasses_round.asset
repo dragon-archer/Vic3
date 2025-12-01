@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "male_glasses_round_mesh"
+	file = "male_glasses_round.mesh"
+
+	meshsettings = {
+		name = "male_glasses_roundShape"
+		index = 0
+		texture_diffuse = "prop_glasses_diffuse.dds"
+		texture_normal = "prop_glasses_normal.dds"
+		texture_specular = "prop_glasses_properties.dds"
+		shader = "portrait_attachment_alpha_to_coverage"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "male_glasses_round_entity"
+	pdxmesh = "male_glasses_round_mesh"
+}

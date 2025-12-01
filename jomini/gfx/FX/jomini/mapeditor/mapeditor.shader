@@ -1,5 +1,5 @@
 Includes = {
-	"cw/pdxterrain.fxh"
+	"cw/terrain.fxh"
 	"cw/heightmap.fxh"
 	"cw/shadow.fxh"
 	"cw/utility.fxh"
@@ -223,7 +223,7 @@ PixelShader =
 	    		float CameraDistFactor = (CHECKERS_FADE_DIST - clamp( CameraDistance, 0.0, CHECKERS_FADE_DIST )) / CHECKERS_FADE_DIST;
 
 				float3 Checkers = TerrainEditorCheckers( CHECKERS_COLOR_ERROR, Input.WorldSpacePos.xz, CameraDistFactor ).rgb;
-				float2 DetailErrorsCoordinates = Input.WorldSpacePos.xz * WorldSpaceToDetail + DetailTexelSize * 0.5;
+				float2 DetailErrorsCoordinates = Input.WorldSpacePos.xz * _WorldSpaceToDetail + _DetailTexelSize * 0.5;
 				float4 DetailError = PdxTex2DLod0( DetailErrorsTexture, DetailErrorsCoordinates );
 				float4 FinalColor = float4( Checkers.rgb, DetailError.r );
 
@@ -266,7 +266,7 @@ PixelShader =
 		[[
 			PDX_MAIN
 			{
-				float2 UV = ( Input.WorldSpacePos.xz * WorldSpaceToDetail + DetailTexelSize * 0.5 ) / MaskOverlayScale;
+				float2 UV = ( Input.WorldSpacePos.xz * _WorldSpaceToDetail + _DetailTexelSize * 0.5 ) / MaskOverlayScale;
 
 			#ifdef MASK_OVERLAY_RGB
 

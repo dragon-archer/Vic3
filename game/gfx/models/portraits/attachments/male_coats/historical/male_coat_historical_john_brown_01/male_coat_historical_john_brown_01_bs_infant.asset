@@ -1,0 +1,16 @@
+pdxmesh = {
+	name = "male_coat_historical_john_brown_01_bs_infant_mesh"
+	file = "male_coat_historical_john_brown_01_bs_infant.mesh"
+
+	meshsettings = {
+		name = "male_coat_historical_john_brown_01_bs_infantShape"
+		index = 0
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "male_coat_historical_john_brown_01_bs_infant_entity"
+	pdxmesh = "male_coat_historical_john_brown_01_bs_infant_mesh"
+}

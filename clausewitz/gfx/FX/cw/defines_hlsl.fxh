@@ -118,6 +118,7 @@ struct PdxTextureSampler2DCmp
 #define PdxTexture2DLoad(tex,uv,lod) (tex).Load( int3((uv), (lod)) )
 
 #define PdxTexture2DArraySize(tex,size,elements) (tex).GetDimensions( (size).x, (size).y, elements )
+#define PdxTexture2DArrayLoad(tex,uv,arrayindex,lod) (tex).Load( int4((uv), (arrayindex), (lod)) )
 
 #define PdxTexture3DSize(tex,size) (tex).GetDimensions( (size).x, (size).y, (size).z )
 #define PdxTexture3DLoad(tex,uv,lod) (tex).Load( int4((uv), (lod)) )
@@ -197,3 +198,5 @@ uint4 	PdxReadBuffer4( in PdxBufferUint4 Buf, int Index )  	{ return Buf.Load( I
 
 #define PdxReadRWBuffer(buffer,index) (buffer)[(index)]
 #define PdxWriteRWBuffer(buffer,index,value) (buffer)[(index)] = (value)
+
+#define Quaternion float4

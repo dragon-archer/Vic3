@@ -32,7 +32,7 @@ VertexShader =
 	Code
 	[[
 
-		void CalculateSineAnimation( float2 UV, inout float3 Position, inout float3 Normal, inout float4 Tangent )
+		void CalculateSineAnimation( float2 UV, inout float3 Position, inout float3 Normal, inout float4 Tangent, float Seed )
 		{
 			float AnimSeed = UV.x;
 			const float LARGE_WAVE_FREQUENCY = 3.14f;	// Higher values simulates higher wind speeds / more turbulence
@@ -42,7 +42,8 @@ VertexShader =
 			const float WAVE_SCALE = 0.1f;				// Higher values gives a stretchier flag
 			const float ANIMATION_SPEED = 0.5f;			// Speed
 
-			float Time = GlobalTime * 1.0f * ANIMATION_SPEED;
+			float RandomOffset = CalcRandom( Seed );
+			float Time = ( GlobalTime + RandomOffset ) * 1.0f * ANIMATION_SPEED;
 
 			float LargeWave = sin( Time * LARGE_WAVE_FREQUENCY );
 			float SmallWaveV = Time * SMALL_WAVE_FREQUENCY - pow( AnimSeed, WAVE_LENGTH_POW ) * WAVE_LENGTH_INV_SCALE;
@@ -52,7 +53,8 @@ VertexShader =
 
 			float Wave = WAVE_SCALE * AnimSeed * CombinedWave;
 			float Derivative = WAVE_SCALE * ( LargeWave + SmallWave + cos( SmallWaveV ) * SmallWaveD );
-			float3 AnimationDir = float3( 0, 0.08, -1 );	// cross( Tangent.xyz, float3(0,1,0) );
+			float3 AnimationDir = float3( 0, 0.08, -1.0 );	// cross( Tangent.xyz, float3( 0, 1, 0 ) );
+
 			Position += AnimationDir * Wave;
 
 			float2 WaveTangent = normalize( float2( 1.0f, Derivative ) );

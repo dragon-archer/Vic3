@@ -493,13 +493,9 @@ types journal_entry_panel_types
 						text = "[JournalEntry.GetReason]"
 						min_width = @panel_width_minus_30 
 						max_width = @panel_width_minus_30
-
 						multiline = yes
 						using = default_list_position
-
 						align = nobaseline
-						default_format = "#lore"
-
 						margin = { 15 15 }
 
 						background = {

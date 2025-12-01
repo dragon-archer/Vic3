@@ -1416,6 +1416,7 @@
  concept_budget_land_taxes: "Podatki gruntowe"
  concept_budget_land_taxes_desc: "Rodzaj [Concept('concept_budget_poll_taxes', 'podatku pogłównego')] pobieranego wyłącznie od [SelectLocalization(GetPlayer.IsValid,'concept_budget_land_taxes_desc_added', 'chłopów')]."
  concept_budget_land_taxes_desc_added: "[GetPopType('peasants').GetName]"
+ concept_budget_land_taxes_desc_farmers: "[GetPopType('farmers').GetName]"
  concept_budget_heathen_taxes: "Podatki od pogaństwa"
  concept_budget_heathen_taxes_desc: "Rodzaj [Concept('concept_budget_poll_taxes', 'podatku pogłównego')] pobieranego od wszystkich [Concept('concept_pop', '$concept_pops$')|l], których [concept_religion|l] ma niską [Concept('concept_acceptance', 'akceptację')] w ich [Concept('concept_country', 'państwie')]."
  concept_budget_per_capita_taxes: "Podatki per capita"

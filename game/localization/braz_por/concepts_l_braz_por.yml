@@ -1416,6 +1416,7 @@
  concept_budget_land_taxes: "Impostos Fundiários"
  concept_budget_land_taxes_desc: "Um tipo de [Concept('concept_budget_poll_taxes', '$concept_budget_poll_tax$')] coletado apenas de [SelectLocalization(GetPlayer.IsValid,'concept_budget_land_taxes_desc_added','Camponeses')]."
  concept_budget_land_taxes_desc_added: "[GetPopType('peasants').GetName]"
+ concept_budget_land_taxes_desc_farmers: "[GetPopType('farmers').GetName]"
  concept_budget_heathen_taxes: "Impostos Pagãos"
  concept_budget_heathen_taxes_desc: "Um tipo de [Concept('concept_budget_poll_taxes', '$concept_budget_poll_tax$')] coletado de todos os [Concept('concept_pop', '$concept_pops$')] cuja [concept_religion] tem uma [concept_acceptance] baixa no [concept_country]."
  concept_budget_per_capita_taxes: "Impostos Per Capita"

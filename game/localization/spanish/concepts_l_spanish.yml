@@ -1416,6 +1416,7 @@
  concept_budget_land_taxes: "Impuestos sobre tierras"
  concept_budget_land_taxes_desc: "Un tipo de [Concept('concept_budget_poll_taxes', 'impuesto de capitación')] que se recauda únicamente a los [SelectLocalization(GetPlayer.IsValid,'concept_budget_land_taxes_desc_added','campesinos')]."
  concept_budget_land_taxes_desc_added: "[GetPopType('peasants').GetName]"
+ concept_budget_land_taxes_desc_farmers: "[GetPopType('farmers').GetName]"
  concept_budget_heathen_taxes: "Impuestos a paganos"
  concept_budget_heathen_taxes_desc: "Un tipo de [Concept('concept_budget_poll_taxes', 'impuesto de capitación')] que se recauda a todos los [Concept('concept_pop', 'colectivos')] cuya [concept_religion|l] tenga una baja [concept_acceptance|l] en su [concept_country|l]."
  concept_budget_per_capita_taxes: "Impuestos per cápita"

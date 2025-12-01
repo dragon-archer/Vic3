@@ -1416,6 +1416,7 @@
  concept_budget_land_taxes: "土地税"
  concept_budget_land_taxes_desc: "一种[Concept('concept_budget_poll_taxes', '$concept_budget_poll_tax$')]，只对[SelectLocalization(GetPlayer.IsValid,'concept_budget_land_taxes_desc_added','自给农')]征收。"
  concept_budget_land_taxes_desc_added: "[GetPopType('peasants').GetName]"
+ concept_budget_land_taxes_desc_farmers: "[GetPopType('farmers').GetName]"
  concept_budget_heathen_taxes: "不信者税"
  concept_budget_heathen_taxes_desc: "一种[Concept('concept_budget_poll_taxes', '$concept_budget_poll_tax$')]，从所有[concept_religion]在[concept_country]内[concept_acceptance]较低的[Concept('concept_pop', '$concept_pops$')]身上收取。"
  concept_budget_per_capita_taxes: "人均税"

@@ -53,7 +53,7 @@
  POLITICAL_MOVEMENT_MIN_RADICALISM_FROM_ENACTMENT: "[LAW.GetName](이)가 제정되는 동안, [concept_activism]은 $VALUE|v%0$ 미만으로 떨어질 수 없음"
  POLITICAL_MOVEMENT_RADICALISM_SCRIPT_VALUE_FORMAT: "$KEY$에서: #v $VALUE|-=%$#!"
  POLITICAL_MOVEMENT_TARGET_ACTIVISM_EFFECT: "#v $VALUE|=-%0$#! [concept_activism]"
- POLITICAL_MOVEMENT_LAW_LOYALIST_IMPACT: "제정 성공으로 [Concept('concept_loyalist', '$concept_loyalists$')]에 대한 효과:\n$DETAILS$"
+ POLITICAL_MOVEMENT_LAW_LOYALIST_IMPACT: "#title 제정 성공으로 [Concept('concept_loyalist', '$concept_loyalists$')]에 대한 효과:#!\n$DETAILS$"
  POLITICAL_MOVEMENT_LAW_LOYALIST_IMPACT_ENTRY: "[POLITICAL_MOVEMENT.GetName]: @population! $NUM_INDIVIDUALS|pD$명의 [Concept('concept_individual','$concept_individuals$')]이 추가로 $concept_loyal$가 됨"
  POLITICAL_MOVEMENT_LAW_RADICALISM_IMPACT_HEADER: "[concept_activism]에 대한 효과:"
  POLITICAL_MOVEMENT_LAW_RADICALISM_IMPACT_ENTRY: "[POLITICAL_MOVEMENT.GetName]: $IMMEDIATE_VALUE|=-%$만큼 즉시 변경되며 시간이 지남에 따라 $TARGET_VALUE_LABEL$ ($TARGET_VALUE|v0%$) 방향으로 이동함"

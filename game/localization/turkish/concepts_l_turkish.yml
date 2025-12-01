@@ -1416,6 +1416,7 @@
  concept_budget_land_taxes: "Arazi Vergileri"
  concept_budget_land_taxes_desc: "Yalnızca [SelectLocalization(GetPlayer.IsValid,'concept_budget_land_taxes_desc_added','Köylüler')] tarafından ödenen bir [Concept('concept_budget_poll_taxes', '$concept_budget_poll_tax$')] türü."
  concept_budget_land_taxes_desc_added: "[GetPopType('peasants').GetName]"
+ concept_budget_land_taxes_desc_farmers: "[GetPopType('farmers').GetName]"
  concept_budget_heathen_taxes: "İnkâr Vergileri"
  concept_budget_heathen_taxes_desc: "[Concept('concept_country', 'Ülkelerinde')] [Concept('concept_religion', 'Dinlerinin')] [concept_acceptance] düzeyi düşük olan [Concept('concept_pop', 'Toplumlardan')] alınan bir tür [Concept('concept_budget_poll_taxes', 'Kelle Vergisi')]."
  concept_budget_per_capita_taxes: "Kişi Başına Vergiler"

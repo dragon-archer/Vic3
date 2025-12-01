@@ -1422,6 +1422,14 @@ types politics_panel_types
 															size = { 200 25 }
 														}
 
+														blockoverride "event_size_revolutionary" {
+															size = { 325 35 }
+														}
+
+														blockoverride "event_highlight_size_revolutionary" {
+															size = { 315 24 }
+														}
+
 														blockoverride "next_checkpoint_progress_text_visibility" {
 															visible = no
 														}

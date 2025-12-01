@@ -53,7 +53,7 @@
  POLITICAL_MOVEMENT_MIN_RADICALISM_FROM_ENACTMENT: "O [concept_activism] não pode ficar abaixo de $VALUE|v%0$ enquanto a lei [LAW.GetName] estiver sendo promulgada"
  POLITICAL_MOVEMENT_RADICALISM_SCRIPT_VALUE_FORMAT: "#v $VALUE|-=%$#! por $KEY$"
  POLITICAL_MOVEMENT_TARGET_ACTIVISM_EFFECT: "#v $VALUE|=-%0$#! de [concept_activism]"
- POLITICAL_MOVEMENT_LAW_LOYALIST_IMPACT: "Efeito em [Concept('concept_loyalist', '$concept_loyalists$')] pela promulgação bem-sucedida:\n$DETAILS$"
+ POLITICAL_MOVEMENT_LAW_LOYALIST_IMPACT: "#title Efeito em [Concept('concept_loyalist', '$concept_loyalists$')] pela promulgação bem-sucedida:#!\n$DETAILS$"
  POLITICAL_MOVEMENT_LAW_LOYALIST_IMPACT_ENTRY: "[POLITICAL_MOVEMENT.GetName]: @population! $NUM_INDIVIDUALS|pD$ [Concept('concept_individual', '$concept_individuals$')] se tornarão mais [Concept('concept_loyal', 'Leais')]"
  POLITICAL_MOVEMENT_LAW_RADICALISM_IMPACT_HEADER: "Efeito no [concept_activism]:"
  POLITICAL_MOVEMENT_LAW_RADICALISM_IMPACT_ENTRY: "[POLITICAL_MOVEMENT.GetName]: muda imediatamente em $IMMEDIATE_VALUE|=-%$ e avançará para $TARGET_VALUE_LABEL$ ($TARGET_VALUE|v0%$) com o tempo"

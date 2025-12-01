@@ -1416,6 +1416,7 @@
  concept_budget_land_taxes: "Bauernsteuern"
  concept_budget_land_taxes_desc: "Eine [Concept('concept_budget_poll_taxes', '$concept_budget_poll_tax$')], die nur von [SelectLocalization(GetPlayer.IsValid,'concept_budget_land_taxes_desc_added','Bauern')] erhoben wird."
  concept_budget_land_taxes_desc_added: "[GetPopType('peasants').GetName]"
+ concept_budget_land_taxes_desc_farmers: "[GetPopType('farmers').GetName]"
  concept_budget_heathen_taxes: "Heidensteuern"
  concept_budget_heathen_taxes_desc: "Eine Art von [Concept('concept_budget_poll_taxes', '$concept_budget_poll_tax$')], die von allen [Concept('concept_pop', '$concept_pops$')] erhoben wird, deren [concept_religion] eine niedrige [concept_acceptance] in ihrem [concept_country] hat."
  concept_budget_per_capita_taxes: "Reine Kopfsteuern"

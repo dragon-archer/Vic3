@@ -4752,11 +4752,15 @@ types information_panels_types
 			visible = "[PoliticalMovement.IsInsurrectionary]"
 
 			blockoverride "size" {
-				size = { 500 35 }
+				block "event_size_revolutionary" {
+					size = { 500 35 }
+				}
 			}
 
 			blockoverride "highlight_size" {
-				size = { 490 24 }
+				block "event_highlight_size_revolutionary" {
+					size = { 490 24 }
+				}
 			}
 		}
 	}

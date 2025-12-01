@@ -1,6 +1,6 @@
 64e8b5c162a34d08d3bb4724339ae4f6  binaries/bink2w32.dll
 6ca8d96ed9c8640470dcaf2bb3567373  binaries/bink2w64.dll
-96d857e99ce7c2fce86bf28ceb28ce58  binaries/checksum.txt
+f59ece9c38dc9a8af1bf58250623b36b  binaries/checksum.txt
 e03b975eebb4faa0d04d924b0fc2a82d  binaries/crash_reporter/binaries/CrashReporter.exe
 2f3ed665014bdb0ddb99a02edea92f1e  binaries/cream_api.ini
 0edb00ec028121a0c4e03e9fba3ea234  binaries/D3D12MemAlloc.natvis
@@ -35,8 +35,8 @@ e034d987448b3f5130794637a375e792  binaries/pops_api.dll
 72ea330404a78bee7375bad7857a8f71  binaries/steam_api64.dll
 6392acae79da837e3a638fbd0743bc0f  binaries/steam_api64.lib
 72ea330404a78bee7375bad7857a8f71  binaries/steam_api64_o.dll
-6f53c10e7cf36cebe7f854421ab33b79  binaries/victoria3.exe
-516569676e473135d9ce998e8b25a9d2  binaries/victoria3_win_console.exe
+2ddec35cb59657367153c68261ab66e7  binaries/victoria3.exe
+09acce4ff36dd3f8c5fd9d7c1131326f  binaries/victoria3_win_console.exe
 d98fba4512b1a284523e17f28f0a873a  binaries/WinPixEventRuntime.dll
 aabd41c0a2fecb9384201bbfc7dc25af  binaries/WinPixEventRuntime.lib
 6a4f8cffeb3c9dbaabdb8eae0aeededb  binaries/XeFX.dll
@@ -4597,6 +4597,7 @@ faea27fcb7d45ca4d4aeeb4f346cff8f  game/gfx/interface/icons/dlc_icons/dlc007.dds
 a0eb5bf0f69bca144c7212bdffbddd31  game/gfx/interface/icons/dlc_icons/dlc011.dds
 094032d8928dd313cdfb264e6ffdfbb7  game/gfx/interface/icons/dlc_icons/dlc013.dds
 7029c2b2647856e539ef397092cb4568  game/gfx/interface/icons/dlc_icons/dlc014.dds
+dae4586dcaf8ce7ac6a1b9ac410f57be  game/gfx/interface/icons/dlc_icons/dlc015.dds
 0ad6f1bb4e65f5a126f7e3c1296b4344  game/gfx/interface/icons/dlc_icons/dynamic_countries.dds
 f29bb32b6793e127f676706391eb4bd3  game/gfx/interface/icons/event_icons/bicorne_hat.dds
 0a88f42778ab2da4b82a595b21799c4a  game/gfx/interface/icons/event_icons/event_default.dds
@@ -6577,9 +6578,10 @@ c49ba5eeae53b93f3bc2bddcf5cf46b6  game/gfx/interface/illustrations/government/go
 ded4324944197fc11a60fccabb2a4a60  game/gfx/interface/illustrations/institutions/social_security.dds
 dea9f86f2343df8ae93d79e093bb18d0  game/gfx/interface/illustrations/institutions/workplace_safety.dds
 78e831637b1ed13c7c553e4162df739e  game/gfx/interface/illustrations/journal/top_illu_journal_entries.dds
-b2c9dd51ba727ce97a1a621c2f187f54  game/gfx/interface/illustrations/music_player/melodies_for_the_masses.dds
-c89accee12272706e0096d6d7ebdcc57  game/gfx/interface/illustrations/music_player/victoria_3_preorder.dds
-e0acd34470118b8e75fe76c478740500  game/gfx/interface/illustrations/music_player/victoria_3_soundtrack.dds
+baf446edcf727a322a5272e075a1d7d6  game/gfx/interface/illustrations/music_player/melodies_for_the_masses.dds
+bbb7dae9b62a17562bca02bf78f996a5  game/gfx/interface/illustrations/music_player/songs_of_the_homeland.dds
+523723fbc4e50a98060909faec3d709f  game/gfx/interface/illustrations/music_player/victoria_3_preorder.dds
+dd09e150cbf0a3b9de798bd084a642a2  game/gfx/interface/illustrations/music_player/victoria_3_soundtrack.dds
 14992b9f777d13ee12c62388128a09b6  game/gfx/interface/illustrations/tech_tree/illustration_tech_military.dds
 49064dade5d2d75de18145f4304515b7  game/gfx/interface/illustrations/tech_tree/illustration_tech_production.dds
 d94f8f8ca387b6a2f970c72eae8bea22  game/gfx/interface/illustrations/tech_tree/illustration_tech_society.dds
@@ -16130,7 +16132,7 @@ d82eb2f4a699f744bed45576b9dcccce  game/rotate_glow_mask3.tga
 20fe49f2d6149b69a2b1de03418ce29c  game/sound/banks/Events.bank
 27cb7b717e3fbf0e7cb2f3ed4052a26a  game/sound/banks/Interface.bank
 9b19dbbe08a9dca215793981bc8b639e  game/sound/banks/Master Bank.bank
-a691909ac07bf661d2700deb58c3c33a  game/sound/banks/Master Bank.strings.bank
+a7e594a36787908acf478cf1f73b5a05  game/sound/banks/Master Bank.strings.bank
 fd5efbded9a19fa620372aa28a1be0bc  game/sound/banks/Soundtrack.bank
 cb3e02273531a5e474cca52d09712a05  game/sound/banks/Vehicles.bank
 e2a9492227c042ef7f7853227926b619  game/sound/banks/VFX.bank
@@ -16255,7 +16257,7 @@ d46e55a2c3b1c55963fc36d2ee7ba1e2  launcher/assets/launcher-background.jpg
 18551a206fae4d2b15fa347ae00c8108  launcher/assets/theme-settings.json
 2b793071971429d90fbf923a18adc4c1  launcher/dowser.exe
 13e722aca98d34e0c3e725389540bb13  launcher/launcher-installer-windows_2025.12.exe
-4a8e9a6962e65e61202ef90e3044abc5  launcher/launcher-settings.json
+5ed42304f644ae9192305e465b3e1117  launcher/launcher-settings.json
 145f16799832559189a9084c891e2c0e  launcher/settings-layout.json
 cf90ffe8888dbe0990d538c5d8a13339  platform_specific_game_data/default_log_settings_live.json
 b290813439d7981259e37ad9447e6b6a  platform_specific_game_data/log_settings_live.json

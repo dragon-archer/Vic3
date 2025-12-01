@@ -1,0 +1,59 @@
+﻿compound_node={
+	id="SpriteRandRotInitial"
+	graph={
+		Nodes={
+			pdxns:values:Float={
+				Id=0
+				Node={
+					value=0.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:values:Float={
+				Id=7
+				Node={
+					value=0.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:3d:YawPitchVectorRotation={
+				Id=2
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "yaw" LinkedNode = 3 LinkedPin = "value" }
+					Link = { PinId = "pitch" LinkedNode = 4 LinkedPin = "value" }
+					Link = { PinId = "roll" LinkedNode = 5 LinkedPin = "value" }
+				}
+			}
+			pdxns:values:Float={
+				Id=3
+				Node={
+					value=0.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:values:Float={
+				Id=4
+				Node={
+					value=0.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:randomF={
+				Id=5
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "limit1" LinkedNode = 7 LinkedPin = "value" }
+					Link = { PinId = "limit2" LinkedNode = 0 LinkedPin = "value" }
+				}
+			}
+		}
+	}
+
+}

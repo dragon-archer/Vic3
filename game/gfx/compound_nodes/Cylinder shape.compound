@@ -1,0 +1,169 @@
+﻿compound_node={
+	id="Cylinder shape"
+	graph={
+		Nodes={
+			pdxns:common:GraphInterface={
+				Id=0
+				Node={
+					pins={
+						pin={
+							id=position
+							label="Position"
+							input=yes
+							flags=optional
+							type=Vector3f
+						}
+					}
+				}
+				Inputs={
+					Link = { PinId = "position" LinkedNode = 2 LinkedPin = "value" }
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=1
+				Node={
+					pins={
+						pin={
+							id=min_height
+							label="Min Height"
+							input=no
+							type=Float
+						}
+						pin={
+							id=max_height
+							label="Max Height"
+							input=no
+							type=Float
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+			pdxns:values:Vector3f={
+				Id=2
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "x" LinkedNode = 5 LinkedPin = "product" }
+					Link = { PinId = "y" LinkedNode = 8 LinkedPin = "value" }
+					Link = { PinId = "z" LinkedNode = 11 LinkedPin = "product" }
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=3
+				Node={
+					pins={
+						pin={
+							id=angle
+							label="Angle"
+							input=no
+							type=Float
+						}
+						pin={
+							id=radius
+							label="Radius"
+							input=no
+							type=Float
+						}
+						pin={
+							id=radius_inner
+							label="Inner Radius"
+							input=no
+							type=Float
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+			pdxns:values:Float={
+				Id=4
+				Node={
+					value=3.140000
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:MulF={
+				Id=5
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 13 LinkedPin = "value" }
+					Link = { PinId = "factor2" LinkedNode = 10 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:randomF={
+				Id=6
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "limit1" LinkedNode = 7 LinkedPin = "value" }
+					Link = { PinId = "limit2" LinkedNode = 14 LinkedPin = "product" }
+				}
+			}
+			pdxns:values:Float={
+				Id=7
+				Node={
+					value=0.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:randomF={
+				Id=8
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "limit1" LinkedNode = 1 LinkedPin = "min_height" }
+					Link = { PinId = "limit2" LinkedNode = 1 LinkedPin = "max_height" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=14
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 3 LinkedPin = "angle" }
+					Link = { PinId = "factor2" LinkedNode = 4 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:CosF={
+				Id=10
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "operand" LinkedNode = 6 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=11
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 13 LinkedPin = "value" }
+					Link = { PinId = "factor2" LinkedNode = 12 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:SinF={
+				Id=12
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "operand" LinkedNode = 6 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:randomF={
+				Id=13
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "limit1" LinkedNode = 3 LinkedPin = "radius_inner" }
+					Link = { PinId = "limit2" LinkedNode = 3 LinkedPin = "radius" }
+				}
+			}
+		}
+	}
+
+}

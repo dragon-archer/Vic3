@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "grid_mesh"
+	file = "grid.mesh"
+
+	meshsettings = {
+		name = "gridShape"
+		index = 0
+		texture_diffuse = "grid_diffuse.dds"
+		texture_normal = "grid_normal.dds"
+		texture_specular = "grid_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "grid_entity"
+	pdxmesh = "grid_mesh"
+}

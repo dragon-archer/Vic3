@@ -1,0 +1,214 @@
+﻿
+@default_window_file = "gui/notifications/jomini_message.gui"
+@default_window_name = "jomini_message"
+
+jomini_multiplayer_player_joined = {
+	level = dialog
+	category = multiplayer
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MULTIPLAYER_GUI_PLAYER_JOINED
+	text = JOMINI_MULTIPLAYER_GUI_PLAYER_JOINED_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+}
+
+jomini_multiplayer_host_left = {
+	level = dialog
+	category = multiplayer
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT
+	text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_ACCEPT
+	decline_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_DECLINE
+}
+
+jomini_multiplayer_player_left = {
+	level = dialog
+	category = multiplayer
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MULTIPLAYER_GUI_PLAYER_LEFT
+	text = JOMINI_MULTIPLAYER_GUI_PLAYER_LEFT_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+}
+
+jomini_multiplayer_player_kicked = {
+	level = dialog
+	category = multiplayer
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MULTIPLAYER_GUI_PLAYER_KICKED
+	text = JOMINI_MULTIPLAYER_GUI_PLAYER_KICKED_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+}
+
+jomini_multiplayer_player_kicked_self = {
+	level = dialog
+	category = multiplayer
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MULTIPLAYER_GUI_PLAYER_KICKED_SELF
+	text = JOMINI_MULTIPLAYER_GUI_PLAYER_KICKED_SELF_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_ACCEPT
+	decline_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_DECLINE
+}
+
+jomini_multiplayer_connection_failed = {
+	level = dialog
+	category = multiplayer
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MULTIPLAYER_GUI_CONNECTION_FAILED
+	text = JOMINI_MULTIPLAYER_GUI_CONNECTION_FAILED_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+}
+
+jomini_multiplayer_connection_failed_no_such_server = {
+	level = dialog
+	category = multiplayer
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MULTIPLAYER_GUI_CONNECTION_FAILED
+	text = JOMINI_MULTIPLAYER_GUI_NO_SUCH_SERVER_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+}
+
+jomini_multiplayer_gui_player_kick_title = {
+	level = dialog
+	category = multiplayer
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MULTIPLAYER_GUI_PLAYER_KICK_TITLE
+	text = JOMINI_MULTIPLAYER_GUI_PLAYER_KICK_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_PLAYER_KICK_ACCEPT
+	decline_text = JOMINI_MULTIPLAYER_GUI_POPUP_DECLINE
+}
+
+jomini_savegame_write_error = {
+	level = dialog
+	category = system
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = FILE_WRITE_ERROR
+	text = FILE_WRITE_ERROR_DESC
+	
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+}
+
+jomini_savegame_load_failed = {
+	level = dialog
+	category = system
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_LOAD_GAME_FAILED_TITLE
+	text = JOMINI_LOAD_GAME_FAILED_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+}
+
+jomini_social_account_created = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = ACCOUNT_CREATED
+	text = ACCOUNT_CREATED_TEXT
+	accept_text = JOMINI_MULTIPLAYER_GUI_CLOSE
+}
+
+jomini_social_account_connect_failed = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_SOCIAL_CONNECT_FAIL
+	text = JOMINI_SOCIAL_CONNECT_FAIL_DESC
+	accept_text = JOMINI_SOCIAL_CONNECT_FAIL_RETRY
+	decline_text = JOMINI_SOCIAL_CONNECT_FAIL_CANCEL
+}
+
+jomini_msgrdk_no_ugc_permission = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MSGRDK_NO_PERMISSION_TITLE
+	text = JOMINI_MSGRDK_NO_UGC_TEXT
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+}
+
+jomini_msgrdk_signin_failed = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MSGRDK_SIGNIN_FAILED_TITLE
+	text = JOMINI_MSGRDK_SIGNIN_FAILED_TEXT
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+}
+
+pops_login_disconnect_steam_failure = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = POPS_LOGIN_DISCONNECT_STEAM_FAILURE
+	text = POPS_LOGIN_MESSAGE
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+}
+
+pops_login_connect_steam_failure = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = POPS_LOGIN_CONNECT_STEAM_FAILURE
+	text = POPS_LOGIN_MESSAGE
+	accept_text = JOMINI_MULTIPLAYER_GUI_POPUP_ACCEPT
+}
+
+pops_login_create_account = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = POPS_LOGIN_CREATE_ACCOUNT
+	text = POPS_LOGIN_CREATE_ACCOUNT_DESC
+	accept_text = POPS_LOGIN_CREATE_ACCOUNT_ACCEPT
+	decline_text = JOMINI_MULTIPLAYER_GUI_POPUP_DECLINE
+}
+
+default_dialog = {
+	level = dialog
+	window_file = "gui/notifications/jomini_message.gui"
+	window_name = "jomini_message"
+}
+
+default_alert = {
+	level = alert
+	window_file = "gui/notifications/jomini_message.gui"
+	window_name = "jomini_message"
+}
+
+default_banner = {
+	level = banner
+	window_file = "gui/notifications/jomini_message.gui"
+	window_name = "jomini_message"
+}

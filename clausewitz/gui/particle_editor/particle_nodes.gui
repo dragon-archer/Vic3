@@ -1,0 +1,72 @@
+node_window_type = {
+	name = emitter_node_window
+
+	# TODO(TS): custom color
+	color = { 0.4 0.4 0.4 1.0 }
+	
+	blockoverride "after_input_pins" {
+		hbox = {
+			layoutpolicy_horizontal = preferred
+
+			add_pin_button = {
+				blockoverride "button" {
+					onclick = "[EmitterNodeWindow.AddUserData( PdxGuiWidget.AccessSelf )]"
+				}
+			}
+
+			widget = {
+				layoutpolicy_horizontal = preferred
+			}
+		}
+	}
+}
+
+node_window_type = {
+	name = userdata_node_input_window
+
+	# TODO(TS): custom color
+	color = { 0.6 0.6 0.6 1.0 }
+	
+	blockoverride "after_input_pins" {
+		hbox = {
+			margin_left = 8
+			layoutpolicy_horizontal = expanding
+
+			dockable_button = {
+				size = { 64 22 }
+				fontsize = 10
+				text = "[UserDataNode.Label]"
+				onclick = "[UserDataNode.Configure]"
+			}
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+			}
+		}
+	}
+}
+
+node_window_type = {
+	name = userdata_node_output_window
+
+	# TODO(TS): custom color
+	color = { 0.6 0.6 0.6 1.0 }
+	
+	blockoverride "after_output_pins" {
+		hbox = {
+			margin_right = 8
+			layoutpolicy_horizontal = expanding
+
+			dockable_button = {
+				size = { 64 22 }
+				fontsize = 10
+				text = "[UserDataNode.Label]"
+				onclick = "[UserDataNode.Configure]"
+			}
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+			}
+		}
+	}
+}

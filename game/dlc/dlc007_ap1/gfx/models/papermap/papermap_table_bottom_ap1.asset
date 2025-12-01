@@ -1,0 +1,31 @@
+pdxmesh = {
+	name = "papermap_table_bottom_ap1_mesh"
+	file = "papermap_table_bottom_ap1.mesh"
+
+	scale = 8192
+
+	meshsettings = {
+		name = "papermap_table_bottom_ap1_Shape0"
+		index = 0
+		texture_diffuse = "papermap_table_ap1_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+	}
+
+	meshsettings = {
+		name = "papermap_table_bottom_ap1_Shape0"
+		index = 1
+		texture_diffuse = "papermap_table_trim_ap1_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+	}
+}
+
+entity = {
+	name = "papermap_table_bottom_ap1_entity"
+	pdxmesh = "papermap_table_bottom_ap1_mesh"
+}

@@ -1,0 +1,44 @@
+pdxmesh = {
+	name = "papermap_walthamwatch_mesh"
+	file = "papermap_walthamwatch.mesh"
+
+	scale = 0.75
+
+	meshsettings = {
+		name = "papermap_walthamwatch_shadow_0Shape"
+		index = 0
+		texture_diffuse = "papermap_walthamwatch_dropshadow_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "papermap_walthamwatch_Shape0"
+		index = 0
+		texture_diffuse = "papermap_walthamwatch_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "papermap_walthamwatch_Shape0"
+		index = 1
+		texture_diffuse = "papermap_walthamwatch_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "papermap_walthamwatch_entity"
+	pdxmesh = "papermap_walthamwatch_mesh"
+}

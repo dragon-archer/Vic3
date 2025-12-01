@@ -1,0 +1,39 @@
+pdxmesh = {
+	name = "female_prop_apron_mesh"
+	file = "female_prop_apron.mesh"
+
+#	blend_shape = { id = "female_prop_apron_bs_bustsizemax"		type = "female_prop_apron_bs_bustsizemax.mesh" }
+#	blend_shape = { id = "female_prop_apron_bs_bustsizemin"		type = "female_prop_apron_bs_bustsizemin.mesh" }
+	blend_shape = { id = "female_prop_apron_bs_fat"		        type = "female_prop_apron_bs_fat.mesh" }
+	blend_shape = { id = "female_prop_apron_bs_gaunt"			type = "female_prop_apron_bs_gaunt.mesh" }
+	blend_shape = { id = "female_prop_apron_bs_infant"			type = "female_prop_apron_bs_infant.mesh" }
+	blend_shape = { id = "female_prop_apron_bs_old"				type = "female_prop_apron_bs_old.mesh" }
+	blend_shape = { id = "female_prop_apron_bs_thick"			type = "female_prop_apron_bs_thick.mesh" }
+	blend_shape = { id = "female_prop_apron_bs_thin"			type = "female_prop_apron_bs_thin.mesh" }
+
+	meshsettings = {
+		name = "female_prop_apronShape"
+		index = 0
+		texture_diffuse = "female_prop_apron_diffuse.dds"
+		texture_normal = "female_prop_apron_normal.dds"
+		texture_specular = "female_prop_apron_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "female_prop_apron_entity"
+	pdxmesh = "female_prop_apron_mesh"
+
+#	attribute = { name = "body_bs_bustsizemax"						blend_shape = "female_prop_apron_bs_bustsizemax" }
+#	attribute = { name = "body_bs_bustsizemin"						blend_shape = "female_prop_apron_bs_bustsizemin" }
+	attribute = { name = "body_bs_fat"								blend_shape = "female_prop_apron_bs_fat" }
+	attribute = { name = "body_bs_gaunt"							blend_shape = "female_prop_apron_bs_gaunt" }
+	attribute = { name = "body_bs_infant"							blend_shape = "female_prop_apron_bs_infant" }
+	attribute = { name = "body_bs_old"								blend_shape = "female_prop_apron_bs_old" }
+	attribute = { name = "body_bs_thick"							blend_shape = "female_prop_apron_bs_thick" }
+	attribute = { name = "body_bs_thin"								blend_shape = "female_prop_apron_bs_thin" }
+
+	
+}

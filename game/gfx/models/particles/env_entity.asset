@@ -1,0 +1,504 @@
+	entity = {
+	name = "env_mist_blue"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "mist_natural" trigger_once = yes}
+	
+}
+}
+
+entity = {
+	name = "env_mist_sun"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "mist_sun" trigger_once = yes}
+	
+}
+}
+
+entity = {
+	name = "env_mist_toxic"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "mist_toxic" trigger_once = yes}
+	
+}
+}
+
+entity = {
+	name = "env_mist"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	cull_radius = 20
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "mist" trigger_once = yes}
+	
+}
+}
+
+entity = {
+	name = "smoke_chimney_01"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "smoke_chimney" trigger_once = yes}
+	
+}
+}
+
+entity = {
+	name = "entity_factory_smoke"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "particle_factory_smoke" trigger_once = yes}
+	
+	}
+}
+entity = {
+	name = "env_rough_water"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		#event = { time = 0 node = "part1" particle = "environment/rough_water" trigger_once = yes}
+		#event = { time = 0 node = "part1" particle = "environment/rough_water_clouds" trigger_once = yes}
+	
+	}
+}
+
+entity = {
+	name = "env_coast_foam_m"
+	pdxmesh = "cube_long_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		#event = { time = 0 node = "part1" particle = "coast_foam_parent" trigger_once = yes}
+	
+	}
+}
+
+entity = {
+	name = "env_coast_foam_s"
+	pdxmesh = "cube_test_mesh"
+	scale = 1
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		#event = { time = 0 node = "part1" particle = "environment/coast_foam_parent_s" trigger_once = yes}
+	
+}
+}
+
+entity = {
+	name = "coast_foam_2"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "coast_foam_wave" trigger_once = yes}
+	
+}
+}
+
+entity = {
+	name = "env_leaves"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "leaves" trigger_once = yes}
+	
+}
+}
+
+entity = {
+	name = "env_god_rays"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "god_rays" trigger_once = yes}
+	
+}
+}
+
+entity = {
+	name = "rank_up_toast"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 8
+		event = { time = 0 node = "part1" particle = "rank_up_greater_power" trigger_once = no}
+}
+}
+	
+entity = {
+	name = "env_waterfall_01"
+	pdxmesh = "cube_test_mesh"
+	scale = 0.25
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 rotation = { 0 5 0 }}
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "waterfall" trigger_once = yes}
+		start_event = { sound  = { soundeffect = "event:/SFX/VFX/waterfall" } keep_sound = yes }
+}
+}
+
+entity = {
+	name = "env_waterfall_02"
+	pdxmesh = "cube_test_mesh"
+	scale = 1
+
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "waterfall_bottom" trigger_once = yes}
+}
+}
+
+entity = {
+	name = "env_waterfall_03"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "waterfall_top" trigger_once = yes}
+}
+}
+
+entity = {
+	name = "env_swamp_fog"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "environment/swamp_fog" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_jungle_mist_s"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "environment/jungle_mist" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_jungle_mist_l"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "environment/jungle_mist_large" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_rolling_fog_mountain"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "environment/rolling_fog_mountain" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_coast_splash"
+	#pdxmesh = "cube_test_mesh"
+	scale = 0.5
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = "part1" position = { 0 0 0 }			rotation = { 90 0 0}}
+	locator = { name = "part2" position = { 0.7 -0.4 0 } 	rotation = { 40 0 10}}
+	locator = { name = "part3" position = { 1.2 0.2 0 }  	rotation = { 20 0 0}}
+	locator = { name = "part4" position = { 1.6 0.1 0 }  	rotation = { -45 0 -20}}
+	
+	default_state = "start"
+
+	state = { name = "start" state_time = 2 looping = no next_state = "idle"
+	}
+	state = { name = "idle" state_time = 2 looping = no next_state = "rest"
+	chance = 0.5
+		#event = { time = 0 node = "part1" particle = "environment/wave_splash" trigger_once = yes keep_particle = yes}
+		#event = { time = 0.2 node = "part2" particle = "environment/wave_splash" trigger_once = yes keep_particle = yes}
+		#event = { time = 0.5 node = "part3" particle = "environment/wave_splash" trigger_once = yes keep_particle = yes}
+		#event = { time = 0.8 node = "part4" particle = "environment/wave_splash" trigger_once = yes keep_particle = yes}
+	}
+	
+	state = { name = "idle" state_time = 2 looping = no next_state = "rest"
+	chance = 0.5
+		#event = { time = 0 node = "part1" particle = "environment/wave_splash" trigger_once = yes keep_particle = yes}
+		#event = { time = 0.2 node = "part2" particle = "environment/wave_splash" trigger_once = yes keep_particle = yes}
+		#event = { time = 0.5 node = "part3" particle = "environment/wave_splash" trigger_once = yes keep_particle = yes}
+		#event = { time = 0.8 node = "part4" particle = "environment/wave_splash" trigger_once = yes keep_particle = yes}
+	}
+	
+	state = { name = "rest" state_time = 1 looping = no next_state = "idle"
+	chance = 0.1
+	}
+	
+	state = { name = "rest" state_time = 5 looping = no next_state = "idle"
+	chance = 0.5
+	}
+
+	state = { name = "rest" state_time = 10 looping = no next_state = "idle"
+	chance = 0.4
+	}
+}
+
+entity = {
+	name = "env_sand_dunes"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "environment/sand_dunes" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_sand_dunes_l"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "environment/sand_dunes_l" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_birds_effect"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "environment/birds" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_ocean_waves"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 rotation = { 50 0 0 } position = { 0 5 0 }}
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "environment/ocean_foam" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_storm_entity"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 rotation = { 0 0 0 }}
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "environment/storm" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_whirlwind_entity"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 rotation = { 0 0 0 }}
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "environment/whirlwind" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_rain_entity"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = "temp" position = { 0 -10 0 } }
+	
+	locator = { name = part1 rotation = { 0 0 0 }}
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		#event = { time = 0 node = "part1" particle = "environment/rain" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_tropical_rain_entity"
+	pdxmesh = "cube_test_mesh"
+
+	
+	locator = { name = part1 rotation = { 0 0 0 }}
+	
+	default_state = "start"
+	
+	state = { name = "start" state_time = 5 chance = 1
+		event = { time = 0 node = "part1" particle = "environment/tropical_rain" trigger_once = yes}
+	}                                                                          
+	
+	state = { name = "start" state_time = 5 chance = 1                         
+		event = { time = 1 node = "part1" particle = "environment/tropical_rain" trigger_once = yes}
+	}                                                                          
+
+	state = { name = "start" state_time = 5 chance = 1                         
+		event = { time = 3 node = "part1" particle = "environment/tropical_rain" trigger_once = yes}
+	}                                                                          
+	
+	state = { name = "start" state_time = 5 chance = 1                         
+		event = { time = 4 node = "part1" particle = "environment/tropical_rain" trigger_once = yes}
+	}                                                                          
+
+	state = { name = "start" state_time = 5 chance = 1                         
+		event = { time = 5 node = "part1" particle = "environment/tropical_rain" trigger_once = yes}
+	}                                                                          
+
+	state = { name = "start" state_time = 5 chance = 1                         
+		event = { time = 6 node = "part1" particle = "environment/tropical_rain" trigger_once = yes}
+	}
+	
+}
+
+entity = {
+	name = "env_tropical_rain_dense_entity"
+	pdxmesh = "cube_test_mesh"
+	
+	locator = { name = part1 rotation = { 0 0 0 }}
+	
+	default_state = "start"
+	
+	state = { name = "start" state_time = 5 chance = 1
+		event = { time = 0 node = "part1" particle = "environment/tropical_rain_dense" trigger_once = yes}
+	}
+	
+	state = { name = "start" state_time = 5 chance = 1
+		event = { time = 1 node = "part1" particle = "environment/tropical_rain_dense" trigger_once = yes}
+	}
+	
+	state = { name = "start" state_time = 5 chance = 1
+		event = { time = 3 node = "part1" particle = "environment/tropical_rain_dense" trigger_once = yes}
+	}
+	
+	state = { name = "start" state_time = 5 chance = 1
+		event = { time = 4 node = "part1" particle = "environment/tropical_rain_dense" trigger_once = yes}
+	}
+	
+	state = { name = "start" state_time = 5 chance = 1
+		event = { time = 5 node = "part1" particle = "environment/tropical_rain_dense" trigger_once = yes}
+	}
+	
+	state = { name = "start" state_time = 5 chance = 1
+		event = { time = 6 node = "part1" particle = "environment/tropical_rain_dense" trigger_once = yes}
+	}
+}

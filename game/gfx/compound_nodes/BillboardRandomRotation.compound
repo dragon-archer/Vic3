@@ -1,0 +1,88 @@
+﻿compound_node={
+	id="BillboardRandomRotation"
+	graph={
+		Nodes={
+			pdxns:common:GraphInterface={
+				Id=0
+				Node={
+					pins={
+						pin={
+							id=RotationMin
+							label="RotationMin"
+							input=no
+							type=Float
+						}
+						pin={
+							id=RotationMax
+							label="RotationMax"
+							input=no
+							type=Float
+						}
+						pin={
+							id=Seed
+							label="Seed"
+							input=no
+							type=Int
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=1
+				Node={
+					pins={
+						pin={
+							id=OutOrientation
+							label="Orientation"
+							input=yes
+							flags=optional
+							type=Quaternion
+						}
+					}
+				}
+				Inputs={
+					Link = { PinId = "OutOrientation" LinkedNode = 2 LinkedPin = "rotation" }
+				}
+			}
+			pdxns:3d:YawPitchVectorRotation={
+				Id=2
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "yaw" LinkedNode = 3 LinkedPin = "value" }
+					Link = { PinId = "pitch" LinkedNode = 4 LinkedPin = "value" }
+					Link = { PinId = "roll" LinkedNode = 5 LinkedPin = "value" }
+				}
+			}
+			pdxns:values:Float={
+				Id=3
+				Node={
+					value=0.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:values:Float={
+				Id=4
+				Node={
+					value=0.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:randomF={
+				Id=5
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "limit1" LinkedNode = 0 LinkedPin = "RotationMin" }
+					Link = { PinId = "limit2" LinkedNode = 0 LinkedPin = "RotationMax" }
+					Link = { PinId = "seed" LinkedNode = 0 LinkedPin = "Seed" }
+				}
+			}
+		}
+	}
+
+}

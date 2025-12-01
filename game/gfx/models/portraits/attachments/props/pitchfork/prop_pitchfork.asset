@@ -1,0 +1,16 @@
+pdxmesh = {
+	name = "prop_pitchfork_mesh"
+	file = "prop_pitchfork.mesh"
+
+	meshsettings = {
+		name = "prop_pitchforkShape"
+		index = 0
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_pitchfork_entity"
+	pdxmesh = "prop_pitchfork_mesh"
+}

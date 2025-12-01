@@ -1,0 +1,277 @@
+entity = {
+	name = "turmoil_stage_4"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = part1 position = { 0 0 0 } }
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "infrastructure/turmoil_stage_4" trigger_once = yes}
+		event = { sound = { soundeffect = "event:/SFX/VFX/unrest_4" } }
+		event = { sound = { soundeffect = "event:/SFX/VFX/war/zone_snapshot_mute_2Damb" } }
+
+	}
+}
+
+entity = {
+	name = "turmoil_stage_3"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = part1 position = { 0 0 0 } }
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "infrastructure/turmoil_stage_3" trigger_once = yes}
+		event = { sound = { soundeffect = "event:/SFX/VFX/unrest_3" } }
+		event = { sound = { soundeffect = "event:/SFX/VFX/war/zone_snapshot_mute_2Damb" } }
+
+	}
+}
+
+entity = {
+	name = "turmoil_stage_2"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = part1 position = { 0 0 0 } }
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "infrastructure/turmoil_stage_2" trigger_once = yes}
+		event = { sound = { soundeffect = "event:/SFX/VFX/unrest_2" } }
+		event = { sound = { soundeffect = "event:/SFX/VFX/war/zone_snapshot_mute_2Damb" } }
+
+	}
+}
+
+entity = {
+	name = "fireworks"
+	#pdxmesh = "cube_test_mesh"
+
+	locator = { name = part1 position = { 0 0 0 } }
+
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		event = { time = 0 node = "part1" particle = "infrastructure/fireworks" trigger_once = yes }
+		event = { trigger_once = yes keep_sound = yes sound = { soundeffect = "event:/SFX/VFX/fireworks" } }
+
+	}
+}
+
+entity = {
+	name = "pollution_stage_3"
+	#pdxmesh = "cube_test_mesh"
+
+	locator = { name = part1 position = { 0 0 0 } }
+	
+	locator = { name = smoke1 position = { -1 0 0 } scale = 0.9 }
+	locator = { name = smoke2 position = { 0 0 0.4 } scale = 0.9 }
+	locator = { name = smoke3 position = { 0.2 0 -0.2 } scale = 0.9 }
+	
+	locator = { name = smoke4 position = { -1 0 0.2 } scale = 0.9 }
+	locator = { name = smoke5 position = { -1 0 0.4 } scale = 0.9 }
+	locator = { name = smoke6 position = { 1.0 0 -0.4 }scale = 0.9 }
+	
+	locator = { name = smoke7 position = { 1 0 1 } scale = 0.9 }
+	locator = { name = smoke8 position = { 1 0 -0.4 } scale = 0.9 }
+	locator = { name = smoke9 position = { 0.5 0 1.1 } scale = 0.9 }
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "infrastructure/pollution_base" trigger_once = yes}
+		
+			
+		event = { time = 0 node = "smoke1" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke2" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke3" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke4" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke5" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke6" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke7" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke8" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke9" particle = "pollution_smoke_pillar" trigger_once = yes}
+
+	}
+}
+
+entity = {
+	name = "pollution_stage_2"
+	#pdxmesh = "cube_test_mesh"
+
+	locator = { name = part1 position = { 0 0 0 } }
+	
+	locator = { name = smoke1 position = { -1 0 0 } scale = 0.9 }
+	locator = { name = smoke2 position = { 0 0 0.4 } scale = 0.9 }
+	locator = { name = smoke3 position = { 0.2 0 -0.2 } scale = 0.9 }
+	
+	locator = { name = smoke4 position = { -1 0 0.2 } scale = 0.9 }
+	locator = { name = smoke5 position = { -1 0 1.4 } scale = 0.9 }
+	locator = { name = smoke6 position = { 1.0 0 -0.4 }scale = 0.9 }
+	
+	locator = { name = smoke7 position = { 1 0 1 } scale = 0.9 }
+	locator = { name = smoke8 position = { 1 0 -0.4 } scale = 0.9 }
+	locator = { name = smoke9 position = { 0.5 0 1.1 } scale = 0.9 }
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "infrastructure/pollution_base" trigger_once = yes}
+		
+		event = { time = 0 node = "smoke1" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke2" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke3" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke4" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke5" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke6" particle = "pollution_smoke_pillar" trigger_once = yes}
+
+	}
+}
+
+entity = {
+	name = "pollution_stage_1"
+	#pdxmesh = "cube_test_mesh"
+
+	locator = { name = part1 position = { 0 0 0 } }
+	
+	
+	locator = { name = smoke1 position = { -1 0 0 } scale = 0.9 }
+	locator = { name = smoke2 position = { 0 0 0.4 } scale = 0.9 }
+	locator = { name = smoke3 position = { 0.2 0 -0.2 } scale = 0.9 }
+	
+	locator = { name = smoke4 position = { -1 0 0.2 } scale = 0.9 }
+	locator = { name = smoke5 position = { -2 0 0.4 } scale = 0.9 }
+	locator = { name = smoke6 position = { 1.0 0 -0.4 }scale = 0.9 }
+	
+	locator = { name = smoke7 position = { 1 0 1 } scale = 0.9 }
+	locator = { name = smoke8 position = { 1 0 -0.4 } scale = 0.9 }
+	locator = { name = smoke9 position = { 0.5 0 1.1 } scale = 0.9 }
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "infrastructure/pollution_base" trigger_once = yes}
+		
+		event = { time = 0 node = "smoke1" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke2" particle = "pollution_smoke_pillar" trigger_once = yes}
+		event = { time = 0 node = "smoke3" particle = "pollution_smoke_pillar" trigger_once = yes}
+	}
+}
+
+
+entity = {
+	name = "revolution"
+	pdxmesh = "cube_test_mesh"
+
+	locator = { name = part1 position = { 0 0 0 } rotation = {20 0 -2} scale = 0.85}
+	locator = { name = part2 position = { 0 0 0 } rotation = {10 0 2} scale = 0.85} 
+	locator = { name = part3 position = { 0 0 0 } rotation = {5 0 -5} scale = 0.85} 
+	
+
+	default_state = "idle"
+		
+	state = { 
+		state_time = 5
+		chance = 1
+		name = "idle" 
+		looping = yes
+		
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/revolution_ongoing" } }
+	
+		event = 
+		{
+			time = 0 node = "part1" 
+			particle = "infrastructure/vfx_revolution_begin" 
+			keep_particle = yes
+			trigger_once = yes
+		}
+		
+		event = { time = 0 node = "part1" particle = "infrastructure/vfx_revolution" trigger_once = yes}
+		event = { time = 0 node = "part1" entity = "revolution_flag_01_entity" life = 5}	
+	}
+	
+	state = { 
+		state_time = 5
+		chance = 1
+		name = "idle" 
+		looping = yes
+		
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/revolution_ongoing" } }
+	
+		event = 
+		{
+			time = 0 node = "part1" 
+			particle = "infrastructure/vfx_revolution_begin" 
+			keep_particle = yes
+			trigger_once = yes
+		}
+		
+		event = { time = 0 node = "part2" particle = "infrastructure/vfx_revolution" trigger_once = yes}
+		event = { time = 0 node = "part2" entity = "revolution_flag_01_entity" life = 5}	
+	}
+	
+	state = { 
+		state_time = 5
+		chance = 1
+		name = "idle" 
+		looping = yes
+		
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/revolution_ongoing" } }
+	
+		event = 
+		{
+			time = 0 node = "part1" 
+			particle = "infrastructure/vfx_revolution_begin" 
+			keep_particle = yes
+			trigger_once = yes
+		}
+		
+		event = { time = 0 node = "part3" particle = "infrastructure/vfx_revolution" trigger_once = yes}
+		event = { time = 0 node = "part3" entity = "revolution_flag_01_entity" life = 5}	
+	}
+}
+
+pdxmesh = {
+	name = "revolution_flag_mesh"
+	file = "rebellion_flag.mesh"
+
+	meshsettings = {
+		index = 0
+		texture_diffuse 	= "flag_color.dds"
+		texture_normal 		= "no_normal.dds"
+		texture_specular 	= "no_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	scale = 2
+}
+
+entity = {
+	name = "revolution_flag_01_entity"
+	pdxmesh = "revolution_flag_mesh"
+	
+	scale = 1
+}
+
+entity = {
+	name = "revolution_flag_02_entity"
+	pdxmesh = "revolution_flag_mesh"
+	
+	scale = 0.75
+}
+
+
+entity = {
+	name = "revolution_flag_03_entity"
+	pdxmesh = "revolution_flag_mesh"
+	
+	scale = 0.5
+}
+
+entity = {
+	name = "revolution_flag_04_entity"
+	pdxmesh = "revolution_flag_mesh"
+	
+	scale = 0.25
+}

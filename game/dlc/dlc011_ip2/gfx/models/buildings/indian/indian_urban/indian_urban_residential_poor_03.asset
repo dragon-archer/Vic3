@@ -1,0 +1,155 @@
+pdxmesh = {
+	name = "indian_urban_residential_poor_03_mesh"
+	file = "indian_urban_residential_poor_03.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 7.0 }
+		lod = { index = 3 percent = 4.0 }
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_localdecal_0Shape"
+		index = 0
+		texture_diffuse = "indian_urban_residential_poor_03_decal_diffuse.dds"
+		texture_normal = "indian_urban_residential_poor_03_decal_normal.dds"
+		texture_specular = "indian_urban_residential_poor_03_decal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_worlddecal_0Shape"
+		index = 0
+		texture_diffuse = "arabic_city_decal_diffuse.dds"
+		texture_normal = "arabic_city_decal_normal.dds"
+		texture_specular = "arabic_city_decal_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_building_Shape0"
+		index = 0
+		texture_diffuse = "indian_urban_residential_diffuse.dds"
+		texture_normal = "indian_urban_residential_normal.dds"
+		texture_specular = "indian_urban_residential_properties.dds"
+		texture = { file = "indian_urban_residential_poor_03_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_localdecal_1Shape"
+		index = 0
+		texture_diffuse = "indian_urban_residential_poor_03_decal_diffuse.dds"
+		texture_normal = "indian_urban_residential_poor_03_decal_normal.dds"
+		texture_specular = "indian_urban_residential_poor_03_decal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_worlddecal_1Shape"
+		index = 0
+		texture_diffuse = "arabic_city_decal_diffuse.dds"
+		texture_normal = "arabic_city_decal_normal.dds"
+		texture_specular = "arabic_city_decal_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_building_Shape1"
+		index = 0
+		texture_diffuse = "indian_urban_residential_diffuse.dds"
+		texture_normal = "indian_urban_residential_normal.dds"
+		texture_specular = "indian_urban_residential_properties.dds"
+		texture = { file = "indian_urban_residential_poor_03_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_localdecal_2Shape"
+		index = 0
+		texture_diffuse = "indian_urban_residential_poor_03_decal_diffuse.dds"
+		texture_normal = "indian_urban_residential_poor_03_decal_normal.dds"
+		texture_specular = "indian_urban_residential_poor_03_decal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_worlddecal_2Shape"
+		index = 0
+		texture_diffuse = "arabic_city_decal_diffuse.dds"
+		texture_normal = "arabic_city_decal_normal.dds"
+		texture_specular = "arabic_city_decal_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_building_Shape2"
+		index = 0
+		texture_diffuse = "indian_urban_residential_diffuse.dds"
+		texture_normal = "indian_urban_residential_normal.dds"
+		texture_specular = "indian_urban_residential_properties.dds"
+		texture = { file = "indian_urban_residential_poor_03_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_localdecal_3Shape"
+		index = 0
+		texture_diffuse = "indian_urban_residential_poor_03_decal_diffuse.dds"
+		texture_normal = "indian_urban_residential_poor_03_decal_normal.dds"
+		texture_specular = "indian_urban_residential_poor_03_decal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_worlddecal_3Shape"
+		index = 0
+		texture_diffuse = "arabic_city_decal_diffuse.dds"
+		texture_normal = "arabic_city_decal_normal.dds"
+		texture_specular = "arabic_city_decal_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "indian_urban_residential_poor_03_building_Shape3"
+		index = 0
+		texture_diffuse = "indian_urban_residential_diffuse.dds"
+		texture_normal = "indian_urban_residential_normal.dds"
+		texture_specular = "indian_urban_residential_properties.dds"
+		texture = { file = "indian_urban_residential_poor_03_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "indian_urban_residential_poor_03_entity"
+	pdxmesh = "indian_urban_residential_poor_03_mesh"
+}

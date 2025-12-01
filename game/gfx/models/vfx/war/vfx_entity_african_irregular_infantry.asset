@@ -1,0 +1,28 @@
+entity = 
+{
+	name = "african_irregular_infantry_pm_irregular_infantry_entity"
+	pdxmesh = "african_irregular_infantry_mesh"
+	
+	locator = { name = "locator_vfx_01" position = { -1.2 0.5 -0.9 } rotation = { 30 0 0 } scale = 1.0}
+	locator = { name = "locator_vfx_02" position = { 1.4 0.6 -0.9 }	 rotation = { -30 0 0 } scale = 1.0}
+	locator = { name = "locator_vfx_03" position = { 0.0 0.9 -1.2 }	 rotation = { 0 0 0 } scale = 1.0}
+	
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 10
+		looping = yes 
+
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/irregular/generic" } }
+	
+		event = { time = 0 node = "locator_vfx_01" particle = "particle_rifle_pm_irregular_infantry" trigger_once = yes keep_particle = no}	
+		
+		event = { time = 0 node = "locator_vfx_02" particle = "particle_rifle_pm_irregular_infantry" trigger_once = yes keep_particle = no}	
+		
+		event = { time = 0 node = "locator_vfx_03" particle = "particle_rifle_pm_irregular_infantry" trigger_once = yes keep_particle = no}	
+		
+		next_state = "idle"
+	}
+}

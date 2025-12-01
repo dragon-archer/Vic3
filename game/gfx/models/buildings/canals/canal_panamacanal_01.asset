@@ -1,0 +1,106 @@
+pdxmesh = {
+	name = "canal_panamacanal_01_mesh"
+	file = "canal_panamacanal_01.mesh"
+
+	scale = 1
+
+lod_percentages = {
+		lod = { index = 1 percent = 48.0 }
+		lod = { index = 2 percent = 9.6 }
+	}
+
+	meshsettings = {
+		name = "LOD_0|canal_panamacanalbuildings_01|canal_panamacanalbuildings_"
+		index = 0
+		texture_diffuse = "panamacanalbuildings_01_diffuse.dds"
+		texture_normal = "panamacanalbuildings_01_normal.dds"
+		texture_specular = "panamacanalbuildings_01_properties.dds"
+		shader = "standard"
+	}
+
+	meshsettings = {
+		name = "LOD_0|canal_panamacanal_01|canal_panamacanal_01Shape"
+		index = 0
+		texture_diffuse = "panamacanal_01_diffuse.dds"
+		texture_normal = "panamacanal_01_normal.dds"
+		texture_specular = "panamacanal_01_properties.dds"
+		shader = "snap_to_terrain_alpha_to_coverage"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_0|canal_panamacanalwater_01|canal_panamacanalwater_01Shape"
+		index = 0
+		texture_diffuse = "nodiffuse.dds"
+		texture_normal = "nonormal.dds"
+		texture_specular = "nospec.dds"
+		shader = "water_canal"
+		shader_file = "gfx/FX/pdxwater.shader"
+		subpass = Water
+	}
+
+	meshsettings = {
+		name = "LOD_1|canal_panamacanalbuildings_01|canal_panamacanalbuildings_"
+		index = 0
+		texture_diffuse = "panamacanalbuildings_01_diffuse.dds"
+		texture_normal = "panamacanalbuildings_01_normal.dds"
+		texture_specular = "panamacanalbuildings_01_properties.dds"
+		shader = "standard"
+	}
+
+	meshsettings = {
+		name = "LOD_1|canal_panamacanal_01|canal_panamacanal_01Shape"
+		index = 0
+		texture_diffuse = "panamacanal_01_diffuse.dds"
+		texture_normal = "panamacanal_01_normal.dds"
+		texture_specular = "panamacanal_01_properties.dds"
+		shader = "snap_to_terrain_alpha_to_coverage"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_1|canal_panamacanalwater_01|canal_panamacanalwater_01Shape"
+		index = 0
+		texture_diffuse = "nodiffuse.dds"
+		texture_normal = "nonormal.dds"
+		texture_specular = "nospec.dds"
+		shader = "water_canal"
+		shader_file = "gfx/FX/pdxwater.shader"
+		subpass = Water
+	}
+
+	meshsettings = {
+		name = "LOD_2|canal_panamacanalbuildings_01|canal_panamacanalbuildings_"
+		index = 0
+		texture_diffuse = "panamacanalbuildings_01_diffuse.dds"
+		texture_normal = "panamacanalbuildings_01_normal.dds"
+		texture_specular = "panamacanalbuildings_01_properties.dds"
+		shader = "standard"
+	}
+
+	meshsettings = {
+		name = "LOD_2|canal_panamacanal_01|canal_panamacanal_01Shape"
+		index = 0
+		texture_diffuse = "panamacanal_01_diffuse.dds"
+		texture_normal = "panamacanal_01_normal.dds"
+		texture_specular = "panamacanal_01_properties.dds"
+		shader = "snap_to_terrain_alpha_to_coverage"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_2|canal_panamacanalwater_01|canal_panamacanalwater_01Shape"
+		index = 0
+		texture_diffuse = "nodiffuse.dds"
+		texture_normal = "nonormal.dds"
+		texture_specular = "nospec.dds"
+		shader = "water_canal"
+		shader_file = "gfx/FX/pdxwater.shader"
+		subpass = Water
+	}
+}
+
+entity = {
+	name = "canal_panamacanal_01_entity"
+	pdxmesh = "canal_panamacanal_01_mesh"
+}

@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_monocle_mesh"
+	file = "prop_monocle.mesh"
+
+	meshsettings = {
+		name = "prop_monocleShape"
+		index = 0
+		texture_diffuse = "prop_monocle_diffuse.dds"
+		texture_normal = "prop_monocle_normal.dds"
+		texture_specular = "prop_monocle_properties.dds"
+		shader = "portrait_attachment_alpha_to_coverage"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_monocle_entity"
+	pdxmesh = "prop_monocle_mesh"
+}

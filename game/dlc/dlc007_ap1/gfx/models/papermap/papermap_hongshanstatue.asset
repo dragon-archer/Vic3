@@ -1,0 +1,31 @@
+pdxmesh = {
+	name = "papermap_hongshanstatue_mesh"
+	file = "papermap_hongshanstatue.mesh"
+
+	meshsettings = {
+		name = "hongshansungodShape"
+		index = 0
+		texture_diffuse = "hongshanstatue_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "shadowShape"
+		index = 0
+		texture_diffuse = "hongshanstatue_shadow_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "papermap_hongshanstatue_entity"
+	pdxmesh = "papermap_hongshanstatue_mesh"
+}

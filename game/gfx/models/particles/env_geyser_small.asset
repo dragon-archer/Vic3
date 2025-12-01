@@ -1,0 +1,38 @@
+entity = 
+{
+	name = "env_geyser_small"
+	pdxmesh = "cube_test_mesh"
+	locator = { name = part1 }
+	default_state = "idle"
+	scale = 0.075
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 14.9
+		looping = no
+		chance = 1
+		next_state = "idle"
+		event = 
+		{ 
+			time = 0 
+			node = "part1" 
+			particle = "geyser" 
+			trigger_once = no
+			keep_particle = no
+		}
+	}
+	
+	state = 
+	{
+		name = "idle"
+		state_time = 15.2
+		looping = no
+		chance = 1
+		next_state = "idle"
+		event = 
+		{
+			time = 0
+			node = "part1"
+		}
+	}
+}

@@ -1,0 +1,14 @@
+entity = {
+	name = "latin_port_01_1s_1d_1f_entity"
+	
+	locator = { name = "pos_origo" position = { 0 0 0 } rotation = { 0 0 0 } }
+	locator = { name = "pos_left" position = { -1.7 0 -1.54 } rotation = { 0 0 0 } }
+	locator = { name = "pos_center" position = { 0 0 -1.54 } rotation = { 0 0 0 } }
+	locator = { name = "pos_right" position = { 1.7 0 -1.54 } rotation = { 0 0 0 } }
+	
+	
+	attach = { pos_origo = "latin_urban_port_centerpiece_01_entity" }
+	attach = { pos_left = "latin_urban_port_shipyard_01_entity" }
+	attach = { pos_center = "latin_urban_port_dockyard_01_entity" }
+	attach = { pos_right = "latin_urban_port_fishingwharf_01_entity" }	
+}

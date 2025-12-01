@@ -1,0 +1,78 @@
+pdxmesh = {
+	name = "iceberg_03_mesh"
+	file = "iceberg_03.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 8.0 }
+		lod = { index = 2 percent = 4.0 }
+		lod = { index = 3 percent = 2.0 }
+	}
+
+	meshsettings = {
+		name = "iceberg_03|LOD_0|iceberg|icebergShape"
+		index = 0
+		texture_diffuse = "icerberg_diffuse.dds"
+		texture_normal = "icerberg_normal.dds"
+		texture_specular = "icerberg_properties.dds"
+		shader = "standard_singlesun"
+	}
+
+	meshsettings = {
+		name = "iceberg_03|LOD_0|icefloe|icefloeShape"
+		index = 0
+		texture_diffuse = "icefloe_diffuse.dds"
+		texture_normal = "icefloe_normal.dds"
+		texture_specular = "icefloe_properties.dds"
+		shadow_shader = ""
+	}
+
+	meshsettings = {
+		name = "iceberg_03|LOD_1|iceberg|icebergShape"
+		index = 0
+		texture_diffuse = "icerberg_diffuse.dds"
+		texture_normal = "icerberg_normal.dds"
+		texture_specular = "icerberg_properties.dds"
+		shader = "standard_singlesun"
+	}
+
+	meshsettings = {
+		name = "iceberg_03|LOD_1|icefloe|icefloeShape"
+		index = 0
+		texture_diffuse = "icefloe_diffuse.dds"
+		texture_normal = "icefloe_normal.dds"
+		texture_specular = "icefloe_properties.dds"
+		shadow_shader = ""
+	}
+
+	meshsettings = {
+		name = "iceberg_03|LOD_2|iceberg|icebergShape"
+		index = 0
+		texture_diffuse = "icerberg_diffuse.dds"
+		texture_normal = "icerberg_normal.dds"
+		texture_specular = "icerberg_properties.dds"
+		shader = "standard_singlesun"
+	}
+
+	meshsettings = {
+		name = "iceberg_03|LOD_2|icefloe|icefloeShape"
+		index = 0
+		texture_diffuse = "icefloe_diffuse.dds"
+		texture_normal = "icefloe_normal.dds"
+		texture_specular = "icefloe_properties.dds"
+		shadow_shader = ""
+	}
+
+	meshsettings = {
+		name = "iceberg_03|LOD_3|icefloe|icefloeShape"
+		index = 0
+		texture_diffuse = "icefloe_diffuse.dds"
+		texture_normal = "icefloe_normal.dds"
+		texture_specular = "icefloe_properties.dds"
+		shadow_shader = ""
+	}
+}
+
+entity = {
+	name = "iceberg_03_entity"
+	pdxmesh = "iceberg_03_mesh"
+}

@@ -1,0 +1,136 @@
+pdxmesh = {
+	name = "indian_port_docks_01_mesh"
+	file = "indian_port_docks_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 12.0 }
+		lod = { index = 2 percent = 6.0 }
+		lod = { index = 3 percent = 2.0 }
+	}
+
+	meshsettings = {
+		name = "indian_port_docks_stairs_0Shape"
+		index = 0
+		texture_diffuse = "indian_port_buildings_diffuse.dds"
+		texture_normal = "indian_port_buildings_normal.dds"
+		texture_specular = "indian_port_buildings_properties.dds"
+		texture = { file = "indian_port_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_port_docks_Shape0"
+		index = 0
+		texture_diffuse = "indian_port_buildings_diffuse.dds"
+		texture_normal = "indian_port_buildings_normal.dds"
+		texture_specular = "indian_port_buildings_properties.dds"
+		texture = { file = "indian_port_tint.dds" index = 5 }
+		texture = { file = "indian_port_building_colormask.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "SNAP_TO_WATER" "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_port_docks_billboards_Shape0"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_port_docks_stairs_1Shape"
+		index = 0
+		texture_diffuse = "indian_port_buildings_diffuse.dds"
+		texture_normal = "indian_port_buildings_normal.dds"
+		texture_specular = "indian_port_buildings_properties.dds"
+		texture = { file = "indian_port_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_port_docks_Shape1"
+		index = 0
+		texture_diffuse = "indian_port_buildings_diffuse.dds"
+		texture_normal = "indian_port_buildings_normal.dds"
+		texture_specular = "indian_port_buildings_properties.dds"
+		texture = { file = "indian_port_tint.dds" index = 5 }
+		texture = { file = "indian_port_building_colormask.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "SNAP_TO_WATER" "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_port_docks_billboards_Shape1"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_port_docks_stairs_2Shape"
+		index = 0
+		texture_diffuse = "indian_port_buildings_diffuse.dds"
+		texture_normal = "indian_port_buildings_normal.dds"
+		texture_specular = "indian_port_buildings_properties.dds"
+		texture = { file = "indian_port_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_port_docks_Shape2"
+		index = 0
+		texture_diffuse = "indian_port_buildings_diffuse.dds"
+		texture_normal = "indian_port_buildings_normal.dds"
+		texture_specular = "indian_port_buildings_properties.dds"
+		texture = { file = "indian_port_tint.dds" index = 5 }
+		texture = { file = "indian_port_building_colormask.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "SNAP_TO_WATER" "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_port_docks_billboards_Shape2"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "indian_port_docks_3Shape"
+		index = 0
+		texture_diffuse = "indian_port_buildings_diffuse.dds"
+		texture_normal = "indian_port_buildings_normal.dds"
+		texture_specular = "indian_port_buildings_properties.dds"
+		texture = { file = "indian_port_tint.dds" index = 5 }
+		texture = { file = "indian_port_building_colormask.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "SNAP_TO_WATER" "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "indian_port_docks_01_entity"
+	pdxmesh = "indian_port_docks_01_mesh"
+}

@@ -1,0 +1,169 @@
+pdxmesh = {
+	name = "monument_templeofposeidon_mesh"
+	file = "monument_templeofposeidon.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 8.0 }
+		lod = { index = 3 percent = 4.0 }
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_hill_0Shape"
+		index = 0
+		shadow_only = yes
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_Shape0"
+		index = 0
+		texture_diffuse = "monument_templeofposeidon_diffuse.dds"
+		texture_normal = "monument_templeofposeidon_normal.dds"
+		texture_specular = "monument_templeofposeidon_properties.dds"
+		texture = { file = "monument_templeofposeidon_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_Shape0"
+		index = 1
+		texture_diffuse = "monument_templeofposeidon_decal_diffuse.dds"
+		texture_normal = "monument_templeofposeidon_decal_normal.dds"
+		texture_specular = "monument_templeofposeidon_decal_properties.dds"
+		texture = { file = "monument_templeofposeidon_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_Shape0"
+		index = 2
+		texture_diffuse = "monument_templeofposeidon_diffuse.dds"
+		texture_normal = "monument_templeofposeidon_normal.dds"
+		texture_specular = "monument_templeofposeidon_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_hill_1Shape"
+		index = 0
+		shadow_only = yes
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_Shape1"
+		index = 0
+		texture_diffuse = "monument_templeofposeidon_diffuse.dds"
+		texture_normal = "monument_templeofposeidon_normal.dds"
+		texture_specular = "monument_templeofposeidon_properties.dds"
+		texture = { file = "monument_templeofposeidon_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_Shape1"
+		index = 1
+		texture_diffuse = "monument_templeofposeidon_diffuse.dds"
+		texture_normal = "monument_templeofposeidon_normal.dds"
+		texture_specular = "monument_templeofposeidon_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_Shape1"
+		index = 2
+		texture_diffuse = "monument_templeofposeidon_decal_diffuse.dds"
+		texture_normal = "monument_templeofposeidon_decal_normal.dds"
+		texture_specular = "monument_templeofposeidon_decal_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_hill_2Shape"
+		index = 0
+		shadow_only = yes
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_Shape2"
+		index = 0
+		texture_diffuse = "monument_templeofposeidon_diffuse.dds"
+		texture_normal = "monument_templeofposeidon_normal.dds"
+		texture_specular = "monument_templeofposeidon_properties.dds"
+		texture = { file = "monument_templeofposeidon_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_Shape2"
+		index = 1
+		texture_diffuse = "monument_templeofposeidon_diffuse.dds"
+		texture_normal = "monument_templeofposeidon_normal.dds"
+		texture_specular = "monument_templeofposeidon_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_Shape2"
+		index = 2
+		texture_diffuse = "monument_templeofposeidon_decal_diffuse.dds"
+		texture_normal = "monument_templeofposeidon_decal_normal.dds"
+		texture_specular = "monument_templeofposeidon_decal_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_hill_3Shape"
+		index = 0
+		shadow_only = yes
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "templeofposeidon_Shape3"
+		index = 0
+		texture_diffuse = "monument_templeofposeidon_diffuse.dds"
+		texture_normal = "monument_templeofposeidon_normal.dds"
+		texture_specular = "monument_templeofposeidon_properties.dds"
+		texture = { file = "monument_templeofposeidon_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "monument_templeofposeidon_entity"
+	pdxmesh = "monument_templeofposeidon_mesh"
+	locator = { name = "loc_lights" position = { 0.0 0.0 0.0 }}
+	default_state = "idle"
+		
+	state = { 
+		name = "idle" 
+		state_time = 5
+
+		event = { time = 0 node = "loc_lights" particle = "infrastructure/poseidon_mist" trigger_once = yes}
+	}
+}

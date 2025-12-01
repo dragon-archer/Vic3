@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_basket_mesh"
+	file = "prop_basket.mesh"
+
+	meshsettings = {
+		name = "prop_basketShape"
+		index = 0
+		texture_diffuse = "prop_basket_diffuse.dds"
+		texture_normal = "prop_basket_normal.dds"
+		texture_specular = "prop_basket_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_basket_entity"
+	pdxmesh = "prop_basket_mesh"
+}

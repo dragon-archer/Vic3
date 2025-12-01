@@ -1,0 +1,42 @@
+pdxmesh = {
+	name = "papermap_netturpetti_mesh"
+	file = "papermap_netturpetti.mesh"
+
+	meshsettings = {
+		name = "papermap_netturpetti_dropshadow_0Shape"
+		index = 0
+		texture_diffuse = "papermap_netturpetti_dropshadow_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "papermap_netturpetti_Shape0"
+		index = 0
+		texture_diffuse = "papermap_netturpetti_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "papermap_netturpetti_ring_key_Shape0"
+		index = 0
+		texture_diffuse = "papermap_netturpetti_keyring_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "papermap_netturpetti_entity"
+	pdxmesh = "papermap_netturpetti_mesh"
+}

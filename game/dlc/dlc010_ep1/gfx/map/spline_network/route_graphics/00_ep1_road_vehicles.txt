@@ -1,0 +1,109 @@
+﻿##################################################################
+######				POWERBLOC - IDENTITY PILLAR 			#####
+##################################################################
+#
+#
+##################################################
+####       			MOTORS 		 			  ###
+##################################################
+
+powerblocs_motor_dirt_road_route_graphics = {
+	valid_spline_styles = { "dirtroad" }
+
+	speed = 1.0
+	min_caravan_distance = 10.0
+	max_count = 20
+	max_path_length = 4
+
+
+	route_entities = {
+
+		ideological_union_cars = {
+			entity = "road_car_rollsroycesilverghost_entity"
+			position = 0
+			entity_length = 1.5
+	
+			possible = {
+				gfx_car_condition_trigger = yes
+				power_bloc ?= {
+					has_identity = identity:identity_ideological_union
+				}
+			}
+			
+			count = {
+				value = 1
+			}
+		}
+	}
+}
+
+##################################################
+####       			CARTS 		 			   ###
+##################################################
+
+powerblocs_horse_cart_dirtroad_route_graphics = {
+	valid_spline_styles = { "dirtroad" }
+
+	speed = 0.5
+	min_caravan_distance = 10.0
+	max_count = 20
+	max_path_length = 2
+
+
+	route_entities = {
+
+		sovereign_empire_horses_01 = {
+			entity = "horses_01_entity"
+			position = 0
+			entity_length = 0.7
+		
+			possible = {
+				power_bloc ?= {
+					OR= {
+						has_identity = identity:identity_sovereign_empire
+						has_identity = identity:identity_religious
+					}
+				}
+			}
+
+			count = {
+				integer_range = {
+					min = 2
+					max = 3
+				}
+			}
+		}
+			
+		sovereign_empire_cart_01 = {
+			entity = "horse_cart_sovereignempire_entity"
+			position = 1
+			entity_length = 1.3
+	
+			possible = {
+				power_bloc ?= {
+					has_identity = identity:identity_sovereign_empire
+				}
+			}
+			
+			count = {
+				value = 1
+			}
+		}
+
+		sovereign_empire_cart_01 = {
+			entity = "horse_cart_religiouscongregation_01_entity"
+			position = 1
+			entity_length = 1.3
+	
+			possible = {
+				power_bloc ?= {
+					has_identity = identity:identity_religious
+				}
+			}
+			
+			count = {
+				value = 1
+			}
+		}
+	}
+}

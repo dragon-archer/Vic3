@@ -1,0 +1,97 @@
+entity = {
+	name = "vfx_entity_devastation_stage_3"
+	pdxmesh = "cube_test_mesh"
+	
+	scale = 1
+	
+	locator = { name = "root" position = { 0 0 0 } }
+	
+	locator = { name = "part1" position = { -1 0 1 }		rotation = { 0 0 0}}
+	locator = { name = "part2" position = { 0.7 0 -0.5 } 	rotation = { 0 0 0}}
+	locator = { name = "part3" position = { -1 0 -0.1 }  	rotation = { 0 0 0}}
+	locator = { name = "part4" position = { 0.6 0 -1 }  	rotation = { 0 0 0}}
+	locator = { name = "part5" position = { 1 0 -0.5 }  	rotation = { 0 0 0}}
+	locator = { name = "part6" position = { -0.5 0 1 }  	rotation = { 0 0 0}}
+
+	
+	default_state = "idle"
+
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 10
+		looping = yes 
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/devastation_stage_3" } }
+	
+		event = { time = 0 node = "root" particle = "devastation_ash_rain" trigger_once = yes keep_particle = yes}	
+		event = { time = 0 node = "part1" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+		event = { time = 0 node = "part2" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+		event = { time = 0 node = "part3" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+		event = { time = 0 node = "part4" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+		event = { time = 0 node = "part5" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+		event = { time = 0 node = "part6" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+
+
+	}
+	cull_radius = 2000
+}
+
+entity = {
+	name = "vfx_entity_devastation_stage_2"
+	pdxmesh = "cube_test_mesh"
+	
+	scale = 1
+	
+	locator = { name = "root" position = { 0 0 0 } }
+	
+	locator = { name = "part1" position = { -1 0 1 }		rotation = { 0 0 0}}
+	locator = { name = "part2" position = { 0.7 0 -0.5 } 	rotation = { 0 0 0}}
+	locator = { name = "part3" position = { -1 0 -0.1 }  	rotation = { 0 0 0}}
+	locator = { name = "part4" position = { 0.6 0 -1 }  	rotation = { 0 0 0}}
+	
+	default_state = "idle"
+
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 10
+		looping = yes 
+
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/devastation_stage_2" } }
+	
+
+		event = { time = 0 node = "part1" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+		event = { time = 0 node = "part2" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+		event = { time = 0 node = "part3" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+		event = { time = 0 node = "part4" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+	}
+	cull_radius = 2000
+}
+
+entity = {
+	name = "vfx_entity_devastation_stage_1"
+	pdxmesh = "cube_test_mesh"
+	
+	scale = 1
+	
+	locator = { name = "root" position = { 0 0 0 } }
+	
+	locator = { name = "part1" position = { -1 0 1 }		rotation = { 0 0 0}}
+	locator = { name = "part2" position = { 0.7 0 -0.5 } 	rotation = { 0 0 0}}
+	
+	default_state = "idle"
+
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 10
+		looping = yes 
+
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/devastation_stage_1" } }
+	
+		event = { time = 0 node = "part1" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+		event = { time = 0 node = "part2" particle = "devastation_smoke_pillars" trigger_once = yes keep_particle = yes}
+
+	}
+	cull_radius = 2000
+}

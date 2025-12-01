@@ -1,0 +1,23 @@
+There are basically three different uses of these entities.
+when a residential building is promoted or demoted
+when a residential building is added
+when a regular building is added
+1.
+Used to be the blue particles and explosions.
+Uses residential_promotion_entity and residential_demotion_entity
+The code will throttle the spawning of these so that there's only one spawned every 5-6 seconds per hub.
+Code will not set any state on these so use "default_state = x" and make sure that is set to a non-looping state. As soon as this entity is no longer running any state (i.e animation finished or state_time has passed, without a next_state = x or looping = yes) the entity will be deleted. So it is possible to have the default state chain into another state which chains into another etc, the entity will be removed when the chain stops.
+The entities will also be removed if the camera moves away from them.
+These entities are spawned on-top of the residential building, so both building and promote/demote entity will be visible at the same time.
+The building mesh is swapped immediately, so at the same time as this entity is spawned
+2.
+Spawns with its default state.
+Entity is selected by size (building_construction_%ix%i_entity where %i is replaced by the size of the building)
+As soon as the code detects that the entity is in state "idle", it will change the state to "end" and tell the entity to delete it self when that state is done.
+The entity will be deleted prematurely if the camera moves away from it.
+The building's mesh will be hidden until the construction entity is set to the "end" state
+3.
+Spawns with its default state.
+Entity is primarily selected according to script in gfx/map/building_config but will fallback to the size-selection used in 2. if the building config script does not provide a valid entity.
+The code will wait for a gamestate event saying that the construction of the building is finished. Once that happens it will put the entity in the "end" state, and it will be deleted once that state finishes.
+The building's mesh will be hidden until the construction entity is set to the "end" state 

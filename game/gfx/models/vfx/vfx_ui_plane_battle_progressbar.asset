@@ -1,0 +1,22 @@
+pdxmesh = {
+	name = "vfx_ui_plane_battle_progressbar_mesh"
+	file = "vfx_ui_plane_battle_progressbar.mesh"
+
+	meshsettings = {
+		name = "vfx_ui_plane_battle_progressbarShape"
+		index = 0
+				
+		texture_diffuse = "ui_to_arms_fire_noises.dds"
+		texture_normal = "nonormal.dds"
+		texture_specular = "ui_to_arms_fire_lut.dds"
+		
+		shader = "vfx_ui_panning_texture"
+		shader_file = "gfx/FX/pdxmesh_vfx.shader"
+		shadow_shader = ""
+	}
+}
+
+entity = {
+	name = "vfx_ui_plane_battle_progressbar_entity"
+	pdxmesh = "vfx_ui_plane_battle_progressbar_mesh"
+}

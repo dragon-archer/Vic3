@@ -1,0 +1,25 @@
+entity = {
+	name = "construct_building_effect"
+	scale = 1
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5 looping = no 
+	#next_state = idle
+		event = { time = 0 node = "part1" particle = "construct_building" trigger_once = yes keep_particle = yes}
+	}
+	
+}
+
+entity = {
+	name = "downgrade_building_effect"
+	scale = 1
+	locator = { name = part1 }
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5 looping = no 
+	#next_state = idle
+		event = { time = 0 node = "part1" particle = "downgrade_building" trigger_once = yes keep_particle = yes}
+	}
+	
+}

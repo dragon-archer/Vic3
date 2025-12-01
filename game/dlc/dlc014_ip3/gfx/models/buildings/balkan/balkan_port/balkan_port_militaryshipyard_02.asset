@@ -1,0 +1,175 @@
+﻿pdxmesh = {
+	name = "balkan_port_militaryshipyard_02_mesh"
+	file = "balkan_port_militaryshipyard_02.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 8.0 }
+		lod = { index = 3 percent = 6.0 }
+		lod = { index = 4 percent = 3.0 }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|balkan_port_0.001"
+		index = 0
+		texture_diffuse = "balkan_port_buildings_diffuse.dds"
+		texture_normal = "balkan_port_buildings_normal.dds"
+		texture_specular = "balkan_port_buildings_properties.dds"
+		texture = { file = "balkan_port_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "SOL_VISUALS" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|balkan_port_platform_0.001"
+		index = 0
+		texture_diffuse = "balkan_port_platform_diffuse.dds"
+		texture_normal = "balkan_port_platform_normal.dds"
+		texture_specular = "balkan_port_platform_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|flag_0.001"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "HUB_BUILDING" "FLAGWAVE_SETTINGS_BUILDING" "COA_TEXTURE" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|balkan_port_1.001"
+		index = 0
+		texture_diffuse = "balkan_port_buildings_diffuse.dds"
+		texture_normal = "balkan_port_buildings_normal.dds"
+		texture_specular = "balkan_port_buildings_properties.dds"
+		texture = { file = "balkan_port_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "SOL_VISUALS" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|balkan_port_platform_1.001"
+		index = 0
+		texture_diffuse = "balkan_port_platform_diffuse.dds"
+		texture_normal = "balkan_port_platform_normal.dds"
+		texture_specular = "balkan_port_platform_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|flag_1.001"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "HUB_BUILDING" "FLAGWAVE_SETTINGS_BUILDING" "COA_TEXTURE" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|balkan_port_2.001"
+		index = 0
+		texture_diffuse = "balkan_port_buildings_diffuse.dds"
+		texture_normal = "balkan_port_buildings_normal.dds"
+		texture_specular = "balkan_port_buildings_properties.dds"
+		texture = { file = "balkan_port_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "SOL_VISUALS" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|balkan_port_platform_2.001"
+		index = 0
+		texture_diffuse = "balkan_port_platform_diffuse.dds"
+		texture_normal = "balkan_port_platform_normal.dds"
+		texture_specular = "balkan_port_platform_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|flag_2.001"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "HUB_BUILDING" "FLAGWAVE_SETTINGS_BUILDING" "COA_TEXTURE" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|balkan_port_3.001"
+		index = 0
+		texture_diffuse = "balkan_port_buildings_diffuse.dds"
+		texture_normal = "balkan_port_buildings_normal.dds"
+		texture_specular = "balkan_port_buildings_properties.dds"
+		texture = { file = "balkan_port_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "SOL_VISUALS" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|balkan_port_platform_3.001"
+		index = 0
+		texture_diffuse = "balkan_port_platform_diffuse.dds"
+		texture_normal = "balkan_port_platform_normal.dds"
+		texture_specular = "balkan_port_platform_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|flag_3.001"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "HUB_BUILDING" "FLAGWAVE_SETTINGS_BUILDING" "COA_TEXTURE" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_4|balkan_port_4.001"
+		index = 0
+		texture_diffuse = "balkan_port_buildings_diffuse.dds"
+		texture_normal = "balkan_port_buildings_normal.dds"
+		texture_specular = "balkan_port_buildings_properties.dds"
+		texture = { file = "balkan_port_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "SOL_VISUALS" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_4|balkan_port_platform_4.001"
+		index = 0
+		texture_diffuse = "balkan_port_platform_diffuse.dds"
+		texture_normal = "balkan_port_platform_normal.dds"
+		texture_specular = "balkan_port_platform_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "balkan_port_militaryshipyard_02_entity"
+	pdxmesh = "balkan_port_militaryshipyard_02_mesh"
+}

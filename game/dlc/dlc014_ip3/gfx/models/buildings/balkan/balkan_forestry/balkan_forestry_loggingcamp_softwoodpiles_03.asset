@@ -1,0 +1,63 @@
+﻿pdxmesh = {
+	name = "balkan_forestry_loggingcamp_softwoodpiles_03_mesh"
+	file = "balkan_forestry_loggingcamp_softwoodpiles_03.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 10.0 }
+		lod = { index = 2 percent = 5.0 }
+		lod = { index = 3 percent = 2.5 }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|lumberpile_0.001"
+		index = 0
+		texture_diffuse = "lumberpile_diffuse.dds"
+		texture_normal = "lumberpile_normal.dds"
+		texture_specular = "lumberpile_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 5 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" " SOL_VISUALS" " HUB_BUILDING" }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|lumberpile_1.001"
+		index = 0
+		texture_diffuse = "lumberpile_diffuse.dds"
+		texture_normal = "lumberpile_normal.dds"
+		texture_specular = "lumberpile_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 5 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" " SOL_VISUALS" " HUB_BUILDING" }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|lumberpile_2.001"
+		index = 0
+		texture_diffuse = "lumberpile_diffuse.dds"
+		texture_normal = "lumberpile_normal.dds"
+		texture_specular = "lumberpile_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 5 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" " SOL_VISUALS" " HUB_BUILDING" }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|lumberpile_3.001"
+		index = 0
+		texture_diffuse = "lumberpile_diffuse.dds"
+		texture_normal = "lumberpile_normal.dds"
+		texture_specular = "lumberpile_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 5 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" " SOL_VISUALS" " HUB_BUILDING" }
+	}
+}
+
+entity = {
+	name = "balkan_forestry_loggingcamp_softwoodpiles_03_entity"
+	pdxmesh = "balkan_forestry_loggingcamp_softwoodpiles_03_mesh"
+}

@@ -1,0 +1,101 @@
+﻿compound_node={
+	id="SystemOptions"
+	graph={
+		Nodes={
+			pdxns:common:GraphInterface={
+				Id=0
+				Node={
+					pins={
+						pin={
+							id=ParticlesLifetime
+							label="ParticlesLifetime"
+							input=no
+							type=Float
+						}
+						pin={
+							id=SystemLifetime
+							label="SystemLifetime"
+							input=no
+							type=Float
+						}
+						pin={
+							id=CleanUpSystem
+							label="CleanUpSystem"
+							input=no
+							type=Bool
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+			pdxns:particle:Kill={
+				Id=1
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "condition" LinkedNode = 6 LinkedPin = "value" }
+				}
+			}
+			pdxns:particle:GetSystemAge={
+				Id=9
+				Node={
+				}
+				Inputs={
+				}
+			}
+			pdxns:particle:KillSystem={
+				Id=3
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "condition" LinkedNode = 14 LinkedPin = "selected_value" }
+				}
+			}
+			pdxns:math:GreaterThanF={
+				Id=10
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "op1" LinkedNode = 9 LinkedPin = "age" }
+					Link = { PinId = "op2" LinkedNode = 0 LinkedPin = "SystemLifetime" }
+				}
+			}
+			pdxns:particle:GetAge={
+				Id=5
+				Node={
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:GreaterThanF={
+				Id=6
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "op1" LinkedNode = 5 LinkedPin = "age" }
+					Link = { PinId = "op2" LinkedNode = 0 LinkedPin = "ParticlesLifetime" }
+				}
+			}
+			pdxns:logic:SelectB={
+				Id=14
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "select" LinkedNode = 0 LinkedPin = "CleanUpSystem" }
+					Link = { PinId = "true_value" LinkedNode = 10 LinkedPin = "value" }
+					Link = { PinId = "false_value" LinkedNode = 13 LinkedPin = "value" }
+				}
+			}
+			pdxns:values:Bool={
+				Id=13
+				Node={
+					value=no
+				}
+				Inputs={
+				}
+			}
+		}
+	}
+
+}

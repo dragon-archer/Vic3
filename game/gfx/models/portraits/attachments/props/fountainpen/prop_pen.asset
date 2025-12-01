@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_pen_mesh"
+	file = "prop_pen.mesh"
+
+	meshsettings = {
+		name = "prop_penShape"
+		index = 0
+		texture_diffuse = "prop_ledgernpen_diffuse.dds"
+		texture_normal = "prop_ledgernpen_normal.dds"
+		texture_specular = "prop_ledgernpen_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_pen_entity"
+	pdxmesh = "prop_pen_mesh"
+}

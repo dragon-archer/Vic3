@@ -1,0 +1,51 @@
+pdxmesh = {
+	name = "papermap_candle_mesh"
+	file = "papermap_candle.mesh"
+
+	meshsettings = {
+		name = "papermap_candle_flame_0Shape"
+		index = 0
+		texture_diffuse = "candle_flame_color_02.dds"
+		texture_normal = "candle_flame_normal.dds"
+		shader = "mesh_vfx_candle"
+		shader_file = "gfx/FX/pdxmesh_vfx.shader"	
+	}
+	
+	meshsettings = {
+		name = "papermap_candle_shadow_0Shape"
+		index = 0
+		texture_diffuse = "papermap_candle_dropshadow_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "papermap_candle_Shape0"
+		index = 0
+		texture_diffuse = "papermap_candle_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+	}
+}
+
+entity = {
+	name = "papermap_candle_entity"
+	pdxmesh = "papermap_candle_mesh"
+	default_state = "idle"
+		
+	state = { 
+		name = "idle" 
+		state_time = 5
+
+		event = { time = 0 node = "papermap_candle_flame_locator_0" particle = "papermap_candle" trigger_once = yes}
+
+	#papermap_candle_flame_locator_0
+	}
+
+	cull_radius = 1000
+}

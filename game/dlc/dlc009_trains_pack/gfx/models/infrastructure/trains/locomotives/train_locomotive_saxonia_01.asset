@@ -1,0 +1,68 @@
+pdxmesh = {
+	name = "train_locomotive_saxonia_01_mesh"
+	file = "train_locomotive_saxonia_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 10.0 }
+		lod = { index = 2 percent = 5.0 }
+		lod = { index = 3 percent = 2.5 }
+		lod = { index = 4 percent = 1.2 }
+	}
+
+	animation = { id = "moving_animation" type = "train_locomotive_saxonia_01_moving.anim" }
+
+	meshsettings = {
+		name = "train_locomotive_saxonia_01_Shape0Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_saxonia_diffuse.dds"
+		texture_normal = "train_locomotive_saxonia_normal.dds"
+		texture_specular = "train_locomotive_saxonia_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "train_locomotive_saxonia_01_Shape1Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_saxonia_diffuse.dds"
+		texture_normal = "train_locomotive_saxonia_normal.dds"
+		texture_specular = "train_locomotive_saxonia_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "train_locomotive_saxonia_01_Shape2Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_saxonia_diffuse.dds"
+		texture_normal = "train_locomotive_saxonia_normal.dds"
+		texture_specular = "train_locomotive_saxonia_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "train_locomotive_saxonia_01_Shape3Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_saxonia_diffuse.dds"
+		texture_normal = "train_locomotive_saxonia_normal.dds"
+		texture_specular = "train_locomotive_saxonia_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "train_locomotive_saxonia_01_Shape4Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_saxonia_diffuse.dds"
+		texture_normal = "train_locomotive_saxonia_normal.dds"
+		texture_specular = "train_locomotive_saxonia_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

@@ -1,0 +1,548 @@
+@offset_scale = 0.5
+
+entity = {
+	name = "building_construction_1x1_entity"
+
+	locator = { name = "1x1_scaffolding_locator" position = { @[offset_scale *  0.0] 0.0 @[offset_scale *  0.0] } }
+
+	attach = { 1x1_scaffolding_locator = "scaffolding_01_entity" }
+
+	default_state = start
+
+	state = {
+		name = "start"
+		state_time = 10
+		looping = no
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/sml_start" } }
+		next_state = "idle"
+	}
+
+	state = {
+		name = "idle"
+		state_time = 1
+		looping = yes
+	}
+
+	state = {
+		name = "end"
+		state_time = 3
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/sml_stop" } }
+	}
+}
+entity = {
+	name = "building_construction_2x2_entity"
+	cull_radius = 2.0
+	
+	state = {
+		name = "start"
+		state_time = 10
+		looping = no
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/big_start" } }
+		next_state = "idle"
+	}
+	
+	state = {
+		name = "idle"
+		state_time = 1
+		looping = yes
+	}
+
+	state = {
+		name = "end"
+		state_time = 3
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/big_stop" } }
+	}
+
+	locator = { name = "2x2_scaffolding_locator" position = { @[offset_scale *  0.0] -0.2 @[offset_scale *  0.0] } }
+	locator = { name = "1x1_scaffolding_locator_01" position = { @[offset_scale *  0.0] 0.0 @[offset_scale *  0.0] } }
+	locator = { name = "1x1_scaffolding_locator_02" position = { @[offset_scale *  0.35] 0.0 @[offset_scale *  0.35] } }
+	locator = { name = "1x1_scaffolding_locator_03" position = { @[offset_scale *  0.35] 0.0 @[offset_scale *  0.0] } }
+
+	group = {
+		name = "random_layout"
+		attach = { chance = 10
+			1x1_scaffolding_locator_01 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_locator = "scaffolding_02_entity"
+		}
+		attach = { chance = 10
+			1x1_scaffolding_locator_02 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_locator = "scaffolding_02_entity"
+		}
+		attach = { chance = 10
+			1x1_scaffolding_locator_03 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_locator = "scaffolding_02_entity"
+		}
+	}
+}
+entity = {
+	name = "building_construction_3x3_entity"
+	cull_radius = 3.0
+	
+	default_state = "idle"
+
+	state = { #
+		name = "start"
+		state_time = 10
+		looping = no
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/special_start" } }
+		next_state = "idle"
+	}
+	state = {
+		name = "idle"
+		state_time = 1
+		looping = yes
+	}
+
+	state = {
+		name = "end"
+		state_time = 3
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/special_stop" } }
+	}
+
+	locator = { name = "2x2_scaffolding_base_locator_01" position = { @[offset_scale * -0.5] 0.2 @[offset_scale * -0.5] } }
+	locator = { name = "2x2_scaffolding_base_locator_02" position = { @[offset_scale * -0.5] 0.2 @[offset_scale *  0.5] } }
+	locator = { name = "2x2_scaffolding_base_locator_03" position = { @[offset_scale *  0.5] 0.2 @[offset_scale *  0.5] } }
+	locator = { name = "2x2_scaffolding_base_locator_04" position = { @[offset_scale *  0.5] 0.2 @[offset_scale * -0.5] } }
+
+	# 2 3
+	# 1 4
+
+	locator = { name = "1x1_scaffolding_locator_01" position = { @[offset_scale * -1.0] 0.0 @[offset_scale *  1.0] } }
+	locator = { name = "1x1_scaffolding_locator_02" position = { @[offset_scale *  0.0] 0.0 @[offset_scale *  1.0] } }
+	locator = { name = "1x1_scaffolding_locator_03" position = { @[offset_scale *  1.0] 0.0 @[offset_scale *  1.0] } }
+	locator = { name = "1x1_scaffolding_locator_04" position = { @[offset_scale * -1.0] 0.0 @[offset_scale *  0.0] } }
+	locator = { name = "1x1_scaffolding_locator_05" position = { @[offset_scale *  0.0] 0.0 @[offset_scale *  0.0] } }
+	locator = { name = "1x1_scaffolding_locator_06" position = { @[offset_scale *  1.0] 0.0 @[offset_scale *  0.0] } }
+	locator = { name = "1x1_scaffolding_locator_07" position = { @[offset_scale * -1.0] 0.0 @[offset_scale * -1.0] } }
+	locator = { name = "1x1_scaffolding_locator_08" position = { @[offset_scale *  0.0] 0.0 @[offset_scale * -1.0] } }
+	locator = { name = "1x1_scaffolding_locator_09" position = { @[offset_scale *  1.0] 0.0 @[offset_scale * -1.0] } }
+
+	# 1 2 3
+	# 4 5 6
+	# 7 8 9
+	
+	group = {
+		name = "random_layout"
+		attach = { chance = 10
+			2x2_scaffolding_base_locator_01 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_01 = "scaffolding_01_mesh_entity"
+				#1x1_scaffolding_locator_01 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_02 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_03 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_06 = "scaffolding_01_mesh_entity"
+				#1x1_scaffolding_locator_09 = "scaffolding_01_mesh_entity"
+		}
+		attach = { chance = 10
+			2x2_scaffolding_base_locator_02 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_02 = "scaffolding_01_mesh_entity"
+				#1x1_scaffolding_locator_03 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_06 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_07 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_08 = "scaffolding_01_mesh_entity"
+				#1x1_scaffolding_locator_09 = "scaffolding_01_mesh_entity"
+		}
+		attach = { chance = 10
+			2x2_scaffolding_base_locator_03 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_03 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_01 = "scaffolding_01_mesh_entity"
+				#1x1_scaffolding_locator_04 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_07 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_08 = "scaffolding_01_mesh_entity"
+				#1x1_scaffolding_locator_09 = "scaffolding_01_mesh_entity"
+		}
+		attach = { chance = 10
+			2x2_scaffolding_base_locator_04 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_04 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_01 = "scaffolding_01_mesh_entity"
+				#1x1_scaffolding_locator_02 = "scaffolding_01_mesh_entity"
+				#1x1_scaffolding_locator_03 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_04 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_07 = "scaffolding_01_mesh_entity"
+		}
+	}
+}
+entity = {
+	name = "building_construction_4x4_entity"
+	cull_radius = 4.0
+	
+	default_state = "start"
+
+	state = {
+		name = "start"
+		state_time = 10
+		looping = no
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/special_start" } }
+		next_state = "idle"
+	}
+	state = {
+		name = "idle"
+		state_time = 1
+		looping = yes
+	}
+
+	state = {
+		name = "end"
+		state_time = 3
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/special_stop" } }
+	}
+	
+	locator = { name = "2x2_scaffolding_base_locator_01" position = { @[offset_scale *  0.0] 0.2 @[offset_scale *  0.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_02" position = { @[offset_scale * -1.0] 0.1 @[offset_scale *  0.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_03" position = { @[offset_scale *  1.0] 0.1 @[offset_scale *  0.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_04" position = { @[offset_scale * -1.0] 0.1 @[offset_scale *  1.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_05" position = { @[offset_scale *  1.0] 0.1 @[offset_scale *  1.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_06" position = { @[offset_scale *  1.0] 0.1 @[offset_scale * -1.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_07" position = { @[offset_scale * -1.0] 0.1 @[offset_scale * -1.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_08" position = { @[offset_scale *  1.0] 0.1 @[offset_scale *  0.5] } }
+	locator = { name = "2x2_scaffolding_base_locator_09" position = { @[offset_scale * -1.0] 0.1 @[offset_scale * -0.5] } }
+
+	# - - - -  # - - - -  # 4 4 5 5
+	# - 1 1 -  # 2 2 3 3  # 4 4 5 5
+	# - 1 1 -  # 2 2 3 3  # 7 7 6 6
+	# - - - -  # - - - -  # 7 7 6 6
+	
+	locator = { name = "1x1_scaffolding_locator_01" position = { @[offset_scale * -1.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_02" position = { @[offset_scale * -0.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_03" position = { @[offset_scale *  0.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_04" position = { @[offset_scale *  1.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_05" position = { @[offset_scale * -1.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_06" position = { @[offset_scale * -0.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_07" position = { @[offset_scale *  0.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_08" position = { @[offset_scale *  1.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_09" position = { @[offset_scale * -1.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_10" position = { @[offset_scale * -0.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_11" position = { @[offset_scale *  0.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_12" position = { @[offset_scale *  1.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_13" position = { @[offset_scale * -1.5] 0.0 @[offset_scale * -1.5] } }
+	locator = { name = "1x1_scaffolding_locator_14" position = { @[offset_scale * -0.5] 0.0 @[offset_scale * -1.5] } }
+	locator = { name = "1x1_scaffolding_locator_15" position = { @[offset_scale *  0.5] 0.0 @[offset_scale * -1.5] } }
+	locator = { name = "1x1_scaffolding_locator_16" position = { @[offset_scale *  1.5] 0.0 @[offset_scale * -1.5] } }
+
+	#  1  2  3  4
+	#  5  6  7  8
+	#  9 10 11 12
+	# 13 14 15 16
+	
+	group = {
+		name = "random_layout"
+		attach = { chance = 10 
+			2x2_scaffolding_base_locator_04 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_05 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_06 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_07 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_04 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_08 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_06 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_09 = "scaffolding_01_mesh_entity"
+		}
+		attach = { chance = 10		
+			2x2_scaffolding_base_locator_02 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_03 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_02 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_08 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_02 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_03 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_14 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_15 = "scaffolding_01_mesh_entity"
+		}
+		attach = { chance = 10
+			2x2_scaffolding_base_locator_01 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_01 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_02 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_03 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_05 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_08 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_09 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_12 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_14 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_15 = "scaffolding_01_mesh_entity"
+		}
+		attach = { chance = 10
+			2x2_scaffolding_base_locator_01 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_01 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_03 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_08 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_09 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_14 = "scaffolding_01_mesh_entity"
+		}
+		attach = { chance = 10
+			2x2_scaffolding_base_locator_07 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_08 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_09 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_03 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_02 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_05 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_06 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_15 = "scaffolding_01_mesh_entity"
+		}
+		attach = { chance = 10
+			2x2_scaffolding_base_locator_04 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_06 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_04 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_06 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_03 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_04 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_07 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_09 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_10 = "scaffolding_01_mesh_entity"
+		}
+	}
+}
+entity = {
+	name = "building_construction_6x6_entity"
+	cull_radius = 6.0
+	
+	default_state = "start"
+
+	state = {
+		name = "start"
+		state_time = 10
+		looping = no
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/special_start" } }
+		next_state = "idle"
+	}
+	state = {
+		name = "idle"
+		state_time = 1
+		looping = yes
+	}
+
+	state = {
+		name = "end"
+		state_time = 3
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/special_stop" } }
+	}
+	
+	#center
+	locator = { name = "2x2_scaffolding_base_locator_01" position = { @[offset_scale *  0.0] 0.35 @[offset_scale *  0.0] } }
+	
+	#two in the middle
+	locator = { name = "2x2_scaffolding_base_locator_02" position = { @[offset_scale * -1.0] 0.25 @[offset_scale *  0.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_03" position = { @[offset_scale *  1.0] 0.25 @[offset_scale *  0.0] } }
+
+	#3 by 3 grid
+	locator = { name = "2x2_scaffolding_base_locator_04" position = { @[offset_scale * -2.0] 0.2 @[offset_scale *  2.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_05" position = { @[offset_scale *  0.0] 0.2 @[offset_scale *  2.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_06" position = { @[offset_scale *  2.0] 0.2 @[offset_scale *  2.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_07" position = { @[offset_scale * -2.0] 0.2 @[offset_scale *  0.0] } }
+	#01 is already centered
+	locator = { name = "2x2_scaffolding_base_locator_09" position = { @[offset_scale *  2.0] 0.2 @[offset_scale *  0.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_10" position = { @[offset_scale * -2.0] 0.2 @[offset_scale * -2.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_11" position = { @[offset_scale *  0.0] 0.2 @[offset_scale * -2.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_12" position = { @[offset_scale *  2.0] 0.2 @[offset_scale * -2.0] } }
+
+	#2  by 2 grid
+	locator = { name = "2x2_scaffolding_base_locator_13" position = { @[offset_scale * -1.0] 0.25 @[offset_scale *  1.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_14" position = { @[offset_scale *  1.0] 0.25 @[offset_scale *  1.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_15" position = { @[offset_scale *  1.0] 0.25 @[offset_scale * -1.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_16" position = { @[offset_scale * -1.0] 0.25 @[offset_scale * -1.0] } }
+	
+
+	#6 by 6 grid
+	locator = { name = "1x1_scaffolding_locator_01" position = { @[offset_scale * -2.5] 0.0 @[offset_scale *  2.5] } }
+	locator = { name = "1x1_scaffolding_locator_02" position = { @[offset_scale * -1.5] 0.0 @[offset_scale *  2.5] } }
+	locator = { name = "1x1_scaffolding_locator_03" position = { @[offset_scale * -0.5] 0.0 @[offset_scale *  2.5] } }
+	locator = { name = "1x1_scaffolding_locator_04" position = { @[offset_scale *  0.5] 0.0 @[offset_scale *  2.5] } }
+	locator = { name = "1x1_scaffolding_locator_05" position = { @[offset_scale *  1.5] 0.0 @[offset_scale *  2.5] } }
+	locator = { name = "1x1_scaffolding_locator_06" position = { @[offset_scale *  2.5] 0.0 @[offset_scale *  2.5] } }
+
+	locator = { name = "1x1_scaffolding_locator_07" position = { @[offset_scale * -2.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_08" position = { @[offset_scale * -1.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_09" position = { @[offset_scale * -0.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_10" position = { @[offset_scale *  0.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_11" position = { @[offset_scale *  1.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_12" position = { @[offset_scale *  2.5] 0.0 @[offset_scale *  1.5] } }
+	
+	locator = { name = "1x1_scaffolding_locator_13" position = { @[offset_scale * -2.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_14" position = { @[offset_scale * -1.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_15" position = { @[offset_scale * -0.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_16" position = { @[offset_scale *  0.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_17" position = { @[offset_scale *  1.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_18" position = { @[offset_scale *  2.5] 0.0 @[offset_scale *  0.5] } }
+	
+	locator = { name = "1x1_scaffolding_locator_19" position = { @[offset_scale * -2.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_20" position = { @[offset_scale * -1.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_21" position = { @[offset_scale * -0.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_22" position = { @[offset_scale *  0.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_23" position = { @[offset_scale *  1.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_24" position = { @[offset_scale *  2.5] 0.0 @[offset_scale * -0.5] } }
+
+	locator = { name = "1x1_scaffolding_locator_25" position = { @[offset_scale * -2.5] 0.0 @[offset_scale * -1.5] } }
+	locator = { name = "1x1_scaffolding_locator_26" position = { @[offset_scale * -1.5] 0.0 @[offset_scale * -1.5] } }
+	locator = { name = "1x1_scaffolding_locator_27" position = { @[offset_scale * -0.5] 0.0 @[offset_scale * -1.5] } }
+	locator = { name = "1x1_scaffolding_locator_28" position = { @[offset_scale *  0.5] 0.0 @[offset_scale * -1.5] } }
+	locator = { name = "1x1_scaffolding_locator_29" position = { @[offset_scale *  1.5] 0.0 @[offset_scale * -1.5] } }
+	locator = { name = "1x1_scaffolding_locator_30" position = { @[offset_scale *  2.5] 0.0 @[offset_scale * -1.5] } }
+	
+	locator = { name = "1x1_scaffolding_locator_31" position = { @[offset_scale * -2.5] 0.0 @[offset_scale * -2.5] } }
+	locator = { name = "1x1_scaffolding_locator_32" position = { @[offset_scale * -1.5] 0.0 @[offset_scale * -2.5] } }
+	locator = { name = "1x1_scaffolding_locator_33" position = { @[offset_scale * -0.5] 0.0 @[offset_scale * -2.5] } }
+	locator = { name = "1x1_scaffolding_locator_34" position = { @[offset_scale *  0.5] 0.0 @[offset_scale * -2.5] } }
+	locator = { name = "1x1_scaffolding_locator_35" position = { @[offset_scale *  1.5] 0.0 @[offset_scale * -2.5] } }
+	locator = { name = "1x1_scaffolding_locator_36" position = { @[offset_scale *  2.5] 0.0 @[offset_scale * -2.5] } }
+	
+	group = {
+		name = "random_layout"
+
+		attach = { chance = 10 
+			2x2_scaffolding_base_locator_04 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_06 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_01 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_10 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_12 = "scaffolding_02_entity"
+
+			2x2_scaffolding_base_locator_04 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_05 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_06 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_07 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_01 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_09 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_10 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_11 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_12 = "scaffolding_01_mesh_entity"
+		}
+		attach = { chance = 10		
+			2x2_scaffolding_base_locator_05 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_02 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_03 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_11 = "scaffolding_02_entity"
+
+			2x2_scaffolding_base_locator_05 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_02 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_03 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_11 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_13 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_19 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_18 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_24 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_08 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_11 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_26 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_29 = "scaffolding_01_mesh_entity"
+		}
+		attach = { chance = 10		
+			2x2_scaffolding_base_locator_05 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_07 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_09 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_11 = "scaffolding_02_entity"
+
+			2x2_scaffolding_base_locator_05 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_07 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_09 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_11 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_01 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_08 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_11 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_26 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_29 = "scaffolding_01_mesh_entity"
+		}
+		attach = { chance = 10		
+			2x2_scaffolding_base_locator_13 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_14 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_15 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_16 = "scaffolding_02_entity"
+
+			2x2_scaffolding_base_locator_13 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_14 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_15 = "scaffolding_01_mesh_entity"
+			2x2_scaffolding_base_locator_16 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_01 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_02 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_03 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_04 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_07 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_18 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_13 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_19 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_24 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_33 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_34 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_35 = "scaffolding_01_mesh_entity"
+		}
+	}
+}
+entity = {
+	name = "building_construction_skyscraper_entity"
+	cull_radius = 4.0
+	
+	default_state = "start"
+
+	state = {
+		name = "start"
+		state_time = 10
+		looping = no
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/special_start" } }
+		next_state = "idle"
+	}
+	state = {
+		name = "idle"
+		state_time = 1
+		looping = yes
+	}
+
+	state = {
+		name = "end"
+		state_time = 3
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/special_stop" } }
+	}
+	
+	locator = { name = "2x2_scaffolding_base_locator_01" position = { @[offset_scale *  0.0] 0.2 @[offset_scale *  0.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_02" position = { @[offset_scale * -1.0] 0.1 @[offset_scale *  0.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_03" position = { @[offset_scale *  1.0] 0.1 @[offset_scale *  0.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_04" position = { @[offset_scale * -1.0] 0.1 @[offset_scale *  1.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_05" position = { @[offset_scale *  1.0] 0.1 @[offset_scale *  1.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_06" position = { @[offset_scale *  1.0] 0.1 @[offset_scale * -1.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_07" position = { @[offset_scale * -1.0] 0.1 @[offset_scale * -1.0] } }
+	locator = { name = "2x2_scaffolding_base_locator_08" position = { @[offset_scale *  1.0] 0.1 @[offset_scale *  0.5] } }
+	locator = { name = "2x2_scaffolding_base_locator_09" position = { @[offset_scale * -1.0] 0.1 @[offset_scale * -0.5] } }
+
+	# - - - -  # - - - -  # 4 4 5 5
+	# - 1 1 -  # 2 2 3 3  # 4 4 5 5
+	# - 1 1 -  # 2 2 3 3  # 7 7 6 6
+	# - - - -  # - - - -  # 7 7 6 6
+	
+	locator = { name = "1x1_scaffolding_locator_01" position = { @[offset_scale * -1.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_02" position = { @[offset_scale * -0.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_03" position = { @[offset_scale *  0.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_04" position = { @[offset_scale *  1.5] 0.0 @[offset_scale *  1.5] } }
+	locator = { name = "1x1_scaffolding_locator_05" position = { @[offset_scale * -1.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_06" position = { @[offset_scale * -0.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_07" position = { @[offset_scale *  0.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_08" position = { @[offset_scale *  1.5] 0.0 @[offset_scale *  0.5] } }
+	locator = { name = "1x1_scaffolding_locator_09" position = { @[offset_scale * -1.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_10" position = { @[offset_scale * -0.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_11" position = { @[offset_scale *  0.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_12" position = { @[offset_scale *  1.5] 0.0 @[offset_scale * -0.5] } }
+	locator = { name = "1x1_scaffolding_locator_13" position = { @[offset_scale * -1.5] 0.0 @[offset_scale * -1.5] } }
+	locator = { name = "1x1_scaffolding_locator_14" position = { @[offset_scale * -0.5] 0.0 @[offset_scale * -1.5] } }
+	locator = { name = "1x1_scaffolding_locator_15" position = { @[offset_scale *  0.5] 0.0 @[offset_scale * -1.5] } }
+	locator = { name = "1x1_scaffolding_locator_16" position = { @[offset_scale *  1.5] 0.0 @[offset_scale * -1.5] } }
+
+	locator = { name = "1x1_scaffolding_locator_17" position = { @[offset_scale *  0.0] 0.7 @[offset_scale *  0.0] } }
+	locator = { name = "1x1_scaffolding_locator_18" position = { @[offset_scale *  0.0] 1.2 @[offset_scale *  0.0] } }
+
+	#  1  2  3  4
+	#  5  6  7  8
+	#  9 10 11 12
+	# 13 14 15 16
+	
+	group = {
+		name = "random_layout"
+
+		attach = { chance = 10 
+			2x2_scaffolding_base_locator_01 = "scaffolding_02_entity"
+			2x2_scaffolding_base_locator_01 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_02 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_03 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_05 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_08 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_09 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_12 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_14 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_15 = "scaffolding_01_mesh_entity"
+
+			1x1_scaffolding_locator_17 = "scaffolding_01_mesh_entity"
+			1x1_scaffolding_locator_18 = "scaffolding_01_mesh_entity"
+		}
+	}
+}

@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_parasol_mesh"
+	file = "prop_parasol.mesh"
+
+	meshsettings = {
+		name = "prop_parasolShape"
+		index = 0
+		texture_diffuse = "prop_parasol_diffuse.dds"
+		texture_normal = "prop_parasol_normal.dds"
+		texture_specular = "prop_parasol_properties.dds"
+		shader = "portrait_attachment_alpha_to_coverage"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_parasol_entity"
+	pdxmesh = "prop_parasol_mesh"
+}

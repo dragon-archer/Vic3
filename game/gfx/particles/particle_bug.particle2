@@ -1,0 +1,181 @@
+﻿fade_duration=0.000000
+max_particles=500
+pause_invisible=no
+graph={
+	Nodes={
+		pdxns:particle:Kill={
+			Id=0
+			Node={
+			}
+			Inputs={
+				Link = { PinId = "condition" LinkedNode = 1 LinkedPin = "value" }
+			}
+		}
+		pdxns:math:GreaterThanF={
+			Id=1
+			Node={
+			}
+			Inputs={
+				Link = { PinId = "op1" LinkedNode = 6 LinkedPin = "age" }
+				Link = { PinId = "op2" LinkedNode = 8 LinkedPin = "value" }
+			}
+		}
+		pdxns:particle:Emitter={
+			Id=2
+			Node={
+				user_data_layout={
+				}
+			}
+			Inputs={
+				Link = { PinId = "rate" LinkedNode = 12 LinkedPin = "value" }
+				Link = { PinId = "size" LinkedNode = 11 LinkedPin = "value" }
+				Link = { PinId = "position" LinkedNode = 13 LinkedPin = "value" }
+				Link = { PinId = "direction" LinkedNode = 5 LinkedPin = "direction" }
+				Link = { PinId = "speed" LinkedNode = 10 LinkedPin = "value" }
+				Link = { PinId = "texture" LinkedNode = 4 LinkedPin = "texture" }
+				Link = { PinId = "orientation" LinkedNode = 25 LinkedPin = "rotation" }
+				Link = { PinId = "angular_velocity" LinkedNode = 14 LinkedPin = "value" }
+			}
+		}
+		pdxns:math:randomF={
+			Id=3
+			Node={
+			}
+			Inputs={
+				Link = { PinId = "limit1" LinkedNode = 7 LinkedPin = "value" }
+				Link = { PinId = "limit2" LinkedNode = 15 LinkedPin = "value" }
+			}
+		}
+		pdxns:gfx:Texture={
+			Id=4
+			Node={
+				texture_file="gfx/node_editor/pdxns_particle_getage.dds"
+			}
+			Inputs={
+			}
+		}
+		pdxns:3d:YawPitchVectorF={
+			Id=5
+			Node={
+			}
+			Inputs={
+				Link = { PinId = "yaw" LinkedNode = 3 LinkedPin = "value" }
+				Link = { PinId = "pitch" LinkedNode = 9 LinkedPin = "value" }
+			}
+		}
+		pdxns:particle:GetAge={
+			Id=6
+			Node={
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:Float={
+			Id=7
+			Node={
+				value=180.000000
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:Float={
+			Id=8
+			Node={
+				value=10.000000
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:Float={
+			Id=9
+			Node={
+				value=1.000000
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:Float={
+			Id=10
+			Node={
+				value=2.000000
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:Float={
+			Id=11
+			Node={
+				value=1.000000
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:Float={
+			Id=12
+			Node={
+				value=10.000000
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:ConstantVector3={
+			Id=13
+			Node={
+				value={ 0.000000 5.000000 0.000000 }
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:ConstantVector3={
+			Id=14
+			Node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:Float={
+			Id=15
+			Node={
+				value=0.000000
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:Float={
+			Id=28
+			Node={
+				value=0.000000
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:Float={
+			Id=27
+			Node={
+				value=0.000000
+			}
+			Inputs={
+			}
+		}
+		pdxns:values:Float={
+			Id=26
+			Node={
+				value=0.000000
+			}
+			Inputs={
+			}
+		}
+		pdxns:3d:YawPitchVectorRotation={
+			Id=25
+			Node={
+			}
+			Inputs={
+				Link = { PinId = "yaw" LinkedNode = 26 LinkedPin = "value" }
+				Link = { PinId = "pitch" LinkedNode = 27 LinkedPin = "value" }
+				Link = { PinId = "roll" LinkedNode = 28 LinkedPin = "value" }
+			}
+		}
+	}
+}
+

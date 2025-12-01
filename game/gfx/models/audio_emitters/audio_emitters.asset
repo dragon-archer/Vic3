@@ -1,0 +1,175 @@
+pdxmesh = {
+	name = "audio_mesh"
+	file = "test_object.mesh"
+	#animation = { id = "idle" type = "test_object_idle_animation" }				
+	scale = 300.0
+	cull_distance = 5000
+	meshsettings = {
+		shader = "standard"
+	}
+}	
+
+#MOUNTAIN_EMITTER#######################################################################################
+
+entity = {
+	name = "amb_mountain_emitter"
+	#pdxmesh = "test_object_mesh"
+
+	default_state = "idle"
+
+	state = {
+		name = "idle"
+		looping = no
+		event = { sound = { soundeffect = "" } }
+	}
+}
+
+#FIELD_EMITTER#######################################################################################
+
+entity = {
+	name = "amb_field_emitter"
+	#pdxmesh = "test_object_mesh"
+
+	default_state = "idle"
+
+	state = {
+		name = "idle"
+		looping = no
+		event = { sound = { soundeffect = "" } }
+	}
+}
+
+#OCEAN_EMITTER_SMALL#######################################################################################
+
+entity = {
+	name = "amb_ocean_emitter_small"
+	#pdxmesh = "test_object_mesh"
+
+	default_state = "idle"
+
+	state = {
+		name = "idle" 		
+		looping = no
+		event = { sound = { soundeffect = "" } }
+	}
+}
+
+#OCEAN_EMITTER_MEDIUM#######################################################################################
+
+entity = {
+	name = "amb_ocean_emitter_medium"
+	#pdxmesh = "test_object_mesh"
+
+	default_state = "idle"
+
+	state = {
+		name = "idle" 		
+		looping = no
+		event = { sound = { soundeffect = "" } }
+	}
+}
+
+#OCEAN_EMITTER_LARGE#######################################################################################
+
+entity = {
+	name = "amb_ocean_emitter_large"
+	#pdxmesh = "audio_mesh"
+
+	default_state = "idle"
+
+	state = {
+		name = "idle" 		
+		looping = no
+		event = { sound = { soundeffect = "" } }
+	}
+}
+
+#FOREST_EMITTER#######################################################################################
+
+entity = {
+	name = "amb_forest_emitter"
+	#pdxmesh = "test_object_mesh"
+
+	default_state = "idle"
+
+	state = {
+		name = "idle"
+		looping = no
+		event = { sound = { soundeffect = "" } }
+	}
+}
+
+#DESERT_EMITTER#######################################################################################
+
+entity = {
+	name = "amb_desert_emitter"
+	#pdxmesh = "test_object_mesh"
+
+	default_state = "idle"
+
+	state = {
+		name = "idle"
+		looping = no
+		event = { sound = { soundeffect = "" } }
+	}
+}
+
+#ARCTIC_EMITTER#######################################################################################
+
+entity = {
+	name = "amb_arctic_emitter"
+	#pdxmesh = "test_object_mesh"
+
+	default_state = "idle"
+
+	state = {
+		name = "idle"
+		looping = no
+		event = { sound = { soundeffect = "" } }
+	}
+}
+
+#JUNGLE_EMITTER#######################################################################################
+
+entity = {
+	name = "vfx_sandstorm_emitter"
+	#pdxmesh = "test_object_mesh"
+
+	default_state = "idle"
+
+	state = {
+		name = "idle"
+		looping = no
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/sandstorm" } }
+	}	
+}
+
+#SNOWSTORM_EMITTER#######################################################################################
+
+entity = {
+	name = "vfx_snowstorm_emitter"
+	#pdxmesh = "test_object_mesh"
+
+	default_state = "idle"
+
+	state = {
+		name = "idle"
+		looping = no
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/snow" } }
+	}
+}
+
+#RAIN_EMITTER#######################################################################################
+
+entity = {
+	name = "vfx_rain_emitter"
+	#pdxmesh = "test_object_mesh"
+
+	default_state = "idle"
+
+	state = {
+		name = "idle"
+		looping = no
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/rain" } }
+	}
+}

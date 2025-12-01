@@ -1,0 +1,271 @@
+﻿pdxmesh = {
+	name = "balkan_farm_vineyard_01_mesh"
+	file = "balkan_farm_vineyard_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 27.0 }
+		lod = { index = 2 percent = 14.0 }
+		lod = { index = 3 percent = 4 }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|m_balkan_farm_vineyard_localdecal_0.001"
+		index = 0
+		texture_diffuse = "balkan_farm_vineyard_01_decal_diffuse.dds"
+		texture_normal = "balkan_farm_vineyard_01_decal_normal.dds"
+		texture_specular = "balkan_farm_vineyard_01_decal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|m_worlddecal_0.001"
+		index = 0
+		texture_diffuse = "decal_rural_farm_hub_diffuse.dds"
+		texture_normal = "decal_rural_farm_hub_normal.dds"
+		texture_specular = "decal_rural_farm_hub_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|m_balkan_rural_residential_0.001"
+		index = 0
+		texture_diffuse = "balkan_rural_residential_trimsheet_diffuse.dds"
+		texture_normal = "balkan_rural_residential_trimsheet_normal.dds"
+		texture_specular = "balkan_rural_residential_trimsheet_properties.dds"
+		texture = { file = "balkan_farm_vineyard_01_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|m_balkan_foliage_0.001"
+		index = 0
+		texture_diffuse = "balkan_foliage_diffuse.dds"
+		texture_normal = "balkan_foliage_normal.dds"
+		texture_specular = "balkan_foliage_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = yes }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_TALL" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|m_balkan_farm_grapes_0.001"
+		index = 0
+		texture_diffuse = "balkan_farm_vineyard_01_decal_diffuse.dds"
+		texture_normal = "balkan_farm_vineyard_01_decal_normal.dds"
+		texture_specular = "balkan_farm_vineyard_01_decal_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = yes }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_BUSH" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|billboard_phong_0.001"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|m_balkan_farm_vineyard_localdecal_1.001"
+		index = 0
+		texture_diffuse = "balkan_farm_vineyard_01_decal_diffuse.dds"
+		texture_normal = "balkan_farm_vineyard_01_decal_normal.dds"
+		texture_specular = "balkan_farm_vineyard_01_decal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|m_worlddecal_1.001"
+		index = 0
+		texture_diffuse = "decal_rural_farm_hub_diffuse.dds"
+		texture_normal = "decal_rural_farm_hub_normal.dds"
+		texture_specular = "decal_rural_farm_hub_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|m_balkan_rural_residential_1.001"
+		index = 0
+		texture_diffuse = "balkan_rural_residential_trimsheet_diffuse.dds"
+		texture_normal = "balkan_rural_residential_trimsheet_normal.dds"
+		texture_specular = "balkan_rural_residential_trimsheet_properties.dds"
+		texture = { file = "balkan_farm_vineyard_01_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|m_balkan_foliage_1.001"
+		index = 0
+		texture_diffuse = "balkan_foliage_diffuse.dds"
+		texture_normal = "balkan_foliage_normal.dds"
+		texture_specular = "balkan_foliage_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = yes }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_TALL" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|m_balkan_farm_grapes_1.001"
+		index = 0
+		texture_diffuse = "balkan_farm_vineyard_01_decal_diffuse.dds"
+		texture_normal = "balkan_farm_vineyard_01_decal_normal.dds"
+		texture_specular = "balkan_farm_vineyard_01_decal_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = yes }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_BUSH" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|billboard_phong_1.001"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|m_balkan_farm_vineyard_localdecal_2.001"
+		index = 0
+		texture_diffuse = "balkan_farm_vineyard_01_decal_diffuse.dds"
+		texture_normal = "balkan_farm_vineyard_01_decal_normal.dds"
+		texture_specular = "balkan_farm_vineyard_01_decal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|m_worlddecal_2.001"
+		index = 0
+		texture_diffuse = "decal_rural_farm_hub_diffuse.dds"
+		texture_normal = "decal_rural_farm_hub_normal.dds"
+		texture_specular = "decal_rural_farm_hub_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|m_balkan_rural_residential_2.001"
+		index = 0
+		texture_diffuse = "balkan_rural_residential_trimsheet_diffuse.dds"
+		texture_normal = "balkan_rural_residential_trimsheet_normal.dds"
+		texture_specular = "balkan_rural_residential_trimsheet_properties.dds"
+		texture = { file = "balkan_farm_vineyard_01_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|m_balkan_foliage_2.001"
+		index = 0
+		texture_diffuse = "balkan_foliage_diffuse.dds"
+		texture_normal = "balkan_foliage_normal.dds"
+		texture_specular = "balkan_foliage_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = yes }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_TALL" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|m_balkan_farm_grapes_2.001"
+		index = 0
+		texture_diffuse = "balkan_farm_vineyard_01_decal_diffuse.dds"
+		texture_normal = "balkan_farm_vineyard_01_decal_normal.dds"
+		texture_specular = "balkan_farm_vineyard_01_decal_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = yes }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_BUSH" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|billboard_phong_2.001"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|m_balkan_farm_vineyard_localdecal_3.001"
+		index = 0
+		texture_diffuse = "balkan_farm_vineyard_01_decal_diffuse.dds"
+		texture_normal = "balkan_farm_vineyard_01_decal_normal.dds"
+		texture_specular = "balkan_farm_vineyard_01_decal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|m_worlddecal_3.001"
+		index = 0
+		texture_diffuse = "decal_rural_farm_hub_diffuse.dds"
+		texture_normal = "decal_rural_farm_hub_normal.dds"
+		texture_specular = "decal_rural_farm_hub_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|m_balkan_rural_residential_3.001"
+		index = 0
+		texture_diffuse = "balkan_rural_residential_trimsheet_diffuse.dds"
+		texture_normal = "balkan_rural_residential_trimsheet_normal.dds"
+		texture_specular = "balkan_rural_residential_trimsheet_properties.dds"
+		texture = { file = "balkan_farm_vineyard_01_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|billboard_phong_3.001"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "balkan_farm_vineyard_01_entity"
+	pdxmesh = "balkan_farm_vineyard_01_mesh"
+}

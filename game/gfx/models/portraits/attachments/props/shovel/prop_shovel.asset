@@ -1,0 +1,18 @@
+pdxmesh = {
+	name = "prop_shovel_mesh"
+	file = "prop_shovel.mesh"
+
+	meshsettings = {
+		name = "prop_shovelShape"
+		index = 0
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+
+	
+}
+
+entity = {
+	name = "prop_shovel_entity"
+	pdxmesh = "prop_shovel_mesh"
+}

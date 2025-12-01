@@ -1,0 +1,108 @@
+pdxmesh = {
+	name = "military_support_hotairballoon_ep1_mesh"
+	file = "military_support_hotairballoon_ep1.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 32.0 }
+		lod = { index = 2 percent = 16.0 }
+		lod = { index = 3 percent = 8.0 }
+		lod = { index = 4 percent = 4.0 }
+	}
+
+	animation = { id = "moving_animation" type = "military_support_hotairballoon_ep1_moving.anim" }
+
+	meshsettings = {
+		name = "balloon0Shape"
+		index = 0
+		texture_diffuse = "military_support_hotairballoon_ep1_diffuse.dds"
+		texture_normal = "military_support_hotairballoon_ep1_normal.dds"
+		texture_specular = "military_support_hotairballoon_ep1_properties.dds"
+		texture = { file = "military_support_hotairballoon_ep1_masks.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PB_COLOR" "PB_TEXTURE" "BACKLIGHT" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "balloon1Shape"
+		index = 0
+		texture_diffuse = "military_support_hotairballoon_ep1_diffuse.dds"
+		texture_normal = "military_support_hotairballoon_ep1_normal.dds"
+		texture_specular = "military_support_hotairballoon_ep1_properties.dds"
+		texture = { file = "military_support_hotairballoon_ep1_masks.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PB_COLOR" "PB_TEXTURE" "BACKLIGHT" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "balloon2Shape"
+		index = 0
+		texture_diffuse = "military_support_hotairballoon_ep1_diffuse.dds"
+		texture_normal = "military_support_hotairballoon_ep1_normal.dds"
+		texture_specular = "military_support_hotairballoon_ep1_properties.dds"
+		texture = { file = "military_support_hotairballoon_ep1_masks.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PB_COLOR" "PB_TEXTURE" "BACKLIGHT" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "balloon3Shape"
+		index = 0
+		texture_diffuse = "military_support_hotairballoon_ep1_diffuse.dds"
+		texture_normal = "military_support_hotairballoon_ep1_normal.dds"
+		texture_specular = "military_support_hotairballoon_ep1_properties.dds"
+		texture = { file = "military_support_hotairballoon_ep1_masks.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PB_COLOR" "PB_TEXTURE" "BACKLIGHT" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "balloon4Shape"
+		index = 0
+		texture_diffuse = "military_support_hotairballoon_ep1_diffuse.dds"
+		texture_normal = "military_support_hotairballoon_ep1_normal.dds"
+		texture_specular = "military_support_hotairballoon_ep1_properties.dds"
+		texture = { file = "military_support_hotairballoon_ep1_masks.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PB_COLOR" "PB_TEXTURE" "BACKLIGHT" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "military_support_hotairballoon_ep1_entity"
+	pdxmesh = "military_support_hotairballoon_ep1_mesh"
+	
+	default_state = "moving"
+
+	state = { 
+		name = "moving" 
+		time_offset = { 0.0 10.0 }  
+		animation = "moving_animation" 
+		looping = yes
+
+		start_event = { node = "loc_vfx" particle = "vehicles/military_balloon" trigger_once = yes keep_particle = no
+		sound  = { soundeffect = "event:/SFX/Animation/vehicles/identity/anm_identity_balloon_military_treaty_organisation" } keep_sound = yes }
+	}
+	
+	state = { name = "defend"
+		time_offset = { 0.0 10.0 }  
+		animation = "moving_animation" 
+		looping = yes
+
+		start_event = { node = "loc_vfx" particle = "vehicles/military_balloon" trigger_once = yes keep_particle = no
+		sound  = { soundeffect = "event:/SFX/Animation/vehicles/identity/anm_identity_balloon_military_treaty_organisation" } keep_sound = yes }
+	}
+	state = { name = "advance"
+		time_offset = { 0.0 10.0 }  
+		animation = "moving_animation" 
+		looping = yes
+
+		start_event = { node = "loc_vfx" particle = "vehicles/military_balloon" trigger_once = yes keep_particle = no
+		sound  = { soundeffect = "event:/SFX/Animation/vehicles/identity/anm_identity_balloon_military_treaty_organisation" } keep_sound = yes }
+	}
+	scale = 1.0
+}

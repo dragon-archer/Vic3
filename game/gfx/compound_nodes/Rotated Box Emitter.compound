@@ -1,0 +1,172 @@
+﻿compound_node={
+	id="Rotated Box Emitter"
+	graph={
+		Nodes={
+			pdxns:values:Float={
+				Id=0
+				Node={
+					value=3.142000
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:DivF={
+				Id=1
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "dividend" LinkedNode = 0 LinkedPin = "value" }
+					Link = { PinId = "divisor" LinkedNode = 3 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=2
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 14 LinkedPin = "size_z" }
+					Link = { PinId = "factor2" LinkedNode = 10 LinkedPin = "value" }
+				}
+			}
+			pdxns:values:Float={
+				Id=3
+				Node={
+					value=180.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:MulF={
+				Id=4
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 14 LinkedPin = "rotation" }
+					Link = { PinId = "factor2" LinkedNode = 1 LinkedPin = "quotient" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=15
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 14 LinkedPin = "size_x" }
+					Link = { PinId = "factor2" LinkedNode = 8 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:SubF={
+				Id=6
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 15 LinkedPin = "product" }
+					Link = { PinId = "term2" LinkedNode = 2 LinkedPin = "product" }
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=16
+				Node={
+					pins={
+						pin={
+							id=Output
+							label="Output"
+							input=yes
+							flags=optional
+							type=Vector3f
+						}
+					}
+				}
+				Inputs={
+					Link = { PinId = "Output" LinkedNode = 13 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:SinF={
+				Id=8
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "operand" LinkedNode = 4 LinkedPin = "product" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=9
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 14 LinkedPin = "size_x" }
+					Link = { PinId = "factor2" LinkedNode = 10 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:CosF={
+				Id=10
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "operand" LinkedNode = 4 LinkedPin = "product" }
+				}
+			}
+			pdxns:math:SubF={
+				Id=11
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 9 LinkedPin = "product" }
+					Link = { PinId = "term2" LinkedNode = 12 LinkedPin = "product" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=12
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 14 LinkedPin = "size_x" }
+					Link = { PinId = "factor2" LinkedNode = 14 LinkedPin = "size_z" }
+				}
+			}
+			pdxns:values:Vector3f={
+				Id=13
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "x" LinkedNode = 11 LinkedPin = "difference" }
+					Link = { PinId = "y" LinkedNode = 14 LinkedPin = "size_y" }
+					Link = { PinId = "z" LinkedNode = 6 LinkedPin = "difference" }
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=14
+				Node={
+					pins={
+						pin={
+							id=size_x
+							label="Size X"
+							input=no
+							type=Float
+						}
+						pin={
+							id=size_y
+							label="Size Y"
+							input=no
+							type=Float
+						}
+						pin={
+							id=size_z
+							label="Size Z"
+							input=no
+							type=Float
+						}
+						pin={
+							id=rotation
+							label="Rotation"
+							input=no
+							type=Float
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+		}
+	}
+
+}

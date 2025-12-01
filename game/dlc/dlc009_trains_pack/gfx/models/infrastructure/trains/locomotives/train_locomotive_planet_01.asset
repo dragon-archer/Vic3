@@ -1,0 +1,56 @@
+pdxmesh = {
+	name = "train_locomotive_planet_01_mesh"
+	file = "train_locomotive_planet_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 8.0 }
+		lod = { index = 2 percent = 5.0 }
+		lod = { index = 3 percent = 3.0 }
+	}
+	
+	animation = { id = "moving_animation" type = "train_locomotive_planet_01_moving.anim" }
+
+	meshsettings = {
+		name = "train_locomotive_planet_Shape0Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_planet_diffuse.dds"
+		texture_normal = "train_locomotive_planet_normal.dds"
+		texture_specular = "train_locomotive_planet_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "train_locomotive_planet_Shape1Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_planet_diffuse.dds"
+		texture_normal = "train_locomotive_planet_normal.dds"
+		texture_specular = "train_locomotive_planet_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "train_locomotive_planet_Shape2Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_planet_diffuse.dds"
+		texture_normal = "train_locomotive_planet_normal.dds"
+		texture_specular = "train_locomotive_planet_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "train_locomotive_planet_Shape3Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_planet_diffuse.dds"
+		texture_normal = "train_locomotive_planet_normal.dds"
+		texture_specular = "train_locomotive_planet_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

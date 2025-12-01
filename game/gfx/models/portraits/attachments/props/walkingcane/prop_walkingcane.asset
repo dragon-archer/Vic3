@@ -1,0 +1,16 @@
+pdxmesh = {
+	name = "prop_walkingcane_mesh"
+	file = "prop_walkingcane.mesh"
+
+	meshsettings = {
+		name = "prop_walkingcaneShape"
+		index = 0
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_walkingcane_entity"
+	pdxmesh = "prop_walkingcane_mesh"
+}

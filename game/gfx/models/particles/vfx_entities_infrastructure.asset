@@ -1,0 +1,23 @@
+entity = 
+{
+	name = "vfx_conscription_entity"
+	scale = 0.5
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 10 
+		looping = yes 
+		
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/conscription_center" } }
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "vfx_conscription" 
+			trigger_once = no 
+			keep_particle = yes
+		}
+	}
+}

@@ -1,0 +1,39 @@
+﻿pdxmesh = {
+	name = "papermap_pipe_mesh"
+	file = "papermap_pipe.mesh"
+
+	meshsettings = {
+		name = "LOD_0.001"
+		index = 0
+		texture_diffuse = "papermap_pipe_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "FLATLIGHT" }
+	}
+
+	meshsettings = {
+		name = "LOD_0.001_1"
+		index = 0
+		texture_diffuse = "papermap_pipe_shadow_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "FLATLIGHT" }
+	}
+}
+
+entity = {
+	name = "papermap_pipe_entity"
+	pdxmesh = "papermap_pipe_mesh"
+	default_state = "idle"
+
+	state = { 
+		name = "idle" 
+		state_time = 5
+
+		event = { time = 0 particle = "table/pipe_smoke" trigger_once = yes}
+	}
+}

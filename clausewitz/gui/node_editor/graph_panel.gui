@@ -1,0 +1,435 @@
+template NodeGraphLine
+{
+	gfxtype = linegfx
+	effectname = "PdxGuiLine"
+	
+	line_cap = yes
+	line_feather_distance = 1
+	
+	animation_speed = { 0.75 0.0 }
+	uv_scale = { 0.015 1.0 }
+	texture = "[GraphPanel.GetNodeLineTexture( NodeLine.Highlighted )]"
+	mask = "gfx/lines/white.dds"
+	mask_uv_scale = { 0.01 1.0 }
+
+	from = "[NodeLine.From]"
+	to = "[NodeLine.To]"
+	color = "[NodeLine.Color]"
+	width = "[NodeLine.Width]"
+}
+
+types NodeEditor
+{
+	type pinconnection = line
+	{
+		using = NodeGraphLine
+		line_type = nodeline
+	}
+
+	type node_editor_error_icon = icon {
+		position = { 2 2 }
+		size = { 32 32 }
+		texture = "gfx/tools/material/error_icon.png"
+		color = { 0.98 0.27 0.20 1 } # Gruvbox:LightRed
+
+		visible = "[Graph.HasErrors]"
+
+		tooltip_widgetanchor = top|left
+		tooltip_parentanchor = bottom|left
+
+		tooltipwidget = {
+			flowcontainer = {
+				direction = vertical
+
+				alwaystransparent = no
+
+				spacing = 2
+				margin = { 4 4 }
+
+				background = {
+					texture = "gfx/editor_gui/editor_layout_button.png"
+					spriteType = corneredstretched
+					spriteborder = { 2 2 }
+					framesize = { 16 16 }
+					shaderfile = "gfx/FX/pdxgui_default.shader"
+				}
+
+				item = {
+					editor_toolbar_button = {
+						using = editor_font
+						size = { 300 25 }
+						text = "[NodeError.Message]"
+						align = left|vcenter
+						onclick = "[NodeError.GoTo]"
+						elide = right
+
+						#tooltip = "[NodeError.Message]"
+
+						margin_left = 6
+						margin_right = 6
+					}
+				}
+
+				datamodel = "[Graph.Errors]"
+			}
+		}
+	}
+
+	type node_editor_search = container {
+		
+		minimumsize = { 295 30 }
+
+		background = {
+			texture = "gfx/editor_gui/editor_layout_window_content.png"
+			spriteType = CorneredStretched
+			spriteborder = { 5 5 }
+			shaderfile = "gfx/FX/pdxgui_default.shader"
+		}
+
+		editor_textbox = {
+			position = { 5 5 }
+			size = { 0 25 }
+			raw_text = "Search:"
+			autoresize = yes
+			align = left|nobaseline
+		}
+		
+		editor_editbox = {
+			name = "node_search_editbox"
+			position = { 55 5 }
+			margin_left = 6
+			using = tools_editbox
+			align = left|nobaseline
+			ontextchanged = "[NodeEditorSearch.Search]"
+			alwaystransparent = no
+			text = "[NodeEditorSearch.GetSearchText]"
+			size = { 150 20 }
+			fontsize = 12
+
+			editor_button = {
+				raw_tooltip = "Clear Text"
+				onclick = "[NodeEditorSearch.ClearSearchText]"
+				alpha = 0.7
+				position = { -3 0 }
+				parentanchor = vcenter|right
+				size = { 16 16 }
+				texture = "gfx/editor_gui/editor_layout_window_close.dds"
+				tooltipwidget = { 
+					using = dockable_tooltip
+				}
+			}
+		}
+
+		editor_textbox = {
+			position = { 210 7 }
+			size = { 0 25 }
+			visible = "[NodeEditorSearch.HasOccurrences]"
+			# We offset 1 so we don't have 0 index in the UI
+			text = "[Add_int32( NodeEditorSearch.CurrentNodeIndex, '(int32)1' )] of [NodeEditorSearch.NumOccurrences]"
+			autoresize = yes
+			align = left|nobaseline
+			alpha = 0.7
+			fontsize = 11
+		}
+
+		editor_toolbar_button = {
+			raw_tooltip = "Next Node"
+			onclick = "[NodeEditorSearch.GoToNextNode]"
+			enabled = "[NodeEditorSearch.HasOccurrences]"
+			position = { 250 7 }
+			size = { 18 18 }
+			editor_toolbar_icon = {
+				size = { 18 18 }
+				texture = "gfx/tools/log_viewer/arrow_down.png"
+			}
+
+			tooltipwidget = { 
+				using = dockable_tooltip
+			}
+		}
+
+		editor_toolbar_button = {
+			raw_tooltip = "Previous Node"
+			onclick = "[NodeEditorSearch.GoToPreviousNode]"
+			enabled = "[NodeEditorSearch.HasOccurrences]"
+			position = { 270 7 }
+			size = { 18 18 }
+			editor_toolbar_icon = {
+				size = { 18 18 }
+				texture = "gfx/tools/log_viewer/arrow_up.png"
+			}
+			
+			tooltipwidget = { 
+				using = dockable_tooltip
+			}
+		}
+	}
+}
+
+widget = {
+	name = "node_graph_panel"
+
+	size = { 1280 720 }
+
+	layoutpolicy_horizontal = expanding
+	layoutpolicy_vertical = expanding
+
+	vbox = {
+
+		spacing = 4
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = preferred 
+
+			spacing = 4
+
+			editor_toolbar_button = {
+				raw_text = "New"
+				raw_tooltip = "New"
+				size = { 32 25 }
+				onclick = "[GraphPanel.New]"
+				shortcut = "nodes_new"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Open"
+				raw_tooltip = "Open"
+				size = { 32 25 }
+				onclick = "[GraphPanel.Load]"
+				shortcut = "nodes_open"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Save"
+				raw_tooltip = "Save"
+				size = { 32 25 }
+				onclick = "[GraphPanel.Save]"
+				enabled = "[GraphPanel.IsSaveable]"
+				shortcut = "nodes_save"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Save As"
+				raw_tooltip = "Save as"
+				size = { 64 25 }
+				onclick = "[GraphPanel.SaveAs]"
+				shortcut = "nodes_save_as"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Copy"
+				raw_tooltip = "Copy selection"
+				size = { 32 25 }
+				onclick = "[GraphPanel.Copy]"
+				shortcut = "nodes_copy"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Cut"
+				raw_tooltip = "Cut selection"
+				size = { 32 25 }
+				onclick = "[GraphPanel.Cut]"
+				shortcut = "nodes_cut"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Paste"
+				raw_tooltip = "Paste"
+				size = { 32 25 }
+				enabled = "[GraphPanel.IsPasteable]"
+				onclick = "[GraphPanel.Paste]"
+				shortcut = "nodes_paste"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Paste Connected"
+				raw_tooltip = "Paste and duplicate connections to existing nodes"
+				size = { 88 25 }
+				enabled = "[GraphPanel.IsPasteable]"
+				onclick = "[GraphPanel.PasteConnectedToExisting]"
+				shortcut = "nodes_paste_connected_to_existing"
+			}
+
+			editor_toolbar_divider = {
+				margin = { 4 0 }
+			}
+
+			editor_toolbar_button = {
+				editor_toolbar_icon = {
+					texture = "gfx/social/magnifier.dds"
+				}
+				size = { 25 25 }
+				raw_tooltip = "Show Node Search"
+				onclick = "[GraphPanel.ShowNodeEditorSearch]"
+				shortcut = "show_node_search"
+			}
+
+			editor_toolbar_button = {
+				editor_toolbar_icon = {
+					texture = "gfx/tools/material/settings.png"
+				}
+				raw_tooltip = "Properties"
+				onclick = "[GraphPanel.Properties]"
+				#shortcut = "nodes_save_as"
+			}
+
+			editor_toolbar_button = {
+				editor_toolbar_icon = {
+					texture = "gfx/editor_gui/node_editor/control_panel_preferences.png"
+				}
+				raw_tooltip = "Node Editor Preferences"
+				# Opens the settings in the 'Tools' category
+				onclick = "[ExecuteConsoleCommand( 'settings Tools' )]"
+			}
+
+			editor_toolbar_divider = {
+				margin = { 4 0 }
+			}
+
+			history_toolbar = {}
+
+			editor_toolbar_divider = {
+				margin = { 4 0 }
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Fit"
+				raw_tooltip = "Fit"
+				size = { 32 25 }
+				onclick = "[GraphPanel.Fit]"
+				shortcut = "nodes_fit"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "100%"
+				raw_tooltip = "Set zoom level to 100%"
+				size = { 32 25 }
+				onclick = "[GraphPanel.SetZoom('(int32)100')]"
+			}
+
+			editor_toolbar_divider = {
+				margin = { 4 0 }
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Add"
+				raw_tooltip = "Add node"
+				size = { 32 25 }
+				onclick = "[GraphPanel.ShowNodeSearch]"
+				shortcut = "nodes_add"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Del"
+				raw_tooltip = "Delete selected nodes"
+				size = { 32 25 }
+				onclick = "[GraphPanel.Delete]"
+				shortcut = "nodes_remove"
+			}
+
+			editor_toolbar_divider = {
+				margin = { 4 0 }
+			}
+
+			editor_toolbar_button = {
+				raw_text = "All"
+				raw_tooltip = "Select all"
+				onclick = "[GraphPanel.SelectAll]"
+				shortcut = "selection_all"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Clr"
+				raw_tooltip = "Clear selection"
+				onclick = "[GraphPanel.ClearSelection]"
+				shortcut = "selection_clear"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Inv"
+				raw_tooltip = "Invert selection"
+				onclick = "[GraphPanel.InvertSelection]"
+				shortcut = "selection_invert"
+			}
+
+			editor_toolbar_divider = {
+				margin = { 4 0 }
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Grp"
+				raw_tooltip = "Create Commentable Group Node"
+				onclick = "[GraphPanel.CreateGroupNode]"
+				shortcut = "create_group_node"
+			}
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+			}
+		}
+
+		zoomarea = {
+			name = "graph_zoomarea"
+
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			state = {
+			  name = "_zoom_changed"
+			  duration = 0.1
+			}
+
+			zoom = 1
+			zoom_step = 0.35
+			zoom_min = 0.2
+			zoom_max = 2.0
+			pan_position = { 0 0 }
+
+			scissor = yes
+
+			viewportwidget = {
+				widget = {
+					name = "node_graph_viewport"
+
+					size = { 100% 100% }
+
+					background = {
+						texture = "gfx/editor_gui/node_editor/node_editor_window_background.dds"
+						spriteType = CorneredTiled
+						shaderfile = "gfx/FX/pdxgui_default.shader"
+					}
+
+					scissor = yes
+					alwaystransparent = no
+					allow_outside = yes
+
+					# We use this to organize the line widgets under a single parent and so it is rendered bellow the nodes.
+					widget = {
+						size = { 100% 100% }
+						name = "pin_connections"
+					}
+				}
+			}
+
+			zoomwidget = {
+				widget = {
+					allow_outside = yes
+					name = "node_graph_panel_scroll"
+					focuspolicy = click
+
+					editor_selection = {
+						name = "selection"
+						position = { 0 0 }
+						size = { 0 0 }
+					}
+				}
+			}
+		}
+	}
+
+	node_editor_search = {
+		name = "node_search"
+		widgetanchor = top|left
+		position = { 5 40 }
+	}
+}

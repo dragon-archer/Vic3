@@ -1,0 +1,114 @@
+# PM Aerial Recon, to be polished later once we have a plane mesh
+
+entity = 
+{
+	name = "generic_armored_division_pm_aerial_recon_entity"
+	pdxmesh = "generic_armored_division_mesh"
+	
+	locator = { name = "locator_vfx_01" position = { 0.0 0.8 -0.6 }	rotation = { 0 0 0} scale = 1.0}
+		
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 10
+		looping = yes 
+		animation = "attack_animation"
+
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/aerial_recon" } }
+	
+		event = { time = 0 node = "locator_vfx_01" particle = "particle_rifle_pm_line_infantry" trigger_once = yes keep_particle = no}	
+		
+		next_state = "idle"
+	}
+}
+
+entity = 
+{
+	name = "generic_armored_division_pm_mechanized_infantry_entity"
+	pdxmesh = "generic_armored_division_mesh"
+	
+	locator = { name = "locator_vfx_01" position = { -1.2 0.7 -0.9 } rotation = { 0 0 0 } scale = 1.0}
+	locator = { name = "locator_vfx_02" position = { 1.4 0.1 -0.9 }	 rotation = { 0 0 0 } scale = 1.0}
+	locator = { name = "locator_vfx_03" position = { 0.0 0.2 -1.2 }	 rotation = { 0 0 0 } scale = 1.0}
+	
+	default_state = "start"
+	
+	state =
+	{
+		name = "start"
+		chance = 1
+		animation = "attack_animation"
+		looping = no
+		
+		time_offset = 0.0
+		
+		event = { time = 4.4 node = "locator_vfx_01" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 4.3 node = "locator_vfx_02" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 4.1 node = "locator_vfx_03" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		
+		event = { time = 4.4 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		event = { time = 4.3 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		event = { time = 4.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		
+		next_state = "idle"
+	}
+	
+	state =
+	{
+		name = "start"
+		chance = 1
+		animation = "attack_animation"
+		looping = no
+		time_offset = 0.5
+		
+		event = { time = 3.9 node = "locator_vfx_01" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 3.8 node = "locator_vfx_02" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 3.6 node = "locator_vfx_03" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		
+		event = { time = 3.9 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		event = { time = 3.8 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		event = { time = 3.6 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		
+		next_state = "idle"
+	}
+	
+	state =
+	{
+		name = "start"
+		chance = 1
+		animation = "attack_animation"
+		looping = no
+		time_offset = 0.1
+		
+		event = { time = 4.3 node = "locator_vfx_01" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 4.2 node = "locator_vfx_02" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 4.0 node = "locator_vfx_03" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		
+		event = { time = 4.3 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		event = { time = 4.2 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		event = { time = 4.0 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		
+		next_state = "idle"
+	}
+	
+	state = 
+	{ 
+		name = "idle" 
+		animation = "attack_animation"
+		looping = yes 
+		
+		event = { time = 4.4 node = "locator_vfx_01" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 4.3 node = "locator_vfx_02" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		event = { time = 4.1 node = "locator_vfx_03" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
+		
+		event = { time = 4.4 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		event = { time = 4.3 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		event = { time = 4.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/armored_division/mechanized_infantry" } }	
+		
+		next_state = "idle"
+	}
+	
+	
+}

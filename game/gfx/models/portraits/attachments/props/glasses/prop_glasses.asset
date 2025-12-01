@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_glasses_mesh"
+	file = "prop_glasses.mesh"
+
+	meshsettings = {
+		name = "prop_glassesShape"
+		index = 0
+		texture_diffuse = "prop_glasses_diffuse.dds"
+		texture_normal = "prop_glasses_normal.dds"
+		texture_specular = "prop_glasses_properties.dds"
+		shader = "portrait_attachment_alpha_to_coverage"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_glasses_entity"
+	pdxmesh = "prop_glasses_mesh"
+}

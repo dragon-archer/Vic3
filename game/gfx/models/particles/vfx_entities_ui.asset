@@ -1,0 +1,545 @@
+entity = 
+{
+	name = "vfx_entity_ui_mobilize"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_mobilize" 
+			trigger_once = yes 
+			keep_particle = yes
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_situations"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_situations" 
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_situations_once_for_new"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_situations_once_for_new" 
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_ui_alert_once_for_new"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_alert_once_for_new" 
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_ui_alert_above_icon"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_alert_above_icon" 
+			trigger_once = yes 
+			keep_particle = yes
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_ui_celebration_behind_window"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = yes 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_celebration_behind_window" 
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_ui_to_arms_button"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = no 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_to_arms_button" 
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_ui_to_arms_fire"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = no 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_to_arms_fire"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_ui_to_arms_background"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5 
+		looping = no 
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_to_arms_fire"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_particle_ui_button_action"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_button_action"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_gameover_positive"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_gameover_positive"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_gameover_god_rays"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_god_rays"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_battle_icon_fire"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_battle_icon_fire"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_toasts"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_toasts"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_sidebar_war"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_sidebar_war"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_ui_bg_char_ruler"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_bg_char_ruler"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+
+entity = 
+{
+	name = "vfx_entity_ui_bg_char_ruler_smoke"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_bg_char_ruler_smoke"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_bg_char_admiral_seagulls"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_bg_char_admiral_seagulls"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+
+
+entity = 
+{
+	name = "vfx_entity_ui_bg_politician_candles"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_bg_politician_candles"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_bg_char_politician_godrays"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_bg_char_politician_godrays"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_bg_char_admiral_glow"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_bg_char_admiral_glow"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_bg_char_admiral_waves"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_bg_char_admiral_waves"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_bg_char_general_glow"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_bg_char_general_glow"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_bg_char_ruler_general_glow"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_bg_char_ruler_general_glow"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+
+
+

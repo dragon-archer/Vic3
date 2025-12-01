@@ -1,0 +1,42 @@
+pdxmesh = {
+	name = "papermap_bugbearflask_mesh"
+	file = "papermap_bugbearflask.mesh"
+
+	meshsettings = {
+		name = "bugbearflask_0Shape"
+		index = 0
+		texture_diffuse = "bugbearflask_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "FLATLIGHT" }
+	}
+
+	meshsettings = {
+		name = "bugbearflask_shadow_0Shape"
+		index = 0
+		texture_diffuse = "bugbearflask_dropshadow_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "FLATLIGHT" }
+	}
+
+	meshsettings = {
+		name = "gunpowder_0Shape"
+		index = 0
+		texture_diffuse = "bugbearflask_gunpowder_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "FLATLIGHT" }
+	}
+}
+
+entity = {
+	name = "papermap_bugbearflask_entity"
+	pdxmesh = "papermap_bugbearflask_mesh"
+}

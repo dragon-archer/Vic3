@@ -1,0 +1,83 @@
+pdxmesh = {
+	name = "dust_devil_mesh"
+	file = "dust_devil.mesh"
+	
+	scale = 2.0
+
+	animation = { id = "idle_animation" type = "dust_devil_idle.anim" }
+
+	meshsettings = {
+		name = "dust_devilShape"
+		index = 0
+		texture_diffuse = "dust_devil_diffuse.dds"
+		texture_normal = "nonormal.dds"
+		texture_specular = "no_properties.dds"
+		shader = "standard_alpha_blend"
+	}
+}
+
+entity = {
+	name = "env_dust_devil"
+	pdxmesh = "dust_devil_mesh"
+
+	default_state = "idle"
+	state = 
+	{
+		name = "idle"
+		animation = "idle_animation"
+		
+		event =
+		{
+			time = 0
+			particle = "dust_devil_root"
+			node = "root"
+			trigger_once = yes
+			keep_particle = yes
+		}
+		
+		event =
+		{
+			time = 0
+			particle = "dust_devil_limb"
+			node = "spine_01"
+			trigger_once = yes
+			keep_particle = yes
+		}
+		
+		event =
+		{
+			time = 0
+			particle = "dust_devil_limb"
+			node = "spine_02"
+			trigger_once = yes
+			keep_particle = yes
+		}
+		
+		event =
+		{
+			time = 0
+			particle = "dust_devil_limb"
+			node = "spine_03"
+			trigger_once = yes
+			keep_particle = yes
+		}
+		
+		event =
+		{
+			time = 0
+			particle = "dust_devil_limb"
+			node = "spine_04"
+			trigger_once = yes
+			keep_particle = yes
+		}
+		
+		event =
+		{
+			time = 0
+			particle = "dust_devil_top"
+			node = "spine_05"
+			trigger_once = yes
+			keep_particle = yes
+		}
+	}
+}

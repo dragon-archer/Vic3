@@ -1,0 +1,232 @@
+﻿compound_node={
+	id="Color variation"
+	graph={
+		Nodes={
+			pdxns:common:GraphInterface={
+				Id=0
+				Node={
+					pins={
+						pin={
+							id=color
+							label="Color"
+							input=no
+							type=Color
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+			pdxns:gfx:HsvaComponents={
+				Id=1
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "hsva" LinkedNode = 0 LinkedPin = "color" }
+				}
+			}
+			pdxns:gfx:HSVA={
+				Id=2
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "hue" LinkedNode = 13 LinkedPin = "sum" }
+					Link = { PinId = "saturation" LinkedNode = 23 LinkedPin = "sum" }
+					Link = { PinId = "value" LinkedNode = 33 LinkedPin = "sum" }
+					Link = { PinId = "α" LinkedNode = 43 LinkedPin = "sum" }
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=3
+				Node={
+					pins={
+						pin={
+							id=hue_variation
+							label="Hue variation"
+							input=no
+							type=Float
+						}
+						pin={
+							id=saturation_variation
+							label="Saturation variation"
+							input=no
+							type=Float
+						}
+						pin={
+							id=value_variation
+							label="Value variation"
+							input=no
+							type=Float
+						}
+						pin={
+							id=alpha_variation
+							label="Alpha variation"
+							input=no
+							type=Float
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=4
+				Node={
+					pins={
+						pin={
+							id=output
+							label="Output"
+							input=yes
+							flags=optional
+							type=Color
+						}
+					}
+				}
+				Inputs={
+					Link = { PinId = "output" LinkedNode = 2 LinkedPin = "hsva" }
+				}
+			}
+			pdxns:math:randomF={
+				Id=21
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "limit1" LinkedNode = 3 LinkedPin = "saturation_variation" }
+					Link = { PinId = "limit2" LinkedNode = 22 LinkedPin = "product" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=22
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 3 LinkedPin = "saturation_variation" }
+					Link = { PinId = "factor2" LinkedNode = 27 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:AddF={
+				Id=23
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 1 LinkedPin = "saturation" }
+					Link = { PinId = "term2" LinkedNode = 21 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=32
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 3 LinkedPin = "value_variation" }
+					Link = { PinId = "factor2" LinkedNode = 37 LinkedPin = "value" }
+				}
+			}
+			pdxns:values:Float={
+				Id=37
+				Node={
+					value=-1.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:AddF={
+				Id=33
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 1 LinkedPin = "value" }
+					Link = { PinId = "term2" LinkedNode = 31 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=11
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 3 LinkedPin = "hue_variation" }
+					Link = { PinId = "factor2" LinkedNode = 14 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:randomF={
+				Id=12
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "limit1" LinkedNode = 3 LinkedPin = "hue_variation" }
+					Link = { PinId = "limit2" LinkedNode = 11 LinkedPin = "product" }
+				}
+			}
+			pdxns:math:AddF={
+				Id=13
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 1 LinkedPin = "hue" }
+					Link = { PinId = "term2" LinkedNode = 12 LinkedPin = "value" }
+				}
+			}
+			pdxns:values:Float={
+				Id=14
+				Node={
+					value=-1.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:values:Float={
+				Id=44
+				Node={
+					value=-1.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:AddF={
+				Id=43
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 1 LinkedPin = "alpha" }
+					Link = { PinId = "term2" LinkedNode = 42 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:randomF={
+				Id=42
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "limit1" LinkedNode = 3 LinkedPin = "alpha_variation" }
+					Link = { PinId = "limit2" LinkedNode = 41 LinkedPin = "product" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=41
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 3 LinkedPin = "alpha_variation" }
+					Link = { PinId = "factor2" LinkedNode = 44 LinkedPin = "value" }
+				}
+			}
+			pdxns:values:Float={
+				Id=27
+				Node={
+					value=-1.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:randomF={
+				Id=31
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "limit1" LinkedNode = 3 LinkedPin = "value_variation" }
+					Link = { PinId = "limit2" LinkedNode = 32 LinkedPin = "product" }
+				}
+			}
+		}
+	}
+
+}

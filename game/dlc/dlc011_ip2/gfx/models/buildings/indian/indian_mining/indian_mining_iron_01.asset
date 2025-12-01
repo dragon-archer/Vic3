@@ -1,0 +1,180 @@
+pdxmesh = {
+	name = "indian_mining_iron_01_mesh"
+	file = "../../generic/generic_mining/generic_mining_iron_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 8.0 }
+		lod = { index = 3 percent = 4.0 }
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_localdecal_0Shape"
+		index = 0
+		texture_diffuse = "generic_mining_iron_localdecal_diffuse.dds"
+		texture_normal = "generic_mining_iron_localdecal_normal.dds"
+		texture_specular = "generic_mining_iron_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_worlddecal_0Shape"
+		index = 0
+		texture_diffuse = "decal_rural_mine_hub_diffuse.dds"
+		texture_normal = "decal_rural_mine_hub_normal.dds"
+		texture_specular = "decal_rural_mine_hub_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_billboard_Shape0"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_building_Shape0"
+		index = 0
+		texture_diffuse = "indian_mining_trimsheet_diffuse.dds"
+		texture_normal = "indian_mining_trimsheet_normal.dds"
+		texture_specular = "indian_mining_trimsheet_properties.dds"
+		texture = { file = "indian_mining_trimsheet_tint.dds" index = 5 }
+		texture = { file = "indian_mining_trimsheet_colormask.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	meshsettings = {
+		name = "generic_mining_iron_localdecal_1Shape"
+		index = 0
+		texture_diffuse = "generic_mining_iron_localdecal_diffuse.dds"
+		texture_normal = "generic_mining_iron_localdecal_normal.dds"
+		texture_specular = "generic_mining_iron_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_worlddecal_1Shape"
+		index = 0
+		texture_diffuse = "decal_rural_mine_hub_diffuse.dds"
+		texture_normal = "decal_rural_mine_hub_normal.dds"
+		texture_specular = "decal_rural_mine_hub_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_billboard_Shape1"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_building_Shape1"
+		index = 0
+		texture_diffuse = "indian_mining_trimsheet_diffuse.dds"
+		texture_normal = "indian_mining_trimsheet_normal.dds"
+		texture_specular = "indian_mining_trimsheet_properties.dds"
+		texture = { file = "indian_mining_trimsheet_tint.dds" index = 5 }
+		texture = { file = "indian_mining_trimsheet_colormask.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_localdecal_2Shape"
+		index = 0
+		texture_diffuse = "generic_mining_iron_localdecal_diffuse.dds"
+		texture_normal = "generic_mining_iron_localdecal_normal.dds"
+		texture_specular = "generic_mining_iron_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_worlddecal_2Shape"
+		index = 0
+		texture_diffuse = "decal_rural_mine_hub_diffuse.dds"
+		texture_normal = "decal_rural_mine_hub_normal.dds"
+		texture_specular = "decal_rural_mine_hub_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_billboard_Shape2"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_building_Shape2"
+		index = 0
+		texture_diffuse = "indian_mining_trimsheet_diffuse.dds"
+		texture_normal = "indian_mining_trimsheet_normal.dds"
+		texture_specular = "indian_mining_trimsheet_properties.dds"
+		texture = { file = "indian_mining_trimsheet_tint.dds" index = 5 }
+		texture = { file = "indian_mining_trimsheet_colormask.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_localdecal_3Shape"
+		index = 0
+		texture_diffuse = "generic_mining_iron_localdecal_diffuse.dds"
+		texture_normal = "generic_mining_iron_localdecal_normal.dds"
+		texture_specular = "generic_mining_iron_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_building_Shape3"
+		index = 0
+		texture_diffuse = "indian_mining_trimsheet_diffuse.dds"
+		texture_normal = "indian_mining_trimsheet_normal.dds"
+		texture_specular = "indian_mining_trimsheet_properties.dds"
+		texture = { file = "indian_mining_trimsheet_tint.dds" index = 5 }
+		texture = { file = "indian_mining_trimsheet_colormask.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "indian_mining_iron_01_entity"
+	pdxmesh = "indian_mining_iron_01_mesh"
+}

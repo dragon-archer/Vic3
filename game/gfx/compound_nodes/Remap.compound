@@ -1,0 +1,118 @@
+﻿compound_node={
+	id="Remap"
+	graph={
+		Nodes={
+			pdxns:common:GraphInterface={
+				Id=0
+				Node={
+					pins={
+						pin={
+							id=input
+							label="Input"
+							input=no
+							type=Float
+						}
+						pin={
+							id=low1
+							label="Low 1"
+							input=no
+							type=Float
+						}
+						pin={
+							id=low2
+							label="Low 2"
+							input=no
+							type=Float
+						}
+						pin={
+							id=high1
+							label="High 1"
+							input=no
+							type=Float
+						}
+						pin={
+							id=high2
+							label="High 2"
+							input=no
+							type=Float
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:AddF={
+				Id=1
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 4 LinkedPin = "difference" }
+					Link = { PinId = "term2" LinkedNode = 0 LinkedPin = "low2" }
+				}
+			}
+			pdxns:math:SubF={
+				Id=16
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 0 LinkedPin = "high1" }
+					Link = { PinId = "term2" LinkedNode = 0 LinkedPin = "low1" }
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=19
+				Node={
+					pins={
+						pin={
+							id=output
+							label="Output"
+							input=yes
+							flags=optional
+							type=Float
+						}
+					}
+				}
+				Inputs={
+					Link = { PinId = "output" LinkedNode = 7 LinkedPin = "product" }
+				}
+			}
+			pdxns:math:SubF={
+				Id=4
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 0 LinkedPin = "input" }
+					Link = { PinId = "term2" LinkedNode = 0 LinkedPin = "low1" }
+				}
+			}
+			pdxns:math:DivF={
+				Id=13
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "dividend" LinkedNode = 10 LinkedPin = "difference" }
+					Link = { PinId = "divisor" LinkedNode = 16 LinkedPin = "difference" }
+				}
+			}
+			pdxns:math:SubF={
+				Id=10
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 0 LinkedPin = "high2" }
+					Link = { PinId = "term2" LinkedNode = 0 LinkedPin = "low2" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=7
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 1 LinkedPin = "sum" }
+					Link = { PinId = "factor2" LinkedNode = 13 LinkedPin = "quotient" }
+				}
+			}
+		}
+	}
+
+}

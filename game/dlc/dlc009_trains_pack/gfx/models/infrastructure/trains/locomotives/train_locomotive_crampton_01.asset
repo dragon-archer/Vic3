@@ -1,0 +1,69 @@
+pdxmesh = {
+	name = "train_locomotive_crampton_01_mesh"
+	file = "train_locomotive_crampton_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 12.0 }
+		lod = { index = 2 percent = 8.0 }
+		lod = { index = 3 percent = 5.0 }
+		lod = { index = 4 percent = 3.5 }
+	}
+
+	meshsettings = {
+		name = "train0Shape"
+		index = 0
+		texture_diffuse = "train_locomotive_crampton_diffuse.dds"
+		texture_normal = "train_locomotive_crampton_normal.dds"
+		texture_specular = "train_locomotive_crampton_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "train1Shape"
+		index = 0
+		texture_diffuse = "train_locomotive_crampton_diffuse.dds"
+		texture_normal = "train_locomotive_crampton_normal.dds"
+		texture_specular = "train_locomotive_crampton_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "train2Shape"
+		index = 0
+		texture_diffuse = "train_locomotive_crampton_diffuse.dds"
+		texture_normal = "train_locomotive_crampton_normal.dds"
+		texture_specular = "train_locomotive_crampton_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "train3Shape"
+		index = 0
+		texture_diffuse = "train_locomotive_crampton_diffuse.dds"
+		texture_normal = "train_locomotive_crampton_normal.dds"
+		texture_specular = "train_locomotive_crampton_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "train4Shape"
+		index = 0
+		texture_diffuse = "train_locomotive_crampton_diffuse.dds"
+		texture_normal = "train_locomotive_crampton_normal.dds"
+		texture_specular = "train_locomotive_crampton_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+	
+	
+	animation = { id = "moving_animation" 					type = "train_locomotive_crampton_01_moving.anim" }
+}

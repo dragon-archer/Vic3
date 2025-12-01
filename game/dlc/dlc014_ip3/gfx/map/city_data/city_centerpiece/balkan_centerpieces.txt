@@ -1,0 +1,792 @@
+﻿balkan_city_01 = {
+	city_graphics_type = balkan_city
+	grid_size = { 2 2 }
+	attach = { variant = { entity = balkan_city_centerpiece_01_entity } }
+}
+
+balkan_farm_01 = {
+	city_graphics_type = balkan_farm
+	grid_size = { 2 2 }
+	attach = { variant = { entity = balkan_farm_centerpiece_01_entity } }
+}
+
+balkan_mine_01 = {
+	city_graphics_type = balkan_mine
+	grid_size = { 3 3 }
+	attach = { variant = { entity = balkan_mining_centerpiece_01_entity } }
+}
+
+balkan_wood_01 = {
+	city_graphics_type = balkan_wood
+	grid_size = { 4 4 }
+	should_update_on_pm_change = yes
+
+	composition_group = {
+		building_types = { building_logging_camp }
+		levels = { 1 5 10 30 }
+		composition = { name = lvl0		levels = { 1 }	}	# Lvl 0
+		composition = { name = lvl1		levels = { 2 }	}	# Lvl 1
+		composition = { name = lvl2		levels = { 3 }	}	# Lvl 2
+		composition = { name = lvl3		levels = { 4 }	}	# Lvl 3
+	}
+	composition_group = {
+		composition = { name = simple	trigger = { any_scope_building = { has_active_production_method = pm_simple_forestry } } }							# Simple Forestry PM
+		composition = { name = sawmill	trigger = { any_scope_building = { has_active_production_method = pm_saw_mills } } }								# Saw Mills PM
+		composition = { name = esawmill	trigger = { any_scope_building = { has_active_production_method = pm_electric_saw_mills } } }						# Electrical Saw Maills PM
+	}
+	composition_group = {
+		composition = { name = soft		trigger = { any_scope_building = { has_active_production_method = pm_no_hardwood } } }								# Softwood Production PM
+		composition = { name = mix		trigger = { any_scope_building = { has_active_production_method = pm_hardwood } } }									# Mixed wood Production PM
+		composition = { name = hard		trigger = { any_scope_building = { has_active_production_method = pm_increased_hardwood } } }						# Hardwood Production PM
+	}
+	composition_group = {
+		composition = { name = none		trigger = { any_scope_building = { has_active_production_method = pm_no_equipment } } }								# Horse Drawn PM
+		composition = { name = steam	trigger = { any_scope_building = { has_active_production_method = pm_steam_donkey_building_logging_camp } } }		# Steam Donkey PM
+		composition = { name = chainsaw	trigger = { any_scope_building = { has_active_production_method = pm_chainsaws } } }								# Chainsaw PM
+	}
+	composition_group = {
+		composition = { name = horse	trigger = { any_scope_building = { has_active_production_method = pm_road_carts } } }								# Road Carts PM
+		composition = { name = rail		trigger = { any_scope_building = { has_active_production_method = pm_rail_transport_building_logging_camp } } }		# Rail Transportation PM
+		composition = { name = train	trigger = { any_scope_building = { has_active_production_method = pm_log_carts } } }								# Rail Log Carts PM
+	}
+	composition_group = {
+		composition = { name = Plvl1	trigger = { "num_potential_resources(bg:bg_logging)" >= 5  } }														# Logging camp potential
+	}
+	composition_group = {
+		composition = { name = Plvl2	trigger = { "num_potential_resources(bg:bg_logging)" >= 10  } }														# Logging camp potential
+	}
+	composition_group = {
+		composition = { name = Plvl3	trigger = { "num_potential_resources(bg:bg_logging)" >= 30  } }														# Logging camp potential
+	}
+
+
+	attach = {
+		variant = { entity = balkan_forestry_centerpiece_01_entity									building_type = building_logging_camp			compositions = { simple }
+			attach = {
+				variant = { entity = balkan_forestry_centerpiece_softwoodpiles_01_entity			building_type = building_logging_camp			compositions = { soft }}
+				variant = { entity = balkan_forestry_centerpiece_mixwoodpiles_01_entity				building_type = building_logging_camp			compositions = { mix }}
+				variant = { entity = balkan_forestry_centerpiece_hardwoodpiles_01_entity			building_type = building_logging_camp			compositions = { hard }}
+			}
+			attach = {
+				locator = centerpiece_equipment_01_1		# Custom locator
+				variant = { entity = balkan_forestry_equipment_01_entity							building_type = building_logging_camp			compositions = { none }}
+				variant = { entity = balkan_forestry_equipment_02_entity							building_type = building_logging_camp			compositions = { steam }}
+				variant = { entity = balkan_forestry_equipment_03_entity							building_type = building_logging_camp			compositions = { chainsaw }}
+			}
+			attach = {
+				locator = centerpiece_equipment_01_2		# Custom locator
+				variant = { entity = balkan_forestry_equipment_01_entity							building_type = building_logging_camp			compositions = { none }}
+				variant = { entity = balkan_forestry_equipment_02_entity							building_type = building_logging_camp			compositions = { steam }}
+				variant = { entity = balkan_forestry_equipment_03_entity							building_type = building_logging_camp			compositions = { chainsaw }}
+			}
+		}
+		variant = { entity = balkan_forestry_centerpiece_02_entity									building_type = building_logging_camp			compositions = { sawmill }
+			attach = {
+				variant = { entity = balkan_forestry_centerpiece_softwoodpiles_02_entity			building_type = building_logging_camp			compositions = { soft }}
+				variant = { entity = balkan_forestry_centerpiece_mixwoodpiles_02_entity				building_type = building_logging_camp			compositions = { mix }}
+				variant = { entity = balkan_forestry_centerpiece_hardwoodpiles_02_entity			building_type = building_logging_camp			compositions = { hard }}
+			}
+			attach = {
+				locator = centerpiece_equipment_02_1		# Custom locator
+				variant = { entity = balkan_forestry_equipment_01_entity							building_type = building_logging_camp			compositions = { none }}
+				variant = { entity = balkan_forestry_equipment_02_entity							building_type = building_logging_camp			compositions = { steam }}
+				variant = { entity = balkan_forestry_equipment_03_entity							building_type = building_logging_camp			compositions = { chainsaw }}
+			}
+			attach = {
+				locator = centerpiece_equipment_02_2		# Custom locator
+				variant = { entity = balkan_forestry_equipment_01_entity							building_type = building_logging_camp			compositions = { none }}
+				variant = { entity = balkan_forestry_equipment_02_entity							building_type = building_logging_camp			compositions = { steam }}
+				variant = { entity = balkan_forestry_equipment_03_entity							building_type = building_logging_camp			compositions = { chainsaw }}
+			}
+		}
+		variant = { entity = balkan_forestry_centerpiece_03_entity									building_type = building_logging_camp			compositions = { esawmill }
+			attach = {
+				variant = { entity = balkan_forestry_centerpiece_softwoodpiles_03_entity			building_type = building_logging_camp			compositions = { soft }}
+				variant = { entity = balkan_forestry_centerpiece_mixwoodpiles_03_entity				building_type = building_logging_camp			compositions = { mix }}
+				variant = { entity = balkan_forestry_centerpiece_hardwoodpiles_03_entity			building_type = building_logging_camp			compositions = { hard }}
+			}
+			attach = {
+				locator = centerpiece_equipment_03_1		# Custom locator
+				variant = { entity = balkan_forestry_equipment_01_entity							building_type = building_logging_camp			compositions = { none }}
+				variant = { entity = balkan_forestry_equipment_02_entity							building_type = building_logging_camp			compositions = { steam }}
+				variant = { entity = balkan_forestry_equipment_03_entity							building_type = building_logging_camp			compositions = { chainsaw }}
+			}
+			attach = {
+				locator = centerpiece_equipment_03_2		# Custom locator
+				variant = { entity = balkan_forestry_equipment_01_entity							building_type = building_logging_camp			compositions = { none }}
+				variant = { entity = balkan_forestry_equipment_02_entity							building_type = building_logging_camp			compositions = { steam }}
+				variant = { entity = balkan_forestry_equipment_03_entity							building_type = building_logging_camp			compositions = { chainsaw }}
+			}
+		}
+	}
+	attach = {
+		variant = { entity = balkan_forestry_transportation_01_entity								building_type = building_logging_camp			compositions = { horse }
+			attach = {
+				variant = { entity = balkan_forestry_transportation_softwoodpiles_01_entity			building_type = building_logging_camp			compositions = { soft }}
+				variant = { entity = balkan_forestry_transportation_mixwoodpiles_01_entity			building_type = building_logging_camp			compositions = { mix }}
+				variant = { entity = balkan_forestry_transportation_hardwoodpiles_01_entity			building_type = building_logging_camp			compositions = { hard }}
+			}
+		}
+		variant = { entity = balkan_forestry_transportation_02_entity								building_type = building_logging_camp			compositions = { rail }
+			attach = {
+				variant = { entity = balkan_forestry_transportation_softwoodpiles_02_entity			building_type = building_logging_camp			compositions = { soft }}
+				variant = { entity = balkan_forestry_transportation_mixwoodpiles_02_entity			building_type = building_logging_camp			compositions = { mix }}
+				variant = { entity = balkan_forestry_transportation_hardwoodpiles_02_entity			building_type = building_logging_camp			compositions = { hard }}
+			}
+		}
+		variant = { entity = balkan_forestry_transportation_03_entity								building_type = building_logging_camp			compositions = { train }
+			attach = {
+				variant = { entity = balkan_forestry_transportation_softwoodpiles_03_entity			building_type = building_logging_camp			compositions = { soft }}
+				variant = { entity = balkan_forestry_transportation_mixwoodpiles_03_entity			building_type = building_logging_camp			compositions = { mix }}
+				variant = { entity = balkan_forestry_transportation_hardwoodpiles_03_entity			building_type = building_logging_camp			compositions = { hard }}
+			}
+		}
+	}
+
+	attach = {
+		variant = { entity = balkan_forestry_loggingcamp_01_entity									building_type = building_logging_camp			compositions = { lvl1 lvl2 lvl3 }
+			attach = {
+				variant = { entity = balkan_forestry_loggingcamp_softwoodpiles_01_entity			building_type = building_logging_camp			compositions = { soft }}
+				variant = { entity = balkan_forestry_loggingcamp_mixwoodpiles_01_entity				building_type = building_logging_camp			compositions = { mix }}
+				variant = { entity = balkan_forestry_loggingcamp_hardwoodpiles_01_entity			building_type = building_logging_camp			compositions = { hard }}
+			}
+			attach = {
+				locator = loggingcamp_building_01		# Custom locator
+				variant = { entity = balkan_forestry_loggingcabin_01_entity							building_type = building_logging_camp			compositions = { simple }}
+				variant = { entity = balkan_forestry_loggingcabin_02_entity							building_type = building_logging_camp			compositions = { sawmill }}
+				variant = { entity = balkan_forestry_loggingcabin_03_entity							building_type = building_logging_camp			compositions = { esawmill }}
+			}
+			attach = {
+				locator = loggingcamp_equipment_01		# Custom locator
+				variant = { entity = balkan_forestry_equipment_01_entity							building_type = building_logging_camp			compositions = { none }}
+				variant = { entity = balkan_forestry_equipment_02_entity							building_type = building_logging_camp			compositions = { steam }}
+				variant = { entity = balkan_forestry_equipment_03_entity							building_type = building_logging_camp			compositions = { chainsaw }}
+			}
+		}
+		variant = { entity = balkan_forestry_trees_01_entity										building_type = building_logging_camp			compositions = { Plvl1 } }
+	}
+	attach = {
+		variant = { entity = balkan_forestry_loggingcamp_02_entity									building_type = building_logging_camp			compositions = { lvl2 lvl3 }
+			attach = {
+				variant = { entity = balkan_forestry_loggingcamp_softwoodpiles_02_entity			building_type = building_logging_camp			compositions = { soft }}
+				variant = { entity = balkan_forestry_loggingcamp_mixwoodpiles_02_entity				building_type = building_logging_camp			compositions = { mix }}
+				variant = { entity = balkan_forestry_loggingcamp_hardwoodpiles_02_entity			building_type = building_logging_camp			compositions = { hard }}
+			}
+			attach = {
+				locator = loggingcamp_building_02		# Custom locator
+				variant = { entity = balkan_forestry_loggingcabin_01_entity							building_type = building_logging_camp			compositions = { simple }}
+				variant = { entity = balkan_forestry_loggingcabin_02_entity							building_type = building_logging_camp			compositions = { sawmill }}
+				variant = { entity = balkan_forestry_loggingcabin_03_entity							building_type = building_logging_camp			compositions = { esawmill }}
+			}
+			attach = {
+				locator = loggingcamp_equipment_02		# Custom locator
+				variant = { entity = balkan_forestry_equipment_01_entity							building_type = building_logging_camp			compositions = { none }}
+				variant = { entity = balkan_forestry_equipment_02_entity							building_type = building_logging_camp			compositions = { steam }}
+				variant = { entity = balkan_forestry_equipment_03_entity							building_type = building_logging_camp			compositions = { chainsaw }}
+			}
+		}
+		variant = { entity = balkan_forestry_trees_02_entity										building_type = building_logging_camp			compositions = { Plvl2 } }
+	}
+	attach = {
+		variant = { entity = balkan_forestry_loggingcamp_03_entity									building_type = building_logging_camp			compositions = { lvl3 }
+			attach = {
+				variant = { entity = balkan_forestry_loggingcamp_softwoodpiles_03_entity			building_type = building_logging_camp			compositions = { soft }}
+				variant = { entity = balkan_forestry_loggingcamp_mixwoodpiles_03_entity				building_type = building_logging_camp			compositions = { mix }}
+				variant = { entity = balkan_forestry_loggingcamp_hardwoodpiles_03_entity			building_type = building_logging_camp			compositions = { hard }}
+			}
+			attach = {
+				locator = loggingcamp_building_03		# Custom locator
+				variant = { entity = balkan_forestry_loggingcabin_01_entity							building_type = building_logging_camp			compositions = { simple }}
+				variant = { entity = balkan_forestry_loggingcabin_02_entity							building_type = building_logging_camp			compositions = { sawmill }}
+				variant = { entity = balkan_forestry_loggingcabin_03_entity							building_type = building_logging_camp			compositions = { esawmill }}
+			}
+			attach = {
+				locator = loggingcamp_equipment_03		# Custom locator
+				variant = { entity = balkan_forestry_equipment_01_entity							building_type = building_logging_camp			compositions = { none }}
+				variant = { entity = balkan_forestry_equipment_02_entity							building_type = building_logging_camp			compositions = { steam }}
+				variant = { entity = balkan_forestry_equipment_03_entity							building_type = building_logging_camp			compositions = { chainsaw }}
+			}
+		}
+		variant = { entity = balkan_forestry_trees_03_entity										building_type = building_logging_camp			compositions = { Plvl3 } }
+	}
+
+}
+
+balkan_port_01 = {
+	city_graphics_type = balkan_port
+	grid_size = { 3 3 }
+
+	composition_group = {
+		building_types = { building_fishing_wharf building_port building_shipyards building_military_shipyards }
+		levels = { 1 10 }
+		
+		composition = { name = ____		levels = { 0 0 0 0 }	}	# Empty
+		composition = { name = __s_		levels = { 0 0 1 0 }	}	# only small shipyard
+		composition = { name = _p__		levels = { 0 1 0 0 }	}	# only small port
+		composition = { name = f___		levels = { 1 0 0 0 }	}	# only small wharf
+		composition = { name = ___m		levels = { 0 0 0 1 }	}	# only small militaryshipyard
+		composition = { name = fp__		levels = { 1 1 0 0 }	} 	# small wharf small port 
+		composition = { name = f_s_		levels = { 1 0 1 0 }	} 	# small wharf small shipyard 		
+		composition = { name = f__m		levels = { 1 0 0 1 }	} 	# small wharf small militaryshipyard
+		composition = { name = _ps_		levels = { 0 1 1 0 }	}	# small port small shipyard
+		composition = { name = _p_m		levels = { 0 1 0 1 }	}	# small port small militaryshipyard
+		composition = { name = __sm		levels = { 0 0 1 1 }	} 	# small shipyard small militaryshipyard
+		composition = { name = fps_		levels = { 1 1 1 0 }	} 	# small wharf small port small shipyard 	
+		composition = { name = _psm		levels = { 0 1 1 1 }	}	# small port small shipyard small militaryshipyard
+		composition = { name = fp_m		levels = { 1 1 0 1 }	} 	# small wharf small port small militaryshipyard
+		composition = { name = f_sm		levels = { 1 0 1 1 }	} 	# small wharf small shipyard small militaryshipyard	
+		composition = { name = fpsm		levels = { 1 1 1 1 }	} 	# small wharf small port small shipyard small militaryshipyard
+
+		composition = { name = ff___	levels = { 2 0 0 0 }	}	# only large wharf
+		composition = { name = ffp__	levels = { 2 1 0 0 }	} 	# large wharf small port
+		composition = { name = ffps_	levels = { 2 1 1 0 }	} 	# large wharf small port small shipyard
+		composition = { name = ffp_m	levels = { 2 1 0 1 }	} 	# large wharf small port small militaryshipyard
+		composition = { name = ffs__	levels = { 2 0 1 0 }	} 	# large wharf small shipyard
+		composition = { name = ff_sm	levels = { 2 0 1 1 }	} 	# large wharf small shipyard small militaryshipyard
+		composition = { name = ff__m	levels = { 2 0 0 1 }	} 	# large wharf small militaryshipyard
+		composition = { name = ffpsm	levels = { 2 1 1 1 }	} 	# large wharf small port small shipyard small militaryshipyard
+		composition = { name = pp___	levels = { 0 2 0 0 }	}	# only large port
+		composition = { name = ppf__	levels = { 1 2 0 0 }	} 	# large port small wharf
+		composition = { name = ppfs_	levels = { 1 2 1 0 }	} 	# large port small wharf small shipyard
+		composition = { name = ppf_m	levels = { 1 2 0 1 }	} 	# large port small wharf small militaryshipyard
+		composition = { name = pp_s_	levels = { 0 2 1 0 }	}	# large port small shipyard
+		composition = { name = pp_sm	levels = { 0 2 1 1 }	}	# large port small shipyard small militaryshipyard
+		composition = { name = pp__m	levels = { 0 2 0 1 }	}	# large port small militaryshipyard
+		composition = { name = ppfsm	levels = { 1 2 1 1 }	} 	# large port small wharf small shipyard small militaryshipyard
+		composition = { name = ss___	levels = { 0 0 2 0 }	}	# only large shipyard
+		composition = { name = ssf__	levels = { 1 0 2 0 }	} 	# large shipyard small wharf
+		composition = { name = ssfp_	levels = { 1 1 2 0 }	} 	# large shipyard small wharf small port
+		composition = { name = ssf_m	levels = { 1 0 2 1 }	} 	# large shipyard small wharf small militaryshipyard
+		composition = { name = ss_p_	levels = { 0 1 2 1 }	}	# large shipyard small port
+		composition = { name = ss_pm	levels = { 0 1 2 0 }	}	# large shipyard small port small militaryshipyard
+		composition = { name = ss__m	levels = { 0 0 2 1 }	} 	# large shipyard small militaryshipyard
+		composition = { name = ssfpm	levels = { 1 1 2 1 }	} 	# large shipyard small wharf small port small militaryshipyard
+		composition = { name = mm___	levels = { 0 0 0 2 }	}	# only large militaryshipyard
+		composition = { name = mm_p_	levels = { 0 1 0 2 }	}	# large militaryshipyard small port
+		composition = { name = mmfp_	levels = { 1 1 0 2 }	}	# large militaryshipyard small port small wharf
+		composition = { name = mm_ps	levels = { 0 1 1 2 }	}	# large militaryshipyard small port small shipyard
+		composition = { name = mmf__	levels = { 1 0 0 2 }	} 	# large militaryshipyard small wharf
+		composition = { name = mmf_s	levels = { 1 0 1 2 }	} 	# large militaryshipyard small wharf small shipyard
+		composition = { name = mm__s	levels = { 0 0 1 2 }	} 	# large militaryshipyard small shipyard
+		composition = { name = mmfps	levels = { 1 1 1 2 }	} 	# large militaryshipyard small wharf small port small shipyard
+		
+		composition = { name = fp_f		ratios = { 3 1 0 0 }	} 	# large wharves small port
+		composition = { name = fs_f		ratios = { 3 0 1 0 }	} 	# large wharves small shipyard
+		composition = { name = fm_f		ratios = { 3 0 0 1 }	} 	# large wharves small militaryshipyard
+		composition = { name = pf_p		ratios = { 1 3 0 0 }	} 	# large ports small wharf
+		composition = { name = ps_p		ratios = { 0 3 1 0 }	} 	# large ports small shipyard
+		composition = { name = pm_p		ratios = { 0 3 0 1 }	} 	# large ports small militaryshipyard
+		composition = { name = sf_s		ratios = { 1 0 3 0 }	} 	# large shipyard small wharf
+		composition = { name = sp_s		ratios = { 0 1 3 0 }	} 	# large shipyard small port
+		composition = { name = sm_s		ratios = { 0 0 3 1 }	} 	# large shipyard small militaryshipyard	
+		composition = { name = mf_m		ratios = { 1 0 0 3 }	} 	# large militaryshipyard small wharf
+		composition = { name = ms_m		ratios = { 0 0 1 3 }	} 	# large militaryshipyard small shipyard
+		composition = { name = mp_m		ratios = { 0 1 0 3 }	} 	# large militaryshipyard small port
+
+		composition = { name = fsmf		ratios = { 3 0 1 1 }	} 	# large wharves small shipyard small militaryshipyard
+		composition = { name = fpmf		ratios = { 3 1 0 1 }	} 	# large wharves small port small militaryshipyard
+		composition = { name = fpsf		ratios = { 3 1 1 0 }	} 	# large wharves small port small militaryshipyard
+		composition = { name = pfmp		ratios = { 1 3 0 1 }	} 	# large ports small wharf small militaryshipyard
+		composition = { name = psmp		ratios = { 0 3 1 1 }	} 	# large ports small shipyard small militaryshipyard
+		composition = { name = pfsp		ratios = { 0 3 1 1 }	} 	# large ports small shipyard small militaryshipyard
+		composition = { name = sfps		ratios = { 1 1 3 0 }	} 	# large shipyard small port small militaryshipyard
+		composition = { name = spms		ratios = { 0 1 3 1 }	} 	# large shipyard small port small militaryshipyard
+		composition = { name = sfms		ratios = { 1 0 3 1 }	} 	# large shipyard small wharf small militaryshipyard
+		composition = { name = mfpm		ratios = { 1 1 0 3 }	} 	# large militaryshipyard small wharf small port
+		composition = { name = mpsm		ratios = { 0 1 1 3 }	} 	# large militaryshipyard small port small shipyard
+		composition = { name = mfsm		ratios = { 1 0 1 3 }	} 	# large militaryshipyard small wharf small shipyard
+
+		composition = { name = fpsmf	ratios = { 3 1 1 1 }	} 	# large wharves small shipyard small port small militaryshipyard
+		composition = { name = pfsmp	ratios = { 1 3 1 1 }	} 	# large ports small wharf small shipyard small militaryshipyard
+		composition = { name = sfpms	ratios = { 1 1 3 1 }	} 	# large shipyard small port small wharf small militaryshipyard
+		composition = { name = mfpsm	ratios = { 1 1 1 3 }	} 	# large militaryshipyard small shipyard small port small wharf
+	}
+
+	composition_group = { 
+		building_types = { building_whaling_station }
+		levels = { 1 50 }
+		
+		composition = { name = nws		levels = { 0 }	}	# no whaling station
+		composition = { name = ws		levels = { 1 }	}	# small whaling station
+		composition = { name = bws		levels = { 2 }	}	# large whaling station
+	}
+
+	composition_group = { 
+		building_types = { building_naval_base }
+		levels = { 1 10 }
+		
+		composition = { name = nnb		levels = { 0 }	}	# no naval base
+		composition = { name = nb		levels = { 1 }	}	# a naval base
+		composition = { name = bnb		levels = { 2 }	}	# a large naval base
+	}
+
+
+###################################################################################################
+####################################### NAVAL BASE CHECK ##########################################
+###################################################################################################
+	attach = {
+		variant = { entity = balkan_port_centerpiece_01_entity 			building_type = building_port				compositions = { nnb nb }
+			attach = {
+				variant = { entity = balkan_port_centerpiece_02_entity 			building_type = building_port				compositions = { nnb } }
+				variant = { entity = balkan_port_navalbase_01_entity 			building_type = building_naval_base			compositions = { nb } }
+			}
+		}
+		variant = { entity = balkan_port_navalbase_02_entity 			building_type = building_naval_base			compositions = { bnb } }
+	}
+
+
+###################################################################################################
+####################################### SMALL DOCK AS BASE ########################################
+###################################################################################################
+	attach = {
+		variant = { entity = balkan_port_docks_01_entity 				building_type = building_port					compositions = { _p__ fp__ _ps_ _p_m fps_ _psm fp_m fpsm ffp__ ffps_ ffp_m ffpsm ss_p_ ssfp_ ss_pm ssfpm mm_p_ mmfp_ mm_ps mmfps fp_f sp_s mp_m fpmf fpsf sfps spms mfpm mpsm fpsmf sfpms mfpsm }
+			attach = {
+				locator = docks_01_left		# Custom locator
+				
+				variant = { entity = balkan_port_fishingwharf_01_entity 		building_type = building_fishing_wharf			compositions = { fp__ fps_ fp_m fpsm ffp__ ffps_ ffp_m ffpsm ssfp_ ssfpm mmfp_ mmfps fp_f fpmf fpsf sfps mfpm fpsmf sfpms mfpsm }
+					attach = {
+						locator = fishingwharf_01_left		# Custom locator
+						variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws }
+							attach = {
+								locator = whalingstation_01_right		# Custom locator
+								variant = { entity = balkan_port_fishingwharf_02_entity 		building_type = building_fishing_wharf			compositions = { ffp__ ffps_ ffp_m ffpsm fp_f fpmf fpsf fpsmf } }
+							}
+						}
+						variant = { entity = balkan_port_fishingwharf_02_entity 		building_type = building_fishing_wharf			compositions = { ffp__ ffps_ ffp_m ffpsm fp_f fpmf fpsf fpsmf }
+							attach = {
+								locator = fishingwharf_02_right		# Custom locator
+								variant = { entity = balkan_port_fishingwharf_03_entity 		building_type = building_fishing_wharf			compositions = { ffp__ ffps_ ffp_m ffpsm fp_f fpmf fpsf fpsmf } }
+							}
+						}
+					}
+				}
+				variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws } }
+			}
+			attach = {
+				locator = docks_01_right		# Custom locator
+				
+				variant = { entity = balkan_port_shipyard_01_entity 		building_type = building_shipyards			compositions = { _ps_ fps_ _psm fpsm ffps_ ffpsm ss_p_ ss_pm ssfpm mm_ps mmfps sp_s fpsf sfps spms mpsm fpsmf sfpms mfpsm }
+					attach = {
+						locator = shipyard_01_right		# Custom locator
+						
+						variant = { entity = balkan_port_shipyard_02_entity 		building_type = building_shipyards			compositions = { ss_p_ ss_pm ssfpm sp_s sfps spms sfpms }
+							attach = {
+								locator = shipyard_02_right		# Custom locator
+								variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { ss_pm ssfpm spms sfpms } }
+							}
+						}
+						variant = { entity = balkan_port_militaryshipyard_01_entity 		building_type = building_military_shipyards			compositions = { mm__s mmfps mpsm mfpsm }
+							attach = {
+								locator = militaryshipyard_01_right		# Custom locator
+								variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { mm__s mmfps mpsm mfpsm } }
+							}
+						}
+						variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { _psm fpsm ffpsm fpsmf } }
+					}
+				}
+				
+				variant = { entity = balkan_port_militaryshipyard_01_entity 		building_type = building_military_shipyards			compositions = { mm_p_ mmfp_ mp_m fpmf mfpm }
+					attach = {
+						locator = militaryshipyard_01_right		# Custom locator
+						variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { mm_p_ mmfp_ mp_m fpmf mfpm } }
+					}
+				}
+				variant = { entity = balkan_port_militaryshipyard_01_entity 		building_type = building_military_shipyards			compositions = { _p_m fp_m } }
+			}
+		}
+	}
+
+###################################################################################################
+####################################### LARGE DOCK AS BASE ########################################
+###################################################################################################
+	attach = {
+		variant = { entity = balkan_port_docks_02_entity 				building_type = building_port					compositions = { pp___ ppf__ ppfs_ ppf_m pp_s_ pp_sm pp__m ppfsm pf_p ps_p pm_p pfmp psmp pfsp pfsmp }
+			attach = {
+				locator = docks_02_left		# Custom locator
+				variant = { entity = balkan_port_fishingwharf_01_entity 		building_type = building_fishing_wharf			compositions = { ppf__ ppfs_ ppf_m ppfsm pf_p pfmp pfsp pfsmp }
+					attach = {
+						locator = fishingwharf_01_left		# Custom locator
+						variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws } }
+					}
+				}
+				variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws } }
+			}
+			attach = {
+				locator = docks_02_right		# Custom locator
+				variant = { entity = balkan_port_shipyard_01_entity 		building_type = building_shipyards			compositions = { ppfs_ pp_s_ pp_sm ppfsm ps_p psmp pfsp pfsmp }
+					attach = {
+						locator = shipyard_01_right		# Custom locator
+						variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { pp_sm ppfsm psmp pfsmp } }
+					}
+				}
+				variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { ppf_m pp__m pm_p pfmp } }
+			}
+		}
+	}
+
+
+###################################################################################################
+##################################### SMALL SHIPYARD AS BASE ######################################
+###################################################################################################
+	attach = {
+		variant = { entity = balkan_port_shipyard_01_entity 				building_type = building_port					compositions = { __s_ f_s_ __sm f_sm ffs__ ff_sm ss___ ssf__ ssf_m ss__m mmf_s mm__s fs_f sf_s sm_s ms_m fsmf sfms mfsm }
+			attach = {
+				locator = shipyard_01_left		# Custom locator
+				
+				variant = { entity = balkan_port_fishingwharf_01_entity 		building_type = building_fishing_wharf			compositions = { f_s_ f_sm ssf__ ssf_m mmf_s sf_s sfms mfsm }
+					attach = {
+						locator = fishingwharf_01_left		# Custom locator
+						variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws } }
+					}
+				}
+				variant = { entity = balkan_port_fishingwharf_01_entity 		building_type = building_fishing_wharf			compositions = { ffs__ ff_sm fs_f fsmf }
+					attach = {
+						locator = fishingwharf_01_left		# Custom locator
+						variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws }
+							attach = {
+								locator = whalingstation_01_right		# Custom locator
+								variant = { entity = balkan_port_fishingwharf_02_entity 		building_type = building_fishing_wharf			compositions = { ffs__ ff_sm fs_f fsmf } }
+							}
+						}
+						variant = { entity = balkan_port_fishingwharf_02_entity 		building_type = building_fishing_wharf			compositions = { ffs__ ff_sm fs_f fsmf }
+							attach = {
+								locator = fishingwharf_02_right		# Custom locator
+								variant = { entity = balkan_port_fishingwharf_03_entity 		building_type = building_fishing_wharf			compositions = { ffs__ ff_sm fs_f fsmf } }
+							}
+						}
+					}
+				}
+				variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws } }
+			}
+			attach = {
+				locator = shipyard_01_right		# Custom locator
+
+				variant = { entity = balkan_port_shipyard_02_entity 		building_type = building_shipyards			compositions = { ss___ ssf__ ssf_m ss__m sf_s sm_s sfms }
+					attach = {
+						locator = shipyard_02_right		# Custom locator
+						variant = { entity = balkan_port_shipyard_01_entity 		building_type = building_shipyards			compositions = { ss___ ssf__ ssf_m ss__m sf_s sm_s sfms }
+							attach = {
+								locator = shipyard_01_right		# Custom locator
+								variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { ss__m ssf_m sm_s sfms } }
+							}
+						}
+					}
+				}
+				variant = { entity = balkan_port_militaryshipyard_01_entity 		building_type = building_military_shipyards			compositions = { mmf_s mm__s ms_m mfsm }
+					attach = {
+						locator = militaryshipyard_01_right		# Custom locator
+						variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { mmf_s mm__s ms_m mfsm } }
+					}
+				}
+				variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { __sm f_sm ff_sm fsmf } }
+			}
+		}
+	}
+
+###################################################################################################
+################################ SMALL MILITARY SHIPYARD AS BASE ##################################
+###################################################################################################
+	attach = {
+		variant = { entity = balkan_port_militaryshipyard_01_entity 				building_type = building_port					compositions = { ___m f__m ff__m mm___ mmf__ fm_f mf_m }
+			attach = {
+				locator = militaryshipyard_01_left		# Custom locator
+				
+				variant = { entity = balkan_port_fishingwharf_01_entity 		building_type = building_fishing_wharf			compositions = { f__m ff__m mmf__ fm_f mf_m }
+					attach = {
+						locator = fishingwharf_01_left		# Custom locator
+						variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws }
+							attach = {
+								locator = whalingstation_01_right		# Custom locator
+								variant = { entity = balkan_port_fishingwharf_02_entity 		building_type = building_fishing_wharf			compositions = { ff__m fm_f } }
+							}
+						}
+						variant = { entity = balkan_port_fishingwharf_02_entity 		building_type = building_fishing_wharf			compositions = { ff__m fm_f }
+							attach = {
+								locator = fishingwharf_02_right		# Custom locator
+								variant = { entity = balkan_port_fishingwharf_03_entity 		building_type = building_fishing_wharf			compositions = { ff__m fm_f } }
+							}
+						}
+					}
+				}
+				variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws } }
+			}
+			attach = {
+				locator = militaryshipyard_01_right		# Custom locator
+
+				variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_shipyards			compositions = { mm___ mmf__ mf_m } }
+			}
+		}
+	}
+
+###################################################################################################
+####################################### SMALL WHARF AS BASE #######################################
+###################################################################################################
+	attach = {
+		variant = { entity = balkan_port_fishingwharf_01_entity 				building_type = building_fishing_wharf					compositions = { f___ ff___ }
+			attach = {
+				locator = fishingwharf_01_left		# Custom locator
+				variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws }
+							attach = {
+								locator = whalingstation_01_right		# Custom locator
+								variant = { entity = balkan_port_fishingwharf_02_entity 		building_type = building_fishing_wharf			compositions = { ff___ } }
+							}
+						}
+				variant = { entity = balkan_port_fishingwharf_02_entity 		building_type = building_fishing_wharf			compositions = { ff___ }
+							attach = {
+								locator = fishingwharf_02_right		# Custom locator
+								variant = { entity = balkan_port_fishingwharf_03_entity 		building_type = building_fishing_wharf			compositions = { ff___ } }
+							}
+						}
+			}
+		}
+	}
+
+###################################################################################################
+###################################### ONLY WHALING STATION #######################################
+###################################################################################################
+	attach = {
+		variant = { entity = balkan_port_centerpiece_01_entity 		building_type = building_whaling_station			compositions = { ____ }
+			attach = {
+				variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws } }
+			}
+		}
+	}
+}
+
+balkan_worldmarket_01 = {
+	city_graphics_type = balkan_port
+	priority = 10
+	grid_size = { 3 3 }
+	
+	trigger = {
+		any_scope_state = {
+			is_world_market_hub = yes
+		}
+	}
+
+	composition_group = {
+		building_types = { building_fishing_wharf building_port building_shipyards building_military_shipyards }
+		levels = { 1 3 }
+		
+		composition = { name = ____		levels = { 0 0 0 0 }	}	# Empty
+		composition = { name = __s_		levels = { 0 0 1 0 }	}	# only small shipyard
+		composition = { name = _p__		levels = { 0 1 0 0 }	}	# only small port
+		composition = { name = f___		levels = { 1 0 0 0 }	}	# only small wharf
+		composition = { name = ___m		levels = { 0 0 0 1 }	}	# only small militaryshipyard
+		composition = { name = fp__		levels = { 1 1 0 0 }	} 	# small wharf small port 
+		composition = { name = f_s_		levels = { 1 0 1 0 }	} 	# small wharf small shipyard 		
+		composition = { name = f__m		levels = { 1 0 0 1 }	} 	# small wharf small militaryshipyard
+		composition = { name = _ps_		levels = { 0 1 1 0 }	}	# small port small shipyard
+		composition = { name = _p_m		levels = { 0 1 0 1 }	}	# small port small militaryshipyard
+		composition = { name = __sm		levels = { 0 0 1 1 }	} 	# small shipyard small militaryshipyard
+		composition = { name = fps_		levels = { 1 1 1 0 }	} 	# small wharf small port small shipyard 	
+		composition = { name = _psm		levels = { 0 1 1 1 }	}	# small port small shipyard small militaryshipyard
+		composition = { name = fp_m		levels = { 1 1 0 1 }	} 	# small wharf small port small militaryshipyard
+		composition = { name = f_sm		levels = { 1 0 1 1 }	} 	# small wharf small shipyard small militaryshipyard	
+		composition = { name = fpsm		levels = { 1 1 1 1 }	} 	# small wharf small port small shipyard small militaryshipyard
+
+		composition = { name = ff___	levels = { 2 0 0 0 }	}	# only large wharf
+		composition = { name = ffp__	levels = { 2 1 0 0 }	} 	# large wharf small port
+		composition = { name = ffps_	levels = { 2 1 1 0 }	} 	# large wharf small port small shipyard
+		composition = { name = ffp_m	levels = { 2 1 0 1 }	} 	# large wharf small port small militaryshipyard
+		composition = { name = ffs__	levels = { 2 0 1 0 }	} 	# large wharf small shipyard
+		composition = { name = ff_sm	levels = { 2 0 1 1 }	} 	# large wharf small shipyard small militaryshipyard
+		composition = { name = ff__m	levels = { 2 0 0 1 }	} 	# large wharf small militaryshipyard
+		composition = { name = ffpsm	levels = { 2 1 1 1 }	} 	# large wharf small port small shipyard small militaryshipyard
+		composition = { name = pp___	levels = { 0 2 0 0 }	}	# only large port
+		composition = { name = ppf__	levels = { 1 2 0 0 }	} 	# large port small wharf
+		composition = { name = ppfs_	levels = { 1 2 1 0 }	} 	# large port small wharf small shipyard
+		composition = { name = ppf_m	levels = { 1 2 0 1 }	} 	# large port small wharf small militaryshipyard
+		composition = { name = pp_s_	levels = { 0 2 1 0 }	}	# large port small shipyard
+		composition = { name = pp_sm	levels = { 0 2 1 1 }	}	# large port small shipyard small militaryshipyard
+		composition = { name = pp__m	levels = { 0 2 0 1 }	}	# large port small militaryshipyard
+		composition = { name = ppfsm	levels = { 1 2 1 1 }	} 	# large port small wharf small shipyard small militaryshipyard
+		composition = { name = ss___	levels = { 0 0 2 0 }	}	# only large shipyard
+		composition = { name = ssf__	levels = { 1 0 2 0 }	} 	# large shipyard small wharf
+		composition = { name = ssfp_	levels = { 1 1 2 0 }	} 	# large shipyard small wharf small port
+		composition = { name = ssf_m	levels = { 1 0 2 1 }	} 	# large shipyard small wharf small militaryshipyard
+		composition = { name = ss_p_	levels = { 0 1 2 1 }	}	# large shipyard small port
+		composition = { name = ss_pm	levels = { 0 1 2 0 }	}	# large shipyard small port small militaryshipyard
+		composition = { name = ss__m	levels = { 0 0 2 1 }	} 	# large shipyard small militaryshipyard
+		composition = { name = ssfpm	levels = { 1 1 2 1 }	} 	# large shipyard small wharf small port small militaryshipyard
+		composition = { name = mm___	levels = { 0 0 0 2 }	}	# only large militaryshipyard
+		composition = { name = mm_p_	levels = { 0 1 0 2 }	}	# large militaryshipyard small port
+		composition = { name = mmfp_	levels = { 1 1 0 2 }	}	# large militaryshipyard small port small wharf
+		composition = { name = mm_ps	levels = { 0 1 1 2 }	}	# large militaryshipyard small port small shipyard
+		composition = { name = mmf__	levels = { 1 0 0 2 }	} 	# large militaryshipyard small wharf
+		composition = { name = mmf_s	levels = { 1 0 1 2 }	} 	# large militaryshipyard small wharf small shipyard
+		composition = { name = mm__s	levels = { 0 0 1 2 }	} 	# large militaryshipyard small shipyard
+		composition = { name = mmfps	levels = { 1 1 1 2 }	} 	# large militaryshipyard small wharf small port small shipyard
+		
+		composition = { name = fp_f		ratios = { 3 1 0 0 }	} 	# large wharves small port
+		composition = { name = fs_f		ratios = { 3 0 1 0 }	} 	# large wharves small shipyard
+		composition = { name = fm_f		ratios = { 3 0 0 1 }	} 	# large wharves small militaryshipyard
+		composition = { name = pf_p		ratios = { 1 3 0 0 }	} 	# large ports small wharf
+		composition = { name = ps_p		ratios = { 0 3 1 0 }	} 	# large ports small shipyard
+		composition = { name = pm_p		ratios = { 0 3 0 1 }	} 	# large ports small militaryshipyard
+		composition = { name = sf_s		ratios = { 1 0 3 0 }	} 	# large shipyard small wharf
+		composition = { name = sp_s		ratios = { 0 1 3 0 }	} 	# large shipyard small port
+		composition = { name = sm_s		ratios = { 0 0 3 1 }	} 	# large shipyard small militaryshipyard	
+		composition = { name = mf_m		ratios = { 1 0 0 3 }	} 	# large militaryshipyard small wharf
+		composition = { name = ms_m		ratios = { 0 0 1 3 }	} 	# large militaryshipyard small shipyard
+		composition = { name = mp_m		ratios = { 0 1 0 3 }	} 	# large militaryshipyard small port
+
+		composition = { name = fsmf		ratios = { 3 0 1 1 }	} 	# large wharves small shipyard small militaryshipyard
+		composition = { name = fpmf		ratios = { 3 1 0 1 }	} 	# large wharves small port small militaryshipyard
+		composition = { name = fpsf		ratios = { 3 1 1 0 }	} 	# large wharves small port small militaryshipyard
+		composition = { name = pfmp		ratios = { 1 3 0 1 }	} 	# large ports small wharf small militaryshipyard
+		composition = { name = psmp		ratios = { 0 3 1 1 }	} 	# large ports small shipyard small militaryshipyard
+		composition = { name = pfsp		ratios = { 0 3 1 1 }	} 	# large ports small shipyard small militaryshipyard
+		composition = { name = sfps		ratios = { 1 1 3 0 }	} 	# large shipyard small port small militaryshipyard
+		composition = { name = spms		ratios = { 0 1 3 1 }	} 	# large shipyard small port small militaryshipyard
+		composition = { name = sfms		ratios = { 1 0 3 1 }	} 	# large shipyard small wharf small militaryshipyard
+		composition = { name = mfpm		ratios = { 1 1 0 3 }	} 	# large militaryshipyard small wharf small port
+		composition = { name = mpsm		ratios = { 0 1 1 3 }	} 	# large militaryshipyard small port small shipyard
+		composition = { name = mfsm		ratios = { 1 0 1 3 }	} 	# large militaryshipyard small wharf small shipyard
+
+		composition = { name = fpsmf	ratios = { 3 1 1 1 }	} 	# large wharves small shipyard small port small militaryshipyard
+		composition = { name = pfsmp	ratios = { 1 3 1 1 }	} 	# large ports small wharf small shipyard small militaryshipyard
+		composition = { name = sfpms	ratios = { 1 1 3 1 }	} 	# large shipyard small port small wharf small militaryshipyard
+		composition = { name = mfpsm	ratios = { 1 1 1 3 }	} 	# large militaryshipyard small shipyard small port small wharf
+	}
+
+	composition_group = { 
+		building_types = { building_whaling_station }
+		levels = { 1 50 }
+		
+		composition = { name = nws		levels = { 0 }	}	# no whaling station
+		composition = { name = ws		levels = { 1 }	}	# small whaling station
+		composition = { name = bws		levels = { 2 }	}	# large whaling station
+	}
+
+	composition_group = { 
+		building_types = { building_naval_base }
+		levels = { 1 5 }
+		
+		composition = { name = nnb		levels = { 0 }	}	# no naval base
+		composition = { name = nb		levels = { 1 }	}	# a naval base
+		composition = { name = bnb		levels = { 2 }	}	# a large naval base
+	}
+
+
+###################################################################################################
+####################################### NAVAL BASE CHECK ##########################################
+###################################################################################################
+	attach = {
+		variant = { entity = balkan_port_centerpiece_01_entity 			building_type = building_port				compositions = { nnb nb }
+			attach = {
+				variant = { entity = balkan_port_centerpiece_02_entity 			building_type = building_port				compositions = { nnb } }
+				variant = { entity = balkan_port_navalbase_01_entity 			building_type = building_naval_base			compositions = { nb } }
+			}
+		}
+		variant = { entity = balkan_port_navalbase_02_entity 			building_type = building_naval_base			compositions = { bnb } }
+	}
+
+
+###################################################################################################
+####################################### SMALL DOCK AS BASE ########################################
+###################################################################################################
+	attach = {
+		variant = { entity = balkan_port_worldmarket_01_entity 				building_type = building_port					compositions = { _p__ fp__ _ps_ _p_m fps_ _psm fp_m fpsm ffp__ ffps_ ffp_m ffpsm ss_p_ ssfp_ ss_pm ssfpm mm_p_ mmfp_ mm_ps mmfps fp_f sp_s mp_m fpmf fpsf sfps spms mfpm mpsm fpsmf sfpms mfpsm }
+			attach = {
+				locator = worldmarket_left		# Custom locator
+				
+				variant = { entity = balkan_port_fishingwharf_01_entity 		building_type = building_fishing_wharf			compositions = { fp__ fps_ fp_m fpsm ffp__ ffps_ ffp_m ffpsm ssfp_ ssfpm mmfp_ mmfps fp_f fpmf fpsf sfps mfpm fpsmf sfpms mfpsm }
+					attach = {
+						locator = fishingwharf_01_left		# Custom locator
+						variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws }
+							attach = {
+								locator = whalingstation_01_right		# Custom locator
+								variant = { entity = balkan_port_fishingwharf_02_entity 		building_type = building_fishing_wharf			compositions = { ffp__ ffps_ ffp_m ffpsm fp_f fpmf fpsf fpsmf } }
+							}
+						}
+						variant = { entity = balkan_port_fishingwharf_02_entity 		building_type = building_fishing_wharf			compositions = { ffp__ ffps_ ffp_m ffpsm fp_f fpmf fpsf fpsmf }
+							attach = {
+								locator = fishingwharf_02_right		# Custom locator
+								variant = { entity = balkan_port_fishingwharf_03_entity 		building_type = building_fishing_wharf			compositions = { ffp__ ffps_ ffp_m ffpsm fp_f fpmf fpsf fpsmf } }
+							}
+						}
+					}
+				}
+				variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws } }
+			}
+			attach = {
+				locator = worldmarket_right		# Custom locator
+				
+				variant = { entity = balkan_port_shipyard_01_entity 		building_type = building_shipyards			compositions = { _ps_ fps_ _psm fpsm ffps_ ffpsm ss_p_ ss_pm ssfpm mm_ps mmfps sp_s fpsf sfps spms mpsm fpsmf sfpms mfpsm }
+					attach = {
+						locator = shipyard_01_right		# Custom locator
+						
+						variant = { entity = balkan_port_shipyard_02_entity 		building_type = building_shipyards			compositions = { ss_p_ ss_pm ssfpm sp_s sfps spms sfpms }
+							attach = {
+								locator = shipyard_02_right		# Custom locator
+								variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { ss_pm ssfpm spms sfpms } }
+							}
+						}
+						variant = { entity = balkan_port_militaryshipyard_01_entity 		building_type = building_military_shipyards			compositions = { mm__s mmfps mpsm mfpsm }
+							attach = {
+								locator = militaryshipyard_01_right		# Custom locator
+								variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { mm__s mmfps mpsm mfpsm } }
+							}
+						}
+						variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { _psm fpsm ffpsm fpsmf } }
+					}
+				}
+				
+				variant = { entity = balkan_port_militaryshipyard_01_entity 		building_type = building_military_shipyards			compositions = { mm_p_ mmfp_ mp_m fpmf mfpm }
+					attach = {
+						locator = militaryshipyard_01_right		# Custom locator
+						variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { mm_p_ mmfp_ mp_m fpmf mfpm } }
+					}
+				}
+				variant = { entity = balkan_port_militaryshipyard_01_entity 		building_type = building_military_shipyards			compositions = { _p_m fp_m } }
+			}
+		}
+	}
+
+###################################################################################################
+####################################### LARGE DOCK AS BASE ########################################
+###################################################################################################
+	attach = {
+		variant = { entity = balkan_port_worldmarket_01_entity 				building_type = building_port					compositions = { pp___ ppf__ ppfs_ ppf_m pp_s_ pp_sm pp__m ppfsm pf_p ps_p pm_p pfmp psmp pfsp pfsmp }
+			attach = {
+				locator = worldmarket_left		# Custom locator
+				variant = { entity = balkan_port_fishingwharf_01_entity 		building_type = building_fishing_wharf			compositions = { ppf__ ppfs_ ppf_m ppfsm pf_p pfmp pfsp pfsmp }
+					attach = {
+						locator = fishingwharf_01_left		# Custom locator
+						variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws } }
+					}
+				}
+				variant = { entity = balkan_port_whalingstation_01_entity 		building_type = building_whaling_station			compositions = { ws } }
+			}
+			attach = {
+				locator = worldmarket_right		# Custom locator
+				variant = { entity = balkan_port_shipyard_01_entity 		building_type = building_shipyards			compositions = { ppfs_ pp_s_ pp_sm ppfsm ps_p psmp pfsp pfsmp }
+					attach = {
+						locator = shipyard_01_right		# Custom locator
+						variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { pp_sm ppfsm psmp pfsmp } }
+					}
+				}
+				variant = { entity = balkan_port_militaryshipyard_02_entity 		building_type = building_military_shipyards			compositions = { ppf_m pp__m pm_p pfmp } }
+			}
+		}
+	}
+}
+
+balkan_skyscraper_01 = {
+	city_graphics_type = balkan_city
+	priority = 10
+
+	trigger = {
+		any_scope_state = {
+			state_has_building_type_levels = {
+				target = bt:building_skyscraper
+				value > 0
+			}
+		}
+	}
+
+	attach = {
+		variant = { entity = balkan_city_skyscraper_01_entity 	building_type = building_skyscraper }
+	}
+}

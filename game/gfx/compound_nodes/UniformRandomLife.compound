@@ -1,0 +1,62 @@
+﻿compound_node={
+	id="UniformRandomLife"
+	graph={
+		Nodes={
+			pdxns:common:GraphInterface={
+				Id=0
+				Node={
+					pins={
+						pin={
+							id=Min
+							label="Min"
+							input=no
+							type=Float
+						}
+						pin={
+							id=Max
+							label="Max"
+							input=no
+							type=Float
+						}
+						pin={
+							id=Seed
+							label="Seed"
+							input=no
+							type=Int
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:randomF={
+				Id=1
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "limit1" LinkedNode = 0 LinkedPin = "Min" }
+					Link = { PinId = "limit2" LinkedNode = 0 LinkedPin = "Max" }
+					Link = { PinId = "seed" LinkedNode = 0 LinkedPin = "Seed" }
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=2
+				Node={
+					pins={
+						pin={
+							id=Size
+							label="Size"
+							input=yes
+							flags=optional
+							type=Float
+						}
+					}
+				}
+				Inputs={
+					Link = { PinId = "Size" LinkedNode = 1 LinkedPin = "value" }
+				}
+			}
+		}
+	}
+
+}

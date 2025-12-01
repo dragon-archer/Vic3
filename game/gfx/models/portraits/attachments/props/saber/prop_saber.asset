@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_saber_mesh"
+	file = "prop_saber.mesh"
+
+	meshsettings = {
+		name = "prop_saberShape"
+		index = 0
+		texture_diffuse = "prop_saber_diffuse.dds"
+		texture_normal = "prop_saber_normal.dds"
+		texture_specular = "prop_saber_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_saber_entity"
+	pdxmesh = "prop_saber_mesh"
+}

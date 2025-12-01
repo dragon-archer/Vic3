@@ -1,0 +1,17 @@
+pdxmesh = {
+	name = "simple_plane_mesh"
+	file = "simple_plane.mesh"
+
+	meshsettings = {
+		name = "pPlaneShape1"
+		index = 0
+		shader = "Grid"
+		shader_file = "gfx/FX/jomini/entity_editor/grid.shader"
+	}
+}
+
+entity = {
+	name = "simple_plane_entity"
+	pdxmesh = "simple_plane_mesh"
+	scale = 5.0
+}

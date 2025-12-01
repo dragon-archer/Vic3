@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_holyscripture_mesh"
+	file = "prop_holyscripture.mesh"
+
+	meshsettings = {
+		name = "prop_holyscriptureShape"
+		index = 0
+		texture_diffuse = "prop_holyscripture_diffuse.dds"
+		texture_normal = "prop_holyscripture_normal.dds"
+		texture_specular = "prop_holyscripture_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_holyscripture_entity"
+	pdxmesh = "prop_holyscripture_mesh"
+}

@@ -1,0 +1,119 @@
+﻿pdxmesh = {
+	name = "balkan_forestry_transportation_03_mesh"
+	file = "balkan_forestry_transportation_03.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 12.0 }
+		lod = { index = 3 percent = 8.0 }
+		lod = { index = 4 percent = 4.0 }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|balkan_forestry_centerpiece_localdecal_0.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_centerpiece_localdecal_diffuse.dds"
+		texture_normal = "balkan_forestry_centerpiece_localdecal_normal.dds"
+		texture_specular = "balkan_forestry_centerpiece_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|balkan_forestry_buildings_0.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_buildings_diffuse.dds"
+		texture_normal = "balkan_forestry_buildings_normal.dds"
+		texture_specular = "balkan_forestry_buildings_properties.dds"
+		texture = { file = "balkan_forestry_tint.dds" index = 5 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" " EMISSIVE_NIGHT_RANDOM" " SOL_VISUALS" " HUB_BUILDING" }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|balkan_forestry_centerpiece_localdecal_1.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_centerpiece_localdecal_diffuse.dds"
+		texture_normal = "balkan_forestry_centerpiece_localdecal_normal.dds"
+		texture_specular = "balkan_forestry_centerpiece_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|balkan_forestry_buildings_1.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_buildings_diffuse.dds"
+		texture_normal = "balkan_forestry_buildings_normal.dds"
+		texture_specular = "balkan_forestry_buildings_properties.dds"
+		texture = { file = "balkan_forestry_tint.dds" index = 5 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" " EMISSIVE_NIGHT_RANDOM" " SOL_VISUALS" " HUB_BUILDING" }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|balkan_forestry_centerpiece_localdecal_2.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_centerpiece_localdecal_diffuse.dds"
+		texture_normal = "balkan_forestry_centerpiece_localdecal_normal.dds"
+		texture_specular = "balkan_forestry_centerpiece_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|balkan_forestry_buildings_2.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_buildings_diffuse.dds"
+		texture_normal = "balkan_forestry_buildings_normal.dds"
+		texture_specular = "balkan_forestry_buildings_properties.dds"
+		texture = { file = "balkan_forestry_tint.dds" index = 5 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" " EMISSIVE_NIGHT_RANDOM" " SOL_VISUALS" " HUB_BUILDING" }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|balkan_forestry_centerpiece_localdecal_3.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_centerpiece_localdecal_diffuse.dds"
+		texture_normal = "balkan_forestry_centerpiece_localdecal_normal.dds"
+		texture_specular = "balkan_forestry_centerpiece_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|balkan_forestry_buildings_3.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_buildings_diffuse.dds"
+		texture_normal = "balkan_forestry_buildings_normal.dds"
+		texture_specular = "balkan_forestry_buildings_properties.dds"
+		texture = { file = "balkan_forestry_tint.dds" index = 5 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" " EMISSIVE_NIGHT_RANDOM" " SOL_VISUALS" " HUB_BUILDING" }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_4|balkan_forestry_centerpiece_localdecal_4.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_centerpiece_localdecal_diffuse.dds"
+		texture_normal = "balkan_forestry_centerpiece_localdecal_normal.dds"
+		texture_specular = "balkan_forestry_centerpiece_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+}
+
+entity = {
+	name = "balkan_forestry_transportation_03_entity"
+	pdxmesh = "balkan_forestry_transportation_03_mesh"
+}

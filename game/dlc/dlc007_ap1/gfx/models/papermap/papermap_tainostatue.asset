@@ -1,0 +1,63 @@
+pdxmesh = {
+	name = "papermap_tainostatue_mesh"
+	file = "papermap_tainostatue.mesh"
+
+	meshsettings = {
+		name = "papermap_tainostatue|LOD_0|mesh|meshShape"
+		index = 0
+		texture_diffuse = "tainostatue_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "shadow_tainoShape"
+		index = 0
+		texture_diffuse = "taino_shadow_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "papermap_tainostatue_entity"
+	pdxmesh = "papermap_tainostatue_mesh"
+
+	cull_radius = 1000
+
+	default_state = "pause"
+
+	state = { 
+		name = "idle" 
+		state_time = 14
+		looping = no
+		
+		start_event = { time = 0 particle = "table/adabey_smoke_01" trigger_once = no keep_particle = yes}	
+
+		next_state = "pause"
+	}
+
+	state = { 
+		chance = 1
+		name = "pause" 
+		state_time = 600
+		looping = no
+
+		next_state = "idle"
+	}
+
+	state = { 
+		chance = 1
+		name = "pause" 
+		state_time = 480
+		looping = no
+
+		next_state = "idle"
+	}
+}

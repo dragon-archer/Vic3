@@ -1,0 +1,107 @@
+﻿pdxmesh = {
+	name = "balkan_forestry_trees_03_mesh"
+	file = "balkan_forestry_trees_03.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 15.0 }
+		lod = { index = 2 percent = 10.0 }
+		lod = { index = 3 percent = 5.0 }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|m_balkan_foliage_0.001"
+		index = 0
+		texture_diffuse = "balkan_foliage_diffuse.dds"
+		texture_normal = "balkan_foliage_normal.dds"
+		texture_specular = "balkan_foliage_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = yes }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_TALL" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|balkan_forestry_centerpiece_localdecal_0.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_centerpiece_localdecal_diffuse.dds"
+		texture_normal = "balkan_forestry_centerpiece_localdecal_normal.dds"
+		texture_specular = "balkan_forestry_centerpiece_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|m_balkan_foliage_1.001"
+		index = 0
+		texture_diffuse = "balkan_foliage_diffuse.dds"
+		texture_normal = "balkan_foliage_normal.dds"
+		texture_specular = "balkan_foliage_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = yes }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_TALL" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|balkan_forestry_centerpiece_localdecal_1.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_centerpiece_localdecal_diffuse.dds"
+		texture_normal = "balkan_forestry_centerpiece_localdecal_normal.dds"
+		texture_specular = "balkan_forestry_centerpiece_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|m_balkan_foliage_2.001"
+		index = 0
+		texture_diffuse = "balkan_foliage_diffuse.dds"
+		texture_normal = "balkan_foliage_normal.dds"
+		texture_specular = "balkan_foliage_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = yes }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_TALL" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|balkan_forestry_centerpiece_localdecal_2.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_centerpiece_localdecal_diffuse.dds"
+		texture_normal = "balkan_forestry_centerpiece_localdecal_normal.dds"
+		texture_specular = "balkan_forestry_centerpiece_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|m_balkan_foliage_3.001"
+		index = 0
+		texture_diffuse = "balkan_foliage_diffuse.dds"
+		texture_normal = "balkan_foliage_normal.dds"
+		texture_specular = "balkan_foliage_properties.dds"
+		texture = { file = "flat_grey_diffuse.dds" index = 3 srgb = yes }
+		shader = "tree"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TREE_TALL" "SOL_VISUALS" "HUB_BUILDING" "BACKLIGHT" }
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|balkan_forestry_centerpiece_localdecal_3.001"
+		index = 0
+		texture_diffuse = "balkan_forestry_centerpiece_localdecal_diffuse.dds"
+		texture_normal = "balkan_forestry_centerpiece_localdecal_normal.dds"
+		texture_specular = "balkan_forestry_centerpiece_localdecal_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+}
+
+entity = {
+	name = "balkan_forestry_trees_03_entity"
+	pdxmesh = "balkan_forestry_trees_03_mesh"
+}

@@ -1,0 +1,68 @@
+pdxmesh = {
+	name = "train_locomotive_gnrstirling_01_mesh"
+	file = "train_locomotive_gnrstirling_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 12.0 }
+		lod = { index = 2 percent = 6.0 }
+		lod = { index = 3 percent = 4.0 }
+		lod = { index = 4 percent = 2.5 }
+	}
+	
+	animation = { id = "moving_animation" type = "train_locomotive_gnrstirling_01_moving.anim" }
+
+	meshsettings = {
+		name = "locomotive_Shape0Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_gnrstirling_diffuse.dds"
+		texture_normal = "train_locomotive_gnrstirling_normal.dds"
+		texture_specular = "train_locomotive_gnrstirling_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "locomotive_Shape1Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_gnrstirling_diffuse.dds"
+		texture_normal = "train_locomotive_gnrstirling_normal.dds"
+		texture_specular = "train_locomotive_gnrstirling_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "locomotive_Shape2Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_gnrstirling_diffuse.dds"
+		texture_normal = "train_locomotive_gnrstirling_normal.dds"
+		texture_specular = "train_locomotive_gnrstirling_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "locomotive_Shape3Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_gnrstirling_diffuse.dds"
+		texture_normal = "train_locomotive_gnrstirling_normal.dds"
+		texture_specular = "train_locomotive_gnrstirling_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "locomotive_Shape4Deformed"
+		index = 0
+		texture_diffuse = "train_locomotive_gnrstirling_diffuse.dds"
+		texture_normal = "train_locomotive_gnrstirling_normal.dds"
+		texture_specular = "train_locomotive_gnrstirling_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

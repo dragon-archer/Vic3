@@ -1,0 +1,429 @@
+entity = 
+{	name = "vfx_ship_idle_wave_entity"
+	default_state = "idle"
+	
+	state = 
+	{
+		name = "idle"
+		state_time = 1.0
+		looping = no
+		event = { time = 0 particle = "ships/ship_idle_wave_01_effect" trigger_once = yes keep_particle = yes}	
+	}
+}
+
+
+entity = {
+	name = "generic_ironclad_ship_entity"
+	pdxmesh = "generic_ironclad_ship_mesh"
+	
+	locator = { name = "locator_chimney_01" position = { 0.0 2.05 -0.3 }	rotation = { 0 0 0} scale = 0.7}
+	locator = { name = "locator_chimney_02" position = { 0.0 2.05 -0.6 }	rotation = { 0 0 0} scale = 0.7}
+
+	locator = { name = "locator_root_01" position = { 0.0 0.02 -2.5 } scale = 1.0 }
+	locator = { name = "locator_root_02" position = { 0.0 0.02 2.5 } scale = 1.0 }
+	locator = { name = "locator_root_03" position = { 0.0 0.02 0.0 } scale = 1.0 }
+		
+	attach = { "locator_chimney_01" = "vfx_entity_warunits_chimneysmoke" }
+	attach = { "locator_chimney_02" = "vfx_entity_warunits_chimneysmoke" }
+		
+	default_state = "idle"
+		
+	state = 
+	{	
+		name = "idle" 
+		animation = "idle_animation"
+		looping = no
+		state_time = 4
+		
+		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ironclad" } }
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_02" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		propagate_state = "idle"
+		next_state = "attack"
+	}
+	
+	# Fires "loc_cannon_r_on_board_01", "loc_cannon_r_on_board_02", "loc_cannon_r_side_01", "loc_cannon_r_side_02"
+	state = 
+	{ 
+		name = "attack" 
+		animation = "attack_animation" 
+		chance = 30 
+		looping = no 
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		
+		event = { time = 2.1 node = "loc_cannon_r_on_board_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.0 node = "loc_cannon_r_on_board_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.1 node = "loc_cannon_r_side_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.0 node = "loc_cannon_r_side_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_02" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 2.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ironclad" } }
+		event = { time = 2.0 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ironclad" } }
+		event = { time = 2.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ironclad" } }
+		event = { time = 2.0 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ironclad" } }
+	
+		propagate_state = "idle"
+		next_state = "attack" 
+	}
+	
+	# Fires "loc_cannon_r_on_board_01", "loc_cannon_r_on_board_02", "loc_cannon_r_side_01", "loc_cannon_r_side_02"
+	state = 
+	{ 
+		name = "attack" 
+		animation = "attack_animation" 
+		chance = 30 
+		looping = no 
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		
+		event = { time = 2.0 node = "loc_cannon_r_side_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.1 node = "loc_cannon_r_side_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_02" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 2.0 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ironclad" } }	
+		event = { time = 2.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ironclad" } }	
+		
+		propagate_state = "idle"
+		next_state = "attack" 
+	}
+	# Fires "loc_cannon_r_on_board_01", "loc_cannon_r_on_board_02", "loc_cannon_r_side_01", "loc_cannon_r_side_02"
+	state = 
+	{ 
+		name = "attack" 
+		animation = "attack_animation" 
+		chance = 30 
+		looping = no 
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		
+		event = { time = 2.0 node = "loc_cannon_r_on_board_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.1 node = "loc_cannon_r_side_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_02" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+	
+		event = { time = 2.0 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ironclad" } }
+		event = { time = 2.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ironclad" } }	
+		
+		propagate_state = "idle"
+		next_state = "attack" 
+	}
+	# Fires "loc_cannon_r_on_board_01", "loc_cannon_r_on_board_02", "loc_cannon_r_side_01", "loc_cannon_r_side_02"
+	state = 
+	{ 
+		name = "attack" 
+		animation = "attack_animation" 
+		chance = 30 
+		looping = no 
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		
+		event = { time = 2.1 node = "loc_cannon_r_side_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_02" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 2.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ironclad" } }
+		
+		propagate_state = "idle"
+		next_state = "attack" 
+	}
+}
+
+entity = {
+	name = "generic_ship_of_the_line_entity"
+	pdxmesh = "generic_ship_of_the_line_mesh"
+	
+	locator = { name = "locator_root_01" position = { 0.0 0.02 -1.1 } scale = 0.1 }
+	locator = { name = "locator_root_02" position = { 0.0 0.02 1.1 }  scale = 0.1 }
+	locator = { name = "locator_root_03" position = { 0.0 0.02 0.0 }  scale = 0.1 }
+	
+	default_state = "idle"
+	
+	state = { 
+		name = "idle" 
+		animation = "idle_animation"
+		looping = no
+		state_time = 4
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+	
+		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }
+		
+		next_state = "attack"
+	}
+	
+	# Fires "loc_cannon_r_on_board_01", "loc_cannon_r_on_board_02", "loc_cannon_r_side_01", "loc_cannon_r_side_02"
+	state = 
+	{ 
+		name = "attack" 
+		animation = "attack_animation" 
+		chance = 30 
+		looping = no 
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		
+		event = { time = 2.1 node = "loc_cannon_r_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.0 node = "loc_cannon_r_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.4 node = "loc_cannon_r_03" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 1.7 node = "loc_cannon_r_04" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.2 node = "loc_cannon_r_05" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_02" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+	
+		event = { time = 2.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }
+		event = { time = 2.0 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }
+		event = { time = 2.4 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }
+		event = { time = 1.7 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }
+		event = { time = 2.2 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }
+		
+		next_state = "attack" 
+	}
+	
+	# Fires "loc_cannon_r_on_board_01", "loc_cannon_r_on_board_02", "loc_cannon_r_side_01", "loc_cannon_r_side_02"
+	state = 
+	{ 
+		name = "attack" 
+		animation = "attack_animation" 
+		chance = 30 
+		looping = no 
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		
+		event = { time = 2.1 node = "loc_cannon_r_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.2 node = "loc_cannon_r_04" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.0 node = "loc_cannon_r_05" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_02" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 2.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }	
+		event = { time = 2.2 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }	
+		event = { time = 2.0 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }	
+		
+		next_state = "attack" 
+	}
+	
+	# Fires "loc_cannon_r_on_board_01", "loc_cannon_r_on_board_02", "loc_cannon_r_side_01", "loc_cannon_r_side_02"
+	state = 
+	{ 
+		name = "attack" 
+		animation = "attack_animation" 
+		chance = 30 
+		looping = no 
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		
+		event = { time = 2.1 node = "loc_cannon_r_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.0 node = "loc_cannon_r_05" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_02" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 2.0 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }	
+		event = { time = 2.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }
+			
+		next_state = "attack" 
+	}
+	
+	
+	# Fires "loc_cannon_r_on_board_01", "loc_cannon_r_on_board_02", "loc_cannon_r_side_01", "loc_cannon_r_side_02"
+	state = 
+	{ 
+		name = "attack" 
+		animation = "attack_animation" 
+		chance = 30 
+		looping = no 
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		
+		event = { time = 2.0 node = "loc_cannon_r_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.1 node = "loc_cannon_r_05" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_02" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 2.0 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }
+		event = { time = 2.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/ship_of_the_line" } }
+		
+		next_state = "attack" 
+	}
+}
+
+entity = {
+	name = "generic_battleship_entity"
+	pdxmesh = "generic_battleship_mesh"
+	
+	locator = { name = "locator_chimney_01" position = { 0.0 2.8 0.55 }	rotation = { 0 0 0} scale = 0.7}
+	locator = { name = "locator_chimney_02" position = { 0.0 2.8 -1.3 }	rotation = { 0 0 0} scale = 0.7}
+	
+	attach = { "locator_chimney_01" = "vfx_entity_warunits_chimneysmoke" }
+	attach = { "locator_chimney_02" = "vfx_entity_warunits_chimneysmoke" }
+	
+	locator = { name = "locator_root_01" position = { 0.0 0.02 -2.5 } scale = 1.0 }
+	locator = { name = "locator_root_02" position = { 0.0 0.02 2.5 } scale = 1.0 }
+	locator = { name = "locator_root_03" position = { 0.0 0.02 0.0 } scale = 1.0 }
+	locator = { name = "locator_root_04" position = { 0.0 0.02 5.0 } scale = 1.0 }
+	locator = { name = "locator_root_05" position = { 0.0 0.02 -5.0 } scale = 1.0 }
+	locator = { name = "locator_root_06" position = { 0.0 0.02 7.0 } scale = 1.0 }
+	
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		animation = "idle_animation"
+		looping = no
+
+		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" } }
+
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_04" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_05" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_06" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		
+		propagate_state = "idle"
+		next_state = "attack"
+	}
+
+	# Fires "loc_cannon_mid_03" and "loc_cannon_ps_04"
+	state = 
+	{
+		name = "attack" 
+		animation = "attack_1_animation" 
+		chance = 30 
+		looping = no 
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_04" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_05" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_06" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+				
+		event = { time = 1.8 node = "loc_cannon_mid_03" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.1 node = "loc_cannon_ps_04" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 1.8 node = "locator_root_05" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 1.8 keep_sound = no trigger_once = no sound = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 2.1 keep_sound = no trigger_once = no sound = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.8 keep_sound = no trigger_once = no sound = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.8 keep_sound = no trigger_once = no sound = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.8 keep_sound = no trigger_once = no sound = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+
+		propagate_state = "idle"
+		next_state = "attack" 
+	} 
+
+	# Fires "loc_cannon_ps_01", "loc_cannon_ps_02", "loc_cannon_ps_03", "loc_cannon_ps_04"
+	state = 
+	{ 	
+		name = "attack" 
+		animation = "attack_2_animation" 
+		chance = 30 
+		looping = no 
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_04" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_05" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_06" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+				
+		event = { time = 2.0 node = "loc_cannon_ps_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 1.9 node = "loc_cannon_ps_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.1 node = "loc_cannon_ps_03" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 1.9 node = "loc_cannon_ps_04" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 1.8 node = "locator_root_05" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 2.0 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.9 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 2.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.9 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.8 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.8 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.8 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		
+		propagate_state = "idle"
+		next_state = "attack" 
+	} 
+	
+	# Fires "loc_cannon_mid_01", "loc_cannon_mid_02", "loc_cannon_ps_01"
+	state = 
+	{ 
+		name = "attack" 
+		animation = "attack_3_animation" 
+		chance = 30 
+		looping = no 
+		
+		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_04" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_05" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_root_06" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+				
+		event = { time = 2.0 node = "loc_cannon_mid_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 1.9 node = "loc_cannon_mid_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 2.1 node = "loc_cannon_ps_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
+		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_03" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		event = { time = 1.8 node = "locator_root_05" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
+		
+		event = { time = 2.0 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.9 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 2.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.8 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.8 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+		event = { time = 1.8 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/ships/battleship" }}
+	
+		propagate_state = "idle"
+		next_state = "attack" 
+	} 
+}

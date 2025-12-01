@@ -1,0 +1,169 @@
+﻿pdxmesh = {
+	name = "balkan_urban_residential_rich_03_mesh"
+	file = "balkan_urban_residential_rich_03.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 12.0 }
+		lod = { index = 3 percent = 8.0 }
+		lod = { index = 4 percent = 4.0 }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|balkan_urban_residential_rich_localdecal_03_0.001"
+		index = 0
+		texture_diffuse = "balkan_urban_residential_rich_localdecal_03_diffuse.dds"
+		texture_normal = "balkan_urban_residential_rich_localdecal_03_normal.dds"
+		texture_specular = "balkan_urban_residential_rich_localdecal_03_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|worlddecal_0.001"
+		index = 0
+		texture_diffuse = "european_decal_city_diffuse.dds"
+		texture_normal = "european_decal_city_normal.dds"
+		texture_specular = "european_decal_city_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|balkan_urban_residential_0.001"
+		index = 0
+		texture_diffuse = "balkan_urban_residential_diffuse.dds"
+		texture_normal = "balkan_urban_residential_normal.dds"
+		texture_specular = "balkan_urban_residential_properties.dds"
+		texture = { file = "balkan_urban_residential_diffuse.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|balkan_urban_residential_rich_localdecal_03_1.001"
+		index = 0
+		texture_diffuse = "balkan_urban_residential_rich_localdecal_03_diffuse.dds"
+		texture_normal = "balkan_urban_residential_rich_localdecal_03_normal.dds"
+		texture_specular = "balkan_urban_residential_rich_localdecal_03_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|worlddecal_1.001"
+		index = 0
+		texture_diffuse = "european_decal_city_diffuse.dds"
+		texture_normal = "european_decal_city_normal.dds"
+		texture_specular = "european_decal_city_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|balkan_urban_residential_1.001"
+		index = 0
+		texture_diffuse = "balkan_urban_residential_diffuse.dds"
+		texture_normal = "balkan_urban_residential_normal.dds"
+		texture_specular = "balkan_urban_residential_properties.dds"
+		texture = { file = "balkan_urban_residential_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|balkan_urban_residential_rich_localdecal_03_2.001"
+		index = 0
+		texture_diffuse = "balkan_urban_residential_rich_localdecal_03_diffuse.dds"
+		texture_normal = "balkan_urban_residential_rich_localdecal_03_normal.dds"
+		texture_specular = "balkan_urban_residential_rich_localdecal_03_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|worlddecal_2.001"
+		index = 0
+		texture_diffuse = "european_decal_city_diffuse.dds"
+		texture_normal = "european_decal_city_normal.dds"
+		texture_specular = "european_decal_city_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|balkan_urban_residential_2.001"
+		index = 0
+		texture_diffuse = "balkan_urban_residential_diffuse.dds"
+		texture_normal = "balkan_urban_residential_normal.dds"
+		texture_specular = "balkan_urban_residential_properties.dds"
+		texture = { file = "balkan_urban_residential_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|worlddecal_3.001"
+		index = 0
+		texture_diffuse = "european_decal_city_diffuse.dds"
+		texture_normal = "european_decal_city_normal.dds"
+		texture_specular = "european_decal_city_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|balkan_urban_residential_3.001"
+		index = 0
+		texture_diffuse = "balkan_urban_residential_diffuse.dds"
+		texture_normal = "balkan_urban_residential_normal.dds"
+		texture_specular = "balkan_urban_residential_properties.dds"
+		texture = { file = "balkan_urban_residential_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_4|worlddecal_4.001"
+		index = 0
+		texture_diffuse = "european_decal_city_diffuse.dds"
+		texture_normal = "european_decal_city_normal.dds"
+		texture_specular = "european_decal_city_properties.dds"
+		texture = { file = "decal_city_mask_01.dds" index = 3 }
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_4|balkan_urban_residential_4.001"
+		index = 0
+		texture_diffuse = "balkan_urban_residential_diffuse.dds"
+		texture_normal = "balkan_urban_residential_normal.dds"
+		texture_specular = "balkan_urban_residential_properties.dds"
+		texture = { file = "balkan_urban_residential_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "balkan_urban_residential_rich_03_entity"
+	pdxmesh = "balkan_urban_residential_rich_03_mesh"
+}

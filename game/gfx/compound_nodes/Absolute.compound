@@ -1,0 +1,92 @@
+﻿compound_node={
+	id="Absolute"
+	graph={
+		Nodes={
+			pdxns:logic:SelectF={
+				Id=0
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "select" LinkedNode = 4 LinkedPin = "value" }
+					Link = { PinId = "true_value" LinkedNode = 2 LinkedPin = "value" }
+					Link = { PinId = "false_value" LinkedNode = 3 LinkedPin = "value" }
+				}
+			}
+			pdxns:values:Float={
+				Id=1
+				Node={
+					value=0.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:values:Float={
+				Id=2
+				Node={
+					value=1.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:values:Float={
+				Id=3
+				Node={
+					value=-1.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:GreaterThanEqualF={
+				Id=4
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "op1" LinkedNode = 7 LinkedPin = "input" }
+					Link = { PinId = "op2" LinkedNode = 1 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=8
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 0 LinkedPin = "selected_value" }
+					Link = { PinId = "factor2" LinkedNode = 7 LinkedPin = "input" }
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=11
+				Node={
+					pins={
+						pin={
+							id=output
+							label="Output"
+							input=yes
+							flags=optional
+							type=Float
+						}
+					}
+				}
+				Inputs={
+					Link = { PinId = "output" LinkedNode = 8 LinkedPin = "product" }
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=7
+				Node={
+					pins={
+						pin={
+							id=input
+							label="Input"
+							input=no
+							type=Float
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+		}
+	}
+
+}

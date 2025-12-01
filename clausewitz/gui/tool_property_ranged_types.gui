@@ -1,0 +1,122 @@
+types ToolPropertyRangedTypes
+{
+    type tools_property_ranged_value_float = tools_property {
+		blockoverride "content"
+		{
+			using = tools_property_ranged_value
+			blockoverride "callbacks"
+			{
+				using = tools_property_ranged_value_callbacks_float
+			}
+
+			blockoverride "editbox"
+			{
+				raw_text = "[ToolsPropertyRangedValueFloat.GetValue]"
+			}
+
+		}
+	}
+	
+	type tools_property_ranged_value_int = tools_property {
+		blockoverride "content"
+		{
+			using = tools_property_ranged_value
+			blockoverride "callbacks"
+			{
+				using = tools_property_ranged_value_callbacks_int
+			}
+
+			blockoverride "editbox"
+			{
+				raw_text = "[ToolsPropertyRangedValueInt.GetValue]"
+			}
+
+		}
+	}
+
+    type dialog_property_ranged_value_float = vertical_dialog_property {
+		blockoverride "content"
+		{
+			using = tools_property_ranged_value
+			blockoverride "callbacks"
+			{
+				using = tools_property_ranged_value_callbacks_float
+			}
+
+			blockoverride "editbox"
+			{
+				raw_text = "[ToolsPropertyRangedValueFloat.GetValue]"
+			}
+
+		}
+	}
+
+	type dialog_property_ranged_value_int = vertical_dialog_property {
+		blockoverride "content"
+		{
+			using = tools_property_ranged_value
+			blockoverride "callbacks"
+			{
+				using = tools_property_ranged_value_callbacks_int
+			}
+
+			blockoverride "editbox"
+			{
+				raw_text = "[ToolsPropertyRangedValueInt.GetValue]"
+			}
+
+		}
+	}
+}
+
+
+template tools_property_ranged_value
+{
+	hbox = {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = preferred
+		spacing = 4
+
+		editor_slider = {
+			layoutpolicy_horizontal = growing
+			layoutpolicy_vertical = fixed
+			
+			block "callbacks"{}
+			tracknavigation = direct
+		}
+
+		block "value_textbox"
+		{
+			editor_textbox = {
+				block "editbox"{}
+				autoresize = no
+				size = { 20 20 }
+				align = right|nobaseline
+			}
+		}
+	}
+}
+
+template tools_property_ranged_value_callbacks_float
+{
+	min = "[ToolsPropertyRangedValueFloat.GetMin]"
+	max = "[ToolsPropertyRangedValueFloat.GetMax]"
+	step = "[ToolsPropertyRangedValueFloat.GetStep]"
+	wheelstep = "[ToolsPropertyRangedValueFloat.GetStep]"
+	value = "[ToolsPropertyRangedValueFloat.GetValue]"
+	onchangestart = "[ToolsPropertyRangedValueFloat.OnSetValueStart( PdxGuiWidget.AccessSelf )]"
+	onvaluechanged = "[ToolsPropertyRangedValueFloat.SetValue]"
+	onchangefinish = "[ToolsPropertyRangedValueFloat.OnSetValueEnd( PdxGuiWidget.AccessSelf )]"
+}
+
+template tools_property_ranged_value_callbacks_int
+{
+	min = "[ToolsPropertyRangedValueInt.GetMin]"
+	max = "[ToolsPropertyRangedValueInt.GetMax]"
+	step = "[ToolsPropertyRangedValueInt.GetStep]"
+	wheelstep = "[ToolsPropertyRangedValueInt.GetStep]"
+	value = "[ToolsPropertyRangedValueInt.GetValue]"
+	onchangestart = "[ToolsPropertyRangedValueInt.OnSetValueStart( PdxGuiWidget.AccessSelf )]"
+	onvaluechanged = "[ToolsPropertyRangedValueInt.SetValue]"
+	onchangefinish = "[ToolsPropertyRangedValueInt.OnSetValueEnd( PdxGuiWidget.AccessSelf )]"
+}

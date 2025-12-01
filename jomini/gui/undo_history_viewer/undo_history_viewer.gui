@@ -1,0 +1,53 @@
+types "UndoHistoryViewer" {
+
+	type undo_button = toolbox_button {
+		name = "undo_btn"
+		shortcut = tools_undo
+		onclick = "[UndoStack.Undo]"
+		enabled = "[UndoStack.IsUndoable]"
+		raw_tooltip = "Undo"
+		toolbox_icon = {
+			texture = "gfx/undo_history_viewer/undo.png"
+		}
+	}
+
+	type redo_button = toolbox_button {
+		name = "redo_btn"
+		shortcut = tools_redo
+		onclick = "[UndoStack.Redo]"
+		enabled = "[UndoStack.IsRedoable]"
+		raw_tooltip = "Redo"
+		toolbox_icon = {
+			texture = "gfx/undo_history_viewer/redo.png"
+		}
+	}
+
+	type history_button = toolbox_button {
+	    visible = no # Not yet supported, but ready to go when it is.
+		name = "history_btn"
+		shortcut = tools_history
+		raw_tooltip = "Toggle undo history window."
+		toolbox_icon = {
+			texture = "gfx/undo_history_viewer/history.png"
+		}
+	}
+
+	type history_toolbar = hbox {
+		block "properties"{}
+		undo_button = {}
+		redo_button = {}
+		history_button = {
+			block "history_btn" {}
+		}
+	}
+}
+
+# This widget is empty right now, because it's WIP.
+# See JIRA: PSGE-2378
+vbox = {
+	name = "undo_history_viewer"
+    layoutpolicy_vertical = preferred
+    layoutpolicy_horizontal = expanding
+	spacing = 2
+    minimumsize = { 200 320 }
+}

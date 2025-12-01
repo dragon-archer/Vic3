@@ -1,0 +1,31 @@
+﻿pdxmesh = {
+	name = "ip3_coin_mesh"
+	file = "ip3_coin.mesh"
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|m_shadow_0.001"
+		index = 0
+		texture_diffuse = "ip3_coin_shadow_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|m_coin_0.001"
+		index = 0
+		texture_diffuse = "ip3_coin_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "ip3_coin_entity"
+	pdxmesh = "ip3_coin_mesh"
+}

@@ -1,0 +1,38 @@
+pdxmesh = {
+	name = "male_civilian_coat_arabic_01_mesh"
+	file = "male_civilian_coat_arabic_01.mesh"
+	
+	blend_shape = { id = "male_civilian_coat_arabic_01_bs_fat"				type = "male_civilian_coat_arabic_01_bs_fat.mesh" }
+	blend_shape = { id = "male_civilian_coat_arabic_01_bs_gaunt"			type = "male_civilian_coat_arabic_01_bs_gaunt.mesh" }
+	blend_shape = { id = "male_civilian_coat_arabic_01_bs_old"				type = "male_civilian_coat_arabic_01_bs_old.mesh" }
+	blend_shape = { id = "male_civilian_coat_arabic_01_bs_infant"			type = "male_civilian_coat_arabic_01_bs_infant.mesh" }
+
+	meshsettings = {
+		name = "male_civilian_coat_arabic_01Shape"
+		index = 0
+		texture_diffuse = "male_civilian_coat_arabic_01_diffuse.dds"
+		texture_normal = "male_civilian_coat_arabic_01_normal.dds"
+		texture_specular = "male_civilian_coat_arabic_01_properties.dds"
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "male_civilian_coat_arabic_01_entity"
+	pdxmesh = "male_civilian_coat_arabic_01_mesh"
+	
+		attribute = { name = "body_bs_fat"					blend_shape = "male_civilian_coat_arabic_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_civilian_coat_arabic_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_civilian_coat_arabic_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_civilian_coat_arabic_01_bs_infant" }
+
+	game_data = {
+        portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_coats/arabic/civillian_01/male_civilian_coat_arabic_01_masks.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_civilian_coat_arabic_01"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+        }
+	}
+}

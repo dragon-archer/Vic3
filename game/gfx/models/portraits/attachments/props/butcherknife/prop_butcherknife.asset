@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_butcherknife_mesh"
+	file = "prop_butcherknife.mesh"
+
+	meshsettings = {
+		name = "prop_butcherknifeShape"
+		index = 0
+		texture_diffuse = "prop_butcherknife_diffuse.dds"
+		texture_normal = "prop_butcherknife_normal.dds"
+		texture_specular = "prop_butcherknife_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_butcherknife_entity"
+	pdxmesh = "prop_butcherknife_mesh"
+}

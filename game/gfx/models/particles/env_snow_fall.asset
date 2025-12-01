@@ -1,0 +1,43 @@
+entity = 
+{
+	name = "env_snow_fall"
+	pdxmesh = "cube_test_mesh"
+	scale = 1
+	locator = { name = part1 }
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" state_time = 5 looping = yes 
+		event = 
+		{ 
+			time = 0 
+			node = "part1" 
+			particle = "snow_fall" 
+			trigger_once = yes 
+			keep_particle = yes
+		}
+		event = { sound = { soundeffect = "event:/SFX/VFX/snow" } }
+	}
+}
+
+entity = 
+{
+	name = "env_snow_fall_small"
+	pdxmesh = "cube_test_mesh"
+	scale = 1
+	locator = { name = part1 }
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" state_time = 5 looping = yes 
+		event = 
+		{ 
+			time = 0 
+			node = "part1" 
+			particle = "snow_fall_small" 
+			trigger_once = yes 
+			keep_particle = yes
+		}
+		event = { sound = { soundeffect = "event:/SFX/VFX/snow" } }
+	}
+}

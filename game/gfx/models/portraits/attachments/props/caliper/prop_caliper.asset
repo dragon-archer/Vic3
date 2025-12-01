@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_caliper_mesh"
+	file = "prop_caliper.mesh"
+
+	meshsettings = {
+		name = "|prop_caliper|prop_caliper|prop_caliperShape"
+		index = 0
+		texture_diffuse = "prop_caliper_diffuse.dds"
+		texture_normal = "prop_caliper_normal.dds"
+		texture_specular = "prop_caliper_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_caliper_entity"
+	pdxmesh = "prop_caliper_mesh"
+}

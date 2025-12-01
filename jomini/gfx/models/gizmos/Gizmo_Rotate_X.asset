@@ -1,0 +1,17 @@
+pdxmesh = {
+	name = "Gizmo_Rotate_X_mesh"
+	file = "Gizmo_Rotate_X.mesh"
+
+	meshsettings = {
+		name = "Gizmo_Rotate_XShape"
+		index = 0
+		texture_diffuse = "gizmos.dds"
+		shader = "Gizmo"
+		shader_file = "gfx/FX/jomini/gizmos/gizmos.shader"
+	}
+}
+
+entity = {
+	name = "Gizmo_Rotate_X_entity"
+	pdxmesh = "Gizmo_Rotate_X_mesh"
+}

@@ -1,0 +1,42 @@
+entity = 
+{
+	name = "env_geyser_large"
+	pdxmesh = "cube_test_mesh"
+	locator = { name = part1 }
+	default_state = "idle"
+	scale = 0.15
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 15
+		looping = no
+		chance = 1
+		next_state = "idle"
+
+		event = 
+		{ 
+			time = 0 
+			node = "part1"
+			particle = "geyser"
+			trigger_once = no
+			keep_particle = no
+		}
+
+		start_event = { sound  = { soundeffect = "event:/SFX/VFX/geyser" } keep_sound = yes }
+		
+	}
+	
+	state =
+	{
+		name = "idle"
+		state_time = 13.5
+		looping = no
+		chance = 1
+		next_state = "idle"
+		event =
+		{
+			time = 0
+			node = "part1"
+		}
+	}
+}

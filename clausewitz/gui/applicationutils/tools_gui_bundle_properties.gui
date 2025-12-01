@@ -1,0 +1,227 @@
+types ToolsProperyBundleTypes
+{
+	type bundle_standard_multiple_values_overlay_icon = icon {
+		alwaystransparent = yes
+		size = { 100% 100% }
+		maximumsize = { -1 1 }
+		texture = "gfx/editor_gui/editor_white_pixel.png"
+		parentanchor = vcenter
+	}
+
+	type bundle_standard_multiple_values_overlay = margin_widget {
+		size = { 100% 100% }
+		margin_right = 8
+		margin_left = 8
+
+		bundle_standard_multiple_values_overlay_icon = { }
+	}
+
+	type bundle_bool_multiple_values_overlay = icon {
+		alwaystransparent = yes
+		size = { 100% 100% }
+		texture = "gfx/editor_gui/editor_icon_removeproperty.dds"
+		spriteborder = { 4 5 }
+		spritetype = CorneredTiled
+		parentanchor = center
+	}
+
+	type bundle_color_multiple_values_overlay = icon {
+		alwaystransparent = yes
+		size = { 100% 100% }
+		texture = "gfx/editor_gui/editor_icon_checkerbox.png"
+		spritetype = CorneredTiled
+	}
+
+	type bundle_enum_multiple_values_overlay = bundle_standard_multiple_values_overlay {
+		margin_right = 24
+	}
+
+	type bundle_property_bool = dialog_property {
+		blockoverride "content"
+		{
+			hbox = {
+				checkbutton = {
+					gfxtype = checkbuttongfx
+					shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
+					texture = "gfx/editor_gui/editor_checkbox.dds"
+					framesize = { 16 16 }
+					enabled = "[ToolProperty.IsActive]"
+					checked = "[ToolPropertyBool.IsEnabled]"
+					onclick = "[ToolPropertyBool.SetEnabled(Or(ToolsUndoableValueBundleBool.ShouldDisplayMixedValuesOverlay, Not(ToolPropertyBool.IsEnabled)))]"
+
+					bundle_bool_multiple_values_overlay = {
+						visible = "[ToolsUndoableValueBundleBool.ShouldDisplayMixedValuesOverlay]"
+					}
+				}
+				block "extension" {}
+			}
+		}
+	}
+
+	type bundle_property_string = dialog_property {
+		blockoverride "content"
+		{
+			hbox = {
+				editor_textinput = {
+					using = dialog_property_size
+					text = "[ToolsUndoableValueBundleString.GetTextboxDisplayValue]"
+					oneditingstart = "[ToolsUndoableValueBundleString.SetIsFocused('(bool)yes')]"
+					onfocusout = "[ToolsUndoableValueBundleString.SetIsFocused('(bool)no')]"
+					onfocusout = "[ToolsUndoableValueBundleString.SetValueOnFocusOut]"
+					onreturnpressed = "[ToolPropertyString.SetString]"
+
+					bundle_standard_multiple_values_overlay = {
+						visible = "[ToolsUndoableValueBundleString.ShouldDisplayMixedValuesOverlay]"
+					}
+				}
+				block "extension" {}
+			}
+		}
+	}
+
+	type bundle_property_cstring = dialog_property {
+		blockoverride "content"
+		{
+			hbox = {
+				editor_textinput = {
+					using = dialog_property_size
+					text = "[ToolsUndoableValueBundleCString.GetTextboxDisplayValue]"
+					oneditingstart = "[ToolsUndoableValueBundleCString.SetIsFocused('(bool)yes')]"
+					onfocusout = "[ToolsUndoableValueBundleCString.SetIsFocused('(bool)no')]"
+					onfocusout = "[ToolsUndoableValueBundleCString.SetValueOnFocusOut]"
+					onreturnpressed = "[ToolPropertyCString.SetString]"
+
+					bundle_standard_multiple_values_overlay = {
+						visible = "[ToolsUndoableValueBundleCString.ShouldDisplayMixedValuesOverlay]"
+					}
+				}
+				block "extension" {}
+			}
+		}
+	}
+	
+	type bundle_property_float = dialog_property {
+		blockoverride "content"
+		{
+			hbox = {
+				editor_textinput = {
+					using = dialog_property_size
+					text = "[ToolsUndoableValueBundleFloat.GetTextboxDisplayValue]"
+					oneditingstart = "[ToolsUndoableValueBundleFloat.SetIsFocused('(bool)yes')]"
+					onfocusout = "[ToolsUndoableValueBundleFloat.SetIsFocused('(bool)no')]"
+					onfocusout = "[ToolsUndoableValueBundleFloat.SetValueOnFocusOut]"
+					onreturnpressed = "[ToolPropertyFloat.SetFloat]"
+
+					bundle_standard_multiple_values_overlay = {
+						visible = "[ToolsUndoableValueBundleFloat.ShouldDisplayMixedValuesOverlay]"
+					}
+				}
+				block "extension" {}
+			}
+		}
+	}
+	
+	type bundle_property_int = dialog_property {
+		blockoverride "content"
+		{
+			hbox = {
+				editor_textinput = {
+					using = dialog_property_size
+					text = "[ToolsUndoableValueBundleInt.GetTextboxDisplayValue]"
+					oneditingstart = "[ToolsUndoableValueBundleInt.SetIsFocused('(bool)yes')]"
+					onfocusout = "[ToolsUndoableValueBundleInt.SetIsFocused('(bool)no')]"
+					onfocusout = "[ToolsUndoableValueBundleInt.SetValueOnFocusOut]"
+					onreturnpressed = "[ToolPropertyInt.SetInt]"
+
+					bundle_standard_multiple_values_overlay = {
+						visible = "[ToolsUndoableValueBundleInt.ShouldDisplayMixedValuesOverlay]"
+					}
+				}
+				block "extension" {}
+			}
+		}
+	}
+	
+	type bundle_property_uint = dialog_property {
+		blockoverride "content"
+		{
+			hbox = {
+				editor_textinput = {
+					using = dialog_property_size
+					text = "[ToolsUndoableValueBundleUint.GetTextboxDisplayValue]"
+					oneditingstart = "[ToolsUndoableValueBundleUint.SetIsFocused('(bool)yes')]"
+					onfocusout = "[ToolsUndoableValueBundleUint.SetIsFocused('(bool)no')]"
+					onfocusout = "[ToolsUndoableValueBundleUint.SetValueOnFocusOut]"
+					onreturnpressed = "[ToolPropertyUint.SetUint]"
+
+					bundle_standard_multiple_values_overlay = {
+						visible = "[ToolsUndoableValueBundleUint.ShouldDisplayMixedValuesOverlay]"
+					}
+				}
+				block "extension" {}
+			}
+		}
+	}
+
+	type bundle_property_enum = dialog_property {
+		blockoverride "content"
+		{
+			hbox = {
+				dropdown = {
+					name = "tools_property_enum_dropdown"
+					using = dialog_property_size
+					using = settings_dropdown
+					datamodel = "[CPdxEnumValue.GetDropdownEntries]"
+					onselectionchanged = "[CPdxEnumValue.SetDropdownValueIndex]"
+					selectedindex = "[CPdxEnumValue.GetDropdownValueIndex]"
+					blockoverride "dropdown_item_size" { size = { 220 20 } }
+					blockoverride "dropdown_list_position" { position = { 0 20 } }
+					blockoverride "dropdown_gridbox_size" { addcolumn = 220  addrow = 20 }
+					blockoverride "dropdown_item_text" { text = "[CString.GetString]" }
+					blockoverride "dropdown_active_item_text"
+					{
+						text = "[CPdxEnumValue.GetValueString]"
+						bundle_enum_multiple_values_overlay = {
+							visible = "[CPdxEnumValue.AreBundleValuesMixed]"
+						}
+					}
+				}
+				block "extension" {}
+			}
+		}
+	}
+	
+	type bundle_property_color = dialog_property {
+		blockoverride "content"
+		{
+			hbox = {
+				tools_colorpicker = {
+					color = "[ToolPropertyColor.GetColor]"
+					oneditingfinished = "[ToolPropertyColor.SetColor]"
+
+					bundle_color_multiple_values_overlay = {
+						visible = "[ToolsUndoableValueBundleColor.ShouldDisplayMixedValuesOverlay]"
+					}
+				}
+				block "extension" {}
+			}
+		}
+	}
+	
+	type bundle_property_ccolor = dialog_property {
+		blockoverride "content"
+		{
+			hbox = {
+				tools_colorpicker = {
+					color = "[ToolPropertyCColor.GetCColor]"
+					oneditingfinished = "[ToolPropertyCColor.SetCColor]"
+
+					bundle_color_multiple_values_overlay = {
+						visible = "[ToolsUndoableValueBundleCColor.ShouldDisplayMixedValuesOverlay]"
+					}
+				}
+				block "extension" {}
+			}
+		}
+	}
+}

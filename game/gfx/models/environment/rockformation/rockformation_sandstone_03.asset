@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "rockformation_sandstone_03_mesh"
+	file = "rockformation_sandstone_03.mesh"
+
+	meshsettings = {
+		name = "rockformation_sandstone_03|LOD_0|mesh|meshShape"
+		index = 0
+		texture_diffuse = "rockformation_sandstone_01_diffuse.dds"
+		texture_normal = "rockformation_sandstone_01_normal.dds"
+		texture_specular = "rockformation_sandstone_01_properties.dds"
+		shader = "snap_to_terrain_alpha_to_coverage_colormap_singlesun"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "rockformation_sandstone_03_entity"
+	pdxmesh = "rockformation_sandstone_03_mesh"
+}

@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_large_sack_mesh"
+	file = "prop_large_sack.mesh"
+
+	meshsettings = {
+		name = "prop_large_sackShape"
+		index = 0
+		texture_diffuse = "prop_large_sack_diffuse.dds"
+		texture_normal = "prop_large_sack_normal.dds"
+		texture_specular = "prop_large_sack_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_large_sack_entity"
+	pdxmesh = "prop_large_sack_mesh"
+}

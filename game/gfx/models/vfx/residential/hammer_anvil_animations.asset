@@ -1,0 +1,199 @@
+pdxmesh = {
+	name = "hammer_anvil_animations_mesh"
+	file = "hammer_anvil_animations.mesh"
+
+	animation = { id = "start_animation" type = "hammer_anvil_animations_start.anim" }
+	animation = { id = "end_animation" type = "hammer_anvil_animations_end.anim" }
+
+	meshsettings = {
+		name = "hammer_anvil1Shape"
+		index = 0
+		texture_diffuse = "hammer_anvil_diffuse.dds"
+		texture_normal = "hammer_anvil_normal.dds"
+		texture_specular = "hammer_anvil_properties.dds"
+		
+		shader = "standard"
+	}
+	
+	#locator_hit_effect
+	#particle_hammer_anvil_hit
+}
+
+entity = {
+	name = "vfx_entity_hammer_anvil_promote"
+	
+	locator = { name = "root" position = { 0 0 0 } rotation = { 0 0 0 } }
+	
+	default_state = "start"
+	
+	state = {
+		name = "start"
+				
+		looping = no
+		
+		state_time = 1.25
+		
+		start_event = 
+		{ 
+			node = root 
+			particle = "particle_promote_start" 
+			keep_particle = no 
+			trigger_once = yes 
+		}
+			
+		
+		event = 
+		{ 
+			time = 0.0
+			node = "root" 
+			entity = "start_hammer_anvil"
+			attachment_id = "attach_start_hammer_anvil" 
+			entity_fade_speed = 4.0 
+		}
+		
+		event = 
+		{ 
+			time = 0.9
+			node = "root" 
+			remove_attachment = "attach_start_hammer_anvil" 
+			entity_fade_speed = 4.0 
+		}
+	}
+	
+	cull_radius = 150
+}
+
+entity = {
+	name = "vfx_entity_hammer_anvil_demote"
+	
+	locator = { name = "root" position = { 0 0 0 } rotation = { 0 0 0 } }
+	
+	default_state = "start"
+	
+	state = {
+		name = "start"
+		
+		looping = no
+		
+		state_time = 10.0
+		
+		start_event = 
+		{ 
+			node = root 
+			particle = "particle_demote_start" 
+			keep_particle = yes 
+			trigger_once = yes 
+		}
+			
+		
+		event = 
+		{ 
+			time = 0.0
+			node = "root" 
+			entity = "end_hammer_anvil"
+			attachment_id = "attach_start_hammer_anvil" 
+			entity_fade_speed = 4.0 
+		}
+		
+		event = 
+		{ 
+			time = 1.0
+			node = "root" 
+			remove_attachment = "attach_start_hammer_anvil" 
+			entity_fade_speed = 3.5
+		}
+	}
+	
+	cull_radius = 150
+}
+
+entity = {
+	name = "start_hammer_anvil"
+	pdxmesh = "hammer_anvil_animations_mesh"
+	
+	default_state = "start"
+	state = {
+		name = "start"
+		animation = "start_animation"
+		looping = yes
+		event = 
+		{ 
+			time = 0.05
+			node = "locator_hit_effect" 
+			particle = "particle_hammer_anvil_hit"
+			trigger_once = no 
+			keep_particle = yes
+		}
+		event = 
+		{ 
+			time = 0.4
+			node = "locator_hit_effect" 
+			particle = "particle_hammer_anvil_hit"
+			trigger_once = no 
+			keep_particle = no
+		}
+		
+		#next_state = "end"
+	}
+	
+	state = {
+		name = "end"
+		looping = yes
+		animation = "end_animation"
+		#next_state = "start"
+	}
+}
+
+entity = {
+	name = "end_hammer_anvil"
+	pdxmesh = "hammer_anvil_animations_mesh"
+	
+	default_state = "start"
+	
+	state = {
+		name = "start"
+		animation = "end_animation"
+		looping = yes
+		
+		event = 
+		{ 
+			time = 0.6
+			node = "locator_hit_effect" 
+			particle = "particle_hammer_anvil_hit_break"
+			trigger_once = yes 
+			keep_particle = yes
+		}	
+	}
+}
+
+entity = {
+	name = "residential_promotion_entity"
+	cull_radius = 150
+	locator = { name = "loc" position = { 0 2 0 } }
+	
+	default_state = "start"
+
+	state = {
+		name = "start"
+		state_time = 3
+		looping = no
+		event = { time = 0 node = "loc" entity = "vfx_entity_hammer_anvil_promote" }
+		start_event = { sound = { soundeffect = "event:/SFX/VFX/building_promote" } }
+	}
+}
+
+entity = {
+	name = "residential_demotion_entity"
+	cull_radius = 150
+	locator = { name = "loc" position = { 0 2 0 } }
+
+	default_state = "start"
+
+	state = {
+		name = "start"
+		state_time = 3
+		looping = no
+		event = { time = 0 node = "loc" entity = "vfx_entity_hammer_anvil_demote" }
+		start_event = { sound = { soundeffect = "event:/SFX/VFX/building_demote" } }
+	}
+}

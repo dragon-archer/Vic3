@@ -1,0 +1,19 @@
+﻿pdxmesh = {
+	name = "3x3_mesh"
+	file = "3x3.mesh"
+
+	meshsettings = {
+		name = "Cube.003"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "flat_grey_normal.dds"
+		texture_specular = "flat_grey_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "3x3_entity"
+	pdxmesh = "3x3_mesh"
+}

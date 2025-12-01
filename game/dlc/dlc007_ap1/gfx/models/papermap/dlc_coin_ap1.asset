@@ -1,0 +1,31 @@
+pdxmesh = {
+	name = "dlc_coin_ap1_mesh"
+	file = "dlc_coin_ap1.mesh"
+
+	meshsettings = {
+		name = "dlc_coin_ap1_0Shape"
+		index = 0
+		texture_diffuse = "dlc_coin_ap1_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "dlc_coin_ap1_shadow_0Shape"
+		index = 0
+		texture_diffuse = "dlc_coin_ap1_shadow_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "dlc_coin_ap1_entity"
+	pdxmesh = "dlc_coin_ap1_mesh"
+}

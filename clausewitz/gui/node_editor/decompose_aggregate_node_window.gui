@@ -1,0 +1,56 @@
+types DecomposeNodeWindow
+{
+    type decompose_node_window_type = node_window_type {
+        blockoverride "config_block" {
+            vbox = {
+                spacing = 5
+                margin_bottom = 5
+                name = "node_search_list"
+                layoutpolicy_horizontal = expanding
+            }
+        }
+
+        blockoverride "after_input_pins" {
+            hbox = {
+                margin_left = 5
+                layoutpolicy_horizontal = expanding
+                hbox = {
+                    name = "add_type_drop_target"
+                    spacing = 5
+                    alwaystransparent = no
+                    block "add_aggregate_pin"
+                    {
+
+                    }
+
+                    icon = {
+                        texture = "gfx/editor_gui/node_editor/node_editor_pin_diamond.dds"
+                        frame = 1
+                        framesize = { 64 64 }
+                        size = { 16 16 }
+                    }
+
+                    editor_textbox = {
+                        raw_text = "Drag Aggregate"
+                        autoresize = yes
+                        align = center|nobaseline
+                    }
+                }
+
+                # spacer
+                widget = {
+                    layoutpolicy_horizontal = expanding
+                }
+            }
+        }
+    }
+}
+
+decompose_node_window_type = {
+    name = "decompose_aggregate_node"
+
+    blockoverride "add_aggregate_pin"
+    {
+        visible = "[Not( NsDecomposeAggregateWindow.HasLoadedType )]"
+    }
+}

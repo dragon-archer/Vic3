@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_umbrella_mesh"
+	file = "prop_umbrella.mesh"
+
+	meshsettings = {
+		name = "prop_umbrellaShape"
+		index = 0
+		texture_diffuse = "prop_umbrella_diffuse.dds"
+		texture_normal = "prop_umbrella_normal.dds"
+		texture_specular = "prop_umbrella_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_umbrella_entity"
+	pdxmesh = "prop_umbrella_mesh"
+}

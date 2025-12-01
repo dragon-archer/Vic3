@@ -1,0 +1,33 @@
+pdxmesh = {
+	name = "male_prop_nudity_accessory_mesh"
+	file = "male_prop_nudity_accessory.mesh"
+
+	blend_shape = { id = "male_prop_nudity_accessory_bs_fat"				type = "male_prop_nudity_accessory_bs_fat.mesh" }
+	blend_shape = { id = "male_prop_nudity_accessory_bs_gaunt"				type = "male_prop_nudity_accessory_bs_gaunt.mesh" }
+	blend_shape = { id = "male_prop_nudity_accessory_bs_old"				type = "male_prop_nudity_accessory_bs_old.mesh" }
+	blend_shape = { id = "male_prop_nudity_accessory_bs_infant"			type = "male_prop_nudity_accessory_bs_infant.mesh" }
+	blend_shape = { id = "male_prop_nudity_accessory_bs_thick"				type = "male_prop_nudity_accessory_bs_thick.mesh" }
+	blend_shape = { id = "male_prop_nudity_accessory_bs_thin"				type = "male_prop_nudity_accessory_bs_thin.mesh" }
+
+	meshsettings = {
+		name = "male_prop_nudity_accessoryShape"
+		index = 0
+		texture_diffuse = "female_prop_nudity_accessory_diffuse.dds"
+		texture_normal = "female_prop_nudity_accessory_normal.dds"
+		texture_specular = "female_prop_nudity_accessory_properties.dds"
+		shader = "portrait_attachment_alpha_to_coverage"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "male_prop_nudity_accessory_entity"
+	pdxmesh = "male_prop_nudity_accessory_mesh"
+
+		attribute = { name = "body_bs_fat"					blend_shape = "male_prop_nudity_accessory_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_prop_nudity_accessory_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_prop_nudity_accessory_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_prop_nudity_accessory_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_prop_nudity_accessory_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_prop_nudity_accessory_bs_thin" }
+}

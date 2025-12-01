@@ -1,0 +1,166 @@
+﻿french_city_01 = {
+	city_graphics_type = french_city
+	grid_size = { 2 2 }
+	attach = { variant = { entity = french_city_centerpiece_01_entity } }
+}
+
+french_farm_01 = {
+	city_graphics_type = french_farm
+	grid_size = { 2 2 }
+	attach = { variant = { entity = french_farm_centerpiece_01_entity } }
+}
+
+french_mine_01 = {
+	city_graphics_type = french_mine
+	grid_size = { 3 3 }
+	attach = { variant = { entity = french_mining_centerpiece_01_entity } }
+}
+
+french_wood_01 = {
+	city_graphics_type = french_wood
+	grid_size = { 2 2 }
+	attach = { variant = { entity = french_forestry_centerpiece_01_entity } }
+}
+
+french_port_01 = {
+	city_graphics_type = french_port
+	grid_size = { 1 1 }
+
+	locator = { name = pos_left 		position = { -2.3719 	0	-1.6706 	} 	rotation = { 0 0 0 } 	scale = 1.0 }
+	locator = { name = pos_center 		position = { 0.1662 	0	-1.6706 	} 	rotation = { 0 0 0 } 	scale = 1.0 }
+	locator = { name = pos_right 		position = { 2.2294 	0	-1.6713 	} 	rotation = { 0 0 0 } 	scale = 1.0 }
+
+	composition_group = { 
+		building_types = { building_port building_shipyards building_fishing_wharf }
+		levels = { 1 4 9 }
+		composition = { name = ___		levels = { 0 0 0 }	}	# Empty
+		composition = { name = p__		levels = { 1 0 0 }	}	# 1 port
+		composition = { name = _s_		levels = { 0 1 0 }	}	# 1 shipyard
+		composition = { name = __f		levels = { 0 0 1 }	} 	# 1 wharf
+		composition = { name = pp_		levels = { 2 0 0 }	} 	# 2 ports
+		composition = { name = ss_		levels = { 0 2 0 }	} 	# 2 shipyards
+		composition = { name = _ff		levels = { 0 0 2 }	} 	# 2 wharves
+		composition = { name = ppp		levels = { 3 0 0 }	} 	# 3 ports
+		composition = { name = sss		levels = { 0 3 0 }	} 	# 3 shipyards
+		composition = { name = fff		levels = { 0 0 3 }	} 	# 3 wharves
+		composition = { name = ps_		ratios = { 1 1 0 }	} 	# 1 port 1 shipyard
+		composition = { name = p_f		ratios = { 1 0 1 }	} 	# 1 port 1 wharf
+		composition = { name = _sf		ratios = { 0 1 1 }	} 	# 1 shipyard 1 wharf
+		composition = { name = psf		ratios = { 1 1 1 }	} 	# 1 port 1 shipyard 1 wharf
+		composition = { name = pss		ratios = { 1 2 0 }	} 	# 2 shipyards 1 port
+		composition = { name = ppf		ratios = { 2 0 1 }	} 	# 2 ports 1 wharf
+		composition = { name = fsf		ratios = { 0 1 2 }	} 	# 2 wharves 1 shipyard
+		composition = { name = ssf		ratios = { 0 2 1 }	} 	# 2 shipyards 1 wharf
+		composition = { name = psp		ratios = { 2 1 0 }	} 	# 2 ports 1 shipyard
+		composition = { name = pff		ratios = { 1 0 2 }	} 	# 2 wharves 1 port
+	}
+
+	attach = {
+		variant = { entity = french_port_centerpiece_01_entity }
+	}
+
+	attach = {
+		locator = pos_left
+		variant = { entity = french_port_docks_01_entity 			building_type = building_port			compositions = { p__ pp_ ppp ps_ p_f psf pss ppf psp pff } }
+		variant = { entity = french_port_shipyard_01_entity 		building_type = building_shipyards		compositions = { ss_ sss ssf } }
+		variant = { entity = french_port_fishingwharf_01_entity 	building_type = building_fishing_wharf	compositions = { fff fsf } }
+	}
+
+	attach = {
+		locator = pos_center
+		variant = { entity = french_port_docks_01_entity 			building_type = building_port			compositions = { pp_ ppp ppf } }
+		variant = { entity = french_port_shipyard_01_entity 		building_type = building_shipyards		compositions = { _s_ ss_ sss ps_ _sf psf pss fsf ssf psp } }
+		variant = { entity = french_port_fishingwharf_01_entity 	building_type = building_fishing_wharf	compositions = { _ff fff pff } }
+	}
+
+	attach = {
+		locator = pos_right
+		variant = { entity = french_port_docks_01_entity 			building_type = building_port			compositions = { ppp psp } }
+		variant = { entity = french_port_shipyard_01_entity 		building_type = building_shipyards		compositions = { sss pss } }
+		variant = { entity = french_port_fishingwharf_01_entity 	building_type = building_fishing_wharf	compositions = { __f _ff fff p_f _sf psf ppf fsf ssf pff } }
+	}
+}
+
+french_worldmarket_01 = {
+	city_graphics_type = french_port
+	priority = 20
+	grid_size = { 3 3 }
+
+	trigger = {
+		any_scope_state = {
+			is_world_market_hub = yes
+		}
+	}
+
+	locator = { name = pos_left 		position = { -1.0 	0 	-0.50	} 	rotation = { 0 0 0 } 	scale = 1.0 }
+	locator = { name = pos_center 		position = { 0 		0	-0.50	} 	rotation = { 0 0 0 } 	scale = 1.0 }
+	locator = { name = pos_right 		position = { 1.0 	0 	-0.50	} 	rotation = { 0 0 0 } 	scale = 1.0 }
+
+	composition_group = { 
+		building_types = { building_port building_shipyards building_fishing_wharf }
+		levels = { 1 4 9 }
+		composition = { name = ___		levels = { 0 0 0 }	}	# Empty
+		composition = { name = p__		levels = { 1 0 0 }	}	# 1 port
+		composition = { name = _s_		levels = { 0 1 0 }	}	# 1 shipyard
+		composition = { name = __f		levels = { 0 0 1 }	} 	# 1 wharf
+		composition = { name = pp_		levels = { 2 0 0 }	} 	# 2 ports
+		composition = { name = ss_		levels = { 0 2 0 }	} 	# 2 shipyards
+		composition = { name = _ff		levels = { 0 0 2 }	} 	# 2 wharves
+		composition = { name = ppp		levels = { 3 0 0 }	} 	# 3 ports
+		composition = { name = sss		levels = { 0 3 0 }	} 	# 3 shipyards
+		composition = { name = fff		levels = { 0 0 3 }	} 	# 3 wharves
+		composition = { name = ps_		ratios = { 1 1 0 }	} 	# 1 port 1 shipyard
+		composition = { name = p_f		ratios = { 1 0 1 }	} 	# 1 port 1 wharf
+		composition = { name = _sf		ratios = { 0 1 1 }	} 	# 1 shipyard 1 wharf
+		composition = { name = psf		ratios = { 1 1 1 }	} 	# 1 port 1 shipyard 1 wharf
+		composition = { name = pss		ratios = { 1 2 0 }	} 	# 2 shipyards 1 port
+		composition = { name = ppf		ratios = { 2 0 1 }	} 	# 2 ports 1 wharf
+		composition = { name = fsf		ratios = { 0 1 2 }	} 	# 2 wharves 1 shipyard
+		composition = { name = ssf		ratios = { 0 2 1 }	} 	# 2 shipyards 1 wharf
+		composition = { name = psp		ratios = { 2 1 0 }	} 	# 2 ports 1 shipyard
+		composition = { name = pff		ratios = { 1 0 2 }	} 	# 2 wharves 1 port
+	}
+
+	attach = {
+		variant = { entity = generic_worldmarket_01_entity }
+	}
+
+	attach = {
+		locator = pos_left
+		variant = { entity = french_port_docks_01_entity 			building_type = building_port			compositions = { p__ pp_ ppp ps_ p_f psf pss ppf psp pff } }
+		variant = { entity = french_port_shipyard_01_entity 		building_type = building_shipyards		compositions = { ss_ sss ssf } }
+		variant = { entity = french_port_fishingwharf_01_entity 	building_type = building_fishing_wharf	compositions = { fff fsf } }
+	}
+
+	attach = {
+		locator = pos_center
+		variant = { entity = french_port_docks_01_entity 			building_type = building_port			compositions = { pp_ ppp ppf } }
+		variant = { entity = french_port_shipyard_01_entity 		building_type = building_shipyards		compositions = { _s_ ss_ sss ps_ _sf psf pss fsf ssf psp } }
+		variant = { entity = french_port_fishingwharf_01_entity 	building_type = building_fishing_wharf	compositions = { _ff fff pff } }
+	}
+
+	attach = {
+		locator = pos_right
+		variant = { entity = french_port_docks_01_entity 			building_type = building_port			compositions = { ppp psp } }
+		variant = { entity = french_port_shipyard_01_entity 		building_type = building_shipyards		compositions = { sss pss } }
+		variant = { entity = french_port_fishingwharf_01_entity 	building_type = building_fishing_wharf	compositions = { __f _ff fff p_f _sf psf ppf fsf ssf pff } }
+	}
+}
+
+french_skyscraper_01 = {
+	city_graphics_type = french_city
+	priority = 10
+
+	trigger = {
+		any_scope_state = {
+			state_has_building_type_levels = {
+				target = bt:building_skyscraper
+				value > 0
+			}
+		}
+	}
+
+	attach = {
+		variant = { entity = french_city_centerpiece_skyscraper_01_entity  	building_type = building_skyscraper }
+	}
+}

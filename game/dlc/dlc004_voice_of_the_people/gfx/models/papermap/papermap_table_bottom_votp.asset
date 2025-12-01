@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "papermap_table_bottom_votp_mesh"
+	file = "papermap_table_bottom_votp.mesh"
+
+	meshsettings = {
+		name = "paper_map_table_bottom|table_Low|table_LowShape"
+		index = 0
+		texture_diffuse = "table_texture_diffuse_votp.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+	}
+}
+
+entity = {
+	name = "papermap_table_bottom_votp_entity"
+	pdxmesh = "papermap_table_bottom_votp_mesh"
+}

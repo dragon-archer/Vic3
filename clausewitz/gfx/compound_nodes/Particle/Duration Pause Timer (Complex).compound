@@ -1,0 +1,237 @@
+compound_node={
+	id="Particle/Duration Pause Timer (Complex)"
+	graph={
+		Nodes={
+			pdxns:values:Bool={
+				Id=22
+				Node={
+					value=no
+				}
+				Inputs={
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=30
+				Node={
+					pins={
+						pin={
+							id=hold_first
+							label="Hold"
+							input=no
+							type=Float
+						}
+						pin={
+							id=duration
+							label="Duration"
+							input=no
+							type=Float
+						}
+						pin={
+							id=pause
+							label="Pause"
+							input=no
+							type=Float
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=5
+				Node={
+					pins={
+						pin={
+							id=active
+							label="Active"
+							input=yes
+							flags=optional
+							type=Bool
+						}
+					}
+				}
+				Inputs={
+					Link = { PinId = "active" LinkedNode = 0 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:GreaterThanF={
+				Id=16
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "op1" LinkedNode = 48 LinkedPin = "remainder" }
+					Link = { PinId = "op2" LinkedNode = 8 LinkedPin = "output_value" }
+				}
+			}
+			pdxns:math:AddF={
+				Id=4
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 51 LinkedPin = "output_value" }
+					Link = { PinId = "term2" LinkedNode = 31 LinkedPin = "output_value" }
+				}
+			}
+			pdxns:math:SubF={
+				Id=35
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 33 LinkedPin = "age" }
+					Link = { PinId = "term2" LinkedNode = 4 LinkedPin = "sum" }
+				}
+			}
+			pdxns:logic:RetainedValueF={
+				Id=20
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "signal" LinkedNode = 23 LinkedPin = "signal" }
+					Link = { PinId = "input_value" LinkedNode = 2 LinkedPin = "sum" }
+				}
+			}
+			pdxns:particle:GetSystemAge={
+				Id=33
+				Node={
+				}
+				Inputs={
+				}
+			}
+			pdxns:logic:RetainedValueF={
+				Id=51
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "signal" LinkedNode = 22 LinkedPin = "value" }
+					Link = { PinId = "input_value" LinkedNode = 30 LinkedPin = "hold_first" }
+				}
+			}
+			pdxns:math:AddF={
+				Id=2
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 30 LinkedPin = "duration" }
+					Link = { PinId = "term2" LinkedNode = 30 LinkedPin = "pause" }
+				}
+			}
+			pdxns:math:GreaterThanF={
+				Id=6
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "op1" LinkedNode = 33 LinkedPin = "age" }
+					Link = { PinId = "op2" LinkedNode = 51 LinkedPin = "output_value" }
+				}
+			}
+			pdxns:logic:RetainedValueF={
+				Id=31
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "signal" LinkedNode = 23 LinkedPin = "signal" }
+					Link = { PinId = "input_value" LinkedNode = 30 LinkedPin = "duration" }
+				}
+			}
+			pdxns:logic:SelectF={
+				Id=46
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "select" LinkedNode = 6 LinkedPin = "value" }
+					Link = { PinId = "true_value" LinkedNode = 2 LinkedPin = "sum" }
+					Link = { PinId = "false_value" LinkedNode = 44 LinkedPin = "sum" }
+				}
+			}
+			pdxns:math:ModF={
+				Id=48
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "dividend" LinkedNode = 35 LinkedPin = "difference" }
+					Link = { PinId = "divisor" LinkedNode = 20 LinkedPin = "output_value" }
+				}
+			}
+			pdxns:math:GreaterThanF={
+				Id=39
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "op1" LinkedNode = 35 LinkedPin = "difference" }
+					Link = { PinId = "op2" LinkedNode = 27 LinkedPin = "value" }
+				}
+			}
+			pdxns:math:GreaterThanF={
+				Id=55
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "op1" LinkedNode = 4 LinkedPin = "sum" }
+					Link = { PinId = "op2" LinkedNode = 33 LinkedPin = "age" }
+				}
+			}
+			pdxns:math:And={
+				Id=14
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "op1" LinkedNode = 6 LinkedPin = "value" }
+					Link = { PinId = "op2" LinkedNode = 55 LinkedPin = "value" }
+				}
+			}
+			pdxns:particle:TimedToggle={
+				Id=23
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "duration" LinkedNode = 46 LinkedPin = "selected_value" }
+				}
+			}
+			pdxns:math:And={
+				Id=36
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "op1" LinkedNode = 39 LinkedPin = "value" }
+					Link = { PinId = "op2" LinkedNode = 16 LinkedPin = "value" }
+				}
+			}
+			pdxns:logic:RetainedValueF={
+				Id=8
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "signal" LinkedNode = 23 LinkedPin = "signal" }
+					Link = { PinId = "input_value" LinkedNode = 30 LinkedPin = "pause" }
+				}
+			}
+			pdxns:values:Float={
+				Id=27
+				Node={
+					value=0.000000
+				}
+				Inputs={
+				}
+			}
+			pdxns:math:AddF={
+				Id=44
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "term1" LinkedNode = 51 LinkedPin = "output_value" }
+					Link = { PinId = "term2" LinkedNode = 2 LinkedPin = "sum" }
+				}
+			}
+			pdxns:math:Or={
+				Id=0
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "op1" LinkedNode = 14 LinkedPin = "value" }
+					Link = { PinId = "op2" LinkedNode = 36 LinkedPin = "value" }
+				}
+			}
+		}
+	}
+
+}

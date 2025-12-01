@@ -1,0 +1,54 @@
+animations = { "none" "idle" "moving" "start" "end"  }
+materials = {
+	#{ name = "name_that_will_appear_in_maya"	shader = "shader_effect"	shader_file = "gfx/FX/myshaderfile.shader" }
+
+
+	{ shader = "standard"												shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "standard_atlas"											shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "standard_alpha_blend" 									shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "standard_atlas_alpha_blend" 							shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "standard_alpha_to_coverage"								shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "standard_atlas_alpha_to_coverage"						shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "standard_colormap"										shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "standard_atlas_colormap"								shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "standard_flag"											shader_file = "gfx/FX/pdxmesh.shader" }
+
+	{ shader = "snap_to_terrain" 										shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "snap_to_terrain_atlas" 									shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "snap_to_terrain_alpha_to_coverage"						shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "snap_to_terrain_atlas_alpha_to_coverage"				shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "snap_to_terrain_alpha_to_coverage_colormap"				shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "snap_to_terrain_atlas_alpha_to_coverage_colormap"		shader_file = "gfx/FX/pdxmesh.shader" }
+
+	{ shader = "flatmap_alpha_blend"									shader_file = "gfx/FX/pdxmesh.shader" }
+	{ shader = "flatmap_alpha_blend_no_borders"							shader_file = "gfx/FX/pdxmesh.shader" }
+
+	{ shader = "lake"													shader_file = "gfx/FX/pdxwater.shader" }
+
+	{ shader = "tree"													shader_file = "gfx/FX/tree.shader" }
+
+	{
+		shader = "decal_world" 											shader_file = "gfx/FX/pdxmesh_decal.shader"		subpass = "Decals"
+		texture_remap = {
+			"transparency" = 3
+		}
+	}
+	{ shader = "decal_local" 											shader_file = "gfx/FX/pdxmesh_decal.shader"		subpass = "LocalDecals" }
+	{ shader = "Collision" }
+
+	{ shader = "portrait_skin"	 										shader_file = "gfx/FX/jomini/portrait.shader" }
+	{ shader = "portrait_attachment"	 								shader_file = "gfx/FX/jomini/portrait.shader" }
+	{ shader = "portrait_attachment_alpha_to_coverage"					shader_file = "gfx/FX/jomini/portrait.shader" }
+	{ shader = "portrait_attachment_pattern"							shader_file = "gfx/FX/jomini/portrait.shader" }
+	{ shader = "portrait_attachment_pattern_alpha_to_coverage"			shader_file = "gfx/FX/jomini/portrait.shader" }
+	{ shader = "portrait_eye" 											shader_file = "gfx/FX/jomini/portrait.shader" }
+	{ shader = "portrait_hair" 											shader_file = "gfx/FX/jomini/portrait.shader" }
+	{ shader = "portrait_hair_backside" 								shader_file = "gfx/FX/jomini/portrait.shader" }
+	{ shader = "portrait_hair_alpha" 									shader_file = "gfx/FX/jomini/portrait.shader" }
+	{ shader = "portrait_hair_opaque"									shader_file = "gfx/FX/jomini/portrait.shader" }
+
+	{ shader = "gui_flag_textured" 										shader_file = "gfx/FX/gui_flag_3d.shader" }
+	{ shader = "gui_flag_untextured" 									shader_file = "gfx/FX/gui_flag_3d.shader" }
+
+}
+version = 1

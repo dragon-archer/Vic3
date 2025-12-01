@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "prop_handheldfan_mesh"
+	file = "prop_handheldfan.mesh"
+
+	meshsettings = {
+		name = "prop_handheldfanShape"
+		index = 0
+		texture_diffuse = "prop_handheldfan_diffuse.dds"
+		texture_normal = "prop_handheldfan_normal.dds"
+		texture_specular = "prop_handheldfan_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "prop_handheldfan_entity"
+	pdxmesh = "prop_handheldfan_mesh"
+}

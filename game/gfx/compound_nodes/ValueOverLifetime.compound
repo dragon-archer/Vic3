@@ -1,0 +1,87 @@
+﻿compound_node={
+	id="ValueOverLifetime"
+	compound_node_dependencies= { "NormalizedParticleAge" }
+	graph={
+		Nodes={
+			pdxns:common:curvesampler={
+				Id=0
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "curve" LinkedNode = 3 LinkedPin = "Curve" }
+					Link = { PinId = "value" LinkedNode = 5 LinkedPin = "NormalizedParticleAge" }
+				}
+			}
+			pdxns:math:MulF={
+				Id=9
+				Node={
+				}
+				Inputs={
+					Link = { PinId = "factor1" LinkedNode = 0 LinkedPin = "value_out" }
+					Link = { PinId = "factor2" LinkedNode = 3 LinkedPin = "Value" }
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=7
+				Node={
+					pins={
+						pin={
+							id=Output
+							label="Output"
+							input=yes
+							flags=optional
+							type=Float
+						}
+					}
+				}
+				Inputs={
+					Link = { PinId = "Output" LinkedNode = 9 LinkedPin = "product" }
+				}
+			}
+			pdxns:common:GraphInterface={
+				Id=3
+				Node={
+					pins={
+						pin={
+							id=Curve
+							label="Curve"
+							input=no
+							type=Curve
+						}
+						pin={
+							id=ParticleLifetime
+							label="ParticleLifetime"
+							input=no
+							type=Float
+						}
+						pin={
+							id=Value
+							label="Value"
+							input=no
+							type=Float
+						}
+					}
+				}
+				Inputs={
+				}
+			}
+			pdxns:particle:GetAge={
+				Id=4
+				Node={
+				}
+				Inputs={
+				}
+			}
+			pdxns:common:compound={
+				Id=5
+				Node={
+					graph="NormalizedParticleAge"
+				}
+				Inputs={
+					Link = { PinId = "ParticleLifetime" LinkedNode = 3 LinkedPin = "ParticleLifetime" }
+				}
+			}
+		}
+	}
+
+}

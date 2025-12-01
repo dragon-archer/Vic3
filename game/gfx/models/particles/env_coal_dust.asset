@@ -1,0 +1,19 @@
+entity = 
+{
+	name = "env_coal_dust"
+	scale = 1
+	locator = { name = part1 }
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" state_time = 5 looping = yes 
+		event = 
+		{ 
+			time = 0 
+			node = "part1" 
+			particle = "coal_dust" 
+			trigger_once = yes 
+			keep_particle = yes
+		}
+	}
+}

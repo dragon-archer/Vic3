@@ -1,0 +1,32 @@
+﻿pdxmesh = {
+	name = "mp1_coin_mesh"
+	file = "mp1_coin.mesh"
+
+	meshsettings = {
+		name = "Cylinder.001"
+
+		index = 0
+		texture_diffuse = "mp1_coin_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "Plane.003"
+		index = 0
+		texture_diffuse = "mp1_coin_shadow_diffuse.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "FLATLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "mp1_coin_entity"
+	pdxmesh = "mp1_coin_mesh"
+}

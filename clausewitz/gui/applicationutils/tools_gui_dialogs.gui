@@ -217,4 +217,19 @@ types ToolsTypes
 	type dialog_grid_property_filterable_property_list = vbox {
 		using = filterable_grid_property_list_properties
 	}
+
+	type tools_progress_dialog = vbox {
+
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = preferred
+
+		spacing = 4
+
+		dockable_progressbar = {
+			size = { 350 10 }
+			min = 0
+			max = 1
+			value = "[ToolProgressDialog.GetProgress]"
+		}
+	}
 }

@@ -1,3 +1,11 @@
+@editbox_text_margin_left = 5
+template tweakable_editbox_properties
+{
+	using = tools_editbox
+	align = left|nobaseline
+	margin_left = @editbox_text_margin_left
+}
+
 types Tweakable
 {
 	type Tweakable = widget {
@@ -238,7 +246,7 @@ Tweakable = {
 	{
 		editor_editbox = {
 			name = "tweakable_value_eb"
-			using = property_editbox
+			using = tweakable_editbox_properties
 			alwaystransparent = no
 			size = { 44 19 }
 			text = "[Tweakable.GetValue]"
@@ -288,7 +296,7 @@ Tweakable = {
 	{
 		editor_editbox = {
 			name = "tweakable_string_eb"
-			using = property_editbox
+			using = tweakable_editbox_properties
 			alwaystransparent = no
 			size = { 160 20 }
 			text = "[Tweakable.GetValue]"
@@ -303,7 +311,7 @@ Tweakable = {
 	{	
 		editor_editbox = {
 			name = "tweakable_color_eb"
-			using = property_editbox
+			using = tweakable_editbox_properties
 			fontsize = 13
 			alwaystransparent = no
 			size = { 56 19 }
@@ -320,7 +328,7 @@ Tweakable = {
 			tools_colorpicker = {
 				name = "tweakable_color_picker"
 				color = "[Tweakable.GetColor]"
-				position = { -1 -1 } # colorpicker is a bit wierd
+				position = { -1 -1 } # colorpicker is a bit weird
 			}
 		}
 	}
@@ -333,7 +341,7 @@ Tweakable = {
 	{
 		editor_editbox = {
 			name = "tweakable_callback_eb"
-			using = property_editbox
+			using = tweakable_editbox_properties
 			alwaystransparent = no
 			size = { 150 20 }
 			text = "[Tweakable.GetValue]"
@@ -345,7 +353,34 @@ Tweakable = {
 			size = { 85 20 }
 			text = "[Tweakable.GetGuiName]"
 			fontsize = 12
-			align = center|nobaseline
+			align = left|nobaseline
+			elide = right
+			raw_tooltip = "[Tweakable.GetGuiName]"
+			tooltipwidget = {
+				using = dockable_tooltip
+			}
+			margin = { @editbox_text_margin_left 0 }
+		}
+	}
+}
+
+Tweakable = {
+	name = "tweakable_enum"
+	
+	blockoverride "tweakable_specialized"
+	{
+		dropdown = {
+			using = settings_dropdown
+			datamodel = "[Tweakable.GetEnumValues]"
+			onselectionchanged = "[Tweakable.SetEnumValueIndex]"
+			selectedindex = "[Tweakable.GetEnumValueIndex]"
+			blockoverride "dropdown_item_size" { size = { 160 20 } }
+			blockoverride "dropdown_list_position" { position = { 0 20 } }
+			blockoverride "dropdown_gridbox_size" { addcolumn = 160  addrow = 20 }
+			blockoverride "dropdown_item_text" { 
+				text = "[CString.GetString]" 
+				margin_left = @editbox_text_margin_left 
+			}
 		}
 	}
 }

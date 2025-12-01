@@ -1,12 +1,12 @@
 
 #Default Values
-saturation_scale = 1
-value_scale = 1		# Light multiplier
-colorbalance = { 1.000000 1.000000 1.000000 }
+saturation_scale = 1.05
+value_scale = 1.05		# Light multiplier
+colorbalance = { 0.950000 1.000000 1.000000 }
 levels_min = hsv{ 0.000000 0.000000 0.0000 }
 levels_max = hsv{ 0.000000 0.000000 1.000 }
 shadowmap_kernelscale = 8
-shadowmap_fadefactor = 0.7
+shadowmap_fadefactor = 0.66
 
 # tonemap_curve={
 # 	shoulder_strength=0.6

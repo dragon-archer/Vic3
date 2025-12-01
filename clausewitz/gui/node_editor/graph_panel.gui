@@ -347,6 +347,15 @@ widget = {
 
 			editor_toolbar_button = {
 				editor_toolbar_icon = {
+					texture = "gfx/editor_gui/metadata_editor.png"
+				}
+				raw_tooltip = "Toggle metadata editor that allows to edit the metadata of currently selected nodes."
+				# Opens the metadata dockable
+				onclick = "[GraphPanel.AccessMetadataWindow.Toggle]"
+			}
+
+			editor_toolbar_button = {
+				editor_toolbar_icon = {
 					texture = "gfx/editor_gui/node_editor/control_panel_preferences.png"
 				}
 				raw_tooltip = "Node Editor Preferences"
@@ -361,6 +370,22 @@ widget = {
 				onclick = "[GraphPanel.OpenPreviewer]"
 				visible = "[GraphPanel.HasPreviewer]"
 			}
+			
+			editor_toolbar_button = {
+				raw_text = "Import"
+				raw_tooltip = "Import nodes and dependencies from C++ code"
+				size = { 50 25 }
+				onclick = "[GraphPanel.OnImportButton]"
+				visible = "[GraphPanel.HasImportButton]"
+			}
+			
+			editor_toolbar_button = {
+				raw_text = "Export"
+				raw_tooltip = "Export nodes and dependencies to C++ code"
+				size = { 50 25 }
+				onclick = "[GraphPanel.OnExportButton]"
+				visible = "[GraphPanel.HasExportButton]"
+			}
 
 			editor_toolbar_divider = {
 				margin = { 4 0 }
@@ -370,6 +395,14 @@ widget = {
 
 			editor_toolbar_divider = {
 				margin = { 4 0 }
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Layout nodes"
+				raw_tooltip = "Layout nodes by moving them around so there's minimal overlap and edge crossings"
+				size = { 72 25 }
+				onclick = "[GraphPanel.LayoutNodes]"
+				input_action = "node_editor_nodes_layout"
 			}
 
 			editor_toolbar_button = {

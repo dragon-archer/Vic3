@@ -14,29 +14,39 @@
 							default_value={
 								value=20.000000
 							}
-						}						pin={
+						}
+						pin={
 							name="Scale"
 							display_text="Scale"
 							type="FloatVector3f"
-						}						pin={
+						}
+						pin={
 							name="Position"
 							display_text="Position"
 							type="Vector3f"
-						}						pin={
+						}
+						pin={
 							name="Speed"
 							display_text="Speed"
 							type="Float"
 							default_value={
 								value=1.000000
 							}
-						}						pin={
+						}
+						pin={
 							name="Lifetime"
 							display_text="Lifetime"
 							type="Float"
 							default_value={
 								value=1.000000
 							}
-						}					}
+						}
+						pin={
+							name="flip_direction"
+							display_text="Flip Direction"
+							type="Bool"
+						}
+					}
 				}
 				inputs={
 				}
@@ -130,6 +140,50 @@
 				inputs={
 				}
 			}
+			pdxns:logic:SelectV3F={
+				id=49
+				node={
+				}
+				inputs={
+					link={
+						pin_id="select"
+						linked_node=0
+						linked_pin="flip_direction"
+					}
+					link={
+						pin_id="true_value"
+						linked_node=51
+						linked_pin="value"
+					}
+					link={
+						pin_id="false_value"
+						linked_node=52
+						linked_pin="value"
+					}
+				}
+			}
+			pdxns:logic:SelectV3F={
+				id=53
+				node={
+				}
+				inputs={
+					link={
+						pin_id="select"
+						linked_node=0
+						linked_pin="flip_direction"
+					}
+					link={
+						pin_id="true_value"
+						linked_node=55
+						linked_pin="value"
+					}
+					link={
+						pin_id="false_value"
+						linked_node=56
+						linked_pin="value"
+					}
+				}
+			}
 			pdxns:particle:EffectFlags={
 				id=5
 				node={
@@ -188,8 +242,8 @@
 					}
 					link={
 						pin_id="direction"
-						linked_node=13
-						linked_pin="value"
+						linked_node=49
+						linked_pin="selected_value"
 					}
 					link={
 						pin_id="speed"
@@ -259,8 +313,8 @@
 					}
 					link={
 						pin_id="direction"
-						linked_node=15
-						linked_pin="value"
+						linked_node=53
+						linked_pin="selected_value"
 					}
 					link={
 						pin_id="speed"
@@ -403,9 +457,9 @@
 				}
 			}
 			pdxns:values:ConstVector3f={
-				id=13
+				id=56
 				node={
-					value={ 1.000000 0.000000 0.000000 }
+					value={ 0.000000 0.000000 1.000000 }
 				}
 				inputs={
 				}
@@ -419,9 +473,9 @@
 				}
 			}
 			pdxns:values:ConstVector3f={
-				id=15
+				id=55
 				node={
-					value={ 0.000000 0.000000 1.000000 }
+					value={ 0.000000 0.000000 -1.000000 }
 				}
 				inputs={
 				}
@@ -446,6 +500,22 @@
 				id=18
 				node={
 					value={ 0.000000 0.000000 0.000000 }
+				}
+				inputs={
+				}
+			}
+			pdxns:values:ConstVector3f={
+				id=52
+				node={
+					value={ 1.000000 0.000000 0.000000 }
+				}
+				inputs={
+				}
+			}
+			pdxns:values:ConstVector3f={
+				id=51
+				node={
+					value={ -1.000000 0.000000 0.000000 }
 				}
 				inputs={
 				}

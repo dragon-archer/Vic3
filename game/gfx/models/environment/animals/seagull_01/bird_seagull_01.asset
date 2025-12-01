@@ -92,6 +92,7 @@ entity = {
 	state = {
 		name = "idle"
 		animation = "idle"
+		event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/Ambience/3D/Fauna/seagulls" } }
 	}
 	
 	attach = { bird_1 = bird_seagull_01_entity }

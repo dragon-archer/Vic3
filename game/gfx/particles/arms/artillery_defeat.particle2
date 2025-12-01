@@ -1,5 +1,5 @@
 ﻿fade_duration=0.000000
-max_particles=500
+max_particles=10
 pause_invisible=no
 graph={
 	nodes={
@@ -1358,6 +1358,11 @@ graph={
 					linked_node=249
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=419
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1373,6 +1378,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=255
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=420
 					linked_pin="value"
 				}
 			}
@@ -1392,6 +1402,11 @@ graph={
 					linked_node=263
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=421
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1407,6 +1422,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=265
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=422
 					linked_pin="value"
 				}
 			}
@@ -1426,6 +1446,11 @@ graph={
 					linked_node=273
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=423
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1441,6 +1466,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=291
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=424
 					linked_pin="value"
 				}
 			}
@@ -1460,6 +1490,11 @@ graph={
 					linked_node=220
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=425
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1475,6 +1510,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=224
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=426
 					linked_pin="value"
 				}
 			}
@@ -1494,6 +1534,11 @@ graph={
 					linked_node=309
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=427
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1509,6 +1554,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=219
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=428
 					linked_pin="value"
 				}
 			}
@@ -4583,6 +4633,86 @@ graph={
 		}
 		pdxns:values:Int32={
 			id=324
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=423
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=422
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=421
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=420
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=419
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=428
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=427
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=426
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=425
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=424
 			node={
 				value=0
 			}

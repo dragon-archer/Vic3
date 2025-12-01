@@ -48,6 +48,17 @@ pdxmesh = {
 		shader_file = "gfx/FX/pdxmesh_decal.shader"
 		subpass = "Decals"
 	}
+
+	meshsettings = {
+		name = "asian_tools_manufactory_01|LOD_0|billboard_generic_0|billboard_"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
 }
 
 entity = {

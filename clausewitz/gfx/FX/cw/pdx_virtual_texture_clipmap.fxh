@@ -11,7 +11,6 @@ Sampler PdxVtLinearSampler
 	SampleModeV = "Clamp"
 }
 
-
 struct SVirtualTextureClipmapConstants
 {
 	uint2 _PhysicalTextureSize;
@@ -23,6 +22,8 @@ struct SVirtualTextureClipmapConstants
 	uint _PhysicalPageSize;
 	uint _IndirectionSize;
 	uint _NumMipLevels;
+	uint _VirtualTextureSize;
+	float _InvVirtualTextureSize;
 }
 
 Code

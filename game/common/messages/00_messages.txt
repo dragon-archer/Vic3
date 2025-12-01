@@ -577,6 +577,8 @@ power_bloc_leader_outranked= {
 power_bloc_member_left = {
 	type = power_bloc
 	group = "power_bloc_membership"
+
+	texture = "gfx/interface/icons/notification_icons/power_bloc.dds"
 	
 	notification_type = toast
 	color = bad
@@ -585,6 +587,8 @@ power_bloc_member_left = {
 power_bloc_member_kicked = {
 	type = power_bloc
 	group = "power_bloc_membership"
+
+	texture = "gfx/interface/icons/notification_icons/power_bloc.dds"
 	
 	notification_type = toast
 	color = bad
@@ -841,6 +845,36 @@ power_struggle_succeeded = {
 	texture = "gfx/interface/icons/notification_icons/power_bloc.dds"
 	
 	notification_type = toast
+	color = neutral
+}
+
+harvest_condition_started_in_country_important = {
+	type = country
+	group = "harvest_condition_important_notification_group"
+	
+	texture = "gfx/interface/icons/notification_icons/harvest_conditions.dds"
+
+	notification_type = toast
+	color = neutral
+}
+
+harvest_condition_started_in_country = {
+	type = country
+	group = "harvest_condition_notification_group"
+	
+	texture = "gfx/interface/icons/notification_icons/harvest_conditions.dds"
+
+	notification_type = feed
+	color = neutral
+}
+
+harvest_condition_started_in_market = {
+	type = market
+	group = "harvest_condition_notification_group"
+	
+	texture = "gfx/interface/icons/notification_icons/harvest_conditions.dds"
+
+	notification_type = feed
 	color = neutral
 }
 

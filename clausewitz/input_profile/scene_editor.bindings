@@ -15,6 +15,13 @@ binding = {
 }
 
 binding = {
+    input_action = "scene_editor_duplicate_entity_hierarchy"
+    keycode = "d"
+    modifier = ctrl
+    modifier = shift
+}
+
+binding = {
     input_action = "scene_editor_group_entities"
     keycode = "g"
     modifier = ctrl
@@ -53,4 +60,18 @@ binding = {
 binding = {
     input_action = "scene_editor_toggle_gizmo_space"
     keycode = "l"
+}
+
+binding = {
+    input_action = "scene_editor_align_objects_with_viewport_camera"
+    keycode = "f"
+    modifier = ctrl
+    modifier = shift
+}
+
+binding = {
+    input_action = "scene_editor_align_viewport_camera_with_object"
+    keycode = "f"
+    modifier = alt
+    modifier = shift
 }

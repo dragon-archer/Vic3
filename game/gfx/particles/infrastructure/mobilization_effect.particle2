@@ -1,5 +1,5 @@
 ﻿fade_duration=0.000000
-max_particles=500
+max_particles=17
 pause_invisible=no
 graph={
 	nodes={
@@ -1262,6 +1262,11 @@ graph={
 					linked_node=183
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=288
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1277,6 +1282,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=191
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=289
 					linked_pin="value"
 				}
 			}
@@ -3334,6 +3344,22 @@ graph={
 		}
 		pdxns:values:Int32={
 			id=228
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=288
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=289
 			node={
 				value=0
 			}

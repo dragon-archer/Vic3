@@ -95,11 +95,9 @@ entity = {
 		looping = no
 		
 		event = { entity = "vfx_entity_war_start" }
-		start_event = { node = "part1" particle = "war_ground_fire_parent" trigger_once = yes }	
+		start_event = { node = "part1" particle = "war/ground_fire" trigger_once = yes keep_particle = yes }	
 	}
 }
-
-
 
 entity = {
 	name = "war_center_after_entity"

@@ -10,6 +10,7 @@ ConstantBuffer( PdxConstantBuffer2 )
 	float4 CachedColor; // Does not change while updating, only after color has been set
 	float2 HueSaturation; // Hue and Saturation values to use when undefined
 	int ActiveColor;
+	int ColorSpace; // 0 linear, 1 srgb
 };
 
 VertexStruct VS_OUTPUT_PDX_GUI2
@@ -27,6 +28,16 @@ Code
     {
 		return Pos * WidthHeight / ( WidthHeight - vec2( 1.0 ) ) - float2( 0.5, 0.5 ) / WidthHeight;
     }
+
+	float4 TransformColor( float4 LinearColor, int ColorSpace )
+	{
+		if( ColorSpace == 1 )
+		{
+			return ToGamma(LinearColor);
+		}
+
+		return LinearColor;
+	}
 ]]
 
 VertexShader =
@@ -114,7 +125,7 @@ PixelShader =
 					ColorOut.a = 1.0;
 				}
 
-			    return DisableColorReturn( ColorOut * ColorOut.a + ColorBackground * ( 1.0 - ColorOut.a ) );
+			    return DisableColorReturn( TransformColor( ColorOut * ColorOut.a + ColorBackground * ( 1.0 - ColorOut.a ), ColorSpace ) );
 			}
 		]]
 	}
@@ -168,7 +179,7 @@ PixelShader =
 					ColorOut.a = 1.0;
 				}
 				
-			    return DisableColorReturn( ColorOut );
+			    return DisableColorReturn( TransformColor( ColorOut, ColorSpace ) );
 			}
 		]]		
 	}
@@ -184,7 +195,7 @@ PixelShader =
 				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
 				float4 ColorOut = float4( Offset.x, 0.0, 0.0, 1.0 );
 
-			    return DisableColorReturn( ColorOut );
+			    return DisableColorReturn( TransformColor( ColorOut, ColorSpace ) );
 			}
 		]]		
 	}
@@ -200,7 +211,7 @@ PixelShader =
 				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );	
 				float4 ColorOut = float4( 0.0, Offset.x, 0.0, 1.0 );
 				
-			    return DisableColorReturn( ColorOut );
+			    return DisableColorReturn( TransformColor( ColorOut, ColorSpace ) );
 			}
 		]]		
 	}
@@ -216,7 +227,7 @@ PixelShader =
 				float2 Offset = CalculateOffset( Input.Pos, Input.WidthHeight );
 				float4 ColorOut = float4( 0.0, 0.0, Offset.x, 1.0 );
 				
-			    return DisableColorReturn( ColorOut );
+			    return DisableColorReturn( TransformColor( ColorOut, ColorSpace ) );
 			}
 		]]		
 	}
@@ -254,7 +265,7 @@ PixelShader =
 				ColorOut.rgb = HSVtoRGB( HSV );
 				ColorOut.a = 1.0;
 				
-				return DisableColorReturn( ColorOut );
+				return DisableColorReturn( TransformColor( ColorOut, ColorSpace ) );
 			}
 		]]		
 	}
@@ -274,7 +285,7 @@ PixelShader =
 				ColorOut.rgb = HSVtoRGB( HSV );
 				ColorOut.a = 1.0;
 				
-				return DisableColorReturn( ColorOut );
+				return DisableColorReturn( TransformColor( ColorOut, ColorSpace ) );
 			}
 		]]		
 	}
@@ -295,7 +306,7 @@ PixelShader =
 				ColorOut.rgb = HSVtoRGB( HSV );
 				ColorOut.a = 1.0;
 				
-				return DisableColorReturn( ColorOut );
+				return DisableColorReturn( TransformColor( ColorOut, ColorSpace ) );
 			}
 		]]		
 	}
@@ -315,7 +326,7 @@ PixelShader =
 				ColorOut.a = 1.0;
 				float Mask1 = floor( ( Offset.x + Offset.y ) );
 				float Mask2 = ( 1.0 - floor( ( Offset.x + Offset.y ) ) );
-				return DisableColorReturn( ColorOut * Mask2 + ( ColorBackground * ( 1.0 - ColorIn.a ) + ColorOut * ColorIn.a ) * Mask1 );
+				return DisableColorReturn( TransformColor( ColorOut * Mask2 + ( ColorBackground * ( 1.0 - ColorIn.a ) + ColorOut * ColorIn.a ) * Mask1, ColorSpace ) );
 			}
 		]]
 	}
@@ -335,7 +346,7 @@ PixelShader =
 				ColorOut.a = 1.0;
 				float Mask1 = floor( ( Offset.x + Offset.y ) );
 				float Mask2 = ( 1.0 - floor( ( Offset.x + Offset.y ) ) );
-				return DisableColorReturn( ColorOut * Mask2 + ( ColorBackground * ( 1.0 - OriginalColor.a ) + ColorOut * OriginalColor.a ) * Mask1 );
+				return DisableColorReturn( TransformColor( ColorOut * Mask2 + ( ColorBackground * ( 1.0 - OriginalColor.a ) + ColorOut * OriginalColor.a ) * Mask1, ColorSpace ) );
 			}
 		]]
 	}

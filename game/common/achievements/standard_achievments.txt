@@ -8,6 +8,9 @@ peccavi = {
     happened = {
         owns_entire_state_region = STATE_SINDH
         owns_entire_state_region = STATE_PUNJAB
+        hidden_trigger = {
+            has_variable = peccavi_ach_possible
+        }
     }
 }
 
@@ -22,6 +25,7 @@ perkeletankki = {
                     market_goods_production >= 100
                 }
             }
+            has_variable = perkeletankki_ach_possible
         }
     }
 }
@@ -34,6 +38,9 @@ luxurious_luxembourg = {
         leading_producer_of = g:luxury_clothes
         leading_producer_of = g:luxury_furniture
         leading_producer_of = g:porcelain
+        hidden_trigger = {
+            has_variable = luxurious_luxembourg_ach_possible
+        }
     }
 }
 
@@ -42,8 +49,7 @@ anarchy_in_the_uk = {
 		has_variable = anarchy_in_the_uk_ach_possible
 	}
 	happened = {
-		exists = c:GBR
-		this = c:GBR
+        c:GBR ?= this
 		has_law = law_type:law_anarchy
 	}
 }
@@ -53,9 +59,11 @@ muhammed_alis_ambition = {
         has_variable = muhammed_alis_ambition_ach_possible
     }
     happened = {
-        exists = c:ARA
-        this = c:ARA
+        c:ARA ?= this
         owns_entire_state_region = STATE_EASTERN_THRACE
+        hidden_trigger = {
+            has_variable = muhammed_alis_ambition_ach_possible
+        }
     }
 }
 
@@ -65,9 +73,10 @@ an_empire_under_the_pun = {
     }
     happened = {
         hidden_trigger = {
-            c:GBR = {
+            c:GBR ?= {
                 is_subject_of = ROOT
             }
+            has_variable = an_empire_under_the_pun_ach_possible
         }
     }
 }
@@ -77,8 +86,7 @@ i_didnt_vote_for_pedro = {
         has_variable = i_didnt_vote_for_pedro_ach_possible
     }
     happened = {
-        exists = c:BRZ
-        this = c:BRZ
+        c:BRZ ?= this
         OR = {
             has_law = law_type:law_presidential_republic
             has_law = law_type:law_parliamentary_republic
@@ -92,8 +100,7 @@ go_west_young_man = {
         has_variable = go_west_young_man_ach_possible
     }
     happened = {
-        exists = c:USA
-        this = c:USA
+        c:USA ?= this
         hidden_trigger = {
             s:STATE_CALIFORNIA= {
                 exists = region_state:USA
@@ -135,6 +142,9 @@ the_western_protectorate = {
                 iberian_treaty_ports = yes
             }
         }
+        hidden_trigger = {
+            has_variable = the_western_protectorate_ach_possible
+        }
     }
 }
 
@@ -143,8 +153,7 @@ the_paris_commune = {
         has_variable = the_paris_commune_ach_possible
     }
     happened = {
-        exists = c:FRA
-        this = c:FRA
+        c:FRA ?= this
         has_law = law_type:law_command_economy
         has_law = law_type:law_council_republic
     }
@@ -157,6 +166,9 @@ barbarys_back = {
     happened = {
         owns_entire_state_region = STATE_ALGIERS
         country_rank >= rank_value:major_power
+        hidden_trigger = {
+            has_variable = barbarys_back_ach_possible
+        }
     }
 }
 
@@ -166,6 +178,7 @@ miners_and_minors = {
     }
     happened = {
         hidden_trigger = {
+            has_variable = miners_and_minors_ach_possible
             owns_entire_state_region = STATE_EAST_BORNEO
             any_scope_state = {
                 state_region = s:STATE_EAST_BORNEO
@@ -191,7 +204,7 @@ healthy_man_of_europe = {
         has_variable = healthy_man_of_europe_ach_possible
     }
     happened = {
-        this = c:TUR
+        c:TUR ?= this
         institution_investment_level = {
             institution = institution_health_system
             value = 5
@@ -205,8 +218,7 @@ habsburg_resurgence = {
         has_variable = habsburg_resurgence_ach_possible
     }
     happened = {
-        exists = c:AUS
-        this = c:AUS
+        c:AUS ?= this
         hidden_trigger = {
             owns_entire_state_region = STATE_SILESIA
             or = {
@@ -229,6 +241,7 @@ great_game = {
     }
     happened = {
         hidden_trigger = {
+            has_variable = great_game_ach_possible
             ROOT = {
                 owned_central_asia_region_states = yes
             }
@@ -241,8 +254,7 @@ bourbon_for_everyone = {
         has_variable = bourbon_for_everyone_ach_possible
     }
     happened = {
-        exists = c:SPA
-        this = c:SPA
+        c:SPA ?= this
         hidden_trigger = {
             c:SPA = {
                 root.average_sol >= 20
@@ -257,8 +269,7 @@ manifest_mexico = {
 		has_variable = manifest_mexico_ach_possible
 	}
 	happened = {
-		exists = c:MEX
-		this = c:MEX
+        c:MEX ?= this
 		c:MEX = {
 			owned_great_plains_region_states = yes
 			owned_pacific_coast_region_states = yes
@@ -285,12 +296,14 @@ american_territory = {
         has_variable = american_territory_ach_possible
     }
     happened = {
-        exists = c:USA
-        c:USA ={
+        c:USA ?= {
             is_subject_of = ROOT
             any_scope_state = {
                 count <= 3
             }
+        }
+        hidden_trigger = {
+            has_variable = american_territory_ach_possible
         }
     }
 }
@@ -300,8 +313,7 @@ broken_promises = {
         has_variable = broken_promises_ach_possible
     }
     happened = {
-        exists = c:ITA
-        this = c:ITA
+        c:ITA ?= this
         hidden_trigger = {
             is_diplomatic_play_committed_participant = yes
             any_diplomatic_play = {
@@ -345,8 +357,7 @@ the_berlin_conference = {
         has_variable = the_berlin_conference_ach_possible
     }
     happened = {
-        exists = c:GER
-        this = c:GER
+        c:GER ?= this
         hidden_trigger = {
             any_scope_state = {
                 state_in_africa = yes
@@ -365,6 +376,7 @@ belle_epoque = {
         hidden_trigger = {
             has_global_highest_gdp = yes
             has_global_highest_innovation = yes
+            has_variable = belle_epoque_ach_possible
         }
     }
 }
@@ -428,6 +440,7 @@ serfs_up = {
     happened = {
         hidden_trigger = {
             has_law = law_type:law_worker_protections
+            has_variable = serfs_up_ach_possible
         }
     }
 }
@@ -437,8 +450,7 @@ risorgimento = {
         has_variable = risorgimento_ach_possible
     }
     happened = {
-        exists = c:ITA
-        this = c:ITA
+        c:ITA ?= this
     }
 }
 
@@ -447,8 +459,7 @@ three_hurrahs = {
         has_variable = three_hurrahs_ach_possible
     }
     happened = {
-        exists = c:GER
-        this = c:GER
+        c:GER ?= this
     }
 }
 
@@ -457,8 +468,7 @@ solomons_quest = {
         has_variable = solomons_quest_ach_possible
     }
     happened = {
-        exists = c:ETH
-        this = c:ETH
+        c:ETH ?= this
     }
 }
 
@@ -467,8 +477,7 @@ i_am_a_scandinavian = {
         has_variable = i_am_a_scandinavian_ach_possible
     }
     happened = {
-        exists = c:SCA
-        this = c:SCA
+        c:SCA ?= this
     }
 }
 
@@ -517,6 +526,9 @@ reading_campaign = {
     }
     happened = {
         literacy_rate >= 0.95
+        hidden_trigger = {
+            has_variable = reading_campaign_ach_possible
+        }
     }
 }
 
@@ -591,8 +603,7 @@ grander_colombia = {
         has_variable = grander_colombia_ach_possible
     }
     happened = { 
-        exists = c:GCO
-        this = c:GCO
+        c:GCO ?= this
         c:GCO = {
             custom_tooltip = {
                 text = own_all_gran_colombia_tt
@@ -673,8 +684,7 @@ star_swarmed_banner = {
     happened = {
         custom_tooltip = {
             text = star_swarmed_banner_tt
-            exists = c:USA
-            this = c:USA
+            c:USA ?= this
             any_scope_state = {
                 hidden_trigger = {
                     state_region = { NOT = { has_variable = usa_state_flag_block } }

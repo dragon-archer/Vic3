@@ -43,7 +43,9 @@ BlendState AdditiveBlendState
 {
 	BlendEnable = yes
 	SourceBlend = "SRC_ALPHA"
+	SourceAlpha = "SRC_ALPHA"
 	DestBlend = "ONE"
+	DestAlpha = "ONE"
 	WriteMask = "RED|GREEN|BLUE|ALPHA"
 }
 

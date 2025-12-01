@@ -15,16 +15,22 @@
 @ubuntu_bright_cyan = 0x34e2e2
 @ubuntu_bright_white = 0xffffff
 
+@pdx_blue            = 0x0553AD
+@pdx_gray            = 0x555753
+@pdx_green           = 0x3A8C11
+@pdx_orange          = 0xE08339
+@pdx_purple          = 0x891FA3
+@pdx_red             = 0xE04343
+@pdx_teal            = 0x06989A
+@pdx_violet          = 0x604EC7
+@pdx_white           = 0xD3D7CF
+@pdx_yellow          = 0xF0C846
+
 node_editor_settings = {
 
     node_color_schemes = {
 
-        default = "Ubuntu"
-
-        #"Ubuntu" = {
-        #    "math" = 0xff00ff
-        #    "entity_designer" = { 1 0 1 1 }
-        #}
+        default = "Pdx"
 
         "Ubuntu" = {
             default = @ubuntu_bright_black
@@ -39,8 +45,28 @@ node_editor_settings = {
             "text" = @ubuntu_white
         }
 
-        #"your_scheme_name" = {
-        #    ...
-        #}
+        "Pdx" = {
+            default                   = @pdx_gray
+            "logic"                   = @pdx_green
+            "stateful_logic"          = @pdx_green
+            "math"                    = @pdx_red
+            "gfx"                     = @pdx_orange
+            "particle"                = @pdx_blue
+            "shader"                  = @pdx_purple
+            "ecs"                     = @pdx_teal
+            "entity_designer"         = @pdx_teal
+            "debug"                   = @pdx_purple
+            "text"                    = @pdx_white 
+            "dependency"              = @pdx_yellow
+            "ecs_dependency"          = @pdx_yellow
+            "ecs_update_graph"        = @pdx_violet
+            "ecs_update_graph_shared" = @pdx_violet
+            "db_dependency"           = @pdx_yellow
+            "init_flow_node"          = @pdx_green
+            "init_flow_resource"      = @pdx_red
+            "deinit_flow_node"        = @pdx_purple
+            "update_flow_node"        = @pdx_blue
+            "update_flow_resource"    = @pdx_red
+        }
     }
 }

@@ -5,6 +5,7 @@ Includes = {
 	"cw/utility.fxh"
 	"jomini/jomini_water.fxh"
 	"sharedconstants.fxh"
+	"harvest_condition.fxh"
 }
 
 VertexShader =
@@ -254,18 +255,25 @@ VertexShader =
 
 			float WindMap = PdxTex2DLod0( WindMapTree, MapCoords ).r;
 
+			// HarvestCondition mask
+			HarvestConditionData ConditionData;
+			float2 HarvestCoords = WorldSpacePos.xz * _WorldSpaceToTerrain0To1;
+			SampleHarvestConditionMask( HarvestCoords, ConditionData );
+			float WindMultiplier = lerp( 1.0, ExtremeWindSwaySpeed, ConditionData._ExtremeWinds );
+			float SwayMultiplier = lerp( 1.0, ExtremeWindSwayScale, ConditionData._ExtremeWinds );
+
 			float WorldX = GetMatrixData( WorldMatrix, 0, 3 );
 			float WorldY = GetMatrixData( WorldMatrix, 2, 3 );
 			float Noise = CalcNoise( GlobalTime * TreeSwayLoopSpeed + TreeSwayWindStrengthSpatialModifier * float2( WorldX, WorldY ) );
 			float WindSpeed = Noise * Noise;
-			float Phase = GlobalTime * TreeSwaySpeed + TreeSwayWindClusterSizeModifier * ( WorldX + WorldY );
+			float Phase = GlobalTime * TreeSwaySpeed * WindMultiplier + TreeSwayWindClusterSizeModifier * ( WorldX + WorldY );
 			float3 Offset = normalize( float3( FlowDir.x, 0.0f, FlowDir.z ) );
 			Offset = mul( Offset, CastTo3x3( WorldMatrix ) );
 			float HeightFactor = saturate( Position.y * TreeHeightImpactOnSway );
 			HeightFactor *= HeightFactor;
 
 			float wave = sin( Phase ) + 0.5f;
-			Position += TreeSwayScale * WindMap * HeightFactor * wave * Offset * WindSpeed;
+			Position += TreeSwayScale * SwayMultiplier * WindMap * HeightFactor * wave * Offset * WindSpeed;
 
 			return Position;
 		}
@@ -281,18 +289,25 @@ VertexShader =
 
 			float WindMap = PdxTex2DLod0( WindMapTree, MapCoords ).r;
 
+			// HarvestCondition mask
+			HarvestConditionData ConditionData;
+			float2 HarvestCoords = WorldSpacePos.xz * _WorldSpaceToTerrain0To1;
+			SampleHarvestConditionMask( HarvestCoords, ConditionData );
+			float WindMultiplier = lerp( 1.0, ExtremeWindSwaySpeed, ConditionData._ExtremeWinds );
+			float SwayMultiplier = lerp( 1.0, ExtremeWindSwayScale, ConditionData._ExtremeWinds );
+
 			float WorldX = GetMatrixData( WorldMatrix, 0, 3 );
 			float WorldY = GetMatrixData( WorldMatrix, 2, 3 );
 			float Noise = CalcNoise( GlobalTime * TreeSwayLoopSpeed + TreeSwayWindStrengthSpatialModifier * float2( WorldX, WorldY ) );
 			float WindSpeed = Noise * Noise;
-			float Phase = GlobalTime * TreeSwaySpeed + TreeSwayWindClusterSizeModifier * ( WorldX + WorldY );
+			float Phase = GlobalTime * TreeSwaySpeed * WindMultiplier + TreeSwayWindClusterSizeModifier * ( WorldX + WorldY );
 			float3 Offset = normalize( float3( FlowDir.x, 0.0f, FlowDir.z ) );
 			Offset = mul( Offset, CastTo3x3( WorldMatrix ) );
 			float HeightFactor = saturate( Position.y * TreeHeightImpactOnSway * BUSH_TREE_HEIGHT_IMPACT );
 			HeightFactor *= HeightFactor;
 
 			float wave = sin( Phase ) + 0.5f;
-			Position += TreeSwayScale * BUSH_TREE_SWAY_SCALE * WindMap * HeightFactor * wave * Offset * WindSpeed;
+			Position += TreeSwayScale * BUSH_TREE_SWAY_SCALE * SwayMultiplier * WindMap * HeightFactor * wave * Offset * WindSpeed;
 
 			return Position;
 		}
@@ -308,18 +323,25 @@ VertexShader =
 
 			float WindMap = PdxTex2DLod0( WindMapTree, MapCoords ).r;
 
+			// HarvestCondition mask
+			HarvestConditionData ConditionData;
+			float2 HarvestCoords = WorldSpacePos.xz * _WorldSpaceToTerrain0To1;
+			SampleHarvestConditionMask( HarvestCoords, ConditionData );
+			float WindMultiplier = lerp( 1.0, ExtremeWindSwaySpeed, ConditionData._ExtremeWinds );
+			float SwayMultiplier = lerp( 1.0, ExtremeWindSwayScale, ConditionData._ExtremeWinds );
+
 			float WorldX = GetMatrixData( WorldMatrix, 0, 3 );
 			float WorldY = GetMatrixData( WorldMatrix, 2, 3 );
 			float Noise = CalcNoise( GlobalTime * TreeSwayLoopSpeed + TreeSwayWindStrengthSpatialModifier * float2( WorldX, WorldY ) );
 			float WindSpeed = Noise * Noise;
-			float Phase = GlobalTime * TreeSwaySpeed * MEDIUM_TREE_SWAY_SPEED + TreeSwayWindClusterSizeModifier * ( WorldX + WorldY );
+			float Phase = GlobalTime * TreeSwaySpeed * MEDIUM_TREE_SWAY_SPEED * WindMultiplier + TreeSwayWindClusterSizeModifier * ( WorldX + WorldY );
 			float3 Offset = normalize( float3( FlowDir.x, 0.0f, FlowDir.z ) );
 			Offset = mul( Offset, CastTo3x3( WorldMatrix ) );
 			float HeightFactor = saturate( Position.y * TreeHeightImpactOnSway * MEDIUM_TREE_HEIGHT_IMPACT );
 			HeightFactor *= HeightFactor;
 
 			float wave = sin( Phase ) + 0.5f;
-			Position += TreeSwayScale * MEDIUM_TREE_SWAY_SCALE * WindMap * HeightFactor * wave * Offset * WindSpeed;
+			Position += TreeSwayScale * MEDIUM_TREE_SWAY_SCALE * SwayMultiplier * WindMap * HeightFactor * wave * Offset * WindSpeed;
 
 			return Position;
 		}
@@ -335,18 +357,25 @@ VertexShader =
 
 			float WindMap = PdxTex2DLod0( WindMapTree, MapCoords ).r;
 
+			// HarvestCondition mask
+			HarvestConditionData ConditionData;
+			float2 HarvestCoords = WorldSpacePos.xz * _WorldSpaceToTerrain0To1;
+			SampleHarvestConditionMask( HarvestCoords, ConditionData );
+			float WindMultiplier = lerp( 1.0, ExtremeWindSwaySpeed, ConditionData._ExtremeWinds );
+			float SwayMultiplier = lerp( 1.0, ExtremeWindSwayScale, ConditionData._ExtremeWinds );
+
 			float WorldX = GetMatrixData( WorldMatrix, 0, 3 );
 			float WorldY = GetMatrixData( WorldMatrix, 2, 3 );
 			float Noise = CalcNoise( GlobalTime * TreeSwayLoopSpeed + TreeSwayWindStrengthSpatialModifier * float2( WorldX, WorldY ) );
 			float WindSpeed = Noise * Noise;
-			float Phase = GlobalTime * TreeSwaySpeed * TALL_TREE_SWAY_SPEED + TreeSwayWindClusterSizeModifier * ( WorldX + WorldY );
+			float Phase = GlobalTime * TreeSwaySpeed * TALL_TREE_SWAY_SPEED * WindMultiplier + TreeSwayWindClusterSizeModifier * ( WorldX + WorldY );
 			float3 Offset = normalize( float3( FlowDir.x, 0.0f, FlowDir.z ) );
 			Offset = mul( Offset, CastTo3x3( WorldMatrix ) );
 			float HeightFactor = saturate( Position.y * TreeHeightImpactOnSway * TALL_TREE_HEIGHT_IMPACT );
 			HeightFactor *= HeightFactor;
 
 			float wave = sin( Phase ) + 0.5f;
-			Position += TreeSwayScale * TALL_TREE_SWAY_SCALE * WindMap * HeightFactor * wave * Offset * WindSpeed;
+			Position += TreeSwayScale * TALL_TREE_SWAY_SCALE * SwayMultiplier * WindMap * HeightFactor * wave * Offset * WindSpeed;
 
 			return Position;
 		}

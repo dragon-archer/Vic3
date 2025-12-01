@@ -1,0 +1,20 @@
+pdxmesh = {
+	name = "female_headdot_01_mesh"
+	file = "female_headdot_01.mesh"
+
+	meshsettings = {
+		name = "female_headdot_01Shape"
+		index = 0
+		texture_diffuse = "headdot_01_diffuse.dds"
+		texture_normal = "headdot_01_normal.dds"
+		texture_specular = "headdot_01_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+
+entity = {
+	name = "female_headdot_01_entity"
+	pdxmesh = "female_headdot_01_mesh"
+}

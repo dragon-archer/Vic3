@@ -41,6 +41,17 @@ pdxmesh = {
 	}
 
 	meshsettings = {
+		name = "arabic_factory_tools_01|LOD_0|billboard_generic_0|billboard_gen"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
 		name = "arabic_factory_tools_01|LOD_1|decal|decalShape"
 		index = 0
 		texture_diffuse = "m_decal_factory_02_diffuse.dds"

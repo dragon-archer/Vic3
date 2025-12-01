@@ -578,7 +578,7 @@ PixelShader =
 					PbUv = PbOffsetScale.xy + PbUv * PbOffsetScale.zw;
 
 					float4 PowerBlocCoaColor = ToLinear( PdxTex2D( PowerBlocAtlas, PbUv ) );
-					PowerBlocCoaColor.rgb = PowerBlocCoaColor.rgb * POWERBLOC_COLOR_MULTIPLIER;
+					PowerBlocCoaColor.rgb *= DECAL_COLOR_MULTIPLIER;
 
 					if ( UNIQUE_UV_SET.x > 0.0 && UNIQUE_UV_SET.x < 1.0 && UNIQUE_UV_SET.y > 0.0 && UNIQUE_UV_SET.y < 1.0 )
 					{
@@ -591,15 +591,20 @@ PixelShader =
 				#endif
 
 				// Company Icon
-				#if defined( HUB_BUILDING ) && defined( HUB_SIGN )
+				#if defined( HUB_BUILDING ) && defined( HUB_COMPANY_SIGN )
 					if ( UserData._HasCompanyTexture >= 1.0 )
 					{
 						float2 IconUv = mod( UNIQUE_UV_SET, 1.0 );
 						if ( UNIQUE_UV_SET.x > 0.0 && UNIQUE_UV_SET.x < 1.0 && UNIQUE_UV_SET.y > 0.0 && UNIQUE_UV_SET.y < 1.0 )
 						{
-							float3 CompanyColor = PdxTex2D( CompanyTexture, IconUv ).rgb;
-							Diffuse.rgb = Overlay( Diffuse.rgb, CompanyColor.rgb );
+							float4 CompanyColor = ToLinear( PdxTex2D( CompanyTexture, IconUv ) );
+							CompanyColor.rgb *= DECAL_COLOR_MULTIPLIER;
+							Diffuse.rgb = lerp( Diffuse.rgb, CompanyColor.rgb, CompanyColor.a );
 						}
+					}
+					else
+					{
+						clip( -1 ); // Hide object if no company
 					}
 				#endif
 
@@ -810,6 +815,106 @@ PixelShader =
 			}
 		]]
 	}
+
+
+	#////////////////////////////
+	#////// Shadow Shaders //////
+	#////////////////////////////
+	Code
+	[[
+
+		void ApplyCompanyClipping( int InstanceIndex )
+		{
+			#if defined( HUB_BUILDING ) && defined( HUB_COMPANY_SIGN )
+				SBuildingMeshUserdata UserData = GetBuildingMeshUserData( InstanceIndex );
+				if ( UserData._HasCompanyTexture == 0.0 )
+				{
+					clip( -1 ); // Hide object if no company
+				}
+			#endif
+		}
+
+	]]
+
+	MainCode PS_standard_shadow
+	{
+		Input = "VS_OUTPUT_PDXMESHSHADOWSTANDARD"
+		Output = "void"
+		Code
+		[[
+			PDX_MAIN
+			{
+			ApplyCompanyClipping( Input.UV_InstanceIndex.z );
+
+			float Alpha = PdxTex2D( DiffuseMap, Input.UV_InstanceIndex.xy ).a;
+			#ifdef PDXMESH_USE_DITHERED_OPACITY
+				float Opacity = PdxMeshGetOpacity( uint( Input.UV_InstanceIndex.z + 0.5 ) ); // +0.5 to "round", it seems floating point errors can sneak in when interpolating
+				PdxMeshApplyDitheredOpacity( Opacity, Input.Position.xy );
+			#endif
+			clip( Alpha - 0.1 );
+			}
+		]]
+	}
+
+	MainCode PS_alphablend_shadow
+	{
+		Input = "VS_OUTPUT_PDXMESHSHADOWSTANDARD"
+		Output = "void"
+		Code
+		[[
+			PDX_MAIN
+			{
+				ApplyCompanyClipping( Input.UV_InstanceIndex.z );
+				float Alpha = PdxTex2D( PDXMESH_AlphaBlendShadowMap, Input.UV_InstanceIndex.xy ).a;
+				float TextureAlpha = PdxTex2D( DiffuseMap, Input.UV_InstanceIndex.xy ).a;
+				Alpha *= TextureAlpha;
+			#ifdef PDXMESH_USE_DITHERED_OPACITY
+				float Opacity = PdxMeshGetOpacity( uint( Input.UV_InstanceIndex.z + 0.5 ) ); // +0.5 to "round", it seems floating point errors can sneak in when interpolating
+				PdxMeshApplyDitheredOpacity( Opacity, Input.Position.xy );
+			#endif
+				clip( Alpha - 0.1 );
+			}
+		]]
+	}
+
+	MainCode PS_mapobject_shadow
+	{
+		Input = "VS_OUTPUT_MAPOBJECT_SHADOW"
+		Output = "void"
+		Code
+		[[
+			PDX_MAIN
+			{
+				ApplyCompanyClipping( Input.InstanceIndex24_Opacity8 );
+				ApplyDither( Input );
+
+				float Alpha = PdxTex2D( DiffuseMap, Input.UV ).a;
+				clip( Alpha - 0.1 );
+			}
+		]]
+	}
+
+	MainCode PS_mapobject_alphablend_shadow
+	{
+		Input = "VS_OUTPUT_MAPOBJECT_SHADOW"
+		Output = "void"
+		Code
+		[[
+			#ifndef PDXMESH_AlphaBlendShadowMap
+				#define PDXMESH_AlphaBlendShadowMap DiffuseMap
+			#endif
+			PDX_MAIN
+			{
+				ApplyCompanyClipping( Input.InstanceIndex24_Opacity8 );
+				ApplyDither( Input );
+
+				float Alpha = PdxTex2D( PDXMESH_AlphaBlendShadowMap, Input.UV ).a;
+				float TextureAlpha = PdxTex2D( DiffuseMap, Input.UV ).a;
+				Alpha *= TextureAlpha;
+				clip( Alpha - 0.1 );
+			}
+		]]
+	}
 }
 
 
@@ -874,7 +979,7 @@ Effect standard
 Effect standardShadow
 {
 	VertexShader = "VS_standard_shadow"
-	PixelShader = "PixelPdxMeshStandardShadow"
+	PixelShader = "PS_standard_shadow"
 	RasterizerState = ShadowRasterizerState
 }
 Effect standard_twosided
@@ -887,7 +992,7 @@ Effect standard_twosided
 Effect standard_twosidedShadow
 {
 	VertexShader = "VS_standard_shadow"
-	PixelShader = "PixelPdxMeshStandardShadow"
+	PixelShader = "PS_standard_shadow"
 	RasterizerState = ShadowRasterizerStateTwoSided
 	Defines = { "TWO_SIDED" }
 }
@@ -903,7 +1008,7 @@ Effect standard_alpha_blend
 Effect standard_alpha_blendShadow
 {
 	VertexShader = "VS_standard_shadow"
-	PixelShader = "PixelPdxMeshAlphaBlendShadow"
+	PixelShader = "PS_alphablend_shadow"
 	RasterizerState = ShadowRasterizerState
 }
 Effect standard_alpha_blend_twosided
@@ -918,7 +1023,7 @@ Effect standard_alpha_blend_twosided
 Effect standard_alpha_blend_twosidedShadow
 {
 	VertexShader = "VS_standard_shadow"
-	PixelShader = "PixelPdxMeshAlphaBlendShadow"
+	PixelShader = "PS_alphablend_shadow"
 	RasterizerState = ShadowRasterizerStateTwoSided
 	Defines = { "TWO_SIDED" }
 }
@@ -935,7 +1040,7 @@ Effect standard_alpha_to_coverage
 Effect standard_alpha_to_coverageShadow
 {
 	VertexShader = "VS_standard_shadow"
-	PixelShader = "PixelPdxMeshAlphaBlendShadow"
+	PixelShader = "PS_alphablend_shadow"
 	RasterizerState = ShadowRasterizerState
 	Defines = { "ALPHA_TO_COVERAGE" }
 }
@@ -950,7 +1055,7 @@ Effect standard_alpha_to_coverage_twosided
 Effect standard_alpha_to_coverage_twosidedShadow
 {
 	VertexShader = "VS_standard_shadow"
-	PixelShader = "PixelPdxMeshAlphaBlendShadow"
+	PixelShader = "PS_alphablend_shadow"
 	RasterizerState = RasterizerStateTwoSided
 	RasterizerState = ShadowRasterizerState
 	Defines = { "ALPHA_TO_COVERAGE" "TWO_SIDED" }
@@ -965,7 +1070,7 @@ Effect standard_flag_basic
 Effect standard_flag_basicShadow
 {
 	VertexShader = "VS_sine_animation_shadow"
-	PixelShader = "PixelPdxMeshStandardShadow"
+	PixelShader = "PS_standard_shadow"
 	RasterizerState = ShadowRasterizerState
 }
 Effect standard_flag_revolution
@@ -978,7 +1083,7 @@ Effect standard_flag_revolution
 Effect standard_flag_revolutionShadow
 {
 	VertexShader = "VS_sine_animation_shadow"
-	PixelShader = "PixelPdxMeshStandardShadow"
+	PixelShader = "PS_standard_shadow"
 	RasterizerState = ShadowRasterizerState
 }
 
@@ -1003,7 +1108,7 @@ Effect standard_mapobject
 Effect standardShadow_mapobject
 {
 	VertexShader = "VS_jomini_mapobject_shadow"
-	PixelShader = "PS_jomini_mapobject_shadow"
+	PixelShader = "PS_mapobject_shadow"
 	RasterizerState = ShadowRasterizerState
 }
 
@@ -1018,7 +1123,7 @@ Effect standard_alpha_blend_mapobject
 Effect standard_alpha_blendShadow_mapobject
 {
 	VertexShader = "VS_jomini_mapobject_shadow"
-	PixelShader = "PS_jomini_mapobject_shadow_alphablend"
+	PixelShader = "PS_mapobject_alphablend_shadow"
 	RasterizerState = ShadowRasterizerState
 }
 
@@ -1033,7 +1138,7 @@ Effect standard_alpha_to_coverage_mapobject
 Effect standard_alpha_to_coverageShadow_mapobject
 {
 	VertexShader = "VS_jomini_mapobject_shadow"
-	PixelShader = "PS_jomini_mapobject_shadow_alphablend"
+	PixelShader = "PS_mapobject_alphablend_shadow"
 	RasterizerState = ShadowRasterizerState
 	Defines = { "ALPHA_TO_COVERAGE" }
 }
@@ -1047,7 +1152,7 @@ Effect standard_flag_basic_mapobject
 Effect standard_flag_basicShadow_mapobject
 {
 	VertexShader = "VS_sine_animation_shadow_mapobject"
-	PixelShader = "PS_jomini_mapobject_shadow"
+	PixelShader = "PS_mapobject_shadow"
 	RasterizerState = ShadowRasterizerState
 }
 Effect standard_flag_revolution_mapobject
@@ -1060,7 +1165,7 @@ Effect standard_flag_revolution_mapobject
 Effect standard_flag_revolutionShadow_mapobject
 {
 	VertexShader = "VS_sine_animation_shadow_mapobject"
-	PixelShader = "PS_jomini_mapobject_shadow"
+	PixelShader = "PS_mapobject_shadow"
 	RasterizerState = ShadowRasterizerState
 }
 

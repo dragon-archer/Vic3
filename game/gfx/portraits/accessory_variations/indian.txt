@@ -284,7 +284,6 @@ pattern_layout = {
 }
 
 
-
 pattern_layout = {
 	name = "trim_female_outfit_high_indian_layout"	
 	scale 		= { min = 0.125	max = 0.125 }
@@ -306,6 +305,13 @@ pattern_layout = {
 	rotation 	= { min = 0	max = 0 }	
 	offset 		= { x = { min = 0	max = 0 }    y = { min = -0.54	max = -0.54 } } 
 }
+
+pattern_layout = {
+	name = "plain_fabric_male_epaulettes_layout_01"	
+	scale 		= { min = 0.75	max = 0.75 }
+	rotation 	= { min = 0	max = 0 }			
+	offset 		= { x = { min = 0	max = 0 }    y = { min = 0	max = 0 } } 
+}	
 
 #pattern_layout = {
 #	name = "plain_fabric_layout_02"	
@@ -491,6 +497,242 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_outfits_indian_low_01.dds" }	
 }
 
+
+
+
+variation = {
+	name = "female_necklace_indian_02"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_pearl_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_gem_01"			layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_necklace_indian_02.dds" }	
+}
+
+
+variation = {
+	name = "headgear_royalty_03"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "indian_silk_pattern_04" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "indian_silk_pattern_04" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_pearl_01"			layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_royalty_03.dds" }	
+}
+
+
+
+
+variation = {
+	name = "maharaja_singh_01"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "indian_silk_pattern_04" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_pearl_01"			layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_maharaja_singh_01.dds" }	
+}
+
+
+
+variation = {
+	name = "headgear_royalty_02"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "indian_silk_pattern_04" 		layout = "plain_fabric_layout" }
+		g = { textures = "european_gold_trim_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_pearl_01"			layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_royalty_02.dds" }	
+}
+
+variation = {
+	name = "headgear_jankoji_rao_scindia"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_pearl_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_gem_01"			layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_jankoji_rao_scindia.dds" }	
+}
+
+variation = {
+	name = "headgear_jankoji_rao_scindia_ii"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_pearl_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_gem_01"			layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_jankoji_rao_scindia_ii.dds" }	
+}
+
+
+
+
+variation = {
+	name = "male_necklace_tatya_tope"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_gem_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_pearl_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_gem_01"			layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_necklace_tatya_tope.dds" }	
+}
+
+variation = {
+	name = "male_necklace_indian_maharaja_singh_01"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_gem_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_pearl_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_gem_01"			layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/male_necklace_indian_maharaja_singh_01.dds" }	
+}
+
+
+
+variation = {
+	name = "headgear_tatya_tope"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_pearl_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_gem_01"			layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_tatya_tope.dds" }	
+}
+
+
+variation = {
+	name = "indian_radhakanta_deb"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_pearl_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_gem_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_gem_01"			layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_indian_radhakanta_deb.dds" }	
+}
+
+
 variation = {
 	name = "female_hair_indian_01_gems"
 	
@@ -533,6 +775,147 @@ variation = {
 	# First column will be masked by the red channel in the masks, second by the green, etc.
 	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_rose_01.dds" }	
+}
+
+
+variation = {
+	name = "indian_coat_01"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_cotton_standard_fine_01"		layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coat_indian_01.dds" }	
+}
+
+
+variation = {
+	name = "indian_scarf_01"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "indian_silk_trim_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_cotton_standard_fine_01"		layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_indian_scarf_01.dds" }	
+}
+
+variation = {
+	name = "male_headgear_ghandi_topi_01"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_cotton_standard_fine_01"		layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_headgear_ghandi_topi_01.dds" }	
+}
+
+
+
+
+variation = {
+	name = "male_outfit_indian_whitte_cotton" 
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_cotton_standard_fine_01"		layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_outfit_indian_whitte_cotton.dds" }	
+}
+
+
+
+variation = {
+	name = "dwarkanath_tagore" 
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_cotton_standard_fine_01"		layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_dwarkanath_tagore.dds" }	
+}
+
+
+
+variation = {
+	name = "male_outfit_tatya_tope"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_cotton_standard_fine_01"		layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_outfit_indian_tatya_tope.dds" }	
 }
 
 variation = {
@@ -592,6 +975,93 @@ variation = {
 }
 
 variation = {
+	name = "male_outfit_indian_hindu_01"
+	
+
+	pattern = { 
+		weight = 1
+		 
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_cotton_standard_fine_01"		layout = "plain_fabric_layout" }
+	}
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_outfits_indian_hindu_01.dds" }	
+
+	pattern = { 
+		weight = 1
+		 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
+	}
+	
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_outfits_indian_hindu_01.dds" }			
+}
+
+variation = {
+	name = "male_outfit_indian_buddhist_01"
+	
+
+	pattern = { 
+		weight = 1
+		 
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_cotton_standard_fine_01"		layout = "plain_fabric_layout" }
+	}
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_outfits_indian_buddhist_01.dds" }	
+
+	pattern = { 
+		weight = 1
+		 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
+	}
+	
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_outfits_indian_buddhist_01.dds" }			
+}
+
+variation = {
+	name = "female_outfit_indian_buddhist_01"
+	
+
+	pattern = { 
+		weight = 1
+		 
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_cotton_standard_fine_01"		layout = "plain_fabric_layout" }
+	}
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_outfits_indian_buddhist_01.dds" }	
+
+	pattern = { 
+		weight = 1
+		 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
+	}
+	
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_outfits_indian_buddhist_01.dds" }			
+}
+
+variation = {
 	name = "female_outfit_indian_common_01"
 	
 
@@ -642,6 +1112,43 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_top_layer_indian_high_01.dds" }	
 }
 
+
+variation = {
+	name = "female_outfit_indian_cotton"
+	
+
+	pattern = { 
+		weight = 1
+
+		r = { textures = "indian_cotton_pattern_04" 				layout = "plain_fabric_layout" }
+		g = { textures = "indian_cotton_pattern_04" 				layout = "plain_fabric_layout" }
+		b = { textures = "indian_cotton_pattern_04" 				layout = "plain_fabric_layout" }
+		a = { textures = "indian_silk_trim_01"					layout = "trim_female_outfits_indian_layout_04" }
+	}	
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_outfit_indian_cotton.dds" }	
+}
+
+variation = {
+	name = "female_outfit_indian_sarojni_naidu"
+	
+
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_silk_standard_plain_01" 				layout = "plain_fabric_layout" }
+		g = { textures = "indian_silk_pattern_01" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_velvet_standard_plain_01" 					layout = "trim_female_outfits_indian_layout_02" }
+		a = { textures = "indian_silk_trim_01"					layout = "trim_female_outfits_indian_layout_04" }
+	}	
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_outfit_indian_sarojni_naidu.dds" }	
+}
+
+
+
 variation = {
 	name = "female_outfit_indian_diwali_01"
 	
@@ -658,6 +1165,25 @@ variation = {
 
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_outfit_indian_diwali_01.dds" }	
 }
+
+
+variation = {
+	name = "female_outfit_indian_amy_carmichael"
+	
+
+	pattern = { 
+		weight = 1
+
+		r = { textures = "indian_cotton_pattern_04" 				layout = "plain_fabric_layout" }
+		g = { textures = "indian_silk_pattern_04" 				layout = "plain_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 					layout = "trim_female_outfits_indian_layout_02" }
+		a = { textures = "indian_silk_trim_01"					layout = "trim_female_outfits_indian_layout_04" }
+	}	
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_outfit_indian_amy_carmichael.dds" }	
+}
+
 
 variation = {
 	name = "female_top_layer_indian_common_01"
@@ -723,4 +1249,184 @@ variation = {
 	# First column will be masked by the red channel in the masks, second by the green, etc.
 	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_top_layer_indian_high_01.dds" }	
+}
+
+variation = {
+	name = "female_headgear_indian_high_02"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_cotton_standard_fine_01" 				layout = "plain_fabric_headgear_layout" }
+		g = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "indian_silk_trim_01" 		layout = "trim_female_top_layer_indian_high_layout" }
+		a = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_outfit_indian_cotton_01.dds" }	
+}
+
+
+
+variation = {
+	name = "male_belts_gandhi_watch_01"
+	
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_medal_metals_01" 				layout = "plain_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_belts_gandhi_watch_01.dds" }	
+}
+
+variation = {
+	name = "male_headgear_indian_common_puneri_pagadi"
+	
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "european_gold_trim_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_trims_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_indian_common_puneri_pagadi.dds" }	
+}
+
+variation = {
+	name = "female_headgear_lakshmibai_01"
+	
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "indian_silk_trim_01"					layout = "trim_male_outfits_indian_layout_04" }
+		b = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_medal_metals_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_headgear_lakshmibai_01.dds" }	
+}
+
+
+
+
+variation = {
+	name = "male_sashes_indian_maharaja_singh_01"
+	
+	pattern = { 
+		weight = 1
+
+		r = { textures = "european_wool_standard_striped_02" 		layout = "plain_fabric_layout" }
+		g = { textures = "indian_silk_pattern_04" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "indian_silk_trim_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_sashes_indian_maharaja_singh_01.dds" }	
+}
+
+
+variation = {
+	name = "male_coat_indian_maharaja_singh_01"
+	
+	pattern = { 
+		weight = 1
+
+		r = { textures = "indian_silk_pattern_02" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "indian_silk_trim_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coat_indian_maharaja_singh_01.dds" }	
+}
+
+variation = {
+	name = "male_shirt_indian_maharaja_singh_01"
+	
+	pattern = { 
+		weight = 1
+
+		r = { textures = "indian_silk_pattern_04" 		layout = "plain_fabric_layout" }
+		g = { textures = "indian_silk_trim_01" 		layout = "trim_female_top_layer_indian_high_layout" }
+		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "indian_silk_trim_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_shirt_indian_maharaja_singh_01.dds" }	
+}
+
+variation = {
+	name = "female_coat_lakshmibai_01"
+	
+	pattern = { 
+		weight = 1
+
+		r = { textures = "indian_silk_pattern_05" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01" 		layout = "trim_female_top_layer_indian_high_layout" }
+		b = { textures = "indian_silk_trim_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_trims_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_coat_lakshmibai_01.dds" }	
+}
+
+variation = {
+	name = "female_legwear_lakshmibai_01"
+	
+	pattern = { 
+		weight = 1
+
+		r = { textures = "indian_silk_pattern_04" 				layout = "trim_male_outfits_indian_layout_04" }
+		g = { textures = "indian_silk_trim_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "indian_silk_trim_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_trims_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_legwear_lakshmibai_01.dds" }	
+}
+
+
+variation = {
+	name = "male_legwear_indian_maharaja_singh_01"
+	
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_silk_standard_plain_01" 				layout = "trim_male_outfits_indian_layout_04" }
+		g = { textures = "indian_silk_trim_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "indian_silk_trim_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_trims_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_legwear_indian_maharaja_singh_01.dds" }	
+}
+
+
+variation = {
+	name = "female_belt_lakshmibai_01"
+	
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_medal_metals_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_trims_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_leather_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_trims_standard_plain_01"		layout = "plain_fabric_male_epaulettes_layout_01" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_belt_lakshmibai_01.dds" }	
 }

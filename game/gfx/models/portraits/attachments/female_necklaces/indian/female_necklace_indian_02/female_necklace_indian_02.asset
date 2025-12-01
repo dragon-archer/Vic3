@@ -1,0 +1,48 @@
+pdxmesh = {
+	name = "female_necklace_indian_02_mesh"
+	file = "female_necklace_indian_02.mesh"
+
+
+	blend_shape = { id = "female_necklace_indian_02_bs_fat"				type = "female_necklace_indian_02_bs_fat.mesh" }
+	
+	blend_shape = { id = "female_necklace_indian_02_bs_old"				type = "female_necklace_indian_02_bs_old.mesh" }
+
+
+	blend_shape = { id = "female_necklace_indian_02_bs_bustsizemax"		type = "female_necklace_indian_02_bs_bustsizemax.mesh" }
+	
+
+	meshsettings = {
+		name = "female_necklace_indian_02Shape"
+		index = 0
+		texture_diffuse = "female_necklace_indian_02_diffuse.dds"
+		texture_normal = "female_necklace_indian_02_normal.dds"
+		texture_specular = "female_necklace_indian_02_properties.dds"
+		shader = "portrait_attachment_pattern_alpha_to_coverage"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "female_necklace_indian_02_entity"
+	pdxmesh = "female_necklace_indian_02_mesh"
+
+	
+attribute = { name = "body_bs_fat"					blend_shape = "female_necklace_indian_02_bs_fat" }
+		
+		attribute = { name = "body_bs_old"					blend_shape = "female_necklace_indian_02_bs_old" }
+		
+		
+		attribute = { name = "body_bs_bustsizemax"			blend_shape = "female_necklace_indian_02_bs_bustsizemax" }
+	
+
+
+game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/female_necklaces/indian/female_necklace_indian_02/female_necklace_indian_02_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "female_necklace_indian_02"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}

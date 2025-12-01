@@ -117,6 +117,7 @@ entity = {
 			node = "birds"
 			entity = "seagull_port_entity"
 			trigger_once = yes
+			keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/Ambience/3D/Fauna/seagulls" }
 		}
 
 		event = { time = 0	node = "loc_light" particle = "infrastructure/lighthouse" trigger_once = yes keep_particle = yes}		

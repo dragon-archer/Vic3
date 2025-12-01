@@ -185,7 +185,7 @@ PixelShader =
 			WorldSpaceOffset = Offset.zw;
 		}
 
-		void CalcParallaxedUvs( in VS_OUTPUT Input, in float3x3 TBN, out float2 WorldUV, out float2 TangentUV )
+		void CalcParallaxedUvs( in VS_SPLINE_OUTPUT Input, in float3x3 TBN, out float2 WorldUV, out float2 TangentUV )
 		{
 			float3 ToCameraDir = normalize( CameraPosition - Input.WorldSpacePos );
 
@@ -203,7 +203,7 @@ PixelShader =
 		}
 
 		// Depth from texture sample version
-		void CalcParallaxedUvs( in VS_OUTPUT Input, in float3x3 TBN, out float2 WorldUV, out float2 TangentUV, PdxTextureSampler2D BottomNormal )
+		void CalcParallaxedUvs( in VS_SPLINE_OUTPUT Input, in float3x3 TBN, out float2 WorldUV, out float2 TangentUV, PdxTextureSampler2D BottomNormal )
 		{
 			float3 ToCameraDir = normalize( CameraPosition - Input.WorldSpacePos );
 
@@ -220,7 +220,7 @@ PixelShader =
 			TangentUV = Input.UV + TangentSpaceParallax;
 		}
 
-		PS_RIVER_BOTTOM_OUT CalcRiverBottom( in VS_OUTPUT Input )
+		PS_RIVER_BOTTOM_OUT CalcRiverBottom( in VS_SPLINE_OUTPUT Input )
 		{
 			float3 Normal = normalize(Input.Normal);
 			float3 Tangent = normalize(Input.Tangent);
@@ -234,7 +234,11 @@ PixelShader =
 
 			// Fake some depth
 			float UnderOceanFade = 1.0f - saturate( ( _WaterHeight - Input.WorldSpacePos.y ) * _OceanFadeRate );
+#if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
 			float FadeOut = min( UnderOceanFade, Input.Transparency );
+#else
+			float FadeOut = UnderOceanFade;
+#endif
 
 			float Depth = CalcDepth( TangentUV );
 			float WorldSpaceDepth = Depth * Input.Width * FadeOut;
@@ -263,7 +267,11 @@ PixelShader =
 
 			float3 Color = CalculateSunLighting( MaterialProps, LightingProps, EnvironmentMap );
 
+#if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
 			float FadeToConnection = saturate( ( Input.DistanceToMain - 0.6f * abs(Input.UV.y-0.5f) ) * 5.0f );
+#else
+			float FadeToConnection = saturate( ( 1 - (0.6f * abs(Input.UV.y-0.5f) )) * 5.0f );
+#endif
 			float EdgeFade = saturate( Depth * 13.0f );
 			float Alpha = FadeOut * FadeToConnection * EdgeFade;
 
@@ -279,7 +287,7 @@ PixelShader =
 		}
 
 		// New updated version
-		PS_RIVER_BOTTOM_OUT CalcRiverBottomAdvanced( in VS_OUTPUT Input )
+		PS_RIVER_BOTTOM_OUT CalcRiverBottomAdvanced( in VS_SPLINE_OUTPUT Input )
 		{
 			PS_RIVER_BOTTOM_OUT Out;
 
@@ -297,7 +305,11 @@ PixelShader =
 
 			// Fake some depth
 			float UnderOceanFade = 1.0f - saturate( ( _WaterHeight - Input.WorldSpacePos.y ) * _OceanFadeRate );
+#if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
 			float FadeOut = min( UnderOceanFade, Input.Transparency );
+#else
+			float FadeOut = UnderOceanFade;
+#endif
 
 			float Depth = CalcDepth( TangentUV, BottomNormal );
 			float WorldSpaceDepth = Depth * Input.Width * FadeOut;
@@ -326,7 +338,11 @@ PixelShader =
 			SLightingProperties LightingProps = GetRiverBottomSunLightingProperties( WorldSpacePos, WorldSpaceDepth, ShadowTexture );
 			float3 Color = CalculateSunLighting( MaterialProps, LightingProps, EnvironmentMap );
 
+#if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
 			float FadeToConnection = saturate( ( Input.DistanceToMain - 0.6f * abs( Input.UV.y - 0.5f ) ) * 5.0f );
+#else
+			float FadeToConnection = saturate( ( 1 - ( 0.6f * abs( Input.UV.y - 0.5f ) ) ) * 5.0f );
+#endif
 
 			// Edge fade
 			float EdgeFade1 = smoothstep( 0.0f, _BankFade, Input.UV.y );
@@ -358,12 +374,14 @@ BlendState BlendStateRiverBottom
 
 RasterizerState RasterizerStateRiverBottom
 {
-	DepthBias = -50000
+	DepthBias = -10000
 	#fillmode = wireframe
-	#CullMode = none
+	CullMode = Back
 }
 
 DepthStencilState DepthStencilStateRiverBottom
 {
-	DepthWriteEnable = no
+	depthenable = yes
+	depthwriteenable = yes
+	depthfunction = less
 }

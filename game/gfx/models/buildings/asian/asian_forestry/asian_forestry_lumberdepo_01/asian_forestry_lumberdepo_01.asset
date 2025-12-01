@@ -2,9 +2,7 @@ pdxmesh = {
 	name = "asian_forestry_lumberdepo_01_mesh"
 	file = "asian_forestry_lumberdepo_01.mesh"
 
-	scale = 2
-
-lod_percentages = {
+	lod_percentages = {
 		lod = { index = 1 percent = 8.0 }
 	}
 
@@ -39,6 +37,17 @@ lod_percentages = {
 		texture_specular = "asian_farm_farmstead_01_properties.dds"
 		shader = "standard_alpha_to_coverage"
 		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "asian_forestry_lumberdepo_01|LOD_0|billboard_lumber_0|billboard"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 

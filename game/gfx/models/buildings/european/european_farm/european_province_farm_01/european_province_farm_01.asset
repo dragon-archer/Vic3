@@ -2,15 +2,13 @@ pdxmesh = {
 	name = "european_province_farm_01_mesh"
 	file = "european_province_farm_01.mesh"
 
-	scale = 2
-
-lod_percentages = {
+	lod_percentages = {
 		lod = { index = 1 percent = 16.0 }
 		lod = { index = 2 percent = 8.0 }
 	}
 
 	meshsettings = {
-		name = "european_province_farm_01|LOD_0|mesh0|mesh0Shape"
+		name = "mesh0Shape"
 		index = 0
 		texture_diffuse = "decal_rural_farm_hub_diffuse.dds"
 		texture_normal = "decal_rural_farm_hub_normal.dds"
@@ -22,7 +20,7 @@ lod_percentages = {
 	}
 
 	meshsettings = {
-		name = "european_province_farm_01|LOD_0|mesh0|mesh0Shape"
+		name = "mesh0Shape"
 		index = 1
 		texture_diffuse = "european_ranch_01_diffuse.dds"
 		texture_normal = "european_ranch_01_normal.dds"
@@ -33,7 +31,18 @@ lod_percentages = {
 	}
 
 	meshsettings = {
-		name = "european_province_farm_01|LOD_1|mesh1|mesh1Shape"
+		name = "billboard_grain_0Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "mesh1Shape"
 		index = 0
 		texture_diffuse = "decal_rural_farm_hub_diffuse.dds"
 		texture_normal = "decal_rural_farm_hub_normal.dds"
@@ -45,7 +54,7 @@ lod_percentages = {
 	}
 
 	meshsettings = {
-		name = "european_province_farm_01|LOD_1|mesh1|mesh1Shape"
+		name = "mesh1Shape"
 		index = 1
 		texture_diffuse = "european_ranch_01_diffuse.dds"
 		texture_normal = "european_ranch_01_normal.dds"
@@ -56,7 +65,18 @@ lod_percentages = {
 	}
 
 	meshsettings = {
-		name = "european_province_farm_01|LOD_2|mesh2|mesh2Shape"
+		name = "billboard_grain_1Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "mesh2Shape"
 		index = 0
 		texture_diffuse = "decal_rural_farm_hub_diffuse.dds"
 		texture_normal = "decal_rural_farm_hub_normal.dds"
@@ -68,7 +88,7 @@ lod_percentages = {
 	}
 
 	meshsettings = {
-		name = "european_province_farm_01|LOD_2|mesh2|mesh2Shape"
+		name = "mesh2Shape"
 		index = 1
 		texture_diffuse = "european_ranch_01_diffuse.dds"
 		texture_normal = "european_ranch_01_normal.dds"

@@ -9,6 +9,10 @@ Code
 	{
 		return pow(aLinear, vec3(1.0/2.2));
 	}
+	float4 ToGamma(float4 aLinear)
+	{
+		return float4(pow(aLinear.rgb, vec3(1.0/2.2)), aLinear.a);
+	}
 	float ToLinear(float aGamma)
 	{
 		return pow(aGamma, 2.2);

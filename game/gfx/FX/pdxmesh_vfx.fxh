@@ -1,7 +1,7 @@
 
 
 VertexShader =
-{		
+{
 	Code
 	[[
 		#define UI_SCREEN_BURN_UV0_MULT float2( 2.4f, 3.1f )
@@ -17,7 +17,7 @@ VertexShader =
 }
 
 PixelShader =
-{		
+{
 	Code
 	[[
 		#define UV_DIST_STRENGTH 0.1f
@@ -32,5 +32,14 @@ PixelShader =
 
 		#define FINAL_ALPHA_MULT 1.0f
 		#define FINAL_COL_MULT 3.0f
+
+
+		// Panning Texture Defines
+		#define PanningTex_Alpha 			0.5						// Alpha
+		#define PanningTex_PanSpeed 		1.0						// Pan speed
+		#define PanningTex_GapDistance 		3.0						// Distance between each UV repetition
+		#define PanningTex_TextureScale 	float2 ( 1.0, 2.5 )		// Uv scale
+		#define PanningTex_FadeDistance 	0.15					// Distance of fade in/out
+		#define PanningTex_FadeContrast 	0.1						// Sharpness of fade in/out
 	]]
 }

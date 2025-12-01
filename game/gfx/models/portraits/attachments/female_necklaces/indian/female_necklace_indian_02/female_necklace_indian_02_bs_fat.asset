@@ -1,0 +1,16 @@
+pdxmesh = {
+	name = "female_necklace_indian_02_bs_fat_mesh"
+	file = "female_necklace_indian_02_bs_fat.mesh"
+
+	meshsettings = {
+		name = "female_necklace_indian_02_bs_fatShape"
+		index = 0
+		shader = "portrait_attachment_pattern_alpha_to_coverage"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "female_necklace_indian_02_bs_fat_entity"
+	pdxmesh = "female_necklace_indian_02_bs_fat_mesh"
+}

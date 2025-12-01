@@ -203,7 +203,7 @@ types AnalyzerTypes
 			layoutpolicy_horizontal = expanding
 			minimumsize = { 300 40 }
 			align = left|nobaseline
-			raw_text = "Analyzing save.."
+			raw_text = "Analyzing save. Progress: [SaveGameAnalysisView.GetProgress|2%]"
 			visible = "[SaveGameAnalysisView.IsReading]"
 		}
 
@@ -226,8 +226,9 @@ types AnalyzerTypes
 
 			scrollwidget = {
 				tree = {
+					size = { 100% 100% }
 					name = "block_tree"
-					alwaystransparent = no
+					indent = 18
 
 					expandButton = {
 						checkbutton = {
@@ -239,66 +240,73 @@ types AnalyzerTypes
 					}
 
 					item = {
-						flowcontainer = {
-							alwaystransparent = no
-							tooltip = "[SaveGameAnalysisView.GetNote(SaveGameBlockData.Self)]"
+						tree_item_outline = {
+							size = { 920 20 }
+							upframe = 1
+							downframe = 2
+							overframe = 2
+							tree_item_indentation = {
+								flowcontainer = {
+									tooltip = "[SaveGameAnalysisView.GetNote(SaveGameBlockData.Self)]"
 
-							textbox = {
-								name = "title"
-								size = { 300 20 }
-								align = left|nobaseline
-								elide = right
-								text = "[SaveGameBlockData.GetTitle]"
-							}
+									textbox = {
+										name = "title"
+										size = { 300 20 }
+										align = left|nobaseline
+										elide = right
+										text = "[SaveGameBlockData.GetTitle]"
+									}
 
-							textbox = {
-								size = { 100 20 }
-								align = right|nobaseline
-								text = "[SaveGameBlockData.GetPercentage|%]"
-								margin = { 10 0 }
-							}
+									textbox = {
+										size = { 100 20 }
+										align = right|nobaseline
+										text = "[SaveGameBlockData.GetPercentage|%]"
+										margin = { 10 0 }
+									}
 
-							textbox = {
-								size = { 100 20 }
-								align = right|nobaseline
-								text = "[SaveGameBlockData.GetParentPercentage|%]"
-								margin = { 10 0 }
-							}
+									textbox = {
+										size = { 100 20 }
+										align = right|nobaseline
+										text = "[SaveGameBlockData.GetParentPercentage|%]"
+										margin = { 10 0 }
+									}
 
-							textbox = {
-								size = { 100 20 }
-								align = right|nobaseline
-								text = "[SaveGameBlockData.GetCharCount|D]"
-								margin = { 10 0 }
-							}
+									textbox = {
+										size = { 100 20 }
+										align = right|nobaseline
+										text = "[SaveGameBlockData.GetCharCount|D]"
+										margin = { 10 0 }
+									}
 
-							textbox = {
-								size = { 100 20 }
-								align = right|nobaseline
-								text = "[SaveGameBlockData.GetWhitespaceCount|D]"
-								margin = { 10 0 }
-							}
+									textbox = {
+										size = { 100 20 }
+										align = right|nobaseline
+										text = "[SaveGameBlockData.GetWhitespaceCount|D]"
+										margin = { 10 0 }
+									}
 
-							textbox = {
-								size = { 100 20 }
-								align = right|nobaseline
-								text = "[SaveGameBlockData.GetWhitespaceRatio|%]"
-								margin = { 10 0 }
-							}
+									textbox = {
+										size = { 100 20 }
+										align = right|nobaseline
+										text = "[SaveGameBlockData.GetWhitespaceRatio|%]"
+										margin = { 10 0 }
+									}
 
-							textbox = {
-								size = { 100 20 }
-								align = right|nobaseline
-								text = "[SaveGameBlockData.GetOtherPathsCount]"
-								margin = { 10 0 }
-								tooltip = "[SaveGameBlockData.GetOtherPaths]"
-							}
+									textbox = {
+										size = { 100 20 }
+										align = right|nobaseline
+										text = "[SaveGameBlockData.GetOtherPathsCount]"
+										margin = { 10 0 }
+										tooltip = "[SaveGameBlockData.GetOtherPaths]"
+									}
 
-							save_game_analyzer_button = {
-								size = { 20 20 }
-								onclick = "[SaveGameAnalyzer.EditNotes(SaveGameBlockData.GetTokenName)]"
+									save_game_analyzer_button = {
+										size = { 20 20 }
+										onclick = "[SaveGameAnalyzer.EditNotes(SaveGameBlockData.GetTokenName)]"
 
-								raw_text = "..."
+										raw_text = "..."
+									}
+								}
 							}
 						}
 					}

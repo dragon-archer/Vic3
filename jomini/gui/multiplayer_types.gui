@@ -823,6 +823,14 @@ types JominiMultiplayerIngame {
 			}
 
 			button = {
+			    block "oos_button" {}
+				size = { 300 50 }
+				text = "JOMINI_MULTIPLAYER_GUI_OOS_MESSAGE_RESYNC"
+				visible = "[OosWindow.IsMultiplayerHost]"
+				onclick = "[OosWindow.Resync]"
+			}
+
+			button = {
 				block "oos_button" {}
 				size = { 300 50 }
 				text = "JOMINI_MULTIPLAYER_GUI_OOS_MESSAGE_EXIT_BUTTON"

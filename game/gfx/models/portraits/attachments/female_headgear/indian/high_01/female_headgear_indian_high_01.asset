@@ -38,3 +38,26 @@ entity = {
             }
 	}
 }
+
+
+
+entity = {
+	name = "female_headgear_indian_high_02_entity"
+	pdxmesh = "female_headgear_indian_high_01_mesh"
+
+	attribute = { name = "head_bs_fat_head"					blend_shape = "female_headgear_indian_high_01_bs_fat" }
+		# attribute = { name = "head_bs_gaunt"					blend_shape = "female_headgear_indian_high_01_bs_gaunt" }
+	# attribute = { name = "head_bs_infant_head"				blend_shape = "female_headgear_aindian_high_01_bs_infant" }	
+	
+	
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/female_headgear/indian/high_01/female_headgear_indian_high_01_masks.dds"	
+	
+				variation = "female_headgear_indian_high_02"
+			}
+            }
+	}
+}

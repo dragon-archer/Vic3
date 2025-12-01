@@ -25,12 +25,12 @@ template settings_dropdown
 			}
 			
 			editor_textbox = {
+				margin_left = 10
 				block "dropdown_active_item_text"
 				{
 					block "dropdown_item_text" {}
 				}
 				size = { 100% 100% }
-				margin_left = 10
 				fontsize = 12
 				align = vcenter|nobaseline
 			}
@@ -55,9 +55,9 @@ template settings_dropdown
 			}
 			
 			editor_textbox = {
+				margin_left = 10
 				block "dropdown_item_text" {}
 				size = { 100% 100% }
-				margin_left = 10
 				fontsize = 12
 				align = vcenter|nobaseline
 			}

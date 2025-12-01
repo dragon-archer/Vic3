@@ -331,6 +331,57 @@ PixelShader =
 		]]
 	}
 
+	MainCode PS_mesh_vfx_texture_panning
+	{
+		Input = "VS_OUTPUT"
+		Output = "PS_COLOR_SSAO"
+		Code
+		[[
+			PDX_MAIN
+			{
+				PS_COLOR_SSAO Out;
+
+				float2 PanUv = Input.UV0;
+				float2 PanUvDdx = ddx( PanUv );
+				float2 PanUvDdy = ddy( PanUv );
+
+				float FadeStart = LevelsScan( 1.0 - PanUv.y, PanningTex_FadeDistance, PanningTex_FadeContrast );
+				float FadeEnd = LevelsScan( PanUv.y, PanningTex_FadeDistance, PanningTex_FadeContrast );
+				float Gradient = FadeStart * FadeEnd;
+
+				// Uv Scale
+				PanUv = PanUv * PanningTex_TextureScale;
+
+				// Randomized offset
+				PanUv.y += CalcRandom( Input.InstanceIndex );
+
+				// Uv movement
+				PanUv.y += GlobalTime * PanningTex_PanSpeed;
+
+				// Modify Uvs, adds offset between each tile
+				PanUv.y /= PanningTex_GapDistance;
+				float GapY = PanningTex_GapDistance * mod( PanUv.y, 1.0 );
+				PanUv.y = frac( PanUv.y );
+				PanUv.y = 1.0f - PanUv.y;
+				PanUv.y = PanningTex_GapDistance * mod( PanUv.y, 1.0 );
+				PanUv.y -= ( PanningTex_GapDistance - 1.0 );
+
+				float4 Diffuse = PdxTex2DGrad( DiffuseMap, PanUv, PanUvDdx, PanUvDdy );
+				if ( PanUv.y < 0.0 || PanUv.y > 1.0 )
+				{
+					Diffuse = vec4( 0.0 );
+				}
+
+				clip( Diffuse.a - 0.025 );
+				Diffuse.a = Diffuse.a * Gradient * PanningTex_Alpha;
+
+				Out.Color = Diffuse;
+				Out.SSAOColor = float4( 1.0, 1.0, 1.0, Diffuse.a );
+				return Out;
+			}
+		]]
+	}
+
 }
 
 RasterizerState RasterizerStateNoCulling
@@ -388,6 +439,13 @@ Effect mesh_vfx_candle
 	PixelShader = "PS_mesh_vfx_candle"
 	BlendState = "alpha_blend"
 	Defines = { "BILLBOARD_MESH" }
+}
+
+Effect mesh_vfx_uv_panning
+{
+	VertexShader = "VS_mesh_vfx_standard"
+	PixelShader = "PS_mesh_vfx_texture_panning"
+	BlendState = "alpha_blend"
 }
 
 # Standard

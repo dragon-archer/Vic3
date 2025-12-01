@@ -1,0 +1,19 @@
+pdxmesh = {
+	name = "wind_trail_01_mesh"
+	file = "wind_trail_01.mesh"
+
+	meshsettings = {
+		name = "wind_trail_Shape1"
+		index = 0
+		texture_diffuse = "wind_trails_color.dds"
+		texture_normal = "noproperties.dds"
+		texture_specular = "noproperties.dds"
+		shader = "mesh_vfx_uv_panning"	
+		shader_file = "gfx/FX/pdxmesh_vfx.shader"
+	}
+}
+
+entity = {
+	name = "wind_trail_01_entity"
+	pdxmesh = "wind_trail_01_mesh"
+}

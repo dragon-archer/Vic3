@@ -114,7 +114,7 @@ PixelShader =
 		SampleModeV = "Wrap"
 	}
 
-	TextureSampler DevastationVFXLUT
+	TextureSampler FlameVfxLut
 	{
 		Index = 8
 		MagFilter = "Linear"
@@ -294,7 +294,7 @@ PixelShader =
 
 			float FinalMask = BorderMask;
 
-			BurnColour = PdxTex2D( DevastationVFXLUT , saturate( float2( FinalMask, FinalMask) ) ).rgb;
+			BurnColour = PdxTex2D( FlameVfxLut , saturate( float2( FinalMask, FinalMask) ) ).rgb;
 
 			float3 Result = lerp( Diffuse.rgb, BurnColour, FinalMask );
 

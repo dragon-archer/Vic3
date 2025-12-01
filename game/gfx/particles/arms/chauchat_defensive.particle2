@@ -1,5 +1,5 @@
 ﻿fade_duration=0.000000
-max_particles=50
+max_particles=3
 pause_invisible=no
 graph={
 	nodes={
@@ -341,6 +341,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=64
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=93
 					linked_pin="value"
 				}
 			}
@@ -950,6 +955,14 @@ graph={
 			id=68
 			node={
 				value=5
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=93
+			node={
+				value=0
 			}
 			inputs={
 			}

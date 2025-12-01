@@ -15,7 +15,7 @@ PixelShader =
 		#define JOMINIRIVER_GlobalTime GlobalTime
 		#endif
 		
-		float4 CalcRiverSurface( in VS_OUTPUT Input )
+		float4 CalcRiverSurface( in VS_SPLINE_OUTPUT Input )
 		{			
 			float Depth = CalcDepth( Input.UV );
 			
@@ -50,11 +50,15 @@ PixelShader =
 			Params._FlowFoamMask = FlowNormalSample.a * _RiverFoamFactor;
 			
 			float4 Color = CalcWater( Params )._Color;
+#if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
 			Color.a = saturate( Depth * 2.0f / _Depth ) * Input.Transparency * saturate( ( Input.DistanceToMain - 0.1f ) * 5.0f );
+#else
+			Color.a = saturate( Depth * 2.0f / _Depth ) * CalcEdgeTransparency( Input ) * saturate( 0.9f * 5.0f );
+#endif
 			return Color;
 		}
 
-		SWaterOutput CalcRiverAdvanced( in VS_OUTPUT Input )
+		SWaterOutput CalcRiverAdvanced( in VS_SPLINE_OUTPUT Input )
 		{			
 			float Depth = CalcDepth( Input.UV );
 			
@@ -89,9 +93,13 @@ PixelShader =
 			SWaterOutput Out = CalcWater( Params );
 			
 			// Ocean and river connection fade
-			#ifdef JOMINI_REFRACTION_ENABLED
-				Out._Color.a = Input.Transparency * saturate( ( Input.DistanceToMain - 0.1f ) * 5.0f );
-			#endif
+#ifdef JOMINI_REFRACTION_ENABLED
+#if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
+			Out._Color.a = Input.Transparency * saturate( ( Input.DistanceToMain - 0.1f ) * 5.0f );
+#else
+			Out._Color.a = CalcEdgeTransparency( Input ) * saturate( 0.9f * 5.0f );
+#endif
+#endif
 
 			// Edge fade
 			float EdgeFade1 = smoothstep( 0.0f, _BankFade, Input.UV.y );
@@ -113,10 +121,14 @@ BlendState BlendStateRiverSurface
 
 RasterizerState RasterizerStateRiverSurface
 {
-	DepthBias = -50000
+	DepthBias = -900
+	#fillmode = wireframe
+	CullMode = Back
 }
 
 DepthStencilState DepthStencilStateRiverSurface
 {
-	DepthWriteEnable = no
+	depthenable = yes
+	depthwriteenable = yes
+	depthfunction = always
 }

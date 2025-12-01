@@ -3,6 +3,7 @@ Includes = {
 	"sharedconstants.fxh"
 	"standardfuncsgfx.fxh"
 	"coloroverlay.fxh"
+	"arrow_settings.fxh"
 }
 
 VertexStruct VS_INPUT
@@ -26,6 +27,13 @@ ConstantBuffer( 0 )
 	float TotalLength;
 	float Width;
 };
+
+ConstantBuffer( 1 )
+{
+	int IsSelected;
+	int IsFaded;
+};
+
 
 VertexShader =
 {
@@ -110,16 +118,11 @@ PixelShader =
 				}
 				Uv.y = 1.0 - Uv.y;
 
-				// Settings, Todo: Move these to a file
-				float3 BaseColorPicker = float3( 0.05, 0.15, 0.5 ) * 0.55;
-				float3 FillColorPicker = float3( 0.11, 0.25, 0.9 );
-				float3 OutlineColorPicker = BaseColorPicker * 1.7;
-				float Opacity = 0.65;
-				int ArrowSpacing = 4.0;
-				float ArrowSpeed = 1.0;
-				float FlatmapUvScaling = 1.0;
+				// Arrow Base textures
+				float FillMask = PdxTex2DGrad( DiffuseTexture, Uv, texDdx, texDdy ).a;
+				float OutlineMask = PdxTex2DGrad( DiffuseTexture, Uv, texDdx, texDdy ).g;
 
-				// Finding water vs land
+				// Finding water vs land, constant data
 				float4 AlternateColor = BilinearColorSampleAtOffset( ProvinceCoords, IndirectionMapSize, InvIndirectionMapSize, ProvinceColorIndirectionTexture, ProvinceColorTexture, AlternateProvinceColorsOffset );
 				AlternateColor.rg = vec2( 0.0f ); // Zero out unused channels to avoid issues
 				float4 LakeColor = float4( 0.0f, 0.0f, 0.0f, 1.0f ); // Needs to match color in mappaintingmanager.cpp
@@ -127,19 +130,6 @@ PixelShader =
 				float4 LakeDiff = LakeColor - AlternateColor;
 				float4 SeaDiff = SeaColor - AlternateColor;
 				float WaterLerp = 1.0 - ( dot( LakeDiff, LakeDiff ) * dot( SeaDiff, SeaDiff ) );
-
-				// Flatmap specific settings
-				#ifdef FLAT_MAP
-					Opacity = 1.0;
-					ArrowSpacing = 3.0;
-					FlatmapUvScaling = 0.2;
-
-					BaseColorPicker *= 1.35;
-				#endif
-
-				BaseColorPicker = lerp( float3( 0.6, 0.5, 0.5 ) * 0.35, BaseColorPicker, WaterLerp );
-				FillColorPicker = lerp( float3( 0.6, 0.5, 0.5 ) * 0.85, FillColorPicker, WaterLerp );
-				OutlineColorPicker = lerp( float3( 0.6, 0.5, 0.5 ) * 0.85, OutlineColorPicker, WaterLerp );
 
 				// Animated Caustics
 				float3x3 BaseMatrix = Create3x3( -2.0, -1.0, 2.0, 3.0, -2.0, 1.0, 1.0, 2.0, 2.0 );
@@ -152,12 +142,22 @@ PixelShader =
 				float CausticsNoise = float( pow( min( min( length( 0.5 - frac( a ) ), length( 0.5 - frac( b ) ) ), length( 0.5 - frac( c ) ) ), 6.0 ) * 9.0 );
 				float3 CausticsColor = float3( 0.05, 0.15, 0.9 ) * 0.75 * CausticsNoise;
 
-				// Arrow Base
-				float FillMask = PdxTex2DGrad( DiffuseTexture, Uv, texDdx, texDdy ).a;
-				float OutlineMask = PdxTex2DGrad( DiffuseTexture, Uv, texDdx, texDdy ).g;
+				// Outline colors
+				float3 LandOutlineColor = LandBaseColor * LandOutlineColorMult;
+				float3 WaterOutlineColor = WaterBaseColor * WaterOutlineColorMult;
+
+				float Opacity = lerp( ArrowOpacity, FlatmapOpacity, _FlatmapLerp );
+				float Spacing = lerp( ArrowSpacing, FlatmapArrowSpacing, _FlatmapLerp );
+				float UvScaling = lerp( ArrowUvScaling, FlatmapUvScaling, _FlatmapLerp );
+
+				// Land to water colors, flipped when passed
+				float3 BaseColor = lerp( LandBaseColor, WaterBaseColor + CausticsColor * ( 1.0 - Passed ), WaterLerp );
+				float3 PassedColor = lerp( LandOutlineColor, WaterOutlineColor, WaterLerp );
+				float3 OutlineColor = lerp( LandOutlineColor, WaterOutlineColor, WaterLerp );
+				float3 OutlinePassedColor = lerp( LandBaseColor, WaterOutlineColor, WaterLerp );
 
 				// Inner Arrow
-				float UvLength = Input.vTexCoord.y * 0.25 * FlatmapUvScaling;
+				float UvLength = Input.vTexCoord.y * UvScaling * 0.25 ;
 				UvLength -= GlobalTime * ArrowSpeed;
 				float2 InnerArrowUv = float2( Input.vTexCoord.x, UvLength );
 				InnerArrowUv = 1.0 - mod( abs( InnerArrowUv ), 1.0 );
@@ -169,33 +169,21 @@ PixelShader =
 					UvLength -= 1.0;
 				}
 
-				// Inner Arrow Segment
-				float Segment = step( mod( abs( UvLength ), ArrowSpacing ), 1.0 );
-
 				// Inner Arrow Mask
 				float InnerArrowMask = PdxTex2DGrad( DiffuseTexture, InnerArrowUv, texDdx, texDdy ).r;
-				InnerArrowMask = ( InnerArrowMask * FillMask );
-
-				// Colors land vs sea
-				BaseColorPicker = lerp( BaseColorPicker, BaseColorPicker + CausticsColor * ( 1.0 - Passed ), WaterLerp );
-				FillColorPicker = lerp( FillColorPicker, FillColorPicker, WaterLerp );
-				OutlineColorPicker = lerp( OutlineColorPicker * 0.1, OutlineColorPicker, WaterLerp );
-				float3 InnerArrowColor = InnerArrowMask * BaseColorPicker * 2.0;
+				InnerArrowMask = InnerArrowMask * FillMask;
+				float3 InnerArrowColor = InnerArrowMask * OutlineColor;
 				InnerArrowColor = lerp( InnerArrowColor, InnerArrowColor + CausticsColor * 3.0, WaterLerp );
 
 				// Colors when passed
-				#ifndef FLAT_MAP
-					float3 FillColor = lerp( BaseColorPicker, FillColorPicker, Passed );
-					float3 OutlineColor = OutlineColorPicker;
-					InnerArrowColor = lerp( InnerArrowColor, InnerArrowColor * 0.5, Passed );
-				#else
-					float3 FillColor = lerp( BaseColorPicker, FillColorPicker, Passed );
-					float3 OutlineColor = OutlineColorPicker;
-					InnerArrowColor = lerp( InnerArrowColor, InnerArrowColor * 0.5, Passed );
-				#endif
+				float3 OutColor = lerp( BaseColor, PassedColor, Passed );
+				OutlineColor = lerp( OutlineColor, OutlinePassedColor, Passed );
+				InnerArrowColor = lerp( InnerArrowColor, InnerArrowColor * 0.5, Passed );
 
 				// Compounded
-				float3 OutColor = lerp( FillColor, OutlineColor, OutlineMask );
+				OutColor = lerp( OutColor, OutlineColor, OutlineMask );
+
+				float Segment = step( mod( abs( UvLength ), Spacing ), 1.0 );
 				OutColor = lerp( OutColor, InnerArrowColor, Segment * saturate( InnerArrowMask - OutlineMask ) );
 				Opacity = FillMask * Opacity;
 
@@ -204,8 +192,23 @@ PixelShader =
 				float FadeAlpha = Input.vTexCoord.y - vFadeLength;
 				FadeAlpha = saturate( FadeAlpha * saturate( 1.0f - ( FadeAlpha / -vFadeLength ) ) );
 				Opacity *= FadeAlpha;
+				Opacity = lerp( Opacity, Opacity * ArrowNonSelectedFade, (float)IsFaded );
+
+				float NormalizedSplineY = Input.vTexCoord.y * ( 1.0 / TotalLength );
+				float HighlightAreaLeft = LevelsScan( Uv.x + 0.5, ArrowHighlightAreaSize, ArrowHighlightAreaSoftness );
+				float HighlightAreaRight = LevelsScan( 1.0 - Uv.x, ArrowHighlightAreaSize, ArrowHighlightAreaSoftness );
+				float HighlightAreaStart = LevelsScan( NormalizedSplineY, ArrowHighlightAreaEndsLength, ArrowHighlightAreaEndsSoftness );
+				float HighlightAreaEnd = LevelsScan( 1.0 - NormalizedSplineY, ArrowHighlightAreaEndsLength, ArrowHighlightAreaEndsSoftness );
+
+				float HighlightArea = HighlightAreaLeft * HighlightAreaRight;
+				float HighlightPulse = LevelsScan( sin( UvLength * 2.0 - GlobalTime ), 0.5, 1.0 );
+
+				float3 HighlightColor = ArrowHighlightColor * ( sin( ( ( NormalizedSplineY * 20.0 ) ) - GlobalTime * 2.0 ) + 2.0  );
+
+				OutColor = lerp( OutColor, HighlightColor, ( 1.0 - Opacity ) * (float)IsSelected * HighlightAreaLeft * HighlightAreaRight * HighlightAreaStart * HighlightAreaEnd );
 
 				// Close fade
+				Opacity = saturate( Opacity + HighlightArea * (float)IsSelected );
 				Opacity = FadeCloseAlpha( Opacity );
 
 				return float4( OutColor, Opacity );

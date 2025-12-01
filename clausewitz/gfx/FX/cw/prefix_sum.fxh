@@ -12,379 +12,373 @@
 # *          https://research.nvidia.com/publication/2016-03_single-pass-parallel-prefix-scan-decoupled-look-back
 # * 
 # ******************************************************************************/
+
+Includes = {
+	"cw/miscmath.fxh"
+}
+
 Code
 [[
-    #define MAX_DISPATCH_DIM    65535U
-    #define UINT4_PART_SIZE     768U
-    #define BLOCK_DIM           256U
-    #define UINT4_PER_THREAD    3U
-    #define MIN_WAVE_SIZE       4U
+    #define MAX_DISPATCH_DIM                    65535U
+    #define NUM_UINT4_ELEMENTS_IN_PARTITION     768U
+    #define NUM_THREADS_IN_GROUP                256U
+    #define NUM_UINT4_ELEMENTS_PER_THREAD       3U
+    #define MIN_WAVE_SIZE                       4U
+    #define WAVE_PART_SIZE                      32U
+
+    #define FLAG_NOT_READY  0           //Flag indicating this partition tile's local reduction is not ready
+    #define FLAG_REDUCTION  1           //Flag indicating this partition tile's local reduction is ready
+    #define FLAG_INCLUSIVE  2           //Flag indicating this partition tile has summed all preceding tiles and added to its sum.
+    #define FLAG_MASK       3           //Mask used to retrieve the flag (= 0b11)
 ]]
 
 ConstantBuffer( PdxConstantBuffer0 )
 {
-    uint e_vectorizedSize;
-    uint e_threadBlocks;
-    uint e_isPartial;
-    uint e_fullDispatches;
+    uint _VectorizedInputSize;
+    uint _PartitionCount;
+    uint _Pad0;
+    uint _Pad1;
 };
 
-RWStructuredBufferTexture b_scan
+RWStructuredBufferTexture RWInputBuffer_UINT4
 {
-	Ref = PdxRWBufferTexture0
+    Ref = PdxRWBufferTexture0
     Type = uint4
 }
 
-Code 
+RWStructuredBufferTexture PartitionIndexBuffer
+{
+    Ref = PdxRWBufferTexture1
+    Type = uint
+    globallycoherent = yes
+}
+
+RWStructuredBufferTexture PartitionReductionsBuffer
+{
+    Ref = PdxRWBufferTexture2
+    Type = uint
+    globallycoherent = yes
+}
+
+RWStructuredBufferTexture RWIndexOutputBuffer
+{
+    Ref = PdxRWBufferTexture3
+    Type = uint
+}
+
+Code
 [[
-    groupshared uint4 g_shared[UINT4_PART_SIZE];
-    groupshared uint g_reduction[BLOCK_DIM / MIN_WAVE_SIZE];
 
-    inline uint getWaveIndex(uint _gtid)
+// Compaction uses exclusive prefix sum
+#ifdef PREFIX_SUM_COMPACTION
+#define PREFIX_SUM_EXCLUSIVE
+#endif
+
+    // Wave-local prefix sums for all the elements in a given partition
+    groupshared uint4 GS_PartitionWavePrefixSums[ NUM_UINT4_ELEMENTS_IN_PARTITION ];
+
+#ifdef PREFIX_SUM_COMPACTION
+    // Input elements to be compacted stored in groupshared memory
+    groupshared uint4 GS_PartitionInputElements[ NUM_UINT4_ELEMENTS_IN_PARTITION ];
+#endif
+
+    // Total sum of all elements for every wave in a given partition
+    groupshared uint GS_WaveReductions[ NUM_THREADS_IN_GROUP / MIN_WAVE_SIZE ];
+
+    groupshared uint GS_PartitionIndex;
+    groupshared uint GS_PrevPartitionsReduction;
+
+    inline uint GetWaveIndex( uint GroupThreadID )
     {
-        return _gtid / WaveGetLaneCount();
+        return GroupThreadID / WaveGetLaneCount();
     }
 
-    inline bool isPartialDispatch()
+    inline uint GetPartitionStartElementIndex( uint PartitionIndex )
     {
-        return e_isPartial;
+        return PartitionIndex * NUM_UINT4_ELEMENTS_IN_PARTITION;
     }
 
-    inline uint flattenGid(uint3 gid)
+    inline uint GetWaveStartElementIndexInPartition( uint GroupThreadID )
     {
-        return isPartialDispatch() ?
-            gid.x + e_fullDispatches * MAX_DISPATCH_DIM :
-            gid.x + gid.y * MAX_DISPATCH_DIM;
+        const uint WaveWorkingSetSize = NUM_UINT4_ELEMENTS_PER_THREAD * WaveGetLaneCount();
+        return GetWaveIndex( GroupThreadID ) * WaveWorkingSetSize;
     }
 
-    inline uint PartStart(uint _partIndex)
+    // ( x, y, z, w ) -> ( x, x+y, x+y+z, x+y+z+w )
+    inline uint4 CalcInclusivePrefixSumUint4( uint4 Value )
     {
-        return _partIndex * UINT4_PART_SIZE;
+        Value.y += Value.x;
+        Value.z += Value.y;
+        Value.w += Value.z;
+
+        return Value;
     }
 
-    inline uint WavePartSize()
+    // This function calculates exclusive prefix sums for a partition and fills 2 groupshared arrays:
+    // - GS_PartitionWavePrefixSums[ NumElements ]: stores wave-local prefix sum for every element in a partition
+    // - GS_WaveReductions[ NumWaves ]: stores total sum of all elements (reduction) for every wave
+    inline void PartitionScan( uint GroupThreadID, uint PartitionIndex )
     {
-        return UINT4_PER_THREAD * WaveGetLaneCount();
-    }
+        uint WaveReduction = 0;
+        uint ElementIndex = GetWaveStartElementIndexInPartition( GroupThreadID ) + WaveGetLaneIndex();
 
-    inline uint WavePartStart(uint _gtid)
-    {
-        return getWaveIndex(_gtid) * WavePartSize();
-    }
-
-    inline uint4 SetXAddYZW(uint t, uint4 val)
-    {
-        return uint4(t, val.yzw + t);
-    }
-
-    //read in and scan
-    inline void ScanExclusiveFull(uint gtid, uint partIndex)
-    {
-        const uint laneMask = WaveGetLaneCount() - 1;
-        const uint circularShift = WaveGetLaneIndex() + laneMask & laneMask;
-        uint waveReduction = 0;
-        
         [unroll]
-        for (uint i = WaveGetLaneIndex() + WavePartStart(gtid), k = 0;
-            k < UINT4_PER_THREAD;
-            i += WaveGetLaneCount(), ++k)
+        for ( uint i = 0; i < NUM_UINT4_ELEMENTS_PER_THREAD; ++i )
         {
-            uint4 t = b_scan[i + PartStart(partIndex)];
+            uint4 LocalPrefixSums = 0;
 
-            uint t2 = t.x;
-            t.x += t.y;
-            t.y = t2;
+            const uint GlobalElementIndex = GetPartitionStartElementIndex( PartitionIndex ) + ElementIndex;
+            if ( GlobalElementIndex < _VectorizedInputSize )
+            {
+                uint4 InputValues = RWInputBuffer_UINT4[ GlobalElementIndex ];
 
-            t2 = t.x;
-            t.x += t.z;
-            t.z = t2;
+#ifdef PREFIX_SUM_COMPACTION
+                // Read input values and store them in groupshared memory
+                GS_PartitionInputElements[ ElementIndex ] = InputValues;
 
-            t2 = t.x;
-            t.x += t.w;
-            t.w = t2;
-            
-            const uint t3 = WaveReadLaneAt(t.x + WavePrefixSum(t.x), circularShift);
-            g_shared[i] = SetXAddYZW((WaveGetLaneIndex() ? t3 : 0) + waveReduction, t);
-            waveReduction += WaveReadLaneAt(t3, 0);
+                // RWInputBuffer_UINT4 stores zeros for elements we want to be removed after compaction.
+                // Compaction itself is done with a prefix sum of the array of binary flags
+                //   where 1 indicates that the element should be preserved and 0 - that the element should be dropped.
+                // Here we clamp non-zero input values to 1 to get this array of binary flags.
+                InputValues = clamp( InputValues, 0, 1 );
+#endif
+
+                LocalPrefixSums = CalcInclusivePrefixSumUint4( InputValues );
+            }
+
+            const uint PrevLanesSum = WavePrefixSum( LocalPrefixSums.w );
+
+#ifdef PREFIX_SUM_EXCLUSIVE
+            GS_PartitionWavePrefixSums[ ElementIndex ] = uint4( 0, LocalPrefixSums.xyz ) + PrevLanesSum + WaveReduction;
+#else
+            GS_PartitionWavePrefixSums[ ElementIndex ] = LocalPrefixSums.xyzw + PrevLanesSum + WaveReduction;
+#endif // PREFIX_SUM_EXCLUSIVE
+
+            WaveReduction += WaveReadLaneAt( LocalPrefixSums.w + PrevLanesSum, WaveGetLaneCount() - 1 );
+
+            ElementIndex += WaveGetLaneCount();
         }
-        
-        if (!WaveGetLaneIndex())
-            g_reduction[getWaveIndex(gtid)] = waveReduction;
-    }
 
-    inline void ScanExclusivePartial(uint gtid, uint partIndex)
-    {
-        const uint laneMask = WaveGetLaneCount() - 1;
-        const uint circularShift = WaveGetLaneIndex() + laneMask & laneMask;
-        const uint finalPartSize = e_vectorizedSize - PartStart(partIndex);
-        uint waveReduction = 0;
-        
-        [unroll]
-        for (uint i = WaveGetLaneIndex() + WavePartStart(gtid), k = 0;
-            k < UINT4_PER_THREAD;
-            i += WaveGetLaneCount(), ++k)
+        if ( WaveIsFirstLane() )
         {
-            uint4 t = i < finalPartSize ? b_scan[i + PartStart(partIndex)] : 0;
-
-            uint t2 = t.x;
-            t.x += t.y;
-            t.y = t2;
-
-            t2 = t.x;
-            t.x += t.z;
-            t.z = t2;
-
-            t2 = t.x;
-            t.x += t.w;
-            t.w = t2;
-            
-            const uint t3 = WaveReadLaneAt(t.x + WavePrefixSum(t.x), circularShift);
-            g_shared[i] = SetXAddYZW((WaveGetLaneIndex() ? t3 : 0) + waveReduction, t);
-            waveReduction += WaveReadLaneAt(t3, 0);
+            GS_WaveReductions[ GetWaveIndex( GroupThreadID ) ] = WaveReduction;
         }
-        
-        if (!WaveGetLaneIndex())
-            g_reduction[getWaveIndex(gtid)] = waveReduction;
     }
 
-    inline void ScanInclusiveFull(uint gtid, uint partIndex)
+    inline void ReductionScanSingleWave( uint GroupThreadID )
     {
-        const uint laneMask = WaveGetLaneCount() - 1;
-        const uint circularShift = WaveGetLaneIndex() + laneMask & laneMask;
-        uint waveReduction = 0;
-        
-        [unroll]
-        for (uint i = WaveGetLaneIndex() + WavePartStart(gtid), k = 0;
-            k < UINT4_PER_THREAD;
-            i += WaveGetLaneCount(), ++k)
+        if ( GroupThreadID < NUM_THREADS_IN_GROUP / WaveGetLaneCount() )
         {
-            uint4 t = b_scan[i + PartStart(partIndex)];
-            t.y += t.x;
-            t.z += t.y;
-            t.w += t.z;
-            
-            const uint t2 = WaveReadLaneAt(t.w + WavePrefixSum(t.w), circularShift);
-            g_shared[i] = t + (WaveGetLaneIndex() ? t2 : 0) + waveReduction;
-            waveReduction += WaveReadLaneAt(t2, 0);
+            GS_WaveReductions[ GroupThreadID ] += WavePrefixSum( GS_WaveReductions[ GroupThreadID ] );
         }
-        
-        if (!WaveGetLaneIndex())
-            g_reduction[getWaveIndex(gtid)] = waveReduction;
     }
 
-    inline void ScanInclusivePartial(uint gtid, uint partIndex)
+    inline void ReductionScanMultipleWaves( uint GroupThreadID, uint partIndex )
     {
-        const uint laneMask = WaveGetLaneCount() - 1;
-        const uint circularShift = WaveGetLaneIndex() + laneMask & laneMask;
-        const uint finalPartSize = e_vectorizedSize - PartStart(partIndex);
-        uint waveReduction = 0;
-        
-        [unroll]
-        for (uint i = WaveGetLaneIndex() + WavePartStart(gtid), k = 0;
-            k < UINT4_PER_THREAD;
-            i += WaveGetLaneCount(), ++k)
+        const uint ScanSize = NUM_THREADS_IN_GROUP / WaveGetLaneCount();
+        if ( GroupThreadID < ScanSize )
         {
-            uint4 t = i < finalPartSize ? b_scan[i + PartStart(partIndex)] : 0;
-            t.y += t.x;
-            t.z += t.y;
-            t.w += t.z;
-            
-            const uint t2 = WaveReadLaneAt(t.w + WavePrefixSum(t.w), circularShift);
-            g_shared[i] = t + (WaveGetLaneIndex() ? t2 : 0) + waveReduction;
-            waveReduction += WaveReadLaneAt(t2, 0);
+            GS_WaveReductions[ GroupThreadID ] += WavePrefixSum( GS_WaveReductions[ GroupThreadID ] );
         }
-        
-        if (!WaveGetLaneIndex())
-            g_reduction[getWaveIndex(gtid)] = waveReduction;
-    }
 
-    //Reduce the wave reductions
-    inline void LocalScanInclusiveWGE16(uint gtid, uint partIndex)
-    {
-        if (gtid < BLOCK_DIM / WaveGetLaneCount())
-            g_reduction[gtid] += WavePrefixSum(g_reduction[gtid]);
-    }
-
-    inline void LocalScanInclusiveWLT16(uint gtid, uint partIndex)
-    {
-        const uint scanSize = BLOCK_DIM / WaveGetLaneCount();
-        if (gtid < scanSize)
-            g_reduction[gtid] += WavePrefixSum(g_reduction[gtid]);
         GroupMemoryBarrierWithGroupSync();
-            
-        const uint laneLog = countbits(WaveGetLaneCount() - 1);
-        uint offset = laneLog;
+
+        const uint LaneLog = countbits( WaveGetLaneCount() - 1 );
+        uint Offset = LaneLog;
         uint j = WaveGetLaneCount();
-        for (; j < (scanSize >> 1); j <<= laneLog)
+        for ( ; j < ( ScanSize >> 1 ); j <<= LaneLog )
         {
-            if (gtid < (scanSize >> offset))
+            if ( GroupThreadID < ( ScanSize >> Offset ) )
             {
-                g_reduction[((gtid + 1) << offset) - 1] +=
-                    WavePrefixSum(g_reduction[((gtid + 1) << offset) - 1]);
+                GS_WaveReductions[ ( ( GroupThreadID + 1 ) << Offset ) - 1 ] +=
+                    WavePrefixSum( GS_WaveReductions[ ( ( GroupThreadID + 1 ) << Offset ) - 1 ] );
             }
+
             GroupMemoryBarrierWithGroupSync();
-                
-            if ((gtid & ((j << laneLog) - 1)) >= j && (gtid + 1) & (j - 1))
+
+            if ( ( GroupThreadID & ( ( j << LaneLog ) - 1 ) ) >= j && ( GroupThreadID + 1 ) & ( j - 1 ) )
             {
-                g_reduction[gtid] +=
-                    WaveReadLaneAt(g_reduction[((gtid >> offset) << offset) - 1], 0);
+                GS_WaveReductions[ GroupThreadID ] +=
+                    WaveReadLaneAt( GS_WaveReductions[ ( ( GroupThreadID >> Offset ) << Offset ) - 1 ], 0 );
             }
-            offset += laneLog;
+
+            Offset += LaneLog;
         }
+
         GroupMemoryBarrierWithGroupSync();
-            
-        //If scanSize is not a power of lanecount
-        const uint index = gtid + j;
-        if (index < scanSize)
+
+        // If ScanSize is not a power of WaveGetLaneCount()
+        const uint Index = GroupThreadID + j;
+        if ( Index < ScanSize )
         {
-            g_reduction[index] +=
-                WaveReadLaneAt(g_reduction[((index >> offset) << offset) - 1], 0);
+            GS_WaveReductions[ Index ] +=
+                WaveReadLaneAt( GS_WaveReductions[ ( ( Index >> Offset ) << Offset ) - 1 ], 0 );
         }
     }
 
-    //Pass in previous reductions, and write out
-    inline void DownSweepFull(uint gtid, uint partIndex, uint prevReduction)
+    inline void DownSweep( uint GroupThreadID, uint PartitionIndex )
     {
+        uint PrevReduction = ( PartitionIndex > 0 ) ? GS_PrevPartitionsReduction : 0;
+
+        // Add wave-local reductions from this partition
+        if ( GroupThreadID >= WaveGetLaneCount() )
+        {
+            PrevReduction += GS_WaveReductions[ GetWaveIndex( GroupThreadID ) - 1 ];
+        }
+
+        uint ElementIndex = GetWaveStartElementIndexInPartition( GroupThreadID ) + WaveGetLaneIndex();
+
         [unroll]
-        for (uint i = WaveGetLaneIndex() + WavePartStart(gtid), k = 0;
-            k < UINT4_PER_THREAD;
-            i += WaveGetLaneCount(), ++k)
+        for ( uint i = 0; i < NUM_UINT4_ELEMENTS_PER_THREAD; ++i )
         {
-            b_scan[i + PartStart(partIndex)] = g_shared[i] + prevReduction;
-        }
-    }
-
-    inline void DownSweepPartial(uint gtid, uint partIndex, uint prevReduction)
-    {
-        const uint finalPartSize = e_vectorizedSize - PartStart(partIndex);
-        for (uint i = WaveGetLaneIndex() + WavePartStart(gtid), k = 0;
-            k < UINT4_PER_THREAD && i < finalPartSize;
-            i += WaveGetLaneCount(), ++k)
-        {
-            b_scan[i + PartStart(partIndex)] = g_shared[i] + prevReduction;
-        }
-    }
-]]
-
-# Start of Chained Scan with Decoupled Lookback Implementation
-Code
-[[
-    #define FLAG_NOT_READY  0           //Flag indicating this partition tile's local reduction is not ready
-    #define FLAG_REDUCTION  1           //Flag indicating this partition tile's local reduction is ready
-    #define FLAG_INCLUSIVE  2           //Flag indicating this partition tile has summed all preceding tiles and added to its sum.
-    #define FLAG_MASK       3           //Mask used to retrieve the flag
-]]
-
-RWStructuredBufferTexture b_index
-{
-	Ref = PdxRWBufferTexture1
-    Type = uint
-	globallycoherent = yes
-}
-
-RWStructuredBufferTexture b_threadBlockReduction
-{
-	Ref = PdxRWBufferTexture2
-    Type = uint
-	globallycoherent = yes
-}
-
-Code
-[[
-    groupshared uint g_broadcast;
-
-    inline void AcquirePartitionIndex(uint gtid)
-    {
-        if(!gtid)
-            InterlockedAdd(b_index[0], 1, g_broadcast);
-    }
-
-    //use the exact thread that performed the scan on the last element
-    //to elide an extra barrier
-    inline void DeviceBroadcast(uint gtid, uint partIndex)
-    {
-        if (gtid == BLOCK_DIM / WaveGetLaneCount() - 1)
-        {
-            InterlockedAdd(b_threadBlockReduction[partIndex],
-                (partIndex ? FLAG_REDUCTION : FLAG_INCLUSIVE) | g_reduction[gtid] << 2);
-        }
-    }
-
-    inline void Lookback(uint partIndex)
-    {
-        uint prevReduction = 0;
-        uint k = partIndex + WaveGetLaneCount() - WaveGetLaneIndex();
-        const uint waveParts = (WaveGetLaneCount() + 31) / 32;
-        
-        while (true)
-        {
-            const uint flagPayload = k > WaveGetLaneCount() ? 
-                b_threadBlockReduction[k - WaveGetLaneCount() - 1] : FLAG_INCLUSIVE;
-
-            if (WaveActiveAllTrue((flagPayload & FLAG_MASK) > FLAG_NOT_READY))
+            const uint GlobalElementIndex = GetPartitionStartElementIndex( PartitionIndex ) + ElementIndex;
+            if ( GlobalElementIndex >= _VectorizedInputSize )
             {
-                const uint4 inclusiveBallot = WaveActiveBallot((flagPayload & FLAG_MASK) == FLAG_INCLUSIVE);
-                
-                //dot(inclusiveBallot, uint4(1,1,1,1)) != 0 does not work
-                //consider 0xffffffff + 1 + 0xffffffff + 1
-                if (inclusiveBallot.x || inclusiveBallot.y || inclusiveBallot.z || inclusiveBallot.w)
+                break;
+            }
+
+#ifdef PREFIX_SUM_COMPACTION
+            // Prefix sums of the binary flags represent the indices of the corresponding elements in the final compacted array.
+            // We read this indices and store them in ScatterIndices.
+            const uint4 ScatterIndices = GS_PartitionWavePrefixSums[ ElementIndex ] + PrevReduction;
+
+            // GS_PartitionInputElements stores original input elements
+            const uint4 InputElements = GS_PartitionInputElements[ ElementIndex ];
+
+            [unroll]
+            for ( uint j = 0; j < 4; ++j )
+            {
+                // We want to preserve only non-zero input elements
+                if ( InputElements[ j ] != 0 )
                 {
-                    uint inclusiveIndex = 0;
-                    for (uint wavePart = 0; wavePart < waveParts; ++wavePart)
+                    // We need to transform ScatterIndices from uint-indexed space to uint4-indexed space
+                    //   to be able to index RWInputBuffer_UINT4.
+                    const uint IndexBufferOffset = ScatterIndices[ j ] / 4;
+                    const uint IndexBufferElement = ScatterIndices[ j ] % 4;
+
+                    // Move input elements to their compacted places
+                    RWInputBuffer_UINT4[ IndexBufferOffset ][ IndexBufferElement ] = InputElements[ j ];
+#ifdef OUTPUT_COMPACTED_INDICES
+                    // Store final indices of the compacted elements in a separate buffer
+                    const uint GlobalElementIndexScalar = GlobalElementIndex * 4 + j;
+                    RWIndexOutputBuffer[ ScatterIndices[ j ] ] = GlobalElementIndexScalar;
+#endif
+                }
+            }
+#else
+            RWInputBuffer_UINT4[ GlobalElementIndex ] = GS_PartitionWavePrefixSums[ ElementIndex ] + PrevReduction;
+#endif // PREFIX_SUM_COMPACTION
+
+            ElementIndex += WaveGetLaneCount();
+        }
+    }
+
+    inline void AcquirePartitionIndex( uint GroupThreadID )
+    {
+        if ( GroupThreadID == 0 )
+        {
+            InterlockedAdd( PartitionIndexBuffer[ 0 ], 1, GS_PartitionIndex );
+        }
+    }
+
+    inline void SetPartitionReductionReadyFlag( uint GroupThreadID, uint PartitionIndex )
+    {
+        const uint LastScanWaveIndex = NUM_THREADS_IN_GROUP / WaveGetLaneCount() - 1;
+        if ( GroupThreadID == LastScanWaveIndex )
+        {
+            // PartitionReductionsBuffer stores per-partition uint values with the following bit layout:
+            //   - Two least significant bits of the value are used for the partition status flag
+            //   - The rest of the bits contain the sum of all the elements of the partition
+            const uint StatusFlag = ( PartitionIndex != 0 ) ? FLAG_REDUCTION : FLAG_INCLUSIVE;
+            const uint PartitionReduction = GS_WaveReductions[ LastScanWaveIndex ];
+            InterlockedAdd( PartitionReductionsBuffer[ PartitionIndex ], ( PartitionReduction << 2 ) | StatusFlag );
+        }
+    }
+
+    // For a given partition sum up the reductions of all the preceding partitions.
+    // The resulted sum is stored in GS_PrevPartitionsReduction.
+    inline void Lookback( uint PartitionIndex )
+    {
+        uint PrevReductionsSum = 0;
+
+        int PrevPartitionIndex = PartitionIndex - WaveGetLaneIndex() - 1;
+        const uint NumWaveParts = CeilingDivide( WaveGetLaneCount(), WAVE_PART_SIZE );
+
+        while ( true )
+        {
+            const uint FlagPayload = PrevPartitionIndex >= 0 ? PartitionReductionsBuffer[ PrevPartitionIndex ] : FLAG_INCLUSIVE;
+
+            if ( WaveActiveAllTrue( ( FlagPayload & FLAG_MASK ) > FLAG_NOT_READY ) )
+            {
+                const uint4 InclusiveBallot = WaveActiveBallot( ( FlagPayload & FLAG_MASK ) == FLAG_INCLUSIVE );
+
+                // Check if any of the preceding partitions have FLAG_INCLUSIVE set
+                if ( InclusiveBallot.x || InclusiveBallot.y || InclusiveBallot.z || InclusiveBallot.w )
+                {
+                    // Found a partition with its inclusive prefix sums already calculated - no need to look further back.
+                    uint InclusiveIndex = 0;
+                    for ( uint WavePartIndex = 0; WavePartIndex < NumWaveParts; ++WavePartIndex )
                     {
-                        if (countbits(inclusiveBallot[wavePart]))
+                        if ( countbits( InclusiveBallot[ WavePartIndex ] ) > 0 )
                         {
-                            inclusiveIndex += firstbitlow(inclusiveBallot[wavePart]);
+                            InclusiveIndex += firstbitlow( InclusiveBallot[ WavePartIndex ] );
                             break;
                         }
                         else
                         {
-                            inclusiveIndex += 32;
+                            InclusiveIndex += WAVE_PART_SIZE;
                         }
                     }
-                                        
-                    prevReduction += WaveActiveSum(WaveGetLaneIndex() <= inclusiveIndex ? (flagPayload >> 2) : 0);
-                                    
-                    if (WaveGetLaneIndex() == 0)
+
+                    // Sum up the reductions of the partitions up to and including the found partition
+                    PrevReductionsSum += WaveActiveSum( WaveGetLaneIndex() <= InclusiveIndex ? ( FlagPayload >> 2 ) : 0 );
+
+                    // Update the reduction value of the current partition and set the status flag to FLAG_INCLUSIVE
+                    if ( WaveIsFirstLane() )
                     {
-                        g_broadcast = prevReduction;
-                        InterlockedAdd(b_threadBlockReduction[partIndex], 1 | (prevReduction << 2));
+                        GS_PrevPartitionsReduction = PrevReductionsSum;
+                        InterlockedAdd( PartitionReductionsBuffer[ PartitionIndex ], ( PrevReductionsSum << 2 ) | 1 );
                     }
+
                     break;
                 }
                 else
                 {
-                    prevReduction += WaveActiveSum(flagPayload >> 2);
-                    k -= WaveGetLaneCount();
+                    // Manually sum up the reductions and step one wave back through partitions
+                    PrevReductionsSum += WaveActiveSum( FlagPayload >> 2 );
+                    PrevPartitionIndex -= WaveGetLaneCount();
                 }
             }
         }
     }
 ]]
 
-
 ComputeShader =
 {
-	MainCode CS_InitChainedScan
-	{
-		VertexStruct CS_INPUT
-		{
-			uint3 id : PDX_DispatchThreadID
-		};
+    MainCode CS_InitChainedScan
+    {
+        VertexStruct CS_INPUT
+        {
+            uint3 DispatchThreadID : PDX_DispatchThreadID
+        };
 
-		Input = "CS_INPUT"
-		NumThreads = { 256 1 1 }
-		Code
-		[[
-			PDX_MAIN
-			{
-                const uint increment = 256 * 256;
-    
-                for (uint i = Input.id.x; i < e_threadBlocks; i += increment)
-                    b_threadBlockReduction[i] = 0;
-                
-                if (!Input.id.x)
-                    b_index[Input.id.x] = 0;
+        Input = "CS_INPUT"
+        NumThreads = { 256 1 1 }
+        Code
+        [[
+            PDX_MAIN
+            {
+                const uint TotalThreadCount = 256 * 256;
+
+                for ( uint ThreadIndex = Input.DispatchThreadID.x; ThreadIndex < _PartitionCount; ThreadIndex += TotalThreadCount )
+                {
+                    PartitionReductionsBuffer[ ThreadIndex ] = 0;
+                }
+
+                if ( Input.DispatchThreadID.x == 0 )
+                {
+                    PartitionIndexBuffer[ 0 ] = 0;
+                }
             }
         ]]
     }
@@ -392,103 +386,68 @@ ComputeShader =
 
 ComputeShader =
 {
-	MainCode CS_ChainedScanDecoupledLookbackExclusive
-	{
-		VertexStruct CS_INPUT
-		{
-			uint3 gtid : PDX_GroupThreadID
-		};
+    MainCode CS_ChainedScanDecoupledLookback
+    {
+        VertexStruct CS_INPUT
+        {
+            uint3 GroupThreadID : PDX_GroupThreadID
+        };
 
-		Input = "CS_INPUT"
-		# NumThreads = { BLOCK_DIM 1 1 }
-		NumThreads = { 256 1 1 }
-		Code
-		[[
-			PDX_MAIN
-			{
-                AcquirePartitionIndex(Input.gtid.x);
-                GroupMemoryBarrierWithGroupSync();
-                const uint partitionIndex = g_broadcast;
+        Input = "CS_INPUT"
+        NumThreads = { NUM_THREADS_IN_GROUP 1 1 }
+        Code
+        [[
+            PDX_MAIN
+            {
+                const uint GroupThreadID = Input.GroupThreadID.x;
 
-                if (partitionIndex < e_threadBlocks - 1)
-                    ScanExclusiveFull(Input.gtid.x, partitionIndex);
-                
-                if(partitionIndex == e_threadBlocks - 1)
-                    ScanExclusivePartial(Input.gtid.x, partitionIndex);
-                GroupMemoryBarrierWithGroupSync();
-                
-                if (WaveGetLaneCount() >= 16)
-                    LocalScanInclusiveWGE16(Input.gtid.x, partitionIndex);
-                
-                if (WaveGetLaneCount() < 16)
-                    LocalScanInclusiveWLT16(Input.gtid.x, partitionIndex);
-                
-                DeviceBroadcast(Input.gtid.x, partitionIndex);
-                
-                if (partitionIndex && Input.gtid.x < WaveGetLaneCount())
-                    Lookback(partitionIndex);
-                GroupMemoryBarrierWithGroupSync();
-                
-                const uint prevReduction = g_broadcast + 
-                    (Input.gtid.x >= WaveGetLaneCount() ? g_reduction[getWaveIndex(Input.gtid.x) - 1] : 0);
-                
-                if (partitionIndex < e_threadBlocks - 1)
-                    DownSweepFull(Input.gtid.x, partitionIndex, prevReduction);
-                
-                if (partitionIndex == e_threadBlocks - 1)
-                    DownSweepPartial(Input.gtid.x, partitionIndex, prevReduction);
-            }
-        ]]
-    }
-}
+                // Atomically acquire unique index for this partition
+                AcquirePartitionIndex( GroupThreadID );
 
-ComputeShader =
-{
-	MainCode CS_ChainedScanDecoupledLookbackInclusive
-	{
-		VertexStruct CS_INPUT
-		{
-			uint3 gtid : PDX_GroupThreadID
-		};
+                // Wait until acquired GS_PartitionIndex is available for all waves
+                GroupMemoryBarrierWithGroupSync();
 
-		Input = "CS_INPUT"
-		# NumThreads = { BLOCK_DIM 1 1 }
-		NumThreads = { 256 1 1 }
-		Code
-		[[
-			PDX_MAIN
-			{
-                AcquirePartitionIndex(Input.gtid.x);
-                GroupMemoryBarrierWithGroupSync();
-                const uint partitionIndex = g_broadcast;
+                const uint PartitionIndex = GS_PartitionIndex;
 
-                if (partitionIndex < e_threadBlocks - 1)
-                    ScanInclusiveFull(Input.gtid.x, partitionIndex);
-                
-                if (partitionIndex == e_threadBlocks - 1)
-                    ScanInclusivePartial(Input.gtid.x, partitionIndex);
+                // Calculate wave-wide prefix sums and wave reductions for this partition.
+                // Results are stored in GS_PartitionWavePrefixSums and GS_WaveReductions.
+                // This is done by all waves of the thread group concurrently.
+                PartitionScan( GroupThreadID, PartitionIndex );
+
+                // Wait until all waves have calculated their local reductions
                 GroupMemoryBarrierWithGroupSync();
-                
-                if (WaveGetLaneCount() >= 16)
-                    LocalScanInclusiveWGE16(Input.gtid.x, partitionIndex);
-                
-                if (WaveGetLaneCount() < 16)
-                    LocalScanInclusiveWLT16(Input.gtid.x, partitionIndex);
-                
-                DeviceBroadcast(Input.gtid.x, partitionIndex);
-                
-                if (partitionIndex && Input.gtid.x < WaveGetLaneCount())
-                    Lookback(partitionIndex);
+
+                // Now we can calculate prefix sums of wave-local reductions to get partition-wide prefix sums.
+                // This can be done with a single wave if there is enough lanes in a wave to cover NUM_THREADS_IN_GROUP.
+                // The results are stored in GS_WaveReductions.
+                if ( NUM_THREADS_IN_GROUP / WaveGetLaneCount() <= WaveGetLaneCount() )
+                {
+                    ReductionScanSingleWave( GroupThreadID );
+                }
+                else
+                {
+                    ReductionScanMultipleWaves( GroupThreadID, PartitionIndex );
+                }
+
+                // Now when the reduction scan for this partition is done we can signal its status to other thread groups.
+                // Any thread can do that so we use the thread that scanned last wave reduction to elide an extra barrier.
+                SetPartitionReductionReadyFlag( GroupThreadID, PartitionIndex );
+
+                // Once the reduction for the whole partition has been calculated we can start 
+                // looking through the reductions of the preceding partitions.
+                // This is done using a single wave in a thread group.
+                // The resulted sum of all reductions of all previous partitions is stored in GS_PrevPartitionsReduction.
+                if ( PartitionIndex > 0 && GroupThreadID < WaveGetLaneCount() )
+                {
+                    Lookback( PartitionIndex );
+                }
+
+                // Wait until GS_PrevPartitionsReduction is available for all waves
                 GroupMemoryBarrierWithGroupSync();
-                
-                const uint prevReduction = g_broadcast +
-                    (Input.gtid.x >= WaveGetLaneCount() ? g_reduction[getWaveIndex(Input.gtid.x) - 1] : 0);
-                
-                if (partitionIndex < e_threadBlocks - 1)
-                    DownSweepFull(Input.gtid.x, partitionIndex, prevReduction);
-                
-                if (partitionIndex == e_threadBlocks - 1)
-                    DownSweepPartial(Input.gtid.x, partitionIndex, prevReduction);
+
+                // Calculate final prefix sums using GS_PrevPartitionsReduction and GS_PartitionWavePrefixSums.
+                // This is done by all waves of the thread group concurrently.
+                DownSweep( GroupThreadID, PartitionIndex );
             }
         ]]
     }
@@ -496,15 +455,10 @@ ComputeShader =
 
 Effect PrefixSumInitChainedScan
 {
-	ComputeShader = "CS_InitChainedScan"
+    ComputeShader = "CS_InitChainedScan"
 }
 
-Effect PrefixSumChainedScanDecoupledLookbackExclusive
+Effect PrefixSumChainedScanDecoupledLookback
 {
-	ComputeShader = "CS_ChainedScanDecoupledLookbackExclusive"
-}
-
-Effect PrefixSumChainedScanDecoupledLookbackInclusive
-{
-	ComputeShader = "CS_ChainedScanDecoupledLookbackInclusive"
+    ComputeShader = "CS_ChainedScanDecoupledLookback"
 }

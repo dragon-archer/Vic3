@@ -1,5 +1,5 @@
 ﻿fade_duration=0.000000
-max_particles=50
+max_particles=2
 pause_invisible=no
 graph={
 	nodes={
@@ -20,8 +20,32 @@ graph={
 				}
 				link={
 					pin_id="roll"
-					linked_node=43
-					linked_pin="value"
+					linked_node=91
+					linked_pin="selected_value"
+				}
+			}
+		}
+		pdxns:cast:FloatToInt32={
+			id=84
+			node={
+			}
+			inputs={
+				link={
+					pin_id="operand"
+					linked_node=86
+					linked_pin="x"
+				}
+			}
+		}
+		pdxns:cast:FloatToInt32={
+			id=85
+			node={
+			}
+			inputs={
+				link={
+					pin_id="operand"
+					linked_node=86
+					linked_pin="y"
 				}
 			}
 		}
@@ -82,6 +106,11 @@ graph={
 				texture_file="gfx/particles/textures/flipbooks/chimney_smoke_01.dds"
 			}
 			inputs={
+				link={
+					pin_id="texture_path"
+					linked_node=95
+					linked_pin="selected_value"
+				}
 			}
 		}
 		pdxns:logic:RetainedValueF={
@@ -97,6 +126,23 @@ graph={
 				link={
 					pin_id="input_value"
 					linked_node=11
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:logic:RetainedValueF={
+			id=96
+			node={
+			}
+			inputs={
+				link={
+					pin_id="signal"
+					linked_node=132
+					linked_pin="value"
+				}
+				link={
+					pin_id="input_value"
+					linked_node=98
 					linked_pin="value"
 				}
 			}
@@ -119,6 +165,174 @@ graph={
 				link={
 					pin_id="false_value"
 					linked_node=44
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:logic:SelectFromIntF={
+			id=93
+			node={
+				input_count=3
+			}
+			inputs={
+				link={
+					pin_id="select_int"
+					linked_node=97
+					linked_pin="value"
+				}
+				link={
+					pin_id="input0"
+					linked_node=121
+					linked_pin="value"
+				}
+				link={
+					pin_id="input1"
+					linked_node=122
+					linked_pin="value"
+				}
+				link={
+					pin_id="input2"
+					linked_node=123
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:logic:SelectFromIntF={
+			id=88
+			node={
+				input_count=3
+			}
+			inputs={
+				link={
+					pin_id="select_int"
+					linked_node=97
+					linked_pin="value"
+				}
+				link={
+					pin_id="input0"
+					linked_node=106
+					linked_pin="value"
+				}
+				link={
+					pin_id="input1"
+					linked_node=107
+					linked_pin="value"
+				}
+				link={
+					pin_id="input2"
+					linked_node=108
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:logic:SelectFromIntF={
+			id=91
+			node={
+				input_count=3
+			}
+			inputs={
+				link={
+					pin_id="select_int"
+					linked_node=97
+					linked_pin="value"
+				}
+				link={
+					pin_id="input0"
+					linked_node=113
+					linked_pin="value"
+				}
+				link={
+					pin_id="input1"
+					linked_node=114
+					linked_pin="value"
+				}
+				link={
+					pin_id="input2"
+					linked_node=115
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:logic:SelectFromIntString={
+			id=95
+			node={
+				input_count=3
+			}
+			inputs={
+				link={
+					pin_id="select_int"
+					linked_node=97
+					linked_pin="value"
+				}
+				link={
+					pin_id="input0"
+					linked_node=129
+					linked_pin="value"
+				}
+				link={
+					pin_id="input1"
+					linked_node=130
+					linked_pin="value"
+				}
+				link={
+					pin_id="input2"
+					linked_node=131
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:logic:SelectFromIntV3F={
+			id=94
+			node={
+				input_count=3
+			}
+			inputs={
+				link={
+					pin_id="select_int"
+					linked_node=97
+					linked_pin="value"
+				}
+				link={
+					pin_id="input0"
+					linked_node=125
+					linked_pin="value"
+				}
+				link={
+					pin_id="input1"
+					linked_node=126
+					linked_pin="value"
+				}
+				link={
+					pin_id="input2"
+					linked_node=127
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:logic:SelectFromIntV3F={
+			id=92
+			node={
+				input_count=3
+			}
+			inputs={
+				link={
+					pin_id="select_int"
+					linked_node=97
+					linked_pin="value"
+				}
+				link={
+					pin_id="input0"
+					linked_node=117
+					linked_pin="value"
+				}
+				link={
+					pin_id="input1"
+					linked_node=118
+					linked_pin="value"
+				}
+				link={
+					pin_id="input2"
+					linked_node=119
 					linked_pin="value"
 				}
 			}
@@ -203,6 +417,30 @@ graph={
 				}
 			}
 		}
+		pdxns:math:RoundF={
+			id=97
+			node={
+			}
+			inputs={
+				link={
+					pin_id="operand"
+					linked_node=96
+					linked_pin="output_value"
+				}
+			}
+		}
+		pdxns:math:RoundF={
+			id=87
+			node={
+			}
+			inputs={
+				link={
+					pin_id="operand"
+					linked_node=88
+					linked_pin="selected_value"
+				}
+			}
+		}
 		pdxns:math:randomF={
 			id=11
 			node={
@@ -221,6 +459,28 @@ graph={
 				link={
 					pin_id="position"
 					linked_node=57
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=98
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=135
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=31
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=32
 					linked_pin="value"
 				}
 			}
@@ -332,13 +592,18 @@ graph={
 					linked_pin="value"
 				}
 				link={
+					pin_id="render_order"
+					linked_node=87
+					linked_pin="value"
+				}
+				link={
 					pin_id="flipbook_dimensions"
-					linked_node=32
+					linked_node=83
 					linked_pin="value"
 				}
 				link={
 					pin_id="pivot_offset"
-					linked_node=31
+					linked_node=89
 					linked_pin="value"
 				}
 				link={
@@ -348,8 +613,8 @@ graph={
 				}
 				link={
 					pin_id="usr:size"
-					linked_node=42
-					linked_pin="value"
+					linked_node=93
+					linked_pin="selected_value"
 				}
 				link={
 					pin_id="usr:StartColor"
@@ -544,6 +809,38 @@ graph={
 			inputs={
 			}
 		}
+		pdxns:values:Bool={
+			id=132
+			node={
+				value=yes
+			}
+			inputs={
+			}
+		}
+		pdxns:values:BreakVector3f={
+			id=86
+			node={
+			}
+			inputs={
+				link={
+					pin_id="value"
+					linked_node=92
+					linked_pin="selected_value"
+				}
+			}
+		}
+		pdxns:values:BreakVector3f={
+			id=90
+			node={
+			}
+			inputs={
+				link={
+					pin_id="value"
+					linked_node=94
+					linked_pin="selected_value"
+				}
+			}
+		}
 		pdxns:values:Color={
 			id=30
 			node={
@@ -551,22 +848,6 @@ graph={
 					0.167969 0.167969 0.167969 1.000000
 				}
 
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector2f={
-			id=31
-			node={
-				value={ -0.270000 0.410000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector2i={
-			id=32
-			node={
-				value={ 16 8 }
 			}
 			inputs={
 			}
@@ -603,6 +884,54 @@ graph={
 			inputs={
 			}
 		}
+		pdxns:values:ConstVector3f={
+			id=127
+			node={
+				value={ -0.450000 0.450000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=126
+			node={
+				value={ -0.420000 0.410000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=125
+			node={
+				value={ -0.270000 0.410000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=119
+			node={
+				value={ 14.000000 7.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=118
+			node={
+				value={ 16.000000 8.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=117
+			node={
+				value={ 16.000000 8.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
 		pdxns:values:Curve={
 			id=37
 			node={
@@ -612,6 +941,14 @@ graph={
 					{ x = 0.500000 y = 0.500000 }
 					{ x = 1.000000 y = 1.000000 }
 				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=31
+			node={
+				value=2.000000
 			}
 			inputs={
 			}
@@ -649,17 +986,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=42
+			id=135
 			node={
-				value=1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=43
-			node={
-				value=200.000000
+				value=0.000000
 			}
 			inputs={
 			}
@@ -744,6 +1073,86 @@ graph={
 			inputs={
 			}
 		}
+		pdxns:values:Float={
+			id=123
+			node={
+				value=1.300000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=122
+			node={
+				value=1.200000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=121
+			node={
+				value=1.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=115
+			node={
+				value=170.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=114
+			node={
+				value=180.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=113
+			node={
+				value=200.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=106
+			node={
+				value=1.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=108
+			node={
+				value=3.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=107
+			node={
+				value=2.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=32
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
 		pdxns:values:Int32={
 			id=54
 			node={
@@ -774,6 +1183,64 @@ graph={
 				value=0
 			}
 			inputs={
+			}
+		}
+		pdxns:values:String={
+			id=131
+			node={
+				value=gfx/particles/textures/flipbooks/chimney_smoke_03.dds
+			}
+			inputs={
+			}
+		}
+		pdxns:values:String={
+			id=130
+			node={
+				value=gfx/particles/textures/flipbooks/chimney_smoke_02.dds
+			}
+			inputs={
+			}
+		}
+		pdxns:values:String={
+			id=129
+			node={
+				value=gfx/particles/textures/flipbooks/chimney_smoke_01.dds
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Vector2f={
+			id=89
+			node={
+			}
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=90
+					linked_pin="x"
+				}
+				link={
+					pin_id="y"
+					linked_node=90
+					linked_pin="y"
+				}
+			}
+		}
+		pdxns:values:Vector2i={
+			id=83
+			node={
+			}
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=84
+					linked_pin="value"
+				}
+				link={
+					pin_id="y"
+					linked_node=85
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Vector3f={

@@ -1,0 +1,44 @@
+pdxmesh = {
+	name = "male_outfit_indian_tatya_tope_mesh"
+	file = "male_outfit_indian_tatya_tope.mesh"
+
+	meshsettings = {
+		name = "male_outfit_indian_tatya_topeShape"
+		index = 0
+		texture_diffuse = "male_outfit_indian_tatya_tope_diffuse.dds"
+		texture_normal = "male_outfit_indian_tatya_tope_normal.dds"
+		texture_specular = "male_outfit_indian_tatya_tope_properties.dds"
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "male_outfit_indian_tatya_tope_entity"
+	pdxmesh = "male_outfit_indian_tatya_tope_mesh"
+
+
+	game_data = {
+        portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_outfits/indian/male_outfit_indian_tatya_tope/male_outfit_indian_tatya_tope_masks.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "male_outfit_tatya_tope"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+        }
+	}
+}
+
+entity = {
+	name = "male_outfit_indian_whitte_cotton_entity"
+	pdxmesh = "male_outfit_indian_tatya_tope_mesh"
+
+
+	game_data = {
+        portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_outfits/indian/male_outfit_indian_tatya_tope/male_outfit_indian_tatya_tope_masks.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+			variation = "male_outfit_indian_whitte_cotton"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+        }
+	}
+}

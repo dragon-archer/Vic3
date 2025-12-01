@@ -4,10 +4,11 @@ Includes = {
 	"jomini/jomini_lighting.fxh"
 	"jomini/jomini_decals.fxh"
 	"jomini/jomini_province_overlays.fxh"
+	"coloroverlay.fxh"
 	"dynamic_masks.fxh"
 	"distance_fog.fxh"
-	"coloroverlay.fxh"
 	"fog_of_war.fxh"
+	"harvest_condition.fxh"
 }
 
 PixelShader =
@@ -129,6 +130,11 @@ PixelShader =
 
 			// Alpha blend two sources
 			Diffuse.a = CalcHeightBlendFactors( float4( Diffuse.a, 0.3, 0.0, 0.0 ), float4( Alpha, 1.0 - Alpha, 0.0, 0.0 ), 0.25 ).r;
+
+			// Harvest conditions
+			#if !defined( GUI_SHADER )
+				ApplyHarvestConditionDecal( Diffuse, MapCoords, WorldSpacePos );
+			#endif
 
 			// Devastation
 			ApplyDevastationDecal( Diffuse, WorldSpacePos.xz, 1.0 - Properties.r );

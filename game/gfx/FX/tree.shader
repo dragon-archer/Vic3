@@ -8,10 +8,11 @@ Includes = {
 	"jomini/jomini_mapobject.fxh"
 	"jomini/jomini_province_overlays.fxh"
 	"pdxmesh_functions.fxh"
-	"sharedconstants.fxh"
+	"coloroverlay.fxh"
 	"distance_fog.fxh"
 	"dynamic_masks.fxh"
-	"coloroverlay.fxh"
+	"harvest_condition.fxh"
+	"sharedconstants.fxh"
 	"fog_of_war.fxh"
 	"ssao_struct.fxh"
 }
@@ -85,7 +86,7 @@ VertexShader =
 					Input.Position = WindTransformMedium( Input.Position, WorldMatrix );
 				#elif defined( TREE_TALL )
 					Input.Position = WindTransformTall( Input.Position, WorldMatrix );
-				#else
+				#elif !defined( TREE_NO_WIND )
 					Input.Position = WindTransform( Input.Position, WorldMatrix );
 				#endif
 
@@ -111,7 +112,7 @@ VertexShader =
 					Input.Position = WindTransformMedium( Input.Position, WorldMatrix );
 				#elif defined( TREE_TALL )
 					Input.Position = WindTransformTall( Input.Position, WorldMatrix );
-				#else
+				#elif !defined( TREE_NO_WIND )
 					Input.Position = WindTransform( Input.Position, WorldMatrix );
 				#endif
 
@@ -139,7 +140,7 @@ VertexShader =
 					Input.Position = WindTransformMedium( Input.Position, WorldMatrix );
 				#elif defined( TREE_TALL )
 					Input.Position = WindTransformTall( Input.Position, WorldMatrix );
-				#else
+				#elif !defined( TREE_NO_WIND )
 					Input.Position = WindTransform( Input.Position, WorldMatrix );
 				#endif
 
@@ -171,7 +172,7 @@ VertexShader =
 					Input.Position = WindTransformMedium( Input.Position, WorldMatrix );
 				#elif defined( TREE_TALL )
 					Input.Position = WindTransformTall( Input.Position, WorldMatrix );
-				#else
+				#elif !defined( TREE_NO_WIND )
 					Input.Position = WindTransform( Input.Position, WorldMatrix );
 				#endif
 
@@ -255,7 +256,6 @@ PixelShader =
 		SampleModeV = "Clamp"
 		Type = "Cube"
 	}
-
 	TextureSampler ColorMapTree
 	{
 		Ref = ColorMapTree
@@ -265,10 +265,6 @@ PixelShader =
 		SampleModeU = "Wrap"
 		SampleModeV = "Wrap"
 	}
-
-
-
-
 	TextureSampler WindMapTree
 	{
 		Ref = WindMapTree
@@ -312,7 +308,6 @@ PixelShader =
 				float2 MapCoords = Input.WorldSpacePos.xz * _WorldSpaceToTerrain0To1;
 				float2 ProvinceCoords = Input.WorldSpacePos.xz / _ProvinceMapSize;
 
-
 				// Colormap blend
 				#if defined( COLORMAP )
 					float3 ColorMap = PdxTex2D( ColorMapTree, float2( MapCoords.x, 1.0 - MapCoords.y ) ).rgb;
@@ -332,6 +327,7 @@ PixelShader =
 				#if !defined( LOW_QUALITY_SHADERS ) && !defined( GUI_SHADER )
 					ApplyPollutionTrees( Diffuse, MapCoords );
 					ApplyDevastationTrees( Diffuse, MapCoords );
+					ApplyHarvestConditionTree( Diffuse, Input.UV0, MapCoords, Input.WorldSpacePos );
 				#endif
 
 				// Color overlay, pre light

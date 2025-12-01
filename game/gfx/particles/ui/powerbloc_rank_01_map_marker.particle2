@@ -1,5 +1,5 @@
 ﻿fade_duration=0.000000
-max_particles=500
+max_particles=18
 pause_invisible=no
 graph={
 	nodes={
@@ -381,7 +381,7 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=302
+					linked_node=94
 					linked_pin="value"
 				}
 				link={
@@ -873,6 +873,11 @@ graph={
 					linked_node=139
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=258
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -888,6 +893,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=124
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=259
 					linked_pin="value"
 				}
 			}
@@ -2049,7 +2059,7 @@ graph={
 			}
 		}
 		pdxns:values:Color={
-			id=302
+			id=94
 			node={
 				value={
 					0.841797 0.684814 0.494884 1.000000
@@ -3002,6 +3012,22 @@ graph={
 			id=208
 			node={
 				value=2
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=258
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=259
+			node={
+				value=0
 			}
 			inputs={
 			}

@@ -78,7 +78,7 @@ PixelShader =
 	[[
 
 		float4 GetPixelColor(
-			VS_OUTPUT Input,
+			VS_SPLINE_OUTPUT Input,
 			float2 UV,
 			float2 ddx,
 			float2 ddy,
@@ -148,7 +148,7 @@ PixelShader =
 		}
 
 		float4 GetPixelColorWithMaskApplied(
-			VS_OUTPUT Input,
+			VS_SPLINE_OUTPUT Input,
 			int MaskIndex)
 		{
 			float2 UV = Input.UV;
@@ -167,7 +167,7 @@ PixelShader =
 
 	MainCode Background
 	{
-		Input = "VS_OUTPUT"
+		Input = "VS_SPLINE_OUTPUT"
 		Output = "PDX_COLOR"
 		Code
 		[[
@@ -181,7 +181,7 @@ PixelShader =
 
 	MainCode Foreground
 	{
-		Input = "VS_OUTPUT"
+		Input = "VS_SPLINE_OUTPUT"
 		Output = "PDX_COLOR"
 		Code
 		[[
@@ -196,7 +196,7 @@ PixelShader =
 
 	MainCode StackedTexturesPass
 	{
-		Input = "VS_OUTPUT"
+		Input = "VS_SPLINE_OUTPUT"
 		Output = "PDX_COLOR"
 		Code
 		[[
@@ -216,7 +216,7 @@ PixelShader =
 
 	MainCode SingleTexturePass
 	{
-		Input = "VS_OUTPUT"
+		Input = "VS_SPLINE_OUTPUT"
 		Output = "PDX_COLOR"
 		Code
 		[[
@@ -258,22 +258,22 @@ DepthStencilState DepthStencilState
 
 Effect Background
 {
-	VertexShader = "VertexShader"
+	VertexShader = "VS_Splines"
 	PixelShader = "Background"
 }
 Effect Foreground
 {
-	VertexShader = "VertexShader"
+	VertexShader = "VS_Splines"
 	PixelShader = "Foreground"
 }
 
 Effect StackedTexturesPass
 {
-	VertexShader = "VertexShader"
+	VertexShader = "VS_Splines"
 	PixelShader = "StackedTexturesPass"
 }
 Effect SingleTexturePass
 {
-	VertexShader = "VertexShader"
+	VertexShader = "VS_Splines"
 	PixelShader = "SingleTexturePass"
 }

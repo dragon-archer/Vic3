@@ -44,6 +44,16 @@ input_action = {
     raw_text = "Play/Pause animation"
 }
 
+input_action = {
+    name = "animation_editor_next_frame"
+    raw_text = "Next animation frame"
+}
+
+input_action = {
+    name = "animation_editor_prev_frame"
+    raw_text = "Previous animation frame"
+}
+
 input_context = {
     name = "animation_editor"
 
@@ -70,6 +80,8 @@ input_context = {
     input_action = "history_tool_redo"
     input_action = "tools_history"
     input_action = "animation_editor_pause_play"
+    input_action = "animation_editor_next_frame"
+    input_action = "animation_editor_prev_frame"
 }
 
 input_context = {
@@ -80,4 +92,6 @@ input_context = {
     input_action = "tools_history"
     input_action = "animation_editor_fit"
     input_action = "animation_editor_pause_play"
+    input_action = "animation_editor_next_frame"
+    input_action = "animation_editor_prev_frame"
 }

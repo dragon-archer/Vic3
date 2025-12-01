@@ -1,0 +1,165 @@
+types MeshImporterTypes {
+	type mesh_importer_log_num_entry = hbox {
+		layoutpolicy_horizontal = preferred
+		icon = {
+			size = { 20 20 }
+			block "icon" {}
+		}
+		editor_textbox = {
+			layoutpolicy_horizontal = expanding
+			autoresize = yes
+			block "text" {}
+		}
+		tooltipwidget = { using = dockable_tooltip }
+	}
+
+	type mesh_importer_material_entry = vbox {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+		spacing = 4
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			editor_textbox = {
+				raw_text = "#BOLD;COLOR:{0.4,0.6,0.4} Material: [MeshImporterMaterialEntry.GetName] #!"
+				autoresize = yes
+			}
+			widget = { layoutpolicy_horizontal = expanding }
+		}
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			spacing = 2
+			state = {
+				name = "init_list"
+				trigger_on_create = yes
+				on_start = "[MeshImporterMaterialEntry.InjectPropertyList(PdxGuiWidget.AccessSelf, 'dialog_grid_property')]"
+			}
+		}
+		icon = { # TODO: This is defined in horizontal_separator = {} in entity_editor. Let's move these into a general place.
+			alpha = 0.3
+			texture = "gfx/editor_gui/separator.dds"
+			size = { 0 3 }
+			layoutpolicy_horizontal = expanding
+		}
+	}
+}
+
+vbox= {
+	name = "tools_mesh_importer" # Used in code; don't change without also updating cpp-side.
+
+	layoutpolicy_vertical = expanding
+	layoutpolicy_horizontal = expanding
+	spacing = 8
+	
+	input_context = "mesh_importer"
+
+	hbox = {
+		layoutpolicy_vertical = preferred
+		layoutpolicy_horizontal = expanding
+
+		history_toolbar = {
+			datacontext = "[MeshImporter.AccessUndoer]"
+		}
+
+		editor_toolbar_divider = {}
+
+		widget = { layoutpolicy_horizontal = expanding }
+
+		editor_textbox = {
+			raw_text = "[MeshImporter.GetInputFileName]"
+			autoresize = yes
+			fontsize = 20
+			margin_right = 8
+		}
+	}
+
+	editor_frame = {
+		layoutpolicy_horizontal = expanding
+		
+		blockoverride "label"
+		{
+			raw_text = "Basic Import Settings"
+		}
+
+		blockoverride "content"
+		{
+			tools_properties_dialog = {
+				name = "mesh_settings_properties"
+			}
+		}
+	}
+
+	editor_frame = {
+		layoutpolicy_horizontal = expanding
+		
+		blockoverride "label"
+		{
+			raw_text = "Material Import Settings"
+		}
+
+		blockoverride "content"
+		{
+			datamodel = "[MeshImporter.AccessMaterialImportSettings.AccessMaterialEntries]"
+			item = { # [MeshImporterMaterialEntry]
+				mesh_importer_material_entry = {}
+			}
+		}
+	}
+
+	widget = {
+		# Spacer
+		size = { 0 0 }
+		layoutpolicy_vertical = expanding
+		layoutpolicy_horizontal = expanding
+	}
+	hbox = {
+		layoutpolicy_horizontal = expanding
+
+		dockable_button = {
+			raw_text = "Import"
+			size = { 120 30 }
+			onclick = "[MeshImporter.OnImportClick]"
+		}
+
+		editor_toolbar_divider = {}
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			spacing = 8
+
+			widget = { layoutpolicy_horizontal = expanding }
+
+			mesh_importer_log_num_entry = {
+				visible = "[GreaterThan_int32(MeshImporter.GetLogEntryCountInfo, '(int32)0')]"
+				blockoverride "icon" { texture = "gfx/tools/log_viewer/info_icon.png" }
+				blockoverride "text" { raw_text = "[MeshImporter.GetLogEntryCountInfo]" }
+				raw_tooltip = "Notifications."
+			}
+			mesh_importer_log_num_entry = {
+				visible = "[GreaterThan_int32(MeshImporter.GetLogEntryCountWarning, '(int32)0')]"
+				blockoverride "icon" { texture = "gfx/tools/log_viewer/warning_icon.png" }
+				blockoverride "text" { raw_text = "[MeshImporter.GetLogEntryCountWarning]" }
+				raw_tooltip = "Warnings."
+			}
+			mesh_importer_log_num_entry = {
+				visible = "[GreaterThan_int32(MeshImporter.GetLogEntryCountError, '(int32)0')]"
+				blockoverride "icon" { texture = "gfx/tools/log_viewer/error_icon.png" }
+				blockoverride "text" { raw_text = "[MeshImporter.GetLogEntryCountError]" }
+				raw_tooltip = "Errors."
+			}
+			mesh_importer_log_num_entry = {
+				visible = "[GreaterThan_int32(MeshImporter.GetLogEntryCountCritical, '(int32)0')]"
+				blockoverride "icon" { texture = "gfx/tools/log_viewer/critical_icon.png" }
+				blockoverride "text" { raw_text = "[MeshImporter.GetLogEntryCountCritical]" }
+				raw_tooltip = "Critical Errors."
+			}
+
+			dockable_togglebutton = {
+				raw_text = "Show Log"
+				size = { 100 30 }
+				checked = "[MeshImporter.IsLogViewOpen]"
+				onclick = "[MeshImporter.ToggleLogView]"
+			}
+		}
+	}
+}

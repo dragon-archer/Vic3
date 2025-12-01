@@ -1,0 +1,143 @@
+pdxmesh = {
+	name = "generic_factory_furniture_01_mesh"
+	file = "generic_factory_furniture_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 8.0 }
+		lod = { index = 3 percent = 4.0 }
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_billboard_0Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_decal_0Shape"
+		index = 0
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_worlddecal_0Shape"
+		index = 0
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_building_Shape0"
+		index = 0
+		texture_diffuse = "generic_factory_diffuse.dds"
+		texture_normal = "generic_factory_normal.dds"
+		texture_specular = "generic_factory_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_billboard_1Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_decal_1Shape"
+		index = 0
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_worlddecal_1Shape"
+		index = 0
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_building_Shape1"
+		index = 0
+		texture_diffuse = "generic_factory_diffuse.dds"
+		texture_normal = "generic_factory_normal.dds"
+		texture_specular = "generic_factory_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_billboard_2Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_decal_2Shape"
+		index = 0
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_worlddecal_2Shape"
+		index = 0
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_building_Shape2"
+		index = 0
+		texture_diffuse = "generic_factory_diffuse.dds"
+		texture_normal = "generic_factory_normal.dds"
+		texture_specular = "generic_factory_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_decal_3Shape"
+		index = 0
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_worlddecal_3Shape"
+		index = 0
+		shader = "decal_world"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+
+	meshsettings = {
+		name = "generic_factory_furniture_01_building_Shape3"
+		index = 0
+		texture_diffuse = "generic_factory_diffuse.dds"
+		texture_normal = "generic_factory_normal.dds"
+		texture_specular = "generic_factory_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "generic_factory_furniture_01_entity"
+	pdxmesh = "generic_factory_furniture_01_mesh"
+}

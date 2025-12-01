@@ -1,36 +1,19 @@
 Includes = {
 	"cw/camera.fxh"
-	"cw/heightmap.fxh"
 	"cw/utility.fxh"
+	"cw/gpu_spline.fxh"
+	"cw/heightmap.fxh"
 }
 
-# Please note that this file is for the spline system
-# ( thus it has nothing to do with "border splines" )
-
-VertexStruct VS_INPUT
+ConstantBuffer( PdxConstantBuffer0 )
 {
-    float3  Position   		: POSITION;
-	float	MaxU	 		: TEXCOORD0;
-	float2  UV				: TEXCOORD1;
-	float3	Tangent 		: TEXCOORD2;
-	float3	Normal			: TEXCOORD3;
-	float	Transparency 	: TEXCOORD4;
-	float	Width			: TEXCOORD5;
-	float	DistanceToMain	: TEXCOORD6;
-};
-
-VertexStruct VS_OUTPUT
-{
-    float4 Position	    	: PDX_POSITION;
-	float2 UV			    : TEXCOORD0;
-	float3 Tangent			: TEXCOORD1;
-	float3 Normal			: TEXCOORD2;
-	float3 WorldSpacePos	: TEXCOORD3;
-	float  MaxU				: TEXCOORD4;
-	float  Transparency 	: TEXCOORD5;
-	float  Width			: TEXCOORD6;
-	float  DistanceToMain	: TEXCOORD7;
-};
+	uint _AnchorDataHandle;
+	uint _SegmentDataHandle;
+	uint _StripDataHandle;
+	float _Opacity;
+	float _UVScale;
+	float _EndFadeoutFactor;
+}
 
 ConstantBuffer( 3 )
 {
@@ -39,36 +22,119 @@ ConstantBuffer( 3 )
 	float EndFadeoutFactor;
 };
 
+VertexStruct VS_SPLINE_INPUT
+{
+@ifdef PDX_ENABLE_SPLINE_GRAPHICS1
+	float3  Position   		: POSITION;
+	float	MaxU	 		: TEXCOORD0;
+	float2  UV				: TEXCOORD1;
+	float3	Tangent 		: TEXCOORD2;
+	float3	Normal			: TEXCOORD3;
+	float	Transparency 	: TEXCOORD4;
+	float	Width			: TEXCOORD5;
+	float	DistanceToMain	: TEXCOORD6;
+@else
+	# InstanceID = Patch index
+	uint InstanceID	: PDX_InstanceID;
+	# We use the VertexID to calculate the T value along the segment
+	uint VertexID : PDX_VertexID;
+@endif
+}
+
+# Please note that this file is for the spline system (GPU and CPU)
+# ( thus it has nothing to do with "border splines" )
+
+VertexStruct VS_SPLINE_OUTPUT
+{
+	float4 Position			: PDX_POSITION;
+	float2 UV				: TEXCOORD0;
+	float3 Tangent			: TEXCOORD1;
+	float3 Normal			: TEXCOORD2;
+	float3 WorldSpacePos	: TEXCOORD3;
+	float  MaxU				: TEXCOORD4;
+	float  Width			: TEXCOORD5;
+@ifdef PDX_ENABLE_SPLINE_GRAPHICS1
+	float  DistanceToMain	: TEXCOORD6;
+	float  Transparency 	: TEXCOORD7;
+@else
+	int DataIndex1			: TEXCOORD6;
+	int DataIndex2			: TEXCOORD7;
+	float DataDelta			: TEXCOORD8;
+@endif
+};
+
+Code
+[[
+#ifdef PDX_ENABLE_SPLINE_GRAPHICS1
+	VS_SPLINE_OUTPUT CalcSplinePointOutput( VS_SPLINE_INPUT Input )
+	{
+#ifndef JOMINIRIVER_MapSize
+#define JOMINIRIVER_MapSize MapSize
+#endif
+
+		VS_SPLINE_OUTPUT Out;
+
+		Out.UV 				= Input.UV;
+		Out.Tangent 		= Input.Tangent;
+		Out.Normal			= Input.Normal;
+		Out.WorldSpacePos 	= Input.Position;
+		Out.MaxU 			= Input.MaxU;
+
+		Out.Transparency 	= Input.Transparency;
+		Out.Width 			= Input.Width * max( JOMINIRIVER_MapSize.x, JOMINIRIVER_MapSize.y );
+		Out.DistanceToMain	= Input.DistanceToMain;
+
+		Out.Position = FixProjectionAndMul( ViewProjectionMatrix, float4( Input.Position, 1.0f ) );
+
+		return Out;
+	}
+#else // !PDX_ENABLE_SPLINE_GRAPHICS1
+	VS_SPLINE_OUTPUT CalcGpuSplinePointOutput( VS_SPLINE_INPUT Input )
+	{
+		SSplinePointData PointData = CalcSplinePointData( Input.InstanceID, Input.VertexID );
+
+		float Width = lerp( AttributeBuffer[ PointData.StartControlPointIdx ]._Width, AttributeBuffer[ PointData.EndControlPointIdx ]._Width, PointData.CurveT );
+
+		VS_SPLINE_OUTPUT Output;
+
+		float3 SplineNormal = PointData.Tangent.zyx;
+
+		float3 WorldSpacePos = PointData.Position + SplineNormal * PointData.HalfSideMask * Width;
+
+		Output.Position      = FixProjectionAndMul( ViewProjectionMatrix, float4( WorldSpacePos, 1.0 ) );
+		Output.UV            = PointData.UV;
+		Output.Normal        = PointData.Normal;
+		Output.Tangent       = PointData.Tangent;
+		Output.WorldSpacePos = WorldSpacePos;
+		Output.MaxU          = PointData.MaxU;
+		Output.Width         = Width;
+		Output.DataIndex1    = AttributeBuffer[ PointData.StartControlPointIdx ]._DataIndex;
+		Output.DataIndex2    = AttributeBuffer[ PointData.EndControlPointIdx ]._DataIndex;
+		Output.DataDelta     = PointData.CurveT;
+
+		return Output;
+	}
+#endif // PDX_ENABLE_SPLINE_GRAPHICS1
+]]
+
 VertexShader =
 {
-	MainCode VertexShader
+	MainCode VS_Splines
 	{
-		Input = "VS_INPUT"
-		Output = "VS_OUTPUT"
+
+
+		Input = "VS_SPLINE_INPUT"
+		Output = "VS_SPLINE_OUTPUT"
 		Code
 		[[
-			#ifndef JOMINIRIVER_MapSize
-			#define JOMINIRIVER_MapSize MapSize
-			#endif
-
 			PDX_MAIN
 			{
-				VS_OUTPUT Out;
-			
-				Out.UV 				= Input.UV;
-				Out.Tangent 		= Input.Tangent;
-				Out.Normal			= Input.Normal;
-				Out.WorldSpacePos 	= Input.Position;
-				Out.MaxU 			= Input.MaxU;
-
-				Out.Transparency 	= Input.Transparency;
-				Out.Width 			= Input.Width * max( JOMINIRIVER_MapSize.x, JOMINIRIVER_MapSize.y );
-				Out.DistanceToMain	= Input.DistanceToMain;
-
-				Out.Position = FixProjectionAndMul( ViewProjectionMatrix, float4( Input.Position, 1.0f ) );
-			
-				return Out;
-			}		
+#if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
+				return CalcSplinePointOutput( Input );
+#else
+				return CalcGpuSplinePointOutput( Input );
+#endif
+			}
 		]]
 	}
 }
@@ -77,6 +143,7 @@ PixelShader =
 {
 	Code
 	[[
+#if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
 		float3 JominiFlatSplineSampleNormal( in PdxTextureSampler2D NormalTexture, float3 Normal, float3 Tangent, float2 UV, float2 dx, float2 dy )
 		{
 			float4 NormalSample = PdxTex2DGrad( NormalTexture, UV, dx, dy );
@@ -93,7 +160,7 @@ PixelShader =
 
 		// The mask texture contains 2 horizontal "lanes". The first is for splines' mid-section,
 		// the second for splines' start- and end-section.
-		float2 JominiFlatSplineSampleMask( in PdxTextureSampler2D MaskTexture, VS_OUTPUT Input )
+		float2 JominiFlatSplineSampleMask( in PdxTextureSampler2D MaskTexture, VS_SPLINE_OUTPUT Input )
 		{
 			float2 Mask = float2( 1,1 );
 			float2 MaskUV = Input.UV;
@@ -101,7 +168,7 @@ PixelShader =
 			MaskUV.y *= 0.5f;
 			float2 dx = ddx( MaskUV );
 			float2 dy = ddy( MaskUV );
-			
+
 			if ( MaskUV.x < 0.5f )
 			{
 				// close to the start of the spline, we sample from the 2nd lane of the mask texture
@@ -126,22 +193,22 @@ PixelShader =
 				float2 EndSectionMask = PdxTex2DGrad( MaskTexture, TailUV, dx, dy ).rg;
 				Mask = lerp( Mask, EndSectionMask, BlendValue );
 			}
-			
+
 			return Mask;
 		}
 
 		float JominiFlatSplineEdgeOpacity( float t, float MaxT, float offset )
 		{
-			float DistanceToEnd = min( t, MaxT - t ) + 0.0001f;	// Extra bias to make it possible to turn off fadeout completely			
+			float DistanceToEnd = min( t, MaxT - t ) + 0.0001f;	// Extra bias to make it possible to turn off fadeout completely
 			return RemapClamped( DistanceToEnd * EndFadeoutFactor, 0, offset, 0, 1 );
 
 		}
 
 		// Input Parameters:
 		// Input: The vertex input to pixel shader
-		// StackedTextureCount: The number of textures stacked in vertical direction in shader		
+		// StackedTextureCount: The number of textures stacked in vertical direction in shader
 		void JominiFlatSplineStackedUV(
-			VS_OUTPUT Input,
+			VS_SPLINE_OUTPUT Input,
 			int StackedTextureCount,
 			out float2 UV,
 			out float2 dx,
@@ -155,6 +222,7 @@ PixelShader =
 			dx = ddx( UV );
 			dy = ddy( UV );
 		}
+#endif
 	]]
 
 }

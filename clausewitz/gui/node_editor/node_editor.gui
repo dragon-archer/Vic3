@@ -55,6 +55,25 @@ types NodeEditor
 		}
 	}
 
+	type node_window_selected_frame = icon {
+		alpha = "[Select_float(Node.IsSelected, '(float)1.0', '(float)0.0')]"
+		color = "[Node.GetSelectedColor]"
+		texture = "gfx/editor_gui/editor_white_pixel.png"
+		alwaystransparent = yes
+	}
+
+	type node_window_selected_frame_horizontal = node_window_selected_frame {
+		size = { 0 4 } 
+		layoutpolicy_vertical = fixed
+		layoutpolicy_horizontal = expanding
+	}
+
+	type node_window_selected_frame_vertical = node_window_selected_frame {
+		size = { 4 0 } 
+		layoutpolicy_vertical = expanding
+		layoutpolicy_horizontal = fixed
+	}
+
 	type node_window_type = window {
 		name = "node_window"
 		shaderfile = "gfx/FX/pdxgui_default.shader"
@@ -68,6 +87,7 @@ types NodeEditor
 		tooltip = [Node.Tooltip]
 		filter_mouse = left
 		alwaystransparent = no
+        color = "[Node.GetBackgroundColor]"
 
 		#scissor = yes
 		resizable = no
@@ -135,211 +155,233 @@ types NodeEditor
 		}
 
 		vbox = {
-			
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+
 			restrictparent_min = yes
 			set_parent_size_to_minimum = yes
-			margin_bottom = 8
-			# Titlebar
+
+			node_window_selected_frame_horizontal = {}
+
 			hbox = {
-				margin_left = 4
-				margin_right = 4
-				margin_bottom = 4
-				block "title_background"
-				{
-					background = { 
-						texture = "gfx/editor_gui/node_editor/node_editor_title_background.dds" 
-						margin_top = 4
-						color = [Node.ContextColor]
-					}
-				}
-
-				spacing = 4
-
 				layoutpolicy_horizontal = expanding
-				block "node_icon"
-				{
-					widget = { 
-						size = { 8 8 }
-						icon = {
-							position = { 0 0 }
-							size = { 8 8 }
-							texture = "[Node.Texture]"
+				layoutpolicy_vertical = expanding
+
+				node_window_selected_frame_vertical = {}
+
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					margin_left = 6
+					margin_right = 6
+					margin_top = 6
+					margin_bottom = 8
+					# Titlebar
+					hbox = {
+						margin_left = 4
+						margin_right = 4
+						margin_bottom = 4
+						block "title_background"
+						{
+							background = { 
+								texture = "gfx/editor_gui/node_editor/node_editor_title_background.dds" 
+								margin_top = 4
+								color = [Node.ContextColor]
+							}
+						}
+
+						spacing = 4
+
+						layoutpolicy_horizontal = expanding
+						block "node_icon"
+						{
+							widget = { 
+								size = { 8 8 }
+								icon = {
+									position = { 0 0 }
+									size = { 8 8 }
+									texture = "[Node.Texture]"
+									tooltip = [Node.Tooltip]
+									tooltipwidget = { 
+										using = editor_tooltip 
+									}
+								}
+							}
+						}
+						
+						editor_textbox = {
+							name = "node_name_textbox"
+							autoresize = yes
+							fontsize = 12
+							fontweight = bold
+							fontcolor = [Node.TextColor]
+							text = [Node.Name]
+							align = left|vcenter|nobaseline
+							elide = right
+							using = editor_toolbar_font
 							tooltip = [Node.Tooltip]
-							tooltipwidget = { 
-								using = editor_tooltip 
+							tooltipwidget = { using = editor_tooltip }
+						}
+
+						widget = {
+							layoutpolicy_horizontal = expanding
+						}
+
+						icon = {
+							visible = [Node.HasError]
+							size = { 16 16 }
+							color = [Node.TextColor]
+							tooltip = [Node.ErrorTooltip]
+							texture = "gfx/tools/material/circle.dds"
+
+							vbox = {
+								icon = {
+									size = { 14 14 }
+									color = { 1 0 0 1}
+									texture = "gfx/tools/material/info_icon.png"
+								}
+							}
+						}
+
+						flowcontainer = {
+							spacing = 2
+							margin_right = 4
+							
+							node_window_button = {
+
+								blockoverride "button"
+								{
+									onclick = [NodeWindow.NameDialog]
+								}
+
+								blockoverride "icon"
+								{
+									texture = "gfx/editor_gui/16px/node_editor_icon_edit_name.png"
+									color = [Node.TextColor]
+								}
+							}
+
+							node_window_button = {
+
+								blockoverride "button"
+								{
+									onclick = [NodeWindow.DescriptionDialog]
+								}
+
+								blockoverride "icon"
+								{
+									texture = "gfx/editor_gui/16px/node_editor_icon_edit_description.png"
+									color = [Node.TextColor]
+								}
+							}
+
+							node_window_button = {
+								blockoverride "button"
+								{
+									onclick = [NodeWindow.Close]
+								}
+
+								blockoverride "icon"
+								{
+									texture = "gfx/editor_gui/16px/node_editor_icon_close.png"
+									color = [Node.TextColor]
+								}
 							}
 						}
 					}
-				}
-				
-				editor_textbox = {
-					name = "node_name_textbox"
-					autoresize = yes
-					fontsize = 12
-					fontweight = bold
-					fontcolor = [Node.TextColor]
-					text = [Node.Name]
-					align = left|vcenter|nobaseline
-					elide = right
-					using = editor_toolbar_font
-					tooltip = [Node.Tooltip]
-					tooltipwidget = { using = editor_tooltip }
-				}
 
-				widget = {
-					layoutpolicy_horizontal = expanding
-				}
-
-				icon = {
-					visible = [Node.HasError]
-					size = { 16 16 }
-					color = [Node.TextColor]
-					tooltip = [Node.ErrorTooltip]
-					texture = "gfx/tools/material/circle.dds"
-
-					vbox = {
-						icon = {
-							size = { 14 14 }
-							color = { 1 0 0 1}
-							texture = "gfx/tools/material/info_icon.png"
-						}
-					}
-				}
-
-				flowcontainer = {
-					spacing = 2
-					margin_right = 4
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin_left = 0
+						margin_top = 10
+						spacing = 4
 										
-					node_window_button = {
-
-						blockoverride "button"
-						{
-							onclick = [NodeWindow.NameDialog]
-						}
-
-						blockoverride "icon"
-						{
-							texture = "gfx/editor_gui/16px/node_editor_icon_edit_name.png"
-							color = [Node.TextColor]
-						}
-					}
-
-					node_window_button = {
-
-						blockoverride "button"
-						{
-							onclick = [NodeWindow.DescriptionDialog]
-						}
-
-						blockoverride "icon"
-						{
-							texture = "gfx/editor_gui/16px/node_editor_icon_edit_description.png"
-							color = [Node.TextColor]
-						}
-					}
-
-					node_window_button = {
-						blockoverride "button"
-						{
-							onclick = [NodeWindow.Close]
-						}
-
-						blockoverride "icon"
-						{
-							texture = "gfx/editor_gui/16px/node_editor_icon_close.png"
-							color = [Node.TextColor]
-						}
-					}
-				}
-			}
-
-			hbox = {
-				layoutpolicy_horizontal = expanding
-				margin_left = 0
-				margin_top = 10
-				spacing = 4
-								
-				vbox = {
-					layoutpolicy_vertical = expanding
-					spacing = 4
-
-					vbox = {
-						name = "input_pins"
-						spacing = 2
-
-						block "before_input_pins"
-						{
-						}
-
-						# List for dynamic properties
 						vbox = {
-							margin_left = 8
-							name = "list"
+							layoutpolicy_vertical = expanding
+							spacing = 4
 
-							block "config_block"
+							vbox = {
+								name = "input_pins"
+								spacing = 2
+
+								block "before_input_pins"
+								{
+								}
+
+								# List for dynamic properties
+								vbox = {
+									margin_left = 8
+									name = "list"
+
+									block "config_block"
+									{
+									}
+								}
+							}
+							
+							block "after_input_pins"
 							{
 							}
+
+							widget = {
+								layoutpolicy_vertical = expanding
+							}
+						}
+
+						widget = {
+							layoutpolicy_horizontal = expanding
+						}
+
+						vbox = {
+							layoutpolicy_vertical = expanding
+
+							vbox = {
+								name = "output_pins"
+								spacing = 2
+							}
+
+							block "after_output_pins"
+							{
+							}
+
+							widget = {
+								layoutpolicy_vertical = expanding
+							}
 						}
 					}
-					
-					block "after_input_pins"
-					{
-					}
 
-					widget = {
-						layoutpolicy_vertical = expanding
+					hbox = {
+						name = "hbox_desc"
+						visible = [Node.HasDescription]
+						layoutpolicy_horizontal = expanding
+						margin_top = 10
+						margin_left = 12
+						margin_right = 6
+
+						editor_editbox = {
+							name = "comment_desc"
+							text = [Node.Description]
+							raw_tooltip = "Comment section"
+							oneditingfinished = "[NodeWindow.SetDescription]"
+							autoresize = yes
+							alwaystransparent = no
+							font = "standard_cw_font"
+							fontsize = 12
+							align = top|left
+							tooltipwidget = { using = editor_tooltip }
+							multiline = yes
+						}
+						widget = { layoutpolicy_horizontal = expanding }
+					}
+					widget = { 
+						visible = [Node.HasDescription]
+						layoutpolicy_vertical = expanding 
 					}
 				}
-
-				widget = {
-					layoutpolicy_horizontal = expanding
-				}
-
-				vbox = {
-					layoutpolicy_vertical = expanding
-
-					vbox = {
-						name = "output_pins"
-						spacing = 2
-					}
-
-					block "after_output_pins"
-					{
-					}
-
-					widget = {
-						layoutpolicy_vertical = expanding
-					}
-				}
+				node_window_selected_frame_vertical = {}
 			}
 
-			hbox = {
-				name = "hbox_desc"
-				visible = [Node.HasDescription]
-				layoutpolicy_horizontal = expanding
-				margin_top = 10
-				margin_left = 12
-				margin_right = 6
-
-				editor_editbox = {
-					name = "comment_desc"
-					text = [Node.Description]
-					raw_tooltip = "Comment section"
-					oneditingfinished = "[NodeWindow.SetDescription]"
-					autoresize = yes
-					alwaystransparent = no
-					font = "standard_cw_font"
-					fontsize = 12
-					align = top|left
-					tooltipwidget = { using = editor_tooltip }
-					multiline = yes
-				}
-				widget = { layoutpolicy_horizontal = expanding }
-			}
-			widget = { 
-				visible = [Node.HasDescription]
-				layoutpolicy_vertical = expanding 
-			}
+			node_window_selected_frame_horizontal = {}
 		}
 	}
 	
@@ -453,6 +495,7 @@ types NodeEditor
 				}
 				
 				widget = {
+					visible = "[Not(NodePin.IsNodePinDisplayNameEmpty)]"
 					size = { 16 0 }
 				}
 				
@@ -465,6 +508,7 @@ types NodeEditor
 				}
 				
 				widget = {
+					visible = "[Not(NodePin.IsNodePinDisplayNameEmpty)]"
 					size = { 8 0 }
 				}
 			}
@@ -533,6 +577,10 @@ node_window_type = {
 
 node_window_type = {
 	name = curvesampler_node_window
+}
+
+node_window_type = {
+	name = reroute_node_window
 }
 
 node_pin = {

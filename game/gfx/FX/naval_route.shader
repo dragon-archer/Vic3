@@ -12,13 +12,13 @@ VertexShader =
 {
 	MainCode VS_naval_route
 	{
-		Input = "VS_INPUT"
-		Output = "VS_OUTPUT"
+		Input = "VS_SPLINE_INPUT"
+		Output = "VS_SPLINE_OUTPUT"
 		Code
 		[[
 			PDX_MAIN
 			{
-				VS_OUTPUT Out;
+				VS_SPLINE_OUTPUT Out;
 
 				// Adjust to avoid clipping with water surface
 				Input.Position += 0.05f;
@@ -118,7 +118,7 @@ PixelShader =
 
 	MainCode PS_naval_route
 	{
-		Input = "VS_OUTPUT"
+		Input = "VS_SPLINE_OUTPUT"
 		Output = "PDX_COLOR"
 		Code
 		[[

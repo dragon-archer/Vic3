@@ -20,6 +20,17 @@ pdxmesh = {
 	}
 
 	meshsettings = {
+		name = "billboard_port_01_3Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SNAP_TO_WATER" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
 		name = "latin_port_shipyard_01|LOD_1|mesh|meshShape"
 		index = 0
 		texture_diffuse = "latin_port_docks_01_diffuse.dds"
@@ -31,6 +42,17 @@ pdxmesh = {
 	}
 
 	meshsettings = {
+		name = "billboard_port_01_4Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SNAP_TO_WATER" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
 		name = "latin_port_shipyard_01|LOD_2|mesh|meshShape"
 		index = 0
 		texture_diffuse = "latin_port_docks_01_diffuse.dds"
@@ -38,6 +60,17 @@ pdxmesh = {
 		texture_specular = "latin_port_docks_01_properties.dds"
 		shader = "standard"
 		additional_shader_defines = { "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "billboard_port_01_5Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SNAP_TO_WATER" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 

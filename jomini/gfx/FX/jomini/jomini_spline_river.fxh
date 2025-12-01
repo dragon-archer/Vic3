@@ -28,6 +28,24 @@ PixelShader =
 {
 	Code
 	[[
+#if !defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
+		#define FADE_IN_DISTANCE 2.0
+		#define FADE_OUT_DISTANCE 2.0
+
+		float CalcEdgeTransparency( VS_SPLINE_OUTPUT Input )
+		{
+			float SegmentEnd = Input.MaxU;
+			
+			float InTransparency = clamp(Input.UV.x / FADE_IN_DISTANCE, 0, 1);
+			float OutTransparency = 1.0 - clamp((SegmentEnd - Input.UV.x - 2) / FADE_OUT_DISTANCE, 0, 1);
+
+			float Transparency =  clamp(InTransparency - OutTransparency, 0, 1);
+			Transparency *= Transparency;
+
+			return Transparency;
+		}
+#endif
+
 		float CalcDepth( float2 UV )
 		{
 			return _Depth * ( 1.0f - pow( cos( ( UV.y ) * 2.0f * PI ) * 0.5f + 0.5f, 2.0f ) );

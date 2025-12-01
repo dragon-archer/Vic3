@@ -13,9 +13,11 @@ Includes = {
 	"standardfuncsgfx.fxh"
 	"distance_fog.fxh"
 	"coloroverlay.fxh"
+	"coloroverlay_harvest_condition.fxh"
 	"dynamic_masks.fxh"
 	"fog_of_war.fxh"
 	"ssao_struct.fxh"
+	"harvest_condition.fxh"
 }
 
 
@@ -322,6 +324,10 @@ PixelShader =
 				// Get terrain material
 				CalculateDetails( Input.WorldSpacePos.xz, DetailDiffuse, DetailNormal, DetailMaterial );
 
+				// Harvest conditions
+				float WaterNormalLerp = 0.0;
+				ApplyHarvestConditionTerrain( DetailDiffuse, DetailNormal, DetailMaterial, Input.WorldSpacePos, WaterNormalLerp );
+
 				float IridescenceMask = 0.0f;
 				#ifndef UNDERWATER
 					// Dynamic mask alpha
@@ -331,7 +337,7 @@ PixelShader =
 
 				// Normals
 				float3 Normal = CalculateNormal( Input.WorldSpacePos.xz );
-				float3 ReorientedNormal = ReorientNormal( Normal, DetailNormal );
+				float3 ReorientedNormal = ReorientNormal( lerp( Normal, float3( 0.0, 1.0, 0.0 ), WaterNormalLerp ), DetailNormal );
 
 				// Colormap overlay
 				float3 ColorMap = PdxTex2D( ColorTexture, float2( MapCoords.x, 1.0 - MapCoords.y ) ).rgb;
@@ -358,6 +364,8 @@ PixelShader =
 				FinalColor += GameCalculateSunLighting( MaterialProps, LightingProps, Input.WorldSpacePos, IridescenceMask );
 
 				// Effects, post light
+				ApplyHarvestConditionTerrainPostLight( FinalColor, DetailDiffuse.a, Input.WorldSpacePos );
+
 				#ifndef UNDERWATER
 					FinalColor = ApplyColorOverlay( FinalColor, ColorOverlay, PostLightingBlend );
 					FinalColor = ApplyFogOfWar( FinalColor, Input.WorldSpacePos );
@@ -491,6 +499,13 @@ PixelShader =
 				float PreLightingBlend;
 				float PostLightingBlend;
 				GameProvinceOverlayAndBlend( ProvinceCoords, Input.WorldSpacePos, ColorOverlay, PreLightingBlend, PostLightingBlend );
+
+				// Apply harvest condition overlay on flatmap only
+				if ( _EnableMapHarvestCondition == true )
+				{
+					ApplyHarvestConditionOverlay( ColorOverlay, ProvinceCoords );
+				}
+
 				Flatmap *= lerp( vec3( 1.0 ), ColorOverlay, saturate( PreLightingBlend + PostLightingBlend ) );
 
 				float CountryId = SampleControllerIndex( MapCoords ).r;

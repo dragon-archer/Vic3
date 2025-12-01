@@ -289,7 +289,7 @@ PixelShader = {
 			float C12 = SamplePowerBlocIndex( Pixel + float2( 0.0, InvIndirectionMapSize.y) );
 			float C22 = SamplePowerBlocIndex( Pixel + InvIndirectionMapSize );
 			float x1 = lerp( 1.0 + C11,  1.0 + C21, FracCoord.x );
-			float x2 = lerp(  1.0 + C12,  1.0 + C22, FracCoord.x );
+			float x2 = lerp( 1.0 + C12,  1.0 + C22, FracCoord.x );
 			PowerBlocOpacity = RemapClamped( lerp( x1, x2, FracCoord.y ), 0.5f, 0.75f, 0.0f, 1.0f );
 
 			// PowerBloc Type Filtering

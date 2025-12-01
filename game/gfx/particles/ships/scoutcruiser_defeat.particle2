@@ -1,5 +1,5 @@
 ﻿fade_duration=0.000000
-max_particles=5000
+max_particles=135
 pause_invisible=no
 graph={
 	nodes={
@@ -1483,6 +1483,11 @@ graph={
 					linked_node=189
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=413
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1498,6 +1503,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=213
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=414
 					linked_pin="value"
 				}
 			}
@@ -1517,6 +1527,11 @@ graph={
 					linked_node=202
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=415
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1532,6 +1547,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=215
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=416
 					linked_pin="value"
 				}
 			}
@@ -1551,6 +1571,11 @@ graph={
 					linked_node=208
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=417
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1566,6 +1591,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=218
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=418
 					linked_pin="value"
 				}
 			}
@@ -1585,6 +1615,11 @@ graph={
 					linked_node=220
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=419
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1600,6 +1635,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=222
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=420
 					linked_pin="value"
 				}
 			}
@@ -1619,6 +1659,11 @@ graph={
 					linked_node=225
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=421
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1634,6 +1679,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=230
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=422
 					linked_pin="value"
 				}
 			}
@@ -1653,6 +1703,11 @@ graph={
 					linked_node=232
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=423
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1668,6 +1723,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=234
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=424
 					linked_pin="value"
 				}
 			}
@@ -1687,6 +1747,11 @@ graph={
 					linked_node=246
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=425
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1702,6 +1767,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=248
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=426
 					linked_pin="value"
 				}
 			}
@@ -1721,6 +1791,11 @@ graph={
 					linked_node=251
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=427
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1736,6 +1811,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=258
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=428
 					linked_pin="value"
 				}
 			}
@@ -1755,6 +1835,11 @@ graph={
 					linked_node=260
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=429
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -1770,6 +1855,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=264
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=430
 					linked_pin="value"
 				}
 			}
@@ -4101,6 +4191,150 @@ graph={
 			id=290
 			node={
 				value=4
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=415
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=414
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=413
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=430
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=429
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=428
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=427
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=426
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=425
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=424
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=423
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=422
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=421
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=420
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=419
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=418
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=417
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=416
+			node={
+				value=0
 			}
 			inputs={
 			}

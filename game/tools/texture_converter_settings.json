@@ -83,6 +83,28 @@
         ],
         "name": "_properties",
         "trim": false
+      },
+      {
+        "channel_count": 3,
+        "inputs": [
+          {
+            "input_channel": "red",
+            "map": "colormask",
+            "output_channel": "red"
+          },
+          {
+            "input_channel": "green",
+            "map": "colormask",
+            "output_channel": "green"
+          },
+          {
+            "input_channel": "blue",
+            "map": "colormask",
+            "output_channel": "blue"
+          }
+        ],
+        "name": "_colormask",
+        "trim": true
       }
     ]
   },
@@ -225,6 +247,34 @@
           }
         ],
         "name": "_mask",
+        "trim": true
+      }
+    ]
+  },
+  {
+    "base_directory": "",
+    "name": "Color Masks",
+    "outputs": [
+      {
+        "channel_count": 3,
+        "inputs": [
+          {
+            "input_channel": "red",
+            "map": "colormask",
+            "output_channel": "red"
+          },
+          {
+            "input_channel": "green",
+            "map": "colormask",
+            "output_channel": "green"
+          },
+          {
+            "input_channel": "blue",
+            "map": "colormask",
+            "output_channel": "blue"
+          }
+        ],
+        "name": "_colormask",
         "trim": true
       }
     ]

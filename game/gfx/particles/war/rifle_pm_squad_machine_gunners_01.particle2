@@ -1,65 +1,114 @@
 ﻿fade_duration=0.000000
-max_particles=500
+max_particles=50
 pause_invisible=no
 graph={
 	nodes={
-		pdxns:gfx:HSVA={
-			id=0
+		pdxns:3d:YawPitchVectorRotation={
+			id=5
 			node={
 			}
 			inputs={
 				link={
-					pin_id="hue"
-					linked_node=130
-					linked_pin="result"
+					pin_id="yaw"
+					linked_node=82
+					linked_pin="difference"
 				}
 				link={
-					pin_id="saturation"
-					linked_node=118
-					linked_pin="result"
+					pin_id="pitch"
+					linked_node=159
+					linked_pin="value"
 				}
 				link={
-					pin_id="value"
-					linked_node=2
-					linked_pin="product"
-				}
-				link={
-					pin_id="α"
-					linked_node=3
-					linked_pin="result"
-				}
-			}
-		}
-		pdxns:particle:SetUniformScale={
-			id=1
-			node={
-			}
-			inputs={
-				link={
-					pin_id="size"
-					linked_node=122
-					linked_pin="result"
-				}
-				link={
-					pin_id="condition"
-					linked_node=114
+					pin_id="roll"
+					linked_node=158
 					linked_pin="value"
 				}
 			}
 		}
-		pdxns:math:MulF={
-			id=2
+		pdxns:3d:YawPitchVectorRotation={
+			id=6
 			node={
 			}
 			inputs={
 				link={
-					pin_id="factor1"
-					linked_node=4
-					linked_pin="result"
+					pin_id="yaw"
+					linked_node=162
+					linked_pin="value"
 				}
 				link={
-					pin_id="factor2"
-					linked_node=110
+					pin_id="pitch"
+					linked_node=161
+					linked_pin="value"
+				}
+				link={
+					pin_id="roll"
+					linked_node=109
+					linked_pin="output_id"
+				}
+			}
+		}
+		pdxns:3d:YawPitchVectorRotation={
+			id=29
+			node={
+			}
+			inputs={
+				link={
+					pin_id="yaw"
+					linked_node=82
+					linked_pin="difference"
+				}
+				link={
+					pin_id="pitch"
+					linked_node=211
+					linked_pin="value"
+				}
+				link={
+					pin_id="roll"
+					linked_node=210
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:3d:YawPitchVectorRotation={
+			id=58
+			node={
+			}
+			inputs={
+				link={
+					pin_id="yaw"
+					linked_node=30
+					linked_pin="difference"
+				}
+				link={
+					pin_id="pitch"
+					linked_node=278
+					linked_pin="value"
+				}
+				link={
+					pin_id="roll"
+					linked_node=277
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:3d:YawPitchVectorRotation={
+			id=72
+			node={
+			}
+			inputs={
+				link={
+					pin_id="yaw"
+					linked_node=30
+					linked_pin="difference"
+				}
+				link={
+					pin_id="pitch"
+					linked_node=260
+					linked_pin="value"
+				}
+				link={
+					pin_id="roll"
+					linked_node=261
 					linked_pin="value"
 				}
 			}
@@ -118,58 +167,6 @@ graph={
 					linked_node=154
 					linked_pin="value"
 				}
-			}
-		}
-		pdxns:3d:YawPitchVectorRotation={
-			id=5
-			node={
-			}
-			inputs={
-				link={
-					pin_id="yaw"
-					linked_node=82
-					linked_pin="difference"
-				}
-				link={
-					pin_id="pitch"
-					linked_node=159
-					linked_pin="value"
-				}
-				link={
-					pin_id="roll"
-					linked_node=158
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:3d:YawPitchVectorRotation={
-			id=6
-			node={
-			}
-			inputs={
-				link={
-					pin_id="yaw"
-					linked_node=162
-					linked_pin="value"
-				}
-				link={
-					pin_id="pitch"
-					linked_node=161
-					linked_pin="value"
-				}
-				link={
-					pin_id="roll"
-					linked_node=109
-					linked_pin="output_id"
-				}
-			}
-		}
-		pdxns:values:Int32={
-			id=7
-			node={
-				value=3
-			}
-			inputs={
 			}
 		}
 		pdxns:common:compound={
@@ -276,64 +273,510 @@ graph={
 				}
 			}
 		}
-		pdxns:particle:HasTag={
-			id=11
+		pdxns:common:compound={
+			id=37
 			node={
+				graph="ScaledCurveSampler"
 			}
 			inputs={
 				link={
-					pin_id="tag"
-					linked_node=102
+					pin_id="curve"
+					linked_node=230
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=32
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=24
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=28
 					linked_pin="value"
 				}
 			}
 		}
-		pdxns:particle:Kill={
-			id=12
+		pdxns:common:compound={
+			id=40
 			node={
+				graph="ScaledCurveSampler"
 			}
 			inputs={
 				link={
-					pin_id="condition"
-					linked_node=42
+					pin_id="curve"
+					linked_node=239
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=67
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=90
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=92
 					linked_pin="value"
 				}
 			}
 		}
-		pdxns:math:randomF={
-			id=13
+		pdxns:common:compound={
+			id=49
 			node={
+				graph="ScaledCurveSampler"
 			}
 			inputs={
 				link={
-					pin_id="limit1"
-					linked_node=183
+					pin_id="curve"
+					linked_node=267
 					linked_pin="value"
 				}
 				link={
-					pin_id="limit2"
-					linked_node=182
+					pin_id="x"
+					linked_node=44
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=35
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=266
 					linked_pin="value"
 				}
 			}
 		}
-		pdxns:particle:GetAge={
-			id=14
+		pdxns:common:compound={
+			id=63
 			node={
+				graph="ScaledCurveSampler"
 			}
 			inputs={
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=15
-			node={
-				user_data={
-					id="usr:lifetime"
-					label="Lifetime"
-					type="Float"
+				link={
+					pin_id="curve"
+					linked_node=204
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=71
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=70
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=205
+					linked_pin="value"
 				}
 			}
+		}
+		pdxns:common:compound={
+			id=64
+			node={
+				graph="ScaledCurveSampler"
+			}
 			inputs={
+				link={
+					pin_id="curve"
+					linked_node=208
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=71
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=70
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=209
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=65
+			node={
+				graph="ScaledCurveSampler"
+			}
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=219
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=71
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=70
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=133
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=83
+			node={
+				graph="BillboardRandomRotation"
+			}
+			inputs={
+				link={
+					pin_id="RotationMin"
+					linked_node=225
+					linked_pin="value"
+				}
+				link={
+					pin_id="RotationMax"
+					linked_node=262
+					linked_pin="value"
+				}
+				link={
+					pin_id="Seed"
+					linked_node=275
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=109
+			node={
+				graph="Base with Variation"
+			}
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=242
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=241
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=112
+			node={
+				graph="Base with Variation"
+			}
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=238
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=237
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=118
+			node={
+				graph="ScaledCurveSampler"
+			}
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=220
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=108
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=120
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=110
+					linked_pin="saturation"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=122
+			node={
+				graph="ScaledCurveSampler"
+			}
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=198
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=108
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=120
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=119
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=130
+			node={
+				graph="ScaledCurveSampler"
+			}
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=181
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=108
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=120
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=110
+					linked_pin="hue"
+				}
+			}
+		}
+		pdxns:gfx:HSVA={
+			id=0
+			node={
+			}
+			inputs={
+				link={
+					pin_id="hue"
+					linked_node=130
+					linked_pin="result"
+				}
+				link={
+					pin_id="saturation"
+					linked_node=118
+					linked_pin="result"
+				}
+				link={
+					pin_id="value"
+					linked_node=2
+					linked_pin="product"
+				}
+				link={
+					pin_id="α"
+					linked_node=3
+					linked_pin="result"
+				}
+			}
+		}
+		pdxns:gfx:HSVA={
+			id=34
+			node={
+			}
+			inputs={
+				link={
+					pin_id="hue"
+					linked_node=52
+					linked_pin="hue"
+				}
+				link={
+					pin_id="saturation"
+					linked_node=52
+					linked_pin="saturation"
+				}
+				link={
+					pin_id="value"
+					linked_node=224
+					linked_pin="value"
+				}
+				link={
+					pin_id="α"
+					linked_node=49
+					linked_pin="result"
+				}
+			}
+		}
+		pdxns:gfx:HSVA={
+			id=59
+			node={
+			}
+			inputs={
+				link={
+					pin_id="hue"
+					linked_node=66
+					linked_pin="hue"
+				}
+				link={
+					pin_id="saturation"
+					linked_node=66
+					linked_pin="saturation"
+				}
+				link={
+					pin_id="value"
+					linked_node=61
+					linked_pin="product"
+				}
+				link={
+					pin_id="α"
+					linked_node=63
+					linked_pin="result"
+				}
+			}
+		}
+		pdxns:gfx:HSVA={
+			id=96
+			node={
+			}
+			inputs={
+				link={
+					pin_id="hue"
+					linked_node=56
+					linked_pin="hue"
+				}
+				link={
+					pin_id="saturation"
+					linked_node=56
+					linked_pin="saturation"
+				}
+				link={
+					pin_id="value"
+					linked_node=56
+					linked_pin="value"
+				}
+				link={
+					pin_id="α"
+					linked_node=8
+					linked_pin="result"
+				}
+			}
+		}
+		pdxns:gfx:HSVA={
+			id=100
+			node={
+			}
+			inputs={
+				link={
+					pin_id="hue"
+					linked_node=105
+					linked_pin="hue"
+				}
+				link={
+					pin_id="saturation"
+					linked_node=105
+					linked_pin="saturation"
+				}
+				link={
+					pin_id="value"
+					linked_node=23
+					linked_pin="product"
+				}
+				link={
+					pin_id="α"
+					linked_node=10
+					linked_pin="result"
+				}
+			}
+		}
+		pdxns:gfx:HsvaComponents={
+			id=52
+			node={
+			}
+			inputs={
+				link={
+					pin_id="hsva"
+					linked_node=53
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:gfx:HsvaComponents={
+			id=56
+			node={
+			}
+			inputs={
+				link={
+					pin_id="hsva"
+					linked_node=88
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:gfx:HsvaComponents={
+			id=66
+			node={
+			}
+			inputs={
+				link={
+					pin_id="hsva"
+					linked_node=69
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:gfx:HsvaComponents={
+			id=105
+			node={
+			}
+			inputs={
+				link={
+					pin_id="hsva"
+					linked_node=27
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:gfx:HsvaComponents={
+			id=110
+			node={
+			}
+			inputs={
+				link={
+					pin_id="hsva"
+					linked_node=129
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:gfx:Texture={
@@ -344,19 +787,93 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:math:randomF={
-			id=17
+		pdxns:gfx:Texture={
+			id=33
+			node={
+				texture_file="gfx/particles/textures/glow.dds"
+			}
+			inputs={
+			}
+		}
+		pdxns:gfx:Texture={
+			id=68
+			node={
+				texture_file="gfx/particles/textures/muzzle_flash_3.dds"
+			}
+			inputs={
+			}
+		}
+		pdxns:gfx:Texture={
+			id=79
+			node={
+				texture_file="gfx/particles/textures/muzzle_flash_3.dds"
+			}
+			inputs={
+			}
+		}
+		pdxns:gfx:Texture={
+			id=98
+			node={
+				texture_file="gfx/particles/textures/mist_4.dds"
+			}
+			inputs={
+			}
+		}
+		pdxns:gfx:Texture={
+			id=127
+			node={
+				texture_file="gfx/particles/textures/fire03_des.dds"
+			}
+			inputs={
+			}
+		}
+		pdxns:math:DivF={
+			id=101
 			node={
 			}
 			inputs={
 				link={
-					pin_id="limit1"
-					linked_node=185
+					pin_id="dividend"
+					linked_node=17
 					linked_pin="value"
 				}
 				link={
-					pin_id="limit2"
-					linked_node=184
+					pin_id="divisor"
+					linked_node=270
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:GreaterThanF={
+			id=42
+			node={
+			}
+			inputs={
+				link={
+					pin_id="op1"
+					linked_node=14
+					linked_pin="age"
+				}
+				link={
+					pin_id="op2"
+					linked_node=15
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:MulF={
+			id=2
+			node={
+			}
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=4
+					linked_pin="result"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=110
 					linked_pin="value"
 				}
 			}
@@ -378,59 +895,219 @@ graph={
 				}
 			}
 		}
-		pdxns:particle:SetScale={
-			id=19
+		pdxns:math:MulF={
+			id=23
 			node={
 			}
 			inputs={
 				link={
-					pin_id="size"
-					linked_node=21
+					pin_id="factor1"
+					linked_node=105
 					linked_pin="value"
 				}
 				link={
-					pin_id="condition"
-					linked_node=11
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:SetColor={
-			id=20
-			node={
-			}
-			inputs={
-				link={
-					pin_id="color"
-					linked_node=100
-					linked_pin="hsva"
-				}
-				link={
-					pin_id="condition"
-					linked_node=11
+					pin_id="factor2"
+					linked_node=197
 					linked_pin="value"
 				}
 			}
 		}
-		pdxns:values:Vector3f={
-			id=21
+		pdxns:math:MulF={
+			id=60
 			node={
 			}
 			inputs={
 				link={
-					pin_id="x"
-					linked_node=18
+					pin_id="factor1"
+					linked_node=65
+					linked_pin="result"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=156
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:MulF={
+			id=61
+			node={
+			}
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=64
+					linked_pin="result"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=167
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:MulF={
+			id=134
+			node={
+			}
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=135
+					linked_pin="value"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=157
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:NormalizeV3={
+			id=91
+			node={
+			}
+			inputs={
+				link={
+					pin_id="operand"
+					linked_node=39
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:NormalizeV3={
+			id=128
+			node={
+			}
+			inputs={
+				link={
+					pin_id="operand"
+					linked_node=116
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:NormalizeV3={
+			id=137
+			node={
+			}
+			inputs={
+				link={
+					pin_id="operand"
+					linked_node=138
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:SubF={
+			id=30
+			node={
+			}
+			inputs={
+				link={
+					pin_id="term1"
+					linked_node=213
+					linked_pin="value"
+				}
+				link={
+					pin_id="term2"
+					linked_node=134
 					linked_pin="product"
 				}
+			}
+		}
+		pdxns:math:SubF={
+			id=82
+			node={
+			}
+			inputs={
 				link={
-					pin_id="y"
-					linked_node=37
-					linked_pin="result"
+					pin_id="term1"
+					linked_node=279
+					linked_pin="value"
 				}
 				link={
-					pin_id="z"
-					linked_node=37
-					linked_pin="result"
+					pin_id="term2"
+					linked_node=134
+					linked_pin="product"
+				}
+			}
+		}
+		pdxns:math:SubF={
+			id=140
+			node={
+			}
+			inputs={
+				link={
+					pin_id="term1"
+					linked_node=75
+					linked_pin="value"
+				}
+				link={
+					pin_id="term2"
+					linked_node=145
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:SubF={
+			id=141
+			node={
+			}
+			inputs={
+				link={
+					pin_id="term1"
+					linked_node=75
+					linked_pin="value"
+				}
+				link={
+					pin_id="term2"
+					linked_node=143
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=13
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=183
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=182
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=300
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=17
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=185
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=184
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=301
+					linked_pin="value"
 				}
 			}
 		}
@@ -449,35 +1126,11 @@ graph={
 					linked_node=195
 					linked_pin="value"
 				}
-			}
-		}
-		pdxns:math:MulF={
-			id=23
-			node={
-			}
-			inputs={
 				link={
-					pin_id="factor1"
-					linked_node=105
+					pin_id="position"
+					linked_node=310
 					linked_pin="value"
 				}
-				link={
-					pin_id="factor2"
-					linked_node=197
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=24
-			node={
-				user_data={
-					id="usr:lifetime"
-					label="Lifetime"
-					type="Float"
-				}
-			}
-			inputs={
 			}
 		}
 		pdxns:math:randomF={
@@ -493,6 +1146,444 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=200
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=312
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=36
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=229
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=228
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=334
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=41
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=244
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=243
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=344
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=43
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=247
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=248
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=347
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=45
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=250
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=249
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=348
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=93
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=193
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=194
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=409
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=94
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=178
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=192
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=410
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=95
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=166
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=149
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=411
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=107
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=245
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=246
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=426
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=117
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=222
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=221
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=431
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=125
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=190
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=191
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=446
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=132
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=163
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=160
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=455
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=135
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=152
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=153
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=457
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:ApplyForce={
+			id=84
+			node={
+			}
+			inputs={
+				link={
+					pin_id="force"
+					linked_node=142
+					linked_pin="value"
+				}
+				link={
+					pin_id="condition"
+					linked_node=89
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:Decelerate={
+			id=38
+			node={
+			}
+			inputs={
+				link={
+					pin_id="amount"
+					linked_node=234
+					linked_pin="value"
+				}
+				link={
+					pin_id="condition"
+					linked_node=89
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:EffectFlags={
+			id=46
+			node={
+			}
+			inputs={
+				link={
+					pin_id="billboard"
+					linked_node=252
+					linked_pin="value"
+				}
+				link={
+					pin_id="emissive"
+					linked_node=253
+					linked_pin="value"
+				}
+				link={
+					pin_id="billboard_axis"
+					linked_node=254
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=251
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:EffectFlags={
+			id=76
+			node={
+			}
+			inputs={
+				link={
+					pin_id="billboard"
+					linked_node=144
+					linked_pin="value"
+				}
+				link={
+					pin_id="emissive"
+					linked_node=146
+					linked_pin="value"
+				}
+				link={
+					pin_id="billboard_axis"
+					linked_node=203
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=206
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:EffectFlags={
+			id=87
+			node={
+			}
+			inputs={
+				link={
+					pin_id="billboard"
+					linked_node=217
+					linked_pin="value"
+				}
+				link={
+					pin_id="emissive"
+					linked_node=207
+					linked_pin="value"
+				}
+				link={
+					pin_id="billboard_axis"
+					linked_node=223
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=218
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:EffectFlags={
+			id=104
+			node={
+			}
+			inputs={
+				link={
+					pin_id="billboard"
+					linked_node=264
+					linked_pin="value"
+				}
+				link={
+					pin_id="emissive"
+					linked_node=265
+					linked_pin="value"
+				}
+				link={
+					pin_id="billboard_axis"
+					linked_node=263
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=268
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:EffectFlags={
+			id=113
+			node={
+			}
+			inputs={
+				link={
+					pin_id="billboard"
+					linked_node=235
+					linked_pin="value"
+				}
+				link={
+					pin_id="emissive"
+					linked_node=232
+					linked_pin="value"
+				}
+				link={
+					pin_id="billboard_axis"
+					linked_node=233
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=231
 					linked_pin="value"
 				}
 			}
@@ -593,69 +1684,6 @@ graph={
 				}
 			}
 		}
-		pdxns:particle:GetUserData={
-			id=27
-			node={
-				user_data={
-					id="usr:StartColor"
-					label="StartColor"
-					type="Color"
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=28
-			node={
-				user_data={
-					id="usr:size"
-					label="Size"
-					type="Float"
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:3d:YawPitchVectorRotation={
-			id=29
-			node={
-			}
-			inputs={
-				link={
-					pin_id="yaw"
-					linked_node=82
-					linked_pin="difference"
-				}
-				link={
-					pin_id="pitch"
-					linked_node=211
-					linked_pin="value"
-				}
-				link={
-					pin_id="roll"
-					linked_node=210
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:SubF={
-			id=30
-			node={
-			}
-			inputs={
-				link={
-					pin_id="term1"
-					linked_node=213
-					linked_pin="value"
-				}
-				link={
-					pin_id="term2"
-					linked_node=134
-					linked_pin="product"
-				}
-			}
-		}
 		pdxns:particle:Emitter={
 			id=31
 			node={
@@ -752,274 +1780,6 @@ graph={
 				}
 			}
 		}
-		pdxns:particle:GetAge={
-			id=32
-			node={
-			}
-			inputs={
-			}
-		}
-		pdxns:gfx:Texture={
-			id=33
-			node={
-				texture_file="gfx/particles/textures/glow.dds"
-			}
-			inputs={
-			}
-		}
-		pdxns:gfx:HSVA={
-			id=34
-			node={
-			}
-			inputs={
-				link={
-					pin_id="hue"
-					linked_node=52
-					linked_pin="hue"
-				}
-				link={
-					pin_id="saturation"
-					linked_node=52
-					linked_pin="saturation"
-				}
-				link={
-					pin_id="value"
-					linked_node=224
-					linked_pin="value"
-				}
-				link={
-					pin_id="α"
-					linked_node=49
-					linked_pin="result"
-				}
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=35
-			node={
-				user_data={
-					id="usr:lifetime"
-					label="Lifetime"
-					type="Float"
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:math:randomF={
-			id=36
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=229
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=228
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
-			id=37
-			node={
-				graph="ScaledCurveSampler"
-			}
-			inputs={
-				link={
-					pin_id="curve"
-					linked_node=230
-					linked_pin="value"
-				}
-				link={
-					pin_id="x"
-					linked_node=32
-					linked_pin="age"
-				}
-				link={
-					pin_id="scale_x"
-					linked_node=24
-					linked_pin="value"
-				}
-				link={
-					pin_id="scale_y"
-					linked_node=28
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:Decelerate={
-			id=38
-			node={
-			}
-			inputs={
-				link={
-					pin_id="amount"
-					linked_node=234
-					linked_pin="value"
-				}
-				link={
-					pin_id="condition"
-					linked_node=89
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Vector3f={
-			id=39
-			node={
-			}
-			inputs={
-				link={
-					pin_id="x"
-					linked_node=135
-					linked_pin="value"
-				}
-				link={
-					pin_id="y"
-					linked_node=36
-					linked_pin="value"
-				}
-				link={
-					pin_id="z"
-					linked_node=236
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
-			id=40
-			node={
-				graph="ScaledCurveSampler"
-			}
-			inputs={
-				link={
-					pin_id="curve"
-					linked_node=239
-					linked_pin="value"
-				}
-				link={
-					pin_id="x"
-					linked_node=67
-					linked_pin="age"
-				}
-				link={
-					pin_id="scale_x"
-					linked_node=90
-					linked_pin="value"
-				}
-				link={
-					pin_id="scale_y"
-					linked_node=92
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:randomF={
-			id=41
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=244
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=243
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:GreaterThanF={
-			id=42
-			node={
-			}
-			inputs={
-				link={
-					pin_id="op1"
-					linked_node=14
-					linked_pin="age"
-				}
-				link={
-					pin_id="op2"
-					linked_node=15
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:randomF={
-			id=43
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=247
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=248
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:GetAge={
-			id=44
-			node={
-			}
-			inputs={
-			}
-		}
-		pdxns:math:randomF={
-			id=45
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=250
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=249
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:EffectFlags={
-			id=46
-			node={
-			}
-			inputs={
-				link={
-					pin_id="billboard"
-					linked_node=252
-					linked_pin="value"
-				}
-				link={
-					pin_id="emissive"
-					linked_node=253
-					linked_pin="value"
-				}
-				link={
-					pin_id="billboard_axis"
-					linked_node=254
-					linked_pin="value"
-				}
-				link={
-					pin_id="fade_steep_angles"
-					linked_node=251
-					linked_pin="value"
-				}
-			}
-		}
 		pdxns:particle:Emitter={
 			id=47
 			node={
@@ -1111,235 +1871,6 @@ graph={
 				}
 			}
 		}
-		pdxns:particle:SetUniformScale={
-			id=48
-			node={
-			}
-			inputs={
-				link={
-					pin_id="size"
-					linked_node=54
-					linked_pin="value"
-				}
-				link={
-					pin_id="condition"
-					linked_node=50
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
-			id=49
-			node={
-				graph="ScaledCurveSampler"
-			}
-			inputs={
-				link={
-					pin_id="curve"
-					linked_node=267
-					linked_pin="value"
-				}
-				link={
-					pin_id="x"
-					linked_node=44
-					linked_pin="age"
-				}
-				link={
-					pin_id="scale_x"
-					linked_node=35
-					linked_pin="value"
-				}
-				link={
-					pin_id="scale_y"
-					linked_node=266
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:HasTag={
-			id=50
-			node={
-			}
-			inputs={
-				link={
-					pin_id="tag"
-					linked_node=55
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:SetColor={
-			id=51
-			node={
-			}
-			inputs={
-				link={
-					pin_id="color"
-					linked_node=34
-					linked_pin="hsva"
-				}
-				link={
-					pin_id="condition"
-					linked_node=50
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:gfx:HsvaComponents={
-			id=52
-			node={
-			}
-			inputs={
-				link={
-					pin_id="hsva"
-					linked_node=53
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Color={
-			id=53
-			node={
-				value={
-					1.000000 0.445312 0.000000 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=54
-			node={
-				user_data={
-					id="usr:size"
-					label="Size"
-					type="Float"
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Int32={
-			id=55
-			node={
-				value=4
-			}
-			inputs={
-			}
-		}
-		pdxns:gfx:HsvaComponents={
-			id=56
-			node={
-			}
-			inputs={
-				link={
-					pin_id="hsva"
-					linked_node=88
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:SetColor={
-			id=57
-			node={
-			}
-			inputs={
-				link={
-					pin_id="color"
-					linked_node=59
-					linked_pin="hsva"
-				}
-				link={
-					pin_id="condition"
-					linked_node=77
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:3d:YawPitchVectorRotation={
-			id=58
-			node={
-			}
-			inputs={
-				link={
-					pin_id="yaw"
-					linked_node=30
-					linked_pin="difference"
-				}
-				link={
-					pin_id="pitch"
-					linked_node=278
-					linked_pin="value"
-				}
-				link={
-					pin_id="roll"
-					linked_node=277
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:gfx:HSVA={
-			id=59
-			node={
-			}
-			inputs={
-				link={
-					pin_id="hue"
-					linked_node=66
-					linked_pin="hue"
-				}
-				link={
-					pin_id="saturation"
-					linked_node=66
-					linked_pin="saturation"
-				}
-				link={
-					pin_id="value"
-					linked_node=61
-					linked_pin="product"
-				}
-				link={
-					pin_id="α"
-					linked_node=63
-					linked_pin="result"
-				}
-			}
-		}
-		pdxns:math:MulF={
-			id=60
-			node={
-			}
-			inputs={
-				link={
-					pin_id="factor1"
-					linked_node=65
-					linked_pin="result"
-				}
-				link={
-					pin_id="factor2"
-					linked_node=284
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:MulF={
-			id=61
-			node={
-			}
-			inputs={
-				link={
-					pin_id="factor1"
-					linked_node=64
-					linked_pin="result"
-				}
-				link={
-					pin_id="factor2"
-					linked_node=286
-					linked_pin="value"
-				}
-			}
-		}
 		pdxns:particle:Emitter={
 			id=62
 			node={
@@ -1371,7 +1902,7 @@ graph={
 				}
 				link={
 					pin_id="size"
-					linked_node=290
+					linked_node=187
 					linked_pin="value"
 				}
 				link={
@@ -1381,12 +1912,12 @@ graph={
 				}
 				link={
 					pin_id="direction"
-					linked_node=292
+					linked_node=189
 					linked_pin="value"
 				}
 				link={
 					pin_id="speed"
-					linked_node=291
+					linked_node=188
 					linked_pin="value"
 				}
 				link={
@@ -1416,12 +1947,12 @@ graph={
 				}
 				link={
 					pin_id="angular_velocity"
-					linked_node=289
+					linked_node=180
 					linked_pin="value"
 				}
 				link={
 					pin_id="usr:StartColor"
-					linked_node=288
+					linked_node=179
 					linked_pin="value"
 				}
 				link={
@@ -1432,169 +1963,6 @@ graph={
 				link={
 					pin_id="usr:size"
 					linked_node=132
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
-			id=63
-			node={
-				graph="ScaledCurveSampler"
-			}
-			inputs={
-				link={
-					pin_id="curve"
-					linked_node=297
-					linked_pin="value"
-				}
-				link={
-					pin_id="x"
-					linked_node=71
-					linked_pin="age"
-				}
-				link={
-					pin_id="scale_x"
-					linked_node=70
-					linked_pin="value"
-				}
-				link={
-					pin_id="scale_y"
-					linked_node=298
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
-			id=64
-			node={
-				graph="ScaledCurveSampler"
-			}
-			inputs={
-				link={
-					pin_id="curve"
-					linked_node=301
-					linked_pin="value"
-				}
-				link={
-					pin_id="x"
-					linked_node=71
-					linked_pin="age"
-				}
-				link={
-					pin_id="scale_x"
-					linked_node=70
-					linked_pin="value"
-				}
-				link={
-					pin_id="scale_y"
-					linked_node=302
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
-			id=65
-			node={
-				graph="ScaledCurveSampler"
-			}
-			inputs={
-				link={
-					pin_id="curve"
-					linked_node=305
-					linked_pin="value"
-				}
-				link={
-					pin_id="x"
-					linked_node=71
-					linked_pin="age"
-				}
-				link={
-					pin_id="scale_x"
-					linked_node=70
-					linked_pin="value"
-				}
-				link={
-					pin_id="scale_y"
-					linked_node=133
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:gfx:HsvaComponents={
-			id=66
-			node={
-			}
-			inputs={
-				link={
-					pin_id="hsva"
-					linked_node=69
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:GetAge={
-			id=67
-			node={
-			}
-			inputs={
-			}
-		}
-		pdxns:gfx:Texture={
-			id=68
-			node={
-				texture_file="gfx/particles/textures/muzzle_flash_3.dds"
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=69
-			node={
-				value={
-					0.371094 0.078278 0.000000 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=70
-			node={
-				user_data={
-					id="usr:lifetime"
-					label="Lifetime"
-					type="Float"
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:particle:GetAge={
-			id=71
-			node={
-			}
-			inputs={
-			}
-		}
-		pdxns:3d:YawPitchVectorRotation={
-			id=72
-			node={
-			}
-			inputs={
-				link={
-					pin_id="yaw"
-					linked_node=30
-					linked_pin="difference"
-				}
-				link={
-					pin_id="pitch"
-					linked_node=310
-					linked_pin="value"
-				}
-				link={
-					pin_id="roll"
-					linked_node=311
 					linked_pin="value"
 				}
 			}
@@ -1630,7 +1998,7 @@ graph={
 				}
 				link={
 					pin_id="size"
-					linked_node=315
+					linked_node=272
 					linked_pin="value"
 				}
 				link={
@@ -1640,12 +2008,12 @@ graph={
 				}
 				link={
 					pin_id="direction"
-					linked_node=314
+					linked_node=271
 					linked_pin="value"
 				}
 				link={
 					pin_id="speed"
-					linked_node=313
+					linked_node=269
 					linked_pin="value"
 				}
 				link={
@@ -1675,12 +2043,12 @@ graph={
 				}
 				link={
 					pin_id="angular_velocity"
-					linked_node=316
+					linked_node=273
 					linked_pin="value"
 				}
 				link={
 					pin_id="usr:StartColor"
-					linked_node=317
+					linked_node=274
 					linked_pin="value"
 				}
 				link={
@@ -1691,170 +2059,6 @@ graph={
 				link={
 					pin_id="usr:size"
 					linked_node=132
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Int32={
-			id=74
-			node={
-				value=89
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=75
-			node={
-				value=13.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:particle:EffectFlags={
-			id=76
-			node={
-			}
-			inputs={
-				link={
-					pin_id="billboard"
-					linked_node=322
-					linked_pin="value"
-				}
-				link={
-					pin_id="emissive"
-					linked_node=323
-					linked_pin="value"
-				}
-				link={
-					pin_id="billboard_axis"
-					linked_node=324
-					linked_pin="value"
-				}
-				link={
-					pin_id="fade_steep_angles"
-					linked_node=325
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:HasTag={
-			id=77
-			node={
-			}
-			inputs={
-				link={
-					pin_id="tag"
-					linked_node=74
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Vector3f={
-			id=78
-			node={
-			}
-			inputs={
-				link={
-					pin_id="x"
-					linked_node=65
-					linked_pin="result"
-				}
-				link={
-					pin_id="y"
-					linked_node=60
-					linked_pin="product"
-				}
-				link={
-					pin_id="z"
-					linked_node=65
-					linked_pin="result"
-				}
-			}
-		}
-		pdxns:gfx:Texture={
-			id=79
-			node={
-				texture_file="gfx/particles/textures/muzzle_flash_3.dds"
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=80
-			node={
-				value={
-					1.000000 0.820313 0.000000 0.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=81
-			node={
-				value={
-					0.658203 0.654537 0.645348 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:math:SubF={
-			id=82
-			node={
-			}
-			inputs={
-				link={
-					pin_id="term1"
-					linked_node=330
-					linked_pin="value"
-				}
-				link={
-					pin_id="term2"
-					linked_node=134
-					linked_pin="product"
-				}
-			}
-		}
-		pdxns:common:compound={
-			id=83
-			node={
-				graph="BillboardRandomRotation"
-			}
-			inputs={
-				link={
-					pin_id="RotationMin"
-					linked_node=332
-					linked_pin="value"
-				}
-				link={
-					pin_id="RotationMax"
-					linked_node=333
-					linked_pin="value"
-				}
-				link={
-					pin_id="Seed"
-					linked_node=334
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:ApplyForce={
-			id=84
-			node={
-			}
-			inputs={
-				link={
-					pin_id="force"
-					linked_node=335
-					linked_pin="value"
-				}
-				link={
-					pin_id="condition"
-					linked_node=89
 					linked_pin="value"
 				}
 			}
@@ -1890,7 +2094,7 @@ graph={
 				}
 				link={
 					pin_id="size"
-					linked_node=337
+					linked_node=276
 					linked_pin="value"
 				}
 				link={
@@ -1955,566 +2159,6 @@ graph={
 				}
 			}
 		}
-		pdxns:values:Vector3f={
-			id=86
-			node={
-			}
-			inputs={
-				link={
-					pin_id="x"
-					linked_node=346
-					linked_pin="value"
-				}
-				link={
-					pin_id="y"
-					linked_node=347
-					linked_pin="value"
-				}
-				link={
-					pin_id="z"
-					linked_node=94
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:EffectFlags={
-			id=87
-			node={
-			}
-			inputs={
-				link={
-					pin_id="billboard"
-					linked_node=351
-					linked_pin="value"
-				}
-				link={
-					pin_id="emissive"
-					linked_node=352
-					linked_pin="value"
-				}
-				link={
-					pin_id="billboard_axis"
-					linked_node=349
-					linked_pin="value"
-				}
-				link={
-					pin_id="fade_steep_angles"
-					linked_node=350
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=88
-			node={
-				user_data={
-					id="usr:StartColor"
-					label="StartColor"
-					type="Color"
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:particle:HasTag={
-			id=89
-			node={
-			}
-			inputs={
-				link={
-					pin_id="tag"
-					linked_node=7
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=90
-			node={
-				user_data={
-					id="usr:lifetime"
-					label="Lifetime"
-					type="Float"
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:math:NormalizeV3={
-			id=91
-			node={
-			}
-			inputs={
-				link={
-					pin_id="operand"
-					linked_node=39
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=92
-			node={
-				user_data={
-					id="usr:size"
-					label="Size"
-					type="Float"
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:math:randomF={
-			id=93
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=356
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=355
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:randomF={
-			id=94
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=358
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=357
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:randomF={
-			id=95
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=359
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=360
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:gfx:HSVA={
-			id=96
-			node={
-			}
-			inputs={
-				link={
-					pin_id="hue"
-					linked_node=56
-					linked_pin="hue"
-				}
-				link={
-					pin_id="saturation"
-					linked_node=56
-					linked_pin="saturation"
-				}
-				link={
-					pin_id="value"
-					linked_node=56
-					linked_pin="value"
-				}
-				link={
-					pin_id="α"
-					linked_node=8
-					linked_pin="result"
-				}
-			}
-		}
-		pdxns:particle:SetColor={
-			id=97
-			node={
-			}
-			inputs={
-				link={
-					pin_id="color"
-					linked_node=96
-					linked_pin="hsva"
-				}
-				link={
-					pin_id="condition"
-					linked_node=89
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:gfx:Texture={
-			id=98
-			node={
-				texture_file="gfx/particles/textures/mist_4.dds"
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=99
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:gfx:HSVA={
-			id=100
-			node={
-			}
-			inputs={
-				link={
-					pin_id="hue"
-					linked_node=105
-					linked_pin="hue"
-				}
-				link={
-					pin_id="saturation"
-					linked_node=105
-					linked_pin="saturation"
-				}
-				link={
-					pin_id="value"
-					linked_node=23
-					linked_pin="product"
-				}
-				link={
-					pin_id="α"
-					linked_node=10
-					linked_pin="result"
-				}
-			}
-		}
-		pdxns:math:DivF={
-			id=101
-			node={
-			}
-			inputs={
-				link={
-					pin_id="dividend"
-					linked_node=17
-					linked_pin="value"
-				}
-				link={
-					pin_id="divisor"
-					linked_node=371
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Int32={
-			id=102
-			node={
-				value=2
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=103
-			node={
-				value={
-					1.000000 0.421875 0.000000 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:particle:EffectFlags={
-			id=104
-			node={
-			}
-			inputs={
-				link={
-					pin_id="billboard"
-					linked_node=375
-					linked_pin="value"
-				}
-				link={
-					pin_id="emissive"
-					linked_node=374
-					linked_pin="value"
-				}
-				link={
-					pin_id="billboard_axis"
-					linked_node=376
-					linked_pin="value"
-				}
-				link={
-					pin_id="fade_steep_angles"
-					linked_node=373
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:gfx:HsvaComponents={
-			id=105
-			node={
-			}
-			inputs={
-				link={
-					pin_id="hsva"
-					linked_node=27
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:SetUniformScale={
-			id=106
-			node={
-			}
-			inputs={
-				link={
-					pin_id="size"
-					linked_node=40
-					linked_pin="result"
-				}
-				link={
-					pin_id="condition"
-					linked_node=89
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:randomF={
-			id=107
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=381
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=380
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:GetAge={
-			id=108
-			node={
-			}
-			inputs={
-			}
-		}
-		pdxns:common:compound={
-			id=109
-			node={
-				graph="Base with Variation"
-			}
-			inputs={
-				link={
-					pin_id="base_id"
-					linked_node=382
-					linked_pin="value"
-				}
-				link={
-					pin_id="variation_id"
-					linked_node=383
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:gfx:HsvaComponents={
-			id=110
-			node={
-			}
-			inputs={
-				link={
-					pin_id="hsva"
-					linked_node=129
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Int32={
-			id=111
-			node={
-				value=5
-			}
-			inputs={
-			}
-		}
-		pdxns:common:compound={
-			id=112
-			node={
-				graph="Base with Variation"
-			}
-			inputs={
-				link={
-					pin_id="base_id"
-					linked_node=385
-					linked_pin="value"
-				}
-				link={
-					pin_id="variation_id"
-					linked_node=386
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:EffectFlags={
-			id=113
-			node={
-			}
-			inputs={
-				link={
-					pin_id="billboard"
-					linked_node=387
-					linked_pin="value"
-				}
-				link={
-					pin_id="emissive"
-					linked_node=389
-					linked_pin="value"
-				}
-				link={
-					pin_id="billboard_axis"
-					linked_node=388
-					linked_pin="value"
-				}
-				link={
-					pin_id="fade_steep_angles"
-					linked_node=390
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:HasTag={
-			id=114
-			node={
-			}
-			inputs={
-				link={
-					pin_id="tag"
-					linked_node=111
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Color={
-			id=115
-			node={
-				value={
-					1.000000 0.820313 0.000000 0.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Vector3f={
-			id=116
-			node={
-			}
-			inputs={
-				link={
-					pin_id="x"
-					linked_node=135
-					linked_pin="value"
-				}
-				link={
-					pin_id="y"
-					linked_node=112
-					linked_pin="output_id"
-				}
-				link={
-					pin_id="z"
-					linked_node=392
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:randomF={
-			id=117
-			node={
-			}
-			inputs={
-				link={
-					pin_id="limit1"
-					linked_node=395
-					linked_pin="value"
-				}
-				link={
-					pin_id="limit2"
-					linked_node=396
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
-			id=118
-			node={
-				graph="ScaledCurveSampler"
-			}
-			inputs={
-				link={
-					pin_id="curve"
-					linked_node=397
-					linked_pin="value"
-				}
-				link={
-					pin_id="x"
-					linked_node=108
-					linked_pin="age"
-				}
-				link={
-					pin_id="scale_x"
-					linked_node=120
-					linked_pin="value"
-				}
-				link={
-					pin_id="scale_y"
-					linked_node=110
-					linked_pin="saturation"
-				}
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=119
-			node={
-				user_data={
-					id="usr:size"
-					label="Size"
-					type="Float"
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=120
-			node={
-				user_data={
-					id="usr:lifetime"
-					label="Lifetime"
-					type="Float"
-				}
-			}
-			inputs={
-			}
-		}
 		pdxns:particle:Emitter={
 			id=121
 			node={
@@ -2546,7 +2190,7 @@ graph={
 				}
 				link={
 					pin_id="size"
-					linked_node=402
+					linked_node=212
 					linked_pin="value"
 				}
 				link={
@@ -2591,7 +2235,7 @@ graph={
 				}
 				link={
 					pin_id="angular_velocity"
-					linked_node=401
+					linked_node=214
 					linked_pin="value"
 				}
 				link={
@@ -2616,66 +2260,352 @@ graph={
 				}
 			}
 		}
-		pdxns:common:compound={
-			id=122
+		pdxns:particle:GetAge={
+			id=14
 			node={
-				graph="ScaledCurveSampler"
-			}
-			inputs={
-				link={
-					pin_id="curve"
-					linked_node=410
-					linked_pin="value"
-				}
-				link={
-					pin_id="x"
-					linked_node=108
-					linked_pin="age"
-				}
-				link={
-					pin_id="scale_x"
-					linked_node=120
-					linked_pin="value"
-				}
-				link={
-					pin_id="scale_y"
-					linked_node=119
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Int32={
-			id=123
-			node={
-				value=5
 			}
 			inputs={
 			}
 		}
-		pdxns:values:Color={
-			id=124
+		pdxns:particle:GetAge={
+			id=32
 			node={
-				value={
-					1.000000 0.890625 0.000000 1.000000
-				}
-
 			}
 			inputs={
 			}
 		}
-		pdxns:math:randomF={
-			id=125
+		pdxns:particle:GetAge={
+			id=44
+			node={
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetAge={
+			id=67
+			node={
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetAge={
+			id=71
+			node={
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetAge={
+			id=108
+			node={
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=15
+			node={
+				user_data={
+					id="usr:lifetime"
+					label="Lifetime"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=24
+			node={
+				user_data={
+					id="usr:lifetime"
+					label="Lifetime"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=27
+			node={
+				user_data={
+					id="usr:StartColor"
+					label="StartColor"
+					type="Color"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=28
+			node={
+				user_data={
+					id="usr:size"
+					label="Size"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=35
+			node={
+				user_data={
+					id="usr:lifetime"
+					label="Lifetime"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=54
+			node={
+				user_data={
+					id="usr:size"
+					label="Size"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=70
+			node={
+				user_data={
+					id="usr:lifetime"
+					label="Lifetime"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=88
+			node={
+				user_data={
+					id="usr:StartColor"
+					label="StartColor"
+					type="Color"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=90
+			node={
+				user_data={
+					id="usr:lifetime"
+					label="Lifetime"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=92
+			node={
+				user_data={
+					id="usr:size"
+					label="Size"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=119
+			node={
+				user_data={
+					id="usr:size"
+					label="Size"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=120
+			node={
+				user_data={
+					id="usr:lifetime"
+					label="Lifetime"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=129
+			node={
+				user_data={
+					id="usr:StartColor"
+					label="StartColor"
+					type="Color"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=133
+			node={
+				user_data={
+					id="usr:size"
+					label="Size"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:HasTag={
+			id=11
 			node={
 			}
 			inputs={
 				link={
-					pin_id="limit1"
-					linked_node=415
+					pin_id="tag"
+					linked_node=102
 					linked_pin="value"
 				}
+			}
+		}
+		pdxns:particle:HasTag={
+			id=50
+			node={
+			}
+			inputs={
 				link={
-					pin_id="limit2"
-					linked_node=414
+					pin_id="tag"
+					linked_node=55
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:HasTag={
+			id=77
+			node={
+			}
+			inputs={
+				link={
+					pin_id="tag"
+					linked_node=74
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:HasTag={
+			id=89
+			node={
+			}
+			inputs={
+				link={
+					pin_id="tag"
+					linked_node=7
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:HasTag={
+			id=114
+			node={
+			}
+			inputs={
+				link={
+					pin_id="tag"
+					linked_node=111
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:Kill={
+			id=12
+			node={
+			}
+			inputs={
+				link={
+					pin_id="condition"
+					linked_node=42
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:SetColor={
+			id=20
+			node={
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=100
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="condition"
+					linked_node=11
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:SetColor={
+			id=51
+			node={
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=34
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="condition"
+					linked_node=50
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:SetColor={
+			id=57
+			node={
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=59
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="condition"
+					linked_node=77
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:SetColor={
+			id=97
+			node={
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=96
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="condition"
+					linked_node=89
 					linked_pin="value"
 				}
 			}
@@ -2697,63 +2627,20 @@ graph={
 				}
 			}
 		}
-		pdxns:gfx:Texture={
-			id=127
-			node={
-				texture_file="gfx/particles/textures/fire03_des.dds"
-			}
-			inputs={
-			}
-		}
-		pdxns:math:NormalizeV3={
-			id=128
+		pdxns:particle:SetScale={
+			id=19
 			node={
 			}
 			inputs={
 				link={
-					pin_id="operand"
-					linked_node=116
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:GetUserData={
-			id=129
-			node={
-				user_data={
-					id="usr:StartColor"
-					label="StartColor"
-					type="Color"
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:common:compound={
-			id=130
-			node={
-				graph="ScaledCurveSampler"
-			}
-			inputs={
-				link={
-					pin_id="curve"
-					linked_node=419
+					pin_id="size"
+					linked_node=21
 					linked_pin="value"
 				}
 				link={
-					pin_id="x"
-					linked_node=108
-					linked_pin="age"
-				}
-				link={
-					pin_id="scale_x"
-					linked_node=120
+					pin_id="condition"
+					linked_node=11
 					linked_pin="value"
-				}
-				link={
-					pin_id="scale_y"
-					linked_node=110
-					linked_pin="hue"
 				}
 			}
 		}
@@ -2774,67 +2661,63 @@ graph={
 				}
 			}
 		}
-		pdxns:math:randomF={
-			id=132
+		pdxns:particle:SetUniformScale={
+			id=1
 			node={
 			}
 			inputs={
 				link={
-					pin_id="limit1"
-					linked_node=425
-					linked_pin="value"
+					pin_id="size"
+					linked_node=122
+					linked_pin="result"
 				}
 				link={
-					pin_id="limit2"
-					linked_node=426
+					pin_id="condition"
+					linked_node=114
 					linked_pin="value"
 				}
 			}
 		}
-		pdxns:particle:GetUserData={
-			id=133
-			node={
-				user_data={
-					id="usr:size"
-					label="Size"
-					type="Float"
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:math:MulF={
-			id=134
+		pdxns:particle:SetUniformScale={
+			id=48
 			node={
 			}
 			inputs={
 				link={
-					pin_id="factor1"
-					linked_node=135
+					pin_id="size"
+					linked_node=54
 					linked_pin="value"
 				}
 				link={
-					pin_id="factor2"
-					linked_node=427
+					pin_id="condition"
+					linked_node=50
 					linked_pin="value"
 				}
 			}
 		}
-		pdxns:math:randomF={
-			id=135
+		pdxns:particle:SetUniformScale={
+			id=106
 			node={
 			}
 			inputs={
 				link={
-					pin_id="limit1"
-					linked_node=430
-					linked_pin="value"
+					pin_id="size"
+					linked_node=40
+					linked_pin="result"
 				}
 				link={
-					pin_id="limit2"
-					linked_node=429
+					pin_id="condition"
+					linked_node=89
 					linked_pin="value"
 				}
+			}
+		}
+		pdxns:values:Bool={
+			id=99
+			node={
+				value=no
+			}
+			inputs={
 			}
 		}
 		pdxns:values:Bool={
@@ -2845,40 +2728,6 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:math:NormalizeV3={
-			id=137
-			node={
-			}
-			inputs={
-				link={
-					pin_id="operand"
-					linked_node=138
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Vector3f={
-			id=138
-			node={
-			}
-			inputs={
-				link={
-					pin_id="x"
-					linked_node=135
-					linked_pin="value"
-				}
-				link={
-					pin_id="y"
-					linked_node=432
-					linked_pin="value"
-				}
-				link={
-					pin_id="z"
-					linked_node=433
-					linked_pin="value"
-				}
-			}
-		}
 		pdxns:values:Bool={
 			id=139
 			node={
@@ -2887,100 +2736,368 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:math:SubF={
-			id=140
-			node={
-			}
-			inputs={
-				link={
-					pin_id="term1"
-					linked_node=75
-					linked_pin="value"
-				}
-				link={
-					pin_id="term2"
-					linked_node=435
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:math:SubF={
-			id=141
-			node={
-			}
-			inputs={
-				link={
-					pin_id="term1"
-					linked_node=75
-					linked_pin="value"
-				}
-				link={
-					pin_id="term2"
-					linked_node=437
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=335
-			node={
-				value={ 0.000000 0.050000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=437
-			node={
-				value=7.000000
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Bool={
-			id=322
+			id=144
 			node={
 				value=no
 			}
 			inputs={
 			}
 		}
-		pdxns:values:Float={
-			id=435
-			node={
-				value=5.000000
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Bool={
-			id=323
+			id=146
 			node={
 				value=yes
 			}
 			inputs={
 			}
 		}
-		pdxns:values:Float={
-			id=433
+		pdxns:values:Bool={
+			id=206
 			node={
-				value=-1.000000
+				value=no
 			}
 			inputs={
 			}
 		}
-		pdxns:values:Float={
-			id=432
+		pdxns:values:Bool={
+			id=207
 			node={
-				value=0.000000
+				value=no
 			}
 			inputs={
 			}
 		}
-		pdxns:values:Float={
-			id=360
+		pdxns:values:Bool={
+			id=217
 			node={
-				value=1.000000
+				value=yes
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=218
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=231
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=232
+			node={
+				value=yes
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=235
+			node={
+				value=yes
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=251
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=252
+			node={
+				value=yes
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=253
+			node={
+				value=yes
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=264
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=265
+			node={
+				value=yes
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=268
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Color={
+			id=53
+			node={
+				value={
+					1.000000 0.445312 0.000000 1.000000
+				}
+
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Color={
+			id=69
+			node={
+				value={
+					0.371094 0.078278 0.000000 1.000000
+				}
+
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Color={
+			id=80
+			node={
+				value={
+					1.000000 0.820313 0.000000 0.000000
+				}
+
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Color={
+			id=81
+			node={
+				value={
+					0.658203 0.654537 0.645348 1.000000
+				}
+
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Color={
+			id=103
+			node={
+				value={
+					1.000000 0.421875 0.000000 1.000000
+				}
+
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Color={
+			id=115
+			node={
+				value={
+					1.000000 0.820313 0.000000 0.000000
+				}
+
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Color={
+			id=124
+			node={
+				value={
+					1.000000 0.890625 0.000000 1.000000
+				}
+
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Color={
+			id=179
+			node={
+				value={
+					0.000000 0.000000 0.000000 1.000000
+				}
+
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Color={
+			id=257
+			node={
+				value={
+					0.000000 0.000000 0.000000 1.000000
+				}
+
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Color={
+			id=274
+			node={
+				value={
+					0.000000 0.000000 0.000000 1.000000
+				}
+
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=142
+			node={
+				value={ 0.000000 0.050000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=168
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=169
+			node={
+				value={ 1.000000 1.000000 1.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=180
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=189
+			node={
+				value={ 0.000000 0.000000 -1.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=202
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=203
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=214
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=216
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=223
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=233
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=254
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=255
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=256
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=263
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=271
+			node={
+				value={ 0.000000 0.000000 -1.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=273
+			node={
+				value={ 0.000000 0.000000 0.000000 }
 			}
 			inputs={
 			}
@@ -3001,6 +3118,225 @@ graph={
 			inputs={
 			}
 		}
+		pdxns:values:Curve={
+			id=155
+			node={
+				type="Catmull-Rom"
+				curve={
+					{ x = 0.000000 y = 1.000000 }
+					{ x = 0.331190 y = 0.647202 }
+					{ x = 0.988746 y = 0.328467 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Curve={
+			id=164
+			node={
+				type="Catmull-Rom"
+				curve={
+					{ x = 0.000000 y = 0.000000 }
+					{ x = 0.084652 y = 0.357788 }
+					{ x = 0.198575 y = 0.687359 }
+					{ x = 0.534810 y = 0.604966 }
+					{ x = 0.751582 y = 0.266366 }
+					{ x = 1.000000 y = 0.000000 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Curve={
+			id=177
+			node={
+				type="Linear"
+				curve={
+					{ x = 0.000000 y = 0.000000 }
+					{ x = 0.086234 y = 0.013544 }
+					{ x = 0.221519 y = 0.959368 }
+					{ x = 1.000000 y = 0.000000 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Curve={
+			id=181
+			node={
+				type="Catmull-Rom"
+				curve={
+					{ x = 0.004823 y = 0.995134 }
+					{ x = 0.467846 y = 0.352798 }
+					{ x = 1.000000 y = 0.000000 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Curve={
+			id=198
+			node={
+				type="Catmull-Rom"
+				curve={
+					{ x = 0.001608 y = 0.000000 }
+					{ x = 0.122186 y = 0.165450 }
+					{ x = 0.250804 y = 0.800487 }
+					{ x = 0.652733 y = 0.917275 }
+					{ x = 0.821543 y = 0.854015 }
+					{ x = 0.892282 y = 0.725060 }
+					{ x = 1.000000 y = 0.153285 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Curve={
+			id=204
+			node={
+				type="Catmull-Rom-Centripetal"
+				curve={
+					{ x = 0.000000 y = 0.000000 }
+					{ x = 0.506329 y = 0.500000 }
+					{ x = 0.784810 y = 0.401806 }
+					{ x = 0.863924 y = 0.218961 }
+					{ x = 1.000000 y = 0.000000 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Curve={
+			id=208
+			node={
+				type="Linear"
+				curve={
+					{ x = 0.000000 y = 0.000000 }
+					{ x = 0.068038 y = 1.000000 }
+					{ x = 0.563291 y = 0.936795 }
+					{ x = 0.734177 y = 0.540632 }
+					{ x = 1.000000 y = 0.000000 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Curve={
+			id=219
+			node={
+				type="Catmull-Rom"
+				curve={
+					{ x = 0.000000 y = 0.311512 }
+					{ x = 0.506329 y = 0.520316 }
+					{ x = 0.707278 y = 0.848758 }
+					{ x = 1.000000 y = 0.272009 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Curve={
+			id=220
+			node={
+				type="Catmull-Rom"
+				curve={
+					{ x = 0.000000 y = 0.021898 }
+					{ x = 0.062701 y = 0.873479 }
+					{ x = 1.000000 y = 1.000000 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Curve={
+			id=230
+			node={
+				type="Catmull-Rom-Centripetal"
+				curve={
+					{ x = 0.003165 y = 0.507901 }
+					{ x = 0.414556 y = 0.648984 }
+					{ x = 1.000000 y = 1.000000 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Curve={
+			id=239
+			node={
+				type="Catmull-Rom"
+				curve={
+					{ x = 0.000000 y = 0.117381 }
+					{ x = 0.174842 y = 0.495486 }
+					{ x = 0.277690 y = 0.579007 }
+					{ x = 0.776107 y = 0.711061 }
+					{ x = 1.000000 y = 0.583522 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Curve={
+			id=267
+			node={
+				type="Catmull-Rom-Centripetal"
+				curve={
+					{ x = 0.000000 y = 0.000000 }
+					{ x = 0.500000 y = 0.500000 }
+					{ x = 1.000000 y = 0.000000 }
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=75
+			node={
+				value=13.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=143
+			node={
+				value=7.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=145
+			node={
+				value=5.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=147
+			node={
+				value=-1.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=148
+			node={
+				value=0.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=149
+			node={
+				value=1.000000
+			}
+			inputs={
+			}
+		}
 		pdxns:values:Float={
 			id=151
 			node={
@@ -3010,7 +3346,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=430
+			id=152
 			node={
 				value=0.250000
 			}
@@ -3018,7 +3354,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=429
+			id=153
 			node={
 				value=0.350000
 			}
@@ -3033,21 +3369,8 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Curve={
-			id=155
-			node={
-				type="Catmull-Rom"
-				curve={
-					{ x = 0.000000 y = 1.000000 }
-					{ x = 0.331190 y = 0.647202 }
-					{ x = 0.988746 y = 0.328467 }
-				}
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
-			id=284
+			id=156
 			node={
 				value=0.250000
 			}
@@ -3055,7 +3378,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=427
+			id=157
 			node={
 				value=55.000000
 			}
@@ -3079,7 +3402,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=426
+			id=160
 			node={
 				value=4.000000
 			}
@@ -3103,25 +3426,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=425
+			id=163
 			node={
 				value=3.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Curve={
-			id=164
-			node={
-				type="Catmull-Rom"
-				curve={
-					{ x = 0.000000 y = 0.000000 }
-					{ x = 0.084652 y = 0.357788 }
-					{ x = 0.198575 y = 0.687359 }
-					{ x = 0.534810 y = 0.604966 }
-					{ x = 0.751582 y = 0.266366 }
-					{ x = 1.000000 y = 0.000000 }
-				}
 			}
 			inputs={
 			}
@@ -3135,7 +3442,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=359
+			id=166
 			node={
 				value=0.500000
 			}
@@ -3143,25 +3450,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=286
+			id=167
 			node={
 				value=1.200000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=168
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=169
-			node={
-				value={ 1.000000 1.000000 1.000000 }
 			}
 			inputs={
 			}
@@ -3222,56 +3513,10 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Curve={
-			id=177
-			node={
-				type="Linear"
-				curve={
-					{ x = 0.000000 y = 0.000000 }
-					{ x = 0.086234 y = 0.013544 }
-					{ x = 0.221519 y = 0.959368 }
-					{ x = 1.000000 y = 0.000000 }
-				}
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
-			id=358
+			id=178
 			node={
 				value=-20.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=288
-			node={
-				value={
-					0.000000 0.000000 0.000000 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=289
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Curve={
-			id=419
-			node={
-				type="Catmull-Rom"
-				curve={
-					{ x = 0.004823 y = 0.995134 }
-					{ x = 0.467846 y = 0.352798 }
-					{ x = 1.000000 y = 0.000000 }
-				}
 			}
 			inputs={
 			}
@@ -3317,7 +3562,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=290
+			id=187
 			node={
 				value=0.000000
 			}
@@ -3325,23 +3570,15 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=291
+			id=188
 			node={
 				value=1.000000
 			}
 			inputs={
 			}
 		}
-		pdxns:values:ConstVector3f={
-			id=292
-			node={
-				value={ 0.000000 0.000000 -1.000000 }
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
-			id=415
+			id=190
 			node={
 				value=0.300000
 			}
@@ -3349,7 +3586,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=414
+			id=191
 			node={
 				value=0.500000
 			}
@@ -3357,7 +3594,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=357
+			id=192
 			node={
 				value=20.000000
 			}
@@ -3365,7 +3602,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=356
+			id=193
 			node={
 				value=2.000000
 			}
@@ -3373,7 +3610,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=355
+			id=194
 			node={
 				value=3.000000
 			}
@@ -3404,23 +3641,6 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Curve={
-			id=410
-			node={
-				type="Catmull-Rom"
-				curve={
-					{ x = 0.001608 y = 0.000000 }
-					{ x = 0.122186 y = 0.165450 }
-					{ x = 0.250804 y = 0.800487 }
-					{ x = 0.652733 y = 0.917275 }
-					{ x = 0.821543 y = 0.854015 }
-					{ x = 0.892282 y = 0.725060 }
-					{ x = 1.000000 y = 0.153285 }
-				}
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
 			id=199
 			node={
@@ -3445,78 +3665,16 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:ConstVector3f={
-			id=202
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=324
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Curve={
-			id=297
-			node={
-				type="Catmull-Rom-Centripetal"
-				curve={
-					{ x = 0.000000 y = 0.000000 }
-					{ x = 0.506329 y = 0.500000 }
-					{ x = 0.784810 y = 0.401806 }
-					{ x = 0.863924 y = 0.218961 }
-					{ x = 1.000000 y = 0.000000 }
-				}
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
-			id=298
+			id=205
 			node={
 				value=0.600000
 			}
 			inputs={
 			}
 		}
-		pdxns:values:Bool={
-			id=325
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=352
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Curve={
-			id=301
-			node={
-				type="Linear"
-				curve={
-					{ x = 0.000000 y = 0.000000 }
-					{ x = 0.068038 y = 1.000000 }
-					{ x = 0.563291 y = 0.936795 }
-					{ x = 0.734177 y = 0.540632 }
-					{ x = 1.000000 y = 0.000000 }
-				}
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
-			id=302
+			id=209
 			node={
 				value=6.000000
 			}
@@ -3540,7 +3698,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=402
+			id=212
 			node={
 				value=0.000000
 			}
@@ -3555,14 +3713,6 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:ConstVector3f={
-			id=401
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
 			id=215
 			node={
@@ -3571,59 +3721,8 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:ConstVector3f={
-			id=216
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=351
-			node={
-				value=yes
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=350
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Curve={
-			id=305
-			node={
-				type="Catmull-Rom"
-				curve={
-					{ x = 0.000000 y = 0.311512 }
-					{ x = 0.506329 y = 0.520316 }
-					{ x = 0.707278 y = 0.848758 }
-					{ x = 1.000000 y = 0.272009 }
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Curve={
-			id=397
-			node={
-				type="Catmull-Rom"
-				curve={
-					{ x = 0.000000 y = 0.021898 }
-					{ x = 0.062701 y = 0.873479 }
-					{ x = 1.000000 y = 1.000000 }
-				}
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
-			id=396
+			id=221
 			node={
 				value=2.000000
 			}
@@ -3631,17 +3730,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=395
+			id=222
 			node={
 				value=1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=349
-			node={
-				value={ 0.000000 0.000000 0.000000 }
 			}
 			inputs={
 			}
@@ -3655,7 +3746,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=332
+			id=225
 			node={
 				value=-30.000000
 			}
@@ -3663,7 +3754,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=392
+			id=226
 			node={
 				value=-1.000000
 			}
@@ -3671,7 +3762,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=347
+			id=227
 			node={
 				value=0.000000
 			}
@@ -3694,55 +3785,10 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Curve={
-			id=230
-			node={
-				type="Catmull-Rom-Centripetal"
-				curve={
-					{ x = 0.003165 y = 0.507901 }
-					{ x = 0.414556 y = 0.648984 }
-					{ x = 1.000000 y = 1.000000 }
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=390
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=389
-			node={
-				value=yes
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=388
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
 			id=234
 			node={
 				value=0.500000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=387
-			node={
-				value=yes
 			}
 			inputs={
 			}
@@ -3756,7 +3802,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=386
+			id=237
 			node={
 				value=0.500000
 			}
@@ -3764,30 +3810,15 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=385
+			id=238
 			node={
 				value=0.500000
 			}
 			inputs={
 			}
 		}
-		pdxns:values:Curve={
-			id=239
-			node={
-				type="Catmull-Rom"
-				curve={
-					{ x = 0.000000 y = 0.117381 }
-					{ x = 0.174842 y = 0.495486 }
-					{ x = 0.277690 y = 0.579007 }
-					{ x = 0.776107 y = 0.711061 }
-					{ x = 1.000000 y = 0.583522 }
-				}
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
-			id=346
+			id=240
 			node={
 				value=0.000000
 			}
@@ -3795,7 +3826,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=383
+			id=241
 			node={
 				value=180.000000
 			}
@@ -3803,7 +3834,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=382
+			id=242
 			node={
 				value=0.000000
 			}
@@ -3827,7 +3858,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=381
+			id=245
 			node={
 				value=1.000000
 			}
@@ -3835,7 +3866,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=380
+			id=246
 			node={
 				value=2.000000
 			}
@@ -3874,65 +3905,6 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Bool={
-			id=251
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=252
-			node={
-				value=yes
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=253
-			node={
-				value=yes
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=254
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=255
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=256
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=257
-			node={
-				value={
-					0.000000 0.000000 0.000000 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
 			id=258
 			node={
@@ -3950,7 +3922,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=310
+			id=260
 			node={
 				value=90.000000
 			}
@@ -3958,7 +3930,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=311
+			id=261
 			node={
 				value=0.000000
 			}
@@ -3966,33 +3938,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=333
+			id=262
 			node={
 				value=30.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=376
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=375
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=374
-			node={
-				value=yes
 			}
 			inputs={
 			}
@@ -4005,29 +3953,8 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Curve={
-			id=267
-			node={
-				type="Catmull-Rom-Centripetal"
-				curve={
-					{ x = 0.000000 y = 0.000000 }
-					{ x = 0.500000 y = 0.500000 }
-					{ x = 1.000000 y = 0.000000 }
-				}
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=373
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
-			id=313
+			id=269
 			node={
 				value=1.000000
 			}
@@ -4035,58 +3962,23 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=371
+			id=270
 			node={
 				value=7.000000
 			}
 			inputs={
 			}
 		}
-		pdxns:values:ConstVector3f={
-			id=314
-			node={
-				value={ 0.000000 0.000000 -1.000000 }
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
-			id=315
+			id=272
 			node={
 				value=0.000000
 			}
 			inputs={
 			}
 		}
-		pdxns:values:ConstVector3f={
-			id=316
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Color={
-			id=317
-			node={
-				value={
-					0.000000 0.000000 0.000000 1.000000
-				}
-
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Int32={
-			id=334
-			node={
-				value=0
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Float={
-			id=337
+			id=276
 			node={
 				value=0.000000
 			}
@@ -4110,13 +4002,328 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=330
+			id=279
 			node={
 				value=90.000000
 			}
 			inputs={
 			}
 		}
+		pdxns:values:Int32={
+			id=7
+			node={
+				value=3
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=55
+			node={
+				value=4
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=74
+			node={
+				value=89
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=102
+			node={
+				value=2
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=111
+			node={
+				value=5
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=123
+			node={
+				value=5
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=275
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=334
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=310
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=411
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=312
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=457
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=300
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=455
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=301
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=410
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=431
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=409
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=344
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=347
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=348
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=426
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=446
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Vector3f={
+			id=21
+			node={
+			}
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=18
+					linked_pin="product"
+				}
+				link={
+					pin_id="y"
+					linked_node=37
+					linked_pin="result"
+				}
+				link={
+					pin_id="z"
+					linked_node=37
+					linked_pin="result"
+				}
+			}
+		}
+		pdxns:values:Vector3f={
+			id=39
+			node={
+			}
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=135
+					linked_pin="value"
+				}
+				link={
+					pin_id="y"
+					linked_node=36
+					linked_pin="value"
+				}
+				link={
+					pin_id="z"
+					linked_node=236
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Vector3f={
+			id=78
+			node={
+			}
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=65
+					linked_pin="result"
+				}
+				link={
+					pin_id="y"
+					linked_node=60
+					linked_pin="product"
+				}
+				link={
+					pin_id="z"
+					linked_node=65
+					linked_pin="result"
+				}
+			}
+		}
+		pdxns:values:Vector3f={
+			id=86
+			node={
+			}
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=240
+					linked_pin="value"
+				}
+				link={
+					pin_id="y"
+					linked_node=227
+					linked_pin="value"
+				}
+				link={
+					pin_id="z"
+					linked_node=94
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Vector3f={
+			id=116
+			node={
+			}
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=135
+					linked_pin="value"
+				}
+				link={
+					pin_id="y"
+					linked_node=112
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="z"
+					linked_node=226
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Vector3f={
+			id=138
+			node={
+			}
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=135
+					linked_pin="value"
+				}
+				link={
+					pin_id="y"
+					linked_node=148
+					linked_pin="value"
+				}
+				link={
+					pin_id="z"
+					linked_node=147
+					linked_pin="value"
+				}
+			}
+		}
 	}
 }
-

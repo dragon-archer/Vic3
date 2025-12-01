@@ -10,7 +10,12 @@ input_action = {
 
 input_action = {
     name = "scene_editor_duplicate_entity"
-    raw_text = "Duplicate entity in the secen"
+    raw_text = "Duplicate entity in the scene"
+}
+
+input_action = {
+    name = "scene_editor_duplicate_entity_hierarchy"
+    raw_text = "Duplicate entity hierarchy in the scene"
 }
 
 input_action = {
@@ -53,6 +58,16 @@ input_action = {
     raw_text = "Group Selected Entities"
 }
 
+input_action = {
+    name = "scene_editor_align_objects_with_viewport_camera"
+    raw_text = "Align Selected Objects With Viewport"
+}
+
+input_action = {
+    name = "scene_editor_align_viewport_camera_with_object"
+    raw_text = "Align Viewport Camera With Selected Object"
+}
+
 input_context = {
     name = "scene_editor"
 
@@ -61,6 +76,7 @@ input_context = {
     input_action = "scene_editor_delete_entity"
     input_action = "scene_editor_rename_entity"
     input_action = "scene_editor_duplicate_entity"
+    input_action = "scene_editor_duplicate_entity_hierarchy"
     input_action = "scene_editor_toggle_grid"
     input_action = "scene_editor_fit_camera"
     input_action = "scene_editor_pan_mode"
@@ -69,6 +85,8 @@ input_context = {
     input_action = "scene_editor_scale_mode"
     input_action = "scene_editor_toggle_gizmo_space"
     input_action = "scene_editor_group_entities"
+    input_action = "scene_editor_align_objects_with_viewport_camera"
+    input_action = "scene_editor_align_viewport_camera_with_object"
     input_action = "history_tool_undo"
     input_action = "history_tool_redo"
     input_action = "tools_history"

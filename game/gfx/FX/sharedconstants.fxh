@@ -164,6 +164,8 @@ ConstantBuffer( GameSharedConstants )
 	float _SolDebugLow;
 
 	bool _AlternateCountryBorders;
+	bool _EnableMapHarvestCondition;
+	float _HarvestConditionTransitionProgress;
 };
 
 
@@ -315,5 +317,20 @@ Code
 		float FadedAlpha = Alpha * CloseZoomBlend;
 
 		return FadedAlpha;
+	}
+
+	float3 AdjustHsv( float3 Rgb, float Hue, float Saturation, float Value )
+	{
+		float3 Color = RGBtoHSV( Rgb );
+		Color.x += Hue;
+		Color.y *= Saturation;
+		Color.z *= Value;
+
+		return HSVtoRGB( Color );
+	}
+
+	float3 AdjustSaturation( float3 Rgb, float Saturation )
+	{
+		return AdjustHsv( Rgb, 0.0, Saturation, 1.0 );
 	}
 ]]

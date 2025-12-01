@@ -1,5 +1,5 @@
 ﻿fade_duration=0.000000
-max_particles=500
+max_particles=3
 pause_invisible=no
 graph={
 	nodes={
@@ -372,6 +372,11 @@ graph={
 					linked_node=67
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=125
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -389,6 +394,11 @@ graph={
 					linked_node=80
 					linked_pin="value"
 				}
+				link={
+					pin_id="position"
+					linked_node=126
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:randomF={
@@ -404,6 +414,11 @@ graph={
 				link={
 					pin_id="limit2"
 					linked_node=94
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=127
 					linked_pin="value"
 				}
 			}
@@ -1385,6 +1400,30 @@ graph={
 			id=98
 			node={
 				value=2
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=125
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=127
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=126
+			node={
+				value=0
 			}
 			inputs={
 			}

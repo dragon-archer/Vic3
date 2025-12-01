@@ -414,7 +414,7 @@
             modifier = {
                 add = 90000
                 scope:character ?= {
-                    has_template = usa_emperor_norton_character_template
+                    has_template = usa_joshua_norton_character_template
                     NOR = {
                         has_role = general
                         has_role = admiral
@@ -1570,6 +1570,28 @@
                         }
                     }
                 }
+                NOR = {
+                    scope:character ?= {
+                        is_ruler = yes
+                        is_female = no
+                        owner ?= {
+                            c:MUG ?= this
+                            has_law = law_type:law_monarchy
+                        }
+                    }
+                    scope:character ?= {
+                        is_ruler = yes
+                        is_female = no
+                        owner ?= {
+                            c:PER ?= this
+                            has_law = law_type:law_monarchy
+                        }
+                        culture = {
+                            has_discrimination_trait = iranian_turanian_culture_group
+                            has_discrimination_trait = middle_eastern_heritage
+                        }
+                    }
+                }
             }
         }
     }
@@ -1631,6 +1653,28 @@
                         culture = {
                             has_discrimination_trait = iranian_turanian_culture_group
                             has_discrimination_trait = central_asian_heritage
+                        }
+                    }
+                }
+                NOR = {
+                    scope:character ?= {
+                        is_ruler = yes
+                        is_female = no
+                        owner ?= {
+                            c:MUG ?= this
+                            has_law = law_type:law_monarchy
+                        }
+                    }
+                    scope:character ?= {
+                        is_ruler = yes
+                        is_female = no
+                        owner ?= {
+                            c:PER ?= this
+                            has_law = law_type:law_monarchy
+                        }
+                        culture = {
+                            has_discrimination_trait = iranian_turanian_culture_group
+                            has_discrimination_trait = middle_eastern_heritage
                         }
                     }
                 }
@@ -1698,6 +1742,28 @@
                         }
                     }
                 }
+                NOR = {
+                    scope:character ?= {
+                        is_ruler = yes
+                        is_female = no
+                        owner ?= {
+                            c:MUG ?= this
+                            has_law = law_type:law_monarchy
+                        }
+                    }
+                    scope:character ?= {
+                        is_ruler = yes
+                        is_female = no
+                        owner ?= {
+                            c:PER ?= this
+                            has_law = law_type:law_monarchy
+                        }
+                        culture = {
+                            has_discrimination_trait = iranian_turanian_culture_group
+                            has_discrimination_trait = middle_eastern_heritage
+                        }
+                    }
+                }
             }
         }
     }
@@ -1762,6 +1828,28 @@
                         }
                     }
                 }
+                NOR = {
+                    scope:character ?= {
+                        is_ruler = yes
+                        is_female = no
+                        owner ?= {
+                            c:MUG ?= this
+                            has_law = law_type:law_monarchy
+                        }
+                    }
+                    scope:character ?= {
+                        is_ruler = yes
+                        is_female = no
+                        owner ?= {
+                            c:PER ?= this
+                            has_law = law_type:law_monarchy
+                        }
+                        culture = {
+                            has_discrimination_trait = iranian_turanian_culture_group
+                            has_discrimination_trait = middle_eastern_heritage
+                        }
+                    }
+                }
             }
         }
     }
@@ -1823,6 +1911,28 @@
                         culture = {
                             has_discrimination_trait = iranian_turanian_culture_group
                             has_discrimination_trait = central_asian_heritage
+                        }
+                    }
+                }
+                NOR = {
+                    scope:character ?= {
+                        is_ruler = yes
+                        is_female = no
+                        owner ?= {
+                            c:MUG ?= this
+                            has_law = law_type:law_monarchy
+                        }
+                    }
+                    scope:character ?= {
+                        is_ruler = yes
+                        is_female = no
+                        owner ?= {
+                            c:PER ?= this
+                            has_law = law_type:law_monarchy
+                        }
+                        culture = {
+                            has_discrimination_trait = iranian_turanian_culture_group
+                            has_discrimination_trait = middle_eastern_heritage
                         }
                     }
                 }
@@ -2264,6 +2374,30 @@
                         power_bloc ?= {
                             has_identity = identity:identity_religious
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    historical_glasses_wearer = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = props
+                template = glasses_02
+                accessory = props_glasses_02
+            }
+        }
+        weight = {
+            base = 0
+            modifier = {
+                add = 90000
+                has_dlc_feature = ip2_cosmetics
+                scope:character ?= {
+                    OR = {
+                        has_template = BIC_mohandas_karamchand_gandhi
+                        has_template = BIC_gopal_gokhale
                     }
                 }
             }

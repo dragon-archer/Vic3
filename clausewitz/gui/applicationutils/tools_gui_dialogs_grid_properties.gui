@@ -1,5 +1,5 @@
 template property_grid_label_column_size {
-	size = { 165 20 }
+	size = { 140 20 }
 }
 
 template property_grid_value_column_size {
@@ -30,14 +30,57 @@ types ToolsProperyTypes
 			margin_bottom = 5
 		}
 
-		block "content"
-		{				
-		}
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = preferred
+			spacing = 4
 
-		widget =  {
-			layoutpolicy_horizontal = preferred
-		}
+			block "content"
+			{
+			}
 
+			editor_button = {
+				visible = "[ToolProperty.HasDefaultValue]"
+				enabled = "[ToolProperty.CanSetValueToDefault]"
+				onclick = "[ToolProperty.SetValueToDefault]"
+				size = { 24 24 }
+				icon = {
+					size = { 100% 100% }
+					texture = "gfx/tools/reload_property.png"
+				}
+				raw_tooltip = "Set to default."
+				tooltipwidget = { using = dockable_tooltip }
+			}
+
+			datamodel = "[ToolProperty.AccessActions]"
+			item = {
+				widget = {
+					size = { 24 24 }
+					visible = "[ToolPropertyAction.IsVisible]"
+					editor_button = {
+						size = { 100% 100% }
+						visible = "[ToolPropertyAction.IsButton]"
+						enabled = "[ToolPropertyAction.IsAvailable]"
+						onclick = "[ToolPropertyAction.Execute]"
+						icon = {
+							size = { 100% 100% }
+							texture = "[ToolPropertyAction.GetIcon]"
+							alpha = "[Select_float(ToolPropertyAction.IsAvailable, '(float)1.0', '(float)0.5')]"
+						}
+						tooltip = "[ToolPropertyAction.GetTooltip]"
+						tooltipwidget = { using = dockable_tooltip }
+					}
+					icon = {
+						size = { 100% 100% }
+						visible = "[Not(ToolPropertyAction.IsButton)]"
+						enabled = "[ToolPropertyAction.IsAvailable]"
+						texture = "[ToolPropertyAction.GetIcon]"
+						tooltip = "[ToolPropertyAction.GetTooltip]"
+						tooltipwidget = { using = dockable_tooltip }
+					}
+				}
+			}
+		}
 	}
 	
 	type dialog_grid_property_bool = dialog_grid_property {
@@ -248,6 +291,7 @@ types ToolsProperyTypes
 	type dialog_grid_property_vec3f_as_color = dialog_grid_property {
 		blockoverride "content"
 		{
+			widget = { layoutpolicy_horizontal = expanding }
 			tools_colorpicker = {
 				color = "[Vector3fToColor( ToolPropertyVec3f.GetValue )]"
 				oneditingfinished_with_changes = "[ToolPropertyVec3f.SetValueFromColor]"
@@ -377,14 +421,18 @@ types ToolsProperyTypes
 	type dialog_grid_property_texture_selector = dialog_grid_property {
 		blockoverride "content"
 		{
-			flowcontainer = {
+			hbox = {
+				layoutpolicy_horizontal = expanding
 				spacing = 8
 
 				editor_textinput = {
-					size = { 230 24 }
+					layoutpolicy_horizontal = expanding
+					size = { 0 24 }
 					raw_text = "[ToolsPropertyTextureValue.GetTexturePath]"
+					tooltip = "[ToolsPropertyTextureValue.GetTexturePath]"
+					tooltipwidget = { using = dockable_tooltip }
 					oneditingfinished_with_changes ="[ToolsPropertyTextureValue.SetValueFromText]"
-					align = right
+					align = left
 				}
 
 				tooloptions_button = {
@@ -458,6 +506,7 @@ types ToolsProperyTypes
 		{
 			editor_toolbar_button = {
 				using = property_grid_value_column_size
+				layoutpolicy_horizontal = expanding
 				text = "[ToolPropertySearchList.GetSelectedText]"
 				onclick = "[ToolPropertySearchList.OpenSearchList]"
 				elide = middle
@@ -470,6 +519,7 @@ types ToolsProperyTypes
 		{
 			editor_toolbar_button = {
 				using = property_grid_value_column_size
+				layoutpolicy_horizontal = expanding
 				text = "[ToolPropertyUndoableSearchList.GetSelectedText]"
 				onclick = "[ToolPropertyUndoableSearchList.OpenSearchList]"
 				elide = middle

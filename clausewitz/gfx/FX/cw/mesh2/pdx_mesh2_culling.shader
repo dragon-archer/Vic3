@@ -8,14 +8,19 @@ ComputeShader =
 	VertexStruct CS_INPUT
 	{
 		uint3 GlobalId : PDX_DispatchThreadID
-		uint LocalIndex : PDX_GroupIndex
 	};
 
-	MainCode ComputeShader_ClearDrawcallBuffer
+	MainCode ComputeShader_ClearInstanceCountBuffer
 	{
+		RWBufferTexture Mesh2MeshStateLodInstanceCountRwBuffer
+		{
+			Ref = PdxRWBufferTexture0
+			type = uint
+		}
+		
 		ConstantBuffer( PdxConstantBuffer0 )
 		{
-			uint _NumDrawcalls;
+			uint _NumMeshStateLods;
 		};
 		
 		Input = "CS_INPUT"
@@ -24,16 +29,86 @@ ComputeShader =
 		[[
 			PDX_MAIN
 			{
-				uint DrawcallIndex = min( Input.GlobalId.x, _NumDrawcalls );
-				uint DrawcallBufferIndex = DrawcallIndex * 5; // Each drawcall argument is 5 32 bit values
+				uint Index = min( Input.GlobalId.x, _NumMeshStateLods );				
+				Mesh2MeshStateLodInstanceCountRwBuffer[Index] = 0;
+			}
+		]]
+	}
+	
+	MainCode ComputeShader_DrawCallUpdate
+	{
+		BufferTexture Mesh2DrawCallMeshLodIndexBuffer
+		{
+			Ref = PdxBufferTexture0
+			type = uint
+		}
+		
+		BufferTexture Mesh2DrawCallIndexCountPerInstanceBuffer
+		{
+			Ref = PdxBufferTexture1
+			type = uint
+		}
+		
+		BufferTexture Mesh2MeshStateLodInstanceCountBuffer
+		{
+			Ref = PdxBufferTexture2
+			type = uint
+		}
+		
+		RWBufferTexture Mesh2DrawCallRwBuffer
+		{
+			Ref = PdxRWBufferTexture0
+			type = uint
+		}
+		
+		ConstantBuffer( PdxConstantBuffer0 )
+		{
+			uint _NumDrawCalls;
+		};
+		
+		Input = "CS_INPUT"
+		NumThreads = { 128 1 1 }
+		Code 
+		[[
+			PDX_MAIN
+			{
+				uint DrawCallIndex = min( Input.GlobalId.x, _NumDrawCalls );
+				uint MeshStateLodIndex = Mesh2DrawCallMeshLodIndexBuffer[DrawCallIndex];
+				uint IndexCountPerInstance = Mesh2DrawCallIndexCountPerInstanceBuffer[DrawCallIndex];
+				uint InstanceCount = Mesh2MeshStateLodInstanceCountBuffer[MeshStateLodIndex];
 				
-				Mesh2DrawcallRwBuffer[DrawcallBufferIndex + 1] = 0; // Second value is "_InstanceCount"
+				uint DrawcallBufferIndex = DrawCallIndex * 5; // Each drawcall argument is 5 32 bit values
+				Mesh2DrawCallRwBuffer[DrawcallBufferIndex] = IndexCountPerInstance; // First value is "_IndexCountPerInstance", see SGfxDrawIndexedInstancedIndirectArgs
+				Mesh2DrawCallRwBuffer[DrawcallBufferIndex + 1] = InstanceCount; // Second value is "_InstanceCount", see SGfxDrawIndexedInstancedIndirectArgs
+				
+				// Clear _StartIndexLocation, _BaseVertexLocation, _StartInstanceLocation
+				Mesh2DrawCallRwBuffer[DrawcallBufferIndex + 2] = 0;
+				Mesh2DrawCallRwBuffer[DrawcallBufferIndex + 3] = 0;
+				Mesh2DrawCallRwBuffer[DrawcallBufferIndex + 4] = 0;
 			}
 		]]
 	}
 	
 	MainCode ComputeShader_DoCulling
 	{
+		BufferTexture Mesh2MeshStateLodOffsetsBuffer
+		{
+			Ref = PdxBufferTexture0
+			type = uint
+		}
+		
+		RWBufferTexture Mesh2MeshStateLodInstanceCountRwBuffer
+		{
+			Ref = PdxRWBufferTexture0
+			type = uint
+		}
+		
+		RWBufferTexture Mesh2InstanceDataRwBuffer
+		{
+			Ref = PdxRWBufferTexture1
+			type = uint
+		}
+		
 		Texture DepthPyramid
 		{
 			Ref = PdxTexture0
@@ -53,8 +128,10 @@ ComputeShader =
 			uint2 _DepthPyramidSize;
 			uint _DepthPyramidMaxMipLevel;
 			uint _NumInstances;
-			uint _SubPassIndex;
+			float3 _LodCameraPosition;
 			float _LodScale;
+			float _LodFadeRange;
+			uint _LodFadeEnabled;
 		};
 		
 		ConstantBuffer( PdxConstantBuffer1 )
@@ -66,51 +143,43 @@ ComputeShader =
 		NumThreads = { 128 1 1 }
 		Code 
 		[[
-			void WriteMeshes( uint DataOffset, uint NumMeshes, uint InstanceIndex )
+			void WriteInstance( SMeshInstanceData MeshInstanceData, uint LodIndex, float BlendValue )
 			{
-				for ( uint i = 0; i < NumMeshes; ++i )
-				{
-					uint RenderStateIndex = Mesh2MeshInstanceStateBuffer[DataOffset++];
-					uint BatchStateIndex = GetBatchStateIndex( RenderStateIndex, _SubPassIndex );
-					if ( BatchStateIndex == UINT32_MAX )
-					{
-						continue;
-					}
-					
-					uint DrawcallBufferIndex = BatchStateIndex * 5; // Drawcall buffer matches batch state array, each drawcall argument is 5 32 bit values
+				uint MeshStateLodIndex = LoadMeshStateLodIndex( MeshInstanceData._MeshStateIndex, LodIndex );
+				uint InstanceOffset = Mesh2MeshStateLodOffsetsBuffer[MeshStateLodIndex];
 				
-					uint IndexToWrite = 0;
-					InterlockedAdd( Mesh2DrawcallRwBuffer[DrawcallBufferIndex + 1], 1, IndexToWrite ); // Increment "_InstanceCount", we also use the returned value as the position we should write into
-					
-					uint StartInstanceLocation = Mesh2DrawcallRwBuffer[DrawcallBufferIndex + 4];
-					Mesh2InstanceIndicesRwBuffer[StartInstanceLocation + IndexToWrite] = InstanceIndex;
+				uint IndexToWrite = 0;
+				InterlockedAdd( Mesh2MeshStateLodInstanceCountRwBuffer[MeshStateLodIndex], 1, IndexToWrite ); // Increment "_InstanceCount", we also use the returned value as the position we should write into
+				
+				uint InstanceDataOffset = 2 * ( InstanceOffset + IndexToWrite );
+				Mesh2InstanceDataRwBuffer[InstanceDataOffset] = MeshInstanceData._TransformIndex;
+				Mesh2InstanceDataRwBuffer[InstanceDataOffset + 1] = asuint( BlendValue );
+			}
+
+			void WriteInstance( SMeshInstanceData MeshInstanceData, SLodResult LodResult )
+			{
+				if ( LodResult._BaseLod == SLodResult::NoLod )
+				{
+					return;
 				}
-			}
-			
-			void WriteMeshesForUnlodded( SMeshInstanceStateData MeshInstanceStateData, SInstanceIndexAndMeshInstanceStateIndex InstanceIndexAndMeshInstanceStateIndex )
-			{
-				uint DataOffset = ( InstanceIndexAndMeshInstanceStateIndex._MeshInstanceStateIndex * PDX_MESH2_MESH_INSTANCE_STATE_DATA_STRIDE ) + 6 + MeshInstanceStateData._NumLods * 3;
-				WriteMeshes( DataOffset, MeshInstanceStateData._NumUnloddedMeshes, InstanceIndexAndMeshInstanceStateIndex._InstanceIndex );
-			}
-			
-			void WriteMeshesForLod( SMeshInstanceStateData MeshInstanceStateData, SInstanceIndexAndMeshInstanceStateIndex InstanceIndexAndMeshInstanceStateIndex, uint Lod )
-			{
-				uint MeshLodDataOffset = ( InstanceIndexAndMeshInstanceStateIndex._MeshInstanceStateIndex * PDX_MESH2_MESH_INSTANCE_STATE_DATA_STRIDE ) + 6;
-				uint NumMeshes = Mesh2MeshInstanceStateBuffer[MeshLodDataOffset + MeshInstanceStateData._NumLods + Lod];
-				uint LodDataOffset = Mesh2MeshInstanceStateBuffer[MeshLodDataOffset + MeshInstanceStateData._NumLods * 2 + Lod];
-				uint DataOffset = MeshLodDataOffset + LodDataOffset;
-				WriteMeshes( DataOffset, NumMeshes, InstanceIndexAndMeshInstanceStateIndex._InstanceIndex );				
+				
+				WriteInstance( MeshInstanceData, LodResult._BaseLod, LodResult._BlendValue );
+				
+				if ( LodResult._NextLod != SLodResult::NoLod )
+				{
+					WriteInstance( MeshInstanceData, LodResult._NextLod, -LodResult._BlendValue );
+				}
 			}
 
 			PDX_MAIN
-			{			
+			{
 				if ( Input.GlobalId.x < _NumInstances )
 				{
-					SInstanceIndexAndMeshInstanceStateIndex InstanceIndexAndMeshInstanceStateIndex = LoadCompactedInstanceIndicesDataForIndex( Input.GlobalId.x );
+					SMeshInstanceData MeshInstanceData = LoadMeshInstanceDataForIndex( Input.GlobalId.x );
 
 					float4 BoundingSphere;
-					CalculateTransformedBoundingSphere( InstanceIndexAndMeshInstanceStateIndex, BoundingSphere );
-
+					CalculateTransformedBoundingSphere( MeshInstanceData, BoundingSphere );
+					
 				#ifdef PDX_MESH2_ENABLE_FRUSTUM_CULLING
 					if ( !SphereIntersectsFrustum( BoundingSphere.xyz, BoundingSphere.w, _FrustumPlanes ) )
 					{
@@ -138,32 +207,29 @@ ComputeShader =
 						}
 					}
 				#endif
-				
+			
 					// If we reach here we are visible
-				
-					SMeshInstanceStateData MeshInstanceStateData = LoadMeshInstanceStateData( InstanceIndexAndMeshInstanceStateIndex._MeshInstanceStateIndex );
+					SMeshStateData MeshStateData = LoadMeshStateData( MeshInstanceData._MeshStateIndex );
 					
-					// Write out all the unlodded meshes
-					WriteMeshesForUnlodded( MeshInstanceStateData, InstanceIndexAndMeshInstanceStateIndex );
-					
-					// Write out active lodded meshes if we have lods
-					if ( MeshInstanceStateData._NumLods > 0 )
-					{
-						uint Lod = CalculateLod( MeshInstanceStateData, InstanceIndexAndMeshInstanceStateIndex, BoundingSphere, _LodScale );
-						WriteMeshesForLod( MeshInstanceStateData, InstanceIndexAndMeshInstanceStateIndex, Lod );
-					}
+					SLodResult LodResult = CalculateLod( MeshStateData, MeshInstanceData, BoundingSphere, _LodCameraPosition, _LodScale, _LodFadeRange, _LodFadeEnabled );
+					WriteInstance( MeshInstanceData, LodResult );
 				}
 			}
 		]]
 	}
 }
 
-Effect Mesh2_ClearDrawcallBuffer
+Effect ClearInstanceCountBuffer
 {
-	ComputeShader = "ComputeShader_ClearDrawcallBuffer"
+	ComputeShader = "ComputeShader_ClearInstanceCountBuffer"
 }
 
-Effect Mesh2_DoCulling
+Effect DoCulling
 {
 	ComputeShader = "ComputeShader_DoCulling"
+}
+
+Effect DrawCallUpdate
+{
+	ComputeShader = "ComputeShader_DrawCallUpdate"
 }

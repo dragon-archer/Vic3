@@ -43,6 +43,17 @@ pdxmesh = {
 	}
 
 	meshsettings = {
+		name = "arabic_forestry_loggingcamp_01|LOD_0|billboard_generic_0|billbo"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
 		name = "arabic_forestry_loggingcamp_01|LOD_1|decal|decalShape"
 		index = 0
 		texture_diffuse = "decal_rural_forestry_hub_diffuse.dds"
@@ -77,6 +88,17 @@ pdxmesh = {
 	}
 
 	meshsettings = {
+		name = "billboard_generic_1Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
 		name = "arabic_forestry_loggingcamp_01|LOD_2|decal|decalShape"
 		index = 0
 		texture_diffuse = "decal_rural_forestry_hub_diffuse.dds"
@@ -107,6 +129,17 @@ pdxmesh = {
 		texture_specular = "factories_01_m_generic_manufactory_properties.dds"
 		shader = "standard"
 		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "billboard_generic_2Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 

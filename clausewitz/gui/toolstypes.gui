@@ -702,6 +702,33 @@ types ToolsTypes
 				}
 			}
 
+			dropDown = {
+				name = "colorspaces"
+				using = EditorTextDropdown
+
+				raw_tooltip = "Changes which colorspace should be used to display the color. This does not affect the color data."
+
+				position = { 568 56 }
+				size = { 68 20 }
+
+				blockoverride "dropdown_item_size" { size = { 68 20 } }
+				blockoverride "dropdown_list_position" { position = { 0 20 } }
+				blockoverride "dropdown_gridbox_size"
+				{
+					addcolumn = 68
+					addrow = 20
+				}
+				
+				blockoverride "dropdown_item_text"
+				{
+					text = "[CString.GetString]"
+				}
+
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+			}
+
 			editor_textbox = {
 				position = { 558 158 }
 				size = { 16 16 }
@@ -1170,6 +1197,8 @@ template EditorContextMenuItem
 		activeframe = 3
 		disableframe = 1
 		button_trigger = none
+
+		enabled =  "[ContextMenuItem.Enabled]"
 	
 		editor_editbox = {
 			fontsize = 12

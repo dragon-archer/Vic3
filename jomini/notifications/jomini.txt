@@ -21,8 +21,19 @@ jomini_multiplayer_host_left = {
 	
 	title_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT
 	text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_DESC
-	accept_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_ACCEPT
-	decline_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_DECLINE
+	accept_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_CONTINUE_SINGLE_PLAYER
+	decline_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_EXIT_TO_MENU
+}
+
+jomini_multiplayer_host_left_lobby = {
+	level = dialog
+	category = multiplayer
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT
+	text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_LOBBY_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_EXIT_TO_MENU
 }
 
 jomini_multiplayer_player_left = {
@@ -55,8 +66,19 @@ jomini_multiplayer_player_kicked_self = {
 	
 	title_text = JOMINI_MULTIPLAYER_GUI_PLAYER_KICKED_SELF
 	text = JOMINI_MULTIPLAYER_GUI_PLAYER_KICKED_SELF_DESC
-	accept_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_ACCEPT
-	decline_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_DECLINE
+	accept_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_CONTINUE_SINGLE_PLAYER
+	decline_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_EXIT_TO_MENU
+}
+
+jomini_multiplayer_player_kicked_self_lobby = {
+	level = dialog
+	category = multiplayer
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = JOMINI_MULTIPLAYER_GUI_PLAYER_KICKED_SELF
+	text = JOMINI_MULTIPLAYER_GUI_PLAYER_KICKED_SELF_DESC
+	accept_text = JOMINI_MULTIPLAYER_GUI_HOST_LEFT_EXIT_TO_MENU
 }
 
 jomini_multiplayer_connection_failed = {

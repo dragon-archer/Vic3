@@ -392,6 +392,74 @@ types ToolsProperyTypes
 	type tools_property_filterable_property_list = vbox {
 		using = filterable_property_list_properties
 	}
+
+	type categorized_property_list = vbox {
+		layoutpolicy_horizontal = preferred
+		layoutpolicy_vertical = preferred
+
+		visible = "[Not(PropertyListCategory.IsEmpty)]"
+
+		widget = {
+			visible = "[Not(PropertyListCategory.IsRoot)]"
+			minimumsize = { 0 24 }
+			hbox = {
+				checkbutton = {
+					gfxtype = checkbuttongfx
+					layoutpolicy_horizontal = expanding
+
+					click_modifiers = {
+						ondefault = "[PropertyListCategory.ToggleExpanded]"
+						onalt = "[PropertyListCategory.ToggleTreeExpanded]"
+					}
+					checked = "[PropertyListCategory.IsExpanded]"
+
+					hbox = {
+						spacing = 3
+						layoutpolicy_horizontal = expanding
+				
+						icon = {
+							shaderfile = "gfx/FX/pdxgui_default.shader"
+							texture = "gfx/editor_gui/editor_tree_expand.dds"
+							framesize = { 16 16 }
+							frame = "[Select_int32(PropertyListCategory.IsExpanded, '(int32)2', '(int32)1')]"
+						}
+
+						editor_textbox = {
+							layoutpolicy_horizontal = growing
+							fontsize = 13
+							fontweight = bold
+							autoresize = yes
+							text = "[PropertyListCategory.GetName]"
+							elide = right
+							align = nobaseline
+						}
+
+						icon = {
+							layoutpolicy_horizontal = expanding
+							alpha = 0.3
+							texture = "gfx/editor_gui/separator.dds"
+						}
+					}
+				}
+			}
+		}
+
+		vbox = {
+			margin_left = "[PropertyListCategory.GetMargin]"
+			visible = "[PropertyListCategory.IsExpanded]"
+			spacing = 5
+			name = "properties_list"
+			layoutpolicy_horizontal = preferred
+		}
+
+		vbox = {
+			margin_left = "[PropertyListCategory.GetMargin]"
+			visible = "[PropertyListCategory.IsExpanded]"
+			spacing = 5
+			name = "categories_list"
+			layoutpolicy_horizontal = preferred
+		}
+	}
 }
 
 template filterable_property_list_properties

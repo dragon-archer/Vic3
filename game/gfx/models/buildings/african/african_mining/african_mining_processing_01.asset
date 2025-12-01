@@ -2,9 +2,7 @@ pdxmesh = {
 	name = "african_mining_processing_01_mesh"
 	file = "african_mining_processing_01.mesh"
 
-	scale = 2
-
-lod_percentages = {
+	lod_percentages = {
 		lod = { index = 1 percent = 16.0 }
 		lod = { index = 2 percent = 8.0 }
 		lod = { index = 3 percent = 1.0 }
@@ -44,6 +42,17 @@ lod_percentages = {
 	}
 
 	meshsettings = {
+		name = "billboard_generic_0Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
 		name = "african_mining_processing_01|LOD_1|mesh|meshShape"
 		index = 0
 		texture_diffuse = "mininghub_centerpiece_diffuse.dds"
@@ -77,6 +86,17 @@ lod_percentages = {
 	}
 
 	meshsettings = {
+		name = "billboard_generic_1Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
 		name = "african_mining_processing_01|LOD_2|mesh|meshShape"
 		index = 0
 		texture_diffuse = "mininghub_centerpiece_diffuse.dds"
@@ -106,6 +126,17 @@ lod_percentages = {
 		texture_specular = "factories_01_m_generic_manufactory_properties.dds"
 		shader = "standard"
 		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "billboard_generic_2Shape"
+		index = 0
+		texture_diffuse = "billboard_phong_diffuse.dds"
+		texture_normal = "billboard_phong_normal.dds"
+		texture_specular = "billboard_phong_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "SOL_VISUALS" "HUB_BUILDING" "HUB_COMPANY_SIGN" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 

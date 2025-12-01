@@ -2,93 +2,88 @@ Includes = {
 	"cw/mesh2/pdx_mesh2.fxh"
 }
 
-
-BufferTexture Mesh2BatchStateBuffer
+BufferTexture Mesh2MeshStatesBuffer
 {
-	Ref = PdxMesh2BatchStateBuffer
-	type = uint
-}
-BufferTexture Mesh2RenderStateBuffer
-{
-	Ref = PdxMesh2RenderStateBuffer
-	type = uint
-}
-BufferTexture Mesh2MeshInstanceStateBuffer
-{
-	Ref = PdxMesh2MeshInstanceStateBuffer
+	Ref = PdxMesh2MeshStatesBuffer
 	type = uint
 }
 
-RWBufferTexture Mesh2DrawcallRwBuffer
+BufferTexture Mesh2CompactedInstancesBuffer
 {
-	Ref = PdxMesh2DrawcallRwBuffer
-	type = uint
-}
-RWBufferTexture Mesh2InstanceIndicesRwBuffer
-{
-	Ref = PdxMesh2InstanceIndicesRwBuffer
-	type = uint
-}
-
-BufferTexture Mesh2CompactedInstanceIndicesBuffer
-{
-	Ref = PdxMesh2CompactedInstanceIndicesBuffer
+	Ref = PdxMesh2CompactedInstancesBuffer
 	type = uint
 }
 
 
 Code
 [[
-	#define PDX_MESH2_RENDER_STATE_DATA_STRIDE 8
-	uint GetBatchStateIndex( uint RenderStateIndex, uint SubPassIndex )
+	struct SLodResult
 	{
-		uint DataOffset = RenderStateIndex * PDX_MESH2_RENDER_STATE_DATA_STRIDE;
-		return Mesh2RenderStateBuffer[ DataOffset + SubPassIndex ];
+		static const uint NoLod = UINT32_MAX;
+
+		uint _BaseLod;
+		uint _NextLod;
+		float _BlendValue;
+	};
+	SLodResult CreateLodResult( uint BaseLod )
+	{
+		SLodResult Result;
+		Result._BaseLod = BaseLod;
+		Result._NextLod = SLodResult::NoLod;
+		Result._BlendValue = 0.0;
+		return Result;
 	}
 
 
-	struct SMeshInstanceStateData
+	struct SMeshStateData
 	{
 		float3 _BoundingSphereCenter;
 		float _BoundingSphereRadius;
-		uint _NumUnloddedMeshes;
 		uint _NumLods;
 	};
-	#define PDX_MESH2_MESH_INSTANCE_STATE_DATA_STRIDE ( 256 / 4 )
+	#define PDX_MESH2_MESH_STATE_DATA_STRIDE ( 128 / 4 ) // CWorldBucketGpu::UpdateMeshStateBuffer()
+	#define PDX_MESH2_MESH_STATE_DATA_DYNAMIC_DATA_OFFSET 5 // 5 to jump over bounding sphere and num lods, see CWorldBucketGpu::UpdateMeshStateBuffer()/SMeshStateGpuData for how this data is laid out
 	
-	SMeshInstanceStateData LoadMeshInstanceStateData( uint MeshInstanceStateIndex )
+	struct SMeshInstanceData
 	{
-		uint DataOffset = MeshInstanceStateIndex * PDX_MESH2_MESH_INSTANCE_STATE_DATA_STRIDE;
+		uint _TransformIndex;
+		uint _MeshStateIndex;
+	};
+	#define PDX_MESH2_MESH_INSTANCE_DATA_STRIDE 2
+	
+	
+	SMeshStateData LoadMeshStateData( uint MeshStateIndex )
+	{
+		uint DataOffset = MeshStateIndex * PDX_MESH2_MESH_STATE_DATA_STRIDE;
 		
-		SMeshInstanceStateData MeshInstanceStateData;
-		MeshInstanceStateData._BoundingSphereCenter = asfloat( Read3( Mesh2MeshInstanceStateBuffer, DataOffset ) );
+		SMeshStateData MeshStateData;
+		MeshStateData._BoundingSphereCenter = asfloat( Read3( Mesh2MeshStatesBuffer, DataOffset ) );
 		DataOffset += 3;
-		MeshInstanceStateData._BoundingSphereRadius = asfloat( Mesh2MeshInstanceStateBuffer[DataOffset++] );
-		MeshInstanceStateData._NumUnloddedMeshes = Mesh2MeshInstanceStateBuffer[DataOffset++];
-		MeshInstanceStateData._NumLods = Mesh2MeshInstanceStateBuffer[DataOffset++];
+		MeshStateData._BoundingSphereRadius = asfloat( Mesh2MeshStatesBuffer[DataOffset++] );
+		MeshStateData._NumLods = Mesh2MeshStatesBuffer[DataOffset++];
 		
-		return MeshInstanceStateData;
+		return MeshStateData;
 	}
 
-
-	struct SInstanceIndexAndMeshInstanceStateIndex
+	// See CWorldBucketGpu::UpdateMeshStateBuffer()/SMeshStateGpuData for how this data is laid out
+	uint LoadMeshStateLodIndex( uint MeshStateIndex, uint LodIndex )
 	{
-		uint _InstanceIndex;
-		uint _MeshInstanceStateIndex;
-	};
-	#define PDX_MESH2_COMPACTED_INSTANCE_INDICES_DATA_STRIDE 2
+		uint MeshStateLodIndexDataOffset = ( MeshStateIndex * PDX_MESH2_MESH_STATE_DATA_STRIDE ) + PDX_MESH2_MESH_STATE_DATA_DYNAMIC_DATA_OFFSET;
+		return Mesh2MeshStatesBuffer[ MeshStateLodIndexDataOffset + LodIndex ];
+	}
 	
-	SInstanceIndexAndMeshInstanceStateIndex LoadCompactedInstanceIndicesData( uint DataOffset )
+
+	SMeshInstanceData LoadMeshInstanceData( uint DataOffset )
 	{
-		SInstanceIndexAndMeshInstanceStateIndex Data;
-		Data._InstanceIndex = Mesh2CompactedInstanceIndicesBuffer[DataOffset++];
-		Data._MeshInstanceStateIndex = Mesh2CompactedInstanceIndicesBuffer[DataOffset++];
+		SMeshInstanceData Data;
+		Data._TransformIndex = Mesh2CompactedInstancesBuffer[DataOffset++];
+		Data._MeshStateIndex = Mesh2CompactedInstancesBuffer[DataOffset++];
 		return Data;
 	}
 	
-	SInstanceIndexAndMeshInstanceStateIndex LoadCompactedInstanceIndicesDataForIndex( uint Index )
+	SMeshInstanceData LoadMeshInstanceDataForIndex( uint Index )
 	{
-		return LoadCompactedInstanceIndicesData( Index * PDX_MESH2_COMPACTED_INSTANCE_INDICES_DATA_STRIDE );
+		return LoadMeshInstanceData( Index * PDX_MESH2_MESH_INSTANCE_DATA_STRIDE );
 	}
 	
 	
@@ -110,7 +105,7 @@ Code
 		
 		return true;
 	}
-	
+
 	float CalcLengthSquared( float3 Vec )
 	{
 		return dot( Vec, Vec );
@@ -141,21 +136,17 @@ Code
 
 		return true;
 	}
-	
-	void CalculateTransformedBoundingSphere( SInstanceData InstanceData, SMeshInstanceStateData MeshInstanceStateData, out float4 BoundingSphereOut )
+
+	void CalculateTransformedBoundingSphere( SMeshInstanceData MeshInstanceData, out float4 BoundingSphereOut )
 	{
-		BoundingSphereOut.xyz = mul( InstanceData._Transform, float4( MeshInstanceStateData._BoundingSphereCenter, 1.0 ) ).xyz;
+		SMeshStateData MeshStateData = LoadMeshStateData( MeshInstanceData._MeshStateIndex );
 	
-		float4x4 TransposedTransform = transpose( InstanceData._Transform );
+		float4x4 InstanceTransform = LoadInstanceTransform( MeshInstanceData._TransformIndex );
+		BoundingSphereOut.xyz = mul( InstanceTransform, float4( MeshStateData._BoundingSphereCenter, 1.0 ) ).xyz;
+	
+		float4x4 TransposedTransform = transpose( InstanceTransform );
 		float MaxScaling = sqrt( max( max( CalcLengthSquared( TransposedTransform[0].xyz ), CalcLengthSquared( TransposedTransform[1].xyz ) ), CalcLengthSquared( TransposedTransform[2].xyz ) ) );
-		BoundingSphereOut.w = MeshInstanceStateData._BoundingSphereRadius * MaxScaling;
-	}
-	
-	void CalculateTransformedBoundingSphere( SInstanceIndexAndMeshInstanceStateIndex InstanceIndexAndMeshInstanceStateIndex, out float4 BoundingSphereOut )
-	{
-		SInstanceData InstanceData = LoadInstanceDataForInstanceIndex( InstanceIndexAndMeshInstanceStateIndex._InstanceIndex );
-		SMeshInstanceStateData MeshInstanceStateData = LoadMeshInstanceStateData( InstanceIndexAndMeshInstanceStateIndex._MeshInstanceStateIndex );
-		CalculateTransformedBoundingSphere( InstanceData, MeshInstanceStateData, BoundingSphereOut );
+		BoundingSphereOut.w = MeshStateData._BoundingSphereRadius * MaxScaling;
 	}
 	
 	bool CalculateOcclusionSettings( float4 BoundingSphere, float ZNear, float4x4 ViewMatrix, float4x4 ProjectionMatrix, uint2 DepthPyramidSize, uint DepthPyramidMaxMipLevel, 
@@ -193,21 +184,46 @@ Code
 		float DistanceToObject = length( ObjectPos - CameraPos );
 		return ( LodScale * ObjectRadius ) / max( DistanceToObject, Epsilon );
 	}
-	
-	uint CalculateLod( SMeshInstanceStateData MeshInstanceStateData, SInstanceIndexAndMeshInstanceStateIndex InstanceIndexAndMeshInstanceStateIndex, float4 BoundingSphere, float LodScale )
-	{
-		uint ScreenPercentageDataOffset = ( InstanceIndexAndMeshInstanceStateIndex._MeshInstanceStateIndex * PDX_MESH2_MESH_INSTANCE_STATE_DATA_STRIDE ) + 6;
-		float InstanceScreenSize = CalculateScreenSize( CameraPosition, BoundingSphere.xyz, BoundingSphere.w, LodScale );
 
-		uint LodIndex = MeshInstanceStateData._NumLods - 1;
-		for ( ; LodIndex > 0; --LodIndex )
+	SLodResult CalculateLod( SMeshStateData MeshStateData, SMeshInstanceData MeshInstanceData, float4 BoundingSphere, float3 LodCameraPosition, float LodScale, float LodFadeRange, uint LodFadeEnabled )
+	{
+		// See CWorldBucketGpu::UpdateMeshStateBuffer()/SMeshStateGpuData for how this data is laid out
+		uint ScreenPercentageDataOffset = ( MeshInstanceData._MeshStateIndex * PDX_MESH2_MESH_STATE_DATA_STRIDE ) + PDX_MESH2_MESH_STATE_DATA_DYNAMIC_DATA_OFFSET + MeshStateData._NumLods;
+		float InstanceScreenSize = CalculateScreenSize( LodCameraPosition, BoundingSphere.xyz, BoundingSphere.w, LodScale );
+
+		uint PrevLodIndex = SLodResult::NoLod;
+		for ( int i =  MeshStateData._NumLods - 1; i >= 0; --i )
 		{
-			if ( InstanceScreenSize < asfloat( Mesh2MeshInstanceStateBuffer[ ScreenPercentageDataOffset + LodIndex ] ) )
+			const uint LodIndex = uint( i );
+			const float LodFadeStart = asfloat( Mesh2MeshStatesBuffer[ ScreenPercentageDataOffset + LodIndex ] );
+			// If we are not large enough for this lod we should use previous lod (or NoLod/Cull if this is the last lod)
+			if ( InstanceScreenSize < LodFadeStart )
 			{
-				break;
+				return CreateLodResult( PrevLodIndex );
 			}
+	
+			const float PrevLodFadeStart = ( LodIndex == 0 ) ? 1.0 : asfloat( Mesh2MeshStatesBuffer[ ScreenPercentageDataOffset + LodIndex - 1 ] );
+			// Multiplying with ( 1.0f + LodFadeRange ) instead of adding LodFadeRange causes quicker transitions when the percentage is low.
+			const float LodFadeEnd = min( LodFadeStart * ( 1.0f + LodFadeRange ), PrevLodFadeStart );
+	
+			// If we are larger than the fade end, we should try the next lod
+			if ( InstanceScreenSize > LodFadeEnd )
+			{
+				PrevLodIndex = LodIndex;
+				continue;
+			}
+	
+			// If we reach here it means we are in the fade range
+			SLodResult LodResult = CreateLodResult( LodIndex );
+			if ( LodFadeEnabled == 1 )
+			{
+				// Find the t value of `InstanceScreenSizeLodBiased` between `LodFadeStart` and `LodFadeEnd`
+				LodResult._BlendValue = 1.0 - saturate( ( LodFadeEnd - InstanceScreenSize ) / max( 0.0001, LodFadeEnd - LodFadeStart ) );
+				LodResult._NextLod = PrevLodIndex;
+			}
+			return LodResult;
 		}
-		
-		return LodIndex;
+	
+		return CreateLodResult( PrevLodIndex );
 	}
 ]]

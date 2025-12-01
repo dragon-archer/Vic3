@@ -547,6 +547,24 @@ variation = {
 
 
 variation = {
+	name = "bhagat_singh"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_plain_01" 		layout = "male_headgera_american_02" }
+		b = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_indian_bhagat_singh.dds" }	
+}
+
+
+variation = {
 	name = "male_headgear_european_carnaval_pierrot_01"
 	
  
@@ -1710,6 +1728,25 @@ variation = {
 }
 
 variation = {
+	name = "male_civilian_coat_pratap_singh"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_fine_03" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_fine_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01"		layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_civilian_coat_pratap_singh.dds" }	
+}
+
+
+
+variation = {
 	name = "male_coat_white"
 	
  
@@ -1951,7 +1988,7 @@ variation = {
 	pattern = { 
 		weight = 1
  
-		r = { textures = "generic_silk_standard_plain_01" 		layout = "male_outfits_christian_fabric_layout_01" }
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "male_outfits_christian_fabric_layout_01" }
 		g = { textures = "generic_silk_fine_plain_01" 			layout = "male_outfits_christian_fabric_layout_01" }
 		b = { textures = "generic_silk_standard_plain_01" 		layout = "plain_fabric_layout" }
 		a = { textures = "generic_silk_fine_plain_01"			layout = "plain_fabric_layout" }
@@ -2006,14 +2043,31 @@ variation = {
 	pattern = { 
 		weight = 1
  
-		r = { textures = "generic_wool_standard_fine_01" 			layout = "male_outfits_christian_fabric_layout_01" }
-		g = { textures = "generic_wool_standard_fine_01" 			layout = "male_outfits_christian_fabric_layout_01" }
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 			layout = "plain_fabric_layout" }
 		b = { textures = "generic_wool_standard_fine_01" 			layout = "plain_fabric_layout" }
 		a = { textures = "generic_wool_standard_fine_01"			layout = "plain_fabric_layout" }
 	}	
 
  
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_legwear_peasants_02.dds" }	
+}
+
+variation = {
+	name = "male_legwear_peasants_02_gandhi"
+	
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_cotton_standard_fine_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 			layout = "plain_fabric_layout" }
+		b = { textures = "generic_wool_standard_fine_01" 			layout = "plain_fabric_layout" }
+		a = { textures = "generic_wool_standard_fine_01"			layout = "plain_fabric_layout" }
+	}	
+
+ 
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_legwear_peasants_02_gandhi.dds" }	
 }
 
 variation = {

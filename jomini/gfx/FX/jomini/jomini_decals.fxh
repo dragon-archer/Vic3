@@ -69,9 +69,9 @@ VertexShader =
 		[[
 			PDX_MAIN
 			{
-				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.InstanceIndex24_Opacity8 );
+				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.Index24_Packed1_Opacity6_Sign1 );
 				VS_OUTPUT Out = ConvertOutput( PdxMeshVertexShader( PdxMeshConvertInput( Input ), 0/*bone offset not supported*/, WorldMatrix ) );
-				Out.InstanceIndex = Input.InstanceIndex24_Opacity8;
+				Out.InstanceIndex = Input.Index24_Packed1_Opacity6_Sign1;
 				
 			#ifdef PDX_TERRAIN_HEIGHT_MULTISAMPLE
 				Out.WorldSpacePos.y = GetHeightMultisample( Out.WorldSpacePos.xz, 0.25 );

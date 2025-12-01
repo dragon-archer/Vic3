@@ -14,6 +14,18 @@ vbox = {
         layoutpolicy_horizontal = expanding
         layoutpolicy_vertical = fixed
 		spacing = 4
+
+		toolbox_button = {
+			layoutpolicy_horizontal = fixed
+			enabled = "[Not(ScriptProfilerGui.IsCapturing)]"
+			raw_tooltip = "Reset capture data"
+            onclick = "[ScriptProfilerGui.ResetCaptureData]"
+			size = { 20 20 }
+			toolbox_icon = {
+				size = { 22 22 }
+				texture = "gfx/editor_gui/remove.dds"
+			}
+		}
 		
 		toolbox_button = {
 			layoutpolicy_horizontal = fixed
@@ -266,10 +278,26 @@ vbox = {
 								
 								editor_textbox = {
 									visible = "[ScriptProfilerFileLine.HasSamples]"
+									text = "[ScriptProfilerFileLine.GetFormattedBottleneckTiming]"
+									size = { 100% 100% }
+									align = right
+									margin_right = 4
+									raw_tooltip = "Bottleneck time (worst thread)"
+								}
+							}
+
+							widget = {
+								layoutpolicy_horizontal = fixed
+								layoutpolicy_vertical = expanding
+								size = { 96 0 }
+
+								editor_textbox = {
+									visible = "[ScriptProfilerFileLine.HasSamples]"
 									text = "[ScriptProfilerFileLine.GetFormattedTiming]"
 									size = { 100% 100% }
 									align = right
 									margin_right = 4
+									raw_tooltip = "Total time (sum all threads)"
 								}
 							}
 							
@@ -450,11 +478,26 @@ vbox = {
 											autoresize = yes
 											margin_right = 4
 										}
+
+										widget = {
+											layoutpolicy_horizontal = fixed
+											layoutpolicy_vertical = expanding
+											size = { 102 0 }
+
+											editor_textbox = {
+												visible = "[ScriptProfilerEntry.HasSamples]"
+												text = "[ScriptProfilerEntry.GetFormattedBottleneckTiming]"
+												size = { 100% 100% }
+												align = right
+												margin_right = 4
+												raw_tooltip = "Bottleneck time (worst thread)"
+											}
+										}
 										
 										widget = {
 											layoutpolicy_horizontal = fixed
 											layoutpolicy_vertical = expanding
-											size = { 72 0 }
+											size = { 102 0 }
 											
 											editor_textbox = {
 												visible = "[ScriptProfilerEntry.HasSamples]"
@@ -462,6 +505,7 @@ vbox = {
 												size = { 100% 100% }
 												align = right
 												margin_right = 4
+												raw_tooltip = "Total time (sum all threads)"
 											}
 										}
 									}
@@ -561,7 +605,30 @@ vbox = {
 							margin_right = 4
 						}
 					}
-					
+
+					hbox = {
+						size = { 0 24 }
+
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = fixed
+
+						visible = "[ScriptProfilerGui.GetCurrentEntry.HasSamples]"
+
+						editor_textbox = {
+							layoutpolicy_horizontal = expanding
+							raw_text = "Bottleneck time"
+							autoresize = yes
+							margin_right = 4
+							raw_tooltip = "Time on the slowest thread"
+						}
+						editor_textbox = {
+							layoutpolicy_horizontal = expanding
+							text = "[ScriptProfilerGui.GetCurrentEntry.GetFormattedBottleneckTiming]"
+							autoresize = yes
+							margin_right = 4
+						}
+					}
+
 					hbox = {
 						size = { 0 24 }
 
@@ -572,9 +639,10 @@ vbox = {
 				
 						editor_textbox = {
 							layoutpolicy_horizontal = expanding
-							raw_text = "Timing"
+							raw_text = "Total time           "
 							autoresize = yes
 							margin_right = 4
+							raw_tooltip = "Sum of time across all threads"
 						}
 						editor_textbox = {
 							layoutpolicy_horizontal = expanding
@@ -646,11 +714,26 @@ vbox = {
 											autoresize = yes
 											margin_right = 4
 										}
+
+										widget = {
+											layoutpolicy_horizontal = fixed
+											layoutpolicy_vertical = expanding
+											size = { 102 0 }
+
+											editor_textbox = {
+												visible = "[ScriptProfilerEntry.HasSamples]"
+												text = "[ScriptProfilerEntry.GetFormattedBottleneckTiming]"
+												size = { 100% 100% }
+												align = right
+												margin_right = 4
+												raw_tooltip = "Bottleneck time (worst thread)"
+											}
+										}
 										
 										widget = {
 											layoutpolicy_horizontal = fixed
 											layoutpolicy_vertical = expanding
-											size = { 72 0 }
+											size = { 102 0 }
 											
 											editor_textbox = {
 												visible = "[ScriptProfilerEntry.HasSamples]"
@@ -658,6 +741,7 @@ vbox = {
 												size = { 100% 100% }
 												align = right
 												margin_right = 4
+												raw_tooltip = "Total time (sum all threads)"
 											}
 										}
 									}

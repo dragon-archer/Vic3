@@ -45,7 +45,6 @@ entity = {
 
 entity = {
 	name = "fireworks"
-	#pdxmesh = "cube_test_mesh"
 
 	locator = { name = part1 position = { 0 0 0 } }
 
@@ -107,119 +106,53 @@ entity = {
 	}
 }
 
-
 entity = {
-	name = "revolution"
-	pdxmesh = "cube_test_mesh"
-
-	locator = { name = part1 position = { 0 0 0 } rotation = {20 0 -2} scale = 0.85}
-	locator = { name = part2 position = { 0 0 0 } rotation = {10 0 2} scale = 0.85} 
-	locator = { name = part3 position = { 0 0 0 } rotation = {5 0 -5} scale = 0.85} 
-	
+	name = "vfx_conscription_entity"
+	scale = 0.5
 
 	default_state = "idle"
-		
-	state = { 
-		state_time = 5
-		chance = 1
-		name = "idle" 
-		looping = yes
-		
-		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/revolution_ongoing" } }
-	
-		event = 
-		{
-			time = 0 node = "part1" 
-			particle = "infrastructure/vfx_revolution_begin" 
-			keep_particle = yes
-			trigger_once = yes
-		}
-		
-		event = { time = 0 node = "part1" particle = "infrastructure/vfx_revolution" trigger_once = yes}
-		event = { time = 0 node = "part1" entity = "revolution_flag_01_entity" life = 5}	
-	}
-	
-	state = { 
-		state_time = 5
-		chance = 1
-		name = "idle" 
-		looping = yes
-		
-		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/revolution_ongoing" } }
-	
-		event = 
-		{
-			time = 0 node = "part1" 
-			particle = "infrastructure/vfx_revolution_begin" 
-			keep_particle = yes
-			trigger_once = yes
-		}
-		
-		event = { time = 0 node = "part2" particle = "infrastructure/vfx_revolution" trigger_once = yes}
-		event = { time = 0 node = "part2" entity = "revolution_flag_01_entity" life = 5}	
-	}
-	
-	state = { 
-		state_time = 5
-		chance = 1
-		name = "idle" 
-		looping = yes
-		
-		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/revolution_ongoing" } }
-	
-		event = 
-		{
-			time = 0 node = "part1" 
-			particle = "infrastructure/vfx_revolution_begin" 
-			keep_particle = yes
-			trigger_once = yes
-		}
-		
-		event = { time = 0 node = "part3" particle = "infrastructure/vfx_revolution" trigger_once = yes}
-		event = { time = 0 node = "part3" entity = "revolution_flag_01_entity" life = 5}	
+	state = { name = "idle" state_time = 10 looping = no 
+		event = { time = 0 particle = "vfx_conscription" trigger_once = no keep_particle = yes}
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/conscription_center" } }
 	}
 }
 
-pdxmesh = {
-	name = "revolution_flag_mesh"
-	file = "rebellion_flag.mesh"
+entity = {
+	name = "vfx_mobilization_entity"
 
-	meshsettings = {
-		index = 0
-		texture_diffuse 	= "flag_color.dds"
-		texture_normal 		= "no_normal.dds"
-		texture_specular 	= "no_properties.dds"
-		shader = "standard_flag_basic"
-		shader_file = "gfx/FX/pdxmesh.shader"
+	default_state = "idle"	
+	state = { name = "idle" state_time = 10 looping = no 
+		event = { time = 0 particle = "infrastructure/mobilization_effect" trigger_once = no keep_particle = yes}
+		start_event = { keep_sound = yes trigger_once = yes }
 	}
-	scale = 2
 }
 
 entity = {
-	name = "revolution_flag_01_entity"
-	pdxmesh = "revolution_flag_mesh"
+	name = "residential_promotion_entity"
 	
-	scale = 1
+	locator = { name = "loc" position = { 0 2 0 } }
+	
+	default_state = "start"
+	state = { name = "start" state_time = 1.25 looping = no
+		event = { time = 0.0 node = "loc" particle = "particle_promote_start" keep_particle = no trigger_once = yes }
+		event = { time = 0.0 node = "loc" entity = "start_hammer_anvil" attachment_id = "attach_start_hammer_anvil"  entity_fade_speed = 4.0}
+		event = { time = 0.9 node = "loc" remove_attachment = "attach_start_hammer_anvil" entity_fade_speed = 4.0}
+		start_event = { sound = { soundeffect = "event:/SFX/VFX/building_promote" } }
+	}
+	cull_radius = 150
 }
 
 entity = {
-	name = "revolution_flag_02_entity"
-	pdxmesh = "revolution_flag_mesh"
+	name = "residential_demotion_entity"
 	
-	scale = 0.75
-}
+	locator = { name = "loc" position = { 0 2 0 } }
 
-
-entity = {
-	name = "revolution_flag_03_entity"
-	pdxmesh = "revolution_flag_mesh"
-	
-	scale = 0.5
-}
-
-entity = {
-	name = "revolution_flag_04_entity"
-	pdxmesh = "revolution_flag_mesh"
-	
-	scale = 0.25
+	default_state = "start"
+	state = { name = "start" state_time = 3 looping = no
+		event = { time = 0.0 node = "loc" particle = "particle_demote_start"  keep_particle = yes trigger_once = yes }
+		event = { time = 0.0 node = "loc" entity = "end_hammer_anvil" attachment_id = "attach_start_hammer_anvil" entity_fade_speed = 4.0}
+		event = { time = 1.0 node = "loc" remove_attachment = "attach_start_hammer_anvil" entity_fade_speed = 3.5}
+		start_event = { sound = { soundeffect = "event:/SFX/VFX/building_demote" } }
+	}
+	cull_radius = 150
 }

@@ -36,8 +36,13 @@ idle = {
 		                }
 	                }
 	            }
+				modifier = {
+	                add = 10000
+	                scope:character ?= {
+	                    has_template = GBR_isambard_kingdom_brunel
+	                }
+           		}        
 	        }
-
 			portrait_modifier = { animations_props = smoking_attachment }
 		}
 

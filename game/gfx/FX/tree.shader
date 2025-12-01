@@ -33,7 +33,7 @@ VertexStruct VS_OUTPUT_MAPOBJECT_SHADOW_GAME
 {
 	float4 Position					: PDX_POSITION;
 	float2 UV 						: TEXCOORD0;
-	uint InstanceIndex24_Opacity8 	: TEXCOORD1;
+	uint Index24_Packed1_Opacity6_Sign1 	: TEXCOORD1;
 	float3 WorldSpacePos			: TEXCOORD2;
 }
 
@@ -104,7 +104,7 @@ VertexShader =
 		[[
 			PDX_MAIN
 			{
-				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.InstanceIndex24_Opacity8 );
+				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.Index24_Packed1_Opacity6_Sign1 );
 
 				#if defined( TREE_BUSH )
 					Input.Position = WindTransformBush( Input.Position, WorldMatrix );
@@ -116,8 +116,8 @@ VertexShader =
 					Input.Position = WindTransform( Input.Position, WorldMatrix );
 				#endif
 
-				VS_OUTPUT_TREE Out = ConvertOutput( PdxMeshVertexShader( PdxMeshConvertInput( Input ), Input.InstanceIndex24_Opacity8, WorldMatrix ) );
-				FinalizeOutput( Out, Input.InstanceIndex24_Opacity8, WorldMatrix );
+				VS_OUTPUT_TREE Out = ConvertOutput( PdxMeshVertexShader( PdxMeshConvertInput( Input ), Input.Index24_Packed1_Opacity6_Sign1, WorldMatrix ) );
+				FinalizeOutput( Out, Input.Index24_Packed1_Opacity6_Sign1, WorldMatrix );
 				return Out;
 			}
 		]]
@@ -164,7 +164,7 @@ VertexShader =
 			{
 				VS_OUTPUT_MAPOBJECT_SHADOW_GAME Out;
 
-				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.InstanceIndex24_Opacity8 );
+				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.Index24_Packed1_Opacity6_Sign1 );
 
 				#if defined( TREE_BUSH )
 					Input.Position = WindTransformBush( Input.Position, WorldMatrix );
@@ -176,12 +176,12 @@ VertexShader =
 					Input.Position = WindTransform( Input.Position, WorldMatrix );
 				#endif
 
-				VS_OUTPUT_MAPOBJECT_SHADOW Data = ConvertOutputMapObjectShadow( PdxMeshVertexShaderShadow( PdxMeshConvertInput( Input ), 0/*Not supported*/, UnpackAndGetMapObjectWorldMatrix( Input.InstanceIndex24_Opacity8 ) ) );
+				VS_OUTPUT_MAPOBJECT_SHADOW Data = ConvertOutputMapObjectShadow( PdxMeshVertexShaderShadow( PdxMeshConvertInput( Input ), 0/*Not supported*/, UnpackAndGetMapObjectWorldMatrix( Input.Index24_Packed1_Opacity6_Sign1 ) ) );
 				Out.Position = Data.Position;
 				Out.UV = Data.UV;
 
 				Out.WorldSpacePos = mul( WorldMatrix, float4( Input.Position, 1.0f ) ).xyz;
-				Out.InstanceIndex24_Opacity8 = Input.InstanceIndex24_Opacity8;
+				Out.Index24_Packed1_Opacity6_Sign1 = Input.Index24_Packed1_Opacity6_Sign1;
 
 				return Out;
 			}
@@ -436,7 +436,7 @@ PixelShader =
 			#endif
 			PDX_MAIN
 			{
-				float Opacity = UnpackAndGetMapObjectOpacity( Input.InstanceIndex24_Opacity8 );
+				float Opacity = UnpackAndGetMapObjectOpacity( Input.Index24_Packed1_Opacity6_Sign1 );
 				PdxMeshApplyDitheredOpacity( Opacity, Input.Position.xy );
 
 				float Alpha = PdxTex2D( PDXMESH_AlphaBlendShadowMap, Input.UV ).a;

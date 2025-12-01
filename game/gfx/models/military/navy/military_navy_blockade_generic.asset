@@ -1,0 +1,127 @@
+pdxmesh = {
+	name = "military_navy_blockade_generic_mesh"
+	file = "military_navy_blockade_generic.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 30.0 }
+		lod = { index = 2 percent = 14.0 }
+		lod = { index = 3 percent = 3.0 }
+	}
+
+	animation = { id = "idle_animation" type = "military_navy_blockade_generic_idle.anim" }
+
+	meshsettings = {
+		name = "m_blockade_generic_0Shape"
+		index = 0
+		texture_diffuse = "military_navy_blockade_generic_01_diffuse.dds"
+		texture_normal = "military_navy_blockade_generic_01_normal.dds"
+		texture_specular = "military_navy_blockade_generic_01_properties.dds"
+		texture = { file = "military_navy_blockade_generic_01_tint.dds" index = 5 }
+		texture = { file = "military_navy_blockade_generic_01_colormask.dds" index = 6 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" }
+	}
+
+	meshsettings = {
+		name = "m_flag_0Shape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	meshsettings = {
+		name = "ship_ropes_0Shape"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "m_blockade_generic_1Shape"
+		index = 0
+		texture_diffuse = "military_navy_blockade_generic_01_diffuse.dds"
+		texture_normal = "military_navy_blockade_generic_01_normal.dds"
+		texture_specular = "military_navy_blockade_generic_01_properties.dds"
+		texture = { file = "military_navy_blockade_generic_01_tint.dds" index = 5 }
+		texture = { file = "military_navy_blockade_generic_01_colormask.dds" index = 6 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" }
+	}
+
+	meshsettings = {
+		name = "m_flag_1Shape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	meshsettings = {
+		name = "ship_ropes_1Shape"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "m_blockade_generic_2Shape"
+		index = 0
+		texture_diffuse = "military_navy_blockade_generic_01_diffuse.dds"
+		texture_normal = "military_navy_blockade_generic_01_normal.dds"
+		texture_specular = "military_navy_blockade_generic_01_properties.dds"
+		texture = { file = "military_navy_blockade_generic_01_tint.dds" index = 5 }
+		texture = { file = "military_navy_blockade_generic_01_colormask.dds" index = 6 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" }
+	}
+
+	meshsettings = {
+		name = "m_flag_2Shape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	meshsettings = {
+		name = "ship_ropes_2Shape"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "m_blockade_generic_3Shape"
+		index = 0
+		texture_diffuse = "military_navy_blockade_generic_01_diffuse.dds"
+		texture_normal = "military_navy_blockade_generic_01_normal.dds"
+		texture_specular = "military_navy_blockade_generic_01_properties.dds"
+		texture = { file = "military_navy_blockade_generic_01_tint.dds" index = 5 }
+		texture = { file = "military_navy_blockade_generic_01_colormask.dds" index = 6 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "TINT_COLOR" "UNIT_COLOR" "EMISSIVE_NIGHT" }
+	}
+}

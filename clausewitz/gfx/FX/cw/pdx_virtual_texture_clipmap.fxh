@@ -16,11 +16,11 @@ struct SVirtualTextureClipmapConstants
 	uint2 _PhysicalTextureSize;
 	float2 _InvPhysicalTextureSize;
 	uint2 _ClipmapPosition;
-	uint _ClipmapSize;
+	uint _IndirectionTextureSize;
 	uint _PageSize;
 	uint _PageBorder;
 	uint _PhysicalPageSize;
-	uint _IndirectionSize;
+	uint _FullIndirectionSize;
 	uint _NumMipLevels;
 	uint _VirtualTextureSize;
 	float _InvVirtualTextureSize;
@@ -39,9 +39,9 @@ Code
 	// Just try to get some identifier to differentiate different pages
 	uint Debug_CalculatePageIdentifier( float2 VirtualUV, uint Mip, SVirtualTextureClipmapConstants Constants )
 	{
-		uint MipSize = ( Constants._IndirectionSize >> Mip );
+		uint MipSize = ( Constants._FullIndirectionSize >> Mip );
 		uint2 xy = uint2( VirtualUV * float2( MipSize, MipSize ) );
-		return Constants._IndirectionSize * Constants._IndirectionSize * Mip + xy.y * MipSize.x + xy.x;
+		return Constants._FullIndirectionSize * Constants._FullIndirectionSize * Mip + xy.y * MipSize.x + xy.x;
 	}
 
 	float Debug_GetTexelBorder( float2 UV, float2 TextureSize, float BorderSize )
@@ -63,7 +63,7 @@ Code
 	}
 	float4 Debug_VirtualTexels( float2 VirtualUV, uint Mip, SVirtualTextureClipmapConstants Constants )
 	{
-		uint MipSize = ( Constants._IndirectionSize >> Mip );
+		uint MipSize = ( Constants._FullIndirectionSize >> Mip );
 		float TexelBorder = Debug_GetTexelBorder( VirtualUV, vec2( MipSize * Constants._PageSize ), 0.05 );
 		return Debug_VirtualPages( VirtualUV, Mip, Constants ) * float4( vec3( TexelBorder ), 1.0 );
 	}
@@ -81,7 +81,7 @@ Code
 	float2 CalculatePhysicalTexels( float2 UV, uint2 PhysicalPageIndex, uint PhysicalPageMipLevel, SVirtualTextureClipmapConstants Constants )
 	{
 		// Calculate the fractional coordinates (i.e. coordinates used to sample the physical page)
-		uint ActualMipSize = ( Constants._IndirectionSize >> PhysicalPageMipLevel );
+		uint ActualMipSize = ( Constants._FullIndirectionSize >> PhysicalPageMipLevel );
 		float2 MipTexelCoords = UV * ActualMipSize;
 		float2 FracCoords = frac( MipTexelCoords );
 	#ifdef DEBUG_FRAC_COORDS
@@ -101,11 +101,10 @@ Code
 	uint4 SampleIndirectionData( float2 VirtualUV, uint Mip, Texture2DArray<uint4> IndirectionTexture, SVirtualTextureClipmapConstants Constants )
 	{
 		// Calculate indirection coordinates and sample indirection texture
-		uint MipSize = ( Constants._IndirectionSize >> Mip );
-		uint2 IndirectionCoord = uint2( VirtualUV * MipSize ) % Constants._ClipmapSize;
+		uint MipSize = ( Constants._FullIndirectionSize >> Mip );
+		uint2 IndirectionCoord = uint2( VirtualUV * MipSize ) % Constants._IndirectionTextureSize;
 		// We do load since pointsampling does not match frac calculation on some hardware? (Intel)
-		uint4 IndirectionData = uint4( PdxTexture2DArrayLoad0( IndirectionTexture, IndirectionCoord, Mip ) );
-		return IndirectionData;
+		return uint4( PdxTexture2DArrayLoad0( IndirectionTexture, IndirectionCoord, Mip ) );
 	}
 
 	struct SVirtualTextureSampleParameters

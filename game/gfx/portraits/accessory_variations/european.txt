@@ -3317,6 +3317,40 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_trade_01.dds" }	
 }
 
+
+
+
+variation = {
+	name = "male_coat_ceo_02"
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "generic_velvet_standard_plain_01" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_silk_fine_plain_01" 		layout = "plain_fabric_layout" }
+		a = { textures = "european_silk_brocade_03"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coat_ceo_02.dds" }	
+}
+
+
+variation = {
+	name = "male_coat_ceo"
+ 
+	pattern = { 
+		weight = 1
+ 
+		r = { textures = "generic_wool_standard_plain_01" 		layout = "plain_fabric_layout" }
+		g = { textures = "circumpolar_fur_pattern_02" 		layout = "plain_fabric_layout" }
+		b = { textures = "generic_misc_plastic_shiny" 		layout = "plain_fabric_layout" }
+		a = { textures = "generic_silk_sash_plain_01"		layout = "plain_fabric_layout" }
+	}	
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_coat_ceo.dds" }	
+}
+
 variation = {
 	name = "male_pb_sashes_religious_01"
  

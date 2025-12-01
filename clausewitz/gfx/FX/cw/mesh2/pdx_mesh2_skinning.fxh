@@ -2,15 +2,15 @@ Includes = {
 	"cw/mesh2/pdx_mesh2_geometry.fxh"
 }
 
-BufferTexture SkinningTransformsBuffer0
+BufferTexture SkinningTransformsBuffer
 {
-	Ref = PdxMesh2SkinningTransformsBuffer0
+	Ref = PdxMesh2SkinningTransformsBuffer
 	type = uint
 }
 
-BufferTexture SkinningTransformsBuffer1
+BufferTexture PreviousSkinningTransformsBuffer
 {
-	Ref = PdxMesh2SkinningTransformsBuffer1
+	Ref = PdxMesh2PreviousSkinningTransformsBuffer
 	type = uint
 }
 
@@ -55,9 +55,9 @@ Code
 		#ifdef PDX_MESH2_SKIN_RGBA_UINT16_RGB_FLOAT
 		
 			uint DataBufferOffset = TypeData._SkinVertexDataOffset + VertexID * 5;
-			uint2 Data = Read2( GeometryDataBuffer, DataBufferOffset );
+			uint2 Data = Read2( Mesh2GeometryDataBuffer, DataBufferOffset );
 			DataBufferOffset += 2;
-			float3 BoneWeights = Read3Float( GeometryDataBuffer, DataBufferOffset );
+			float3 BoneWeights = Read3Float( Mesh2GeometryDataBuffer, DataBufferOffset );
 			
 			SkinningData._NumBones = 4;
 			SkinningData._BoneIndices.xy = UnpackUint16_x2( Data.x );
@@ -67,7 +67,7 @@ Code
 		#else
 
 			uint DataBufferOffset = TypeData._SkinVertexDataOffset + VertexID;
-			uint Data = GeometryDataBuffer[DataBufferOffset];
+			uint Data = Mesh2GeometryDataBuffer[DataBufferOffset];
 			SkinningData = UnpackSkinningData( TypeData, Data );
 			
 		#endif
@@ -88,7 +88,7 @@ Code
 			
 			#if defined( PDX_MESH2_SKIN_EXTERNAL_8_UINT_24_UNORM ) || defined ( PDX_MESH2_SKIN_EXTERNAL_16_UINT_16_UNORM )
 				uint DataBufferOffset = SkinningData._BoneDataOffset + Index;
-				uint CompressedBoneInfluence = GeometryDataBuffer[DataBufferOffset];
+				uint CompressedBoneInfluence = Mesh2GeometryDataBuffer[DataBufferOffset];
 				#ifdef PDX_MESH2_SKIN_EXTERNAL_8_UINT_24_UNORM
 					UnpackUint8_Unorm24( CompressedBoneInfluence, BoneIndexOut, BoneWeightOut );
 				#endif
@@ -97,8 +97,8 @@ Code
 				#endif
 			#else
 				uint DataBufferOffset = SkinningData._BoneDataOffset + Index * 2; // Uncompressed each bone influence stores 1 uint32 and one float, see SMesh2BoneInfluence
-				BoneIndexOut = GeometryDataBuffer[DataBufferOffset];
-				BoneWeightOut = asfloat( GeometryDataBuffer[DataBufferOffset + 1] );
+				BoneIndexOut = Mesh2GeometryDataBuffer[DataBufferOffset];
+				BoneWeightOut = asfloat( Mesh2GeometryDataBuffer[DataBufferOffset + 1] );
 			#endif
 	
 		#endif
@@ -108,22 +108,18 @@ Code
 	#endif
 	}
 	
-	void ProcessSkinning( uint2 SkinningTransformsOffset, 
+	void ProcessSkinning( uint SkinningTransformsOffset, 
 						  uint BoneIndex, float BoneWeight, 
 						  float3 Position, float3 Normal, float3 Tangent, 
-						  inout float3 SkinnedPosition, inout float3 SkinnedNormal, inout float3 SkinnedTangent )
+						  inout float3 SkinnedPosition, inout float3 PreviousSkinnedPosition, inout float3 SkinnedNormal, inout float3 SkinnedTangent )
 	{
-		float4x4 VertexMatrix;
-		if ( SkinningTransformsOffset.x == 0 )
-		{
-			VertexMatrix = ReadMatrix34( SkinningTransformsBuffer0, ( SkinningTransformsOffset.y + BoneIndex ) * PDX_MESH2_MATRIX34_DATA_STRIDE );
-		}
-		else
-		{
-			VertexMatrix = ReadMatrix34( SkinningTransformsBuffer1, ( SkinningTransformsOffset.y + BoneIndex ) * PDX_MESH2_MATRIX34_DATA_STRIDE );
-		}
-
+		float4x4 VertexMatrix = ReadMatrix34( SkinningTransformsBuffer, ( SkinningTransformsOffset + BoneIndex ) * PDX_MESH2_MATRIX34_DATA_STRIDE );
 		SkinnedPosition += mul( VertexMatrix, float4( Position, 1.0 ) ).xyz * BoneWeight;
+		
+	#ifdef PDX_MESH2_MOTION_VECTORS
+		float4x4 PreviousVertexMatrix = ReadMatrix34( PreviousSkinningTransformsBuffer, ( SkinningTransformsOffset + BoneIndex ) * PDX_MESH2_MATRIX34_DATA_STRIDE );
+		PreviousSkinnedPosition += mul( PreviousVertexMatrix, float4( Position, 1.0 ) ).xyz * BoneWeight;
+	#endif
 		
 		float3 XAxis = float3( GetMatrixData( VertexMatrix, 0, 0 ), GetMatrixData( VertexMatrix, 0, 1 ), GetMatrixData( VertexMatrix, 0, 2 ) );
 		float3 YAxis = float3( GetMatrixData( VertexMatrix, 1, 0 ), GetMatrixData( VertexMatrix, 1, 1 ), GetMatrixData( VertexMatrix, 1, 2 ) );

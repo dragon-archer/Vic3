@@ -69,4 +69,87 @@ node_editor_settings = {
             "update_flow_resource"    = @pdx_red
         }
     }
+
+    node_types_colors = {
+            #-----Entity Designer Nodes-----                    
+            #"pdxns:ecs:assemble_entity"                            = @pdx_gray
+            #"pdxns:ecs:AdditivePoseNode"                           = @pdx_gray
+            #"pdxns:ecs:add_update_graph"                           = @pdx_gray
+            #"pdxns:ecs:animation_state_id"                         = @pdx_gray
+            #"pdxns:ecs:animation_state_machine"                    = @pdx_gray
+            #"pdxns:ecs:CAudioEventConfigurationNode"               = @pdx_gray
+            #"pdxns:ecs:AudioEventNode"                             = @pdx_gray
+            #"pdxns:ecs:CAudioGameObjectSwitch"                     = @pdx_gray
+            #"pdxns:ecs:CAudioParameterNode"                        = @pdx_gray
+            #"pdxns:ecs:bind_schematic_parameter"                   = @pdx_gray
+            #"pdxns:ecs:BlendShape"                                 = @pdx_gray
+            #"pdxns:ecs:create_bounds_component"                    = @pdx_gray
+            #"pdxns:ecs:camera_component"                           = @pdx_gray
+            #"pdxns:ecs:child_assemble_entity"                      = @pdx_gray
+            #"pdxns:ecs:child_attachment"                           = @pdx_gray
+            #"pdxns:ecs:create_aggregate_component"                 = @pdx_gray
+            #"pdxns:ecs:CreateAudioEmitterComponentNode"            = @pdx_gray
+            #"pdxns:ecs:create_audio_listener_component"            = @pdx_gray
+            #"pdxns:ecs:create_opacity_component"                   = @pdx_gray
+            #"pdxns:ecs:create_custom_textures_component"          = @pdx_gray
+            #"pdxns:ecs:create_density_map_component"               = @pdx_gray
+            #"pdxns:ecs:create_additive_pose_component"             = @pdx_gray
+            #"pdxns:ecs:create_ik_component"                        = @pdx_gray
+            #"pdxns:ecs:create_audio_component"                     = @pdx_gray
+            #"pdxns:ecs:create_component"                           = @pdx_gray
+            #"pdxns:ecs:create_entity_debug_component"              = @pdx_gray
+            #"pdxns:ecs:create_particle_component"                  = @pdx_gray
+            #"pdxns:ecs:create_skeleton_component"                  = @pdx_gray
+            #"pdxns:ecs:create_local_transform"                     = @pdx_gray
+            #"pdxns:ecs:create_local_transform_2"                   = @pdx_gray
+            #"pdxns:ecs:create_tag"                                 = @pdx_gray
+            #"pdxns:ecs:Effect"                                     = @pdx_gray
+            #"pdxns:ecs:GetInvocationCount"                         = @pdx_gray
+            #"pdxns:ecs:GetInvocationIndex"                         = @pdx_gray
+            #"pdxns:ecs:get_schematic_parameter"                    = @pdx_gray
+            #"pdxns:ecs:IKHandle"                                   = @pdx_gray
+            #"pdxns:ecs:image_lookup"                               = @pdx_gray
+            #"pdxns:ecs:create_shadowmap_component"                 = @pdx_gray
+            #"pdxns:ecs:create_shadowmap_volume_component"          = @pdx_gray
+            #"pdxns:ecs:light_component"                            = @pdx_gray
+            #"pdxns:ecs:LookupMeshType"                             = @pdx_gray
+            #"pdxns:ecs:Material"                                   = @pdx_gray
+            #"pdxns:ecs:MaterialOverride"                           = @pdx_gray
+            #"pdxns:ecs:mesh2"                                      = @pdx_gray
+            #"pdxns:ecs:mesh2_material"                             = @pdx_gray
+            #"pdxns:ecs:MeshLod"                                    = @pdx_gray
+            #"pdxns:ecs:MeshType"                                   = @pdx_gray
+            #"pdxns:ecs:ParticleEmitterLookup"                      = @pdx_gray
+            #"pdxns:ecs:SelectComponent"                            = @pdx_gray
+            #"pdxns:ecs:shader_data"                                = @pdx_gray
+            #"pdxns:ecs:Skeleton"                                   = @pdx_gray
+            #"pdxns:ecs:state_machine_variable"                     = @pdx_gray
+            #"pdxns:ecs:SubMeshType"                                = @pdx_gray
+            #"pdxns:ecs:TextureAndIndex"                            = @pdx_gray
+            #"pdxns:ecs:TextureDecalCollectionNode"                 = @pdx_gray
+            #"pdxns:ecs:texture_decal_image"                        = @pdx_gray
+            #"pdxns:ecs:texture_decal"                              = @pdx_gray
+
+            #-----Logic-----
+            #"pdxns:common:curvesampler"                            = @pdx_gray
+            #"pdxns:common:infobox"                                 = @pdx_gray
+            #"pdxns:math:And"                                       = @pdx_gray
+            #"pdxns:math:Not"                                       = @pdx_gray
+            #"pdxns:math:Or"                                        = @pdx_gray
+            #"pdxns:logic:DefineProxy"                              = @pdx_gray
+            #"pdxns:logic:UseProxy"                                 = @pdx_gray
+            #"pdxns:logic:reroute"                                  = @pdx_gray
+            #"pdxns:logic:SelectF"                                  = @pdx_gray
+            #"pdxns:logic:SelectB"                                  = @pdx_gray
+            #"pdxns:logic:SelectI"                                  = @pdx_gray
+            #"pdxns:logic:SelectV3F"                                = @pdx_gray
+            #"pdxns:logic:SelectV4F"                                = @pdx_gray
+            #"pdxns:logic:SelectString"                             = @pdx_gray
+            #"pdxns:logic:SelectFromIntB"                           = @pdx_gray
+            #"pdxns:logic:SelectFromIntF"                           = @pdx_gray
+            #"pdxns:logic:SelectFromIntI"                           = @pdx_gray
+            #"pdxns:logic:SelectFromIntString"                      = @pdx_gray
+            #"pdxns:logic:SelectFromIntV3F"                         = @pdx_gray
+            #"pdxns:logic:SelectFromIntV4F"                         = @pdx_gray
+    }
 }

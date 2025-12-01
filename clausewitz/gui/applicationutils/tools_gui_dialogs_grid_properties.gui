@@ -21,6 +21,16 @@ types ToolsProperyTypes
 
 		spacing = 16
 		visible = "[ToolProperty.IsVisible]"
+
+		checkbutton = {
+			gfxtype = checkbuttongfx
+			shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
+			texture = "gfx/editor_gui/editor_checkbox.dds"
+			framesize = { 16 16 }
+			visible = "[ToolProperty.HasCheckbox]"
+			checked = "[ToolProperty.IsSelected]"
+			onclick = "[ToolProperty.SetSelected(Not(ToolProperty.IsSelected))]"
+		}
 		
 		editor_textbox = {
 			using = property_grid_label_column_size
@@ -39,47 +49,29 @@ types ToolsProperyTypes
 			{
 			}
 
-			editor_button = {
+			widget = {
+				size = { 20 20 }	
 				visible = "[ToolProperty.HasDefaultValue]"
-				enabled = "[ToolProperty.CanSetValueToDefault]"
-				onclick = "[ToolProperty.SetValueToDefault]"
-				size = { 24 24 }
-				icon = {
+					
+				editor_button = {
+					visible = "[Not(ToolProperty.IsValueDefault)]"
+					onclick = "[ToolProperty.SetValueToDefault]"
 					size = { 100% 100% }
-					texture = "gfx/tools/reload_property.png"
-				}
-				raw_tooltip = "Set to default."
-				tooltipwidget = { using = dockable_tooltip }
-			}
-
-			datamodel = "[ToolProperty.AccessActions]"
-			item = {
-				widget = {
-					size = { 24 24 }
-					visible = "[ToolPropertyAction.IsVisible]"
-					editor_button = {
-						size = { 100% 100% }
-						visible = "[ToolPropertyAction.IsButton]"
-						enabled = "[ToolPropertyAction.IsAvailable]"
-						onclick = "[ToolPropertyAction.Execute]"
-						icon = {
-							size = { 100% 100% }
-							texture = "[ToolPropertyAction.GetIcon]"
-							alpha = "[Select_float(ToolPropertyAction.IsAvailable, '(float)1.0', '(float)0.5')]"
-						}
-						tooltip = "[ToolPropertyAction.GetTooltip]"
-						tooltipwidget = { using = dockable_tooltip }
-					}
 					icon = {
 						size = { 100% 100% }
-						visible = "[Not(ToolPropertyAction.IsButton)]"
-						enabled = "[ToolPropertyAction.IsAvailable]"
-						texture = "[ToolPropertyAction.GetIcon]"
-						tooltip = "[ToolPropertyAction.GetTooltip]"
-						tooltipwidget = { using = dockable_tooltip }
+						texture = "gfx/tools/reset_property_icon.dds"
 					}
+					raw_tooltip = "Set to default."
+					tooltipwidget = { using = dockable_tooltip }
 				}
 			}
+			
+			using = ToolsPropertyActions
+		}
+		
+		# Extra spacing to not overlap with the possible scrollbar
+		widget = {
+			size = { 1 0 }
 		}
 	}
 	
@@ -418,6 +410,47 @@ types ToolsProperyTypes
 		}
 	}
 
+	type dialog_grid_property_texture_string_selector = dialog_grid_property {
+		blockoverride "content"
+		{
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 8
+
+				editor_textinput = {
+					layoutpolicy_horizontal = expanding
+					size = { 0 24 }
+					raw_text = "[ToolsPropertyTextureStringValue.GetTexturePath]"
+					tooltip = "[ToolsPropertyTextureStringValue.GetTexturePath]"
+					tooltipwidget = { using = dockable_tooltip }
+					oneditingfinished_with_changes ="[ToolsPropertyTextureStringValue.SetValueFromText]"
+					align = left
+				}
+
+				tooloptions_button = {
+					raw_tooltip = "Click to select texture"
+					onclick = "[ToolsPropertyTextureStringValue.SelectTexture]"
+					size = { 24 24 }
+					toolbox_icon = {
+						texture = "[ToolsPropertyTextureStringValue.GetTexture]"
+						size = { 24 24 }
+					}
+					tooltip_widgetanchor = bottom|hcenter
+					tooltipwidget = {
+						using = dockable_tooltip
+						blockoverride "above_tooltip" {
+							editor_icon = {
+								size = { 256 256 }
+								texture = "[ToolsPropertyTextureStringValue.GetTexture]"
+								parentanchor = vcenter|hcenter
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	type dialog_grid_property_texture_selector = dialog_grid_property {
 		blockoverride "content"
 		{
@@ -500,7 +533,27 @@ types ToolsProperyTypes
 			}
 		}
 	}
+
+	type prev_button = button {
+		using = editor_scrollbar_button
+		size = { 16 20 }
+		upframe = 9
+		downframe = 10
+		overframe = 11
+		disableframe = 12
+		tooltipwidget = { using = dockable_tooltip }
+	}
 	
+	type next_button = button {
+		using = editor_scrollbar_button
+		size = { 16 20 }
+		upframe = 13
+		downframe = 14
+		overframe = 15
+		disableframe = 16
+		tooltipwidget = { using = dockable_tooltip }
+	}
+
 	type dialog_grid_property_searchlist = dialog_grid_property {
 		blockoverride "content"
 		{
@@ -517,13 +570,33 @@ types ToolsProperyTypes
 	type dialog_grid_property_undoable_searchlist = dialog_grid_property {
 		blockoverride "content"
 		{
-			editor_toolbar_button = {
-				using = property_grid_value_column_size
+			hbox = {
 				layoutpolicy_horizontal = expanding
-				text = "[ToolPropertyUndoableSearchList.GetSelectedText]"
-				onclick = "[ToolPropertyUndoableSearchList.OpenSearchList]"
-				elide = middle
-				tooltip = "[ToolProperty.GetTooltip]"
+				layoutpolicy_vertical = preferred
+				spacing = 1
+
+				prev_button = {
+					visible = "[ToolPropertyUndoableSearchList.AreSelectButtonsVisible]"
+					enabled = "[ToolPropertyUndoableSearchList.HasPrev]"
+					onclick = "[ToolPropertyUndoableSearchList.SelectPrev]"
+					tooltip = "[ToolPropertyUndoableSearchList.PrevEntryTooltip]"
+				}
+
+				editor_toolbar_button = {
+					using = property_grid_value_column_size
+					layoutpolicy_horizontal = expanding
+					text = "[ToolPropertyUndoableSearchList.GetSelectedText]"
+					onclick = "[ToolPropertyUndoableSearchList.OpenSearchList]"
+					elide = middle
+					tooltip = "[ToolProperty.GetTooltip]"
+				}
+
+				next_button = {
+					visible = "[ToolPropertyUndoableSearchList.AreSelectButtonsVisible]"
+					enabled = "[ToolPropertyUndoableSearchList.HasNext]"
+					onclick = "[ToolPropertyUndoableSearchList.SelectNext]"
+					tooltip = "[ToolPropertyUndoableSearchList.NextEntryTooltip]"
+				}
 			}
 		}
 	}

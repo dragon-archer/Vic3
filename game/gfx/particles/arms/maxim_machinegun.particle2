@@ -362,7 +362,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=95
+					linked_node=70
 					linked_pin="value"
 				}
 			}
@@ -632,24 +632,12 @@ graph={
 			inputs={
 				link={
 					pin_id="size"
-					linked_node=70
+					linked_node=71
 					linked_pin="value"
 				}
 				link={
 					pin_id="condition"
 					linked_node=27
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:SetWorldSpace={
-			id=32
-			node={
-			}
-			inputs={
-				link={
-					pin_id="condition"
-					linked_node=36
 					linked_pin="value"
 				}
 			}
@@ -674,14 +662,6 @@ graph={
 			id=35
 			node={
 				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=36
-			node={
-				value=yes
 			}
 			inputs={
 			}
@@ -961,6 +941,14 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
+			id=70
+			node={
+				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
 			id=68
 			node={
 				value=5
@@ -976,16 +964,8 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Int32={
-			id=95
-			node={
-				value=0
-			}
-			inputs={
-			}
-		}
 		pdxns:values:Vector3f={
-			id=70
+			id=71
 			node={
 			}
 			inputs={

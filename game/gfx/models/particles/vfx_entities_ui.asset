@@ -1,3 +1,22 @@
+entity = {
+	name = "vfx_entity_revolution_ui_alert"
+	scale = 1
+	default_state = "idle"
+
+	state = 
+	{ 
+		name = "idle" 
+		looping = no 
+		start_event = 
+		{ 
+			time = 0 
+			particle = "revolution/particle_revolution_ui_alert" 
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
 entity = 
 {
 	name = "vfx_entity_ui_mobilize"
@@ -739,8 +758,51 @@ entity =
 	}
 }
 
+entity = 
+{
+	name = "vfx_entity_ui_bg_executive_dust"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "ui/bg/executive_dust"			
+			trigger_once = yes 
+			keep_particle = no
+			skip_forward = 3 
+		}
+	}
+}
 
-
+entity = 
+{
+	name = "vfx_entity_ui_bg_executive_godrays"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "ui/bg/executive_godrays"			
+			trigger_once = yes 
+			keep_particle = no
+			skip_forward = 3 
+		}
+	}
+}
 
 entity = 
 {

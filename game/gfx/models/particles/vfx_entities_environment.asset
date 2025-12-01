@@ -1,0 +1,341 @@
+entity = {
+	name = "env_geyser_small"
+
+	default_state = "idle"
+	scale = 0.075
+	state = { name = "idle" state_time = 14.9 looping = no chance = 1	
+		event = { time = 0 particle = "geyser" trigger_once = no keep_particle = no}
+		next_state = "idle"
+	}
+	
+	state = 
+	{ name = "idle" state_time = 15.2 looping = no chance = 1		
+		event = { time = 0}
+		next_state = "idle"
+	}
+}
+
+entity = {
+	name = "env_geyser_medium"
+
+	default_state = "idle"
+	scale = 0.125
+	state = { name = "idle" state_time = 12 looping = no chance = 1	
+		event = { time = 0 particle = "geyser" trigger_once = no keep_particle = no}
+		start_event = { sound  = { soundeffect = "event:/SFX/VFX/geyser" } keep_sound = yes }
+		next_state = "idle"
+	}
+	
+	state = { name = "idle" state_time = 11.8 looping = no chance = 1	
+		event = { time = 0 }
+		next_state = "idle"
+	}
+}
+
+entity = 
+{
+	name = "env_geyser_large"
+
+	default_state = "idle"
+	scale = 0.15
+	state = { name = "idle" state_time = 15 looping = no chance = 1
+		event =  { time = 0 particle = "geyser" trigger_once = no keep_particle = no }
+		start_event = { sound  = { soundeffect = "event:/SFX/VFX/geyser" } keep_sound = yes }
+		next_state = "idle"
+	}
+	
+	state =
+	{ name = "idle" state_time = 13.5 looping = no chance = 1
+		event = { time = 0}
+		next_state = "idle"
+	}
+}
+
+entity = {
+	name = "env_sandstorm"
+
+	cull_radius = 40
+
+	default_state = "start"
+	state = { name = "start" state_time = 5	looping = yes
+		event = { time = 0	particle = "sandstorm"	trigger_once = yes	keep_particle = yes}
+		start_event = { sound  = { soundeffect = "event:/SFX/VFX/sandstorm" } keep_sound = yes }
+	}
+}
+
+entity = {
+	name = "env_sandstorm_small"
+	
+	default_state = "start"
+	state = {	name = "start" state_time = 5	looping = yes
+		event =	{ time = 0 particle = "sandstorm_small" trigger_once = yes keep_particle = yes}
+		start_event = { sound  = { soundeffect = "event:/SFX/VFX/sandstorm" } keep_sound = yes }
+	}
+}
+
+entity = {
+	name = "env_volcano_idle"
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5 looping = yes 
+		event = { time = 0 particle = "volcano_idle" trigger_once = yes keep_particle = yes}
+		start_event = { sound  = { soundeffect = "event:/SFX/VFX/volcano" } keep_sound = yes }
+	}
+}
+
+entity = {
+	name = "env_snow_01"
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "snow_01" trigger_once = yes keep_particle = yes}
+		event = { sound = { soundeffect = "event:/SFX/VFX/snow" } }
+	}
+}
+
+entity = {
+	name = "env_snow_02"
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "snow_02" trigger_once = yes keep_particle = yes}
+		event = { sound = { soundeffect = "event:/SFX/VFX/snow" } }
+	}
+}
+
+entity = {
+	name = "env_snow_fall"
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "snow_fall" trigger_once = yes keep_particle = yes}
+		event = { sound = { soundeffect = "event:/SFX/VFX/snow" } }
+	}
+}
+
+entity = 
+{
+	name = "env_snow_fall_small"
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "snow_fall_small" trigger_once = yes keep_particle = yes}
+		event = { sound = { soundeffect = "event:/SFX/VFX/snow" } }
+	}
+}
+
+entity = {
+	name = "env_mist_blue"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "mist_natural" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_mist_sun"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0  particle = "mist_sun" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_mist_toxic"
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "mist_toxic" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_mist"
+
+	cull_radius = 20	
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "mist" trigger_once = yes}
+	}
+}
+
+
+
+entity = {
+	name = "coast_foam_2"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "coast_foam_wave" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_leaves"
+	pdxmesh = "cube_test_mesh"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "leaves" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_god_rays"
+
+	cull_radius = 20
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "god_rays" trigger_once = yes}	
+	}
+}
+	
+entity = {
+	name = "env_waterfall_01"
+	scale = 0.25
+	
+	locator = { name = "part1" rotation = { 0 5 0 }}
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "waterfall" trigger_once = yes}
+		start_event = { sound  = { soundeffect = "event:/SFX/VFX/waterfall" } keep_sound = yes }
+	}
+}
+
+entity = {
+	name = "env_waterfall_02"
+	scale = 1
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "waterfall_bottom" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_waterfall_03"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "waterfall_top" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_swamp_fog"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "environment/swamp_fog" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_jungle_mist_s"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "environment/jungle_mist" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_jungle_mist_l"
+
+	cull_radius = 10
+
+	default_state = "idle"	
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "environment/jungle_mist_large" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_rolling_fog_mountain"
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "environment/rolling_fog_mountain" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_sand_dunes"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "environment/sand_dunes" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_sand_dunes_l"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "environment/sand_dunes_l" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_birds_effect"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "environment/birds" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_ocean_waves"
+	
+	locator = { name = part1 rotation = { 50 0 0 } position = { 0 5 0 }}
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "environment/ocean_foam" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_storm_entity"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "environment/storm" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_whirlwind_entity"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "environment/whirlwind" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "env_tropical_rain_entity"
+
+	default_state = "start"	
+	state = { name = "start" state_time = 6
+		time_offset = { 0.0 5.0 } 
+		event = { time = 0 particle = "environment/tropical_rain" trigger_once = yes}
+	}                                                                          	
+}
+
+entity = {
+	name = "env_tropical_rain_dense_entity"
+	
+	default_state = "start"	
+	state = { name = "start" state_time = 7
+		time_offset = { 0.0 6.0 } 
+		event = { time = 0 particle = "environment/tropical_rain_dense" trigger_once = yes}
+	}
+}

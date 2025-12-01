@@ -5,6 +5,37 @@ template dialog_property_size {
 	size = { @dialog_property_width 24 }
 }
 
+template ToolsPropertyActions {
+	datamodel = "[ToolProperty.AccessActions]"
+	item = {
+		widget = {
+			size = { 24 24 }
+			visible = "[ToolPropertyAction.IsVisible]"
+			editor_button = {
+				size = { 100% 100% }
+				visible = "[ToolPropertyAction.IsButton]"
+				enabled = "[ToolPropertyAction.IsAvailable]"
+				onclick = "[ToolPropertyAction.Execute]"
+				icon = {
+					size = { 100% 100% }
+					texture = "[ToolPropertyAction.GetIcon]"
+					alpha = "[Select_float(ToolPropertyAction.IsAvailable, '(float)1.0', '(float)0.5')]"
+				}
+				tooltip = "[ToolPropertyAction.GetTooltip]"
+				tooltipwidget = { using = dockable_tooltip }
+			}
+			icon = {
+				size = { 100% 100% }
+				visible = "[Not(ToolPropertyAction.IsButton)]"
+				enabled = "[ToolPropertyAction.IsAvailable]"
+				texture = "[ToolPropertyAction.GetIcon]"
+				tooltip = "[ToolPropertyAction.GetTooltip]"
+				tooltipwidget = { using = dockable_tooltip }
+			}
+		}
+	}
+}
+
 types ToolsProperyTypes
 {
 	type dialog_property = hbox {
@@ -34,6 +65,8 @@ types ToolsProperyTypes
 		block "content"
 		{
 		}
+
+		using = ToolsPropertyActions
 	}
 
 	type vertical_dialog_property = vbox {
@@ -63,6 +96,8 @@ types ToolsProperyTypes
 		block "content"
 		{
 		}
+		
+		using = ToolsPropertyActions
 	}
 	
 	type dialog_property_bool = dialog_property {
@@ -415,6 +450,43 @@ types ToolsProperyTypes
 					size = { 92 24 }
 					text = "[ToolPropertyVec2i.GetY]"
 					oneditingfinished_with_changes = "[ToolPropertyVec2i.SetY]"
+				}
+			}
+		}
+	}
+
+	type dialog_property_texture_string_selector = dialog_property {
+		blockoverride "content"
+		{
+			flowcontainer = {
+				spacing = 8
+
+				editor_textinput = {
+					size = { 230 24 }
+					raw_text = "[ToolsPropertyTextureStringValue.GetTexturePath]"
+					oneditingfinished_with_changes ="[ToolsPropertyTextureStringValue.SetValueFromText]"
+					align = right
+				}
+
+				tooloptions_button = {
+					raw_tooltip = "Click to select texture"
+					onclick = "[ToolsPropertyTextureStringValue.SelectTexture]"
+					size = { 24 24 }
+					toolbox_icon = {
+						texture = "[ToolsPropertyTextureStringValue.GetTexture]"
+						size = { 24 24 }
+					}
+					tooltip_widgetanchor = bottom|hcenter
+					tooltipwidget = {
+						using = dockable_tooltip
+						blockoverride "above_tooltip" {
+							editor_icon = {
+								size = { 256 256 }
+								texture = "[ToolsPropertyTextureStringValue.GetTexture]"
+								parentanchor = vcenter|hcenter
+							}
+						}
+					}
 				}
 			}
 		}

@@ -1,6 +1,6 @@
 ﻿window = {
 	name = "metadata_window"
-	size = { 270 128 }
+	size = { 270 150 }
 
 	datacontext = "[MetadataWindow]"
 
@@ -16,6 +16,7 @@
 
 		vbox = {
 			name = "properties" # Property injection point, do not rename.
+			spacing = 5
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = expanding
 			enabled = "[MetadataWindow.IsSelectedAnyNode]"

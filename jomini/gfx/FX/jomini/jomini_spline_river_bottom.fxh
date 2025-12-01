@@ -109,32 +109,36 @@ PixelShader =
 			return GetSunLightingProperties( WorldSpacePos, ShadowTerm );
 		}
 
-		void CalculateParallaxOffsetSteep( float3 TangentSpaceToCameraDir, float3 WorldSpaceToCameraDir, float2 UV, out float2 TangentSpaceOffset, out float2 WorldSpaceOffset )
+		void CalculateParallaxOffsetSteep( VS_SPLINE_OUTPUT Input, float3 TangentSpaceToCameraDir, float3 WorldSpaceToCameraDir, float2 UV, out float2 TangentSpaceOffset, out float2 WorldSpaceOffset )
 		{
 			static const float MinNumLayers = 2;
 			static const float MaxNumLayers = 10;
 
+			float AnchorDepth = GetInterpolatedAnchorDepth( Input );
+
 			float NumLayers = lerp( MaxNumLayers, MinNumLayers, WorldSpaceToCameraDir.y );
-			float LayerDepth = _Depth / NumLayers;
+			float LayerDepth = AnchorDepth / NumLayers;
 			float CurrentDepth = 0.0;
 
 			float4 Step;
-			Step.xy =  ( ( -TangentSpaceToCameraDir.xy * _Depth ) / TangentSpaceToCameraDir.z ) / NumLayers;
-			Step.zw =  ( ( -WorldSpaceToCameraDir.xz * _Depth ) / WorldSpaceToCameraDir.y ) / NumLayers;
+			Step.xy =  ( ( -TangentSpaceToCameraDir.xz * AnchorDepth ) / TangentSpaceToCameraDir.y ) / NumLayers;
+			Step.zw =  ( ( -WorldSpaceToCameraDir.xz * AnchorDepth ) / WorldSpaceToCameraDir.y ) / NumLayers;
+
+			Step.y /= Input.Width;
 
 			float4 Offset = vec4( 0.0f );
 
-			float Depth = CalcDepth( UV );
+			float Depth = CalcDepth( UV, Input );
 
 			while( Depth > CurrentDepth )
 			{
 				CurrentDepth += LayerDepth;
 				Offset += Step;
 
-				Depth = CalcDepth( UV + Offset.xy );
+				Depth = CalcDepth( UV + Offset.xy, Input );
 			}
 
-			float PrevDepth = CalcDepth( UV + Offset.xy - Step.xy ) - CurrentDepth + LayerDepth;
+			float PrevDepth = CalcDepth( UV + Offset.xy - Step.xy, Input ) - CurrentDepth + LayerDepth;
 
 			float NextDepth = Depth - CurrentDepth;
 
@@ -146,22 +150,26 @@ PixelShader =
 		}
 
 		// Depth from texture sample version
-		void CalculateParallaxOffsetSteep( float3 TangentSpaceToCameraDir, float3 WorldSpaceToCameraDir, float2 UV, out float2 TangentSpaceOffset, out float2 WorldSpaceOffset, PdxTextureSampler2D BottomNormal )
+		void CalculateParallaxOffsetSteep( VS_SPLINE_OUTPUT Input, float3 TangentSpaceToCameraDir, float3 WorldSpaceToCameraDir, float2 UV, out float2 TangentSpaceOffset, out float2 WorldSpaceOffset, PdxTextureSampler2D BottomNormal )
 		{
 			int MinNumLayers = 2;
 			int MaxNumLayers = _ParallaxIterations;
 
+			float AnchorDepth = GetInterpolatedAnchorDepth( Input );
+
 			float NumLayers = lerp( float( MaxNumLayers ), float( MinNumLayers ), WorldSpaceToCameraDir.y );
-			float LayerDepth = _Depth / NumLayers;
+			float LayerDepth = AnchorDepth / NumLayers;
 			float CurrentDepth = 0.0f;
 
 			float4 Step = vec4( 0.0f );
 			float4 Offset = vec4( 0.0f );
-			float Depth = CalcDepth( UV, BottomNormal );
+			float Depth = CalcDepth( UV, Input, BottomNormal );
 
-			Step.xy = ( ( -TangentSpaceToCameraDir.xy * _Depth ) / TangentSpaceToCameraDir.z) / NumLayers;
-			Step.zw = ( ( -WorldSpaceToCameraDir.xz * _Depth ) / WorldSpaceToCameraDir.y ) / NumLayers;
+			Step.xy = ( ( -TangentSpaceToCameraDir.xz * AnchorDepth ) / TangentSpaceToCameraDir.y ) / NumLayers;
+			Step.zw = ( ( -WorldSpaceToCameraDir.xz * AnchorDepth ) / WorldSpaceToCameraDir.y ) / NumLayers;
+
 			Step.xz *= _TextureUvScale;
+			Step.y /= Input.Width;
 
 			for ( int i = 0; i < MaxNumLayers; i++ )
 			{
@@ -170,12 +178,12 @@ PixelShader =
 					CurrentDepth += LayerDepth;
 					Offset += Step;
 
-					float NewDepth = CalcDepth( UV + Offset.xy, BottomNormal );
+					float NewDepth = CalcDepth( UV + Offset.xy, Input, BottomNormal );
 					Depth = NewDepth;
 				}
 			}
 
-			float PrevDepth = CalcDepth( UV + Offset.xy - Step.xy, BottomNormal ) - CurrentDepth + LayerDepth;
+			float PrevDepth = CalcDepth( UV + Offset.xy - Step.xy, Input, BottomNormal ) - CurrentDepth + LayerDepth;
 			float NextDepth = Depth - CurrentDepth;
 
 			float Weight = NextDepth / (NextDepth - PrevDepth);
@@ -190,13 +198,13 @@ PixelShader =
 			float3 ToCameraDir = normalize( CameraPosition - Input.WorldSpacePos );
 
 			float3x3 InvTBN = transpose( TBN );
-			float3 TangentSpaceToCameraDir = mul( ToCameraDir, InvTBN );
+			float3 TangentSpaceToCameraDir = mul( InvTBN, ToCameraDir );
 
 			float ParallaxScale = Input.Width;
 
 			float2 TangentSpaceParallax;
 			float2 WorldSpaceParallax;
-			CalculateParallaxOffsetSteep( TangentSpaceToCameraDir, ToCameraDir, Input.UV, TangentSpaceParallax, WorldSpaceParallax );
+			CalculateParallaxOffsetSteep( Input, TangentSpaceToCameraDir, ToCameraDir, Input.UV, TangentSpaceParallax, WorldSpaceParallax );
 
 			WorldUV = Input.WorldSpacePos.xz + WorldSpaceParallax * ParallaxScale;
 			TangentUV = Input.UV + TangentSpaceParallax;
@@ -208,13 +216,13 @@ PixelShader =
 			float3 ToCameraDir = normalize( CameraPosition - Input.WorldSpacePos );
 
 			float3x3 InvTBN = transpose( TBN );
-			float3 TangentSpaceToCameraDir = mul( ToCameraDir, InvTBN );
+			float3 TangentSpaceToCameraDir = mul( InvTBN, ToCameraDir );
 
 			float ParallaxScale = Input.Width;
 
 			float2 TangentSpaceParallax;
 			float2 WorldSpaceParallax;
-			CalculateParallaxOffsetSteep( TangentSpaceToCameraDir, ToCameraDir, Input.UV, TangentSpaceParallax, WorldSpaceParallax, BottomNormal );
+			CalculateParallaxOffsetSteep( Input, TangentSpaceToCameraDir, ToCameraDir, Input.UV, TangentSpaceParallax, WorldSpaceParallax, BottomNormal );
 
 			WorldUV = Input.WorldSpacePos.xz + WorldSpaceParallax * ParallaxScale;
 			TangentUV = Input.UV + TangentSpaceParallax;
@@ -222,10 +230,11 @@ PixelShader =
 
 		PS_RIVER_BOTTOM_OUT CalcRiverBottom( in VS_SPLINE_OUTPUT Input )
 		{
-			float3 Normal = normalize(Input.Normal);
-			float3 Tangent = normalize(Input.Tangent);
-			float3 Bitangent = normalize( cross( Normal, Tangent ) );
-			float3x3 TBN = Create3x3( Tangent, Bitangent, Normal );
+			float3 Normal = normalize( Input.Normal );
+			float3 Tangent = normalize( Input.Tangent );
+			float3 Bitangent = normalize( cross( Tangent, Normal ) );
+
+			float3x3 TBN = Create3x3( Tangent, Normal, Bitangent );
 
 			// Parallax
 			float2 WorldUV;
@@ -240,7 +249,7 @@ PixelShader =
 			float FadeOut = UnderOceanFade;
 #endif
 
-			float Depth = CalcDepth( TangentUV );
+			float Depth = CalcDepth( TangentUV, Input );
 			float WorldSpaceDepth = Depth * Input.Width * FadeOut;
 			float3 WorldSpacePos;
 			WorldSpacePos.xz = WorldUV;
@@ -252,14 +261,14 @@ PixelShader =
 			float3 NormalSample = UnpackRRxGNormal( PdxTex2DUpscale( BottomNormal, WorldUV ) );
 
 			// normals
-			float SampleWidth = 0.1f;
+			float SampleWidth = 0.3f;
 			float2 DepthSampleOffset = float2( 0.0f, SampleWidth * 0.5f );
-			float DepthDelta = ( CalcDepth( TangentUV - DepthSampleOffset ) - CalcDepth( TangentUV + DepthSampleOffset ) ) * UnderOceanFade;
+			float DepthDelta = ( CalcDepth( TangentUV - DepthSampleOffset, Input ) - CalcDepth( TangentUV + DepthSampleOffset, Input ) ) * UnderOceanFade;
 			float Slope = DepthDelta / SampleWidth;
 			float Angle = atan( Slope );
-			float3 ParallaxNormal = float3( 0, -sin( Angle ), cos( Angle ) );
-			ParallaxNormal.xy += NormalSample.xy;
-			Normal = normalize( mul( ParallaxNormal, TBN ) );
+			float3 ParallaxNormal = float3( 0, cos( Angle ), -sin( Angle ) );
+			ParallaxNormal.xyz += NormalSample.xzy;
+			Normal = normalize( mul( TBN, ParallaxNormal ) );
 
 			// lighting
 			SMaterialProperties MaterialProps = GetMaterialProperties( Diffuse.rgb, Normal, Properties.a, Properties.g, Properties.b );
@@ -277,7 +286,7 @@ PixelShader =
 
 			DebugReturn( Color, MaterialProps, LightingProps, EnvironmentMap );
 
-			WorldSpacePos.y -= pow( Depth / _Depth, 2 ) * _DepthFakeFactor * FadeOut;
+			WorldSpacePos.y -= pow( Depth / GetInterpolatedAnchorDepth( Input ), 2 ) * _DepthFakeFactor * FadeOut;
 
 			PS_RIVER_BOTTOM_OUT Out;
 			Out.Color.rgb = Color;
@@ -293,8 +302,9 @@ PixelShader =
 
 			float3 Normal = normalize( Input.Normal );
 			float3 Tangent = normalize( Input.Tangent );
-			float3 Bitangent = normalize( cross( Normal, Tangent ) );
-			float3x3 TBN = Create3x3( Tangent, Bitangent, Normal );
+			float3 Bitangent = normalize( cross( Tangent, Normal ) );
+
+			float3x3 TBN = Create3x3( Tangent, Normal, Bitangent );
 
 			Input.UV = float2( Input.UV.x * _TextureUvScale, Input.UV.y );
 
@@ -311,7 +321,7 @@ PixelShader =
 			float FadeOut = UnderOceanFade;
 #endif
 
-			float Depth = CalcDepth( TangentUV, BottomNormal );
+			float Depth = CalcDepth( TangentUV, Input, BottomNormal );
 			float WorldSpaceDepth = Depth * Input.Width * FadeOut;
 			float3 WorldSpacePos;
 			WorldSpacePos.xz = WorldUV;
@@ -323,14 +333,14 @@ PixelShader =
 			float3 NormalSample = UnpackRRxGNormal( PdxTex2DUpscale( BottomNormal, TangentUV ) );
 
 			// Normals
-			float SampleWidth = 0.1f;
+			float SampleWidth = 0.3f;
 			float2 DepthSampleOffset = float2( 0.0f, SampleWidth * 0.5f );
-			float DepthDelta = ( CalcDepth( TangentUV - DepthSampleOffset, BottomNormal ) - CalcDepth( TangentUV + DepthSampleOffset, BottomNormal ) ) * UnderOceanFade;
+			float DepthDelta = ( CalcDepth( TangentUV - DepthSampleOffset, Input, BottomNormal ) - CalcDepth( TangentUV + DepthSampleOffset, Input, BottomNormal ) ) * UnderOceanFade;
 			float Slope = DepthDelta / SampleWidth;
 			float Angle = atan( Slope );
-			float3 ParallaxNormal = float3( 0, -sin( Angle ), cos( Angle ) );
-			ParallaxNormal.xy += NormalSample.xy;
-			Normal = normalize( mul( ParallaxNormal, TBN ) );
+			float3 ParallaxNormal = float3( 0.0f, cos( Angle ), -sin( Angle ) );
+			ParallaxNormal.xyz += NormalSample.xzy;
+			Normal = normalize( mul( TBN, ParallaxNormal ) );
 			Normal = SimpleRotateNormalToTerrain( Normal, Input.WorldSpacePos.xz );
 
 			// Lighting
@@ -351,7 +361,7 @@ PixelShader =
 
 			DebugReturn( Color, MaterialProps, LightingProps, EnvironmentMap );
 
-			WorldSpacePos.y -= pow( Depth / _Depth, 2 ) * _DepthFakeFactor * FadeOut;
+			WorldSpacePos.y -= pow( Depth / GetInterpolatedAnchorDepth( Input ), 2 ) * _DepthFakeFactor * FadeOut;
 
 			// Output
 			Out.Color.rgb = Color;
@@ -382,6 +392,6 @@ RasterizerState RasterizerStateRiverBottom
 DepthStencilState DepthStencilStateRiverBottom
 {
 	depthenable = yes
-	depthwriteenable = yes
+	depthwriteenable = no
 	depthfunction = less
 }

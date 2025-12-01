@@ -119,7 +119,7 @@ VertexShader =
 		[[
 			PDX_MAIN
 			{
-				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.InstanceIndex24_Opacity8 );
+				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.Index24_Packed1_Opacity6_Sign1 );
 
 				#ifdef WINDTRANSFORM
 					#if defined( TREE_BUSH )
@@ -137,8 +137,8 @@ VertexShader =
 					Input.Position.y = SnapToWaterLevel( Input.Position.y, WorldMatrix );
 				#endif
 
-				VS_OUTPUT Out = ConvertOutput( PdxMeshVertexShader( PdxMeshConvertInput( Input ), 0/*Not supported*/, UnpackAndGetMapObjectWorldMatrix( Input.InstanceIndex24_Opacity8 ) ) );
-				Out.InstanceIndex = Input.InstanceIndex24_Opacity8;
+				VS_OUTPUT Out = ConvertOutput( PdxMeshVertexShader( PdxMeshConvertInput( Input ), 0/*Not supported*/, UnpackAndGetMapObjectWorldMatrix( Input.Index24_Packed1_Opacity6_Sign1 ) ) );
+				Out.InstanceIndex = Input.Index24_Packed1_Opacity6_Sign1;
 
 				#ifdef PDX_MESH_SNAP_VERTICES_TO_TERRAIN
 					Out.Normal = SimpleRotateNormalToTerrain( Out.Normal, Out.WorldSpacePos.xz );
@@ -158,7 +158,7 @@ VertexShader =
 			{
 				uint InstanceIndex;
 				float Opacity;
-				UnpackMapObjectInstanceData( Input.InstanceIndex24_Opacity8, InstanceIndex, Opacity );
+				UnpackMapObjectInstanceData( Input.Index24_Packed1_Opacity6_Sign1, InstanceIndex, Opacity );
 				float4x4 WorldMatrix = GetWorldMatrixMapObject( InstanceIndex );
 
 				#ifdef SNAP_TO_WATER
@@ -166,7 +166,7 @@ VertexShader =
 				#endif
 
 				VS_OUTPUT_MAPOBJECT_SHADOW Out = ConvertOutputMapObjectShadow( PdxMeshVertexShaderShadow( PdxMeshConvertInput( Input ), 0/*Not supported*/, WorldMatrix ) );
-				Out.InstanceIndex24_Opacity8 = Input.InstanceIndex24_Opacity8;
+				Out.Index24_Packed1_Opacity6_Sign1 = Input.Index24_Packed1_Opacity6_Sign1;
 				return Out;
 			}
 		]]

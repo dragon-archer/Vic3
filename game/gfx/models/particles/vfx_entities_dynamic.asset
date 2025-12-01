@@ -1,0 +1,32 @@
+entity = {
+	name = "vfx_entity_devastation_stage_3"
+	
+	default_state = "idle"
+	state = { name = "idle"	state_time = 10 looping = yes 
+		event = { time = 0 particle = "devastation_stage_3" trigger_once = yes keep_particle = yes}
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/devastation_stage_3" } }
+	}
+	cull_radius = 2000
+}
+
+entity = {
+	name = "vfx_entity_devastation_stage_2"
+
+	default_state = "idle"
+	state = { name = "idle"	state_time = 10	looping = yes 
+		event = { time = 0 particle = "devastation_stage_2" trigger_once = yes keep_particle = yes}
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/devastation_stage_2" } }
+	}
+	cull_radius = 2000
+}
+
+entity = {
+	name = "vfx_entity_devastation_stage_1"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 10	looping = yes 
+		event = { time = 0 particle = "devastation_stage_1" trigger_once = yes keep_particle = yes}
+		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/devastation_stage_1" } }
+	}
+	cull_radius = 2000
+}

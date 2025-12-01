@@ -1318,3 +1318,19 @@ variation = {
 
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_female_headgear_korean_emperess_01.dds" }	
 }
+
+variation = {
+    name = "male_coats_korean_empire_color"
+    
+ 
+    pattern = { 
+        weight = 1
+ 
+        r = { textures = "generic_wool_standard_fine_01"         layout = "plain_fabric_layout" }
+        g = { textures = "generic_silk_standard_plain_01"         layout = "plain_fabric_layout" }
+        b = { textures = "generic_wool_standard_plain_01"         layout = "plain_fabric_layout" }
+        a = { textures = "generic_wool_standard_plain_01"        layout = "plain_fabric_layout" }
+    }
+ 
+    color_palette = { weight = 1        texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_korean_empire_uniform.dds" }    
+}

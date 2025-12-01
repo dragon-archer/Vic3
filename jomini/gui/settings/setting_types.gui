@@ -300,12 +300,12 @@ types Settings
 	}
 
 	type setting_page_button = button {
-		text = "[ScopedJominiSettingsPage.GetPage.GetName]"
+		text = "[SettingsPage.GetName]"
 		size = { 150 30 }
 		using = SettingsButtonStyle
 		align = left
-		onclick = "[ScopedJominiSettingsPage.AccessPage.OnClick]"
-		upframe = "[Select_int32(ScopedJominiSettingsPage.GetPage.IsSelected,'(int32)2','(int32)1')]"
+		onclick = "[SettingsPage.OnClick]"
+		upframe = "[Select_int32(SettingsPage.IsSelected,'(int32)2','(int32)1')]"
 		block "setting_page_button" {}
 
 		buttonText = {

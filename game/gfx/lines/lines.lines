@@ -109,8 +109,8 @@ line = {
 	# Inner arrow shape settings in "gui_war_arrow.shader"
 	curvature = 0.4									# 0 = flat, 1 = perfect semi-circle
 	max_height = 100
-	fade_in = 0.75
-	fade_out = 0.6
+	fade_in = 0.0
+	fade_out = 0.0
 	priority = 1
 	progress_animation_time = 0.1
 	progress_animation_looping = no
@@ -148,8 +148,8 @@ line = {
 	# Inner arrow shape settings in "gui_war_arrow.shader"
 	curvature = 0.4									# 0 = flat, 1 = perfect semi-circle
 	max_height = 100
-	fade_in = 0.75
-	fade_out = 0.6
+	fade_in = 0.0
+	fade_out = 0.0
 	priority = 1
 	progress_animation_time = 0.1
 	progress_animation_looping = no
@@ -164,7 +164,7 @@ line = {
 		mask_uv_scale  = { 1.0 1.0 }
 		uv_scale = { 1.0 1.0 }						# Main arrow UV
 		animation_speed = { 0.0 0.0 }				# Speed of the inner arrow UV translation
-		tintcolor = hsv{ 0 0.0 0.2 }				# Colour to overlay on texture
+		tintcolor = hsv{ 0.02 1.0 0.8 }				# Colour to overlay on texture
 
 		width = {
 			{ zoom_step = 6 value = 30 }

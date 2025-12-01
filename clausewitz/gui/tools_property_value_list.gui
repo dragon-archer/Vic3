@@ -1,6 +1,6 @@
 types ToolsListProperyTypes
 {
-	type dialog_property_valuelist = vertical_dialog_property {
+	type property_valuelist = vertical_dialog_property {
 		spacing = 2
 		blockoverride "content"
 		{
@@ -36,10 +36,12 @@ types ToolsListProperyTypes
 		}
 	}
 
-	type dialog_property_valuelist_entry = hbox {
+	type property_valuelist_entry = hbox {
 		layoutpolicy_horizontal = expanding
 		layoutpolicy_vertical = preferred
 		spacing = 3
+
+		visible = "[ToolsPropertyValueListEntry.IsItemVisible]"
 
 		vbox = {
 			layoutpolicy_horizontal = expanding
@@ -87,4 +89,10 @@ types ToolsListProperyTypes
 			}
 		}
 	}
+
+	type dialog_property_valuelist = property_valuelist {}
+	type dialog_property_valuelist_entry = property_valuelist_entry {}
+
+	type dialog_grid_property_valuelist = property_valuelist {}
+	type dialog_grid_property_valuelist_entry = property_valuelist_entry {}
 }

@@ -1,6 +1,8 @@
 Includes = {
 	"cw/mesh2/pdx_mesh2_geometry.fxh"
 	"cw/mesh2/pdx_mesh2_skinning.fxh"
+	"cw/mesh2/pdx_mesh2_blend_shape.fxh"
+	"cw/mesh2/pdx_mesh2_vertex_cache.fxh"
 }
 
 BufferTexture Mesh2InstanceDataBuffer
@@ -15,22 +17,35 @@ BufferTexture Mesh2TransformsBuffer
 	type = uint
 }
 
-
-# Technically pixel shaders as well but we cannot really do that currently in our shader format and it is not used there
-# this helps with catching errors in compute/ray tracing shaders
-VertexShader =
+BufferTexture Mesh2PreviousTransformsBuffer
 {
-	ConstantBuffer( PdxMesh2BatchConstants )
-	{
-		uint _GeometryTypeDataOffset;
-	};
-	
-	ConstantBuffer( PdxMesh2InstanceConstants )
-	{
-		uint _InstanceDataOffset;
-		uint _InstanceDataStride;
-	};
+	Ref = PdxMesh2PreviousTransformsBuffer
+	type = uint
 }
+
+BufferTexture Mesh2ShaderDataBuffer
+{
+	Ref = PdxMesh2ShaderDataBuffer
+	type = uint
+}
+
+ConstantBuffer( PdxMesh2BatchConstants )
+{
+	uint _GeometryTypeDataOffset;
+};
+	
+ConstantBuffer( PdxMesh2InstanceConstants )
+{
+	uint _InstanceDataOffset;
+	uint _InstanceDataStride;
+};
+
+ConstantBuffer( PdxMesh2VertexCacheConstants )
+{
+	uint _VertexCacheOffset;
+	uint _VertexCacheNumVertices;
+	uint _VertexCacheNumInstances;
+};
 
 Code
 [[
@@ -57,10 +72,26 @@ Code
 	struct PDXMESH2_INSTANCE_INPUT
 	{
 		float4x4 _WorldMatrix;
+	#ifdef PDX_MESH2_MOTION_VECTORS
+		float4x4 _PreviousWorldMatrix;
+	#endif
+	
 		float _BlendValue;
 		
-	#ifdef PDX_MESH2_SKIN
-		uint2 _SkinningTransformsOffset;
+	#ifdef PDX_MESH2_SKIN_INSTANCE_INPUT
+		uint _SkinningTransformsOffset;
+	#endif
+
+	#ifdef PDX_MESH2_BLENDSHAPES_INSTANCE_INPUT
+		uint _BlendShapeDataOffset;
+	#endif
+	
+	#ifdef PDX_MESH2_VERTEX_CACHE_INSTANCE_INPUT
+		uint _CachedVertexDataOffset;
+	#endif
+	
+	#ifdef PDX_MESH2_SHADER_DATA_INSTANCE_INPUT
+		uint _ShaderDataOffset;
 	#endif
 	};
 
@@ -68,6 +99,10 @@ Code
 	{
 		float4 _Position;
 		float3 _WorldSpacePosition;
+	#ifdef PDX_MESH2_MOTION_VECTORS
+		float3 _PreviousWorldSpacePosition;
+	#endif
+	
 		float _BlendValue;
 		
 		float3 _Normal;
@@ -88,6 +123,12 @@ Code
 	{
 		uint Offset = TransformIndex * PDX_MESH2_MATRIX34_DATA_STRIDE;
 		return ReadMatrix34( Mesh2TransformsBuffer, Offset );
+	}
+	
+	float4x4 LoadPreviousInstanceTransform( uint TransformIndex )
+	{
+		uint Offset = TransformIndex * PDX_MESH2_MATRIX34_DATA_STRIDE;
+		return ReadMatrix34( Mesh2PreviousTransformsBuffer, Offset );
 	}
 	
 	void BuildTangentFrame( float3x3 Transform, float3 Normal, float3 Tangent, float BitangentDir, out float3 NormalOut, out float3 TangentOut, out float3 BitangentOut )
@@ -120,31 +161,60 @@ Code
 		return Out;
 	}
 	
-	// Not sure if we will be able to keep this alive once we start adding "custom" instance data?
+	void PdxMesh2ReadOptionalInstanceInput( uint InstanceDataIndex, inout PDXMESH2_INSTANCE_INPUT InstanceInput )
+	{
+	#ifdef PDX_MESH2_SKIN_INSTANCE_INPUT
+		InstanceInput._SkinningTransformsOffset = Mesh2InstanceDataBuffer[ InstanceDataIndex++ ];
+	#endif
+	
+	#ifdef PDX_MESH2_BLENDSHAPES_INSTANCE_INPUT
+		InstanceInput._BlendShapeDataOffset = Mesh2InstanceDataBuffer[ InstanceDataIndex++ ];
+	#endif
+	
+	#ifdef PDX_MESH2_VERTEX_CACHE_INSTANCE_INPUT
+		InstanceInput._CachedVertexDataOffset = Mesh2InstanceDataBuffer[ InstanceDataIndex++ ];
+	#endif
+	
+	#ifdef PDX_MESH2_SHADER_DATA_INSTANCE_INPUT
+		InstanceInput._ShaderDataOffset =  Mesh2InstanceDataBuffer[ InstanceDataIndex++ ];
+	#endif
+	}
+	
 	PDXMESH2_INSTANCE_INPUT PdxMesh2InstanceInputFromInstanceID( uint InstanceID, uint InstanceDataOffset, uint InstanceDataStride )
 	{
 		PDXMESH2_INSTANCE_INPUT Out;
 		
 		uint InstanceDataIndex = InstanceDataOffset + InstanceID * InstanceDataStride;
 
-		uint TransformIndex = Mesh2InstanceDataBuffer[ InstanceDataIndex ];
+		uint TransformIndex = Mesh2InstanceDataBuffer[ InstanceDataIndex++ ];
 		Out._WorldMatrix = LoadInstanceTransform( TransformIndex );
-
-		Out._BlendValue = asfloat( Mesh2InstanceDataBuffer[ InstanceDataIndex + 1 ] );
-	
-	#ifdef PDX_MESH2_SKIN
-		uint2 SkinningTransformsOffset = UnpackUintX_UintY( Mesh2InstanceDataBuffer[ InstanceDataIndex + 2 ], 8 );
-		Out._SkinningTransformsOffset = SkinningTransformsOffset;
+	#ifdef PDX_MESH2_MOTION_VECTORS
+		Out._PreviousWorldMatrix = LoadPreviousInstanceTransform( TransformIndex );
 	#endif
 	
+		Out._BlendValue = asfloat( Mesh2InstanceDataBuffer[ InstanceDataIndex++ ] );
+	
+		PdxMesh2ReadOptionalInstanceInput( InstanceDataIndex, Out );
+
 		return Out;
 	}
 	
-	PDXMESH2_OUTPUT PdxMesh2VertexShader( PDXMESH2_VERTEX_INPUT VertexInput, PDXMESH2_INSTANCE_INPUT InstanceInput )
+	PDXMESH2_OUTPUT PdxMesh2VertexShader( STypeData TypeData, uint VertexID, PDXMESH2_VERTEX_INPUT VertexInput, PDXMESH2_INSTANCE_INPUT InstanceInput )
 	{
 		PDXMESH2_OUTPUT Out;
 
+	#ifdef PDX_MESH2_BLENDSHAPES
+		// Apply blendshapes to data in VertexInput
+		PdxMesh2ApplyBlendShapes( TypeData, VertexID, InstanceInput._BlendShapeDataOffset, VertexInput._Position, VertexInput._Normal, VertexInput._Tangent );
+	#endif
+	
+	#ifdef PDX_MESH2_VERTEX_CACHE
+		// Overwrite data in VertexInput (position/normal/tangent) with data read from vertex cache (we currently rely on compiler to optimize away potentially enabled PdxMesh2ApplyBlendShapes)
+		PdxMesh2VertexInputFromVertexCache( VertexID, InstanceInput._CachedVertexDataOffset + _VertexCacheOffset, _VertexCacheNumVertices, VertexInput._Position, VertexInput._Normal, VertexInput._Tangent );
+	#endif
+	
 		float3 Position = VertexInput._Position;
+		float3 PreviousPosition = Position;
 
 		float3 Normal = VertexInput._Normal;
 		float3 Tangent = VertexInput._Tangent;
@@ -153,6 +223,7 @@ Code
 	#ifdef PDX_MESH2_SKIN
 	
 		float3 SkinnedPosition = vec3( 0.0 );
+		float3 PreviousSkinnedPosition = vec3( 0.0 );
 		float3 SkinnedNormal = vec3( 0.0 );
 		float3 SkinnedTangent = vec3( 0.0 );
 		for( uint i = 0; i < VertexInput._SkinningData._NumBones; ++i )
@@ -161,10 +232,11 @@ Code
 			float BoneWeight;
 			GetBoneIndexAndWeightForType( VertexInput._SkinningData, i, BoneIndex, BoneWeight );
 	
-			ProcessSkinning( InstanceInput._SkinningTransformsOffset, BoneIndex, BoneWeight, Position, Normal, Tangent, SkinnedPosition, SkinnedNormal, SkinnedTangent );
+			ProcessSkinning( InstanceInput._SkinningTransformsOffset, BoneIndex, BoneWeight, Position, Normal, Tangent, SkinnedPosition, PreviousSkinnedPosition, SkinnedNormal, SkinnedTangent );
 		}
 		
 		Position = SkinnedPosition;
+		PreviousPosition = PreviousSkinnedPosition;
 		Normal = SkinnedNormal;
 		Tangent = SkinnedTangent;
 
@@ -173,9 +245,13 @@ Code
 		float4 TransformedPosition = mul( InstanceInput._WorldMatrix, float4( Position, 1.0 ) );
 		Out._Position = FixProjectionAndMul( ViewProjectionMatrix, TransformedPosition );
 		Out._WorldSpacePosition = TransformedPosition.xyz;
-		Out._BlendValue = InstanceInput._BlendValue;
+	#ifdef PDX_MESH2_MOTION_VECTORS
+		Out._PreviousWorldSpacePosition = mul( InstanceInput._PreviousWorldMatrix, float4( PreviousPosition, 1.0 ) );
+	#endif
 		
 		BuildTangentFrame( CastTo3x3( InstanceInput._WorldMatrix ), Normal, Tangent, BitangentDir, Out._Normal, Out._Tangent, Out._Bitangent );
+		
+		Out._BlendValue = InstanceInput._BlendValue;
 		
 		Out._Uv0 = VertexInput._Uv0;
 		Out._Uv1 = VertexInput._Uv1;
@@ -192,144 +268,9 @@ Code
 
 VertexShader =
 {
-	VertexStruct VS_INPUT_PDXMESH2
-	{
-	@ifdef USE_VB
-			float3 Position			: POSITION;
-			
-		@ifdef PDX_MESH2_NORMAL
-			float3 Normal      		: NORMAL;
-		@endif
-
-		@ifdef PDX_MESH2_TANGENT
-			float4 Tangent			: TANGENT;
-		@endif
-		@ifdef PDX_MESH2_QTANGENT
-			float4 QTangent			: TANGENT;
-		@endif
-			
-		@ifdef PDX_MESH2_UV0
-			float2 Uv0				: TEXCOORD0;
-		@endif
-		@ifdef PDX_MESH2_UV1
-			float2 Uv1				: TEXCOORD1;
-		@endif
-		@ifdef PDX_MESH2_UV2
-			float2 Uv2				: TEXCOORD2;
-		@endif
-		@ifdef PDX_MESH2_UV3
-			float2 Uv3				: TEXCOORD3;
-		@endif
-
-		@ifdef PDX_MESH2_COLOR0
-			float4 Color0			: COLOR0;
-		@endif
-		@ifdef PDX_MESH2_COLOR1
-			float4 Color1			: COLOR1;
-		@endif
-		
-		@ifdef PDX_MESH2_SKIN
-			@ifdef PDX_MESH2_SKIN_RGBA_UINT16_RGB_FLOAT
-				uint4 BoneIndex 		: SKIN0;
-				float3 BoneWeight		: SKIN1;
-			@else
-				uint SkinData 			: SKIN;
-			@endif
-		@endif
-	@endif
-
-		uint VertexID 			: PDX_VertexID;
-		uint InstanceID			: PDX_InstanceID;
-	};
-	
 	Code
 	[[
 	#ifdef USE_VB
-		float3 GetPosition( VS_INPUT_PDXMESH2 Input, STypeData TypeData )
-		{
-			#ifdef PDX_MESH2_POSITION_COMPRESSED
-				return DecompressPosition( TypeData, Input.Position );
-			#else
-				return Input.Position;
-			#endif
-		}
-		
-		void GetNormalAndTangent( VS_INPUT_PDXMESH2 Input, out float3 Normal, out float3 Tangent, out float BitangentDir )
-		{
-			#ifdef PDX_MESH2_QTANGENT
-				float4 QTangent = normalize( Input.QTangent );
-				// Extract "rotation matrix x-axis" from quaternion
-				Normal = float3( 1, 0, 0 ) + float3( -2, 2, -2 ) * QTangent.y * QTangent.yxw + float3( -2, 2, 2 ) * QTangent.z * QTangent.zwx;
-				// Extract y-axis
-				Tangent = float3( 0, 1, 0 ) + float3( 2, -2, 2 ) * QTangent.x * QTangent.yxw + float3( -2, -2, 2 ) * QTangent.z * QTangent.wzy;
-				BitangentDir = sign( QTangent.w );
-			#else
-				#ifdef PDX_MESH2_NORMAL
-					Normal = Input.Normal;
-				#else
-					Normal = float3( 0.0, 0.0, 0.0 );
-				#endif
-				
-				#ifdef PDX_MESH2_TANGENT
-					Tangent = Input.Tangent.xyz;
-					BitangentDir = Input.Tangent.w;
-				#else
-					Tangent = float3( 0.0, 0.0, 0.0 );
-					BitangentDir = 0.0;
-				#endif
-			#endif
-		}
-		
-		float2 GetUv0( VS_INPUT_PDXMESH2 Input )
-		{
-			#ifdef PDX_MESH2_UV0
-				return Input.Uv0;
-			#else
-				return float2( 0.0, 0.0 );
-			#endif
-		}
-		float2 GetUv1( VS_INPUT_PDXMESH2 Input )
-		{
-			#ifdef PDX_MESH2_UV1
-				return Input.Uv1;
-			#else
-				return float2( 0.0, 0.0 );
-			#endif
-		}
-		float2 GetUv2( VS_INPUT_PDXMESH2 Input )
-		{
-			#ifdef PDX_MESH2_UV2
-				return Input.Uv2;
-			#else
-				return float2( 0.0, 0.0 );
-			#endif
-		}
-		float2 GetUv3( VS_INPUT_PDXMESH2 Input )
-		{
-			#ifdef PDX_MESH2_UV3
-				return Input.Uv3;
-			#else
-				return float2( 0.0, 0.0 );
-			#endif
-		}
-		
-		float4 GetColor0( VS_INPUT_PDXMESH2 Input )
-		{
-			#ifdef PDX_MESH2_COLOR0
-				return Input.Color0;
-			#else
-				return float4( 0.0, 0.0, 0.0, 0.0 );
-			#endif
-		}
-		float4 GetColor1( VS_INPUT_PDXMESH2 Input )
-		{
-			#ifdef PDX_MESH2_COLOR1
-				return Input.Color1;
-			#else
-				return float4( 0.0, 0.0, 0.0, 0.0 );
-			#endif
-		}
-		
 		PDXMESH2_VERTEX_INPUT PdxMesh2VertexInputFromVertexBuffer( VS_INPUT_PDXMESH2 Input, STypeData TypeData )
 		{
 			PDXMESH2_VERTEX_INPUT Out;
@@ -361,10 +302,8 @@ VertexShader =
 		}
 	#endif
 	
-		PDXMESH2_VERTEX_INPUT PdxMesh2LoadVertexInput( VS_INPUT_PDXMESH2 Input )
+		PDXMESH2_VERTEX_INPUT PdxMesh2LoadVertexInput( STypeData TypeData, VS_INPUT_PDXMESH2 Input )
 		{
-			STypeData TypeData = LoadTypeData( _GeometryTypeDataOffset );
-			
 			PDXMESH2_VERTEX_INPUT Out;
 			
 			#ifdef USE_VB
@@ -379,6 +318,17 @@ VertexShader =
 		PDXMESH2_INSTANCE_INPUT PdxMesh2LoadInstanceInput( VS_INPUT_PDXMESH2 Input )
 		{
 			return PdxMesh2InstanceInputFromInstanceID( Input.InstanceID, _InstanceDataOffset, _InstanceDataStride );
+		}
+		
+		PDXMESH2_OUTPUT PdxMesh2VertexShader( VS_INPUT_PDXMESH2 Input )
+		{
+			STypeData TypeData = LoadTypeData( _GeometryTypeDataOffset );
+			
+			PDXMESH2_VERTEX_INPUT VertexInput = PdxMesh2LoadVertexInput( TypeData, Input );
+			PDXMESH2_INSTANCE_INPUT InstanceInput = PdxMesh2LoadInstanceInput( Input );
+
+			PDXMESH2_OUTPUT Mesh2Output = PdxMesh2VertexShader( TypeData, Input.VertexID, VertexInput, InstanceInput );
+			return Mesh2Output;
 		}
 	]]
 }

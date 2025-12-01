@@ -37,13 +37,13 @@ peru_bolivia_events.1 = {
 					has_variable = pbc_member
 					any_scope_state = {
 						state_region = s:STATE_AREQUIPA
-					}					
+					}
 				}
 				random_scope_state = {
 					limit = {
 						state_region = s:STATE_AREQUIPA
 					}
-					save_scope_as = arequipa_state	
+					save_scope_as = arequipa_state
 				}
 			}
 		}
@@ -57,7 +57,7 @@ peru_bolivia_events.1 = {
 				limit = {
 					state_region = s:STATE_AREQUIPA
 				}
-				save_scope_as = arequipa_state	
+				save_scope_as = arequipa_state
 			}
 		}
 		else = {
@@ -260,7 +260,7 @@ peru_bolivia_events.3 = {
 	}
 
 	immediate = {
-		
+
 	}
 
 	option = {
@@ -356,7 +356,7 @@ peru_bolivia_events.3 = {
 					}
 				}
 				20 = {
-					
+
 				}
 			}
 		}
@@ -503,28 +503,28 @@ peru_bolivia_events.4 = {
 		name = peru_bolivia_events.4.a
 		default_option = yes
 		ai_chance = {
-			base = 25
-			modifier = {
-				trigger = {
-					c:BOL = {
-						is_player = yes
-					}
-				}
-				add = 25
-			}
+			base = 90
 		}
+
+		set_variable = attack_bolivia
 		add_journal_entry = {
 			type = je_war_of_the_confederation
 		}
-		add_modifier = {
-			name = modifier_against_the_confederation
-			months = short_modifier_time
+		show_as_tooltip = {
+			add_modifier = {
+				name = modifier_against_the_confederation
+			}
+		}
+		je:je_war_of_the_confederation ?= {
+			add_modifier = {
+				name = modifier_against_the_confederation
+			}
 		}
 		hidden_effect = {
 			c:BOL ?= {
 				set_mutual_secret_goal = {
 					country = root
-					secret_goal = antagonize
+					secret_goal = conquer
 				}
 			    every_subject_or_below = { # Wants to assist the subjects in attaining independence
 			        set_mutual_secret_goal = {
@@ -545,8 +545,10 @@ peru_bolivia_events.4 = {
 	option = {
 		name = peru_bolivia_events.4.b
 		ai_chance = {
-			base = 5
+			base = 10
 		}
+
+		set_variable = befriend_bolivia
 		add_journal_entry = {
 			type = je_war_of_the_confederation
 		}
@@ -566,7 +568,7 @@ peru_bolivia_events.4 = {
 			set_variable = { name = peru_bolivia_opposition_var value = global_var:peru_bolivia_var }
 		}
 	}
-	
+
 	option = {
 		name = peru_bolivia_events.4.c
 		trigger = {
@@ -576,8 +578,9 @@ peru_bolivia_events.4 = {
 			}
 		}
 		ai_chance = {
-			base = 50
+			base = 200
 		}
+
 		custom_tooltip = ignore_peru_bol_tt
 	}
 }
@@ -615,7 +618,7 @@ peru_bolivia_events.5 = {
 		default_option = yes
 		add_modifier = {
 			name = modifier_confederation_war_success
-			months = normal_modifier_time
+			days = normal_modifier_time
 		}
 	}
 }
@@ -643,7 +646,7 @@ peru_bolivia_events.6 = {
 	}
 
 	immediate = {
-		
+
 	}
 
 	option = {
@@ -651,7 +654,7 @@ peru_bolivia_events.6 = {
 		default_option = yes
 		add_modifier = {
 			name = modifier_confederation_diplomatic_success
-			months = normal_modifier_time
+			days = normal_modifier_time
 		}
 	}
 }
@@ -692,7 +695,7 @@ peru_bolivia_events.7 = {
 		}
 		add_modifier = {
 			name = modifier_confederation_failure
-			months = normal_modifier_time
+			days = normal_modifier_time
 			is_decaying = yes
 		}
 	}
@@ -747,7 +750,7 @@ peru_bolivia_events.8 = {
 		}
 	}
 
-	cooldown = { months = stupidly_long_modifier_time }
+	cooldown = { days = stupidly_long_modifier_time }
 
 	option = {
 		name = peru_bolivia_events.8.a

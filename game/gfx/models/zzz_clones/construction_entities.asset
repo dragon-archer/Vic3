@@ -21,6 +21,7 @@ entity = {
 		name = "idle"
 		state_time = 1
 		looping = yes
+		start_event = { trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/sml_mid" } }
 	}
 
 	state = {
@@ -47,6 +48,7 @@ entity = {
 		name = "idle"
 		state_time = 1
 		looping = yes
+		start_event = { trigger_once = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/big_mid" } }
 	}
 
 	state = {
@@ -93,6 +95,7 @@ entity = {
 		name = "idle"
 		state_time = 1
 		looping = yes
+		start_event = { trigger_once = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/big_mid" } }
 	}
 
 	state = {
@@ -180,6 +183,7 @@ entity = {
 		name = "idle"
 		state_time = 1
 		looping = yes
+		start_event = { trigger_once = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/big_mid" } }
 	}
 
 	state = {
@@ -307,6 +311,7 @@ entity = {
 		name = "idle"
 		state_time = 1
 		looping = yes
+		start_event = { trigger_once = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/big_mid" } }
 	}
 
 	state = {
@@ -480,6 +485,7 @@ entity = {
 		name = "idle"
 		state_time = 1
 		looping = yes
+		start_event = { trigger_once = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/VFX/scaffolding/big_mid" } }
 	}
 
 	state = {

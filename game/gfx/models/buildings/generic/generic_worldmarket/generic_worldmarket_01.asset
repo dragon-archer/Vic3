@@ -1,0 +1,175 @@
+﻿pdxmesh = {
+	name = "generic_worldmarket_01_mesh"
+	file = "generic_worldmarket_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 8.0 }
+		lod = { index = 3 percent = 4.0 }
+		lod = { index = 4 percent = 2.0 }
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|generic_worldmarket_0.001"
+		index = 0
+		texture_diffuse = "generic_worldmarket_diffuse.dds"
+		texture_normal = "generic_worldmarket_normal.dds"
+		texture_specular = "generic_worldmarket_properties.dds"
+		texture = { file = "generic_worldmarket_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|worldmarket_platform_0.001"
+		index = 0
+		texture_diffuse = "generic_worldmarket_platform_diffuse.dds"
+		texture_normal = "generic_worldmarket_platform_normal.dds"
+		texture_specular = "generic_worldmarket_platform_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_0|flag_0.006"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "HUB_BUILDING" "FLAGWAVE_SETTINGS_BUILDING" "COA_TEXTURE" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|generic_worldmarket_1.001"
+		index = 0
+		texture_diffuse = "generic_worldmarket_diffuse.dds"
+		texture_normal = "generic_worldmarket_normal.dds"
+		texture_specular = "generic_worldmarket_properties.dds"
+		texture = { file = "generic_worldmarket_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|worldmarket_platform_1.001"
+		index = 0
+		texture_diffuse = "generic_worldmarket_platform_diffuse.dds"
+		texture_normal = "generic_worldmarket_platform_normal.dds"
+		texture_specular = "generic_worldmarket_platform_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_1|flag_1.001"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "HUB_BUILDING" "FLAGWAVE_SETTINGS_BUILDING" "COA_TEXTURE" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|generic_worldmarket_2.001"
+		index = 0
+		texture_diffuse = "generic_worldmarket_diffuse.dds"
+		texture_normal = "generic_worldmarket_normal.dds"
+		texture_specular = "generic_worldmarket_properties.dds"
+		texture = { file = "generic_worldmarket_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|worldmarket_platform_2.001"
+		index = 0
+		texture_diffuse = "generic_worldmarket_platform_diffuse.dds"
+		texture_normal = "generic_worldmarket_platform_normal.dds"
+		texture_specular = "generic_worldmarket_platform_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_2|flag_2.001"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "HUB_BUILDING" "FLAGWAVE_SETTINGS_BUILDING" "COA_TEXTURE" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|generic_worldmarket_3.001"
+		index = 0
+		texture_diffuse = "generic_worldmarket_diffuse.dds"
+		texture_normal = "generic_worldmarket_normal.dds"
+		texture_specular = "generic_worldmarket_properties.dds"
+		texture = { file = "generic_worldmarket_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|worldmarket_platform_3.001"
+		index = 0
+		texture_diffuse = "generic_worldmarket_platform_diffuse.dds"
+		texture_normal = "generic_worldmarket_platform_normal.dds"
+		texture_specular = "generic_worldmarket_platform_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_3|flag_3.001"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "HUB_BUILDING" "FLAGWAVE_SETTINGS_BUILDING" "COA_TEXTURE" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_4|generic_worldmarket_4.001"
+		index = 0
+		texture_diffuse = "generic_worldmarket_diffuse.dds"
+		texture_normal = "generic_worldmarket_normal.dds"
+		texture_specular = "generic_worldmarket_properties.dds"
+		texture = { file = "generic_worldmarket_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_Group|LOD_4|worldmarket_platform_4.001"
+		index = 0
+		texture_diffuse = "generic_worldmarket_platform_diffuse.dds"
+		texture_normal = "generic_worldmarket_platform_normal.dds"
+		texture_specular = "generic_worldmarket_platform_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "SOL_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "generic_worldmarket_01_entity"
+	pdxmesh = "generic_worldmarket_01_mesh"
+}

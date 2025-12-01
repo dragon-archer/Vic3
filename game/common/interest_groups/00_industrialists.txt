@@ -9,7 +9,7 @@
 		ideology_laissez_faire
 		ideology_individualist
 	}
-	
+
 	character_ideologies = {
 		ideology_moderate
 		ideology_market_liberal
@@ -28,7 +28,7 @@
 		ig_trait_engines_of_progress
 		ig_trait_tax_avoidance
 	}
-	
+
 	on_enable = {
 		ig:ig_industrialists = {
 			if = {
@@ -90,6 +90,8 @@
 						OR = {
 							c:DEI ?= this
 							c:ALK ?= this
+							c:HBC ?= this
+							is_country_type = company
 						}
 					}
 				}
@@ -98,7 +100,7 @@
 
 				set_ig_trait = ig_trait:ig_trait_tax_avoidance
 				set_ig_trait = ig_trait:ig_trait_engines_of_progress
-				set_ig_trait = ig_trait:ig_trait_job_creators				
+				set_ig_trait = ig_trait:ig_trait_job_creators
 			}
 			else = {
 				set_ig_trait = ig_trait:ig_trait_tax_avoidance
@@ -114,12 +116,21 @@
 		rule = {
 			trigger = {
 				c:BIC ?= this
-				any_primary_culture = { 
+				any_primary_culture = {
 					cu:british = this
 				}
 			}
 			cultures = {
 				british scottish irish
+			}
+		}
+		ruler = {
+			trigger = {
+				c:HAW ?= this
+				NOT = { has_variable = deported_americans }
+			}
+			cultures = {
+				yankee dixie british hawaiian
 			}
 		}
 	}
@@ -166,7 +177,10 @@
 					is_pop_type = engineers
 				}
 				value = 50
-				add = this.standard_of_living
+				add = {
+					value = this.standard_of_living
+					multiply = 2
+				}
 			}
 		}
 
@@ -177,7 +191,10 @@
 					is_pop_type = shopkeepers
 				}
 				value = 50
-				add = this.standard_of_living
+				add = {
+					value = this.standard_of_living
+					multiply = 2
+				}
 			}
 		}
 		if = {
@@ -201,7 +218,7 @@
 				value = 250
 			}
 		}
-		
+
 		if = {
 			limit = {
 				owner = {
@@ -283,7 +300,7 @@
 				min = 0
 			}
 		}
-		
+
 		if = {
 			limit = {
 				scope:interest_group = {
@@ -401,11 +418,19 @@
 		value = 0.5
 	}
 
+	executive_weight = {
+		value = 5.0
+	}
+
 	noble_chance = {
 		value = 0.3
 	}
 
 	female_commander_chance = {
+		value = 0.0
+	}
+
+	female_executive_chance = {
 		value = 0.0
 	}
 
@@ -427,7 +452,7 @@
 
 	female_agitator_chance = {
 		value = 0.025
-		
+
 		if = {
 			limit = {
 				owner = {
@@ -438,8 +463,8 @@
 			add = {
 				value = 0.025
 			}
-		}	
-		
+		}
+
 		if = {
 			limit = {
 				owner = {
@@ -462,7 +487,7 @@
 			add = {
 				value = 0.025
 			}
-		}		
+		}
 	}
 
 	# The chance that a commander belonging to this IG takes over leadership when it changes
@@ -470,5 +495,11 @@
 	commander_leader_chance = {
 		value = 0.25
 		multiply = ig_commander_leader_chance_mult
+	}
+
+	# The chance that a executive belonging to this IG takes over leadership when it changes
+	# scope:character is the most popular executive in the IG
+	executive_leader_chance = {
+		value = 0.75
 	}
 }

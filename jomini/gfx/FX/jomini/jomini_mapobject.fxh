@@ -1,3 +1,6 @@
+Includes = {
+	"cw/heightmap.fxh"
+}
 
 VertexStruct VS_INPUT_PDXMESH_MAPOBJECT
 {
@@ -13,7 +16,7 @@ VertexStruct VS_INPUT_PDXMESH_MAPOBJECT
 	float2 UV2						: TEXCOORD4;
 @endif
 
-	uint InstanceIndex24_Opacity8 	: TEXCOORD5;
+	uint Index24_Packed1_Opacity6_Sign1 	: TEXCOORD5;
 };
 
 VertexStruct VS_INPUT_DEBUGNORMAL_BATCHED
@@ -34,45 +37,75 @@ VertexStruct VS_OUTPUT_MAPOBJECT_SHADOW
 {
 	float4 Position					: PDX_POSITION;
 	float2 UV 						: TEXCOORD0;
-	uint InstanceIndex24_Opacity8 	: TEXCOORD1;
+	uint Index24_Packed1_Opacity6_Sign1 	: TEXCOORD1;
 }
 
-BufferTexture MapObjectBuffer
+BufferTexture PackedMapObjectBuffer
 {
-	Ref = JominiMeshBatchTransforms
+	Ref = JominiMeshPackedBatchTransforms
+	type = float4
+}
+
+BufferTexture NonPackedMapObjectBuffer
+{
+	Ref = JominiMeshNonPackedBatchTransforms
 	type = float4
 }
 
 Code
 [[
-	float4x4 GetWorldMatrixMapObject( in uint InstanceIndex )
+	float4x4 GetWorldMatrixMapObject( in uint InstanceIndex, in bool IsPacked )
 	{
-		int i = int(InstanceIndex) * 4;
-		return Create4x4( PdxReadBuffer4( MapObjectBuffer, i+0 ), PdxReadBuffer4( MapObjectBuffer, i+1 ), PdxReadBuffer4( MapObjectBuffer, i+2 ), PdxReadBuffer4( MapObjectBuffer, i+3 ) );
+		if ( IsPacked )
+		{
+			float4 PackedTransform = PdxReadBuffer4( PackedMapObjectBuffer, InstanceIndex );
+
+			float3 Translation = float3( PackedTransform.x, GetHeight( PackedTransform.xy ), PackedTransform.y );
+			float Scale = PackedTransform.z;
+			float SinYaw = sin(PackedTransform.w);
+			float CosYaw = cos(PackedTransform.w);
+
+			return float4x4(
+				Scale * CosYaw, 	0,					Scale * SinYaw, 	Translation.x,
+				0, 					Scale, 				0, 					Translation.y,
+				- Scale * SinYaw, 	0, 					Scale * CosYaw, 	Translation.z,
+				0, 					0, 					0, 					1
+			);
+		}
+		return Create4x4( PdxReadBuffer4( NonPackedMapObjectBuffer, ( InstanceIndex * 4 ) + 0 ),
+			PdxReadBuffer4( NonPackedMapObjectBuffer, ( InstanceIndex * 4 ) + 1 ),
+			PdxReadBuffer4( NonPackedMapObjectBuffer, ( InstanceIndex * 4 ) + 2 ),
+			PdxReadBuffer4( NonPackedMapObjectBuffer, ( InstanceIndex * 4 ) + 3 ) );
 	}
-	uint UnpackAndGetMapObjectInstanceIndex( in uint InstanceIndex24_Opacity8 )
+	uint UnpackAndGetMapObjectInstanceIndex( in uint Index24_Packed1_Opacity6_Sign1 )
 	{
-		return ( InstanceIndex24_Opacity8 >> 8 ) & uint(0x00ffffff);
+		return ( Index24_Packed1_Opacity6_Sign1 >> 8 ) & uint(0x00ffffff);
 	}
-	float UnpackAndGetMapObjectOpacity( in uint InstanceIndex24_Opacity8 )
+	bool UnpackAndGetMapObjectPackedFlag( in uint Index24_Packed1_Opacity6_Sign1 )
 	{
-		const float OpacityScale = 1.0f / float(0x0000007f);
-		float Opacity = float(uint(InstanceIndex24_Opacity8 & uint(0x0000007f))) * OpacityScale;
-		if( (InstanceIndex24_Opacity8 & uint(0x00000080) ) != 0 )
+		return ( Index24_Packed1_Opacity6_Sign1 & uint(0x00000080) ) != 0;
+	}
+	float UnpackAndGetMapObjectOpacity( in uint Index24_Packed1_Opacity6_Sign1 )
+	{
+		const float OpacityScale = 1.0f / float(0x0000007E);
+		float Opacity = float(uint(Index24_Packed1_Opacity6_Sign1 & uint(0x0000007E))) * OpacityScale;
+		if( (Index24_Packed1_Opacity6_Sign1 & uint(0x00000001) ) != 0 )
 		{
 			Opacity *= -1.0f;
 		}
 		return Opacity;
 	}
-	float4x4 UnpackAndGetMapObjectWorldMatrix( in uint InstanceIndex24_Opacity8 )
+	float4x4 UnpackAndGetMapObjectWorldMatrix( in uint Index24_Packed1_Opacity6_Sign1 )
 	{
-		uint InstanceIndex = UnpackAndGetMapObjectInstanceIndex( InstanceIndex24_Opacity8 );
-		return GetWorldMatrixMapObject( InstanceIndex );
+		uint InstanceIndex = UnpackAndGetMapObjectInstanceIndex( Index24_Packed1_Opacity6_Sign1 );
+		bool IsPacked = UnpackAndGetMapObjectPackedFlag( Index24_Packed1_Opacity6_Sign1 );
+		return GetWorldMatrixMapObject( InstanceIndex, IsPacked );
 	}
-	void UnpackMapObjectInstanceData( in uint InstanceIndex24_Opacity8, out uint InstanceIndex, out float Opacity )
+	void UnpackMapObjectInstanceData( in uint Index24_Packed1_Opacity6_Sign1, out uint InstanceIndex, out uint IsPacked, out float Opacity )
 	{
-		InstanceIndex = UnpackAndGetMapObjectInstanceIndex( InstanceIndex24_Opacity8 );
-		Opacity = UnpackAndGetMapObjectOpacity( InstanceIndex24_Opacity8 );
+		InstanceIndex = UnpackAndGetMapObjectInstanceIndex( Index24_Packed1_Opacity6_Sign1 );
+		IsPacked = UnpackAndGetMapObjectPackedFlag( Index24_Packed1_Opacity6_Sign1 );
+		Opacity = UnpackAndGetMapObjectOpacity( Index24_Packed1_Opacity6_Sign1 );
 	}
 ]]
 
@@ -105,7 +138,7 @@ VertexShader =
 			VS_OUTPUT_MAPOBJECT_SHADOW Out;
 			Out.Position 					= Output.Position;
 			Out.UV							= Output.UV;
-			Out.InstanceIndex24_Opacity8 	= 0;
+			Out.Index24_Packed1_Opacity6_Sign1 	= 0;
 			return Out;
 		}
 	]]
@@ -119,12 +152,13 @@ VertexShader =
 			PDX_MAIN
 			{			
 				uint InstanceIndex;
+				bool IsPacked;
 				float Opacity;
-				UnpackMapObjectInstanceData( Input.InstanceIndex24_Opacity8, InstanceIndex, Opacity );
-				float4x4 WorldMatrix = GetWorldMatrixMapObject( InstanceIndex );
+				UnpackMapObjectInstanceData( Input.Index24_Packed1_Opacity6_Sign1, InstanceIndex, IsPacked, Opacity );
+				float4x4 WorldMatrix = GetWorldMatrixMapObject( InstanceIndex, IsPacked );
 				
 				VS_OUTPUT_MAPOBJECT_SHADOW Out = ConvertOutputMapObjectShadow( PdxMeshVertexShaderShadow( PdxMeshConvertInput( Input ), 0/*Not supported*/, WorldMatrix ) );				
-				Out.InstanceIndex24_Opacity8 = Input.InstanceIndex24_Opacity8;
+				Out.Index24_Packed1_Opacity6_Sign1 = Input.Index24_Packed1_Opacity6_Sign1;
 				return Out;
 			}
 		]]
@@ -160,7 +194,7 @@ PixelShader =
 	[[
 		void ApplyDither( in VS_OUTPUT_MAPOBJECT_SHADOW Input )
 		{
-			float Opacity = UnpackAndGetMapObjectOpacity( Input.InstanceIndex24_Opacity8 );
+			float Opacity = UnpackAndGetMapObjectOpacity( Input.Index24_Packed1_Opacity6_Sign1 );
 			PdxMeshApplyDitheredOpacity( Opacity, Input.Position.xy );
 		}
 	]]

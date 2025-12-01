@@ -1,3 +1,11 @@
+#ifndef PDX_DIRECTX_11
+#define printf( ... )
+#define SetPrintfEnabled( ... )
+#define ASSERT_FORMAT( ... )
+#define ASSERT_FAIL( ... )
+#define SetAssertEnabled( ... )
+#endif
+
 #define PDX_POSITION SV_Position
 #define PDX_COLOR SV_Target
 #define PDX_COLOR0 SV_Target0

@@ -60,7 +60,7 @@ RWStructuredBufferTexture PatchDataBuffer
 	Type = SPatchData
 }
 
-RWStructuredBufferTexture PatchLengthsBuffer
+RWBufferTexture PatchLengthsBuffer
 {
 	Ref = GpuSplinePatchLengthsBuffer
 	Type = uint

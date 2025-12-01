@@ -216,6 +216,16 @@ Code
 		return UnpackNormal( PdxTex2D( NormalTex, uv ) );
 	}
 
+	float3 UnpackNormalNormalized( float4 NormalMapSample )
+	{
+		return normalize( UnpackNormal( NormalMapSample ) );
+	}
+
+	float3 UnpackNormalNormalized( in PdxTextureSampler2D NormalTex, float2 uv )
+	{
+		return normalize( UnpackNormal( PdxTex2D( NormalTex, uv ) ) );
+	}
+
 	float3 IntToNiceColor( int TheInt )
 	{
 		const int HueDivision = 6; // As in how many times the color wheel is divided

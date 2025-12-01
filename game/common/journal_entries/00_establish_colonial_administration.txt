@@ -1,6 +1,6 @@
 ﻿je_colonial_administration = {
 	icon = "gfx/interface/icons/invention_icons/colonization.dds"
-	
+
 	group = je_group_foreign_affairs
 
 	is_shown_when_inactive = {
@@ -18,6 +18,7 @@
 
 	possible = {
 		NOT = { is_country_type = unrecognized }
+		is_subject = no
 		any_scope_state = {
 			state_is_in_africa = yes
 		}
@@ -62,7 +63,7 @@
 			save_scope_as = congo_region_scope
 		}
 	}
-	
+
 	# Establish Colonial Administration
 	scripted_button = je_colonial_administration_button_senegal
 	scripted_button = je_colonial_administration_button_niger

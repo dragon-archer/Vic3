@@ -527,7 +527,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=182
+					linked_node=152
 					linked_pin="value"
 				}
 			}
@@ -549,7 +549,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=183
+					linked_node=153
 					linked_pin="value"
 				}
 			}
@@ -571,7 +571,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=184
+					linked_node=150
 					linked_pin="value"
 				}
 			}
@@ -593,7 +593,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=185
+					linked_node=151
 					linked_pin="value"
 				}
 			}
@@ -1212,7 +1212,7 @@ graph={
 			inputs={
 				link={
 					pin_id="size"
-					linked_node=151
+					linked_node=155
 					linked_pin="value"
 				}
 				link={
@@ -1239,18 +1239,6 @@ graph={
 				}
 			}
 		}
-		pdxns:particle:SetWorldSpace={
-			id=57
-			node={
-			}
-			inputs={
-				link={
-					pin_id="condition"
-					linked_node=60
-					linked_pin="value"
-				}
-			}
-		}
 		pdxns:particle:Turbulence={
 			id=58
 			node={
@@ -1272,14 +1260,6 @@ graph={
 			id=59
 			node={
 				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=60
-			node={
-				value=yes
 			}
 			inputs={
 			}
@@ -2036,7 +2016,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=184
+			id=150
 			node={
 				value=0
 			}
@@ -2044,7 +2024,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=185
+			id=151
 			node={
 				value=0
 			}
@@ -2052,7 +2032,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=182
+			id=152
 			node={
 				value=0
 			}
@@ -2060,7 +2040,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=183
+			id=153
 			node={
 				value=0
 			}
@@ -2068,7 +2048,7 @@ graph={
 			}
 		}
 		pdxns:values:Vector3f={
-			id=150
+			id=154
 			node={
 			}
 			inputs={
@@ -2090,7 +2070,7 @@ graph={
 			}
 		}
 		pdxns:values:Vector3f={
-			id=151
+			id=155
 			node={
 			}
 			inputs={

@@ -1,0 +1,41 @@
+pdxmesh = {
+	name = "hammer_anvil_animations_mesh"
+	file = "hammer_anvil_animations.mesh"
+
+	animation = { id = "start_animation" type = "hammer_anvil_animations_start.anim" }
+	animation = { id = "end_animation" type = "hammer_anvil_animations_end.anim" }
+
+	meshsettings = {
+		name = "hammer_anvil1Shape"
+		index = 0
+		texture_diffuse = "hammer_anvil_diffuse.dds"
+		texture_normal = "hammer_anvil_normal.dds"
+		texture_specular = "hammer_anvil_properties.dds"
+		
+		shader = "standard"
+	}
+	
+	#locator_hit_effect
+	#particle_hammer_anvil_hit
+}
+
+entity = {
+	name = "start_hammer_anvil"
+	pdxmesh = "hammer_anvil_animations_mesh"
+	
+	default_state = "start"
+	state = { name = "start" animation = "start_animation" looping = yes
+		event = { time = 0.05 node = "locator_hit_effect" particle = "particle_hammer_anvil_hit" trigger_once = no keep_particle = yes}
+		event = { time = 0.4 node = "locator_hit_effect" particle = "particle_hammer_anvil_hit" trigger_once = no keep_particle = no}
+	}
+}
+
+entity = {
+	name = "end_hammer_anvil"
+	pdxmesh = "hammer_anvil_animations_mesh"
+	
+	default_state = "start"	
+	state = { name = "start" animation = "end_animation" looping = yes
+		event = { time = 0.6 node = "locator_hit_effect" particle = "particle_hammer_anvil_hit_break" trigger_once = yes keep_particle = yes}	
+	}
+}

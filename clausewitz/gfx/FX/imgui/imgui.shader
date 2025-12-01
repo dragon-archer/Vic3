@@ -65,7 +65,7 @@ PixelShader =
 		[[
 			PDX_MAIN
 			{
-				float4 Ret = Input.Color * PdxSampleTex2D( Texture, DefaultSampler, Input.UV ).r;
+				float4 Ret = Input.Color * PdxSampleTex2D( Texture, DefaultSampler, Input.UV );
 				return Ret;
 			}
 		]]

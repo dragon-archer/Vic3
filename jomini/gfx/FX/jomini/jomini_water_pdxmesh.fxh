@@ -37,7 +37,7 @@ VertexShader =
 		[[
 			PDX_MAIN
 			{
-				return ConvertOutputWater( PdxMeshVertexShader( PdxMeshConvertInput( Input ), 0, UnpackAndGetMapObjectWorldMatrix( Input.InstanceIndex24_Opacity8 ) ) );				
+				return ConvertOutputWater( PdxMeshVertexShader( PdxMeshConvertInput( Input ), 0, UnpackAndGetMapObjectWorldMatrix( Input.Index24_Packed1_Opacity6_Sign1 ) ) );				
 			}
 		]]
 	}

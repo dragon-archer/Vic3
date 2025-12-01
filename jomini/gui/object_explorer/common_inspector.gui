@@ -100,9 +100,20 @@ types InspectorTypes {
 
 	type variable_list_entry = hbox {
 		spacing = 2
+
 		scope_object_inspector = {
 			datacontext = "[VariableListEntry.AccessScopeEditor]"
 		}
+
+		editor_textinput = {
+			layoutpolicy_horizontal = fixed
+			size = { 60 18 }
+			align = right
+			text = "[VariableListEntry.GetTicksRemaining]"
+			oneditingfinished = "[VariableListEntry.SetTicksRemaining]"
+			raw_tooltip = "Ticks until deleted"
+		}
+
 		editor_button = {
 			layoutpolicy_horizontal = fixed
 			name = "delete_variable"
@@ -196,9 +207,19 @@ types InspectorTypes {
 					oneditingfinished = "[VariableListStore.SetNewVariableListName]"
 					raw_tooltip = "Which list to add the entry to"
 				}
+
 				scope_object_inspector = {
 					layoutpolicy_horizontal = growing
 					datacontext = "[VariableListStore.AccessNewEntryEditor]"
+				}
+
+				editor_textinput = {
+					layoutpolicy_horizontal = fixed
+					size = { 60 18 }
+					align = right
+					text = "[VariableListStore.GetVariableTicksRemaining]"
+					oneditingfinished = "[VariableListStore.SetVariableTicksRemaining]"
+					raw_tooltip = "Ticks until deleted"
 				}
 
 				editor_button = {

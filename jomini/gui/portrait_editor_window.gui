@@ -296,6 +296,14 @@ types PortraitEditorTypes
 		align = center|nobaseline
 	}
 
+	type pe_button_open_file = button {
+		using = pe_button
+		using = editor_font
+		size = { 38 22 }
+		raw_text =  "Open"
+		align = center|nobaseline
+	}
+
 	type pe_editor_tab = hbox {
 
 		pe_editor_tab_settings = {
@@ -366,6 +374,15 @@ types PortraitEditorTypes
 						pe_button_right = {
 							onclick = "[PortraitEditorWindow.OnChangeAnimationItemRight]"
 						}
+
+						widget = {
+							size = { 8 0 }
+						}
+
+						pe_button_open_file = {
+							tooltip = "[PortraitEditorWindow.GetCurrentAnimationFileDesc]"
+							onclick = "[PortraitEditorWindow.OpenCurrentAnimationFile]"
+						}
 					}
 				}
 			}
@@ -397,6 +414,15 @@ types PortraitEditorTypes
 
 						pe_button_right = {
 							onclick = "[PortraitEditorWindow.OnChangeEthnicityRight]"
+						}
+
+						widget = {
+							size = { 8 0 }
+						}
+
+						pe_button_open_file = {
+							tooltip = "[PortraitEditorWindow.GetCurrentEthnicityFileDesc]"
+							onclick = "[PortraitEditorWindow.OpenCurrentEthnicityFile]"
 						}
 					}
 				}
@@ -529,6 +555,15 @@ types PortraitEditorTypes
 						pe_button_right = {
 							onclick = "[PortraitEditorWindow.OnNextEnvironment]"
 						}
+
+						widget = {
+							size = { 8 0 }
+						}
+
+						pe_button_open_file = {
+							tooltip = "[PortraitEditorWindow.GetCurrentEnvironmentFileDesc]"
+							onclick = "[PortraitEditorWindow.OpenCurrentEnvironmentFile]"
+						}
 					}
 				}
 			}
@@ -560,6 +595,15 @@ types PortraitEditorTypes
 
 						pe_button_right = {
 							onclick = "[PortraitEditorWindow.OnNextCamera]"
+						}
+
+						widget = {
+							size = { 8 0 }
+						}
+
+						pe_button_open_file = {
+							tooltip = "[PortraitEditorWindow.GetCurrentCameraFileDesc]"
+							onclick = "[PortraitEditorWindow.OpenCurrentCameraFile]"
 						}
 					}
 				}
@@ -600,9 +644,14 @@ types PortraitEditorTypes
 
 		# Gene Extras
 		aligned_left_widget_group = {
+			layoutpolicy_vertical = expanding
+			layoutpolicy_horizontal = expanding
+
 			blockoverride "group_content"
 			{
 				spacing = 5
+				layoutpolicy_vertical = expanding
+				layoutpolicy_horizontal = expanding
 
 				aligned_left_widget = {
 					blockoverride "content"
@@ -627,6 +676,15 @@ types PortraitEditorTypes
 						pe_button_right = {
 							onclick = "[PortraitEditorWindow.OnChangeGeneRight]"
 						}
+
+						widget = {
+							size = { 8 0 }
+						}
+
+						pe_button_open_file = {
+							tooltip = "[PortraitEditorWindow.GetCurrentGeneFileDesc]"
+							onclick = "[PortraitEditorWindow.OpenCurrentGeneFile]"
+						}
 					}
 				}
 
@@ -649,17 +707,17 @@ types PortraitEditorTypes
 
 							flowcontainer = {
 								visible = "[Not(PortraitEditorWindow.IsSelectedColorGene)]"
-								spacing = 16
 
 								pe_button_left = {
 									onclick = "[PortraitEditorWindow.OnChangeSubGeneItemLeft]"
-
 								}
+
+								widget = { size = { 16 0 } }
 
 								dropDown = {
 									alwaystransparent = no
 									name = "gene_templates_dropdown"
-									size = { 250 20 }
+									size = { 192 20 }
 
 									active_item = {
 										hbox = {
@@ -682,9 +740,12 @@ types PortraitEditorTypes
 
 												pe_text = {
 													visible = "[PortraitEditorWindow.HasSubGenes]"
+													margin_top = 1
+													margin_right = 16
 													parentanchor = hcenter
 													align = hcenter
 													autoresize = yes
+													fontsize = 10
 													text = "[GeneItem.GetName]"
 												}
 											}
@@ -756,6 +817,8 @@ types PortraitEditorTypes
 									}
 								}
 
+								widget = { size = { 16 0 } }
+
 								pe_button_right = {
 									onclick = "[PortraitEditorWindow.OnChangeSubGeneItemRight]"
 								}
@@ -785,7 +848,8 @@ types PortraitEditorTypes
 
 						scrollbar = {
 							name = "strength_scrollbar"
-							size = { 220 14 }
+							size = { 265 14 }
+
 							direction = horizontal
 							min = 0
 							max = 1
@@ -917,10 +981,6 @@ types PortraitEditorTypes
 							}
 						}
 					}
-				}
-
-				pe_margin_widget = {
-					size = { 1 10 }
 				}
 
 				aligned_left_widget = {
@@ -1089,8 +1149,7 @@ types PortraitEditorTypes
 
 				scrollarea = {
 					layoutpolicy_horizontal = expanding
-					maximumsize = { -1 320 }
-					autoresizescrollarea = yes
+					layoutpolicy_vertical = expanding
 					scrollbarpolicy_horizontal = always_off
 					alwaystransparent = no
 
@@ -1182,7 +1241,7 @@ types PortraitEditorTypes
 
 		widget = {
 			name = "spacer"
-			layoutpolicy_vertical = expanding
+			layoutpolicy_vertical = preferred
 		}
 	}
 
@@ -1454,7 +1513,20 @@ types PortraitEditorTypes
 			raw_text =  "Reload Color Palettes"
 			onclick = "[PortraitEditorWindow.OnReloadColorPalettes]"
 		}
-
+		button = {
+			using = pe_button
+			using = editor_font
+			size = { 200 40 }
+			raw_text =  "Restart Portrait"
+			onclick = "[PortraitEditorWindow.OnRestartPortrait]"
+		}
+		button = {
+			using = pe_button
+			using = editor_font
+			size = { 200 40 }
+			raw_text =  "Randomize Portrait ID"
+			onclick = "[PortraitEditorWindow.OnRandomizePortraitId]"
+		}
 		widget = { size = { 0 15 } }
 
 		button = {

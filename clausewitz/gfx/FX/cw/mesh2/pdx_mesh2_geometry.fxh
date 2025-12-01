@@ -2,12 +2,11 @@ Includes = {
 	"cw/mesh2/pdx_mesh2_utils.fxh"
 }
 
-BufferTexture GeometryDataBuffer
+BufferTexture Mesh2GeometryDataBuffer
 {
-	Ref = PdxGeometryDataBuffer
+	Ref = PdxMesh2GeometryDataBuffer
 	type = uint
 }
-
 
 Code
 [[
@@ -19,7 +18,6 @@ Code
 		float3 _BoundingBoxMin;
 		float3 _BoundingBoxMax;
 		
-		uint _GeometryDataBufferOffset;
 		uint _Numindices;
 		uint _IndexDataOffset;
 		
@@ -64,6 +62,10 @@ Code
 			uint _SkinExternalDataOffset; // For versions that stores count/offset in vertex stream and actual skinning data separately
 		#endif
 	#endif
+	
+	#ifdef PDX_MESH2_BLENDSHAPES
+		uint _BlendShapeTypeDataOffset;
+	#endif
 	};
 	
 	// Note that offsets are known at compile time so even tho it looks like we always load all this data the compiler should throw away all fields that are unused
@@ -71,57 +73,61 @@ Code
 	{
 		STypeData TypeData;
 		
-		TypeData._BoundingSphereCenter = Read3Float( GeometryDataBuffer, TypeDataOffset );
+		TypeData._BoundingSphereCenter = Read3Float( Mesh2GeometryDataBuffer, TypeDataOffset );
 		TypeDataOffset += 3;
-		TypeData._BoundingSphereRadius = asfloat( GeometryDataBuffer[TypeDataOffset++] );
+		TypeData._BoundingSphereRadius = asfloat( Mesh2GeometryDataBuffer[TypeDataOffset++] );
 		
-		TypeData._BoundingBoxMin = Read3Float( GeometryDataBuffer, TypeDataOffset );
+		TypeData._BoundingBoxMin = Read3Float( Mesh2GeometryDataBuffer, TypeDataOffset );
 		TypeDataOffset += 3;
-		TypeData._BoundingBoxMax = Read3Float( GeometryDataBuffer, TypeDataOffset );
+		TypeData._BoundingBoxMax = Read3Float( Mesh2GeometryDataBuffer, TypeDataOffset );
 		TypeDataOffset += 3;
 		
-		TypeData._Numindices = GeometryDataBuffer[TypeDataOffset++];
-		TypeData._IndexDataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._Numindices = Mesh2GeometryDataBuffer[TypeDataOffset++];
+		TypeData._IndexDataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 		
-		TypeData._PositionDataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._PositionDataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 		
 	#ifdef PDX_MESH2_QTANGENT
-		TypeData._QTangentDataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._QTangentDataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	
 	#ifdef PDX_MESH2_NORMAL
-		TypeData._NormalDataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._NormalDataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	#ifdef PDX_MESH2_TANGENT
-		TypeData._TangentDataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._TangentDataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 	#endif
 		
 	#ifdef PDX_MESH2_UV0
-		TypeData._Uv0DataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._Uv0DataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	#ifdef PDX_MESH2_UV1
-		TypeData._Uv1DataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._Uv1DataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	#ifdef PDX_MESH2_UV2
-		TypeData._Uv2DataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._Uv2DataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	#ifdef PDX_MESH2_UV3
-		TypeData._Uv3DataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._Uv3DataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	
 	#ifdef PDX_MESH2_COLOR0
-		TypeData._Color0DataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._Color0DataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	#ifdef PDX_MESH2_COLOR1
-		TypeData._Color1DataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._Color1DataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 	#endif
 	
 	#ifdef PDX_MESH2_SKIN
-		TypeData._SkinVertexDataOffset = GeometryDataBuffer[TypeDataOffset++];
+		TypeData._SkinVertexDataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 		
 		#ifdef PDX_MESH2_SKIN_EXTERNAL
-			TypeData._SkinExternalDataOffset = GeometryDataBuffer[TypeDataOffset++];
+			TypeData._SkinExternalDataOffset = Mesh2GeometryDataBuffer[TypeDataOffset++];
 		#endif
+	#endif
+	
+	#ifdef PDX_MESH2_BLENDSHAPES
+		TypeData._BlendShapeTypeDataOffset = TypeDataOffset;
 	#endif
 	
 		return TypeData;
@@ -131,17 +137,17 @@ Code
 	float2 ReadPackedFloat2( uint BaseOffset, uint VertexID )
 	{
 		uint DataBufferOffset = BaseOffset + VertexID * 2;
-		return Read2Float( GeometryDataBuffer, DataBufferOffset );
+		return Read2Float( Mesh2GeometryDataBuffer, DataBufferOffset );
 	}
 	float3 ReadPackedFloat3( uint BaseOffset, uint VertexID )
 	{
 		uint DataBufferOffset = BaseOffset + VertexID * 3;
-		return Read3Float( GeometryDataBuffer, DataBufferOffset );
+		return Read3Float( Mesh2GeometryDataBuffer, DataBufferOffset );
 	}
 	float4 ReadPackedFloat4( uint BaseOffset, uint VertexID )
 	{
 		uint DataBufferOffset = BaseOffset + VertexID * 4;
-		return Read4Float( GeometryDataBuffer, DataBufferOffset );
+		return Read4Float( Mesh2GeometryDataBuffer, DataBufferOffset );
 	}
 
 	
@@ -149,7 +155,7 @@ Code
 	float4 ReadPackedFloat4_Snorm16( uint BaseOffset, uint VertexID )
 	{
 		uint DataBufferOffset = BaseOffset + VertexID * 2; // 2 snorm16 values in each uint, so 2 uint for 4 values
-		int2 Data = asint( Read2( GeometryDataBuffer, DataBufferOffset ) );
+		int2 Data = asint( Read2( Mesh2GeometryDataBuffer, DataBufferOffset ) );
 		return float4( UnpackSnorm16_x2( Data.x ), UnpackSnorm16_x2( Data.y ) );
 	}
 	
@@ -157,7 +163,7 @@ Code
 	float2 ReadPackedFloat2_Unorm16( uint BaseOffset, uint VertexID )
 	{
 		uint DataBufferOffset = BaseOffset + VertexID; // 2 unorm16 values in each uint
-		uint Data = GeometryDataBuffer[DataBufferOffset];
+		uint Data = Mesh2GeometryDataBuffer[DataBufferOffset];
 		return UnpackUnorm16_x2( Data );
 	}
 	
@@ -165,7 +171,7 @@ Code
 	float4 ReadPackedFloat4_Unorm16( uint BaseOffset, uint VertexID )
 	{
 		uint DataBufferOffset = BaseOffset + VertexID * 2; // 2 unorm16 values in each uint, so 2 uint for 4 values
-		uint2 Data = Read2( GeometryDataBuffer, DataBufferOffset );
+		uint2 Data = Read2( Mesh2GeometryDataBuffer, DataBufferOffset );
 		return float4( UnpackUnorm16_x2( Data.x ), UnpackUnorm16_x2( Data.y ) );
 	}
 	
@@ -173,7 +179,7 @@ Code
 	float4 ReadPackedFloat4_Unorm8( uint BaseOffset, uint VertexID )
 	{
 		uint DataBufferOffset = BaseOffset + VertexID; // 4 unorm8 values in each uint
-		uint Data = GeometryDataBuffer[DataBufferOffset];
+		uint Data = Mesh2GeometryDataBuffer[DataBufferOffset];
 		return UnpackUnorm8_x4( Data );
 	}
 	
@@ -183,12 +189,12 @@ Code
 	#ifndef USE_IB
 		#ifdef PDX_MESH2_INDEX_UINT_16
 			uint DataBufferOffset = TypeData._IndexDataOffset + VertexID / 2;
-			uint PackedIndex = GeometryDataBuffer[DataBufferOffset];
+			uint PackedIndex = Mesh2GeometryDataBuffer[DataBufferOffset];
 			uint2 IndexUint16 = UnpackUint16_x2( PackedIndex );
 			VertexID = IndexUint16[ mod(VertexID, 2) ];
 		#else
 			uint DataBufferOffset = TypeData._IndexDataOffset + VertexID;
-			VertexID = GeometryDataBuffer[DataBufferOffset];
+			VertexID = Mesh2GeometryDataBuffer[DataBufferOffset];
 		#endif
 	#endif
 	}
@@ -341,3 +347,147 @@ Code
 	#endif
 	}
 ]]
+
+
+VertexShader =
+{
+	VertexStruct VS_INPUT_PDXMESH2
+	{
+	@ifdef USE_VB
+			float3 Position			: POSITION;
+			
+		@ifdef PDX_MESH2_NORMAL
+			float3 Normal      		: NORMAL;
+		@endif
+
+		@ifdef PDX_MESH2_TANGENT
+			float4 Tangent			: TANGENT;
+		@endif
+		@ifdef PDX_MESH2_QTANGENT
+			float4 QTangent			: TANGENT;
+		@endif
+			
+		@ifdef PDX_MESH2_UV0
+			float2 Uv0				: TEXCOORD0;
+		@endif
+		@ifdef PDX_MESH2_UV1
+			float2 Uv1				: TEXCOORD1;
+		@endif
+		@ifdef PDX_MESH2_UV2
+			float2 Uv2				: TEXCOORD2;
+		@endif
+		@ifdef PDX_MESH2_UV3
+			float2 Uv3				: TEXCOORD3;
+		@endif
+
+		@ifdef PDX_MESH2_COLOR0
+			float4 Color0			: COLOR0;
+		@endif
+		@ifdef PDX_MESH2_COLOR1
+			float4 Color1			: COLOR1;
+		@endif
+		
+		@ifdef PDX_MESH2_SKIN
+			@ifdef PDX_MESH2_SKIN_RGBA_UINT16_RGB_FLOAT
+				uint4 BoneIndex 		: SKIN0;
+				float3 BoneWeight		: SKIN1;
+			@else
+				uint SkinData 			: SKIN;
+			@endif
+		@endif
+	@endif
+
+		uint VertexID 			: PDX_VertexID;
+		uint InstanceID			: PDX_InstanceID;
+	};
+	
+	Code
+	[[
+	#ifdef USE_VB
+		float3 GetPosition( VS_INPUT_PDXMESH2 Input, STypeData TypeData )
+		{
+			#ifdef PDX_MESH2_POSITION_COMPRESSED
+				return DecompressPosition( TypeData, Input.Position );
+			#else
+				return Input.Position;
+			#endif
+		}
+		
+		void GetNormalAndTangent( VS_INPUT_PDXMESH2 Input, out float3 Normal, out float3 Tangent, out float BitangentDir )
+		{
+			#ifdef PDX_MESH2_QTANGENT
+				float4 QTangent = normalize( Input.QTangent );
+				// Extract "rotation matrix x-axis" from quaternion
+				Normal = float3( 1, 0, 0 ) + float3( -2, 2, -2 ) * QTangent.y * QTangent.yxw + float3( -2, 2, 2 ) * QTangent.z * QTangent.zwx;
+				// Extract y-axis
+				Tangent = float3( 0, 1, 0 ) + float3( 2, -2, 2 ) * QTangent.x * QTangent.yxw + float3( -2, -2, 2 ) * QTangent.z * QTangent.wzy;
+				BitangentDir = sign( QTangent.w );
+			#else
+				#ifdef PDX_MESH2_NORMAL
+					Normal = Input.Normal;
+				#else
+					Normal = float3( 0.0, 0.0, 0.0 );
+				#endif
+				
+				#ifdef PDX_MESH2_TANGENT
+					Tangent = Input.Tangent.xyz;
+					BitangentDir = Input.Tangent.w;
+				#else
+					Tangent = float3( 0.0, 0.0, 0.0 );
+					BitangentDir = 0.0;
+				#endif
+			#endif
+		}
+		
+		float2 GetUv0( VS_INPUT_PDXMESH2 Input )
+		{
+			#ifdef PDX_MESH2_UV0
+				return Input.Uv0;
+			#else
+				return float2( 0.0, 0.0 );
+			#endif
+		}
+		float2 GetUv1( VS_INPUT_PDXMESH2 Input )
+		{
+			#ifdef PDX_MESH2_UV1
+				return Input.Uv1;
+			#else
+				return float2( 0.0, 0.0 );
+			#endif
+		}
+		float2 GetUv2( VS_INPUT_PDXMESH2 Input )
+		{
+			#ifdef PDX_MESH2_UV2
+				return Input.Uv2;
+			#else
+				return float2( 0.0, 0.0 );
+			#endif
+		}
+		float2 GetUv3( VS_INPUT_PDXMESH2 Input )
+		{
+			#ifdef PDX_MESH2_UV3
+				return Input.Uv3;
+			#else
+				return float2( 0.0, 0.0 );
+			#endif
+		}
+		
+		float4 GetColor0( VS_INPUT_PDXMESH2 Input )
+		{
+			#ifdef PDX_MESH2_COLOR0
+				return Input.Color0;
+			#else
+				return float4( 0.0, 0.0, 0.0, 0.0 );
+			#endif
+		}
+		float4 GetColor1( VS_INPUT_PDXMESH2 Input )
+		{
+			#ifdef PDX_MESH2_COLOR1
+				return Input.Color1;
+			#else
+				return float4( 0.0, 0.0, 0.0, 0.0 );
+			#endif
+		}
+	#endif
+	]]
+}

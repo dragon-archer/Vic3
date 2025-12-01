@@ -396,7 +396,7 @@ environment_front_generals_right = {
 }
 
 pop_environment = {
-cubemap = "gfx/portraits/environments/events_farms_01.dds"
+	cubemap = "gfx/portraits/environments/events_farms_01.dds"
  	cubemap_intensity = 0.6
 
  	lights = {
@@ -472,10 +472,10 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  		fov = 50
  		camera_near_far = { 10 400 }
 	}
- }
+}
 
 small_pop_environment = {
-cubemap = "gfx/portraits/environments/events_farms_01.dds"
+	cubemap = "gfx/portraits/environments/events_farms_01.dds"
  	cubemap_intensity = 0.6
 
  	lights = {
@@ -551,10 +551,168 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  		fov = 50
  		camera_near_far = { 10 400 }
 	}
- }
+}
+
+characters_portrait_environment_right = {
+	cubemap = "gfx/portraits/environments/events_farms_01.dds"
+ 	cubemap_intensity = 1
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.2 2 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 211  220 390 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 420
+ 			falloff = 30
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.12 0.2 4.5 }
+ 			position = cylindrical{ 500 620 420 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 2500
+ 			falloff = 1200
+
+			outer_cone_angle = 248
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.12 0.2 5 }
+ 			position = cylindrical{ 400 370 200 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 		radius = 2500
+ 			falloff = 1200
+
+		outer_cone_angle = 248
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 140 265 -50 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 50
+ 		camera_near_far = { 120 400 }
+	}
+}
+
+ treaty_portrait_environment_left = {
+	cubemap = "gfx/portraits/environments/events_farms_01.dds"
+ 	cubemap_intensity = 1
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.2 4 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 211  310 -40 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 310
+ 			falloff = 30
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.12 0.2 4.5 }
+ 			position = cylindrical{ 400 370 -210 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 2500
+ 			falloff = 1200
+
+			outer_cone_angle = 248
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.01 2 }
+ 			position = cylindrical{ 100 300 -50 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 350
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 140 265 -50 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 50
+ 		camera_near_far = { 120 400 }
+	}
+}
 
 characters_portrait_environment = {
-cubemap = "gfx/portraits/environments/events_farms_01.dds"
+	cubemap = "gfx/portraits/environments/events_farms_01.dds"
  	cubemap_intensity = 0.6
 
  	lights = {
@@ -630,10 +788,10 @@ cubemap = "gfx/portraits/environments/events_farms_01.dds"
  		fov = 50
  		camera_near_far = { 10 400 }
 	}
- }
+}
 
 leader_environment = {
-cubemap = "gfx/portraits/environments/events_battlefield_01.dds"
+	cubemap = "gfx/portraits/environments/events_battlefield_01.dds"
  	cubemap_intensity = 0.8
 
  	lights = {
@@ -709,12 +867,13 @@ cubemap = "gfx/portraits/environments/events_battlefield_01.dds"
  		fov = 50
  		camera_near_far = { 10 400 }
 	}
- }
+}
 
 politician_environment = {
-cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  	cubemap_intensity = 3
-lights = {
+
+	lights = {
  		#########################################################################
  		#								KEY LIGHT								#
  		#########################################################################
@@ -788,12 +947,10 @@ lights = {
  		fov = 70
  		camera_near_far = { 10 400 }
 	}
- }
-
-
+}
 
 ruler_environment = {
-cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  	cubemap_intensity = 2
 
  	lights = {
@@ -873,10 +1030,10 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  		fov = 820
  		camera_near_far = { 10 200 }
 	}
- }
+}
 
 general_environment = {
-cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  	cubemap_intensity = 1.4
 
  	lights = {
@@ -952,10 +1109,10 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  		fov = 50
  		camera_near_far = { 10 400 }
 	}
- }
+}
 
 general_environment_02 = {
-cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  	cubemap_intensity = 1.6
 
  	lights = {
@@ -1031,10 +1188,10 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  		fov = 50
  		camera_near_far = { 120 400 }
 	}
- }
+}
 
 admiral_environment = {
-cubemap = "gfx/portraits/environments/events_battlefield_01.dds"
+	cubemap = "gfx/portraits/environments/events_battlefield_01.dds"
  	cubemap_intensity = 1.1
 
  	lights = {
@@ -1110,12 +1267,10 @@ cubemap = "gfx/portraits/environments/events_battlefield_01.dds"
  		fov = 150
  		camera_near_far = { 10 400 }
 	}
- }
-
-
+}
 
 environment_event_01 = {
-cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  	cubemap_intensity = 1.8
 
  	lights = {
@@ -1191,4 +1346,4 @@ cubemap = "gfx/portraits/environments/castle_interior_01.dds"
  		fov = 50
  		camera_near_far = { 10 400 }
 	}
- }
+}

@@ -49,12 +49,12 @@ types EditorSettings
 	}
 
 	type editor_setting_page_button = button {
-		text = "[ScopedEditorSettingsPage.GetPage.GetName]"
+		text = "[EditorSettingsPage.GetName]"
 		size = { 150 30 }
 		using = EditorSettingsButtonStyle
 		align = left
-		onclick = "[ScopedEditorSettingsPage.AccessPage.OnClick]"
-		upframe = "[Select_int32(ScopedEditorSettingsPage.GetPage.IsSelected,'(int32)2','(int32)1')]"
+		onclick = "[EditorSettingsPage.OnClick]"
+		upframe = "[Select_int32(EditorSettingsPage.IsSelected,'(int32)2','(int32)1')]"
 		block "editor_setting_page_button" {}
 
 		buttonText = {

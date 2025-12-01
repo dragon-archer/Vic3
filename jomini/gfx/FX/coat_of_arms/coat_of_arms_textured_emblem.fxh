@@ -157,5 +157,8 @@ BlendState BlendState
 	BlendEnable = yes
 	SourceBlend = "src_alpha"
 	DestBlend = "inv_src_alpha"
+	
 	BlendOpAlpha = "max"
+	SourceAlpha = "one"	# when using BlendOpAlpha = min or max, source alpha is ignored. Explicitly set to one to avoid warnings
+	DestAlpha = "one"	# when using BlendOpAlpha = min or max, dest alpha is ignored. Explicitly set to one to avoid warnings
 }

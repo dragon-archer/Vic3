@@ -65,7 +65,7 @@ PixelShader =
 	#	[[
 	#		PDX_MAIN
 	#		{
-	#			ApplyDither( Input.InstanceIndex24_Opacity8, Input.Position.xy );
+	#			ApplyDither( Input.Index24_Packed1_Opacity6_Sign1, Input.Position.xy );
 	#
 	#			float Alpha = PdxTex2D( PDXMESH_AlphaBlendShadowMap, Input.UV ).a;
 	#			clip( Alpha - 0.5 );
@@ -100,9 +100,9 @@ VertexShader =
 		[[
 			PDX_MAIN
 			{
-				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.InstanceIndex24_Opacity8 );
+				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.Index24_Packed1_Opacity6_Sign1 );
 				VS_OUTPUT Out = ConvertOutput( PdxMeshVertexShader( PdxMeshConvertInput( Input ), 0/*bone offset not supported*/, WorldMatrix ) );
-				Out.InstanceIndex = Input.InstanceIndex24_Opacity8;
+				Out.InstanceIndex = Input.Index24_Packed1_Opacity6_Sign1;
 				return Out;
 			}
 		]]

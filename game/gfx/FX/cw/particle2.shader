@@ -18,7 +18,10 @@ PixelShader =
 			{
 				PS_COLOR_SSAO Out;
 				float4 Color = PdxTex2D( DiffuseMap, Input.UV0 ) * Input.Color;
+				float4 NextColor = PdxTex2D( DiffuseMap, Input.UV1 ) * Input.Color; 
 				float2 ProvinceCoords = Input.WorldSpacePos.xz / _ProvinceMapSize;
+
+				Color = Color * ( 1.0f - Input.FrameBlend ) + NextColor * Input.FrameBlend;
 
 				#if defined( MAP_PARTICLE ) && !defined( GUI_SHADER )
 					// Paralax offset to keep overlays at terrain level

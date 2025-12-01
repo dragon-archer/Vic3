@@ -25,28 +25,6 @@ graph={
 				}
 			}
 		}
-		pdxns:3d:YawPitchVectorRotation={
-			id=1
-			node={
-			}
-			inputs={
-				link={
-					pin_id="yaw"
-					linked_node=96
-					linked_pin="value"
-				}
-				link={
-					pin_id="pitch"
-					linked_node=103
-					linked_pin="value"
-				}
-				link={
-					pin_id="roll"
-					linked_node=102
-					linked_pin="value"
-				}
-			}
-		}
 		pdxns:common:compound={
 			id=2
 			node={
@@ -454,33 +432,6 @@ graph={
 			}
 		}
 		pdxns:particle:EffectFlags={
-			id=22
-			node={
-			}
-			inputs={
-				link={
-					pin_id="billboard"
-					linked_node=50
-					linked_pin="value"
-				}
-				link={
-					pin_id="emissive"
-					linked_node=51
-					linked_pin="value"
-				}
-				link={
-					pin_id="billboard_axis"
-					linked_node=67
-					linked_pin="value"
-				}
-				link={
-					pin_id="fade_steep_angles"
-					linked_node=49
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:EffectFlags={
 			id=23
 			node={
 			}
@@ -669,7 +620,7 @@ graph={
 				}
 				link={
 					pin_id="effect_flags"
-					linked_node=22
+					linked_node=21
 					linked_pin="effect_flags"
 				}
 				link={
@@ -771,6 +722,11 @@ graph={
 				link={
 					pin_id="tag"
 					linked_node=112
+					linked_pin="value"
+				}
+				link={
+					pin_id="local_space"
+					linked_node=96
 					linked_pin="value"
 				}
 				link={
@@ -1024,18 +980,6 @@ graph={
 				}
 			}
 		}
-		pdxns:particle:SetWorldSpace={
-			id=44
-			node={
-			}
-			inputs={
-				link={
-					pin_id="condition"
-					linked_node=48
-					linked_pin="value"
-				}
-			}
-		}
 		pdxns:values:Bool={
 			id=45
 			node={
@@ -1056,38 +1000,6 @@ graph={
 			id=47
 			node={
 				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=48
-			node={
-				value=yes
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=49
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=50
-			node={
-				value=yes
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=51
-			node={
-				value=yes
 			}
 			inputs={
 			}
@@ -1120,6 +1032,14 @@ graph={
 			id=55
 			node={
 				value=yes
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=96
+			node={
+				value=no
 			}
 			inputs={
 			}
@@ -1217,14 +1137,6 @@ graph={
 			id=66
 			node={
 				value={ 1.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=67
-			node={
-				value={ 0.000000 0.000000 1.000000 }
 			}
 			inputs={
 			}
@@ -1382,6 +1294,54 @@ graph={
 			}
 		}
 		pdxns:values:Float={
+			id=104
+			node={
+				value=2.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=105
+			node={
+				value=0.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=106
+			node={
+				value=1.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=107
+			node={
+				value=3.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=108
+			node={
+				value=1.700000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=109
+			node={
+				value=0.100000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
 			id=82
 			node={
 				value=2.000000
@@ -1494,14 +1454,6 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=96
-			node={
-				value=90.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
 			id=97
 			node={
 				value=0.000000
@@ -1537,70 +1489,6 @@ graph={
 			id=101
 			node={
 				value=1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=102
-			node={
-				value=90.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=103
-			node={
-				value=0.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=104
-			node={
-				value=2.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=105
-			node={
-				value=0.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=106
-			node={
-				value=1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=107
-			node={
-				value=3.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=108
-			node={
-				value=1.700000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=109
-			node={
-				value=0.100000
 			}
 			inputs={
 			}

@@ -26,6 +26,8 @@ Code
     #define MIN_WAVE_SIZE                       4U
     #define WAVE_PART_SIZE                      32U
 
+    #define MAX_SPIN_COUNT                      8U
+
     #define FLAG_NOT_READY  0           //Flag indicating this partition tile's local reduction is not ready
     #define FLAG_REDUCTION  1           //Flag indicating this partition tile's local reduction is ready
     #define FLAG_INCLUSIVE  2           //Flag indicating this partition tile has summed all preceding tiles and added to its sum.
@@ -40,10 +42,11 @@ ConstantBuffer( PdxConstantBuffer0 )
     uint _Pad1;
 };
 
-RWStructuredBufferTexture RWInputBuffer_UINT4
+# Input buffer has type uint instead of uint4 because compaction could write to the same uint4 from different cores which would result in wrong results.
+RWBufferTexture RWInputBuffer
 {
     Ref = PdxRWBufferTexture0
-    Type = uint4
+    Type = uint
 }
 
 RWStructuredBufferTexture PartitionIndexBuffer
@@ -60,7 +63,7 @@ RWStructuredBufferTexture PartitionReductionsBuffer
     globallycoherent = yes
 }
 
-RWStructuredBufferTexture RWIndexOutputBuffer
+RWBufferTexture RWIndexOutputBuffer
 {
     Ref = PdxRWBufferTexture3
     Type = uint
@@ -87,6 +90,12 @@ Code
 
     groupshared uint GS_PartitionIndex;
     groupshared uint GS_PrevPartitionsReduction;
+
+#ifdef PREFIX_SUM_FALLBACK
+    groupshared bool GS_FallbackNeeded;
+    groupshared uint GS_FallbackPrevPartitionIndex;
+    groupshared uint GS_FallbackWaveReductions[ NUM_THREADS_IN_GROUP / MIN_WAVE_SIZE ];
+#endif
 
     inline uint GetWaveIndex( uint GroupThreadID )
     {
@@ -130,17 +139,31 @@ Code
             const uint GlobalElementIndex = GetPartitionStartElementIndex( PartitionIndex ) + ElementIndex;
             if ( GlobalElementIndex < _VectorizedInputSize )
             {
-                uint4 InputValues = RWInputBuffer_UINT4[ GlobalElementIndex ];
+                uint4 InputValues;
+                
+                const uint GlobalElementIndexScalar = GlobalElementIndex * 4;
+                InputValues.x = RWInputBuffer[ GlobalElementIndexScalar ];
+                InputValues.y = RWInputBuffer[ GlobalElementIndexScalar + 1 ];
+                InputValues.z = RWInputBuffer[ GlobalElementIndexScalar + 2 ];
+                InputValues.w = RWInputBuffer[ GlobalElementIndexScalar + 3 ];
 
 #ifdef PREFIX_SUM_COMPACTION
                 // Read input values and store them in groupshared memory
                 GS_PartitionInputElements[ ElementIndex ] = InputValues;
 
-                // RWInputBuffer_UINT4 stores zeros for elements we want to be removed after compaction.
+                // RWInputBuffer stores zeros for elements we want to be removed after compaction.
                 // Compaction itself is done with a prefix sum of the array of binary flags
                 //   where 1 indicates that the element should be preserved and 0 - that the element should be dropped.
                 // Here we clamp non-zero input values to 1 to get this array of binary flags.
                 InputValues = clamp( InputValues, 0, 1 );
+
+#ifdef PREFIX_SUM_DEBUG
+                //Write 0's to the input buffer so we can verify everything functions correctly.
+                RWInputBuffer[ GlobalElementIndexScalar ] = 0;
+                RWInputBuffer[ GlobalElementIndexScalar + 1 ] = 0;
+                RWInputBuffer[ GlobalElementIndexScalar + 2 ] = 0;
+                RWInputBuffer[ GlobalElementIndexScalar + 3 ] = 0;
+#endif
 #endif
 
                 LocalPrefixSums = CalcInclusivePrefixSumUint4( InputValues );
@@ -173,7 +196,9 @@ Code
         }
     }
 
-    inline void ReductionScanMultipleWaves( uint GroupThreadID, uint partIndex )
+    // WARNING: This function hasn't been tested!
+    // If we run into issues on GPUs with less than 16 wave sizes this function should be the primary suspect.
+    inline void ReductionScanMultipleWaves( uint GroupThreadID )
     {
         const uint ScanSize = NUM_THREADS_IN_GROUP / WaveGetLaneCount();
         if ( GroupThreadID < ScanSize )
@@ -251,13 +276,9 @@ Code
                 // We want to preserve only non-zero input elements
                 if ( InputElements[ j ] != 0 )
                 {
-                    // We need to transform ScatterIndices from uint-indexed space to uint4-indexed space
-                    //   to be able to index RWInputBuffer_UINT4.
-                    const uint IndexBufferOffset = ScatterIndices[ j ] / 4;
-                    const uint IndexBufferElement = ScatterIndices[ j ] % 4;
+                     // Move input elements to their compacted places
+                    RWInputBuffer[ ScatterIndices[ j ] ] = InputElements[ j ];
 
-                    // Move input elements to their compacted places
-                    RWInputBuffer_UINT4[ IndexBufferOffset ][ IndexBufferElement ] = InputElements[ j ];
 #ifdef OUTPUT_COMPACTED_INDICES
                     // Store final indices of the compacted elements in a separate buffer
                     const uint GlobalElementIndexScalar = GlobalElementIndex * 4 + j;
@@ -266,7 +287,12 @@ Code
                 }
             }
 #else
-            RWInputBuffer_UINT4[ GlobalElementIndex ] = GS_PartitionWavePrefixSums[ ElementIndex ] + PrevReduction;
+            const uint GlobalElementIndexScalar = GlobalElementIndex * 4;
+            uint4 Result = GS_PartitionWavePrefixSums[ ElementIndex ] + PrevReduction;
+            RWInputBuffer[ GlobalElementIndexScalar ] = Result.x;
+            RWInputBuffer[ GlobalElementIndexScalar + 1 ] = Result.y;
+            RWInputBuffer[ GlobalElementIndexScalar + 2 ] = Result.z;
+            RWInputBuffer[ GlobalElementIndexScalar + 3 ] = Result.w;
 #endif // PREFIX_SUM_COMPACTION
 
             ElementIndex += WaveGetLaneCount();
@@ -291,17 +317,245 @@ Code
             //   - The rest of the bits contain the sum of all the elements of the partition
             const uint StatusFlag = ( PartitionIndex != 0 ) ? FLAG_REDUCTION : FLAG_INCLUSIVE;
             const uint PartitionReduction = GS_WaveReductions[ LastScanWaveIndex ];
+
+#ifdef PREFIX_SUM_FALLBACK
+            // When doing fallback multiple threadgroups can update PartitionReductionsBuffer[ PartitionIndex ]
+            // therefore we should use CompareStore here instead of a simple Add.
+            InterlockedCompareStore( PartitionReductionsBuffer[ PartitionIndex ], 0, ( PartitionReduction << 2 ) | StatusFlag );
+#else
             InterlockedAdd( PartitionReductionsBuffer[ PartitionIndex ], ( PartitionReduction << 2 ) | StatusFlag );
+#endif
         }
+    }
+
+#ifdef PREFIX_SUM_FALLBACK
+    inline void FallbackWaveReductionScan( uint GroupThreadID, uint PartitionIndex )
+    {
+        uint WaveReduction = 0;
+        const uint ScanBegin = GetPartitionStartElementIndex( PartitionIndex ) + GroupThreadID;
+        const uint ScanEnd = ( PartitionIndex + 1 ) * NUM_UINT4_ELEMENTS_IN_PARTITION;
+
+        for ( uint GlobalElementIndex = ScanBegin; GlobalElementIndex < ScanEnd; GlobalElementIndex += NUM_THREADS_IN_GROUP )
+        {
+            uint4 InputValues;
+    
+            const uint GlobalElementIndexScalar = GlobalElementIndex * 4;
+            InputValues.x = RWInputBuffer[ GlobalElementIndexScalar ];
+            InputValues.y = RWInputBuffer[ GlobalElementIndexScalar + 1 ];
+            InputValues.z = RWInputBuffer[ GlobalElementIndexScalar + 2 ];
+            InputValues.w = RWInputBuffer[ GlobalElementIndexScalar + 3 ];
+
+            WaveReduction += WaveActiveSum( dot( InputValues, uint4( 1, 1, 1, 1 ) ) );
+        }
+
+        if ( WaveIsFirstLane() )
+        {
+            GS_FallbackWaveReductions[ GetWaveIndex( GroupThreadID ) ] = WaveReduction;
+        }
+    }
+
+    inline uint FallbackPartitionReductionScanSingleWave( uint GroupThreadID )
+    {
+        uint Reduction;
+        if ( GroupThreadID < NUM_THREADS_IN_GROUP / WaveGetLaneCount() )
+        {
+            Reduction = WaveActiveSum( GS_FallbackWaveReductions[ GroupThreadID ] );
+        }
+
+        return Reduction;
+    }
+
+    // WARNING: This function hasn't been tested!
+    // If we run into issues on GPUs with less than 16 wave sizes this function should be the primary suspect.
+    inline uint FallbackPartitionReductionScanMultipleWaves( uint GroupThreadID )
+    {
+        const uint ReductionSize = NUM_THREADS_IN_GROUP / WaveGetLaneCount();
+        if ( GroupThreadID < ReductionSize )
+        {
+            GS_FallbackWaveReductions[ GroupThreadID ] = WaveActiveSum( GS_FallbackWaveReductions[ GroupThreadID ] );
+        }
+
+        GroupMemoryBarrierWithGroupSync();
+
+        const uint LaneLog = countbits( WaveGetLaneCount() - 1 );
+        uint Offset = LaneLog;
+        uint j = WaveGetLaneCount();
+        for ( ; j < ( ReductionSize >> 1 ); j <<= LaneLog )
+        {
+            if ( GroupThreadID < ( ReductionSize >> Offset ) )
+            {
+                GS_FallbackWaveReductions[ ( ( GroupThreadID + 1 ) << Offset ) - 1 ] =
+                        WaveActiveSum( GS_FallbackWaveReductions[ ( ( GroupThreadID + 1 ) << Offset ) - 1 ] );
+            }
+
+            GroupMemoryBarrierWithGroupSync();
+            Offset += LaneLog;
+        }
+
+        uint Reduction;
+        if ( GroupThreadID == 0 )
+        {
+            Reduction = GS_FallbackWaveReductions[ ReductionSize - 1 ];
+        }
+
+        return Reduction;
+    }
+
+    inline uint FallbackCalculatePartitionReduction( uint GroupThreadID, uint PartitionIndex )
+    {
+        FallbackWaveReductionScan( GroupThreadID, PartitionIndex );
+
+        GroupMemoryBarrierWithGroupSync();
+
+        if ( NUM_THREADS_IN_GROUP / WaveGetLaneCount() <= WaveGetLaneCount() )
+        {
+            return FallbackPartitionReductionScanSingleWave( GroupThreadID );
+        }
+
+        return FallbackPartitionReductionScanMultipleWaves( GroupThreadID );
+    }
+
+    inline uint FallbackUpdatePartitionStatus( uint PartitionIndex, uint Reduction )
+    {
+        const uint StatusFlag = ( PartitionIndex != 0 ) ? FLAG_REDUCTION : FLAG_INCLUSIVE;
+
+        uint PrevStatus;
+        InterlockedCompareExchange( PartitionReductionsBuffer[ PartitionIndex ], 0,
+                                    ( Reduction << 2 ) | StatusFlag, PrevStatus );
+
+        return PrevStatus;
     }
 
     // For a given partition sum up the reductions of all the preceding partitions.
     // The resulted sum is stored in GS_PrevPartitionsReduction.
+    //
+    // To avoid deadlock on some GPUs (Intel) we check the status of the previous partition MAX_SPIN_COUNT times
+    // and if its reduction is still not ready we fallback to calculating this reduction manually.
+    // We repeat this process until we either find the partition with FLAG_INCLUSIVE or manually reach the very first partition.
+    inline void LookbackWithFallback( uint GroupThreadID, uint PartitionIndex )
+    {
+        uint SpinCount = 0;
+        uint PrevReductionsSum = 0;
+        uint PrevPartitionIndex = PartitionIndex - 1;
+
+        while ( WaveReadLaneAt( GS_FallbackNeeded, 0 ) == true )
+        {
+            // Wait until all the waves read GS_FallbackNeeded.
+            GroupMemoryBarrierWithGroupSync();
+
+            if ( GroupThreadID == 0 )
+            {
+                // Try doing the lookback MAX_SPIN_COUNT times.
+                while ( SpinCount < MAX_SPIN_COUNT )
+                {
+                    const uint FlagPayload = PartitionReductionsBuffer[ PrevPartitionIndex ];
+
+                    if ( ( FlagPayload & FLAG_MASK ) > FLAG_NOT_READY )
+                    {
+                        // Sum up the reductions of the partitions up to and including the found partition.
+                        PrevReductionsSum += ( FlagPayload >> 2 );
+
+                        if ( ( FlagPayload & FLAG_MASK ) == FLAG_INCLUSIVE )
+                        {
+                            // Found a partition with its inclusive prefix sums already calculated - no need to look further back.
+                            GS_PrevPartitionsReduction = PrevReductionsSum;
+                            GS_FallbackNeeded = false;
+                            InterlockedAdd( PartitionReductionsBuffer[ PartitionIndex ], ( PrevReductionsSum << 2 ) | 1 );
+                            break;
+                        }
+                        else
+                        {
+                            PrevPartitionIndex--;
+                        }
+                    }
+                    else
+                    {
+                        SpinCount++;
+                    }
+                }
+
+                if ( GS_FallbackNeeded )
+                {
+                    GS_FallbackPrevPartitionIndex = PrevPartitionIndex;
+                }
+            }
+
+            // Wait until all the waves get the updated GS_FallbackNeeded and GS_FallbackPrevPartitionIndex.
+            GroupMemoryBarrierWithGroupSync();
+
+            if ( GS_FallbackNeeded )
+            {
+                // Manually calculate the sum of all the elements in a partition.
+                // We use all the waves in the workgroup here.
+                uint PrevReduction = FallbackCalculatePartitionReduction( GroupThreadID, GS_FallbackPrevPartitionIndex );
+
+                if ( GroupThreadID == 0 )
+                {
+                    uint PrevStatus = FallbackUpdatePartitionStatus( PrevPartitionIndex, PrevReduction );
+
+                    PrevReductionsSum += PrevStatus == 0 ? PrevReduction : PrevStatus >> 2;
+
+                    if ( PrevPartitionIndex == 0 || ( PrevStatus & FLAG_MASK ) == FLAG_INCLUSIVE )
+                    {
+                        // Found a partition with its inclusive prefix sums - no need to look further back.
+                        GS_PrevPartitionsReduction = PrevReductionsSum;
+                        GS_FallbackNeeded = false;
+                        InterlockedAdd( PartitionReductionsBuffer[ PartitionIndex ], ( PrevReductionsSum << 2 ) | 1 );
+                    }
+                    else
+                    {
+                        // Inclusive prefix not found yet - we need to look further back.
+                        PrevPartitionIndex--;
+                        SpinCount = 0;
+                    }
+                }
+            }
+
+            // Wait until all the waves get the updated GS_FallbackNeeded.
+            GroupMemoryBarrierWithGroupSync();
+        }
+    }
+#endif // PREFIX_SUM_FALLBACK
+
+    // For a given partition sum up the reductions of all the preceding partitions using one thread.
+    // The resulted sum is stored in GS_PrevPartitionsReduction.
     inline void Lookback( uint PartitionIndex )
     {
         uint PrevReductionsSum = 0;
+        uint PrevPartitionIndex = PartitionIndex - 1;
 
-        int PrevPartitionIndex = PartitionIndex - WaveGetLaneIndex() - 1;
+        while ( true )
+        {
+            const uint FlagPayload = PartitionReductionsBuffer[ PrevPartitionIndex ];
+
+            if ( ( FlagPayload & FLAG_MASK ) > FLAG_NOT_READY )
+            {
+                // Sum up the reductions of the partitions up to and including the found partition.
+                PrevReductionsSum += ( FlagPayload >> 2 );
+
+                if ( ( FlagPayload & FLAG_MASK ) == FLAG_INCLUSIVE )
+                {
+                    // Found a partition with its inclusive prefix sums already calculated - no need to look further back.
+                    GS_PrevPartitionsReduction = PrevReductionsSum;
+                    InterlockedAdd( PartitionReductionsBuffer[ PartitionIndex ], ( PrevReductionsSum << 2 ) | 1 );
+                    break;
+                }
+                else
+                {
+                    PrevPartitionIndex--;
+                }
+            }
+        }
+    }
+
+    // For a given partition sum up the reductions of all the preceding partitions using one wave.
+    // The resulted sum is stored in GS_PrevPartitionsReduction.
+    // Note: Simple single-threaded Lookback() function is currently used by default instead if this one.
+    inline void LookbackWave( uint PartitionIndex )
+    {
+        uint PrevReductionsSum = 0;
+
+        int PrevPartitionIndex = (int)PartitionIndex - (int)WaveGetLaneIndex() - 1;
         const uint NumWaveParts = CeilingDivide( WaveGetLaneCount(), WAVE_PART_SIZE );
 
         while ( true )
@@ -312,7 +566,7 @@ Code
             {
                 const uint4 InclusiveBallot = WaveActiveBallot( ( FlagPayload & FLAG_MASK ) == FLAG_INCLUSIVE );
 
-                // Check if any of the preceding partitions have FLAG_INCLUSIVE set
+                // Check if any of the preceding partitions have FLAG_INCLUSIVE set.
                 if ( InclusiveBallot.x || InclusiveBallot.y || InclusiveBallot.z || InclusiveBallot.w )
                 {
                     // Found a partition with its inclusive prefix sums already calculated - no need to look further back.
@@ -330,10 +584,10 @@ Code
                         }
                     }
 
-                    // Sum up the reductions of the partitions up to and including the found partition
+                    // Sum up the reductions of the partitions up to and including the found partition.
                     PrevReductionsSum += WaveActiveSum( WaveGetLaneIndex() <= InclusiveIndex ? ( FlagPayload >> 2 ) : 0 );
 
-                    // Update the reduction value of the current partition and set the status flag to FLAG_INCLUSIVE
+                    // Update the reduction value of the current partition and set the status flag to FLAG_INCLUSIVE.
                     if ( WaveIsFirstLane() )
                     {
                         GS_PrevPartitionsReduction = PrevReductionsSum;
@@ -344,7 +598,7 @@ Code
                 }
                 else
                 {
-                    // Manually sum up the reductions and step one wave back through partitions
+                    // Manually sum up the reductions and step one wave back through partitions.
                     PrevReductionsSum += WaveActiveSum( FlagPayload >> 2 );
                     PrevPartitionIndex -= WaveGetLaneCount();
                 }
@@ -404,6 +658,13 @@ ComputeShader =
                 // Atomically acquire unique index for this partition
                 AcquirePartitionIndex( GroupThreadID );
 
+#ifdef PREFIX_SUM_FALLBACK
+                if ( GroupThreadID == 0 )
+                {
+                    GS_FallbackNeeded = true;
+                }
+#endif
+
                 // Wait until acquired GS_PartitionIndex is available for all waves
                 GroupMemoryBarrierWithGroupSync();
 
@@ -426,24 +687,34 @@ ComputeShader =
                 }
                 else
                 {
-                    ReductionScanMultipleWaves( GroupThreadID, PartitionIndex );
+                    ReductionScanMultipleWaves( GroupThreadID );
                 }
 
                 // Now when the reduction scan for this partition is done we can signal its status to other thread groups.
                 // Any thread can do that so we use the thread that scanned last wave reduction to elide an extra barrier.
                 SetPartitionReductionReadyFlag( GroupThreadID, PartitionIndex );
 
-                // Once the reduction for the whole partition has been calculated we can start 
+                // Once the reduction for the whole partition has been calculated we can start
                 // looking through the reductions of the preceding partitions.
-                // This is done using a single wave in a thread group.
                 // The resulted sum of all reductions of all previous partitions is stored in GS_PrevPartitionsReduction.
-                if ( PartitionIndex > 0 && GroupThreadID < WaveGetLaneCount() )
+#ifdef PREFIX_SUM_FALLBACK
+                if ( PartitionIndex > 0 )
+                {
+                    LookbackWithFallback( GroupThreadID, PartitionIndex );
+                }
+                else
+                {
+                    GroupMemoryBarrierWithGroupSync();
+                }
+#else
+                if ( PartitionIndex > 0 && GroupThreadID == 0 )
                 {
                     Lookback( PartitionIndex );
                 }
 
                 // Wait until GS_PrevPartitionsReduction is available for all waves
                 GroupMemoryBarrierWithGroupSync();
+#endif // PREFIX_SUM_FALLBACK
 
                 // Calculate final prefix sums using GS_PrevPartitionsReduction and GS_PartitionWavePrefixSums.
                 // This is done by all waves of the thread group concurrently.

@@ -23,19 +23,13 @@ struct HarvestConditionData
 	float _DiseaseOutbreak;
 };
 
-BufferTexture HarvestConditionProvinceBuffer
-{
-	Ref = HarvestConditionProvinceMiscData
-	type = float4
-}
-
 Code
 [[
 	float4 SampleHarvestCondition( float2 MapCoords )
 	{
 		float2 ColorIndex = PdxTex2DLod0( ProvinceColorIndirectionTexture, MapCoords ).rg;
 		int Index = ColorIndex.x * 255.0 + ColorIndex.y * 255.0 * 256.0;
-		return PdxReadBuffer4( HarvestConditionProvinceBuffer, Index );
+		return PdxReadBuffer4( HarvestConditionProvinceDataBuffer, Index );
 	}
 
 	void SampleHarvestConditionMask( float2 MapCoords, inout HarvestConditionData ConditionData )
@@ -153,7 +147,7 @@ PixelShader =
 	}
 	TextureSampler HailMask
 	{
-		Index = 17
+		Ref = HailMask
 		MagFilter = "Linear"
 		MinFilter = "Linear"
 		MipFilter = "Linear"
@@ -738,41 +732,42 @@ PixelShader =
 			{
 				ApplyDroughtTerrain( Diffuse, Normal, Properties, WorldSpacePos.xz, ConditionData );
 			}
-			if ( ConditionData._DiseaseOutbreak > 0.0)
+			if ( ConditionData._DiseaseOutbreak > 0.0 )
 			{
 				ApplyDiseaseTerrain( Diffuse, Normal, Properties, WorldSpacePos.xz, ConditionData );
 			}
-			if ( ConditionData._Heatwave > 0.0)
+			if ( ConditionData._Heatwave > 0.0 )
 			{
 				ApplyHeatwaveTerrain( Diffuse, Normal, Properties, WorldSpacePos.xz, ConditionData );
 			}
-			if ( ConditionData._Flood > 0.0)
+			if ( ConditionData._Flood > 0.0 )
 			{
 				ApplyFloodingDiffuseTerrain( Diffuse, Normal, Properties, WorldSpacePos.xz, ConditionData, WaterNormalLerp );
 			}
-			if ( ConditionData._Wildfire > 0.0)
+			if ( ConditionData._Wildfire > 0.0 )
 			{
 				ApplyWildfireDiffuseTerrain( Diffuse, Normal, Properties, WorldSpacePos.xz, ConditionData );
 			}
-			if ( ConditionData._Frost > 0.0)
+			if ( ConditionData._Frost > 0.0 )
 			{
 				ApplyFrostDiffuseTerrain( Diffuse, Normal, Properties, WorldSpacePos.xz, ConditionData );
 			}
-			if ( ConditionData._TorrentialRains > 0.0)
+			if ( ConditionData._TorrentialRains > 0.0 )
 			{
 				ApplyTorrentialDiffuseTerrain( Diffuse, Normal, Properties, WorldSpacePos.xz, ConditionData, WaterNormalLerp );
 			}
-			if ( ConditionData._Hail > 0.0)
+			if ( ConditionData._Hail > 0.0 )
 			{
 				ApplyHailDiffuseTerrain( Diffuse, Normal, Properties, WorldSpacePos.xz, ConditionData );
 			}
-			if ( ConditionData._LocustSwarm > 0.0)
+			if ( ConditionData._LocustSwarm > 0.0 )
 			{
 				ApplyLocustDiffuseTerrain( Diffuse, Normal, Properties, WorldSpacePos, ConditionData );
 			}
 
 			DebugCondition( Diffuse.rgb, ConditionData );
 		}
+		
 		void ApplyHarvestConditionTerrainPostLight( inout float3 Diffuse, float MaterialHeight, float3 WorldSpacePos )
 		{
 			HarvestConditionData ConditionData;
@@ -781,7 +776,10 @@ PixelShader =
 			float2 MapCoords = WorldSpacePos.xz * _WorldSpaceToTerrain0To1;
 			SampleHarvestConditionMask( MapCoords, ConditionData );
 
-			ApplyWildfireTerrainPostLight( Diffuse, MaterialHeight, WorldSpacePos.xz, ConditionData );
+			if ( ConditionData._Wildfire > 0.0 )
+			{
+				ApplyWildfireTerrainPostLight( Diffuse, MaterialHeight, WorldSpacePos.xz, ConditionData );
+			}
 		}
 
 
@@ -799,29 +797,41 @@ PixelShader =
 			SlopeMultiplier = RemapClamped( SlopeMultiplier, DroughtSlopeMin, 1.0, 0.0, 1.0 );
 			float DryValue = saturate( ConditionData._Drought + ConditionData._Heatwave + ConditionData._LocustSwarm ) * SlopeMultiplier;
 
-			// Drought
-			float3  DroughtDiffuse = AdjustHsv( Diffuse, 0.0, DroughtPreSaturation, DroughtPreValue );
-			DroughtDiffuse = Overlay( DroughtDiffuse, DroughtOverlayTree );
-			Diffuse.rgb = lerp( Diffuse.rgb, DroughtDiffuse, DryValue );
-			Diffuse.a = lerp( Diffuse.a, smoothstep( 0.0, 2.0, Diffuse.a ), DryValue );
-
-			// Disease
-			float3 DiseaseDiffuse = AdjustHsv( Diffuse, 0.0, DroughtPreSaturation, DroughtPreValue );
-			DiseaseDiffuse = Overlay( DiseaseDiffuse, DiseaseOverlayColor );
-			Diffuse.rgb = lerp( Diffuse.rgb, DiseaseDiffuse, ConditionData._DiseaseOutbreak * SlopeMultiplier );
-			Diffuse.a = lerp( Diffuse.a, smoothstep( 0.0, 2.0, Diffuse.a ), ConditionData._DiseaseOutbreak * SlopeMultiplier );
-
-			// Frost
-			float2 FrostDetailUV = CalcDetailUV( WorldSpacePos.xz ) * FrostTextureTiling;
-			float4 FrostTexDiffuse = PdxTex2D( DetailTextures, float3( FrostDetailUV, 21 ) );
-			FrostTexDiffuse.rgb = Overlay( FrostTexDiffuse.rgb, FrostOverlayColor );
-			Diffuse.rgb = lerp( Diffuse.rgb, FrostTexDiffuse, ConditionData._Frost * FrostTexDiffuse.a );
-
-			// Wildfire
-			ApplyWildFireTrees( Diffuse, Uv, WorldSpacePos.xz, ConditionData );
-
-			// Locust
-			ApplyLocustTrees( Diffuse, WorldSpacePos, ConditionData );
+			// Apply drought
+			if ( ConditionData._Drought > 0.0 )
+			{
+				// Drought
+				float3  DroughtDiffuse = AdjustHsv( Diffuse, 0.0, DroughtPreSaturation, DroughtPreValue );
+				DroughtDiffuse = Overlay( DroughtDiffuse, DroughtOverlayTree );
+				Diffuse.rgb = lerp( Diffuse.rgb, DroughtDiffuse, DryValue );
+				Diffuse.a = lerp( Diffuse.a, smoothstep( 0.0, 2.0, Diffuse.a ), DryValue );
+			}
+			if ( ConditionData._DiseaseOutbreak > 0.0 )
+			{
+				// Disease
+				float3 DiseaseDiffuse = AdjustHsv( Diffuse, 0.0, DroughtPreSaturation, DroughtPreValue );
+				DiseaseDiffuse = Overlay( DiseaseDiffuse, DiseaseOverlayColor );
+				Diffuse.rgb = lerp( Diffuse.rgb, DiseaseDiffuse, ConditionData._DiseaseOutbreak * SlopeMultiplier );
+				Diffuse.a = lerp( Diffuse.a, smoothstep( 0.0, 2.0, Diffuse.a ), ConditionData._DiseaseOutbreak * SlopeMultiplier );
+			}
+			if ( ConditionData._Wildfire > 0.0 )
+			{
+				// Wildfire
+				ApplyWildFireTrees( Diffuse, Uv, WorldSpacePos.xz, ConditionData );
+			}
+			if ( ConditionData._Frost > 0.0 )
+			{
+				// Frost
+				float2 FrostDetailUV = CalcDetailUV( WorldSpacePos.xz ) * FrostTextureTiling;
+				float4 FrostTexDiffuse = PdxTex2D( DetailTextures, float3( FrostDetailUV, 21 ) );
+				FrostTexDiffuse.rgb = Overlay( FrostTexDiffuse.rgb, FrostOverlayColor );
+				Diffuse.rgb = lerp( Diffuse.rgb, FrostTexDiffuse, ConditionData._Frost * FrostTexDiffuse.a );
+			}
+			if ( ConditionData._LocustSwarm > 0.0 )
+			{
+				// Locust
+				ApplyLocustTrees( Diffuse, WorldSpacePos, ConditionData );
+			}
 
 			DebugCondition( Diffuse.rgb, ConditionData );
 		}
@@ -836,19 +846,26 @@ PixelShader =
 			SampleHarvestConditionMask( MapCoords, ConditionData );
 			float DryValue = saturate( ConditionData._Drought + ConditionData._Heatwave + ConditionData._LocustSwarm + ConditionData._DiseaseOutbreak );
 
-			// Drought
-			float3 DroughtDiffuse = Diffuse;
-			DroughtDiffuse = AdjustHsv( DroughtDiffuse, 0.0, DroughtDecalPreSaturation, DroughtDecalPreValue );
-			DroughtDiffuse = Overlay( DroughtDiffuse, DroughtOverlayDecal );
-			DroughtDiffuse = AdjustHsv( DroughtDiffuse, 0.0, DroughtDecalFinalSaturation, 1.0 );
-			Diffuse.rgb = lerp( Diffuse.rgb, DroughtDiffuse, DryValue );
+			// Apply drought
+			if ( ConditionData._Drought > 0.0 )
+			{
+				// Drought
+				float3 DroughtDiffuse = Diffuse;
+				DroughtDiffuse = AdjustHsv( DroughtDiffuse, 0.0, DroughtDecalPreSaturation, DroughtDecalPreValue );
+				DroughtDiffuse = Overlay( DroughtDiffuse, DroughtOverlayDecal );
+				DroughtDiffuse = AdjustHsv( DroughtDiffuse, 0.0, DroughtDecalFinalSaturation, 1.0 );
+				Diffuse.rgb = lerp( Diffuse.rgb, DroughtDiffuse, DryValue );
+			}
 
-			// Frost
-			float Frost = ConditionData._Frost * 0.25;
-			float2 FrostDetailUV = CalcDetailUV( WorldSpacePosXz ) * FrostTextureTiling;
-			float4 FrostTexDiffuse = PdxTex2D( DetailTextures, float3( FrostDetailUV, 21 ) );
-			FrostTexDiffuse.rgb = Overlay( FrostTexDiffuse.rgb, FrostOverlayColor );
-			Diffuse = lerp( Diffuse, FrostTexDiffuse, Frost );
+			if ( ConditionData._Frost > 0.0 )
+			{
+				// Frost
+				float Frost = ConditionData._Frost * 0.25;
+				float2 FrostDetailUV = CalcDetailUV( WorldSpacePosXz ) * FrostTextureTiling;
+				float4 FrostTexDiffuse = PdxTex2D( DetailTextures, float3( FrostDetailUV, 21 ) );
+				FrostTexDiffuse.rgb = Overlay( FrostTexDiffuse.rgb, FrostOverlayColor );
+				Diffuse = lerp( Diffuse, FrostTexDiffuse, Frost );
+			}
 
 			DebugCondition( Diffuse.rgb, ConditionData );
 		}

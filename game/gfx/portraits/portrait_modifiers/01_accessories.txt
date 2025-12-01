@@ -118,6 +118,34 @@
         }
     }
 
+    historical_william_hanover_accessories = {
+        dna_modifiers = {
+            accessory = {
+               mode = add
+               gene = top_layer
+               template = european_top_layer
+               accessory = male_top_layer_european_royal_01
+            }
+            accessory = {
+               mode = add
+               gene = belts
+               template = all_belts
+               accessory = male_belt_generic_02
+            }
+        }
+
+        weight = {
+            base = 0
+            modifier = {
+                add = 95000
+                scope:character ?= {
+                    has_template = gbr_william_hanover_template
+                    is_ruler = yes
+                }
+            }
+        }
+    }
+
 ### END OF HISTORICAL CHARACTER ACCESSORIES ###
 
     european_shopkeeper_clothes = {
@@ -243,7 +271,7 @@
                             was_formed_from = PRU
                         }
                     }
-                    age > define:NCharacters|ADULT_AGE
+                    age >= define:NCharacters|ADULT_AGE
                     NOR = {
                         has_template = agitator_jules_brunet
                         has_template = rus_leon_trotsky_character_template
@@ -315,7 +343,7 @@
                     monarchy_clothes_trigger = yes
                 }
                 scope:character ?= {
-                    age > define:NCharacters|ADULT_AGE
+                    age >= define:NCharacters|ADULT_AGE
                     NOR = {
                         has_template = agitator_jules_brunet
                         has_template = rus_leon_trotsky_character_template
@@ -350,7 +378,7 @@
 
                 scope:character ?= {
                     has_template = per_nasir_al_din_qajar_template
-                    age > define:NCharacters|ADULT_AGE
+                    age >= define:NCharacters|ADULT_AGE
                 }
             }
         }
@@ -465,7 +493,7 @@
                 european_clothes_trigger = yes
                 republic_clothes_trigger = no
                 scope:character = {
-                    age > define:NCharacters|ADULT_AGE
+                    age >= define:NCharacters|ADULT_AGE
                     NOR = {
                         has_template = agitator_jules_brunet
                         has_template = rus_leon_trotsky_character_template

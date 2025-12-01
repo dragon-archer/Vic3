@@ -3,12 +3,6 @@ Includes = {
 	"cw/camera.fxh"
 }	
 
-Code 
-[[
-	static const int NUM_THREADS_X = 16;
-	static const int NUM_THREADS_Y = 16;
-]]
-
 ComputeShader =
 {
 	ConstantBuffer( PdxConstantBuffer0 )
@@ -461,6 +455,7 @@ ComputeShader =
 	}
 }
 
+# User needs to supply 2 defines NUM_THREADS_X/NUM_THREADS_Y specifying the threadcount
 Effect TiledCulling
 {
 	ComputeShader = "TiledCulling"

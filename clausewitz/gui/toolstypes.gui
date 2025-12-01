@@ -1180,6 +1180,18 @@ types ToolsTypes
 		gfxtype = buttongfx
 		shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
 	}
+
+	type tools_text_multi = textbox {
+		font = StandardGameFont
+		fontsize = 15
+		multiline = yes
+		elide = right
+		align = top|left
+		size = { 45 45 }
+		default_format = "#medium"
+		alwaystransparent = no
+		fontsize_min = 12
+	}
 }
 
 template EditorContextMenuItem
@@ -1572,3 +1584,114 @@ template editor_window
 	filter_mouse = none
 	focuspolicy = click
 }
+
+# Moved from gui_editor folder because they are used in other tools
+# Should really be bulk renamed by someone who knows what happens in our tools
+
+types ToolsProperyTypes
+{
+	type gui_editor_button = editor_toolbar_button {
+		tooltipwidget = { using = dockable_tooltip }
+		tooltip_widgetanchor = bottom|left
+	}
+}
+
+template editor_tooltip
+{
+	using = dockable_tooltip
+}
+
+template editor_tooltip_properties
+{
+	tooltip_offset = { 25 0 }
+	tooltip_type = mouse
+	tooltip_widgetanchor = top|left
+	tooltip_parentanchor = top|left
+	tooltip_verticalbehavior = slide
+	tooltip_horizontalbehavior = flip
+}
+
+template editor_scrollbar_track
+{
+	editor_scrollbar_button = {
+		upframe = 21
+		downframe = 21
+		overframe = 21
+		disableframe = 21
+		spriteType = Corneredtiled
+	}
+}
+
+template editor_scrollbar_slider
+{
+	editor_scrollbar_button = {
+		spriteType = CorneredTiled
+		spriteborder = { 7 7 }
+		upframe = 17
+		downframe = 18
+		overframe = 19
+		disableframe = 20
+	}
+}
+
+template editor_editbox_static
+{
+	focuspolicy = none
+}
+
+template property_editbox
+{
+	name = "editbox"
+	fontsize = 12
+	size = { 252 19 }
+	alwaystransparent = no
+	focuspolicy = all
+	cursorcolor = { 1 1 0.5 1 }
+	selectioncolor = { 0.45 0.45 0.45 0.7 }
+	maxcharacters = 255
+	
+	background = {
+		#margin = { 2 0 }
+		margin_left = 5
+		margin_top = 0
+		texture = "gfx/editor_gui/editor_field.dds"
+		spriteType = CorneredStretched
+		spriteborder = { 4 4 }
+		shaderfile = "gfx/FX/pdxgui_default.shader"
+	}
+}
+
+template WidgetSelectionEditorContextMenuItem
+{
+	button = {
+		size = { 100% 20 }
+		texture = "gfx/editor_gui/editor_dropdown_item_norm_over_active.png"
+		spriteType = CorneredTiled
+		spriteborder = { 1 1 }
+		gfxtype = framedbuttongfx
+		framesize = { 8 8 }
+		upframe = 1
+		downframe = 3
+		overframe = 2
+		activeframe = 3
+		disableframe = 1
+		button_trigger = none
+
+		icon = {
+			margin = { 2 -1 }
+			size = { 19 19 }
+			texture = "[ContextMenuItem.GetIcon]"
+		}
+	
+		editor_editbox = {
+			fontsize = 12
+			align = left
+			autoresize = yes
+			margin = { 23 0 }
+			text = "[ContextMenuItem.GetLabel]"
+			block TextColor {}
+		}
+	}
+}
+
+# end of copy

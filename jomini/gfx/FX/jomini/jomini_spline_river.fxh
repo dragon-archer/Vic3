@@ -26,6 +26,16 @@ ConstantBuffer( JominiRiver )
 
 PixelShader =
 {
+	struct SAnchorData
+	{
+		float _Depth;
+	};
+
+	BindlessResources
+	{
+		StructuredBufferTexture { SAnchorData }
+	};
+
 	Code
 	[[
 #if !defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
@@ -46,17 +56,43 @@ PixelShader =
 		}
 #endif
 
-		float CalcDepth( float2 UV )
+#define DEFAULT_ANCHOR_DEPTH -1.0f
+
+		float GetInterpolatedAnchorDepth( VS_SPLINE_OUTPUT Input )
 		{
-			return _Depth * ( 1.0f - pow( cos( ( UV.y ) * 2.0f * PI ) * 0.5f + 0.5f, 2.0f ) );
+#if !defined( PDX_ENABLE_SPLINE_GRAPHICS1 ) && !defined( PDX_DIRECTX_11 )
+			StructuredBuffer<SAnchorData> AnchorData = GetBindlessStructuredBufferTextureUniform<SAnchorData>( _AnchorDataHandle );
+
+			float AnchorDepth1 = AnchorData[ Input.DataIndex1 ]._Depth;
+			float AnchorDepth2 = AnchorData[ Input.DataIndex2 ]._Depth;
+
+			if( AnchorDepth1 == DEFAULT_ANCHOR_DEPTH )
+			{
+				AnchorDepth1 = _Depth;
+			}
+
+			if( AnchorDepth2 == DEFAULT_ANCHOR_DEPTH )
+			{
+				AnchorDepth2 = _Depth;
+			}
+
+			return lerp( AnchorDepth1, AnchorDepth2, Input.DataDelta );
+#else
+			return _Depth;
+#endif
 		}
 
-		float CalcDepth( float2 UV, PdxTextureSampler2D BottomNormal )
+		float CalcDepth( float2 UV, VS_SPLINE_OUTPUT Input )
+		{
+			return GetInterpolatedAnchorDepth( Input ) * ( 1.0f - pow( cos( ( UV.y ) * 2.0f * PI ) * 0.5f + 0.5f, 2.0f ) );
+		}
+
+		float CalcDepth( float2 UV, VS_SPLINE_OUTPUT Input, PdxTextureSampler2D BottomNormal )
 		{
 			float ShoreAmount = 1.0f + _BankAmount;
 			float CenterOffset = ( ShoreAmount - 1.0f ) / 2.0f;
 
-			float Depth = _Depth * ( 1.0f - pow( cos( clamp( UV.y * ShoreAmount - CenterOffset, 0.0f, 1.0f ) * 2.0f * PI ) * 0.5f + 0.5f, _DepthWidthPower ) );
+			float Depth = GetInterpolatedAnchorDepth( Input ) * ( 1.0f - pow( cos( clamp( UV.y * ShoreAmount - CenterOffset, 0.0f, 1.0f ) * 2.0f * PI ) * 0.5f + 0.5f, _DepthWidthPower ) );
 
 			float SampledDepth = 1.0f - PdxTex2D( BottomNormal, UV ).b;
 			Depth *= SampledDepth;

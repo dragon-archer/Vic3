@@ -91,11 +91,15 @@ Code
 #else // !PDX_ENABLE_SPLINE_GRAPHICS1
 	VS_SPLINE_OUTPUT CalcGpuSplinePointOutput( VS_SPLINE_INPUT Input )
 	{
+		VS_SPLINE_OUTPUT Output;
+
+#ifdef PDX_DIRECTX_11
+		Output.Position = float4( 0, 0, 0, 1.0f );
+		return Output;
+#else
 		SSplinePointData PointData = CalcSplinePointData( Input.InstanceID, Input.VertexID );
 
 		float Width = lerp( AttributeBuffer[ PointData.StartControlPointIdx ]._Width, AttributeBuffer[ PointData.EndControlPointIdx ]._Width, PointData.CurveT );
-
-		VS_SPLINE_OUTPUT Output;
 
 		float3 SplineNormal = PointData.Tangent.zyx;
 
@@ -113,6 +117,7 @@ Code
 		Output.DataDelta     = PointData.CurveT;
 
 		return Output;
+#endif
 	}
 #endif // PDX_ENABLE_SPLINE_GRAPHICS1
 ]]
@@ -143,7 +148,6 @@ PixelShader =
 {
 	Code
 	[[
-#if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
 		float3 JominiFlatSplineSampleNormal( in PdxTextureSampler2D NormalTexture, float3 Normal, float3 Tangent, float2 UV, float2 dx, float2 dy )
 		{
 			float4 NormalSample = PdxTex2DGrad( NormalTexture, UV, dx, dy );
@@ -158,6 +162,7 @@ PixelShader =
 			return normalize( mul( UnpackedNormalSample, TBN ) );
 		}
 
+#if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
 		// The mask texture contains 2 horizontal "lanes". The first is for splines' mid-section,
 		// the second for splines' start- and end-section.
 		float2 JominiFlatSplineSampleMask( in PdxTextureSampler2D MaskTexture, VS_SPLINE_OUTPUT Input )

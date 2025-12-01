@@ -17,7 +17,7 @@ PixelShader =
 		
 		float4 CalcRiverSurface( in VS_SPLINE_OUTPUT Input )
 		{			
-			float Depth = CalcDepth( Input.UV );
+			float Depth = CalcDepth( Input.UV, Input );
 			
 			SWaterParameters Params;
 			Params._ScreenSpacePos = Input.Position;
@@ -51,16 +51,16 @@ PixelShader =
 			
 			float4 Color = CalcWater( Params )._Color;
 #if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
-			Color.a = saturate( Depth * 2.0f / _Depth ) * Input.Transparency * saturate( ( Input.DistanceToMain - 0.1f ) * 5.0f );
+			Color.a = saturate( Depth * 2.0f / GetInterpolatedAnchorDepth( Input ) ) * Input.Transparency * saturate( ( Input.DistanceToMain - 0.1f ) * 5.0f );
 #else
-			Color.a = saturate( Depth * 2.0f / _Depth ) * CalcEdgeTransparency( Input ) * saturate( 0.9f * 5.0f );
+			Color.a = saturate( Depth * 2.0f / GetInterpolatedAnchorDepth( Input ) ) * CalcEdgeTransparency( Input ) * saturate( 0.9f * 5.0f );
 #endif
 			return Color;
 		}
 
 		SWaterOutput CalcRiverAdvanced( in VS_SPLINE_OUTPUT Input )
 		{			
-			float Depth = CalcDepth( Input.UV );
+			float Depth = CalcDepth( Input.UV, Input );
 			
 			SWaterParameters Params;
 			Params._ScreenSpacePos = Input.Position;
@@ -97,7 +97,7 @@ PixelShader =
 #if defined( PDX_ENABLE_SPLINE_GRAPHICS1 )
 			Out._Color.a = Input.Transparency * saturate( ( Input.DistanceToMain - 0.1f ) * 5.0f );
 #else
-			Out._Color.a = CalcEdgeTransparency( Input ) * saturate( 0.9f * 5.0f );
+			Out._Color.a = 1.0f;
 #endif
 #endif
 

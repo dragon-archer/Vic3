@@ -2,18 +2,21 @@ types ToolsTypes
 {
 	# A generic notifaction
 	type editor_notification = hbox {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = preferred
+
 		icon = {
 			layoutpolicy_horizontal = fixed
 			size = { 32 32 }
 			block "icon" {}
 		}
 
-		editor_textbox = {
-			layoutpolicy_horizontal = fixed
-			size = { 0 32 }
+		tools_text_multi = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = fixed
+			size = { 0 50 }
 			align = left|top
 			margin = { 5 5 }
-			autoresize = yes
 			block "textcolor" {}
 			block "text" {}
 		}

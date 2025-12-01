@@ -27,10 +27,24 @@ types ObjectInspector
 			using = InspectorSubIndentBig
 		}
 
-		editor_error_hbox = {
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = preferred
+
 			visible = "[And(PdxGuiFoldOut.IsUnfolded,ObjectInspectorPlugin.HasError)]"
-			blockoverride "text"
-			{
+
+			icon = {
+				layoutpolicy_horizontal = fixed
+				size = { 32 32 }
+				block "icon" {}
+			}
+
+			tools_text_multi = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = fixed
+				size = { 0 50 }
+				align = left|top
+				margin = { 5 5 }
 				text = "[ObjectInspectorPlugin.GetErrorMessage]"
 			}
 		}

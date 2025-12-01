@@ -2,7 +2,7 @@ types MaterialSetter
 {
 	# expected contexts:
 	#  MaterialMix
-	local_type material_setter_info = flowcontainer {
+	type material_setter_info = flowcontainer {
 		direction = vertical
 		spacing = 4
 		margin = { 4 0 }
@@ -43,7 +43,7 @@ types MaterialSetter
 		}
 	}
 
-	local_type material_setter_option_buttons = flowcontainer {
+	type material_setter_option_buttons = flowcontainer {
 		spacing = 2
 
 		checkbutton = {
@@ -187,7 +187,7 @@ types MaterialSetter
 		}
 	}
 
-	local_type material_mix_header = checkbutton {
+	type material_mix_header = checkbutton {
 		using = terraineditor_listitem
 		size = { 0 26 }
 		layoutpolicy_horizontal = growing
@@ -246,7 +246,7 @@ types MaterialSetter
 		}
 	}
 
-	local_type material_mix = vbox {
+	type material_mix = vbox {
 		oncreate = "[BindFoldOutContext]"
 		oncreate = "[PdxGuiFoldOut.Unfold]"
 

@@ -9,7 +9,7 @@ template NodeGraphLine
 	animation_speed = "[NodeLine.GetAnimationSpeed]"
 	uv_scale = { 0.015 1.0 }
 	texture = "[GraphPanel.GetNodeLineTexture( NodeLine.Highlighted )]"
-	mask = "gfx/lines/white.dds"
+	mask = "[GraphPanel.GetNodeLineMaskTexture( NodeLine.IsDisabled )]"
 	mask_uv_scale = { 0.01 1.0 }
 
 	from = "[NodeLine.From]"
@@ -272,6 +272,15 @@ widget = {
 				onclick = "[GraphPanel.SaveAs]"
 				input_action = "tools_save_as"
 				enabled = "[GraphPanel.IsButtonEnabled('SaveAs')]"
+			}
+
+			editor_toolbar_button = {
+				raw_text = "Rename"
+				raw_tooltip = "Rename the opened graph. This action is not undoable."
+				size = { 46 25 }
+				onclick = "[GraphPanel.RenameGraph]"
+				visible = "[GraphPanel.HasRenamingCapability]"
+				enabled = "[GraphPanel.IsButtonEnabled('Rename')]"
 			}
 
 			editor_toolbar_button = {
@@ -556,6 +565,33 @@ widget = {
 						name = "selection"
 						position = { 0 0 }
 						size = { 0 0 }
+					}
+				}
+			}
+
+			widget = {
+				name = "viewport_overlay"
+				size = { 100% 100% }
+
+				visible = "[GraphPanel.IsViewportHoteysDescriptionShown]"
+				editor_textbox = {
+					parentanchor = top|right
+					widgetanchor = top|right
+					fontsize = 11
+					raw_text = "[GraphPanel.GetViewportHotkeysDescription]"
+					autoresize = yes
+					align = left|nobaseline
+					multiline = yes
+					alpha = 0.7
+
+					background = {
+						margin = { 6 6 }
+						texture = "gfx/editor_gui/editor_layout_button.png"
+						spriteType = corneredstretched
+						spriteborder = { 2 2 }
+						framesize = { 16 16 }
+						shaderfile = "gfx/FX/pdxgui_default.shader"
+						alpha = 0.5
 					}
 				}
 			}

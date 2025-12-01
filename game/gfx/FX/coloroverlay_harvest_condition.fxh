@@ -22,11 +22,6 @@ PixelShader =
 		Ref = HarvestConditionTypeData
 		type = float4
 	}
-	BufferTexture HarvestConditionProvinceDataBuffer
-	{
-		Ref = HarvestConditionProvinceMiscData
-		type = float4
-	}
 
 	Code
 	[[

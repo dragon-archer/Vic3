@@ -1,46 +1,70 @@
-entity = 
-{
-	name = "vfx_conscription_entity"
-	scale = 0.5
-	default_state = "idle"
+entity = {
+	name = "smoke_chimney_01"
 	
-	state = 
-	{ 
-		name = "idle" 
-		state_time = 10 
-		looping = no 
-		
-		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/conscription_center" } }
-		
-		event = 
-		{ 
-			time = 0 
-			particle = "vfx_conscription" 
-			trigger_once = no 
-			keep_particle = yes
-		}
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 node = "part1" particle = "infrastructure/smoke_chimney" trigger_once = yes}
 	}
 }
 
-entity = 
-{
-	name = "vfx_mobilization_entity"
-	default_state = "idle"
+entity = {
+	name = "entity_factory_smoke"
 	
-	state = 
-	{ 
-		name = "idle" 
-		state_time = 10 
-		looping = no 
-		
-		start_event = { keep_sound = yes trigger_once = yes }
-		
-		event = 
-		{ 
-			time = 0 
-			particle = "infrastructure/mobilization_effect" 
-			trigger_once = no 
-			keep_particle = yes
-		}
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "infrastructure/factory_smoke" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "entity_factory_smoke_medium"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "infrastructure/factory_smoke_medium" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "entity_factory_smoke_big"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "infrastructure/factory_smoke_big" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "entity_factory_smoke_coal"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "infrastructure/factory_smoke_coal" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "entity_factory_smoke_chemical"
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0  particle = "infrastructure/factory_smoke_chemical" trigger_once = yes}
+	}
+}
+entity = {
+	name = "entity_utility_sparks"
+	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "utility_sparks" trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "entity_plantation_flowers"
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		event = { time = 0 particle = "plantation_flowers" trigger_once = yes}
 	}
 }

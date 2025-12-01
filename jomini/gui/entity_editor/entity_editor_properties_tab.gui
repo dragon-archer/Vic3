@@ -177,15 +177,15 @@ types EntityEditor
 										layoutpolicy_horizontal = expanding
 										layoutpolicy_vertical = shrinking
 										
-										blockoverride "label" { raw_text = "[EntityEditorEventLayerPtr.Access.Title]" }
+										blockoverride "label" { raw_text = "[EntityEditorEventLayer.Title]" }
 
 										blockoverride "content" {
 											hbox = {
 												layoutpolicy_horizontal = expanding
 
 												editor_expand_checkbutton = {
-													checked = "[EntityEditorEventLayerPtr.Access.IsExpanded]"
-													onclick = "[EntityEditorEventLayerPtr.Access.ToggleExpanded]"
+													checked = "[EntityEditorEventLayer.IsExpanded]"
+													onclick = "[EntityEditorEventLayer.ToggleExpanded]"
 												}
 
 												hbox = { #spacer
@@ -194,12 +194,12 @@ types EntityEditor
 											}
 
 											vbox = {
-												visible = "[And( EntityEditorEventLayerPtr.Access.IsExpanded, EntityEditorEventLayerPtr.Access.HasKeyframes )]"
+												visible = "[And( EntityEditorEventLayer.IsExpanded, EntityEditorEventLayer.HasKeyframes )]"
 												using = tools_spacing
 												layoutpolicy_vertical = expanding
 												layoutpolicy_horizontal = expanding
 												spacing = 8
-												datamodel = "[EntityEditorEventLayerPtr.Access.Keyframes]"
+												datamodel = "[EntityEditorEventLayer.Keyframes]"
 												item = {
 													hbox = {
 														visible = "[EntityEditorKeyframe.IsStartEvent]"
@@ -225,11 +225,11 @@ types EntityEditor
 
 											editor_button = {
 												raw_text = "Add New Start Event"
-												visible = "[EntityEditorEventLayerPtr.Access.IsExpanded]"
+												visible = "[EntityEditorEventLayer.IsExpanded]"
 												fontsize = 11
 												margin = { 6 6 }
 												size = { 125 25 }
-												onclick = "[EntityEditorEventLayerPtr.Access.AddStartEventKeyframe( EntityEditor.AccessSelf )]"
+												onclick = "[EntityEditorEventLayer.AddStartEventKeyframe( EntityEditor.AccessSelf )]"
 											}
 										}
 									}

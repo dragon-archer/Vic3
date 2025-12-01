@@ -16,7 +16,7 @@ VertexStruct VS_INPUT_PARTICLE
 	float4 SizeAndOffset				: TEXCOORD3;	// SizeAndOffset.zw contains the local pivot offset
 	float4 BillboardAxisAndFlipbookTime : TEXCOORD4;	//	Position.w contains the flipbook time.
 	float4 Color						: TEXCOORD5;
-	
+
 };
 
 VertexStruct VS_OUTPUT_PARTICLE
@@ -56,10 +56,10 @@ Code
 		float2 CellUV;
 		CellUV.x = float( CurrentFrame % Columns ) / Columns;
 		CellUV.y = float( CurrentFrame / Columns ) / Rows;
-		
+
 		UV.x = ( UV.x / Columns );
 		UV.y = ( UV.y / Rows );
-		
+
 		return CellUV + UV;
 	}
 
@@ -85,11 +85,11 @@ Code
 	{
 		// Use the stored index to reconstruct the full quaternion
 		int MaxIndex = RotQ & INDEX_MASK;
-	
+
 		// Read the other three fields and derive the value of the omitted field
 		int divisor = 1 << 9; // We have 9 bits of precision in a 10 bit signed field
 		float a = float( ArithmeticRightShift( ( RotQ & RED_MASK ), 22 ) ) / divisor;
-	
+
 		// The following two components do not have their sign bit as MSB so left shift
 		// first to preserve the sign bit before shifting right!
 		float b = float( ArithmeticRightShift( ( ( RotQ & GREEN_MASK ) << 10 ), 22 ) ) / divisor;
@@ -116,7 +116,7 @@ Code
 VertexShader =
 {
 	MainCode VertexParticle
-	{				
+	{
 		Input = "VS_INPUT_PARTICLE"
 		Output = "VS_OUTPUT_PARTICLE"
 		Code
@@ -133,14 +133,22 @@ VertexShader =
 				#ifdef BILLBOARD
 					float3 WorldPos = Input.Position.xyz + Offset.x * CameraRightDir + Offset.y * CameraUpDir;
 
-					if( Input.BillboardAxisAndFlipbookTime.x != 0.0 || 
-						Input.BillboardAxisAndFlipbookTime.y != 0.0 || 
+					if( Input.BillboardAxisAndFlipbookTime.x != 0.0 ||
+						Input.BillboardAxisAndFlipbookTime.y != 0.0 ||
 						Input.BillboardAxisAndFlipbookTime.z != 0.0 )
 					{
 						float3 Up = normalize( RotateVector( RotQ, Input.BillboardAxisAndFlipbookTime.xyz ) );
 						float3 ToCameraDir = normalize( CameraPosition - Input.Position.xyz );
 						float3 Right = normalize( cross( ToCameraDir, Up ) );
 						WorldPos = Input.Position.xyz + InitialOffset.x * Right + InitialOffset.y * Up;
+
+						#ifdef FLIP_X
+							float3 AxisRight = normalize( cross( ToCameraDir, Input.BillboardAxisAndFlipbookTime.xyz ) );
+							if ( dot( AxisRight, float3( 0.0, 1.0, 0.0 ) ) < 0 )
+							{
+								Input.UV0.x = ( 1.0 - Input.UV0.x );
+							}
+						#endif
 
 						#ifdef FADE_STEEP_ANGLES
 							float3 Direction = cross( Right, Up );
@@ -161,14 +169,14 @@ VertexShader =
 					Alpha = Input.Color.a;
 				#endif
 
-				uint CurrentFrame = CalcCurrentFrame(FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w);
+				uint CurrentFrame = CalcCurrentFrame( FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
 				Out.Pos = FixProjectionAndMul( ViewProjectionMatrix, float4( WorldPos, 1.0f ) );
 				Out.UV0 = CalcCellUV( CurrentFrame, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
 				Out.UV1 = CalcCellUV( CurrentFrame + 1, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
 				Out.FrameBlend = CalcFrameBlend( FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
-				Out.Color = float4(Input.Color.rgb, Alpha);
+				Out.Color = float4( Input.Color.rgb, Alpha );
 				Out.WorldSpacePos = WorldPos;
-				
+
 				return Out;
 			}
 		]]

@@ -27,7 +27,7 @@ types EntityEditor
         size = { 0 32 }
         background = {
             texture = "gfx/editor_gui/editor_player_lane.dds"
-            alpha = "[Select_float(EntityEditorEventLayerPtr.Access.IsHovered, '(float)1.0', '(float)0.4')]"
+            alpha = "[Select_float(EntityEditorEventLayer.IsHovered, '(float)1.0', '(float)0.4')]"
             spriteType = CorneredStretched
             spriteborder = { 5 5 }
             shaderfile = "gfx/FX/pdxgui_default.shader"
@@ -292,7 +292,7 @@ types EntityEditor
                                         datamodel = "[EntityEditor.Entity.State.KeyframeLayers]"
                                         item = {
                                             hbox = {
-                                                name = "layer_[EntityEditorEventLayerPtr.Access.Title]"
+                                                name = "layer"
                                                 layoutpolicy_horizontal = expanding
                                                 layoutpolicy_vertical = expanding
                                                 toolbox_checkbutton = {
@@ -302,17 +302,17 @@ types EntityEditor
                                                     
                                                     state = {
                                                         name = _mouse_leave
-                                                        on_start = "[EntityEditorEventLayerPtr.Access.SetHovered( '(bool)no' )]"
+                                                        on_start = "[EntityEditorEventLayer.SetHovered( '(bool)no' )]"
                                                     }
 
                                                     state = {
                                                         name = _mouse_enter
-                                                        on_start = "[EntityEditorEventLayerPtr.Access.SetHovered( '(bool)yes' )]"
+                                                        on_start = "[EntityEditorEventLayer.SetHovered( '(bool)yes' )]"
                                                     }
                                                     
-                                                    onrightclick = "[EntityEditor.OnLayerRightClick( EntityEditorEventLayerPtr.Access.AccessSelf )]"
-                                                    raw_text = "[EntityEditorEventLayerPtr.Access.Title]"
-                                                    checked = "[EntityEditorEventLayerPtr.Access.IsHovered]"
+                                                    onrightclick = "[EntityEditor.OnLayerRightClick( EntityEditorEventLayer.AccessSelf )]"
+                                                    raw_text = "[EntityEditorEventLayer.Title]"
+                                                    checked = "[EntityEditorEventLayer.IsHovered]"
                                                 }
 
                                                 icon = {
@@ -437,18 +437,18 @@ types EntityEditor
                                         item = {
                                             entity_editor_keyframe_lane = {
                                                 onrightclick = "[KeyframeEditor.OnLaneClick( PdxGuiWidget.AccessSelf )]"
-                                                onrightclick = "[EntityEditor.SetClickedLane( EntityEditorEventLayerPtr.Access.AccessSelf )]"
+                                                onrightclick = "[EntityEditor.SetClickedLane( EntityEditorEventLayer.AccessSelf )]"
                                                 state = {
                                                     name = _mouse_leave
-                                                    on_start = "[EntityEditorEventLayerPtr.Access.SetHovered( '(bool)no' )]"
+                                                    on_start = "[EntityEditorEventLayer.SetHovered( '(bool)no' )]"
                                                 }
 
                                                 state = {
                                                     name = _mouse_enter
-                                                    on_start = "[EntityEditorEventLayerPtr.Access.SetHovered( '(bool)yes' )]"
+                                                    on_start = "[EntityEditorEventLayer.SetHovered( '(bool)yes' )]"
                                                 }
 
-                                                datamodel = "[EntityEditorEventLayerPtr.Access.Keyframes]"
+                                                datamodel = "[EntityEditorEventLayer.Keyframes]"
                                                 item = {
                                                     tools_keyframe_button = {
                                                         using = editor_keyframe_button

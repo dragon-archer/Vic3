@@ -81,7 +81,7 @@ anarchist_party = {
 			has_ideology = ideology:ideology_anarchist
 		}
 	}
-	
+
 	# Root - IG considering joining
 	# scope:number - the number of IGs that would join this party before the root IG
 	join_weight = {
@@ -97,6 +97,7 @@ anarchist_party = {
 					OR = {
 						has_modifier = modifier_india_crown_rule
 						has_modifier = modifier_india_company_rule
+						has_modifier = modifier_india_company_rule_upgraded
 					}
 				}
 				OR = {
@@ -232,7 +233,7 @@ anarchist_party = {
 				OR = {
 					has_ideology = ideology:ideology_anti_clerical
 					leader = {
-						has_ideology = ideology:ideology_atheist
+						has_ideology = ideology:ideology_nihilist
 					}
 				}
 				owner = {
@@ -334,7 +335,7 @@ anarchist_party = {
 				scope:number = 3
 			}
 			multiply = {
-				value = 0.25
+				value = 0.05
 				desc = "from_three_prior_members"
 			}
 		}
@@ -343,7 +344,7 @@ anarchist_party = {
 				scope:number > 3
 			}
 			multiply = {
-				value = 0.1
+				value = 0.0
 				desc = "from_more_than_three_prior_members"
 			}
 		}

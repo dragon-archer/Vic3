@@ -148,10 +148,10 @@ entity = {
 	pdxmesh =	 "military_arms_flamethrower_mesh"
 
 	state = { name = "fire_defensive_01"
-		event = { time = 4.6 node = "loc_vfx" particle = "war/rifle_pm_flamethrower_company" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/flamethrower/wpn_flamethrower_burst" }}	
+		event = { time = 4.6 node = "loc_vfx" particle = "arms/flamethrower_company" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/flamethrower/wpn_flamethrower_burst" }}	
 	}
 	state = { name = "fire_aggressive_01"
-		event = { time = 4.6 node = "loc_vfx" particle = "war/rifle_pm_flamethrower_company" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/flamethrower/wpn_flamethrower_burst" }}	
+		event = { time = 4.6 node = "loc_vfx" particle = "arms/flamethrower_company" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/flamethrower/wpn_flamethrower_burst" }}	
 	}
 }
 

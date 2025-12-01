@@ -513,3 +513,24 @@ entity = {
 		event = { time = 0.0 node = "locator_root"	particle = "ships/carrier_defeat"		trigger_once = yes keep_particle = yes	keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_defeat_animation" }}
 	}
 }
+
+
+########################################
+###          Misc Vessels      	 	###
+########################################
+
+
+entity = {
+	name = "military_navy_blockade_generic_entity"
+	pdxmesh = "military_navy_blockade_generic_mesh"
+	
+	default_state = "idle"
+
+	state = { name = "idle"		animation = "idle_animation"
+		event = { time = 0.0 particle = "ships/blockade_waves_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound = { soundeffect = "event:/SFX/Animation/vehicles/transport/naval_rowboat/anm_military_transport_naval_rowboat_generic_idle" }}
+	}
+
+	state = { name = "move"		animation = "idle_animation"
+		event = { time = 0.0 particle = "ships/blockade_waves_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound = { soundeffect = "event:/SFX/Animation/vehicles/transport/naval_rowboat/anm_military_transport_naval_rowboat_generic_moving" }}
+	}
+}

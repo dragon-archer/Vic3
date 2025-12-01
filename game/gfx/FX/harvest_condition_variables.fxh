@@ -1,3 +1,9 @@
+BufferTexture HarvestConditionProvinceDataBuffer
+{
+    Ref = HarvestConditionProvinceMiscData
+    type = float4
+}
+
 Code
 [[
 		//#define DEBUG_INCIDENT_MASK 					// Enable to debug mask

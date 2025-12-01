@@ -15,13 +15,13 @@ RWStructuredBufferTexture NumVisibleSegmentsBuffer
 	Type = uint
 }
 
-RWStructuredBufferTexture SegmentOffsetsBuffer
+RWBufferTexture SegmentOffsetsBuffer
 {
 	Ref = PdxRWBufferTexture1
 	type = uint
 }
 
-RWStructuredBufferTexture VisibleSegmentsBuffer
+RWBufferTexture VisibleSegmentsBuffer
 {
 	Ref = PdxRWBufferTexture2
 	type = uint

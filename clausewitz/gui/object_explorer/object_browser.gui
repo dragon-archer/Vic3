@@ -27,7 +27,7 @@ types ObjectBrowserTypes {
 		inherit_visual_state = no
 	}
 
-	local_type tree_table_unfold_icon = icon {
+	type tree_table_unfold_icon = icon {
 		texture = "gfx/tools/expand_icon.dds"
 		size = { 10 10 }
 		shaderfile = "gfx/FX/pdxgui_default.shader"
@@ -60,7 +60,7 @@ types ObjectBrowserTypes {
 		}
 	}
 
-	local_type object_browser_table_entry = button
+	type object_browser_table_entry = button
 	{
 		gfxtype = framedbuttongfx
 		texture = "gfx/editor_gui/editor_tree_item.dds"

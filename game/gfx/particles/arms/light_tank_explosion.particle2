@@ -114,29 +114,6 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=5
-			node={
-				graph="SnapTerrainAndOffset"
-			}
-			inputs={
-				link={
-					pin_id="OffsetPosition"
-					linked_node=254
-					linked_pin="value"
-				}
-				link={
-					pin_id="Tag"
-					linked_node=485
-					linked_pin="value"
-				}
-				link={
-					pin_id="Epsilon"
-					linked_node=422
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
 			id=6
 			node={
 				graph="ScaledCurveSampler"
@@ -356,29 +333,6 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=14
-			node={
-				graph="ForceSnapTerrainAndOffset"
-			}
-			inputs={
-				link={
-					pin_id="Tag"
-					linked_node=481
-					linked_pin="value"
-				}
-				link={
-					pin_id="Epsilon"
-					linked_node=376
-					linked_pin="value"
-				}
-				link={
-					pin_id="SnapTime"
-					linked_node=377
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
 			id=15
 			node={
 				graph="ScaledCurveSampler"
@@ -476,29 +430,6 @@ graph={
 				link={
 					pin_id="scale_y"
 					linked_node=177
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
-			id=19
-			node={
-				graph="ForceSnapTerrainAndOffset"
-			}
-			inputs={
-				link={
-					pin_id="Tag"
-					linked_node=483
-					linked_pin="value"
-				}
-				link={
-					pin_id="Epsilon"
-					linked_node=406
-					linked_pin="value"
-				}
-				link={
-					pin_id="SnapTime"
-					linked_node=407
 					linked_pin="value"
 				}
 			}
@@ -629,29 +560,6 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=25
-			node={
-				graph="SnapTerrainAndOffset"
-			}
-			inputs={
-				link={
-					pin_id="OffsetPosition"
-					linked_node=267
-					linked_pin="value"
-				}
-				link={
-					pin_id="Tag"
-					linked_node=470
-					linked_pin="value"
-				}
-				link={
-					pin_id="Epsilon"
-					linked_node=433
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
 			id=26
 			node={
 				graph="BillboardRandomRotation"
@@ -739,29 +647,6 @@ graph={
 				link={
 					pin_id="pause"
 					linked_node=411
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
-			id=30
-			node={
-				graph="SnapTerrainAndOffset"
-			}
-			inputs={
-				link={
-					pin_id="OffsetPosition"
-					linked_node=268
-					linked_pin="value"
-				}
-				link={
-					pin_id="Tag"
-					linked_node=472
-					linked_pin="value"
-				}
-				link={
-					pin_id="Epsilon"
-					linked_node=454
 					linked_pin="value"
 				}
 			}
@@ -1050,24 +935,19 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=42
+			id=531
 			node={
-				graph="ForceSnapTerrainAndOffset"
+				graph="temp_snap_terrain_height"
 			}
 			inputs={
 				link={
-					pin_id="Tag"
-					linked_node=475
+					pin_id="Height Offset"
+					linked_node=407
 					linked_pin="value"
 				}
 				link={
-					pin_id="Epsilon"
-					linked_node=326
-					linked_pin="value"
-				}
-				link={
-					pin_id="SnapTime"
-					linked_node=327
+					pin_id="conditions_in"
+					linked_node=192
 					linked_pin="value"
 				}
 			}
@@ -1231,29 +1111,6 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=49
-			node={
-				graph="ForceSnapTerrainAndOffset"
-			}
-			inputs={
-				link={
-					pin_id="Tag"
-					linked_node=477
-					linked_pin="value"
-				}
-				link={
-					pin_id="Epsilon"
-					linked_node=343
-					linked_pin="value"
-				}
-				link={
-					pin_id="SnapTime"
-					linked_node=342
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:common:compound={
 			id=50
 			node={
 				graph="vector3f_random"
@@ -1360,6 +1217,99 @@ graph={
 					pin_id="Spawnrate"
 					linked_node=94
 					linked_pin="quotient"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=566
+			node={
+				graph="temp_snap_terrain_height"
+			}
+			inputs={
+				link={
+					pin_id="Height Offset"
+					linked_node=343
+					linked_pin="value"
+				}
+				link={
+					pin_id="conditions_in"
+					linked_node=199
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=523
+			node={
+				graph="temp_snap_terrain_height"
+			}
+			inputs={
+				link={
+					pin_id="Height Offset"
+					linked_node=377
+					linked_pin="value"
+				}
+				link={
+					pin_id="conditions_in"
+					linked_node=194
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=554
+			node={
+				graph="temp_snap_terrain_height"
+			}
+			inputs={
+				link={
+					pin_id="Height Offset"
+					linked_node=327
+					linked_pin="value"
+				}
+				link={
+					pin_id="conditions_in"
+					linked_node=198
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=422
+			node={
+				graph="snap_terrain_height"
+			}
+			inputs={
+				link={
+					pin_id="Height Offset"
+					linked_node=254
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=433
+			node={
+				graph="snap_terrain_height"
+			}
+			inputs={
+				link={
+					pin_id="Height Offset"
+					linked_node=267
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=454
+			node={
+				graph="snap_terrain_height"
+			}
+			inputs={
+				link={
+					pin_id="Height Offset"
+					linked_node=268
+					linked_pin="value"
 				}
 			}
 		}
@@ -1887,7 +1837,7 @@ graph={
 			inputs={
 				link={
 					pin_id="term1"
-					linked_node=488
+					linked_node=504
 					linked_pin="value"
 				}
 				link={
@@ -1909,7 +1859,7 @@ graph={
 				}
 				link={
 					pin_id="term2"
-					linked_node=488
+					linked_node=504
 					linked_pin="value"
 				}
 			}
@@ -1926,7 +1876,7 @@ graph={
 				}
 				link={
 					pin_id="term2"
-					linked_node=488
+					linked_node=504
 					linked_pin="value"
 				}
 			}
@@ -1938,7 +1888,7 @@ graph={
 			inputs={
 				link={
 					pin_id="term1"
-					linked_node=488
+					linked_node=504
 					linked_pin="value"
 				}
 				link={
@@ -2455,7 +2405,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=648
+					linked_node=491
 					linked_pin="value"
 				}
 			}
@@ -2477,7 +2427,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=649
+					linked_node=490
 					linked_pin="value"
 				}
 			}
@@ -2499,7 +2449,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=650
+					linked_node=489
 					linked_pin="value"
 				}
 			}
@@ -2521,7 +2471,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=651
+					linked_node=488
 					linked_pin="value"
 				}
 			}
@@ -2543,7 +2493,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=652
+					linked_node=487
 					linked_pin="value"
 				}
 			}
@@ -2565,7 +2515,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=653
+					linked_node=486
 					linked_pin="value"
 				}
 			}
@@ -2587,7 +2537,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=654
+					linked_node=501
 					linked_pin="value"
 				}
 			}
@@ -2609,7 +2559,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=655
+					linked_node=500
 					linked_pin="value"
 				}
 			}
@@ -2631,7 +2581,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=656
+					linked_node=499
 					linked_pin="value"
 				}
 			}
@@ -2653,7 +2603,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=657
+					linked_node=498
 					linked_pin="value"
 				}
 			}
@@ -2675,7 +2625,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=658
+					linked_node=497
 					linked_pin="value"
 				}
 			}
@@ -2697,7 +2647,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=659
+					linked_node=496
 					linked_pin="value"
 				}
 			}
@@ -2719,7 +2669,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=660
+					linked_node=495
 					linked_pin="value"
 				}
 			}
@@ -2741,7 +2691,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=661
+					linked_node=494
 					linked_pin="value"
 				}
 			}
@@ -2763,7 +2713,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=662
+					linked_node=493
 					linked_pin="value"
 				}
 			}
@@ -2785,7 +2735,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=663
+					linked_node=492
 					linked_pin="value"
 				}
 			}
@@ -2797,7 +2747,7 @@ graph={
 			inputs={
 				link={
 					pin_id="force"
-					linked_node=487
+					linked_node=503
 					linked_pin="value"
 				}
 				link={
@@ -2814,7 +2764,7 @@ graph={
 			inputs={
 				link={
 					pin_id="force"
-					linked_node=489
+					linked_node=505
 					linked_pin="value"
 				}
 				link={
@@ -2831,7 +2781,7 @@ graph={
 			inputs={
 				link={
 					pin_id="force"
-					linked_node=486
+					linked_node=502
 					linked_pin="value"
 				}
 				link={
@@ -3107,7 +3057,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=488
+					linked_node=504
 					linked_pin="value"
 				}
 				link={
@@ -3128,6 +3078,11 @@ graph={
 				link={
 					pin_id="tag"
 					linked_node=485
+					linked_pin="value"
+				}
+				link={
+					pin_id="local_space"
+					linked_node=540
 					linked_pin="value"
 				}
 				link={
@@ -3227,6 +3182,11 @@ graph={
 					linked_pin="value"
 				}
 				link={
+					pin_id="local_space"
+					linked_node=14
+					linked_pin="value"
+				}
+				link={
 					pin_id="effect_flags"
 					linked_node=144
 					linked_pin="effect_flags"
@@ -3323,6 +3283,11 @@ graph={
 					linked_pin="value"
 				}
 				link={
+					pin_id="local_space"
+					linked_node=25
+					linked_pin="value"
+				}
+				link={
 					pin_id="effect_flags"
 					linked_node=142
 					linked_pin="effect_flags"
@@ -3395,7 +3360,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=488
+					linked_node=504
 					linked_pin="value"
 				}
 				link={
@@ -3416,6 +3381,11 @@ graph={
 				link={
 					pin_id="tag"
 					linked_node=470
+					linked_pin="value"
+				}
+				link={
+					pin_id="local_space"
+					linked_node=19
 					linked_pin="value"
 				}
 				link={
@@ -3515,6 +3485,11 @@ graph={
 					linked_pin="value"
 				}
 				link={
+					pin_id="local_space"
+					linked_node=539
+					linked_pin="value"
+				}
+				link={
 					pin_id="effect_flags"
 					linked_node=146
 					linked_pin="effect_flags"
@@ -3611,6 +3586,11 @@ graph={
 					linked_pin="value"
 				}
 				link={
+					pin_id="local_space"
+					linked_node=508
+					linked_pin="value"
+				}
+				link={
 					pin_id="effect_flags"
 					linked_node=34
 					linked_pin="effect_id"
@@ -3683,7 +3663,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=488
+					linked_node=504
 					linked_pin="value"
 				}
 				link={
@@ -3704,6 +3684,11 @@ graph={
 				link={
 					pin_id="tag"
 					linked_node=477
+					linked_pin="value"
+				}
+				link={
+					pin_id="local_space"
+					linked_node=5
 					linked_pin="value"
 				}
 				link={
@@ -4358,13 +4343,13 @@ graph={
 			inputs={
 				link={
 					pin_id="position"
-					linked_node=5
-					linked_pin="ResultPosition"
+					linked_node=422
+					linked_pin="Position"
 				}
 				link={
 					pin_id="condition"
-					linked_node=5
-					linked_pin="SetPosition"
+					linked_node=193
+					linked_pin="value"
 				}
 			}
 		}
@@ -4375,13 +4360,13 @@ graph={
 			inputs={
 				link={
 					pin_id="position"
-					linked_node=14
-					linked_pin="ResultPosition"
+					linked_node=523
+					linked_pin="Position"
 				}
 				link={
 					pin_id="condition"
-					linked_node=14
-					linked_pin="SetPosition"
+					linked_node=523
+					linked_pin="conditions_out"
 				}
 			}
 		}
@@ -4392,13 +4377,13 @@ graph={
 			inputs={
 				link={
 					pin_id="position"
-					linked_node=19
-					linked_pin="ResultPosition"
+					linked_node=531
+					linked_pin="Position"
 				}
 				link={
 					pin_id="condition"
-					linked_node=19
-					linked_pin="SetPosition"
+					linked_node=531
+					linked_pin="conditions_out"
 				}
 			}
 		}
@@ -4409,13 +4394,13 @@ graph={
 			inputs={
 				link={
 					pin_id="position"
-					linked_node=25
-					linked_pin="ResultPosition"
+					linked_node=433
+					linked_pin="Position"
 				}
 				link={
 					pin_id="condition"
-					linked_node=25
-					linked_pin="SetPosition"
+					linked_node=195
+					linked_pin="value"
 				}
 			}
 		}
@@ -4426,13 +4411,13 @@ graph={
 			inputs={
 				link={
 					pin_id="position"
-					linked_node=30
-					linked_pin="ResultPosition"
+					linked_node=454
+					linked_pin="Position"
 				}
 				link={
 					pin_id="condition"
-					linked_node=30
-					linked_pin="SetPosition"
+					linked_node=196
+					linked_pin="value"
 				}
 			}
 		}
@@ -4443,13 +4428,13 @@ graph={
 			inputs={
 				link={
 					pin_id="position"
-					linked_node=42
-					linked_pin="ResultPosition"
+					linked_node=554
+					linked_pin="Position"
 				}
 				link={
 					pin_id="condition"
-					linked_node=42
-					linked_pin="SetPosition"
+					linked_node=554
+					linked_pin="conditions_out"
 				}
 			}
 		}
@@ -4460,13 +4445,13 @@ graph={
 			inputs={
 				link={
 					pin_id="position"
-					linked_node=49
-					linked_pin="ResultPosition"
+					linked_node=566
+					linked_pin="Position"
 				}
 				link={
 					pin_id="condition"
-					linked_node=49
-					linked_pin="SetPosition"
+					linked_node=566
+					linked_pin="conditions_out"
 				}
 			}
 		}
@@ -4587,6 +4572,54 @@ graph={
 					linked_node=199
 					linked_pin="value"
 				}
+			}
+		}
+		pdxns:values:Bool={
+			id=5
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=14
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=19
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=25
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=539
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=508
+			node={
+				value=no
+			}
+			inputs={
 			}
 		}
 		pdxns:values:Bool={
@@ -4741,6 +4774,14 @@ graph={
 			inputs={
 			}
 		}
+		pdxns:values:Bool={
+			id=540
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
 		pdxns:values:Color={
 			id=242
 			node={
@@ -4862,14 +4903,6 @@ graph={
 			}
 		}
 		pdxns:values:ConstVector3f={
-			id=254
-			node={
-				value={ 0.000000 0.100000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
 			id=255
 			node={
 				value={ 0.000000 0.000000 -20.000000 }
@@ -4961,22 +4994,6 @@ graph={
 			id=266
 			node={
 				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=267
-			node={
-				value={ 0.000000 0.100000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=268
-			node={
-				value={ 0.000000 0.110000 0.000000 }
 			}
 			inputs={
 			}
@@ -5389,6 +5406,30 @@ graph={
 			}
 		}
 		pdxns:values:Float={
+			id=254
+			node={
+				value=0.100000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=267
+			node={
+				value=0.100000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=268
+			node={
+				value=0.100000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
 			id=302
 			node={
 				value=0.250000
@@ -5581,17 +5622,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=326
-			node={
-				value=0.050000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
 			id=327
 			node={
-				value=0.051000
+				value=0.050000
 			}
 			inputs={
 			}
@@ -5709,17 +5742,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=342
-			node={
-				value=0.051000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
 			id=343
 			node={
-				value=0.050000
+				value=0.100000
 			}
 			inputs={
 			}
@@ -5981,17 +6006,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=376
-			node={
-				value=0.100000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
 			id=377
 			node={
-				value=0.110000
+				value=0.000000
 			}
 			inputs={
 			}
@@ -6221,17 +6238,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=406
-			node={
-				value=0.100000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
 			id=407
 			node={
-				value=0.110000
+				value=0.100000
 			}
 			inputs={
 			}
@@ -6349,14 +6358,6 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=422
-			node={
-				value=0.100000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
 			id=423
 			node={
 				value=0.000000
@@ -6432,14 +6433,6 @@ graph={
 			id=432
 			node={
 				value=0.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=433
-			node={
-				value=0.100000
 			}
 			inputs={
 			}
@@ -6600,14 +6593,6 @@ graph={
 			id=453
 			node={
 				value=8.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=454
-			node={
-				value=0.100000
 			}
 			inputs={
 			}
@@ -6861,7 +6846,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=653
+			id=486
 			node={
 				value=0
 			}
@@ -6869,7 +6854,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=652
+			id=487
 			node={
 				value=0
 			}
@@ -6877,7 +6862,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=651
+			id=488
 			node={
 				value=0
 			}
@@ -6885,7 +6870,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=650
+			id=489
 			node={
 				value=0
 			}
@@ -6893,7 +6878,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=649
+			id=490
 			node={
 				value=0
 			}
@@ -6901,7 +6886,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=648
+			id=491
 			node={
 				value=0
 			}
@@ -6909,7 +6894,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=663
+			id=492
 			node={
 				value=0
 			}
@@ -6917,7 +6902,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=662
+			id=493
 			node={
 				value=0
 			}
@@ -6925,7 +6910,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=661
+			id=494
 			node={
 				value=0
 			}
@@ -6933,7 +6918,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=660
+			id=495
 			node={
 				value=0
 			}
@@ -6941,7 +6926,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=659
+			id=496
 			node={
 				value=0
 			}
@@ -6949,7 +6934,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=658
+			id=497
 			node={
 				value=0
 			}
@@ -6957,7 +6942,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=657
+			id=498
 			node={
 				value=0
 			}
@@ -6965,7 +6950,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=656
+			id=499
 			node={
 				value=0
 			}
@@ -6973,7 +6958,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=655
+			id=500
 			node={
 				value=0
 			}
@@ -6981,7 +6966,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=654
+			id=501
 			node={
 				value=0
 			}
@@ -6989,7 +6974,7 @@ graph={
 			}
 		}
 		pdxns:values:Vector3f={
-			id=486
+			id=502
 			node={
 			}
 			inputs={
@@ -7011,7 +6996,7 @@ graph={
 			}
 		}
 		pdxns:values:Vector3f={
-			id=487
+			id=503
 			node={
 			}
 			inputs={
@@ -7033,7 +7018,7 @@ graph={
 			}
 		}
 		pdxns:values:Vector3f={
-			id=488
+			id=504
 			node={
 			}
 			inputs={
@@ -7055,7 +7040,7 @@ graph={
 			}
 		}
 		pdxns:values:Vector3f={
-			id=489
+			id=505
 			node={
 			}
 			inputs={

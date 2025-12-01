@@ -211,9 +211,7 @@
             base = 0
             modifier = {
                 add = 100
-                scope:character ?= {
-                    culture = cu:korean
-                }
+                korean_clothes_trigger = yes
                 agitator_character_trigger = yes
             }
         }
@@ -2017,7 +2015,7 @@
     }
 
     ### Bulgarian headgear
-    
+
     bulgarian_royal_headgear = {
         dna_modifiers = {
             accessory = {
@@ -3052,8 +3050,8 @@
                 add = 1200
                 OR = {
                     AND = {
+                        korean_clothes_trigger = yes
                         scope:character ?= {
-                            culture = cu:korean
                             age >= define:NCharacters|ADULT_AGE
                             owner ?= {
                                 has_variable = KOR_korean_empire_declared
@@ -3075,8 +3073,8 @@
                         agitator_character_trigger = no
                     }
                     AND = {
+                        korean_clothes_pop_trigger = yes
                         scope:pop ?= {
-                            culture = cu:korean
                             owner = {
                                 has_variable = KOR_korean_empire_declared
                             }

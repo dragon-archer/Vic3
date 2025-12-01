@@ -11221,6 +11221,7 @@
                         poor_clothes_pop_trigger = yes
                         middle_clothes_pop_trigger = yes
                         soldier_clothes_pop_trigger = yes
+                        clergy_clothes_pop_trigger = yes
                     }
                 }
             }
@@ -11277,10 +11278,9 @@
                 AND = {
                     korean_clothes_trigger = yes
                     scope:character ?= {
-                        has_culture = cu:korean
                         is_ruler = yes
                         OR = {
-                            age <= 10
+                            age < define:NCharacters|ADULT_AGE
                             NOT = {
                                 owner ?= {
                                     has_variable = KOR_korean_empire_declared
@@ -12649,22 +12649,23 @@ indigenous_oceanic_pop_clothes = {
                         middle_clothes_pop_trigger = yes
                     }
                     AND = {
-                        exists = scope:pop
-                        scope:pop = {
-                            OR = {
-                                culture = cu:cherokee
-                                culture = cu:muskogean
-                                AND = {
-                                    culture = cu:japanese
-                                    owner ?= {
-                                        has_variable = meiji_restoration_complete
-                                    }
+                        OR = {
+                            scope:pop ?= {
+                                OR = {
+                                    culture = cu:cherokee
+                                    culture = cu:muskogean
                                 }
-                                AND = {
-                                    culture = cu:korean
-                                    owner ?= {
-                                        has_variable = KOR_korean_empire_declared
-                                    }
+                            }
+                            AND = {
+                                japanese_clothes_pop_trigger = yes
+                                scope:pop ?= {
+                                    owner ?= { has_variable = meiji_restoration_complete }
+                                }
+                            }
+                            AND = {
+                                korean_clothes_pop_trigger = yes
+                                scope:pop ?= {
+                                    owner ?= { has_variable = KOR_korean_empire_declared }
                                 }
                             }
                         }
@@ -13176,9 +13177,9 @@ indigenous_oceanic_pop_clothes = {
             modifier = {
                 add = 10000
                 AND = {
+                    korean_clothes_trigger = yes
                     scope:character ?= {
                         age >= define:NCharacters|ADULT_AGE
-                        culture = cu:korean
                         owner ?= {
                             has_variable = KOR_korean_empire_declared
                         }
@@ -13222,8 +13223,8 @@ indigenous_oceanic_pop_clothes = {
             modifier = {
                 add = 10000
                 AND = {
+                    korean_clothes_pop_trigger = yes
                     scope:pop ?= {
-                        culture = cu:korean
                         owner ?= {
                             has_variable = KOR_korean_empire_declared
                         }

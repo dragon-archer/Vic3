@@ -383,8 +383,9 @@
  DIPLO_ACTION_PENDING: "Notre proposition est en attente d’approbation"
  DIPLO_ACTION_PENDING_OTHER: "Ce pays réfléchit déjà à une proposition de notre part"
  DIPLO_ACTION_REVERSE_PENDING: "Leur proposition est en attente d’approbation"
- DIPLO_PACT_RELATIONS_CHANGE_POS: "Améliore actuellement les [concept_relations|l] de #g +1#! tous les $DAYS|v$ jours sur une progression quotidienne totale de #v $PROGRESS_DAILY|%+=2$#!"
- DIPLO_PACT_RELATIONS_CHANGE_NEG: "Détériore actuellement les [concept_relations|l] de #r -1#! tous les $DAYS|v$ jours sur une progression quotidienne totale de #v $PROGRESS_DAILY|%+=2$#!"
+ DIPLO_PACT_RELATIONS_CHANGE_POS: "Les [concept_relations|l] s’amélioreront de #g +1#! dans $DAYS|v$ jours. La progression totale est de #v $PROGRESS_DAILY|%+=2$#! par jour" #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_CHANGE_NEG: "Les [concept_relations|l] se détérioreront de #r 1#! dans $DAYS|v$ jours. La progression totale est de #v $PROGRESS_DAILY|%+=2$#! par jour" #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_NO_CHANGE: "Les [concept_relations|l] restent actuellement inchangées. La progression totale est de #v $PROGRESS_DAILY|%+=0$#! par jour" #translation note: followed by: , due to  and some listed modifiers
  DIPLO_ACTION_FORCED_DURATION: "Nous ne pouvons pas rompre ce [Concept('concept_diplomatic_pact','$concept_diplomatic_pact_short$')|l] pendant encore $TIME_LEFT$ ($DATE$)"
  DIPLOMATIC_PACT_HEADER: "#header [DiplomaticPact.GetName]#!"
  DIPLOMATIC_PACT_DESC: "[DiplomaticPact.GetDesc]"

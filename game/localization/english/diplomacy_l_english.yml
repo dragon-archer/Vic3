@@ -1,5 +1,5 @@
 ﻿l_english:
- PRESTIGE_FROM_COUNTRY_GDP:1 "#variable $VALUE|+=$#! from [concept_gdp]"
+ PRESTIGE_FROM_COUNTRY_GDP: "#variable $VALUE|+=$#! from [concept_gdp]"
  PRESTIGE_FROM_ARMY_POWER_PROJECTION:1 "#variable $VALUE|+=$#! from Army [concept_power_projection]"
  PRESTIGE_FROM_NAVY_POWER_PROJECTION:1 "#variable $VALUE|+=$#! from Navy [concept_power_projection]"
  PRESTIGE_FROM_COUNTRY_TIER:1 "#variable $VALUE|+=$#! from [concept_country_tier] of $TIER|v$"
@@ -419,8 +419,9 @@
  DIPLO_ACTION_PENDING:0 "Our proposal is pending approval"
  DIPLO_ACTION_PENDING_OTHER: "They are already considering a proposal from us"
  DIPLO_ACTION_REVERSE_PENDING:0 "Their proposal is pending approval"
- DIPLO_PACT_RELATIONS_CHANGE_POS:2 "[concept_relations] will improve by #g +1#! in $DAYS|v$ days. Total progress is #v $PROGRESS_DAILY|%+=2$#! ($PROGRESS_DAILY|4$) relations per day" #translation note: followed by: , due to  and some listed modifiers
- DIPLO_PACT_RELATIONS_CHANGE_NEG:2 "[concept_relations] will worsen by #r -1#! in $DAYS|v$ days. Total progress is #v $PROGRESS_DAILY|%+=2$#! ($PROGRESS_DAILY|4$) relations per day" #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_CHANGE_POS: "[concept_relations] will improve by #g +1#! in $DAYS|v$ days. Total progress is #v $PROGRESS_DAILY|%+=2$#! per day" #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_CHANGE_NEG: "[concept_relations] will worsen by #r -1#! in $DAYS|v$ days. Total progress is #v $PROGRESS_DAILY|%+=2$#! per day" #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_NO_CHANGE: "[concept_relations] will currently remain unchanged. Total progress is #v $PROGRESS_DAILY|%+=0$#! per day" #translation note: followed by: , due to  and some listed modifiers
  DIPLO_ACTION_FORCED_DURATION:0 "We cannot break this [Concept('concept_diplomatic_pact','$concept_diplomatic_pact_short$')] for another $TIME_LEFT$ ($DATE$)" 
  DIPLOMATIC_PACT_HEADER:0 "#header [DiplomaticPact.GetName]#!"
  DIPLOMATIC_PACT_DESC:0 "[DiplomaticPact.GetDesc]"

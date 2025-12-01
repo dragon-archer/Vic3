@@ -383,8 +383,9 @@
  DIPLO_ACTION_PENDING: "제안 수락을 기다리고 있습니다"
  DIPLO_ACTION_PENDING_OTHER: "이미 우리의 제안을 고려하는 중임"
  DIPLO_ACTION_REVERSE_PENDING: "상대가 제안 수락을 기다립니다"
- DIPLO_PACT_RELATIONS_CHANGE_POS: "총 일일 진행도는 #v $PROGRESS_DAILY|%+=2$#!이며, 현재 [concept_relations]가 $DAYS|v$일마다 #g +1#!만큼 개선되는 중"
- DIPLO_PACT_RELATIONS_CHANGE_NEG: "총 일일 진행도는 #v $PROGRESS_DAILY|%+=2$#!이며, 현재 [concept_relations]가 $DAYS|v$일마다 #r -1#!만큼 훼손되는 중"
+ DIPLO_PACT_RELATIONS_CHANGE_POS: "[concept_relations]가 $DAYS|v$일 후 #g +1#! 개선됩니다. 총 진행도는 하루에 #v $PROGRESS_DAILY|%+=2$#!입니다." #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_CHANGE_NEG: "[concept_relations]가 $DAYS|v$일 후 #r -1#! 악화됩니다. 총 진행도는 하루에 #v $PROGRESS_DAILY|%+=2$#!입니다." #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_NO_CHANGE: "[concept_relations]가 변하지 않습니다. 총 진행도는 하루에 #v $PROGRESS_DAILY|%+=0$#!입니다." #translation note: followed by: , due to  and some listed modifiers
  DIPLO_ACTION_FORCED_DURATION: "우리가 이후 $TIME_LEFT$ ($DATE$) 동안 해당 [Concept('concept_diplomatic_pact','$concept_diplomatic_pact_short$')]을 파기할 수 없음"
  DIPLOMATIC_PACT_HEADER: "#header [DiplomaticPact.GetName]#!"
  DIPLOMATIC_PACT_DESC: "[DiplomaticPact.GetDesc]"

@@ -227,7 +227,8 @@
  balkan_window_of_opportunity_closing: "zaman doluyor"
  ottoman_in_crisis_tt: "$dyn_c_ottoman_empire$ krizde."
  je_spoils_of_war: "Savaş Ganimetleri"
- je_spoils_of_war_reason: "Zaferin ilan edilmesinden yalnızca birkaç gün sonra kalan Balkan Birliği üyelerinin her biri, Osmanlı'dan geri alınan ancak adil olmayan bir şekilde dağıtılan topraklara gözünü dikti.\n\nBizimkiler dahil rütbeli subaylar ve siyasetçiler, kılıç daha kınına girmemişken toprakların dağılımında değişiklikler yapılmasını talep ediyor."
+ je_spoils_of_war_reason: "Zaferin ilan edilmesinden yalnızca birkaç gün sonra kalan Balkan Birliği üyelerinin her biri, Osmanlı'dan geri alınan ancak adil olmayan bir şekilde dağıtıldığını iddia ettikleri topraklara gözünü dikti.\n\nBizimkiler dahil rütbeli subaylar ve siyasetçiler, kılıç daha kınına girmemişken toprakların dağılımında değişiklikler yapılmasını talep ediyor."
+ je_spoils_of_war_timed_out_tt: "#b Tamamlanma#!, #v $je_spoils_of_war$#! [Concept('concept_journal_entry', 'Günlük Girdisinin')] #b süresi bittiğinde#! değerlendirilir."
  notification_new_balkan_league_members_name: "Yeni Balkan Birliği Üyeleri"
  notification_new_balkan_league_members_desc: "$dyn_c_ottoman_empire$ egemenliği altındaki ülkelere davamıza katılma şansı sunuldu."
  # Scripted buttons
@@ -366,7 +367,7 @@
  support_for_balkan_league: "Birlik üyesi olmaktan"
  dp_balkan_war: "Balkan Savaşı"
  the_cataclysm_partitioning: "Balkan toprakları, üzerindeki ülkeler tarafından bölüşülecek ve yeni ülkeler ortaya çıkabilir."
- homeland_states_spoils_of_war_header_tt: "Şu [Concept('concept_state', '$concept_states$')] bizim için [Concept('concept_homeland', '$concept_homeland$')] sayılıyor:"
+ homeland_states_spoils_of_war_header_tt: "Şu [Concept('concept_state', '$concept_states$')] bizim için [Concept('concept_homeland', '$concept_homeland$')] sayılıyor: #indent_newline:3 "
  homeland_states_spoils_of_war_tt: "[THIS.GetStateRegion.GetName]"
  balkan_wars_league_fail_by_becoming_subject_tt: "[ROOT.GetCountry.GetName] başka bir ülkenin [Concept('concept_subject', 'Egemenliği Altında')]"
  balkan_wars_league_fail_timeout_tt: "Sahip olduğumuz #v Fırsat Aralığı#! sona eriyor"

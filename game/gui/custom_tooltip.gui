@@ -14,7 +14,7 @@ types TooltipTypes
 	}
 
 	type custom_tooltip_textbox_column_width = custom_tooltip_textbox {
-		maximumsize = { @tooltip_fixed_column_width -1 }
+		max_width = @tooltip_fixed_column_width
 	}
 
 	type custom_tooltip_textbox_fixed_width = custom_tooltip_textbox {
@@ -4437,13 +4437,8 @@ types TooltipTypes
 
 				item = {
 					flowcontainer = {
+						margin_left = 10
 						spacing = 5
-
-						icon = {
-							parentanchor = vcenter
-							size = { 25 25 }
-							texture = "[Goods.GetTexture]"
-						}
 
 						custom_tooltip_textbox = {
 							parentanchor = vcenter
@@ -4883,14 +4878,14 @@ types TooltipTypes
 
 				blockoverride "left_column"
 				{
-					custom_tooltip_textbox = {
+					custom_tooltip_textbox_column_width = {
 						text = "CULTURE_TT_TURMOIL_WORLDWIDE"
 					}
 				}
 
 				blockoverride "right_column"
 				{
-					custom_tooltip_textbox = {
+					custom_tooltip_textbox_column_width = {
 						text = "CULTURE_TT_MIGRATION_TARGETS"
 					}
 				}
@@ -4901,14 +4896,14 @@ types TooltipTypes
 
 				blockoverride "left_column"
 				{
-					custom_tooltip_textbox = {
+					custom_tooltip_textbox_column_width = {
 						text = "CULTURE_TT_OBSESSIONS"
 					}
 				}
 
 				blockoverride "right_column"
 				{
-					custom_tooltip_textbox = {
+					custom_tooltip_textbox_column_width = {
 						text = "CULTURE_TT_TABOOS"
 					}
 				}
@@ -4917,13 +4912,13 @@ types TooltipTypes
 			custom_tooltip_2_columns = {
 				blockoverride "left_column"
 				{
-					custom_tooltip_textbox = {
+					custom_tooltip_textbox_column_width = {
 						text = "CULTURE_TT_FERVOR"
 					}
 				}
 				blockoverride "right_column"
 				{
-					custom_tooltip_textbox = {
+					custom_tooltip_textbox_column_width = {
 						visible = "[Culture.HasNationalAwakening]"
 						text = "HAS_NATIONAL_AWAKENING"
 					}
@@ -4935,14 +4930,14 @@ types TooltipTypes
 
 				blockoverride "left_column"
 				{
-					custom_tooltip_textbox = {
+					custom_tooltip_textbox_column_width = {
 						text = "CULTURE_TT_TRAITS"
 					}
 
 					flowcontainer = {
 						direction = vertical
 
-						custom_tooltip_textbox = {
+						custom_tooltip_textbox_column_width = {
 							text = "CULTURE_TT_TRADITIONS_HEADER"
 						}
 
@@ -4967,7 +4962,7 @@ types TooltipTypes
 							}
 						}
 
-						custom_tooltip_textbox = {
+						custom_tooltip_textbox_column_width = {
 							visible = "[IsDataModelEmpty(Culture.GetTraditionTraits)]"
 							alpha = 0.3
 							text = "NONE"
@@ -4977,7 +4972,7 @@ types TooltipTypes
 
 				blockoverride "right_column"
 				{
-					custom_tooltip_textbox = {
+					custom_tooltip_textbox_column_width = {
 						text = "CULTURE_TT_RELIGION"
 					}
 				}
@@ -5106,7 +5101,7 @@ types TooltipTypes
 
 				blockoverride "left_column"
 				{
-					custom_tooltip_textbox = {
+					custom_tooltip_textbox_column_width = {
 						max_width = 275
 						text = "RELIGION_TT_TRAITS"
 					}
@@ -5114,7 +5109,7 @@ types TooltipTypes
 
 				blockoverride "right_column"
 				{
-					custom_tooltip_textbox = {
+					custom_tooltip_textbox_column_width = {
 						max_width = 275
 						text = "RELIGION_TT_TABOOS"
 					}

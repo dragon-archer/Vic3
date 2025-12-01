@@ -186,7 +186,7 @@
  spread_the_revolution: "혁명 확산"
  constrained_the_revolution: "혁명 억제"
  je_springtime_of_the_peoples: "국민의 봄"
- je_springtime_of_the_peoples_reason: "나폴레옹식 반동주의 체제 이후로 불만이 폭증해 #b 유럽#! 전역에 [GetIdeology('ideology_radical').GetName] 정서가 퍼져나갔습니다. 자유주의 혁명가들이 삼색기를 들어 올리고 자유와 평등, 박애를 부르짖는 상황입니다.\n\n#b [ROOT.GetCountry.GetCapital.GetCityHubName]의 방어벽:#!\n이 [concept_journal_entry]이 활성화된 동안 [ROOT.GetCountry.GetCapital.GetName] 내 [concept_turmoil]이 #v 10%#! 이상이며 #tooltippable;tooltip:[GetPlayer.GetTooltipTag],liberal_movements_list_tt 자유주의#! 또는 #tooltippable;tooltip:[GetPlayer.GetTooltipTag],socialist_movements_list_tt 사회주의#! [concept_political_movement]이 [Concept('concept_insurrection', '$concept_insurrectionary$')]가 되면 혁명파 세력이 자국의 [Concept('concept_capital_state','$concept_capital_state_short$')]에서 권력을 장악하려 시도할 수 있습니다."
+ je_springtime_of_the_peoples_reason: "나폴레옹식 반동주의 체제 이후로 불만이 폭증해 #b 유럽#! 전역에 [GetIdeology('ideology_radical').GetName] 정서가 퍼져나갔습니다. 자유주의 혁명가들이 삼색기를 들어 올리고 자유와 평등, 박애를 부르짖는 상황입니다.\n\n#b [ROOT.GetCountry.GetCapital.GetCityHubName]의 방어벽:#!\n이 [concept_journal_entry]이 활성화된 동안 #tooltippable;tooltip:[GetPlayer.GetTooltipTag],liberal_movements_list_tt 자유주의#! 또는 #tooltippable;tooltip:[GetPlayer.GetTooltipTag],socialist_movements_list_tt 사회주의#! [concept_political_movement]이 [ROOT.GetCountry.GetCapital.GetName]에서 [Concept('concept_insurrection', '$concept_insurrectionary$')]가 되면 혁명파 세력이 자국의 [Concept('concept_capital_state','$concept_capital_state_short$')]에서 권력을 장악하려 시도할 수 있습니다."
  je_springtime_of_the_peoples_tt_1: "#ITALIC 혁명파 승리#! 완료 조건:"
  je_springtime_of_the_peoples_tt_2: "#ITALIC 반동주의자 승리#! 완료 조건:"
  je_springtime_of_the_peoples_tt_3: "#ITALIC 혁명파 승리#!로 완료할 경우:\n#variable $peoples_springtime.7.t$#! 이벤트 발생"

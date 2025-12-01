@@ -3008,16 +3008,14 @@ container = {
 	layer = layer_map_markers
 	max_update_rate = 8
 	parentanchor = bottom|hcenter
-
+	onmousehierarchyenter = "[SetCanOpenRightClickContextMenu( '(bool)no' )]"
+	onmousehierarchyleave = "[SetCanOpenRightClickContextMenu( '(bool)yes' )]"
 
 	button_icon_round = {
 		using = small_nib
 		size = { 40 40 }
 		onclick = "[InformationPanelBar.OpenCultureInfoPanel(Culture.AccessSelf)]"
-		
-		tooltipwidget = {
-			FancyTooltip_Culture = {}
-		}
+		tooltip = "NATIONAL_AWAKENING_CULTURE_TOOLTIP"
 
 		blockoverride "icon" {
 			texture = "gfx/interface/icons/generic_icons/national_awakening.dds"

@@ -227,7 +227,8 @@
  balkan_window_of_opportunity_closing: "時間は残り少ない"
  ottoman_in_crisis_tt: "$dyn_c_ottoman_empire$は危機に瀕している。"
  je_spoils_of_war: "戦利品"
- je_spoils_of_war_reason: "勝利宣言からわずか数日後、バルカン同盟の他の加盟国は、オスマン帝国から奪った土地が不当に分配されたと主張した。\n\n戦争の鉄がすでに熱を帯びている間に、我が国でも他国でも、高官と政治家たちが補償を要求している。"
+ je_spoils_of_war_reason: "勝利宣言からわずか数日後、バルカン同盟の他の加盟国は、オスマン帝国から奪った土地が不当に分配されたと主張した。\n\n戦争という名の鉄がすでに熱を帯びている中、我が国でも他国でも、高官と政治家たちが補償を要求している。"
+ je_spoils_of_war_timed_out_tt: "#b 完了#! は、#v $je_spoils_of_war$#! の[concept_journal_entry]]が#b タイムアウト#! したときに評価される。"
  notification_new_balkan_league_members_name: "バルカン同盟の新たな加盟国"
  notification_new_balkan_league_members_desc: "$dyn_c_ottoman_empire$の従属国には、我々の大義に加わる機会が与えられた。"
  # Scripted buttons
@@ -337,7 +338,7 @@
  balkan_wars.11.d: "[SCOPE.sStrategicRegion('balkans_scope').GetName]における我々の旧従属国によって構成される#bold バルカン同盟#!が、我々への反旗を翻すと正式に宣言した。もし彼らが次の戦争に勝利すれば、我々はこの地域の領土をすべて失い、新たな国家が誕生することになるだろう。"
  balkan_wars.11.f: "老いたイマームはミンバルの階段に立つ信者たちの方を向き、フトゥバを始めた。\n\n「信者たちよ！\n\n今日、我々の先祖の時代と同じく、地上における神の影たるオスマン帝国のスルタンが、我らに信仰、土地、そして名誉を守るために立ち上がるよう命じているのだ。この戦争は単なる人間同士の争いではなく、全能の神からの試練であり、暴政と抑圧に対する真理の道における闘争なのだ！」"
  balkan_wars.11.a: "彼らはその日を悔やむことになるだろう。"
- balkan_wars.11.a_opener_tt: "#bold バルカン同盟#!の次の国々が我々を相手に外交プレイを開始した: "
+ balkan_wars.11.a_opener_tt: "#bold バルカン同盟#!の次の国々が我々を相手に外交プレイを開始した:"
  balkan_wars.11.a_league_members_list_tt: "[THIS.GetCountry.GetName]"
  # The War Begins event
  balkan_wars.12.t: "戦争の開始"
@@ -366,7 +367,7 @@
  support_for_balkan_league: "同盟の加盟国であることから"
  dp_balkan_war: "バルカン戦争"
  the_cataclysm_partitioning: "バルカン半島の領土が各国間で分割され、新たな国家が誕生するかもしれません。"
- homeland_states_spoils_of_war_header_tt: "次の[Concept('concept_state', '$concept_states$')]は我々の[Concept('concept_homeland', '$concept_homelands$')]とみなされている:"
+ homeland_states_spoils_of_war_header_tt: "次の[Concept('concept_state', '$concept_states$')]は我々の[Concept('concept_homeland', '$concept_homelands$')]とみなされている:#indent_newline:3 "
  homeland_states_spoils_of_war_tt: "[THIS.GetStateRegion.GetName]"
  balkan_wars_league_fail_by_becoming_subject_tt: "[ROOT.GetCountry.GetName]が他国の[Concept('concept_subject', '$concept_subject$')]"
  balkan_wars_league_fail_timeout_tt: "我々の#v 好機の猶予#!は終了した"

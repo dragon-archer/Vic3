@@ -1,6 +1,6 @@
 64e8b5c162a34d08d3bb4724339ae4f6  binaries/bink2w32.dll
 6ca8d96ed9c8640470dcaf2bb3567373  binaries/bink2w64.dll
-e043ceb8d2e6dbdf3934edc59581e24e  binaries/checksum.txt
+93bcfb337eabe63ed2f51a63baee4c13  binaries/checksum.txt
 e03b975eebb4faa0d04d924b0fc2a82d  binaries/crash_reporter/binaries/CrashReporter.exe
 2f3ed665014bdb0ddb99a02edea92f1e  binaries/cream_api.ini
 0edb00ec028121a0c4e03e9fba3ea234  binaries/D3D12MemAlloc.natvis
@@ -21,6 +21,7 @@ cb6f312201db436d3f4aef42365efbd8  binaries/GFSDK_Aftermath_Lib.x64.dll
 9eba114024fdf174bb7124bd765b763b  binaries/GFSDK_Aftermath_Lib.x64.lib
 9d30b386f3bc1457bddd22c1417f60d8  binaries/libxess.dll
 a6b40e5e44b01b5ad1a51ebdbb91f924  binaries/nakama-sdk.dll
+c8167f0b95c46720c37d20a87b5e28c0  binaries/nvngx_dlss.dll
 1f277879060995131bac96a50c9a2d78  binaries/nvtt.dll
 50f4b7f98feabc144fc19e3fd9624d44  binaries/nvtt30201.dll
 b5d7ed4148aee1a0781c222b2adf52d9  binaries/PDXSDK.dll
@@ -28,13 +29,14 @@ b5d7ed4148aee1a0781c222b2adf52d9  binaries/PDXSDK.dll
 fd704aef205e67d4aaab6536bd684e57  binaries/pdx_red_king.dll
 239a8272d47500e9b811cfaacf49b594  binaries/pdx_red_king.exp
 3d08569c7b2ec21b6f5a142f024f49ba  binaries/pdx_red_king.lib
+e034d987448b3f5130794637a375e792  binaries/pops_api.dll
+5b361e05040b0f7e9312f9560dbcf197  binaries/pops_api.exp
+6094280cddf2247fb00fd0ce7151c793  binaries/pops_api.lib
 72ea330404a78bee7375bad7857a8f71  binaries/steam_api64.dll
 6392acae79da837e3a638fbd0743bc0f  binaries/steam_api64.lib
 72ea330404a78bee7375bad7857a8f71  binaries/steam_api64_o.dll
-12f97bff41cb6922f7151c5d38932b6f  binaries/victoria3.exe
-e662b083c927cfbeffa43f63d31c50dd  binaries/victoria3.exe.manifest
-8453ce76060af2a37c5de46ec7dbf6c8  binaries/victoria3_win_console.exe
-e662b083c927cfbeffa43f63d31c50dd  binaries/victoria3_win_console.exe.manifest
+0cb1c51468cbf866c3bc30dab1ef928a  binaries/victoria3.exe
+3710d6575f82037b0c62b499ff7be56d  binaries/victoria3_win_console.exe
 d98fba4512b1a284523e17f28f0a873a  binaries/WinPixEventRuntime.dll
 aabd41c0a2fecb9384201bbfc7dc25af  binaries/WinPixEventRuntime.lib
 6a4f8cffeb3c9dbaabdb8eae0aeededb  binaries/XeFX.dll
@@ -2631,6 +2633,7 @@ e28b43084a4a0fd0c3bfc94e7eb5b90f  game/gfx/coat_of_arms/colored_emblems/ce_lette
 f0c7fc8cf74f1c2eca3b17f64bb08da1  game/gfx/coat_of_arms/colored_emblems/ce_lightning_bolt_nacista.dds
 00bd915d25dd5868ce61b03b5e125777  game/gfx/coat_of_arms/colored_emblems/ce_lion_corfu.dds
 0222db9dbbea60825161b8fa078d5ba7  game/gfx/coat_of_arms/colored_emblems/ce_lion_judah.dds
+53381df0222f99bd7882e82565410552  game/gfx/coat_of_arms/colored_emblems/ce_lion_montenegro.dds
 74cbdbca32526e5e417b48cc19cefdbd  game/gfx/coat_of_arms/colored_emblems/ce_lion_passant_guardant.dds
 84039097d002f8c04d639fdba029225e  game/gfx/coat_of_arms/colored_emblems/ce_lion_passant_guardant_long.dds
 e49035333c7c17db84a2a60e0a3b9255  game/gfx/coat_of_arms/colored_emblems/ce_lion_persia.dds
@@ -3000,6 +3003,8 @@ a6d3d56548b02550cdf0a7cc85b1e01f  game/gfx/coat_of_arms/textured_emblems/te_coa_
 22def078b8ff22e1fb9b7d771685043e  game/gfx/coat_of_arms/textured_emblems/te_coa_mexico.dds
 7f3f4c0be21fa9d481250ea940954b64  game/gfx/coat_of_arms/textured_emblems/te_coa_michigan.dds
 e2871f1666314be22fffe4e5543b21a8  game/gfx/coat_of_arms/textured_emblems/te_coa_modena.dds
+071a4ace38e3390fe1b0c22138fa9d83  game/gfx/coat_of_arms/textured_emblems/te_coa_montenegro_kingdom.dds
+e409ae088f250bf9c66a79467468b8c9  game/gfx/coat_of_arms/textured_emblems/te_coa_montenegro_nikola.dds
 751bb7d8329d0e7dce9dae7e41d88eb7  game/gfx/coat_of_arms/textured_emblems/te_coa_napoleon_iii.dds
 9fc9215156c0785dc6d1de62a955b9e2  game/gfx/coat_of_arms/textured_emblems/te_coa_nawanagar.dds
 fa76fbc3bae28d59706274413a0667fc  game/gfx/coat_of_arms/textured_emblems/te_coa_newfoundland.dds
@@ -5763,6 +5768,7 @@ d7abe8ab42bf207150732b3e88928fad  game/gfx/interface/icons/map_mode_icons/milita
 6ae8b1d654782b44a8b98bc5486f56b2  game/gfx/interface/icons/map_mode_icons/national_gdp.dds
 ce30ef219093caad044d821cecbbe298  game/gfx/interface/icons/map_mode_icons/national_population.dds
 d82db8942cefe138d78faf86d599d1c6  game/gfx/interface/icons/map_mode_icons/obstinance.dds
+75192d2d1839c7249726e7a294b4f358  game/gfx/interface/icons/map_mode_icons/players.dds
 2667aa677dd0d9ea58982577d64a72e6  game/gfx/interface/icons/map_mode_icons/political.dds
 4016f80cd1b52b76905bc5779c450f38  game/gfx/interface/icons/map_mode_icons/pollution_impact.dds
 550469c64f86082d0a2a60f6b203f20e  game/gfx/interface/icons/map_mode_icons/potentials.dds
@@ -7380,7 +7386,7 @@ c6474c2f6d778e272fd14dc70f516b1c  game/gfx/map/textures/cohesion_tear.dds
 89fac8d15883b90b4b80520bcb7115f0  game/gfx/map/textures/edgeofworld_clouds.dds
 4d8b6b0ebafbb23ed0607828beb822ba  game/gfx/map/textures/equator_line.dds
 e477a0e83fb1a00d7bdd778941116ca4  game/gfx/map/textures/flatmap.dds
-9815d6134510f1c18703f3bdd2806be8  game/gfx/map/textures/flatmap_newsletter_bonus.dds
+4fc0808713d9cfa1a75f134318fd50f9  game/gfx/map/textures/flatmap_newsletter_bonus.dds
 7ff16c4a28fadc2fdf7c5e7a96e6c41b  game/gfx/map/textures/flatmap_noise.dds
 1d78470f125d2216b6ca3bd7a8f8908e  game/gfx/map/textures/flatmap_overlay.dds
 97d78e93395cf3f35fd25deafa795555  game/gfx/map/textures/flatmap_overlay_newsletter_bonus.dds
@@ -11665,7 +11671,7 @@ b4091bdcd4ce3c95ed371c88a8c7a94a  game/gfx/models/portraits/attachments/male_coa
 32f4cfa9a48f5a6ca14695c57d45a11a  game/gfx/models/portraits/attachments/male_coats/european/01/male_coat_european_01_bs_thick.mesh
 47c79494b155a154e65625967d410853  game/gfx/models/portraits/attachments/male_coats/european/01/male_coat_european_01_bs_thin.mesh
 55a527725ddb0e0598b57e181d17b1d2  game/gfx/models/portraits/attachments/male_coats/european/01/male_coat_european_01_diffuse.dds
-ef2b26fd8e95bd0980cef624a845645b  game/gfx/models/portraits/attachments/male_coats/european/01/male_coat_european_01_masks.dds
+f14e03bac70828a7d5842219038a8b54  game/gfx/models/portraits/attachments/male_coats/european/01/male_coat_european_01_masks.dds
 14f736a90fbbb0fa90f169459a65ed92  game/gfx/models/portraits/attachments/male_coats/european/01/male_coat_european_01_normal.dds
 d494122315c84c8f3a51b18aadd06a63  game/gfx/models/portraits/attachments/male_coats/european/01/male_coat_european_01_properties.dds
 f085731077b70e4de431ae66740331da  game/gfx/models/portraits/attachments/male_coats/european/03/male_coat_european_03.mesh
@@ -11676,7 +11682,7 @@ f397211a96e91bf5ec0855803df955be  game/gfx/models/portraits/attachments/male_coa
 c183561c231513a2abdb9a99385107c5  game/gfx/models/portraits/attachments/male_coats/european/03/male_coat_european_03_bs_thick.mesh
 015fd66a896f5b09d995e030e078100d  game/gfx/models/portraits/attachments/male_coats/european/03/male_coat_european_03_bs_thin.mesh
 7e3a5612a9324417d742fd1d414f4176  game/gfx/models/portraits/attachments/male_coats/european/03/male_coat_european_03_diffuse.dds
-a026e890581cec0987312c75c9d9f26d  game/gfx/models/portraits/attachments/male_coats/european/03/male_coat_european_03_masks.dds
+b10614f6b97c4b06ac7c4c325f5001c5  game/gfx/models/portraits/attachments/male_coats/european/03/male_coat_european_03_masks.dds
 87e7bf1efb42c7039be8ea2a79afe8a2  game/gfx/models/portraits/attachments/male_coats/european/03/male_coat_european_03_normal.dds
 b5bbe504b9c3748d60b35cb5835f0696  game/gfx/models/portraits/attachments/male_coats/european/03/male_coat_european_03_properties.dds
 c0a777f2be2571d8f791c3eb35f657eb  game/gfx/models/portraits/attachments/male_coats/european/03/male_outfit_korean_01_low_bs_thin.mesh
@@ -11688,7 +11694,7 @@ fb6312ff65706dcc4ea88932b132ff3a  game/gfx/models/portraits/attachments/male_coa
 0608dad1df1fb909b7c2f9c78955a5de  game/gfx/models/portraits/attachments/male_coats/european/06/male_coat_european_06_bs_thick.mesh
 66be02d29c6e21600260124f0e32d39d  game/gfx/models/portraits/attachments/male_coats/european/06/male_coat_european_06_bs_thin.mesh
 f6792b3153901b56282c76105d12d382  game/gfx/models/portraits/attachments/male_coats/european/06/male_coat_european_06_diffuse.dds
-e821bf59e44966d7ff2993f1524880a5  game/gfx/models/portraits/attachments/male_coats/european/06/male_coat_european_06_masks.dds
+1dcd64b046c5e7bc938833d8902f3c16  game/gfx/models/portraits/attachments/male_coats/european/06/male_coat_european_06_masks.dds
 b0c29dd60cf818d7a2bd8b3d401fbc89  game/gfx/models/portraits/attachments/male_coats/european/06/male_coat_european_06_normal.dds
 1429732b07f0fcaefb682ea53b4e530f  game/gfx/models/portraits/attachments/male_coats/european/06/male_coat_european_06_properties.dds
 42efd05766954667d5798ebb88de85bc  game/gfx/models/portraits/attachments/male_coats/european/08/male_coat_european_08.mesh
@@ -11719,7 +11725,7 @@ dc3e71c5f6fc745e4f22ca39c7d4a170  game/gfx/models/portraits/attachments/male_coa
 99652dc2f6754f599d1e10d68ae52c3f  game/gfx/models/portraits/attachments/male_coats/european/10/male_coat_european_10_bs_thick.mesh
 31eb3fadb098e841398caaa347a450e5  game/gfx/models/portraits/attachments/male_coats/european/10/male_coat_european_10_bs_thin.mesh
 0fb50bc3c66ce7108e723dd429de1c62  game/gfx/models/portraits/attachments/male_coats/european/10/male_coat_european_10_diffuse.dds
-0933f9304a33fc97a40950b8c140ed22  game/gfx/models/portraits/attachments/male_coats/european/10/male_coat_european_10_masks.dds
+8c333f5199af8fd04c57a7dcfcef2ba8  game/gfx/models/portraits/attachments/male_coats/european/10/male_coat_european_10_masks.dds
 aed4cceddee5e808e46b17af801c98c8  game/gfx/models/portraits/attachments/male_coats/european/10/male_coat_european_10_normal.dds
 0ab1208d0edb501bda06e9b900968a9e  game/gfx/models/portraits/attachments/male_coats/european/10/male_coat_european_10_properties.dds
 96e60bea9073ab025c523b5f3dc94460  game/gfx/models/portraits/attachments/male_coats/european/11/male_coat_european_11.mesh
@@ -11730,7 +11736,7 @@ fe08b09ad1451b39f6f65f963e4b88a0  game/gfx/models/portraits/attachments/male_coa
 1313d9d620ffe20453e1a5b2ef392eb5  game/gfx/models/portraits/attachments/male_coats/european/11/male_coat_european_11_bs_thick.mesh
 b839ae4f380f3ed1614c22be54ab1aa9  game/gfx/models/portraits/attachments/male_coats/european/11/male_coat_european_11_bs_thin.mesh
 59ed5ef0a51bde827fc879ee5372c48f  game/gfx/models/portraits/attachments/male_coats/european/11/male_coat_european_11_diffuse.dds
-33b3895e3f40253644edd4d9719fc2c8  game/gfx/models/portraits/attachments/male_coats/european/11/male_coat_european_11_masks.dds
+c35ed27de0d91158199b1ca6e659bb8f  game/gfx/models/portraits/attachments/male_coats/european/11/male_coat_european_11_masks.dds
 f64d884b4d28be7aa9cdb8417ac81faf  game/gfx/models/portraits/attachments/male_coats/european/11/male_coat_european_11_normal.dds
 9a41dd41fe19730607e366b997e69b7f  game/gfx/models/portraits/attachments/male_coats/european/11/male_coat_european_11_properties.dds
 3174d08a9d82d6e136ceb6b085df3eec  game/gfx/models/portraits/attachments/male_coats/european/civilian_01/male_civilian_coat_european_01.mesh
@@ -11826,7 +11832,7 @@ baa5f72acf8fc413a33304a5f9d2db4a  game/gfx/models/portraits/attachments/male_coa
 cbaa7b618de97c67f31308504e0795fc  game/gfx/models/portraits/attachments/male_coats/european/male_coat_european_fancy_single_breasted_01/male_coat_european_fancy_single_breasted_01_bs_thick.mesh
 3450230ee1bd336c2724f52c4a034759  game/gfx/models/portraits/attachments/male_coats/european/male_coat_european_fancy_single_breasted_01/male_coat_european_fancy_single_breasted_01_bs_thin.mesh
 ead5b4d8bc1a680c9e0bad1f245a8875  game/gfx/models/portraits/attachments/male_coats/european/male_coat_european_fancy_single_breasted_01/male_coat_european_fancy_single_breasted_01_diffuse.dds
-106c0369d5c00254b0f32d2bd20a662f  game/gfx/models/portraits/attachments/male_coats/european/male_coat_european_fancy_single_breasted_01/male_coat_european_fancy_single_breasted_01_masks.dds
+69001916572e11966ab94ef571a2f491  game/gfx/models/portraits/attachments/male_coats/european/male_coat_european_fancy_single_breasted_01/male_coat_european_fancy_single_breasted_01_masks.dds
 470b26ce243cabd98b047144eba5119c  game/gfx/models/portraits/attachments/male_coats/european/male_coat_european_fancy_single_breasted_01/male_coat_european_fancy_single_breasted_01_normal.dds
 5366b8d0321f6a42863dd221f97db223  game/gfx/models/portraits/attachments/male_coats/european/male_coat_european_fancy_single_breasted_01/male_coat_european_fancy_single_breasted_01_properties.dds
 65b125c63a0e0015b79ebb3dd41e2d08  game/gfx/models/portraits/attachments/male_coats/european/male_coat_late_military_greatcoat_01/male_coat_late_military_greatcoat_01.mesh
@@ -15349,7 +15355,7 @@ fd49565072b6c6f63bfb451f3b93ef9e  game/gfx/portraits/accessory_variations/textur
 f523624de8309ac2a6abf024e588cdbe  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_british.dds
 c97672bf1118177ca02ed22ada2dc1fa  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_bulgarian.dds
 2b60de8a8027311fac60bc509f49172f  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_bulgarian_coat.dds
-bbf6f151e3e5504aa67691b7fb61b03f  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_bulgarian_coat_green.dds
+3da46a411a0271caf192d916815d0e7d  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_bulgarian_coat_green.dds
 7411fb0d9741e6118c02149cb2e2e4a8  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_bulgarian_epaulettes.dds
 b6da0ba554287e7d93e53f0f4ae85f1b  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_bulgarian_green.dds
 3a9a2ea1f7e5a731b9de672db4db2bea  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_late_french_light_blue.dds
@@ -15443,6 +15449,7 @@ c0d2c39a3d691b5d5ae410c840b6388f  game/gfx/portraits/accessory_variations/textur
 8ca10218cd3e9e0c78d21380d7471b8d  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_european_military_02_romanian_mid.dds
 4d4fbab45015f5fba729e26cdd27118e  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_european_military_02_serbian.dds
 11dbf16c4ddc5bab078d800f94966b51  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_european_military_02_serbian_general.dds
+0afc59e38bf72b76a806a90dd265edb7  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_european_military_03_black.dds
 060ea1fca2ea136cb632de0b59146fe8  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_european_military_03_romanian.dds
 ebd7e038ad49342e5cec7ad45111dee8  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_gb_01_military_01.dds
 39bbf9cedc23dece5af97c87d3b7499e  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_greek_01.dds
@@ -15631,11 +15638,11 @@ c98794975b7ece6edbf08ae7670c7c43  game/gfx/portraits/accessory_variations/textur
 e5fa7826e4f32b02b254b46164c5a74b  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_swaddled_baby.dds
 caf2f9841038ff57fccbc55ab19af532  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_tailcoat_single_breasted_austrian.dds
 2d02774a30d48beb283367a1c2bd952c  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_tailcoat_single_breasted_french.dds
-8b1cda25b01b8173c7159fc3615289bf  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_tailcoat_single_breasted_generic.dds
+b295941a0a4809df38fb1c8eb65f01ef  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_tailcoat_single_breasted_generic.dds
 6202cdebb7da80e92420c48b1403c6e7  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_tailcoat_single_breasted_greek.dds
 73e522244b1182099d05f5cf1504f1ad  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_tailcoat_single_breasted_moldavian.dds
 fabb9c54e20a7e67308312e36cbcedd9  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_tailcoat_single_breasted_russian.dds
-f9be75278682af70b83c374577080faa  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_tailcoat_single_breasted_serbian.dds
+2eb6e4a9f68278fd9824e59c9b5e6f52  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_tailcoat_single_breasted_serbian.dds
 01f17275cf0bfdbb1364c5d10f0d74b0  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_tailcoat_single_breasted_wallachian.dds
 15c5b2547b2af28ffb8202dc84fc5bae  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_trade_01.dds
 89d959311ca5791ea1c6fe772d3d539e  game/gfx/portraits/accessory_variations/textures/color_palettes/color_palette_trade_unions_agitator_01.dds
@@ -16248,7 +16255,7 @@ d46e55a2c3b1c55963fc36d2ee7ba1e2  launcher/assets/launcher-background.jpg
 18551a206fae4d2b15fa347ae00c8108  launcher/assets/theme-settings.json
 2b793071971429d90fbf923a18adc4c1  launcher/dowser.exe
 13e722aca98d34e0c3e725389540bb13  launcher/launcher-installer-windows_2025.12.exe
-42664ecec235f3243863ac4a8abe9b22  launcher/launcher-settings.json
+37433545040e4290ff1716a1f56b32f8  launcher/launcher-settings.json
 145f16799832559189a9084c891e2c0e  launcher/settings-layout.json
 cf90ffe8888dbe0990d538c5d8a13339  platform_specific_game_data/default_log_settings_live.json
 b290813439d7981259e37ad9447e6b6a  platform_specific_game_data/log_settings_live.json

@@ -447,7 +447,7 @@
  KILL_POPULATION: "$VALUE|0v$에 달하는 $FILTER_DESC$(이)가 목숨을 잃음"
  KILL_POPULATION_THIRD: "[COUNTRY.GetName] 내의 $VALUE|0v$에 달하는 $FILTER_DESC$(이)가 목숨을 잃음"
  KILL_POPULATION_IN_STATE_THIRD: "[STATE.GetName] 내 $VALUE|0v$에 달하는 $FILTER_DESC$(이)가 목숨을 잃음"
- ADD_CIVIL_WAR_PROGRESS: "[CIVIL_WAR.GetName]의 진행도가 $VALUE|%0-$만큼 변화함"
+ ADD_CIVIL_WAR_PROGRESS: "[CIVIL_WAR.GetPoliticalMovement.GetName] [CIVIL_WAR.GetName]의 진행도가 $VALUE|%0-$만큼 변화함"
  ADD_LAW_PROGRESS: "[Law.GetName] 법의 진행도가 $VALUE|0%$만큼 변화함"
  MAKE_INDEPENDENT: "[COUNTRY.GetName](이)가 [TARGET_COUNTRY.GetName](으)로부터 독립함"
  MAKE_INDEPENDENT_NEG: "[COUNTRY.GetName](이)가 [TARGET_COUNTRY.GetName](으)로부터 독립하지 않음"

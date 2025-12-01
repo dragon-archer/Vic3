@@ -127,6 +127,7 @@
  CHARACTER_TOOLTIP_HEADER: "[SelectLocalization(Character.IsValid, 'CHARACTER_TOOLTIP_HEADER_NAME', 'CHARACTER_TOOLTIP_HEADER_NONE')]"
  CHARACTER_TOOLTIP_HEADER_NAME: "[Character.GetFullNameWithTitleNoFormatting] [AddLocalizationIf( Character.IsInExilePool, 'CHARACTER_IS_IN_EXILE')]"
  CHARACTER_TOOLTIP_HEADER_NONE: "Brak postaci"
+ AGITATOR_EXILE_POOL_NOTIFICATION: "[Character.GetFullName] zjawia się w miejscu znanym jako [Character.GetHomeCountry.GetNameNoFlag]!\nNie istnieje żaden [concept_political_movement|l], który postać ta może poprzeć, udaje się więc ona na dobrowolne [Concept('concept_exile', 'wygnanie')]"
  AGITATOR_POLITICAL_MOVEMENT_NOTIFICATION: "W państwie o nazwie [Character.GetCountry.GetNameNoFlag] pojawia się [Character.GetFullName]!\n$AGITATOR_POLITICAL_MOVEMENT_IN_COUNTRY$"
  AGITATOR_POLITICAL_MOVEMENT_PREDICTION_INVITE_START: "W przypadku zaproszenia zapoczątkuje następujący ruch polityczny: [PoliticalMovementType.GetName|l]"
  AGITATOR_POLITICAL_MOVEMENT_PREDICTION_INVITE_JOIN: "W przypadku zaproszenia dołączy do następującego ruchu politycznego: [PoliticalMovement.GetName]"

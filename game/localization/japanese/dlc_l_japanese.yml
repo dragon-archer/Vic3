@@ -2,7 +2,7 @@
  DLC: "DLC"
  DLC_ENABLED: "#emphasis @green_checkmark! DLCが#g 有効です#!#!"
  DLC_NOT_ENABLED: "#emphasis @red_cross! このDLCを#g 所有#!していますが、#r 無効#!になっています#!"
- DLC_NOT_OWNED: "#emphasis @red_cross! このDLCを#r 所有していません#!#!"
+ DLC_NOT_OWNED: "#emphasis @red_cross! このDLCを#r 所有していません#! #!"
  DLC_BUTTON_TOOLTIP: "#T [Dlc.GetName]#!\n[Dlc.GetDesc]\n\n#low [SelectLocalization(Dlc.IsVerified, SelectLocalization(Dlc.IsEnabled, 'DLC_ENABLED', 'DLC_NOT_ENABLED'), 'DLC_NOT_OWNED')]#!\n\n#I クリックでストアに移動#!"
  DLC_THEME_BREAKDOWN: "このDLCには以下のテーマが含まれています:\n$BREAKDOWN$"
  DLC_THEME_BREAKDOWN_EMPTY: "このDLCにはテーマは含まれていません。"

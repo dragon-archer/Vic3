@@ -447,7 +447,7 @@
  KILL_POPULATION: "$VALUE|0v$ из $FILTER_DESC$ умрут"
  KILL_POPULATION_THIRD: "$VALUE|0v$ из $FILTER_DESC$ в [Country.GetAltName('RU_CL_PP')] умрут"
  KILL_POPULATION_IN_STATE_THIRD: "$VALUE|0v$ из $FILTER_DESC$ в #tooltippable_name #tooltip:[STATE.GetTooltipTag],DATA_STATE_NAME_TOOLTIP,StateTooltip [STATE.GetCustom('RU_SL_PP')]#!#! умрут"
- ADD_CIVIL_WAR_PROGRESS: "Изменить прогресс [CIVIL_WAR.GetName] на $VALUE|%0-$"
+ ADD_CIVIL_WAR_PROGRESS: "Изменить прогресс ([CIVIL_WAR.GetName] движения «[CIVIL_WAR.GetPoliticalMovement.GetName]») на $VALUE|%0-$"
  ADD_LAW_PROGRESS: "Изменить прогресс закона «[Law.GetName]» на $VALUE|0%$."
  MAKE_INDEPENDENT: "[COUNTRY.GetName] обрета[COUNTRY.GetAltNameNoFormatting('RU_CL_END_T')] независимость от [TARGET_COUNTRY.GetAltName('RU_CL_RP')]."
  MAKE_INDEPENDENT_NEG: "[COUNTRY.GetName] НЕ обрета[COUNTRY.GetAltNameNoFormatting('RU_CL_END_T')] независимость от [TARGET_COUNTRY.GetAltName('RU_CL_RP')]."

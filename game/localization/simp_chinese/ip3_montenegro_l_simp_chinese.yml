@@ -83,7 +83,7 @@
  mon_new_king_prestige: "著名新王国"
  mon_new_king_morale: "为了王和国家"
  mon_disobedient_court: "桀骜的宫廷"
- unemployement_birth_rate_countermodifier: "Unemployment Normalised"
+ unemployement_birth_rate_countermodifier: "失业状况正常化"
  #Fixing bad merge
  modifier_scandalous_lover: "情人丑闻"
  modifier_well_known_tragedy: "知名悲剧"
@@ -221,7 +221,7 @@
  mon_state_formation.3.c: "“最伟大的奇迹在战场上。”"
  #Regain Austrian Coast JE
  je_mon_austria_alliance: "转变策略"
- je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')]承认其占据着本应属于我们的沿海土地。不过，他们坚决反对让带有[SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')]影响力的[concept_relations]渗入地中海地区。\n\n如果我们能让奥地利人相信，我们已经与[SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')]的东正教兄弟反目成仇，或许能让他们归还我们宝贵的海岸。"
+ je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')]承认其占据着本应属于我们的沿海土地。不过，他们坚决反对让[SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')]人的影响力渗入地中海地区。\n\n如果我们能让奥地利人相信，我们已经与[SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')]的东正教兄弟反目成仇，或许能让他们归还我们宝贵的海岸。"
  je_mon_austria_status_desc: "[concept_relations]与[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')]是[SCOPE.sCountry('austria').GetRelationsWithDesc( GetPlayer )]"
  raiding_income_greater_tt: "我们从[concept_raiding]获得的收入必须低于@money!+700"
  notification_je_mon_austria_alliance_fail_name: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')]撤回提议"
@@ -252,7 +252,7 @@
  mon_state_formation.6.t: "诗人大公逝世"
  mon_state_formation.6.d: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]因肺结核去世。[SCOPE.sCharacter('danilo').GetFullName]登上了王位，尽管他的叔父[SCOPE.sCharacter('betrayer').GetFirstName]曾试图阻挠他继位。"
  mon_state_formation.6.d2: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]去世。[SCOPE.sCharacter('danilo').GetFullName]登上了王位，尽管他的叔叔[SCOPE.sCharacter('betrayer').GetFirstName]试图阻止继承。"
- mon_state_formation.6.d3: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]因肺结核去世。[SCOPE.sCharacter('danilo').GetFullName]登上了王位。"
+ mon_state_formation.6.d3: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]因肺结核去世。[SCOPE.sCharacter('danilo').GetFullName]继位登基。"
  mon_state_formation.6.d4: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]去世。[SCOPE.sCharacter('danilo').GetFullName]登上了王位。"
  mon_state_formation.6.f: "#italic 啊，只要我的双目还能够看端详，\n看到祖国遭受的损失获得补偿！\n我就会相信正义已得到伸张。\n我的心灵就会感到宁静的安慰，\n正如一个美好春天的明朗早晨，\n缓慢吹拂的煦风，朵朵移动的轻云，\n在大海的怀抱里安睡得香酣深沉。#!\n\n——佩塔尔·彼得罗维奇‑涅戈什二世，#italic 《山地花环》#!"
  mon_state_formation.6.a: "将[SCOPE.sCharacter('petar').GetFirstName]封为圣人。"

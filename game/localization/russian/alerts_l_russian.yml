@@ -105,7 +105,7 @@
  alert_high_tension_alert_hint: "Напряжённость спадает со временем, вы можете приостановить колониальную экспансию, чтобы не провоцировать [Concept('concept_pop', 'местных жителей')] и снизить шанс бунта коренного населения, а можете разместить [Concept('concept_army', 'армии')] в [Concept('concept_hq', 'штабе')] колониального [Concept('concept_strategic_region', 'стратегического региона')] и приготовиться к бунту."
  alert_high_tension_alert_action: "Панель дипломатии"
  alert_secession_growing_alert_name: "Движение за [Concept('concept_secession','отделение')]"
- alert_secession_growing_alert_desc: "[concept_political_movement] пытается отделиться от [GetPlayer.GetAltNameNoFlag('RU_CL_RP')]"
+ alert_secession_growing_alert_desc: "[Concept('concept_political_movement', 'Политическое движение')] пытается отделиться от [GetPlayer.GetAltNameNoFlag('RU_CL_RP')]"
  alert_secession_growing_alert_hint: "Вы можете уменьшить риск отделения, снизив [Concept('concept_activism','активизм')] или [Concept('concept_political_movement_support','поддержку')] [Concept('concept_political_movement','политических движений')] за отделение."
  alert_secession_growing_alert_action: "Панель политики"
  alert_diplomatic_pact_in_danger_name: "Пакт [SCOPE.GetRootScope.GetDiplomaticPact.GetName]: [AddTextIf(SCOPE.GetRootScope.GetDiplomaticPact.IsFirstCountry(GetPlayer), SCOPE.GetRootScope.GetDiplomaticPact.GetSecondCountry.GetName)][AddTextIf(SCOPE.GetRootScope.GetDiplomaticPact.IsSecondCountry(GetPlayer), SCOPE.GetRootScope.GetDiplomaticPact.GetFirstCountry.GetName)]"

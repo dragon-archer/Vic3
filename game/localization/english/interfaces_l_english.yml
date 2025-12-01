@@ -386,9 +386,13 @@
  RELEASE_COUNTRY_INDEPENDENT_DESC:0 "Are you sure you want to release [COUNTRY_CREATION.GetName] as an independent [concept_country]?\n\n$COUNTRY_REWARDS$"
  RELEASE_COUNTRY_WILL_RECEIVE_STATES:0 "They will receive the following states:\n[COUNTRY_CREATION.ListReleasableStates(GetPlayer)]"
  RELEASE_COUNTRY_WILL_RECEIVE_PROVINCES:0 "They will receive [COUNTRY_CREATION.GetNumProvincesToRelease|v] province(s) in the [COUNTRY_CREATION.GetCapital.GetName] [concept_state_region]"
+ RELEASE_COUNTRY_WILL_RECEIVE_STATES_NO_HOMELAND:0 "They will receive the following states:\n[COUNTRY_CREATION.ListReleasableStatesWithoutHomeland(GetPlayer)]"
  RELEASE_COUNTRY_AS_INDEPENDENT:0 "Release as Independent"
  RELEASE_COUNTRY_AS_OWN_SUBJECT:0 "Release as own [concept_subject] [concept_country]"
  RELEASE_COUNTRY_PLAY_AS:0 "Play as [CountryCreation.GetName]"
+ KEEP_HOMELAND_STATES: "#b Keep Homeland#!"
+ CANNOT_RELEASE_COUNTRY_WITH_HOMELAND_STATES: "#b Cannot#! release with keep [Concept('concept_homeland', '$concept_homelands$')] [Concept('concept_state', '$concept_states$')] as the [Concept('concept_country', '$concept_countries$')] won't have the required $concept_states$."
+ RELEASE_COUNTRY_OPTIONS: "#header Options#!"
 
  FORCE_DIPLOMATIC_PLAY: "Force [concept_diplomatic_play]"
  FORCE_DIPLOMATIC_PLAY_TOOLTIP: "#header $FORCE_DIPLOMATIC_PLAY$#!\n$TOOLTIP_DELIMITER$\nEnabling this will bypass the [concept_diplomatic_demand] and instantly start a [concept_diplomatic_play], allowing for additional demands to be made against the enemy."
@@ -883,13 +887,13 @@
  IDEOLOGICAL_INCOHERENCE: "#header [concept_ideological_incoherence]: #variable $VALUE|-$#!#!\n$TOOLTIP_DELIMITER$\n$BREAKDOWN$"
  LEGITIMACY_IDEOLOGICAL_INCOHERENCE: "[concept_ideological_incoherence]: #tooltippable #tooltip:$BREAKDOWN_TAG$ #variable $VAL|=+$#!#!#!"
 
- INTEREST_GROUP_INCOHERENCE_ENTRY: "[InterestGroup.GetName]: #tooltippable #tooltip:$BREAKDOWN_TAG$ $VALUE|+=$#!#!$PARTY_LABEL$"
+ INTEREST_GROUP_INCOHERENCE_ENTRY: "[INTEREST_GROUP.GetName]: $STANCE$$PARTY_LABEL$"
  INTEREST_GROUP_INCOHERENCE_ENTRY_PARTY:0 " ($PARTY$$WHIP$)"
  PARTY_WHIP:0 " - [Concept('concept_party_whip','$concept_party_whip_short$')]"
  INCOHERENCE_GROUP_BREAKDOWN:0 "#tooltip_header [LawGroup.GetName]: #n $VALUE$#!#!\n$TOOLTIP_DELIMITER$\n$BREAKDOWN$"
  IDEOLOGICAL_INCOHERENCE_ENTRY:1 "[LawType.GetName]: #tooltippable #tooltip:$BREAKDOWN_TAG$ #n $VALUE$#!#!#!"
  IDEOLOGICAL_INCOHERENCE_GROUP_ENTRY:0 "[LawGroup.GetName]: #tooltippable #tooltip:$BREAKDOWN_TAG$ #n $VALUE$#!#!#!"
- INCOHERENCE_ENTRY_BREAKDOWN:0 "#header [LawType.GetName]: #negative_value $VALUE$#!#!\n$TOOLTIP_DELIMITER$\n@approves! $concept_interest_groups$: #v $SUM_POSITIVE|+=$#!\n$BREAKDOWN_POSITIVE$\n\n@disapproves! $concept_interest_groups$: #v $SUM_NEGATIVE|+=$#!\n$BREAKDOWN_NEGATIVE$"
+ INCOHERENCE_ENTRY_BREAKDOWN:0 "#header [LawType.GetName]: #negative_value $VALUE$#!#!\n$TOOLTIP_DELIMITER$\n$BREAKDOWN$"
  INCOHERENCE_LAW_ENTRY_FIRST_FORMAT:0 "#active $BREAKDOWN$#!"
  INCOHERENCE_LAW_ENTRY_OTHERS_FORMAT:0 "#inactive $BREAKDOWN$#!"
  IDEOLOGICAL_INCOHERENCE_VALUE_BREAKDOWN: "$TAB$Base value: $BASE|v$\n$TAB$$MODIFIER$"
@@ -970,8 +974,24 @@
  BUILDING_USES_INFRASTRUCTURE_TOTAL:0 "#variable #N +$USAGE|0$#!#! [concept_infrastructure_usage] Total"
  BUILDING_ARABLE_CAPACITY_PER_LEVEL:0 "#variable #N -$ARABLE_CAPACITY$#!#! [concept_arable_land] per Level"
  BUILDING_ARABLE_CAPACITY_TOTAL:0 "#variable #N -$ARABLE_CAPACITY$#!#! [concept_arable_land] Total"
- GDP_TOOLTIP:1 "#header [concept_gdp]#!\n[Country.GetAdjective] $GDP_SHORT$: #N @money![Country.GetGDP|Dv]#! ([Country.GetGDPRanking])\n$TOOLTIP_DELIMITER$\nGDP per Capita: #variable @money![Country.GetGDPPerCapita|2*]#! ([Country.GetGDPPerCapitaRanking])\n\n"
- MARKET_GDP_PERCENTAGE:1 "#title [GetPlayer.GetAdjectiveNoFormatting] $GDP_SHORT$ Contribution#!\n[Market.GetMarketSharePercentageFor( GetPlayer )|%1v]"
+
+ GDP_TOOLTIP:1 "#header [Country.GetAdjective] [concept_gdp]#!\n@money![Country.GetGDP|Dv] (#u #tooltippable #tooltip:[Country.GetTooltipTag],COUNTRY_GDP_OWNERSHIP_TOOLTIP [Country.GetDomesticallyOwnedGDPFraction|%1b]#!#!#!) domestically owned $concept_gdp_short$ ([Country.GetGDPRanking])\n@money![Country.GetGDPPerCapita|2*v] [Concept('concept_gdp_per_capita', '$concept_gdp_per_capita_short$')] ([Country.GetGDPPerCapitaRanking])"
+ COUNTRY_GDP_OWNERSHIP_TOOLTIP: "#header [concept_gdp_ownership] in [Country.GetName]#!\n#u [Country.GetDomesticallyOwnedGDPFraction|%1b]#! (@money![Country.GetGDP|Dv]) domestically owned $concept_gdp_short$\n$TOOLTIP_DELIMITER$\n[SelectLocalization(IsZero_CFixedPoint(Country.GetForeignOwnedGDPFraction), 'NO_FOREIGNLY_OWNED_PERCENTAGE', 'COUNTRY_FOREIGNLY_OWNED_PERCENTAGE')]\n\n[SelectLocalization(IsZero_CFixedPoint(Country.GetGDPOwnedInForeignCountries), 'NO_OWNED_FOREIGN_GDP_BY_COUNTRY', 'OWNED_FOREIGN_GDP_BY_COUNTRY')]"
+
+ COUNTRY_FOREIGNLY_OWNED_PERCENTAGE: "#title #o [Country.GetForeignOwnedGDPFraction|%1b]#! (@money![Country.GetForeignOwnedGDP|Dv]) of [Country.GetAdjective] $concept_gdp_short$ is foreign-owned:#!#indent_newline:3 \n[Country.GetForeignOwnedGDPDesc]#!"
+ FOREIGN_COUNTRY_OWNING_GDP_ITEM: "#o $GDP_FRACTION|%1b$#! (@money!$GDP|Db$) $concept_gdp_short$ owned by [Country.GetName] ($LEVELS|v$ [Concept('concept_building_level', '$concept_building_levels_short$')])"
+ NO_FOREIGNLY_OWNED_PERCENTAGE: "No foreign [Concept('concept_country','$concept_countries$')] own any fraction of [Country.GetAdjective] $concept_gdp_short$"
+
+ OWNED_FOREIGN_GDP_BY_COUNTRY: "#title @money!#u [Country.GetGDPOwnedInForeignCountries|Db]#! $concept_gdp_short$ is owned by [Country.GetName] in foreign [Concept('concept_country','$concept_countries$')]:#!#indent_newline:3 \n[Country.GetGDPOwnedInForeignCountriesDesc]#!"
+ OWNED_GDP_COUNTRY_ITEM: "#u $GDP_FRACTION|%1b$#! (@money!$GDP|Db$) $concept_gdp_short$ owned in [Country.GetName] ($LEVELS|v$ [Concept('concept_building_level', '$concept_building_levels_short$')])"
+ NO_OWNED_FOREIGN_GDP_BY_COUNTRY: "[Country.GetName] owns no $concept_gdp_short$ in foreign [Concept('concept_country','$concept_countries$')]"
+
+ COUNTRY_ALL_GDP: "@money!#v [Country.GetGDPWithOwnershipsInForeignCountries|D]#!"
+ DOMESTIC_COUNTRY_GDP: "@money!#v [Country.GetGDP|D]#!"
+ FOREIGN_COUNTRY_GDP: "@money!#u [Country.GetGDPOwnedInForeignCountries|Db]#!"
+ COUNTRY_ALL_OWNERSHIP: "#u [Country.GetDomesticallyOwnedGDPFraction|%1b]#![ConcatIfNeitherEmpty(' + ', AddLocalizationIf(NotZero_CFixedPoint(Country.GetGDPOwnedInForeignCountries), 'FOREIGN_COUNTRY_GDP'))]"
+
+ MARKET_GDP_PERCENTAGE:1 "#title [GetPlayer.GetAdjectiveNoFormatting] $GDP_SHORT$ contribution#!\n[Market.GetMarketSharePercentageFor( GetPlayer )|%1v]"
  MARKET_GDP_PERCENTAGE_TOOLTIP:0 "#header Contribution to GDP#!\n[Market.GetName] contributes [Market.GetGDPContributionPercentage( GetPlayer )|%1v] of the GDP in [GetPlayer.GetName]"
  ACTIVE_PRODUCTION_METHOD_HEAD:0 "#header $NAME$#!"
  SWITCH_PRODUCTION_METHOD_HEAD:0 "#header Switch to $NAME$#!"
@@ -986,6 +1006,7 @@
  STATE_UNINCORPORATED_SHORT: "[Concept('concept_unincorporated_state','$concept_unincorporated_state_short$')]"
  STATE_INCORPORATED_SHORT_WITH_ICON: "@incorporated! $STATE_INCORPORATED_SHORT$"
  STATE_UNINCORPORATED_SHORT_WITH_ICON: "@unincorporated! $STATE_UNINCORPORATED_SHORT$"
+
 
 
  DEFAULT_EVENT_OPTION:0 "This option will be picked automatically after $EVENT_REMAINING_DAYS$."
@@ -1851,7 +1872,8 @@
  FORMATION_STATUS_FIGHTING_CONTROL_SEA_NODE_SHORT: "Trying to control [Invasion.GetSeaNodeName] [concept_naval_invasion]"
  FORMATION_STATUS_CONTROLLING_SEA_NODE: "Has control of [Invasion.GetSeaNodeName] for the [Invasion.GetName]"
  FORMATION_STATUS_CONTROLLING_SEA_NODE_SHORT: "Has control of [Invasion.GetSeaNodeName] for the [concept_naval_invasion]"
- FORMATION_STATUS_DEFENDING_INVASION_AT_STATE: "At [Invasion.GetTargetState.GetNameWithCountryFlag] currently defending the [Invasion.GetInvaderCountry.GetAdjective] [concept_invasion] from [Invasion.GetSourceState.GetNameWithCountryFlag]"
+ FORMATION_STATUS_DEFENDING_INVASION_AT_STATE: "At [Invasion.GetTargetState.GetNameWithCountryFlag] currently defending the [Invasion.GetInvaderCountry.GetAdjective] [concept_invasion] [AddLocalizationIf(Invasion.IsLandInvasion, 'FORMATION_STATUS_DEFENDING_INVASION_FROM_SOURCE_STATE')]"
+ FORMATION_STATUS_DEFENDING_INVASION_FROM_SOURCE_STATE: "from [Invasion.GetSourceState.GetNameWithCountryFlag]"
  FORMATION_STATUS_DEFENDING_INVASION_AT_SEA_REGION: "At [Province.GetSeaNodeName] currently defending the [Invasion.GetInvaderCountry.GetAdjective] [Invasion.GetName]"
  FORMATION_STATUS_DEFENDING_INVASION_AT_HQ: "At [HQ.GetName] currently defending the [Invasion.GetInvaderCountry.GetAdjective] [Invasion.GetName]"
  FORMATION_STATUS_DEFENDING_INVASION_SHORT: "Defending against the [Invasion.GetName]"
@@ -3154,7 +3176,7 @@
  RADICALS_INCREASE_nationalize: "#v #n +$AMOUNT|D$#!#! from [Concept('concept_nationalize','$concept_nationalization$')] of [Concept('concept_building', '$concept_buildings$')]"
  RADICALS_INCREASE_starvation: "#v #n +$AMOUNT|D$#!#! from [concept_starvation]"
  RADICALS_INCREASE_inherit: "#v #n +$AMOUNT|D$#!#! from [Concept('concept_radical', '$concept_radicals$')] already present in annexed [Concept('concept_state','$concept_states$')]"
- 
+
  RADICALS_DECREASE_conquest_by_primary_culture: "#v #p -$AMOUNT|D$#!#! from being conquered by a foreign [concept_country] of the same [Concept('concept_primary_cultures', '$concept_primary_culture$')]"
  RADICALS_DECREASE_other:1 "#v #p -$AMOUNT|D$#!#! from [Concept('concept_pop', '$concept_pops$')] dying, events and other reasons"
  RADICALS_DECREASE_standard_of_living_increase:1 "#v #p -$AMOUNT|D$#!#! from increases in [concept_sol]"
@@ -4651,7 +4673,7 @@ INCORPORATION_TIME_SAME_HERITAGE_OR_LANGUAGE: "It takes $YEARS|v0$ years in tota
  MARKET_ACCESS_WARNING:1 "@warning! #bold [StateInfraMarker.GetState.GetMarketAccess|0%]#!"
  MARKET_ACCESS_WARNING_SEA:1 "@warning!\n#bold [SeaRegionInfraMarker.GetStateRegion.GetSeaInfrastructure(GetPlayer)|0]%#!"
  ISOLATED:0 "@warning!"
- MIGRATION_TARGET_ENTRY:0 "#variable $TARGET$#!"
+ MIGRATION_TARGET_ENTRY:0 "$TARGET$"
  INFLUENTIAL_CULTURE_FORMAT:0 "[Culture.GetNameNoFormatting]"
 
  STATE_AVERAGE_WAGE_TOOLTIP:0 "#header Wages#!\nState Average, annual: #variable @money!$VAL|D$#!\n$TOOLTIP_DELIMITER$\n$BREAKDOWN$"
@@ -4849,6 +4871,7 @@ INCORPORATION_TIME_SAME_HERITAGE_OR_LANGUAGE: "It takes $YEARS|v0$ years in tota
  DISCRIMINATION_LEVEL_violent_hostility: "Base acceptance level is @acceptance_status_1! $violent_hostility$"
  DISCRIMINATION_LEVEL_open_prejudice: "Base acceptance level is @acceptance_status_3! $open_prejudice$"
  DISCRIMINATION_LEVEL_second_rate_citizen: "Base acceptance level is @acceptance_status_4! $second_rate_citizen$"
+ DISCRIMINATION_LEVEL_subjecthood: "Average [concept_acceptance] under [GetLawType('law_subjecthood').GetName]"
  NUMBER_OF_CLAIMS: "Number of [Concept('concept_claim','$concept_claims$')]"
  owner_has_modern_agriculture_tt: "Owner has [GetLawType('law_commercialized_agriculture').GetName] or [GetLawType('law_collectivized_agriculture').GetName]"
  owner_has_homesteading_tt: "Owner has [GetLawType('law_homesteading').GetName] or [GetLawType('law_commercialized_agriculture').GetName]"
@@ -5894,7 +5917,7 @@ INCORPORATION_TIME_SAME_HERITAGE_OR_LANGUAGE: "It takes $YEARS|v0$ years in tota
  INVESTMENT_POOL_CHANGE:1 "[GetPlayer.GetInvestmentPoolChangeFromConstructionDesc]\n[GetPlayer.GetInvestmentPoolChangeFromInvestmentDesc]"
  INVESTMENT_POOL_CHANGE_FROM_CONSTRUCTION:1 "#bold New [concept_construction]:#! #v @money!$CHANGE|D+$#!"
  INVESTMENT_POOL_CHANGE_FROM_CONSTRUCTION_EMPTY:0 "No new [concept_construction] using the $concept_investment_pool$: #v @money!$CHANGE|D+=$#!"
- INVESTMENT_POOL_CHANGE_FROM_INVESTMENT:2 "[concept_reinvestment]: #v @money!#tooltippable #tooltip:[GetPlayer.GetTooltipTag],INVESTMENT_POOL_SOURCES_BREAKDOWN $CHANGE|D+=$#!#!#!\nAll investments are multiplied by #v x$MULTIPLIER$#! due to [GetPlayer.GetAdjective] [concept_gdp] of @money![GetPlayer.GetGDP|Dv]"
+ INVESTMENT_POOL_CHANGE_FROM_INVESTMENT:2 "[concept_reinvestment]: #v @money!#tooltippable #tooltip:[GetPlayer.GetTooltipTag],INVESTMENT_POOL_SOURCES_BREAKDOWN $CHANGE|D+=$#!#!#!\nAll investments are multiplied by #v x$MULTIPLIER$#! due to [GetPlayer.GetAdjective] [concept_gdp] of @money![GetPlayer.GetGDPWithOwnershipsInForeignCountries|Dv] (including your [Concept('concept_foreign_investment','$concept_foreign_investments$')])"
  INVESTMENT_POOL_CHANGE_FROM_INVESTMENT_EMPTY:0 "No investment sources: #v @money!$CHANGE|D+=$#!"
  INVESTMENT_POOL_SOURCES_BREAKDOWN:0 "#header [Concept('concept_building', '$concept_buildings$')] adding [concept_money] to the [concept_investment_pool]#!\n$TOOLTIP_DELIMITER$\n[GetPlayer.GetInvestmentPoolChangeFromInvestmentBreakdown]"
  INVESTMENT_FROM_BUILDING_DETAIL:0 "[BuildingType.GetName]: #N #variable @money!$VAL|D+$#!#!"
@@ -5920,10 +5943,11 @@ INCORPORATION_TIME_SAME_HERITAGE_OR_LANGUAGE: "It takes $YEARS|v0$ years in tota
  INVESTMENT_POOL_NEXT_FRACTION_HANDLED_BY_TOTAL_FUNDS:0 "$FRACTION|%0v$ of the total construction cost (@money!$COST|vD$) is covered by available funds saved in the [concept_investment_pool]"
  INVESTMENT_POOL_NEXT_FRACTION_HANDLED_BY_WEEKLY_FUNDS:0 "$FRACTION|%0v$ of the weekly construction cost (@money!$COST|vD$) is covered by available weekly funds paid into the [concept_investment_pool]"
  INVESTMENT_POOL_TOTAL_FRACTION:0 "@information! A [concept_private_construction] is considered funded when the combined sum of its weekly cost coverage and total cost coverage is $REQUIRED|%v0$ (Currently $TOTAL|%v0$). The funding percentage may fluctuate due to factors such as the current price of construction [Concept('concept_good', '$concept_goods$')]."
- INVESTMENT_POOL_PREVIOUS_INVESTMENTS_DESC: "#header Previous [Concept('concept_private_construction', '$concept_private_constructions$')] and [Concept('concept_privatize', '$concept_privatizations$')]#!\n$TOOLTIP_DELIMITER$\n$DETAILS$"
- INVESTMENT_POOL_NO_PREVIOUS_INVESTMENTS: "No previous investments"
- INVESTMENT_POOL_PREVIOUS_PRIVATIZATION: "$EFFECT_LIST_BULLET$[BUILDING_TYPE.GetName] in [STATE.GetName] $concept_privatized$ [TARGET_BUILDING_TYPE.GetName] in [TARGET_STATE.GetName] on $DATE|v$"
- INVESTMENT_POOL_PREVIOUS_CONSTRUCTION: "$EFFECT_LIST_BULLET$[BUILDING_TYPE.GetName] in [STATE.GetName] $concept_constructed$ [TARGET_BUILDING_TYPE.GetName] in [TARGET_STATE.GetName] on $DATE|v$"
+ INVESTMENT_POOL_PREVIOUS_INVESTMENTS_DESC: "#header Previous investments#!\n$TOOLTIP_DELIMITER$\n#title Previous [Concept('concept_private_construction', '$concept_private_constructions$')]:#!#indent_newline:3 \n$CONSTRUCTIONS_DETAILS$#!\n\n#title Previous [Concept('concept_privatize', '$concept_privatizations$')]:#!#indent_newline:3 \n$PRIVATIZATIONS_DETAILS$#!"
+ INVESTMENT_POOL_NO_PREVIOUS_PRIVATIZATIONS: "No previous [Concept('concept_privatize', '$concept_privatizations$')]"
+ INVESTMENT_POOL_NO_PREVIOUS_PRIVATE_CONSTRUCTIONS: "No previous [Concept('concept_private_construction', '$concept_private_constructions$')]"
+ INVESTMENT_POOL_PREVIOUS_PRIVATIZATION: "#indent_newline:3 $DATE|b$:\n$EFFECT_LIST_BULLET$[TARGET_BUILDING_TYPE.GetName] in [TARGET_STATE.GetName] $concept_privatized$ by [BUILDING_TYPE.GetName] in [STATE.GetName]#!"
+ INVESTMENT_POOL_PREVIOUS_CONSTRUCTION: "#indent_newline:3 $DATE|b$:\n$EFFECT_LIST_BULLET$[TARGET_BUILDING_TYPE.GetName] in [TARGET_STATE.GetName] $concept_constructed$ by [BUILDING_TYPE.GetName] in [STATE.GetName]#!"
 
  TOTAL_INCOME_BREAKDOWN:0 "[GetPlayer.GetIncomeBreakdown]"
  TOTAL_EXPENSES_BREAKDOWN:0 "[GetPlayer.GetExpensesBreakdown]"
@@ -7992,6 +8016,7 @@ INCORPORATION_TIME_SAME_HERITAGE_OR_LANGUAGE: "It takes $YEARS|v0$ years in tota
  RANK_TOOLTIP_NEXT:1 "If the $concept_prestige$ of [COUNTRY.GetName] becomes at least [COUNTRY.GetPrestigeForNextRank|v], their $concept_rank$ will increase to [COUNTRY.GetNextRank|v]"
  RANK_TOOLTIP_PREV:1 "If the $concept_prestige$ of [COUNTRY.GetName] is reduced below [COUNTRY.GetPrestigeToMaintainRank|v] for an extended time, their $concept_rank$ will decrease to [COUNTRY.GetPreviousRank|v]"
  RANK_TOOLTIP_MAX_SUBJECT:1 "@information! [COUNTRY.GetName] cannot achieve a higher $concept_rank$ than $HIGHEST_RANK|v$ due to being the [concept_subject] of [Country.GetOverlord.GetName], limiting them to a maximum score position of #v ##$HIGHEST_POSITION$#! in the world"
+ RANK_TOOLTIP_MAX_SUBJECT_WARGOAL: "@information! [COUNTRY.GetName] cannot achieve a higher $concept_rank$ than $HIGHEST_RANK|v$ due to being the target of a subjugation [concept_war_goal], limiting them to a maximum score position of #v ##$HIGHEST_POSITION$#! in the world"
  RANK_TOOLTIP_MAX_COUNTRY_TYPE:1 "@information! [COUNTRY.GetName] cannot achieve a higher $concept_rank$ than $HIGHEST_RANK|v$ due to their $COUNTRY_TYPE|v$ status, limiting them to a maximum score position of #v ##$HIGHEST_POSITION$#! in the world"
 
  COUNTRY_RANK_TOOLTIP:1 "#header [concept_rank]#!\n$TOOLTIP_DELIMITER$\n[COUNTRY.GetName] currently holds the $concept_rank$ of #variable [COUNTRY.GetRank]#! with an overall score position of #variable ##[COUNTRY.GetCountryScorePositionDesc]#! in the world.\n\n[concept_prestige]: @prestige!#tooltippable #tooltip:[COUNTRY.GetTooltipTag],COUNTRY_PRESTIGE_BREAKDOWN [COUNTRY.GetPrestige|v]#!#!"
@@ -10923,3 +10948,4 @@ INCORPORATION_TIME_SAME_HERITAGE_OR_LANGUAGE: "It takes $YEARS|v0$ years in tota
  LACK_OF_OFFICERS_FACTOR: "x$FACTOR|2-$ from lacking $MISSING_OFFICERS|v$ [GetPopType('officers').GetName] in [BUILDING.GetName]"
 
  HAS_NATIONAL_AWAKENING: "Has @national_awakening! [concept_national_awakening]"
+ NATIONAL_AWAKENING_CULTURE_TOOLTIP: "The [Culture.GetName] [concept_culture] has a [concept_national_awakening] which increases their [concept_fervor] and $concept_pop$ attraction for [Concept('concept_political_movement', '$concept_political_movements$')] with [Culture.GetName] [Concept('concept_pop', '$concept_pops$')]"

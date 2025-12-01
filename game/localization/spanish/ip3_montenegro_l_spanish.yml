@@ -83,7 +83,7 @@
  mon_new_king_prestige: "El famoso nuevo reino"
  mon_new_king_morale: "Por el rey y por la patria"
  mon_disobedient_court: "Corte desobediente"
- unemployement_birth_rate_countermodifier: "Unemployment Normalised"
+ unemployement_birth_rate_countermodifier: "Desempleo normalizado"
  #Fixing bad merge
  modifier_scandalous_lover: "Un escándalo de amante"
  modifier_well_known_tragedy: "Una tragedia famosa"
@@ -153,7 +153,7 @@
  mon_more_raiding_tt: "Tenemos que esperar al menos un año para volver a intensificar los asaltos."
  mon_more_heads_tt: "Aumenta el [concept_raiding_frequency|l] en un 25 %"
  je_montenegrin_raiding_decrease_button: "Desalentar asaltos"
- je_montenegrin_raiding_decrease_button_desc: "Obligar a las tribus a reducir los asaltos, lo que disminuirá el [concept_raiding_frequency|l] en un 25 %. #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#! valorará este paso hacia el civismo para con el #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#!."
+ je_montenegrin_raiding_decrease_button_desc: "Obligar a las tribus a reducir los asaltos, lo que disminuirá el [concept_raiding_frequency|l] en un 25 %. #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#! valorará este paso hacia el civismo con el #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#!."
  mon_less_raiding_tt: "Tenemos que esperar al menos seis meses para volver a reducir los asaltos."
  mon_discourage_raiding_tt: "Reduce el [concept_raiding_frequency|l] en un 25 %"
  #If not longer bordering notification that raiding stops
@@ -221,7 +221,7 @@
  mon_state_formation.3.c: "—Los mayores milagros se producen en el campo de batalla."
  #Regain Austrian Coast JE
  je_mon_austria_alliance: "Cambio de rumbo"
- je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] ha reconocido que controla tierras costeras que nos pertenecen por derecho. Sin embargo, se empecina en mantener las [concept_relations|l] con el Estado [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'ruso')] fuera del Mediterráneo. \n\nSi podemos convencer a los austríacos de que hemos tenido un desencuentro con nuestros hermanos ortodoxos de origen [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'ruso')], se les podría convencer para que nos devolvieran nuestra preciada costa."
+ je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] ha reconocido que controla tierras costeras que nos pertenecen por derecho. Sin embargo, se empecina en mantener la influencia del Estado [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'ruso')] fuera del Mediterráneo. \n\nSi podemos convencer a los austríacos de que hemos tenido un desencuentro con nuestros hermanos ortodoxos de origen [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'ruso')], se les podría convencer para que nos devolvieran nuestra preciada costa."
  je_mon_austria_status_desc: "Las [concept_relations|l] con [SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] son [SCOPE.sCountry('austria').GetRelationsWithDesc( GetPlayer )]"
  raiding_income_greater_tt: "Nuestros ingresos por [concept_raiding|l] deben ser inferiores a +700 @money!"
  notification_je_mon_austria_alliance_fail_name: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] retira su oferta"
@@ -252,8 +252,8 @@
  mon_state_formation.6.t: "La muerte de un príncipe poeta"
  mon_state_formation.6.d: "[SCOPE.sCharacter('petar').GetFirstName][SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] causa de la tuberculosis. [SCOPE.sCharacter('danilo').GetFullName] ascenderá al trono a pesar de los intentos de su tío [SCOPE.sCharacter('betrayer').GetFirstName] de evitar la sucesión."
  mon_state_formation.6.d2: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] ha fallecido. [SCOPE.sCharacter('danilo').GetFullName] ascenderá al trono a pesar de los intentos de su tío [SCOPE.sCharacter('betrayer').GetFirstName] de evitar la sucesión."
- mon_state_formation.6.d3: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] ha fallecido a causa de la tuberculosis. [SCOPE.sCharacter('danilo').GetFullName] ascenderá al trono a pesar de los intentos de su tío [SCOPE.sCharacter('betrayer').GetFirstName] de evitar la sucesión."
- mon_state_formation.6.d4: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] ha fallecido. [SCOPE.sCharacter('danilo').GetFullName] ascenderá al trono a pesar de los intentos de su tío [SCOPE.sCharacter('betrayer').GetFirstName] de evitar la sucesión."
+ mon_state_formation.6.d3: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] ha fallecido a causa de la tuberculosis. [SCOPE.sCharacter('danilo').GetFullName] ascenderá al trono."
+ mon_state_formation.6.d4: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] ha fallecido. [SCOPE.sCharacter('danilo').GetFullName] ascenderá al trono."
  mon_state_formation.6.f: "#italic ¡Oh, si estos ojos míos pudieran ver a \nMontenegro recobrar lo que ha perdido! \nEntonces me parecería, en verdad… \nMi alma estaría entonces verdaderamente satisfecha, \ncomo una tranquila mañana de primavera, \ncuando los vientos marinos y hasta las nubes oscuras \nduermen sobre el seno del mar.#! \n\n Petar II Petrović-Njegoš, #italic La corona de la montaña#!"
  mon_state_formation.6.a: "Canonicemos a [SCOPE.sCharacter('petar').GetFirstName] como santo."
  mon_state_formation.6.b: "[SCOPE.sCharacter('danilo').GetFirstName] se presentará como monarca."

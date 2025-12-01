@@ -227,7 +227,8 @@
  balkan_window_of_opportunity_closing: "el tiempo se agota"
  ottoman_in_crisis_tt: "El $dyn_c_ottoman_empire$ está en crisis."
  je_spoils_of_war: "Despojos de guerra"
- je_spoils_of_war_reason: "Tan solo un par de días después de declarar la victoria, los miembros restantes de la Liga Balcánica ha dirigido su mirada hacia lo que reivindicaban que eran tierras conquistadas a los otomanos injustamente distribuidas.\n\nOficiales de alto rango y políticos por igual, incluidos los nuestros, exigen una compensación mientras el hierro de la guerra siga caliente."
+ je_spoils_of_war_reason: "Tan solo un par de días después de declarar la victoria, los miembros restantes de la Liga Balcánica han dirigido su mirada hacia lo que reivindican que son tierras conquistadas a los otomanos injustamente distribuidas.\n\nOficiales de alto rango y políticos por igual, incluidos los nuestros, exigen una compensación mientras el hierro de la guerra siga caliente."
+ je_spoils_of_war_timed_out_tt: "La #b finalización#! se evaluará cuando la [concept_journal_entry|l] #v $je_spoils_of_war$#! haya #b expirado#!"
  notification_new_balkan_league_members_name: "Nuevos miembros de la Liga Balcánica"
  notification_new_balkan_league_members_desc: "Se ha ofrecido a algunos súbditos del $dyn_c_ottoman_empire$ la oportunidad de unirse a nuestra causa."
  # Scripted buttons
@@ -366,7 +367,7 @@
  support_for_balkan_league: "por ser miembro de la Liga"
  dp_balkan_war: "La guerra de los Balcanes"
  the_cataclysm_partitioning: "Las tierras balcánicas se dividirán entre sus naciones, y puede que surjan nuevos países."
- homeland_states_spoils_of_war_header_tt: "Los siguientes [Concept('concept_state', '$concept_states$')|l] se consideran nuestras [Concept('concept_homeland', '$concept_homelands$')|l]:"
+ homeland_states_spoils_of_war_header_tt: "Los siguientes [Concept('concept_state', '$concept_states$')|l] se consideran nuestras [Concept('concept_homeland', '$concept_homelands$')|l]: #indent_newline:3 "
  homeland_states_spoils_of_war_tt: "[THIS.GetStateRegion.GetName]"
  balkan_wars_league_fail_by_becoming_subject_tt: "[ROOT.GetCountry.GetName] es [Concept('concept_subject', '$concept_subject$')|l] de otra nación"
  balkan_wars_league_fail_timeout_tt: "Se cierra nuestra #v ventana de oportunidad#!"

@@ -127,6 +127,7 @@
  CHARACTER_TOOLTIP_HEADER: "[SelectLocalization(Character.IsValid, 'CHARACTER_TOOLTIP_HEADER_NAME', 'CHARACTER_TOOLTIP_HEADER_NONE')]"
  CHARACTER_TOOLTIP_HEADER_NAME: "[Character.GetFullNameWithTitleNoFormatting][AddLocalizationIf( Character.IsInExilePool, 'CHARACTER_IS_IN_EXILE')]"
  CHARACTER_TOOLTIP_HEADER_NONE: "缺少$concept_character$"
+ AGITATOR_EXILE_POOL_NOTIFICATION: "[Character.GetFullName]已出现在[Character.GetHomeCountry.GetNameNoFlag]！\n由于缺乏[concept_political_movement]支持，他们已主动选择[concept_exile]"
  AGITATOR_POLITICAL_MOVEMENT_NOTIFICATION: "[Character.GetFullName]已出现在[Character.GetCountry.GetNameNoFlag]！\n$AGITATOR_POLITICAL_MOVEMENT_IN_COUNTRY$"
  AGITATOR_POLITICAL_MOVEMENT_PREDICTION_INVITE_START: "如果受到邀请，会发起[PoliticalMovementType.GetName]"
  AGITATOR_POLITICAL_MOVEMENT_PREDICTION_INVITE_JOIN: "如果受到邀请，会加入[PoliticalMovement.GetName]"

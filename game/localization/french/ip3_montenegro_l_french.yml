@@ -83,7 +83,7 @@
  mon_new_king_prestige: "Nouveau royaume célèbre"
  mon_new_king_morale: "Pour le roi et le pays"
  mon_disobedient_court: "Cour dissidente"
- unemployement_birth_rate_countermodifier: "Unemployment Normalised"
+ unemployement_birth_rate_countermodifier: "Chômage réduit"
  #Fixing bad merge
  modifier_scandalous_lover: "Liaison scandaleuse"
  modifier_well_known_tragedy: "Tragédie bien connue"
@@ -221,7 +221,7 @@
  mon_state_formation.3.c: "« Les plus grands miracles se produisent sur le champ de bataille. »"
  #Regain Austrian Coast JE
  je_mon_austria_alliance: "Changement de cap"
- je_mon_austria_alliance_reason: "L’[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] reconnaît détenir des terres côtières qui nous reviennent de droit. Cependant, elle tient absolument à ce que nos [concept_relations|l] ayant une influence [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russe')|l] restent en dehors de la Méditerranée. \n\nSi nous pouvons convaincre les Autrichiens que nous sommes fâchés avec nos frères [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russes')|l] orthodoxes, nous pourrions les persuader de nous restituer notre précieux littoral."
+ je_mon_austria_alliance_reason: "L’[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] reconnaît détenir des terres côtières qui nous reviennent de droit. Cependant, elle tient absolument à ce que l’influence [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russe')|l] reste en dehors de la Méditerranée. \n\nSi nous pouvons convaincre les Autrichiens que nous sommes fâchés avec nos frères [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russes')|l] orthodoxes, nous pourrions les persuader de nous restituer notre précieux littoral."
  je_mon_austria_status_desc: "Les [concept_relations|l] avec l’[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] sont [SCOPE.sCountry('austria').GetRelationsWithDesc( GetPlayer )]"
  raiding_income_greater_tt: "Notre revenu grâce au [concept_raiding|l] doit être inférieur à +700 @money!"
  notification_je_mon_austria_alliance_fail_name: "L’[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] retire son offre"

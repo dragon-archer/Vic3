@@ -228,6 +228,7 @@
  ottoman_in_crisis_tt: "$dyn_c_ottoman_empire$이 위기에 빠짐."
  je_spoils_of_war: "전리품 분쟁"
  je_spoils_of_war_reason: "승전 선언이 있은 지 며칠 만에, 발칸 연맹의 각국은 오스만에게서 빼앗은 영토의 분배가 부당하다며 서로를 노려보기 시작했습니다.\n\n전쟁의 열기가 아직 식지도 않았건만 장군들과 정치인들, 우리 내부 인사들까지도 보상을 요구합니다."
+ je_spoils_of_war_timed_out_tt: "#b 완료#! 평가는 #v $je_spoils_of_war$#! [concept_journal_entry]이 #b 시간 초과#!될 때 이루어짐"
  notification_new_balkan_league_members_name: "새로운 발칸 연맹 회원국"
  notification_new_balkan_league_members_desc: "$dyn_c_ottoman_empire$의 피지배국들이 우리 대의에 동참할 기회가 주어졌습니다."
  # Scripted buttons
@@ -366,7 +367,7 @@
  support_for_balkan_league: "연맹국이 되어서"
  dp_balkan_war: "발칸 전쟁"
  the_cataclysm_partitioning: "발칸의 영토는 각국에 분할되며, 새로운 국가들이 탄생할 수도 있습니다."
- homeland_states_spoils_of_war_header_tt: "다음 [Concept('concept_state', '$concept_states$')]는 우리 [Concept('concept_homeland', '$concept_homelands$')]로 간주됩니다:"
+ homeland_states_spoils_of_war_header_tt: "다음 [Concept('concept_state', '$concept_states$')]는 우리 [Concept('concept_homeland', '$concept_homelands$')]로 간주됩니다:#indent_newline:3 "
  homeland_states_spoils_of_war_tt: "[THIS.GetStateRegion.GetName]"
  balkan_wars_league_fail_by_becoming_subject_tt: "[ROOT.GetCountry.GetName](이)가 다른 국가의 [Concept('concept_subject', '$concept_subject$')]이 됨"
  balkan_wars_league_fail_timeout_tt: "우리의 #v 기회의 창#! 닫힘"

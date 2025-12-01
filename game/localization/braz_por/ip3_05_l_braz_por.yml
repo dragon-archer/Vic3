@@ -227,7 +227,8 @@
  balkan_window_of_opportunity_closing: "tempo se esgotando"
  ottoman_in_crisis_tt: "O $dyn_c_ottoman_empire$ está em crise."
  je_spoils_of_war: "Espólios da Guerra"
- je_spoils_of_war_reason: "Poucos dias depois da declaração de vitória, todos os membros restantes da Liga dos Bálcãs voltaram a atenção para o que reivindicaram: terras distribuídas injustamente, conquistadas dos otomanos.\n\nOficiais e políticos de alto escalão, inclusive os nossos, estão exigindo reparações enquanto o ferro da guerra ainda está quente."
+ je_spoils_of_war_reason: "Poucos dias depois da declaração de vitória, todos os membros restantes da Liga dos Bálcãs voltaram a atenção para o que dizem ser terras distribuídas injustamente, conquistadas dos otomanos.\n\nOficiais e políticos de alto escalão, inclusive os nossos, estão exigindo reparações enquanto o ferro da guerra ainda está quente."
+ je_spoils_of_war_timed_out_tt: "A #b conclusão#! será avaliada quando o [concept_journal_entry] #v $je_spoils_of_war$#! #b expirar#!"
  notification_new_balkan_league_members_name: "Novos Membros da Liga dos Bálcãs"
  notification_new_balkan_league_members_desc: "Ofereceram aos súditos do $dyn_c_ottoman_empire$ uma chance de se juntarem a nossa causa."
  # Scripted buttons
@@ -366,7 +367,7 @@
  support_for_balkan_league: "por ser membro da Liga"
  dp_balkan_war: "A Guerra dos Bálcãs"
  the_cataclysm_partitioning: "As terras balcânicas serão divididas entre as nações, e novas poderão surgir."
- homeland_states_spoils_of_war_header_tt: "Os seguintes [Concept('concept_state', '$concept_states$')] são considerados nossas [Concept('concept_homeland', '$concept_homelands$')]:"
+ homeland_states_spoils_of_war_header_tt: "Os seguintes [Concept('concept_state', '$concept_states$')] são considerados nossas [Concept('concept_homeland', '$concept_homelands$')]: #indent_newline:3 "
  homeland_states_spoils_of_war_tt: "[THIS.GetStateRegion.GetName]"
  balkan_wars_league_fail_by_becoming_subject_tt: "O país [ROOT.GetCountry.GetName] é um [Concept('concept_subject', '$concept_subject$')] de outra nação"
  balkan_wars_league_fail_timeout_tt: "Nossa #v Janela de Oportunidade#! acaba"

@@ -105,7 +105,7 @@
  alert_high_tension_alert_hint: "Les tensions se dissipent au fil du temps. Vous pouvez stopper temporairement votre expansion coloniale pour ne pas provoquer la [Concept('concept_pop', '$concept_population$')|l] davantage et réduire le risque d’un soulèvement autochtone, ou alors vous pouvez chercher à stationner vos [Concept('concept_army','$concept_armies$')|l] dans le [concept_hq] de la [concept_strategic_region|l] coloniale afin de vous préparer à la révolte."
  alert_high_tension_alert_action: "Volet diplomatique"
  alert_secession_growing_alert_name: "Mouvement [Concept('concept_secession', '$concept_secessionist$')|l]"
- alert_secession_growing_alert_desc: "Un [concept_political_movement] essaie de faire sécession [GetPlayer.GetAltNameNoFormatting('Du')][GetPlayer.GetNameNoFlag]"
+ alert_secession_growing_alert_desc: "Un [concept_political_movement|l] essaie de faire sécession [GetPlayer.GetAltNameNoFormatting('Du')][GetPlayer.GetNameNoFlag]"
  alert_secession_growing_alert_hint: "Vous pouvez atténuer le risque d’une sécession en réduisant le [Concept('concept_activism', '$concept_activism_short$')|l] et/ou le [Concept('concept_political_movement_support','$concept_political_movement_support_short$')|l] du [concept_political_movement|l] sécessionniste."
  alert_secession_growing_alert_action: "Volet politique"
  alert_diplomatic_pact_in_danger_name: "[SCOPE.GetRootScope.GetDiplomaticPact.GetName] avec [AddTextIf(SCOPE.GetRootScope.GetDiplomaticPact.IsFirstCountry(GetPlayer), SCOPE.GetRootScope.GetDiplomaticPact.GetSecondCountry.GetName)][AddTextIf(SCOPE.GetRootScope.GetDiplomaticPact.IsSecondCountry(GetPlayer), SCOPE.GetRootScope.GetDiplomaticPact.GetFirstCountry.GetName)]"

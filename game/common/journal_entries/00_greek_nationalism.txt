@@ -40,10 +40,7 @@
             triggered_desc = {
                 desc = greek_nationalism_status_loc
                 trigger = {
-                    NOR = {
-                    	has_variable = embrace_megali_idea_var
-                    	has_variable = embrace_ambitious_agenda_var
-                    }
+                    has_variable = no_megali_idea_var
                 }
             }
             triggered_desc = {
@@ -85,10 +82,16 @@
 		is_subject = no
 		country_rank >= rank_value:minor_power
 		gold_reserves > 0
-		trigger_if = {
+		hidden_trigger = {
+			OR = {
+				has_variable = no_megali_idea_var
+				has_variable = embrace_megali_idea_var
+				has_variable = embrace_ambitious_agenda_var
+			}
+		}
+		trigger_if = { # triggers if greece.1.b was selected and alters the completion conditions
 			limit = {
-				NOT = { has_variable = embrace_ambitious_agenda_var }
-				NOT = { has_variable = embrace_megali_idea_var }
+				has_variable = no_megali_idea_var
 			}
 			custom_tooltip = {
 				text = greek_state_complete_tt
@@ -152,8 +155,7 @@
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					NOT = { has_variable = embrace_ambitious_agenda_var }
-					NOT = { has_variable = embrace_megali_idea_var }
+					has_variable = no_megali_idea_var
 				}
 				desc = event_effects_greece.4_tt_1
 			}
@@ -192,8 +194,7 @@
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					NOT = { has_variable = embrace_ambitious_agenda_var }
-					NOT = { has_variable = embrace_megali_idea_var }
+					has_variable = no_megali_idea_var
 				}
 				desc = event_effects_greece.5_tt_1
 			}

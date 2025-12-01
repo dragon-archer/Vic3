@@ -11,7 +11,7 @@
  je_matter_of_hungary_fail_hungary_is_free: "#bold $HUN$#!从[ROOT.GetCountry.GetAdjective]的控制下取得了自由"
  je_matter_of_hungary_fail_not_at_war_with_hungary: "#bold $HUN$#!#bold 未#!在[concept_diplomatic_play]中反对[ROOT.GetCountry.GetName]"
  je_matter_of_hungary_on_fail_lose_control: "匈牙利境内任何仍由[ROOT.GetCountry.GetName]，或其[Concept('concept_subject','$concept_subjects$')]控制的领土将#bold 分裂#!出去。在我们的非德意志领土上，民族主义叛军将揭竿而起。"
- hungarian_above_80_acceptance_for_a_while_tt: "[ROOT.GetCountry.GetNameNoFlag]的[GetCulture('hungarian').GetName]文化的平均[concept_acceptance]已大于等于#v 80#!持续#b 60个月#!（当前[ROOT.GetCountry.MakeScope.Var('hungarian_acceptance_var').GetValue|v0]）"
+ hungarian_above_80_acceptance_for_a_while_tt: "[ROOT.GetCountry.GetNameNoFlag]的[GetCulture('hungarian').GetName]文化的平均[concept_acceptance]已大于等于#v 70#!持续#b 60个月#!（当前[ROOT.GetCountry.MakeScope.Var('hungarian_acceptance_var').GetValue|v0]）" # Actually 70, not 80
  hungarian_movements_pacified_tt: "没有[GetCulture('hungarian').GetName]#v $movement_cultural_minority$#!拥有$RADICALISM_AGITATING$（#v 25%#!）或更高的[Concept('concept_activism','$concept_activism_short$')]"
  je_austrian_neo_absolutism: "自由时代的专制"
  je_austrian_neo_absolutism_reason: "#italic “巴赫体系的支柱仰赖其四大军团：站立的士兵军团、坐着的官僚集团、跪拜的神职团体，以及匍匐的密探队伍。”#!\n\n下层革命的威胁迫使[ROOT.GetCountry.GetCapital.GetCityHubName]自上发起改革。通过建立集权、合理、高效的国家机器——由忠诚干练的官僚组成——国家将实现现代化，以应对当今时代的挑战。\n\n[concept_austrian_constitutional_pressure]：\n如果对奥地利的新专制主义的反对发展得过于激烈，[ROOT.GetCountry.GetCapital.GetCityHubName]将被迫屈服于改革要求，颁布一部限制国家权力的宪法。"

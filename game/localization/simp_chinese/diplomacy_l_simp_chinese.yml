@@ -324,7 +324,7 @@
  DIPLOMATIC_ACCEPTANCE_UNTRUSTWORTHY_COUNTRY: "$modifier_untrustworthy_country$"
  DIPLOMATIC_ACCEPTANCE_GIFT: "来自很乐意获得这项[concept_treaty]"
  DIPLOMATIC_ACCEPTANCE_BINDING_PERIOD: "来自[concept_binding_period]"
- DIPLOMATIC_ACCEPTANCE_BASE_ADDITIONAL: "来自基础$concept_article$#b 不情值愿#!"
+ DIPLOMATIC_ACCEPTANCE_BASE_ADDITIONAL: "来自基础$concept_article$ #b 不情值愿#!"
  DIPLOMATIC_ACCEPTANCE_COLONIAL_INTEREST: "来自在该[concept_strategic_region]殖民的兴趣"
  DIPLOMATIC_ACCEPTANCE_INPUT_QUANTITY: "来自输入数量"
  DIPLOMATIC_ACCEPTANCE_INPUT_QUANTITY_GOODS: "来自[SCOPE.sGoods('input').GetName]的数量"
@@ -383,8 +383,9 @@
  DIPLO_ACTION_PENDING: "我们的提议正等待回应"
  DIPLO_ACTION_PENDING_OTHER: "他们已经在考虑我们的提议"
  DIPLO_ACTION_REVERSE_PENDING: "他们的提议正等待回应"
- DIPLO_PACT_RELATIONS_CHANGE_POS: "当前每$DAYS|v$天改善#g +1#![concept_relations]，每日进度为#v $PROGRESS_DAILY|%+=2$#!"
- DIPLO_PACT_RELATIONS_CHANGE_NEG: "当前每$DAYS|v$天破坏#r -1#![concept_relations]，每日进度为#v $PROGRESS_DAILY|%+=2$#!"
+ DIPLO_PACT_RELATIONS_CHANGE_POS: "每$DAYS|v$天改善#g +1#![concept_relations]，每日进度为#v $PROGRESS_DAILY|%+=2$#!" #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_CHANGE_NEG: "每$DAYS|v$天破坏#r -1#![concept_relations]，每日进度为#v $PROGRESS_DAILY|%+=2$#!" #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_NO_CHANGE: "[concept_relations]当前将保持不变，每日进度为#v $PROGRESS_DAILY|%+=0$#!" #translation note: followed by: , due to  and some listed modifiers
  DIPLO_ACTION_FORCED_DURATION: "我们在$TIME_LEFT$（$DATE$）内无法打破该[Concept('concept_diplomatic_pact','$concept_diplomatic_pact_short$')]"
  DIPLOMATIC_PACT_HEADER: "#header [DiplomaticPact.GetName]#!"
  DIPLOMATIC_PACT_DESC: "[DiplomaticPact.GetDesc]"

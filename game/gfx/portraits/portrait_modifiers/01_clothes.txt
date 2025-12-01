@@ -432,11 +432,7 @@
             base = 0
             modifier = {
                 add = 100
-                scope:character ?= {
-                    culture = {
-                        this = cu:korean
-                    }
-                }
+                korean_clothes_trigger = yes
                 agitator_character_trigger = yes
             }
         }
@@ -4521,6 +4517,7 @@
                     AND = {
                         east_asian_clothes_pop_trigger = yes
                         soldier_clothes_pop_trigger = yes
+                        korean_clothes_pop_trigger = no
                     }
                     AND = {
                         scope:character ?= {
@@ -4528,6 +4525,7 @@
                             NOR = {
                                 culture = cu:yakut
                                 culture = cu:siberian
+                                culture = cu:korean
                             }
                             culture = {
                                 OR = {
@@ -6162,7 +6160,7 @@
                 mode = add
                 gene = sashes
                 template = european_sashes_colours
-                accessory = male_sash_european_01_lightblue # Order of Saint Andrew 
+                accessory = male_sash_european_01_lightblue # Order of Saint Andrew
             }
             accessory = {
                 mode = add
@@ -6231,7 +6229,7 @@
                 mode = add
                 gene = sashes
                 template = european_sashes_colours
-                accessory = male_sash_european_01_lightblue # Order of Saint Andrew 
+                accessory = male_sash_european_01_lightblue # Order of Saint Andrew
             }
             accessory = {
                 mode = add
@@ -6518,7 +6516,7 @@
         weight = {
             base = 0
             modifier = {
-                add = 13000
+                add = 10000
                 has_dlc_feature = ep1_cosmetics
                 russian_empire_clothes_pop_trigger = yes
                 OR = {
@@ -6712,10 +6710,6 @@
                     owner ?= {
                         has_technology_researched = bolt_action_rifles
                     }
-                }
-                OR = {  # November to February
-                    month < 3
-                    month > 10
                 }
             }
         }
@@ -11222,13 +11216,11 @@
             modifier = {
                 add = 500
                 AND = {
-                    exists = scope:pop
-                    scope:pop = {
-                        culture = cu:korean
-                    }
+                    korean_clothes_pop_trigger = yes
                     OR = {
                         poor_clothes_pop_trigger = yes
                         middle_clothes_pop_trigger = yes
+                        soldier_clothes_pop_trigger = yes
                     }
                 }
             }
@@ -11250,17 +11242,18 @@
                 add = 100
                 OR = {
                     AND = {
-                        exists = scope:character
-                        scope:character = {
-                            has_culture = cu:korean
+                        korean_clothes_trigger = yes
+                        scope:character ?= {
                             is_ruler = no
                         }
                     }
                     AND = {
-                        exists = scope:pop
-                        scope:pop = {
-                            culture = cu:korean
-                            is_pop_type = officers
+                        korean_clothes_pop_trigger = yes
+                        OR = {
+                            upper_clothes_pop_trigger = yes
+                            scope:pop ?= {
+                                is_pop_type = officers
+                            }
                         }
                     }
                 }
@@ -11282,8 +11275,8 @@
             modifier = {
                 add = 100
                 AND = {
-                    exists = scope:character
-                    scope:character = {
+                    korean_clothes_trigger = yes
+                    scope:character ?= {
                         has_culture = cu:korean
                         is_ruler = yes
                         OR = {
@@ -11300,9 +11293,8 @@
            modifier = {
                 add = 1000
                 AND = {
-                    exists = scope:character
-                    scope:character = {
-                        has_culture = cu:korean
+                    korean_clothes_trigger = yes
+                    scope:character ?= {
                         age >= 10
                         has_template = KOR_empress_myeongseong
                     }
@@ -12437,6 +12429,7 @@ indigenous_oceanic_pop_clothes = {
                 east_asian_clothes_pop_trigger = yes
                 japanese_clothes_pop_trigger = no
                 poor_clothes_pop_trigger = yes
+                korean_clothes_pop_trigger = no
            }
         }
     }
@@ -12456,6 +12449,7 @@ indigenous_oceanic_pop_clothes = {
                 add = 500
                 east_asian_clothes_pop_trigger = yes
                 japanese_clothes_pop_trigger = no
+                korean_clothes_pop_trigger = no
                 OR = {
                     middle_clothes_pop_trigger = yes
                     clergy_clothes_pop_trigger = yes
@@ -12478,6 +12472,7 @@ indigenous_oceanic_pop_clothes = {
                 add = 500
                 east_asian_clothes_pop_trigger = yes
                 japanese_clothes_pop_trigger = no
+                korean_clothes_pop_trigger = no
                 upper_clothes_pop_trigger = yes
             }
         }

@@ -383,8 +383,9 @@
  DIPLO_ACTION_PENDING: "Teklifimiz onay bekliyor"
  DIPLO_ACTION_PENDING_OTHER: "Zaten bir teklifimizi değerlendiriyorlar"
  DIPLO_ACTION_REVERSE_PENDING: "Teklifleri onay bekliyor"
- DIPLO_PACT_RELATIONS_CHANGE_POS: "Toplam #v $PROGRESS_DAILY|%+=2$#! günlük ilerlemeyle şu an [Concept('concept_relations', 'İlişkileri')] her $DAYS|v$ günde bir #g +1#! geliştiriyor"
- DIPLO_PACT_RELATIONS_CHANGE_NEG: "Toplam #v $PROGRESS_DAILY|%+=2$#! günlük ilerlemeyle şu an [Concept('concept_relations', 'İlişkilere')] her $DAYS|v$ günde bir #r -1#! zarar veriyor"
+ DIPLO_PACT_RELATIONS_CHANGE_POS: "[concept_relations], $DAYS|v$ gün içinde #g +1#! iyileşir. Toplam ilerleme günde #v $PROGRESS_DAILY|%+=2$#! ilişkidir." #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_CHANGE_NEG: "[concept_relations], $DAYS|v$ gün içinde #r -1#! kötüleşir. Toplam ilerleme günde #v $PROGRESS_DAILY|%+=2$#! ilişkidir." #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_NO_CHANGE: "[concept_relations] değişmez. Toplam ilerleme günde #v $PROGRESS_DAILY|%+=0$#! ilişkidir." #translation note: followed by: , due to  and some listed modifiers
  DIPLO_ACTION_FORCED_DURATION: "Bu [Concept('concept_diplomatic_pact','$concept_diplomatic_pact_short$ı')] $TIME_LEFT$ daha bozamayız ($DATE$)"
  DIPLOMATIC_PACT_HEADER: "#header [DiplomaticPact.GetName]#!"
  DIPLOMATIC_PACT_DESC: "[DiplomaticPact.GetDesc]"

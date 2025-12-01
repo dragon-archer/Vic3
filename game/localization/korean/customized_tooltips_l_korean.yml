@@ -127,6 +127,7 @@
  CHARACTER_TOOLTIP_HEADER: "[SelectLocalization(Character.IsValid, 'CHARACTER_TOOLTIP_HEADER_NAME', 'CHARACTER_TOOLTIP_HEADER_NONE')]"
  CHARACTER_TOOLTIP_HEADER_NAME: "[Character.GetFullNameWithTitleNoFormatting] [AddLocalizationIf( Character.IsInExilePool, 'CHARACTER_IS_IN_EXILE')]"
  CHARACTER_TOOLTIP_HEADER_NONE: "$concept_character$ 없음"
+ AGITATOR_EXILE_POOL_NOTIFICATION: "[Character.GetFullName](이)가 [Character.GetHomeCountry.GetNameNoFlag]에 나타났습니다!\n지지하는 [concept_political_movement]이 없어서 스스로 [Concept('concept_exile', '망명')]길에 올랐습니다."
  AGITATOR_POLITICAL_MOVEMENT_NOTIFICATION: "[Character.GetFullName](이)가 [Character.GetCountry.GetNameNoFlag]에 나타났습니다!\n$AGITATOR_POLITICAL_MOVEMENT_IN_COUNTRY$"
  AGITATOR_POLITICAL_MOVEMENT_PREDICTION_INVITE_START: "초대받은 경우 [PoliticalMovementType.GetName](을)를 시작함"
  AGITATOR_POLITICAL_MOVEMENT_PREDICTION_INVITE_JOIN: "초대받은 경우 [PoliticalMovement.GetName]에 가담함"

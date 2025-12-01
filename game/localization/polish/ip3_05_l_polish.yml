@@ -228,6 +228,7 @@
  ottoman_in_crisis_tt: "$dyn_c_ottoman_empire$ pogrąża się w kryzysie."
  je_spoils_of_war: "Łupy wojenne"
  je_spoils_of_war_reason: "Po zaledwie kilku dniach od ogłoszenia zwycięstwa wszyscy członkowie Ligi Bałkańskiej kierują wzrok ku wyszarpniętym Imperium Osmańskiemu ziemiom, które według nich podzielono niesprawiedliwie.\n\nWysokiej rangi oficerowie i politycy – również nasi – domagają się zadośćuczynienia, a wojna wisi w powietrzu."
+ je_spoils_of_war_timed_out_tt: "#b Ukończenie#! zostanie ocenione #b po upływie limitu czasu#! przeznaczonego na [concept_journal_entry|l] #v $je_spoils_of_war$#!"
  notification_new_balkan_league_members_name: "Nowi członkowie Ligi Bałkańskiej"
  notification_new_balkan_league_members_desc: "Państwom poddańczym Imperium Osmańskiego zaoferowano szansę przyłączenia się do naszej inicjatywy."
  # Scripted buttons
@@ -366,7 +367,7 @@
  support_for_balkan_league: "za bycie członkiem Ligi"
  dp_balkan_war: "Wojna bałkańska"
  the_cataclysm_partitioning: "Region bałkański zostanie podzielony pomiędzy zamieszkujące go narody, przy czym mogą powstać kolejne."
- homeland_states_spoils_of_war_header_tt: "Za nasze [Concept('concept_homeland', '$concept_homelands$')|l] uznawane są następujące [Concept('concept_state', '$concept_states$')|l]:"
+ homeland_states_spoils_of_war_header_tt: "Za nasze [Concept('concept_homeland', '$concept_homelands$')|l] uznawane są następujące [Concept('concept_state', '$concept_states$')|l]: #indent_newline:3 "
  homeland_states_spoils_of_war_tt: "[THIS.GetStateRegion.GetName]"
  balkan_wars_league_fail_by_becoming_subject_tt: "[ROOT.GetCountry.GetName] to [Concept('concept_subject', '$concept_subject$')|l] innego narodu"
  balkan_wars_league_fail_timeout_tt: "Nasze #v okno możliwości#! się zamyka"

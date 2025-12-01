@@ -228,6 +228,7 @@
  ottoman_in_crisis_tt: "$dyn_c_ottoman_empire$处于危机中。"
  je_spoils_of_war: "瓜分战利品"
  je_spoils_of_war_reason: "胜利宣言仅过去数日，巴尔干同盟所有剩余成员国便将目光转向那些从奥斯曼帝国手中夺取、却被认为分配不公的领土。\n\n包括我国在内的各国高级军官与政界人士纷纷要求重新划分疆界，尽管此刻战争的余温尚未散去。"
+ je_spoils_of_war_timed_out_tt: "当#v $je_spoils_of_war$#![concept_journal_entry]#b 超时#!时，将评估#b 完成情况#!"
  notification_new_balkan_league_members_name: "新巴尔干同盟成员"
  notification_new_balkan_league_members_desc: "$dyn_c_ottoman_empire$的附属国有机会加入我们的事业。"
  # Scripted buttons
@@ -366,7 +367,7 @@
  support_for_balkan_league: "是联盟成员"
  dp_balkan_war: "巴尔干战争"
  the_cataclysm_partitioning: "巴尔干的土地将由各国瓜分，新国家可能成立。"
- homeland_states_spoils_of_war_header_tt: "以下[Concept('concept_state', '$concept_states$')]被视为我们的[Concept('concept_homeland', '$concept_homelands$')]："
+ homeland_states_spoils_of_war_header_tt: "以下[Concept('concept_state', '$concept_states$')]被视为我们的[Concept('concept_homeland', '$concept_homelands$')]：#indent_newline:3 "
  homeland_states_spoils_of_war_tt: "[THIS.GetStateRegion.GetName]"
  balkan_wars_league_fail_by_becoming_subject_tt: "[ROOT.GetCountry.GetName]是另一国家的[Concept('concept_subject', '$concept_subject$')]"
  balkan_wars_league_fail_timeout_tt: "我们的#v 机会窗口#!关闭了"

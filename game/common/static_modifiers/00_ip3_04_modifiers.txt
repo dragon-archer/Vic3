@@ -596,6 +596,13 @@ modifier_greek_revolt_aftermath = {
 }
 
 movement_suppressed_after_civil_war_copy = {
-	icon = "gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds"
+	icon = "gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds"
 	political_movement_radicalism_add = -1
+}
+
+modifier_rebellion_horrific_reprisals = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
+	state_mortality_mult = 0.5
+	state_standard_of_living_add = -3
+	state_migration_push_mult = 0.3
 }

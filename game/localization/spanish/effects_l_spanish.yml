@@ -447,7 +447,7 @@
  KILL_POPULATION: "$VALUE|0v$ de los $FILTER_DESC$ pierden la vida"
  KILL_POPULATION_THIRD: "$VALUE|0v$ de los $FILTER_DESC$ en [COUNTRY.GetName] pierden la vida"
  KILL_POPULATION_IN_STATE_THIRD: "$VALUE|0v$ de los $FILTER_DESC$ en [STATE.GetName] pierden la vida"
- ADD_CIVIL_WAR_PROGRESS: "Modifica un $VALUE|%0-$ el avance de [CIVIL_WAR.GetName]"
+ ADD_CIVIL_WAR_PROGRESS: "Modifica un $VALUE|%0-$ el avance de [CIVIL_WAR.GetName] de [CIVIL_WAR.GetPoliticalMovement.GetName]"
  ADD_LAW_PROGRESS: "Modifica en $VALUE|0%$ el avance de la ley [Law.GetName]"
  MAKE_INDEPENDENT: "[COUNTRY.GetName] se independiza de [TARGET_COUNTRY.GetName]"
  MAKE_INDEPENDENT_NEG: "[COUNTRY.GetName] NO se independiza de [TARGET_COUNTRY.GetName]"

@@ -228,6 +228,7 @@
  ottoman_in_crisis_tt: "Das Osmanische Reich steckt in der Krise."
  je_spoils_of_war: "Kriegsbeute"
  je_spoils_of_war_reason: "Nur wenige Tage nach der Verkündung des Sieges richteten alle verbleibenden Mitglieder des Balkanbunds den Blick auf ihrer Behauptung nach ungleich verteilte Lande, die man von den Osmanen erobert hatte.\n\nHochrangige Offiziere und Politiker gleichermaßen – auch unsere eigenen – verlangen Zugeständnisse, während das Eisen des Krieges bereits in der Esse erhitzt wird."
+ je_spoils_of_war_timed_out_tt: "#b Abschluss#! wird bewertet, wenn der [concept_journal_entry] #v $je_spoils_of_war$#! #b ausgelaufen#! ist"
  notification_new_balkan_league_members_name: "Neue Balkanbund-Mitglieder"
  notification_new_balkan_league_members_desc: "Klientelländern des Osmanischen Reichs wird Gelegenheit gegeben, sich unserer Sache anzuschließen."
  # Scripted buttons
@@ -366,7 +367,7 @@
  support_for_balkan_league: "Durch Mitgliedschaft im Bund"
  dp_balkan_war: "Der Balkankrieg"
  the_cataclysm_partitioning: "Die Lande des Balkans werden zwischen seinen Nationen aufgeteilt, und es könnten auch neue Nationen entstehen."
- homeland_states_spoils_of_war_header_tt: "Die folgenden [Concept('concept_state', '$concept_states$')] gelten als unsere [Concept('concept_homeland', '$concept_homelands$')]:"
+ homeland_states_spoils_of_war_header_tt: "Die folgenden [Concept('concept_state', '$concept_states$')] gelten als unsere [Concept('concept_homeland', '$concept_homelands$')]:#indent_newline:3 "
  homeland_states_spoils_of_war_tt: "[THIS.GetStateRegion.GetName]"
  balkan_wars_league_fail_by_becoming_subject_tt: "[ROOT.GetCountry.GetAltName('NOM')|U] ist ein [Concept('concept_subject', '$concept_subject$')] einer anderen Nation"
  balkan_wars_league_fail_timeout_tt: "Unser #v Gelegenheitsfenster#! schließt sich"

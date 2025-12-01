@@ -447,7 +447,7 @@
  KILL_POPULATION: "$FILTER_DESC$ içinden $VALUE|0v$ kadarı hayatını kaybeder"
  KILL_POPULATION_THIRD: "[COUNTRY.GetName] topraklarında $FILTER_DESC$ içinden $VALUE|0v$ kadarı hayatını kaybeder"
  KILL_POPULATION_IN_STATE_THIRD: "[STATE.GetName] vilayetinde $FILTER_DESC$ içinden $VALUE|0v$ kadarı hayatını kaybeder"
- ADD_CIVIL_WAR_PROGRESS: "[CIVIL_WAR.GetName] ilerlemesini $VALUE|%0-$ değiştir"
+ ADD_CIVIL_WAR_PROGRESS: "[CIVIL_WAR.GetPoliticalMovement.GetName] [CIVIL_WAR.GetName] ilerlemesini $VALUE|%0-$ değiştir"
  ADD_LAW_PROGRESS: "[Law.GetName] kanununun çıkma ilerlemesini $VALUE|0%$ değiştir"
  MAKE_INDEPENDENT: "[COUNTRY.GetName], [TARGET_COUNTRY.GetName] ülkesinden bağımsızlık kazanır"
  MAKE_INDEPENDENT_NEG: "[COUNTRY.GetName], [TARGET_COUNTRY.GetName] ülkesinden bağımsızlık kazanmaz"

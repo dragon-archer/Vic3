@@ -83,7 +83,7 @@
  mon_new_king_prestige: "Novo Reino Famoso"
  mon_new_king_morale: "Pelo Rei e pelo País"
  mon_disobedient_court: "Corte Desobediente"
- unemployement_birth_rate_countermodifier: "Unemployment Normalised"
+ unemployement_birth_rate_countermodifier: "Desemprego Normalizado"
  #Fixing bad merge
  modifier_scandalous_lover: "Amor Escandaloso"
  modifier_well_known_tragedy: "Tragédia Famosa"
@@ -149,11 +149,11 @@
  #"The question is not whether to raid or not to raid, but rather how often we should raid, and how many heads should we bring back?"
  #JE raiding buttons
  je_montenegrin_raiding_increase_button: "\"Tragam Mais Cabeças!\""
- je_montenegrin_raiding_increase_button_desc: "Permite que as tribos ataquem com mais frequência, aumentando o [concept_raiding_frequency]. Isso aumentará nossa renda, mas prejudicará as [concept_relations] com a #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#! e sobretudo com o país #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#!."
+ je_montenegrin_raiding_increase_button_desc: "Permite que as tribos ataquem com mais frequência, aumentando o [concept_raiding_frequency]. Isso aumentará nossa renda, mas prejudicará as [concept_relations] com a #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#! e sobretudo com o #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#!."
  mon_more_raiding_tt: "Temos que esperar pelo menos um ano para aumentar os ataques de novo."
  mon_more_heads_tt: "Aumenta o [concept_raiding_frequency] em 25%"
  je_montenegrin_raiding_decrease_button: "Desencorajar o Ataque"
- je_montenegrin_raiding_decrease_button_desc: "Força as tribos a reduzir os ataques, diminuindo o [concept_raiding_frequency] em 25%. A #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#! ficará feliz com essa ação de civilidade em relação ao país #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#!."
+ je_montenegrin_raiding_decrease_button_desc: "Força as tribos a reduzir os ataques, diminuindo o [concept_raiding_frequency] em 25%. A #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#! ficará feliz com essa ação de civilidade com o #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#!."
  mon_less_raiding_tt: "Temos que esperar pelo menos seis meses para diminuir os ataques de novo."
  mon_discourage_raiding_tt: "Diminui o [concept_raiding_frequency] em 25%"
  #If not longer bordering notification that raiding stops
@@ -221,7 +221,7 @@
  mon_state_formation.3.c: "\"Os maiores milagres estão no campo de batalha.\""
  #Regain Austrian Coast JE
  je_mon_austria_alliance: "Mudança de Ares"
- je_mon_austria_alliance_reason: "O país [SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] assumiu que mantém terras costeiras que são nossas por direito. No entanto, ele insiste em manter [concept_relations] com influência do povo [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')] fora do Mediterrâneo. \n\nSe conseguirmos convencer os austríacos de que nos desentendemos com os nossos irmãos ortodoxos do povo [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')], talvez possamos convencê-los a devolver a nossa preciosa costa."
+ je_mon_austria_alliance_reason: "A [SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] assumiu que mantém terras costeiras que são nossas por direito. No entanto, insiste em manter a influência do povo [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')] fora do Mediterrâneo. \n\nSe conseguirmos convencer os austríacos de que nos desentendemos com os nossos irmãos ortodoxos do povo [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')], talvez possamos convencê-los a devolver a nossa preciosa costa."
  je_mon_austria_status_desc: "[concept_relations] com [SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] são [SCOPE.sCountry('austria').GetRelationsWithDesc( GetPlayer )]"
  raiding_income_greater_tt: "Nossa renda com os [Concept('concept_raiding', 'ataques')] deve ser inferior a @money!+700"
  notification_je_mon_austria_alliance_fail_name: "A [SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] retira sua oferta"
@@ -252,7 +252,7 @@
  mon_state_formation.6.t: "Morte de um Príncipe Poeta"
  mon_state_formation.6.d: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] faleceu de tuberculose. [SCOPE.sCharacter('danilo').GetFullName] assume o trono, apesar das tentativas de seu tio [SCOPE.sCharacter('betrayer').GetFirstName] de impedir a sucessão."
  mon_state_formation.6.d2: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] faleceu. [SCOPE.sCharacter('danilo').GetFullName] assume o trono, apesar das tentativas de seu tio [SCOPE.sCharacter('betrayer').GetFirstName] de impedir a sucessão."
- mon_state_formation.6.d3: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] faleceu de tuberculose. [SCOPE.sCharacter('danilo').GetFullName] assume o trono."
+ mon_state_formation.6.d3: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] morreu de tuberculose. [SCOPE.sCharacter('danilo').GetFullName] assume o trono."
  mon_state_formation.6.d4: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] faleceu. [SCOPE.sCharacter('danilo').GetFullName] assume o trono."
  mon_state_formation.6.f: "#italic Ah, se esses meus olhos pudessem ver \nMontenegro recuperar o que perdeu! \nSó então me pareceria de fato que... \nA minha alma estaria verdadeiramente feliz, \ncomo uma manhã tranquila de primavera, \nquando a brisa marinha e até as nuvens escuras \ndormiriam sobre a infinidade do mar.#! \n\n Pedro II Petrović-Njegoš, #italic A Coroa da Montanha#!"
  mon_state_formation.6.a: "Canonizar [SCOPE.sCharacter('petar').GetFirstName] como santo."

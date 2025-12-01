@@ -105,7 +105,7 @@
  alert_high_tension_alert_hint: "$concept_tensions$ zamanla azalır. [Concept('concept_pop', '$concept_population$u')] daha fazla provoke etmemek için $concept_colonial$ genişlemeni geçici bir süreliğine durdurabilir ve bir $concept_native_uprising$ ihtimalini azaltabilirsin. Öte yandan, $concept_colonial$ [Concept('concept_strategic_region', 'Stratejik Bölgesinin')] [Concept('concept_hq', 'Karargâhında')] [concept_army] görevlendirerek ayaklanmaya hazırlanmayı da tercih edebilirsin."
  alert_high_tension_alert_action: "Diplomasi Paneli"
  alert_secession_growing_alert_name: "[Concept('concept_secession', '$concept_secessionist$')] Hareket"
- alert_secession_growing_alert_desc: "[concept_political_movement], [GetPlayer.GetNameNoFlag] ülkesinden ayrılmaya çalışıyor"
+ alert_secession_growing_alert_desc: "Bir [concept_political_movement], [GetPlayer.GetNameNoFlag] ülkesinden ayrılmaya çalışıyor"
  alert_secession_growing_alert_hint: "[Concept('concept_activism', 'Aktivizmi')] veya ayrılıkçı [Concept('concept_political_movement', 'Siyasi Hareketin')] [Concept('concept_political_movement_support', 'Desteğini')] azaltarak $concept_secession$ riskini hafifletebilirsin."
  alert_secession_growing_alert_action: "Siyaset Paneli"
  alert_diplomatic_pact_in_danger_name: "[AddTextIf(SCOPE.GetRootScope.GetDiplomaticPact.IsFirstCountry(GetPlayer), SCOPE.GetRootScope.GetDiplomaticPact.GetSecondCountry.GetName)][AddTextIf(SCOPE.GetRootScope.GetDiplomaticPact.IsSecondCountry(GetPlayer), SCOPE.GetRootScope.GetDiplomaticPact.GetFirstCountry.GetName)] ile [SCOPE.GetRootScope.GetDiplomaticPact.GetName]"

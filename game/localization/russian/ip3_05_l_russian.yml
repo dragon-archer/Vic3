@@ -227,7 +227,8 @@
  balkan_window_of_opportunity_closing: "время на исходе"
  ottoman_in_crisis_tt: "$dyn_c_ottoman_empire$ в кризисе."
  je_spoils_of_war: "Военные трофеи"
- je_spoils_of_war_reason: "Уже через несколько дней после объявленной победы все оставшиеся члены Балканской лиги обратили внимание на отвоёванные о османов земли, которые, по их мнению, были распределены несправедливо.\n\nИ высокопоставленные офицеры, и политики, в том числе и наши собственные, требуют пересмотра решения не фоне готовности войск продолжить войну."
+ je_spoils_of_war_reason: "Уже через несколько дней после объявленной победы все оставшиеся члены Балканской лиги обратили внимание на отвоёванные у османов земли, которые, по их мнению, были распределены несправедливо.\n\nИ высокопоставленные офицеры, и политики, в том числе и наши собственные, требуют пересмотра решения на фоне готовности войск продолжить войну."
+ je_spoils_of_war_timed_out_tt: "Оценка #b выполнения#! будет проведена, когда [Concept('concept_journal_entry','запись в дневнике')] #v $je_spoils_of_war$#! #b закончится по времени#!"
  notification_new_balkan_league_members_name: "Новые участники Балканской лиги"
  notification_new_balkan_league_members_desc: "Субъектам Османской империи выпала возможность присоединиться к нам."
  # Scripted buttons
@@ -366,7 +367,7 @@
  support_for_balkan_league: "от участия в лиге"
  dp_balkan_war: "Балканская война"
  the_cataclysm_partitioning: "Балканские земли будут разделены между балканскими странами; при этом могут появиться новые страны."
- homeland_states_spoils_of_war_header_tt: "Следующие [Concept('concept_state', 'области')] считаются нашей [Concept('concept_homeland', 'родиной')]:"
+ homeland_states_spoils_of_war_header_tt: "Следующие [Concept('concept_state', 'области')] считаются нашей [Concept('concept_homeland', 'родиной')]: #indent_newline:3 "
  homeland_states_spoils_of_war_tt: "[THIS.GetStateRegion.GetName]"
  balkan_wars_league_fail_by_becoming_subject_tt: "[ROOT.GetCountry.GetName] — [Concept('concept_subject', 'субъект')] другого государства"
  balkan_wars_league_fail_timeout_tt: "Наше #v окно возможности#! закрылось"

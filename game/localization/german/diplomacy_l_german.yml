@@ -383,8 +383,9 @@
  DIPLO_ACTION_PENDING: "Unserem Vorschlag muss noch zugestimmt werden"
  DIPLO_ACTION_PENDING_OTHER: "Sie erwägen bereits einen Vorschlag von uns"
  DIPLO_ACTION_REVERSE_PENDING: "Ihrem Vorschlag muss noch zugestimmt werden"
- DIPLO_PACT_RELATIONS_CHANGE_POS: "Verbessert derzeit [concept_relations] um #g +1#! alle $DAYS|v$ Tage durch einen täglichen Gesamtfortschritt von #v $PROGRESS_DAILY|%+=2$#!"
- DIPLO_PACT_RELATIONS_CHANGE_NEG: "Verschlechtert derzeit [concept_relations] um #r -1#! alle $DAYS|v$ Tage durch einen täglichen Gesamtfortschritt von #v $PROGRESS_DAILY|%+=2$#!"
+ DIPLO_PACT_RELATIONS_CHANGE_POS: "[concept_relations] verbessern sich um #g +1#! in $DAYS|v$ Tagen. Gesamtfortschritt ist #v $PROGRESS_DAILY|%+=2$#! pro Tag" #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_CHANGE_NEG: "[concept_relations] verschlechtern sich um #r -1#! in $DAYS|v$ Tagen. Gesamtfortschritt ist #v $PROGRESS_DAILY|%+=2$#! pro Tag" #translation note: followed by: , due to  and some listed modifiers
+ DIPLO_PACT_RELATIONS_NO_CHANGE: "[concept_relations] bleiben derzeit unverändert. Gesamtfortschritt ist #v $PROGRESS_DAILY|%+=0$#! pro Tag" #translation note: followed by: , due to  and some listed modifiers
  DIPLO_ACTION_FORCED_DURATION: "Wir können diesen [Concept('concept_diplomatic_pact','$concept_diplomatic_pact_short$')] für weitere $TIME_LEFT$ ($DATE$) nicht brechen"
  DIPLOMATIC_PACT_HEADER: "#header [DiplomaticPact.GetName]#!"
  DIPLOMATIC_PACT_DESC: "[DiplomaticPact.GetDesc]"
@@ -1851,10 +1852,10 @@
  TREATY_DRAFT_OWE_OBLIGATION_ALREADY_EFFECTUATED: "@red_cross! Der durch diesen [concept_treaty] eingeleitete [Concept('concept_obligation', 'Verpflichtungs')]-Austausch hat bereits stattgefunden, entweder weil die ursprüngliche [concept_binding_period] abgelaufen ist oder weil $INTERVAL$ verstrichen sind, seit er ursprünglich am $DATE|v$ in Kraft trat"
  TREATY_DRAFT_OWE_OBLIGATION_ALREADY_ASKING: "@red_cross! [COUNTRY.GetAltName('NOM')|U] kann [OTHER_COUNTRY.GetAltName('DAT')] derzeit keine [concept_obligation] versprechen, da [OTHER_COUNTRY.GetAltName('NOM')] bereits [COUNTRY.GetAltName('DAT')] eine Verpflichtung versprochen hat"
  TREATY_OPTIONS_VALIDATE_NO_ARTICLES_TO_CREATE: "Mindestens einen [concept_article] hinzufügen"
- support_separatism: "Separatimus unterstützen"
+ support_separatism: "Separatismus unterstützen"
  support_separatism_action_name: "$support_separatism$"
- support_separatism_action_propose_name: "Separatimusunterstützung beginnen"
- support_separatism_action_break_name: "Separatimusunterstützung beenden"
+ support_separatism_action_propose_name: "Separatismusunterstützung beginnen"
+ support_separatism_action_break_name: "Separatismusunterstützung beenden"
  support_separatism_desc: "Unterstützt Separatismus im Ziel-[concept_country], was die [concept_pop]-Anziehung und den [concept_activism] für [Concept('concept_political_movement','$concept_political_movements$')] der Art #bold $movement_cultural_minority$#! unserer [concept_primary_cultures] erhöht."
  support_separatism_action_notification_name: "[INITIATOR_COUNTRY.GetAltName('NOM')|U] unterstützt Separatismus"
  support_separatism_pact_desc: "$EFFECT_LIST_BULLET$$support_separatism_action_effect_breakdown$"

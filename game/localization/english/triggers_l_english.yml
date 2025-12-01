@@ -890,8 +890,10 @@ TRIGGER_IS_ADJACENT_TO_COUNTRY:1 "Is adjacent to [TARGET_COUNTRY.GetName]"
  TRIGGER_INCORPORATION_PROGRESS:0 "Total Incorporation progress is $COMPARATOR$ #variable $NUM|%$#!"
  TRIGGER_INCORPORATION_PROGRESS_NOT:1 "Total Incorporation progress is #bold not #!$COMPARATOR$ #variable $NUM|%$#!"
 
- TRIGGER_IS_IN_REVOLT:0 "Loyalists $COMPARATOR$ #variable $NUM|%$#!"
- TRIGGER_IS_IN_REVOLT_NOT:1 "Loyalists #bold not #!$COMPARATOR$ #variable $NUM|%$#!"
+ TRIGGER_IS_IN_REVOLT:0 "[concept_state] is in [Concept('concept_insurrection', '$concept_revolt$')]"
+ TRIGGER_IS_IN_REVOLT_NOT:1 "[concept_state] is #b not#! in [Concept('concept_insurrection', '$concept_revolt$')]"
+ TRIGGER_IS_IN_REVOLT_THIRD:0 "[STATE.GetName] is in [Concept('concept_insurrection', '$concept_revolt$')]"
+ TRIGGER_IS_IN_REVOLT_THIRD_NOT:1 "[STATE.GetName] is #b not#! in [Concept('concept_insurrection', '$concept_revolt$')]"
 
  TRIGGER_INFRASTRUCTURE:0 "Infrastructure $COMPARATOR$ #variable $NUM$#!"
  TRIGGER_INFRASTRUCTURE_NOT:1 "Infrastructure #bold not #!$COMPARATOR$ #variable $NUM$#!"
@@ -2100,12 +2102,12 @@ TRIGGER_SHARES_HERITAGE_TRAIT_GROUP_WITH_RELIGION_NOCONTEXT_NOT: "Does not share
  TRIGGER_LOYALIST_FRACTION_THIRD:1 "$COMPARATOR|U$ $NUM|%0$ of [SelectLocalization( StringIsEmpty( '$FILTER$' ), Concept('concept_pop', '$concept_pops$'), '$FILTER$')] in $NAME$ are [Concept('concept_loyalist', '$concept_loyalists$')]"
  TRIGGER_LOYALIST_FRACTION_THIRD_NOT:1 "$COMPARATOR|U$ $NUM|%0$ of [SelectLocalization( StringIsEmpty( '$FILTER$' ), Concept('concept_pop', '$concept_pops$'), '$FILTER$')] in $NAME$ are #bold not#! [Concept('concept_loyalist', '$concept_loyalists$')]"
 
- TRIGGER_HAS_COMMANDER_ORDER:0 "Commander Order is $defend$"
- TRIGGER_HAS_COMMANDER_ORDER_NOT:1 "Commander Order is #bold not #!$defend$"
- TRIGGER_HAS_COMMANDER_ORDER_FIRST:0 "[Character.GetFullName] has a $defend$ Commander Order"
- TRIGGER_HAS_COMMANDER_ORDER_FIRST_NOT:0 "[Character.GetFullName] does #bold not #!have a $defend$ Commander Order"
- TRIGGER_HAS_COMMANDER_ORDER_THIRD:0 "[Character.GetFullName] has a $defend$ Commander Order"
- TRIGGER_HAS_COMMANDER_ORDER_THIRD_NOT:0 "[Character.GetFullName] does #bold not #!have a $defend$ Commander Order"
+ TRIGGER_HAS_COMMANDER_ORDER:0 "Commander Order is [COMMANDER_ORDER_TYPE.GetName]"
+ TRIGGER_HAS_COMMANDER_ORDER_NOT:1 "Commander Order is #bold not #! [COMMANDER_ORDER_TYPE.GetName]"
+ TRIGGER_HAS_COMMANDER_ORDER_FIRST:0 "[Character.GetFullName] has a [COMMANDER_ORDER_TYPE.GetName] Commander Order"
+ TRIGGER_HAS_COMMANDER_ORDER_FIRST_NOT:0 "[Character.GetFullName] does #bold not #!have a [COMMANDER_ORDER_TYPE.GetName] Commander Order"
+ TRIGGER_HAS_COMMANDER_ORDER_THIRD:0 "[Character.GetFullName] has a [COMMANDER_ORDER_TYPE.GetName] Commander Order"
+ TRIGGER_HAS_COMMANDER_ORDER_THIRD_NOT:0 "[Character.GetFullName] does #bold not #!have a [COMMANDER_ORDER_TYPE.GetName] Commander Order"
 
  TRIGGER_COMMANDER_IS_AVAILABLE: "$TRIGGER_IS_BUSY_NOT$[ConcatIfNeitherEmpty('\n$TAB$','$ERRORS$')]"
 

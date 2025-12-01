@@ -134,6 +134,7 @@
  CHARACTER_TOOLTIP_HEADER_NAME: "[Character.GetFullNameWithTitleNoFormatting] [AddLocalizationIf( Character.IsInExilePool, 'CHARACTER_IS_IN_EXILE')]"
  CHARACTER_TOOLTIP_HEADER_NONE: "Missing $concept_character$"
 
+ AGITATOR_EXILE_POOL_NOTIFICATION: "[Character.GetFullName] has appeared in [Character.GetHomeCountry.GetNameNoFlag]!\nWith no [concept_political_movement] to support, they have gone into voluntary [concept_exile]"
  AGITATOR_POLITICAL_MOVEMENT_NOTIFICATION:1 "[Character.GetFullName] has appeared in [Character.GetCountry.GetNameNoFlag]!\n$AGITATOR_POLITICAL_MOVEMENT_IN_COUNTRY$"
 
  AGITATOR_POLITICAL_MOVEMENT_PREDICTION_INVITE_START:1 "Would start a [PoliticalMovementType.GetName] if invited"

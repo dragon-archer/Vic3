@@ -42,7 +42,7 @@
 
  concept_party_whip:0 "Party Whip"
  concept_party_whip_short:0 "Whip"
- concept_party_whip_desc:0 "The $concept_party_whip$ keeps the rest of their [concept_party] member's [Concept('concept_ideology','$concept_ideologies$')] in check. The impact on [concept_legitimacy] that [Concept('concept_interest_group','$concept_interest_groups$')] [concept_in_government] have when their $concept_ideologies$ conflict with others is reduced by [GetDefine('NPolitics','INCOHERENCE_FROM_SECONDARY_PARTY_MEMBERS')|v0%] if they are not aligned with the $concept_party_whip$. The [concept_party_leader] acts as the $concept_party_whip_short$."
+ concept_party_whip_desc:0 "The $concept_party_whip$ keeps the rest of their [concept_party] member's [Concept('concept_ideology','$concept_ideologies$')] in check. When [concept_in_government], the $concept_party_whip$ partially overrides the ideological [concept_law] stances on the other [Concept('concept_interest_group','$concept_interest_groups$')] in the $concept_party$ for the purposes of calculating [concept_ideological_incoherence]. The [concept_party_leader] acts as the $concept_party_whip_short$."
 
  concept_economy_health:0 "Economy Health"
  concept_economy_health_healthy:0 "Healthy Economy"
@@ -1430,6 +1430,7 @@
  concept_insurrections: "Insurrections"
  concept_insurrectionary: "Insurrectionary"
  concept_insurrection_desc: "An $concept_insurrection$ is either a [Concept('concept_secession', '$concept_secessionist$')] or a [Concept('concept_revolution', '$concept_revolutionary$')] [concept_political_movement]. This means the $concept_political_movement_short$ is on the brink of turning into a [concept_civil_war]. Any [Concept('concept_pop','$concept_pops$')] or [Concept('concept_interest_group','$concept_interest_groups$')] that are part of a $concept_insurrectionary$ $concept_political_movement_short$ are also labeled #italic $concept_insurrectionary$#!."
+ concept_revolt: "Revolt"
 
  concept_revolution: "Revolution"
  concept_revolutions: "Revolutions"
@@ -1556,6 +1557,9 @@
  concept_gdp_per_capita: "Gross Domestic Product per Capita"
  concept_gdp_per_capita_short: "GDP per Capita"
  concept_gdp_per_capita_desc: "Your country's [concept_gdp] divided by its total [Concept('concept_pop','$concept_population$')]."
+
+ concept_gdp_ownership: "GDP Ownership" 
+ concept_gdp_ownership_desc: "A [Concept('concept_country','$concept_country_possessive$')] [concept_gdp] can be both domestically owned by the $concept_country$ itself and foreignly owned by other $concept_countries$. If another $concept_country$ has [Concept('concept_foreign_investment_rights','$concept_foreign_investment_rights_short$')], they may foreignly own [Concept('concept_building_level','$concept_building_levels$')] in the initial $concept_country$. The $concept_gdp_short$ generated from those $concept_building_levels$ then contribute to the foreign $concept_country_possessive$ $concept_gdp_short$. Only domestically owned $concept_gdp_short$ contributes to the domestic $concept_country_possessive$ [concept_prestige] and [concept_budget_minting]."
 
  concept_education_access:0 "Education Access"
  concept_education_access_desc:1 "The degree by which a [concept_pop] is able to access education for their children. As new generations are born and raised, the $concept_pop$'s [concept_literacy] will move towards its level of $concept_education_access$."

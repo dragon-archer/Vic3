@@ -125,7 +125,8 @@ mm_strategic_region = {
 mm_state = {
 	map_painting_mode = states
 	map_names = states
-	map_markers = { construction_marker construction_summary_marker construction_queue_marker event_marker revolutionary_movement_marker }
+	map_markers = { colony_marker city_marker input_shortage_marker construction_marker construction_summary_marker construction_queue_marker event_marker revolutionary_movement_marker state_infra_marker construction_queue_marker construction_marker construction_summary_marker }
+	map_mode_lists = { budget country }
 
 	is_visible = yes
 
@@ -588,7 +589,7 @@ mm_technology = {
 mm_infamy = {
 	map_painting_mode = country_infamy
 	map_markers = { }
-	map_mode_lists = { military }
+	map_mode_lists = { military country }
 	is_visible = yes
 
 	gradient_border_settings = heatmap
@@ -1216,7 +1217,7 @@ mm_diplomatic = {
 	map_painting_mode_secondary = country_attitude
 	map_painting_mode_alternate = country_attitude
 	map_markers = { country_diplomacy_marker colony_marker diplomatic_play_marker war_marker }
-	map_mode_lists = { diplomacy }
+	map_mode_lists = { diplomacy country }
 
 	gradient_border_settings = mapmode_extra
 	is_visible = no
@@ -1414,4 +1415,19 @@ mm_mass_migration_pull = {
 
 	icon = "gfx/interface/icons/map_mode_icons/mass_migration_attraction.dds"
 	soundeffect = "snapshot:/Dynamic/low_pass_world"
+}
+
+mm_players = {
+	map_painting_mode = player_country
+	map_names = player
+	map_markers = { battle_marker construction_marker construction_summary_marker event_marker front_marker city_marker input_shortage_marker input_goods_shortage_summary_marker state_effect_marker sea_node_marker colony_marker revolutionary_movement_marker diplomatic_play_marker harvest_condition_region_marker }
+	map_mode_lists = { diplomacy }
+	map_tooltip_offset = state
+	is_visible = yes
+
+	show_formation_movement_arrows = no
+
+	gradient_border_settings = default
+
+	icon = "gfx/interface/icons/map_mode_icons/players.dds"
 }

@@ -127,6 +127,7 @@
  CHARACTER_TOOLTIP_HEADER: "[SelectLocalization(Character.IsValid, 'CHARACTER_TOOLTIP_HEADER_NAME', 'CHARACTER_TOOLTIP_HEADER_NONE')]"
  CHARACTER_TOOLTIP_HEADER_NAME: "[Character.GetFullNameWithTitleNoFormatting] [AddLocalizationIf(Character.IsInExilePool, 'CHARACTER_IS_IN_EXILE')]"
  CHARACTER_TOOLTIP_HEADER_NONE: "Fehlender $concept_character$"
+ AGITATOR_EXILE_POOL_NOTIFICATION: "[Character.GetFullName|U] ist [Character.GetHomeCountry.GetAltNameNoFlag('IN')]!\nOhne [concept_political_movement] zur Unterstützung ist [Character.GetCustom('DE_PRO_PER_S_3P_N')] ins [Concept('concept_exile', 'Exil')] gegangen"
  AGITATOR_POLITICAL_MOVEMENT_NOTIFICATION: "[Character.GetFullName|U] erscheint [Character.GetCountry.GetAltName('IN')]!\n$AGITATOR_POLITICAL_MOVEMENT_IN_COUNTRY$"
  AGITATOR_POLITICAL_MOVEMENT_PREDICTION_INVITE_START: "Würde im Einladungsfall eine [PoliticalMovementType.GetName] ins Leben rufen"
  AGITATOR_POLITICAL_MOVEMENT_PREDICTION_INVITE_JOIN: "Würde sich im Einladungsfall „[PoliticalMovement.GetName]“ anschließen"

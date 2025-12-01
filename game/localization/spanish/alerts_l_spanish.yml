@@ -105,7 +105,7 @@
  alert_high_tension_alert_hint: "Las $concept_tensions$ desaparecen con el tiempo; puedes detener la expansión $concept_colonial$ de manera temporal para evitar seguir provocando a los [Concept('concept_pop', 'colectivos')] y así reducir la probabilidad de que se produzca una $concept_native_uprising$, o puedes acantonar tus [Concept('concept_army','ejércitos')] en el [concept_hq|l] de la [concept_strategic_region|l] $concept_colonial$ para prepararte de cara a la revuelta."
  alert_high_tension_alert_action: "el panel Diplomacia"
  alert_secession_growing_alert_name: "Movimiento [Concept('concept_secession', '$concept_secessionist$')|l]"
- alert_secession_growing_alert_desc: "[concept_political_movement] trata de separarse de [GetPlayer.GetNameNoFlag]"
+ alert_secession_growing_alert_desc: "Un [concept_political_movement|l] trata de separarse de [GetPlayer.GetNameNoFlag]"
  alert_secession_growing_alert_hint: "Puedes paliar el riesgo de $concept_secession$ reduciendo el [Concept('concept_activism', '$concept_activism_short$')|l] o el [concept_political_movement_support|l] del [concept_political_movement|l] secesionista."
  alert_secession_growing_alert_action: "el panel Política"
  alert_diplomatic_pact_in_danger_name: "[SCOPE.GetRootScope.GetDiplomaticPact.GetName] con [AddTextIf(SCOPE.GetRootScope.GetDiplomaticPact.IsFirstCountry(GetPlayer), SCOPE.GetRootScope.GetDiplomaticPact.GetSecondCountry.GetName)][AddTextIf(SCOPE.GetRootScope.GetDiplomaticPact.IsSecondCountry(GetPlayer), SCOPE.GetRootScope.GetDiplomaticPact.GetFirstCountry.GetName)]"

@@ -83,7 +83,7 @@
  mon_new_king_prestige: "名高き新王国"
  mon_new_king_morale: "国王と祖国のために"
  mon_disobedient_court: "不従順な宮廷"
- unemployement_birth_rate_countermodifier: "Unemployment Normalised"
+ unemployement_birth_rate_countermodifier: "失業率の正常化"
  #Fixing bad merge
  modifier_scandalous_lover: "けしからぬ恋人"
  modifier_well_known_tragedy: "よく知られた悲劇"
@@ -111,7 +111,7 @@
  #Russian Aid
  concept_russian_aid: "ロシアの援助"
  concept_russian_aid_short: "ロシアの援助"
- concept_russian_aid_desc: "$concept_russian_aid$は、正教会の同胞として#v $RUS$#!が我々の部族に対し提供する支援です。\n\n我々が受け取る基本額は#v $RUS$#!との[concept_relations]によって決まります: \n\n• #v 中立関係#! （またはそれ以下）である場合: @money! 200 \n• #v 親密な関係#!である場合: @money!400 \n• #v 友好的な関係#!である場合: @money! 700 \n• #v 親しい関係#!である場合: @money! 1000"
+ concept_russian_aid_desc: "$concept_russian_aid$は、正教会の同胞として#v $RUS$#! が我々の部族に対し提供する支援です。\n\n我々が受け取る基本額は#v $RUS$#! との[concept_relations]によって決まります: \n\n• #v 中立関係#! （またはそれ以下）である場合: @money! 200 \n• #v 親密な関係#! である場合: @money!400 \n• #v 友好的な関係#! である場合: @money! 700 \n• #v 親しい関係#! である場合: @money! 1000"
  #DIPLOMATIC PACTS:
  raiding_pact: "襲撃"
  raiding_pact_desc: "ある国の兵士が他国の資源を略奪する。"
@@ -153,7 +153,7 @@
  mon_more_raiding_tt: "襲撃頻度を再び増加させるには、少なくとも1年待つ必要がある。"
  mon_more_heads_tt: "[concept_raiding_frequency]を25%増加させる"
  je_montenegrin_raiding_decrease_button: "襲撃抑制"
- je_montenegrin_raiding_decrease_button_desc: "部族に襲撃を抑制させ、[concept_raiding_frequency]を25%減少させる。#v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#!は、礼節をもって#v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#!と接するべく一歩を踏み出したことを評価するだろう。"
+ je_montenegrin_raiding_decrease_button_desc: "部族に襲撃を抑制させ、[concept_raiding_frequency]を25%減少させる。#v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#!は、礼節をもって #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#!と接するべく一歩を踏み出したことを評価するだろう。"
  mon_less_raiding_tt: "襲撃頻度を再び減少させるには、少なくとも6か月待つ必要がある。"
  mon_discourage_raiding_tt: "[concept_raiding_frequency]を25%減少させる"
  #If not longer bordering notification that raiding stops
@@ -221,7 +221,7 @@
  mon_state_formation.3.c: "「最大の奇跡は戦場にある」"
  #Regain Austrian Coast JE
  je_mon_austria_alliance: "方針転換"
- je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')]は、彼らの保持する沿岸部の土地が本来は我々のものだとを認めているが、[SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')]との[concept_relations]の影響が地中海に及ばないよう、返還を拒否している。\n\n我々が[SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')]正教会の同胞と仲違いしているのだと、オーストリア人を納得させることができれば、貴重な沿岸地域を我々に返還するように説得できるだろう。"
+ je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')]は、彼らの保持する沿岸部の土地が本来は我々のものだとを認めているが、[SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')]の影響力が地中海に及ばないよう、返還を拒否している。\n\n我々が[SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')]正教会の同胞と仲違いしているのだと、オーストリア人を納得させることができれば、貴重な沿岸地域を我々に返還するように説得できるだろう。"
  je_mon_austria_status_desc: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')]との[concept_relations]は[SCOPE.sCountry('austria').GetRelationsWithDesc( GetPlayer )]である"
  raiding_income_greater_tt: "[concept_raiding]からの収入は@money!+700未満でなければならない"
  notification_je_mon_austria_alliance_fail_name: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')]が提案を撤回しました"
@@ -254,7 +254,7 @@
  mon_state_formation.6.d2: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]がこの世を去った。叔父の[SCOPE.sCharacter('betrayer').GetFirstName]が王位継承を阻止しようとしたにもかかわらず、[SCOPE.sCharacter('danilo').GetFullName]が即位した。"
  mon_state_formation.6.d3: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]が結核によりこの世を去り、[SCOPE.sCharacter('danilo').GetFullName]が即位した。"
  mon_state_formation.6.d4: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]がこの世を去り、[SCOPE.sCharacter('danilo').GetFullName]が即位した。"
- mon_state_formation.6.f: "#italic ああ、もしこの目で見ることができたのなら\nモンテネグロが失ったものを取り戻す瞬間を！\nそうすれば…\n私の魂は真に満たされるだろう。\nまるで春の穏やかな朝のように、\n海風が吹き、暗い雲さえも\n海の懐で静かに眠るだろう。#! \n\n ペタル2世ペトロヴィッチ＝ニェゴシュ、『#italic 山の花環#!』"
+ mon_state_formation.6.f: "#italic ああ、もしこの目で見ることができたのなら\nモンテネグロが失ったものを取り戻す瞬間を！\nそうすれば…\n私の魂は真に満たされるだろう。\nまるで春の穏やかな朝のように、\n海風が吹き、暗い雲さえも\n海の懐で静かに眠るだろう。#!\n\n ペタル2世ペトロヴィッチ＝ニェゴシュ、『#italic 山の花環#!』"
  mon_state_formation.6.a: "[SCOPE.sCharacter('petar').GetFirstName]を列聖する。"
  mon_state_formation.6.b: "[SCOPE.sCharacter('danilo').GetFirstName]が君主を自称する。"
  mon_state_formation.6.c: "悲しみの中で団結しよう。"
@@ -301,7 +301,7 @@
  #Taxes?
  mon_state_formation.12.t: "税金は？"
  mon_state_formation.12.d: "長年にわたってオスマン帝国の徴税人を殺害してきた[ROOT.GetCountry.GetNameNoFlag]の民は、たとえそのお金が[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]に渡るとしても、税金を払うという概念そのものに反発している。"
- mon_state_formation.12.f: "「つまり、[ROOT.GetCountry.GetRuler.GetSheHe]は強盗みたいに私たちからふんだくっているの？」\n「いや、[ROOT.GetCountry.GetRuler.GetSheHe]は私たちに#italic 税金#!を課しているんだ」\n「何が違うの？」\n「税金は私たちのために使われるんだよ」\n「じゃあ、私たちに小麦をくれたり、屋根を直したりしてくれるの？」\n「いや…いいか、もし税金を払わなければ、武装した男たちが来て…」\n「#italic やっぱり#![ROOT.GetCountry.GetRuler.GetSheHe]は強盗みたいに私たちからふんだくってるんだ！」"
+ mon_state_formation.12.f: "「つまり、[ROOT.GetCountry.GetRuler.GetSheHe]は強盗みたいに私たちからふんだくっているの？」\n「いや、[ROOT.GetCountry.GetRuler.GetSheHe]は私たちに#italic 税金#!を課しているんだ」\n「何が違うの？」\n「税金は私たちのために使われるんだよ」\n「じゃあ、私たちに小麦をくれたり、屋根を直したりしてくれるの？」\n「いや…いいか、もし税金を払わなければ、武装した男たちが来て…」\n「#italic やっぱり#! [ROOT.GetCountry.GetRuler.GetSheHe]は強盗みたいに私たちからふんだくってるんだ！」"
  mon_state_formation.12.a: "税金を徐々に緩和することに同意する。"
  mon_state_formation.12.b: "皆の懸念を傾聴する。"
  mon_state_formation.12.c: "抵抗する者は脅す。"
@@ -309,7 +309,7 @@
  #first arms
  mon_state_formation.13.t: "真の狙い"
  mon_state_formation.13.d: "[ROOT.GetCountry.GetNameNoFlag]の国民は、初の[SCOPE.sBuilding('arms').GetName]を大変誇りに思っている。"
- mon_state_formation.13.f: "#italic 私の銃は古いが立派であり、それを失えば\n自分の腕が切り落とされるよりも嘆き悲しむだろう。\n自分の一人息子を失ったかのように、\n自分の兄弟を失ったように悲しむ。\nなぜなら、それはあらゆる銃の中で、最も優れた銃だったからだ。 \n幸運をもたらし、また非常に威力があった。\n掃除や手入れをする必要は一切なかった。\nいつも鏡のように輝いていた。 \n発砲されると、すぐにその銃だとわかる。\n他に何千挺の銃があったとしても。#! \n\n–ペタル2世ペトロヴィッチ＝ニェゴシュ、『#italic 山の花環#!』"
+ mon_state_formation.13.f: "#italic 私の銃は古いが立派であり、それを失えば\n自分の腕が切り落とされるよりも嘆き悲しむだろう。\n自分の一人息子を失ったかのように、\n自分の兄弟を失ったように悲しむ。\nなぜなら、それはあらゆる銃の中で、最も優れた銃だったからだ。 \n幸運をもたらし、また非常に威力があった。\n掃除や手入れをする必要は一切なかった。\nいつも鏡のように輝いていた。 \n発砲されると、すぐにその銃だとわかる。\n他に何千挺の銃があったとしても。#!\n\n–ペタル2世ペトロヴィッチ＝ニェゴシュ、『#italic 山の花環#!』"
  mon_state_formation.13.a: "良質な銃を作る。"
  mon_state_formation.13.b: "安価な銃を作る。"
  mon_state_formation.13.c: "大量の銃を作る。"
@@ -325,7 +325,7 @@
  #Turkey Conquers
  mon_state_formation.14.t: "ゴリアテがダビデを倒す"
  mon_state_formation.14.d: "モンテネグロの反乱軍がついに屈服した。"
- mon_state_formation.14.f: "#italic モンテネグロの兄弟よ、これは一体何だ？\n誰がこの醜い不和の火を焚きつけたのだ？\n私たちの信仰を変えるなどという、\n嘆かわしい考えはどこから生まれたのだ？\n違いはあっても、我々は兄弟ではないのか？\n同じ戦いを共に戦ったではないか？\n良いことも悪いことも、兄弟のように共に分かち合ってきたというのに。\nトルコとセルビアの乙女の髪は、\n戦死した英雄たちの墓を悲しみで覆っているのではなかったのか？#! \n\n–ペタル2世ペトロヴィッチ＝ニェゴシュ、『#italic 山の花環#!』"
+ mon_state_formation.14.f: "#italic モンテネグロの兄弟よ、これは一体何だ？\n誰がこの醜い不和の火を焚きつけたのだ？\n私たちの信仰を変えるなどという、\n嘆かわしい考えはどこから生まれたのだ？\n違いはあっても、我々は兄弟ではないのか？\n同じ戦いを共に戦ったではないか？\n良いことも悪いことも、兄弟のように共に分かち合ってきたというのに。\nトルコとセルビアの乙女の髪は、\n戦死した英雄たちの墓を悲しみで覆っているのではなかったのか？#!\n\n–ペタル2世ペトロヴィッチ＝ニェゴシュ、『#italic 山の花環#!』"
  mon_state_formation.14.a: "抵抗する者への教訓としよう。"
  mon_state_formation.14.b: "モンテネグロの罪の責任として、[SCOPE.sCulture('serbian').GetName]の全ての民を罰する。"
  mon_state_formation.14.c: "過ちを犯すのは人間、許すのは…"
@@ -353,7 +353,7 @@
  mon_state_formation.18.c: "むしろ、#italic もっと多くの#!首を吊るす必要がある。"
  mon_state_formation.19.t: "[ROOT.GetCountry.GetAdjectiveNoFormatting]の歓喜"
  mon_state_formation.19.d: "我が国は最大の脅威を乗り越えた。$dyn_c_ottoman_empire$は、もはや存在しないのだ！"
- mon_state_formation.19.f: "#italic 聞け、民よ。皆、脱帽せよ！\n追悼の意を捧げよう。\n我らが国の\n偉大な勇者の霊魂に。\n今日この日は、彼らにとって、最も尊き日とならむ。#! \n\n ペタル2世ペトロヴィッチ＝ニェゴシュ著、『#italic 山の花環#!』"
+ mon_state_formation.19.f: "#italic 聞け、民よ。皆、脱帽せよ！\n追悼の意を捧げよう。\n我らが国の\n偉大な勇者の霊魂に。\n今日この日は、彼らにとって、最も尊き日とならむ。#!\n\n ペタル2世ペトロヴィッチ＝ニェゴシュ著、『#italic 山の花環#!』"
  mon_state_formation.19.a: "[SelectLocalization(SCOPE.sCountry('montenegro').IsValid, SCOPE.sCountry('montenegro').GetNameNoFlag, 'MON')]を地上の楽園にしよう。"
  mon_state_formation.19.b: "すべての圧政には終焉が訪れることを、我々が皆に知らしめよう！"
  mon_state_formation.19.c: "我らは戦争しか知らない。"
@@ -362,7 +362,7 @@
  mon_state_formation.20.t: "[ROOT.GetCountry.GetRuler.GetFirstName][ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]、改め[ROOT.GetCountry.GetRuler.GetFirstName]国王"
  mon_state_formation.20.d: "[ROOT.GetCountry.GetRuler.GetFullName][ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]は、我が国を正式に王国へと改称することを提案した。"
  ### https://en.wikisource.org/wiki/Translation:There,_Over_There
- mon_state_formation.20.f: "#italic ああ、あそこ…あの丘の向こうには、\n緑の木立が広がるという。\nその麓にそびえるは、聖なるデチャニ修道院。\nそこで捧ぐ祈りは、天国を約束する。\n\nああ、あそこ…あの丘の向こうには、\nたわむ蒼穹が待つという。\nセルビアの大地へ、戦場へ、いざ往かん。\nさあ兄弟たちよ、行軍の準備をせよ！#! \n\nニコラ1世ペトロヴィッチ＝ニェゴシュ著、『#italic Onamo, 'namo!#!』"
+ mon_state_formation.20.f: "#italic ああ、あそこ…あの丘の向こうには、\n緑の木立が広がるという。\nその麓にそびえるは、聖なるデチャニ修道院。\nそこで捧ぐ祈りは、天国を約束する。\n\nああ、あそこ…あの丘の向こうには、\nたわむ蒼穹が待つという。\nセルビアの大地へ、戦場へ、いざ往かん。\nさあ兄弟たちよ、行軍の準備をせよ！#!\n\nニコラ1世ペトロヴィッチ＝ニェゴシュ著、『#italic Onamo, 'namo!#!』"
  mon_state_formation.20.a: "このことを民衆に知らせよう。"
  mon_state_formation.20.b: "このことを、すべての国に知らせよう！"
  mon_state_formation.20.c: "このことを兵士たちに知らせよう。"

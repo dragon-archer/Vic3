@@ -259,8 +259,9 @@
   ottoman_in_crisis_tt: "The $dyn_c_ottoman_empire$ is in crisis."
 
   je_spoils_of_war: "Spoils of War"
-  je_spoils_of_war_reason: "Only a couple of days after the declaration of victory, all remaining Balkan League members turned their gaze upon what they claimed to be unjustly distributed lands conquered from the Ottomans.\n\nHigh-ranking officers and politicians alike, including ours, are demanding amends while the iron of war is already heated."
+  je_spoils_of_war_reason:1 "Only a couple of days after the declaration of victory, all remaining Balkan League members have turned their gaze upon what they claim to be unjustly distributed lands conquered from the Ottomans.\n\nHigh-ranking officers and politicians alike, including ours, are demanding amends while the iron of war is already heated."
 
+  je_spoils_of_war_timed_out_tt: "#b Completion#! will be evaluated when the #v $je_spoils_of_war$#! [concept_journal_entry] has #b timed out#!"
   
   notification_new_balkan_league_members_name: "New Balkan League Members"
   notification_new_balkan_league_members_desc: "Subjects of $dyn_c_ottoman_empire$ have been offered a chance to join our cause."
@@ -423,7 +424,7 @@
   support_for_balkan_league: "from being a League member"
   dp_balkan_war: "The Balkan War"
   the_cataclysm_partitioning: "Balkan lands will be partitioned among its nations, and new ones may emerge."
-  homeland_states_spoils_of_war_header_tt: "The following [Concept('concept_state', '$concept_states$')] are considered as our [Concept('concept_homeland', '$concept_homelands$')]:"
+  homeland_states_spoils_of_war_header_tt: "The following [Concept('concept_state', '$concept_states$')] are considered as our [Concept('concept_homeland', '$concept_homelands$')]: #indent_newline:3 "
   homeland_states_spoils_of_war_tt: "[THIS.GetStateRegion.GetName]"
   balkan_wars_league_fail_by_becoming_subject_tt: "[ROOT.GetCountry.GetName] is a [Concept('concept_subject', '$concept_subject$')] of another nation"
   balkan_wars_league_fail_timeout_tt: "Our #v Window of Opportunity#! closes"

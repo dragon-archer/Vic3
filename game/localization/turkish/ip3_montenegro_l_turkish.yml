@@ -83,7 +83,7 @@
  mon_new_king_prestige: "Yeni Ünlü Krallık"
  mon_new_king_morale: "Kral ve Ülke İçin"
  mon_disobedient_court: "İtaatsiz Mahkeme"
- unemployement_birth_rate_countermodifier: "Unemployment Normalised"
+ unemployement_birth_rate_countermodifier: "İşsizlik Normal Seviyeye Döndü"
  #Fixing bad merge
  modifier_scandalous_lover: "Skandal Aşk"
  modifier_well_known_tragedy: "Bilindik Trajedi"
@@ -149,11 +149,11 @@
  #"The question is not whether to raid or not to raid, but rather how often we should raid, and how many heads should we bring back?"
  #JE raiding buttons
  je_montenegrin_raiding_increase_button: "\"Daha Çok Kafa Kesin!\""
- je_montenegrin_raiding_increase_button_desc: "Kabilelerin daha sık yağma yapılabilmesi sağlanır ve [concept_raiding_frequency] artar. Bu eylem gelirimizi arttırır ancak #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#! ve özellikle #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#! ile [Concept('concept_relations', 'İlişkilerimiz')] zarar görür."
+ je_montenegrin_raiding_increase_button_desc: "Kabilelerin daha sık yağma yapabilmesi sağlanır ve [concept_raiding_frequency] artar. Bu eylem gelirimizi arttırır ancak #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#! ve özellikle #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#! ile [Concept('concept_relations', 'İlişkilerimiz')] zarar görür."
  mon_more_raiding_tt: "Yağmaları tekrar arttırmak için en az bir yıl beklemeliyiz."
  mon_more_heads_tt: "[concept_raiding_frequency] %25 artar"
  je_montenegrin_raiding_decrease_button: "Yağmalamaktan Caydır"
- je_montenegrin_raiding_decrease_button_desc: "Kabileler yağmaları azaltmaya zorlanır ve [concept_raiding_frequency] %25 azalır. #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#! ve #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#! bu medeni girişimleri memnuniyetle karşılar."
+ je_montenegrin_raiding_decrease_button_desc: "Kabileler yağmaları azaltmaya zorlanır ve [concept_raiding_frequency] %25 azalır. #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#!, #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#! ile yaptığımız bu medeni girişimleri memnuniyetle karşılar."
  mon_less_raiding_tt: "Yağmaları tekrar azaltmak için en az altı ay beklemeliyiz."
  mon_discourage_raiding_tt: "[concept_raiding_frequency] %25 azalır"
  #If not longer bordering notification that raiding stops
@@ -221,7 +221,7 @@
  mon_state_formation.3.c: "\"En büyük mucizeler savaş meydanında meydana gelir.\""
  #Regain Austrian Coast JE
  je_mon_austria_alliance: "Değiş Tokuş"
- je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')], meşru olarak bize ait olan kıyıları elinde tuttuğunu kabul ediyor. Ancak [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')] nüfuzunun Akdeniz'den uzak tutulması için [Concept('concept_relations', 'İlişkileri')] sürdürmekte epey hassasiyet gösteriyor. \n\nEğer Avusturyalıları [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')] Ortodoks dostlarımızla aramızın bozulduğuna ikna edebilirsek, değerli kıyımızı geri alma hususunda da başarılı olabiliriz."
+ je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')], meşru olarak bize ait olan kıyıları elinde tuttuğunu kabul ediyor. Ancak [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')] nüfuzunun Akdeniz'den uzak tutulması için epey hassasiyet gösteriyor. \n\nEğer Avusturyalıları [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')] Ortodoks dostlarımızla aramızın bozulduğuna ikna edebilirsek, değerli kıyımızı geri alma hususunda da başarılı olabiliriz."
  je_mon_austria_status_desc: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] ile [concept_relations] mevcut durumda [SCOPE.sCountry('austria').GetRelationsWithDesc( GetPlayer )]"
  raiding_income_greater_tt: "[concept_raiding] sayesinde edindiğimiz gelir en fazla @money!+700 olmalı"
  notification_je_mon_austria_alliance_fail_name: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')] teklifini geri çekti"

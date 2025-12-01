@@ -105,7 +105,7 @@
  alert_high_tension_alert_hint: "$concept_tensions$은 시간이 흐르면 사라집니다. 일시적으로 $concept_colonial$ 확장을 중단해 [Concept('concept_pop', '$concept_population$')]에 대한 추가적인 도발을 자제하고 $concept_native_uprising$ 발생 확률을 줄이거나, $concept_colonial$ [concept_strategic_region] 내 [concept_hq]의 [Concept('concept_army','$concept_armies$')]을 배치하여 봉기에 대비하는 것도 한 방법입니다."
  alert_high_tension_alert_action: "외교 패널"
  alert_secession_growing_alert_name: "[Concept('concept_secession', '$concept_secessionist$')] 운동"
- alert_secession_growing_alert_desc: "[GetPlayer.GetNameNoFlag] 에서 [concept_political_movement](으)로부터 분리 독립을 시도합니다"
+ alert_secession_growing_alert_desc: "[concept_political_movement]이 [GetPlayer.GetNameNoFlag](으)로부터 분리 독립을 시도합니다"
  alert_secession_growing_alert_hint: "분리 독립파 [concept_political_movement] [Concept('concept_activism', '$concept_activism_short$')] 및/또는 [concept_political_movement_support]를 감소시킴으로써 $concept_secession$의 위험을 완화할 수 있습니다."
  alert_secession_growing_alert_action: "정치 패널"
  alert_diplomatic_pact_in_danger_name: "[AddTextIf(SCOPE.GetRootScope.GetDiplomaticPact.IsFirstCountry(GetPlayer), SCOPE.GetRootScope.GetDiplomaticPact.GetSecondCountry.GetName)][AddTextIf(SCOPE.GetRootScope.GetDiplomaticPact.IsSecondCountry(GetPlayer), SCOPE.GetRootScope.GetDiplomaticPact.GetFirstCountry.GetName)](와)과의 [SCOPE.GetRootScope.GetDiplomaticPact.GetName]"

@@ -83,7 +83,7 @@
  mon_new_king_prestige: "Berühmtes Königreich"
  mon_new_king_morale: "Für König und Vaterland"
  mon_disobedient_court: "Ungehorsamer Hof"
- unemployement_birth_rate_countermodifier: "Unemployment Normalised"
+ unemployement_birth_rate_countermodifier: "Arbeitslosigkeit normalisiert"
  #Fixing bad merge
  modifier_scandalous_lover: "Skandalöse Liebschaften"
  modifier_well_known_tragedy: "Wohlbekannte Tragödie"
@@ -149,11 +149,11 @@
  #"The question is not whether to raid or not to raid, but rather how often we should raid, and how many heads should we bring back?"
  #JE raiding buttons
  je_montenegrin_raiding_increase_button: "„Bringt mir mehr Köpfe!“"
- je_montenegrin_raiding_increase_button_desc: "Den Stämmen erlauben, mehr Überfälle zu begehen, und so den [concept_raiding_frequency] erhöhen. Dies wird unsere Einnahmen steigern, aber unsere [concept_relations] zu #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#! und insbesondere #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetAltName('DAT'), 'dem Osmanischen Reich')]#! beschädigen."
+ je_montenegrin_raiding_increase_button_desc: "Den Stämmen erlauben, mehr Überfälle zu begehen, und so den [concept_raiding_frequency] erhöhen. Dies wird unsere Einnahmen steigern, aber unsere [concept_relations] zu #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAltName('DAT'), 'Russland')]#! und insbesondere #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetAltName('DAT'), 'dem Osmanischen Reich')]#! beschädigen."
  mon_more_raiding_tt: "Wir müssen mindestens ein Jahr warten, bis wir wieder Überfälle begehen können"
  mon_more_heads_tt: "Erhöht [concept_raiding_frequency] um 25 %"
  je_montenegrin_raiding_decrease_button: "Von Überfällen abbringen"
- je_montenegrin_raiding_decrease_button_desc: "Die Stämme zwingen, ihre Überfälle einzuschränken, und den [concept_raiding_frequency] so um 25 % senken. #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#! wird diesen Schritt auf einen zivilisierteren Umgang mit #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetAltName('DAT'), 'dem Osmanischen Reich')]#! zu schätzen wissen."
+ je_montenegrin_raiding_decrease_button_desc: "Die Stämme zwingen, ihre Überfälle einzuschränken, und den [concept_raiding_frequency] so um 25 % senken. #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAltName('DAT'), 'Russland')]#! wird diesen Schritt hin zu einem zivilisierteren Umgang mit #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetAltName('DAT'), 'dem Osmanischen Reich')]#! zu schätzen wissen."
  mon_less_raiding_tt: "Wir müssen mindestens sechs Monate warten, bis wir den Überfalleifer wieder senken können"
  mon_discourage_raiding_tt: "Verringert [concept_raiding_frequency] um 25 %"
  #If not longer bordering notification that raiding stops
@@ -221,7 +221,7 @@
  mon_state_formation.3.c: "„Die größten Wunder findet man auf dem Schlachtfeld.“"
  #Regain Austrian Coast JE
  je_mon_austria_alliance: "Geänderte Gangart"
- je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetAltName('NOM'), 'AUS')|U] gesteht ein, Küsten zu halten, die rechtmäßig uns gehören. Doch man besteht auch darauf, [concept_relations] mit [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russischem')|l] Einfluss aus dem Mittelmeer fernzuhalten.\n\nWenn wir die Österreicher überzeugen können, dass wir uns mit unseren [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russischen')|l] orthodoxen Glaubensbrüdern zerstritten haben, können wir sie vielleicht überreden, uns unsere kostbare Küste zurückzugeben."
+ je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetAltName('NOM'), 'Österreich')|U] gesteht ein, Küsten zu halten, die rechtmäßig uns gehören. Doch man besteht auch darauf, den [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russischen')|l] Einfluss aus dem Mittelmeer fernzuhalten.\n\nWenn wir die Österreicher überzeugen können, dass wir uns mit unseren [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russischen')|l] orthodoxen Glaubensbrüdern zerstritten haben, können wir sie vielleicht überreden, uns unsere kostbare Küste zurückzugeben."
  je_mon_austria_status_desc: "[concept_relations] zu [SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetAltName('DAT'), 'AUS')] sind: [SCOPE.sCountry('austria').GetRelationsWithDesc(GetPlayer)]"
  raiding_income_greater_tt: "Unsere Einnahmen durch [concept_raiding] müssen weniger als @money!+700 betragen"
  notification_je_mon_austria_alliance_fail_name: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetAltName('NOM'), 'AUS')] zieht Angebot zurück"
@@ -252,8 +252,8 @@
  mon_state_formation.6.t: "Tod eines Dichterfürsten"
  mon_state_formation.6.d: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] ist an Tuberkulose gestorben. [SCOPE.sCharacter('danilo').GetFullName|U] besteigt den Thron trotz der Versuche seines Onkels [SCOPE.sCharacter('betrayer').GetFirstName], die Nachfolge zu verhindern."
  mon_state_formation.6.d2: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] ist verstorben. [SCOPE.sCharacter('danilo').GetFullName|U] besteigt den Thron trotz der Versuche seines Onkels [SCOPE.sCharacter('betrayer').GetFirstName], die Nachfolge zu verhindern."
- mon_state_formation.6.d3: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] ist an Tuberkulose gestorben. [SCOPE.sCharacter('danilo').GetFullName|U] besteigt den Thron."
- mon_state_formation.6.d4: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')] ist verstorben. [SCOPE.sCharacter('danilo').GetFullName|U] besteigt den Thron."
+ mon_state_formation.6.d3: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')|U] ist an Tuberkulose gestorben. [SCOPE.sCharacter('danilo').GetFullName|U] besteigt den Thron."
+ mon_state_formation.6.d4: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')|U] ist gestorben. [SCOPE.sCharacter('danilo').GetFullName|U] besteigt den Thron."
  mon_state_formation.6.f: "#italic Ach, wenn nur zu schauen mir vergönnt wär’\nDaß die Heimat Montenegro den Verlust beglichen,\nAlsdann wollte es mich wahrlich dünken …\nMeine Seele wäre dann besänftigt\nWie ein friedlich heitrer Lenzesmorgen,\nWenn die Winde und die düstern Wolken\nSchlummern in des Ozeans Verliese.#!\n\n– Petar II. Petrović-Njegoš, #italic Der Bergkranz#!"
  mon_state_formation.6.a: "Sprechen wir [SCOPE.sCharacter('petar').GetFirstName] heilig."
  mon_state_formation.6.b: "[SCOPE.sCharacter('danilo').GetFirstName|U] wird sich selbst als Monarch darstellen."

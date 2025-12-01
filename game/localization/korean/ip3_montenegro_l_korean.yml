@@ -83,7 +83,7 @@
  mon_new_king_prestige: "유명한 새 왕국"
  mon_new_king_morale: "왕과 국가를 위하여"
  mon_disobedient_court: "불순한 궁정"
- unemployement_birth_rate_countermodifier: "Unemployment Normalised"
+ unemployement_birth_rate_countermodifier: "실업률 정상화"
  #Fixing bad merge
  modifier_scandalous_lover: "추문의 연인"
  modifier_well_known_tragedy: "잘 알려진 비극"
@@ -153,7 +153,7 @@
  mon_more_raiding_tt: "다시 약탈을 증가시키려면 1년 이상 기다려야 함."
  mon_more_heads_tt: "[concept_raiding_frequency] 25% 증가"
  je_montenegrin_raiding_decrease_button: "약탈 억제"
- je_montenegrin_raiding_decrease_button_desc: "부족들에게 약탈을 자제하도록 강제하여 [concept_raiding_frequency]를 25% 감소시킨다. #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#!는 #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#! 문명화를 향한 이 단계를 긍정적으로 평가할 것이다."
+ je_montenegrin_raiding_decrease_button_desc: "부족들에게 약탈을 자제하도록 강제하여 [concept_raiding_frequency]를 25% 감소시킨다. #v [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetName, 'RUS')]#!는 이러한 문명화를 반기며, #v [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]#! 또한 긍정적으로 평가할 것이다."
  mon_less_raiding_tt: "다시 약탈을 감소시키려면 6개월 이상 기다려야 함."
  mon_discourage_raiding_tt: "[concept_raiding_frequency] 25% 감소"
  #If not longer bordering notification that raiding stops
@@ -221,7 +221,7 @@
  mon_state_formation.3.c: "\"가장 위대한 기적은 전장에서 일어난다.\""
  #Regain Austrian Coast JE
  je_mon_austria_alliance: "노선 변경"
- je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')](은)는 우리의 정당한 해안 영토를 점유하고 있음을 인정한다. 단, 지중해에서 [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')](와)과의 [concept_relations] 및 영향력은 단호히 반대하고 있다.\n\n우리가 [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, 'russian')] 정교회 형제들과 결별했다는 인상을 줄 수 있다면, 오스트리아를 설득해서 그 소중한 해안을 돌려받을 수 있을지도 모른다."
+ je_mon_austria_alliance_reason: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')](은)는 우리의 정당한 해안 영토를 점유하고 있음을 인정하면서도, [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, '러시아')] 세력이 지중해에 발을 들이는 것은 단호히 반대하고 있다.\n\n우리가 [SelectLocalization(SCOPE.sCountry('russia').IsValid, SCOPE.sCountry('russia').GetAdjective, '러시아')] 정교회 형제들과 결별했다는 인상을 줄 수 있다면, 오스트리아를 설득해서 그 소중한 해안을 돌려받을 수 있을지도 모른다."
  je_mon_austria_status_desc: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')](와)과의 [concept_relations]가 [SCOPE.sCountry('austria').GetRelationsWithDesc( GetPlayer )]"
  raiding_income_greater_tt: "우리의 [concept_raiding] 수입이 @money!+700 미만이어야 함"
  notification_je_mon_austria_alliance_fail_name: "[SelectLocalization(SCOPE.sCountry('austria').IsValid, SCOPE.sCountry('austria').GetName, 'AUS')](이)가 제안 철회"

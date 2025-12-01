@@ -5445,6 +5445,7 @@ on_secession_end = {
 			days = 1
 			popup = yes
 		}
+		add_to_variable_list = { name = failed_uprisings_culture_list target = scope:rebel_culture years = 20 }
 	}
 }
 

@@ -1,0 +1,136 @@
+pdxmesh = {
+	name = "military_basecamp_generic_mesh"
+	file = "military_basecamp_generic.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 20 }
+		lod = { index = 2 percent = 7 }
+		lod = { index = 3 percent = 4 }
+		lod = { index = 4 percent = 3 }
+	}
+
+	meshsettings = {
+		name = "tent_0Shape"
+		index = 0
+		texture_diffuse = "military_basecamp_generic_diffuse.dds"
+		texture_normal = "military_basecamp_generic_normal.dds"
+		texture_specular = "military_basecamp_generic_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		texture = { file = "military_basecamp_generic_properties.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "TINT_COLOR" "UNIT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "props_Shape0"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "props_Shape1"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent_Shape1"
+		index = 0
+		texture_diffuse = "military_basecamp_generic_diffuse.dds"
+		texture_normal = "military_basecamp_generic_normal.dds"
+		texture_specular = "military_basecamp_generic_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		texture = { file = "military_basecamp_generic_properties.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT" "TINT_COLOR" "UNIT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent_2Shape"
+		index = 0
+		texture_diffuse = "military_basecamp_generic_diffuse.dds"
+		texture_normal = "military_basecamp_generic_normal.dds"
+		texture_specular = "military_basecamp_generic_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		texture = { file = "military_basecamp_generic_properties.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "TINT_COLOR" "UNIT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "props_Shape2"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent_3Shape"
+		index = 0
+		texture_diffuse = "military_basecamp_generic_diffuse.dds"
+		texture_normal = "military_basecamp_generic_normal.dds"
+		texture_specular = "military_basecamp_generic_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		texture = { file = "military_basecamp_generic_properties.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "TINT_COLOR" "UNIT_COLOR" "BACKLIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "props_Shape3"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "tent_4Shape"
+		index = 0
+		texture_diffuse = "military_basecamp_generic_diffuse.dds"
+		texture_normal = "military_basecamp_generic_normal.dds"
+		texture_specular = "military_basecamp_generic_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		texture = { file = "military_basecamp_generic_properties.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "UNIT_COLOR" "BACKLIGHT" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "props_Shape4"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_basecamp_generic_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

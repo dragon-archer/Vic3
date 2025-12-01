@@ -6,8 +6,84 @@ Includes = {
 	"cw/terrain.fxh"
 }
 
+struct EdgeOfWorldConstants
+{
+	float4	_HighCloudColor;
+	float4	_LowCloudColor;
+
+	float2	_BaseCloudScrolling;
+	float2	_Cloud1Scrolling;
+
+	float2	_Cloud2Scrolling;
+	int		_BaseCloudTileFactor;
+	float	_BaseCloudStrength;
+
+	float	_BaseCloudPosition;
+	float	_BaseCloudContrast;
+	int		_Cloud1TileFactor;
+	float	_Cloud1Strength;
+
+	float	_Cloud1Position;
+	float	_Cloud1Contrast;
+	int		_Cloud2TileFactor;
+	float	_Cloud2Strength;
+
+	float	_Cloud2Position;
+	float	_Cloud2Contrast;
+	float	_ColorMultiply;
+	float	_FadeDistance;
+};
+
+struct MapCoaConstants
+{
+	float _MapCoaAngle;
+	float _MapCoaAspectRatio;
+	float _MapCoaSize;
+	float _MapCoaSizeFlatmap;
+
+	float _MapCoaBlend;
+	float _MapCoaBlendFlatmap;
+	float _MapCoaBlendOccupation;
+	float _MapCoaBlendOccupationFlatmap;
+
+	float _MapCoaBlendFadeStart;
+	float _MapCoaBlendFadeEnd;
+	float _MapCoaRowOffset;
+	float _MapCoaRowCount;
+
+	float _MapCoaStripeScale;
+	float _MapCoaStripeScaleFlatmap;
+	bool  _MapCoaEnabled;
+	float _Padding04;
+}
+
+struct SNavalEmblemConstantsData
+{
+	float4 _CausticsColor;
+	float4 _EmblemColor;
+
+	float _EmblemOpacity;
+	float _EmblemOpacityFlatmap;
+	float _EmblemSize;
+	float _EmblemSizeFlatmap;
+
+	float _CausticsStrength;
+	float _CausticsArea;
+	float _CausticsUv;
+	float _OrderOffsetDistance;
+
+	float _OrderIconSize;
+	float _OrderCircleSize;
+	float Padding03;
+	float Padding04;
+}
+
 ConstantBuffer( GameSharedConstants )
 {
+	EdgeOfWorldConstants _EowConstants;
+	MapCoaConstants _CoaConstants;
+	SNavalEmblemConstantsData _NavalEmblemConstants;
+
 	float2 MapSize;
 	float2 _ProvinceMapSize;
 
@@ -23,59 +99,70 @@ ConstantBuffer( GameSharedConstants )
 
 	float3 _SecondSunDiffuse;
 	float _SecondSunIntensity
-	float3 _SecondSunDir;
 
+	float3 _SecondSunDir;
 	float GlobalTime;
+
 	float _FlatmapHeight;
 	float _FlatmapLerp;
-
 	float _ShorelineMaskBlur;
 	float _ShorelineExtentStr;
+
 	float _ShorelineAlpha;
 	int	  _ShoreLinesUVScale;
-
 	float _FlatmapOverlayLandOpacity;
 	float _FlatmapEquatorPosition;
-	int _FlatmapEquatorTiling;
 
+	int _FlatmapEquatorTiling;
 	int _ImpassableTerrainTiling
 	float _ImpassableTerrainHeight
 	float _DistanceFadeStart
+
 	float _DistanceFadeEnd
-
 	float _WaterShadowMultiplier;
-
 	float _MeshTintHeightMin;
 	float _MeshTintHeightMax;
+
 	float _SSAOAlphaTrees;
 	float _SSAOAlphaTerrain;
-
 	float _FogCloseOffset;
 	float _FogFarOffset;
-	float _FogWidthScale;
 
+	float _FogWidthScale;
 	float _DistanceRoughnessPosition;
 	float _DistanceRoughnessBlend;
 	float _DistanceRoughnessScale;
 
 	float _OverlayOpacity;
-
 	int _MapPaintingTextureTiling;
 	int _MapPaintingFlatmapTextureTiling;
 	bool _UseMapmodeTextures;
+
 	bool _UsePrimaryRedAsGradient;
-
 	bool _UseStripeOccupation;
-
 	float _NightWaterAdjustment;
 	float _DayNightBrightness;
+
 	float _DayNightValue;
 	float _DayValue;
 	float _NightValue;
 	float _LightsFadeTime;
+
 	float _LightsActivateBegin;
 	float _LightsActivateEnd;
+	float _SolHighTintHeight;
+	float _SolHighTintContrast;
+
+	float _SolHighHue;
+	float _SolHighSaturation;
+	float _SolHighValue;
+	float _SolLowTintHeight;
+
+	float _SolLowTintContrast;
+	float _SolDebugHigh;
+	float _SolDebugLow;
 };
+
 
 PixelShader =
 {
@@ -111,7 +198,7 @@ PixelShader =
 			return DiffuseLight + SpecularLight;
 		}
 
-		SLightingProperties GetSecondSunLightingProperties( float3 WorldSpacePos )
+		SLightingProperties GetSecondSunLightingProperties( float3 WorldSpacePos, float ShadowTerm = 1.0 )
 		{
 			SLightingProperties LightingProps;
 			LightingProps._ToCameraDir = normalize( CameraPosition - WorldSpacePos );
@@ -120,7 +207,7 @@ PixelShader =
 			LightingProps._LightIntensity = _SecondSunDiffuse * _SecondSunIntensity;
 
 			// Default these values
-			LightingProps._ShadowTerm = 1.0f;
+			LightingProps._ShadowTerm = ShadowTerm;
 			LightingProps._CubemapIntensity = 0.0f;
 			LightingProps._CubemapYRotation = Float4x4Identity();
 
@@ -217,4 +304,14 @@ Code
 		return StripeMask;
 	}
 
+	float FadeCloseAlpha( float Alpha )
+	{
+		// Close fade
+		float FadeStart = ( _DistanceFadeStart - _DistanceFadeEnd );
+		float CloseZoomBlend = FadeStart - CameraPosition.y + _DistanceFadeEnd;
+		CloseZoomBlend = smoothstep( FadeStart, 0.0f, CloseZoomBlend );
+		float FadedAlpha = Alpha * CloseZoomBlend;
+
+		return FadedAlpha;
+	}
 ]]

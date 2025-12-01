@@ -1,0 +1,93 @@
+
+#################################################
+###       			European     			  ###
+#################################################
+
+entity = {
+	name =		 "military_infantry_european_general_entity"
+	pdxmesh =	 "military_infantry_european_general_mesh"
+	
+
+	attach = { name = weapon 		r_hand_attach = "military_arms_saber_entity" }
+
+	get_state_from_parent = yes
+	default_state = "idle"
+
+	state = { name = "idle"  
+		animation = 		"infantry_saber_idle_01_animation"
+		looping = 			yes 
+		}
+
+	state = { name = "walk"  
+		animation = 		"infantry_saber_walk_01_animation"
+		looping = 			yes 
+		}
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend" 
+		animation = 		"infantry_saber_defend_01_animation"
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/saber/anm_defend_saber_01" }}
+		}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"  
+		animation = 		"infantry_saber_advance_01_animation" 
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/infantry/saber/anm_advance_saber_01" }}
+		}
+
+}
+
+
+
+#################################################
+###       			African     			  ###
+#################################################
+
+entity = {
+	clone =		 "military_infantry_european_general_entity"
+	name =		 "military_infantry_african_general_entity"
+	pdxmesh =	 "military_infantry_african_general_mesh"
+}
+
+
+
+
+#################################################
+###       			Arabic     				  ###
+#################################################
+
+entity = {
+	clone =		 "military_infantry_european_general_entity"
+	name =		 "military_infantry_arabic_general_entity"
+	pdxmesh =	 "military_infantry_arabic_general_mesh"
+}
+
+
+
+
+#################################################
+###       			East Asian     			  ###
+#################################################
+
+entity = {
+	clone =		 "military_infantry_european_general_entity"
+	name =		 "military_infantry_eastasian_general_entity"
+	pdxmesh =	 "military_infantry_eastasian_general_mesh"
+}
+
+
+
+#################################################
+###       			South Asian     		  ###
+#################################################
+
+entity = {
+	clone =		 "military_infantry_european_general_entity"
+	name =		 "military_infantry_southasian_general_entity"
+	pdxmesh =	 "military_infantry_southasian_general_mesh"
+}

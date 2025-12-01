@@ -1,0 +1,65 @@
+
+#################################################
+###       			Generic     			  ###
+#################################################
+
+entity = {
+	name = 	  "military_props_artillery_cannon_01_entity"
+	pdxmesh = "military_props_artillery_cannon_01_mesh"
+
+	locator = { name = "locator_decal_01" 
+		position = { 0 0 0 } 
+		rotation = { 0 0 0 } 
+		scale = 1
+	}
+
+	attach = { locator_decal_01 = "military_diorama_decal_6x6_entity" }
+}
+
+entity = {
+	clone =		 "military_props_artillery_cannon_01_entity"
+	name =		 "military_props_artillery_cannon_02_entity"
+	pdxmesh =	 "military_props_artillery_cannon_02_mesh"
+}
+
+entity = {
+	clone =		 "military_props_artillery_cannon_01_entity"
+	name =		 "military_props_artillery_mobile_01_entity"
+	pdxmesh =	 "military_props_artillery_mobile_01_mesh"
+}
+
+entity = {
+	clone =		 "military_props_artillery_cannon_01_entity"
+	name =		 "military_props_artillery_mobile_02_entity"
+	pdxmesh =	 "military_props_artillery_mobile_02_mesh"
+}
+
+entity = {
+	clone =		 "military_props_artillery_cannon_01_entity"
+	name =		 "military_props_artillery_shrapnel_01_entity"
+	pdxmesh =	 "military_props_artillery_shrapnel_01_mesh"
+}
+
+entity = {
+	clone =		 "military_props_artillery_cannon_01_entity"
+	name =		 "military_props_artillery_shrapnel_02_entity"
+	pdxmesh =	 "military_props_artillery_shrapnel_02_mesh"
+}
+
+entity = {
+	clone =		 "military_props_artillery_cannon_01_entity"
+	name =		 "military_props_artillery_siege_01_entity"
+	pdxmesh =	 "military_props_artillery_siege_01_mesh"
+}
+
+entity = {
+	clone =		 "military_props_artillery_cannon_01_entity"
+	name =		 "military_props_artillery_siege_02_entity"
+	pdxmesh =	 "military_props_artillery_siege_02_mesh"
+}
+
+entity = {
+	clone =		 "military_props_artillery_cannon_01_entity"
+	name = 		 "military_diorama_flag_entity"
+	pdxmesh = 	 "military_diorama_flag_mesh"
+}

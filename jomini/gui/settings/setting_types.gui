@@ -352,6 +352,7 @@ types Settings
 			size = { 100 20 }
 			parentanchor = bottom|right
 			text = "SETTINGS_INPUT_CONFIRM"
+			enabled = "[JominiSettingsWindow.IsConfirmButtonEnabled]"
 			onclick = "[JominiSettingsWindow.OnClickConfirm]"
 		}
 
@@ -416,7 +417,7 @@ types Settings
 			parentanchor = left|vcenter
 			size = { 350 14 }
 			minimumsize = { -1 14 }
-			value = "[PdxValueSetting.GetValue(PdxSetting.GetSetting)]"
+			value = "[PdxValueSetting.GetCurrentValue(PdxSetting.GetSetting)]"
 			block "setting_value_scrollbar" {}
 
 			track = {
@@ -439,7 +440,8 @@ types Settings
 			position = { 360 0 }
 			size = { 40 30 }
 			align = center|nobaseline
-			text = "[PdxValueSetting.GetFormatedValue(PdxSetting.GetSetting)]"
+			text = "[PdxValueSetting.GetFormatedCurrentValue(PdxSetting.GetSetting)]"
+			fontcolor = "[Select_CVector4f( PdxValueSetting.HasValueChanged(PdxSetting.GetSetting), '(CVector4f)1.0,0.0,0.0,1.0', '(CVector4f)1.0,1.0,1.0,1.0' )]"
 			alwaystransparent = no
 			focuspolicy = all
 			cursorcolor = { 1 1 0.5 1 }
@@ -470,6 +472,7 @@ types Settings
 			blockoverride "dropdown_item_text"
 			{				
 				text = "[EnumSettingEntry.GetGUIName] [EnumSettingEntry.GetRecommendedText]"
+				fontcolor = "[Select_CVector4f( EnumSettingEntry.HasValueChanged, '(CVector4f)1.0,0.0,0.0,1.0', '(CVector4f)1.0,1.0,1.0,1.0' )]"
 			}
 		}
 		dynamicgridbox = {

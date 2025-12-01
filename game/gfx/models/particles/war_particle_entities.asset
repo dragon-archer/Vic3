@@ -114,7 +114,7 @@ entity = {
 		#next_state = "idle_mobile"
 		looping = no
 		event = { time = 0 node = "part1" particle = "war/war_active_side_smoke" trigger_once = yes keep_particle = yes}
-		event = { time = 0 node = "part1" particle = "war/artillery_mobile_parent" trigger_once = no}
+		event = { time = 0 node = "part1" particle = "arms/mobile_explosion" trigger_once = no}
 		event = { sound = { soundeffect = "event:/SFX/VFX/war/artillery_mobile" } }
 		
 		

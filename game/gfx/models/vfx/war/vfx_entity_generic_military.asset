@@ -159,9 +159,9 @@ entity =
 
 		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/skirmish" } }
 	
-		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = yes}			
-		event = { time = 0 node = "locator_vfx_02" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = yes}
-		event = { time = 0.1 node = "impact_site" particle = "war/bullet_impacts_rifle" trigger_once = yes keep_particle = yes}
+		#event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = yes}			
+		#event = { time = 0 node = "locator_vfx_02" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = yes}
+		#event = { time = 0.1 node = "impact_site" particle = "war/bullet_impacts_rifle" trigger_once = yes keep_particle = yes}
 		
 		next_state = "idle"
 	}
@@ -174,9 +174,9 @@ entity =
 
 		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/skirmish" } }
 	
-		event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = yes}			
-		event = { time = 0 node = "locator_vfx_02" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = yes}
-		event = { time = 0.1 node = "impact_site" particle = "war/bullet_impacts_rifle" trigger_once = yes keep_particle = yes}
+		#event = { time = 0 node = "locator_vfx_01" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = yes}			
+		#event = { time = 0 node = "locator_vfx_02" particle = "war/rifle_pm_skirmish_infantry_focusfire" trigger_once = yes keep_particle = yes}
+		#event = { time = 0.1 node = "impact_site" particle = "war/bullet_impacts_rifle" trigger_once = yes keep_particle = yes}
 		
 		next_state = "idle"
 	}
@@ -284,7 +284,7 @@ entity =
 		event = { time = 0.1 node = "locator_vfx_01" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
 		event = { time = 0.2 node = "locator_vfx_02" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
 		event = { time = 0.25 node = "locator_vfx_03" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { time = 0.4 node = "impact_site" particle = "war/artillery_cannon_parent" trigger_once = no keep_particle = no}
+		event = { time = 0.4 node = "impact_site" particle = "arms/cannon_explosion" trigger_once = no keep_particle = no}
 
 		event = {  time = 0.4 keep_sound = no trigger_once = no sound = { soundeffect = "event:/SFX/VFX/war/artillery_mobile" } }		
 		event = { time = 0.1 keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/infantry/line/cannon_artillery" } }	
@@ -366,7 +366,7 @@ entity =
 		event = { time = 0.0 node = "loc_cannon_right" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
 		event = { time = 0.0 node = "loc_cannon_middle" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
 		event = { time = 0.0 node = "loc_cannon_left" particle = "particle_pm_mobile_artillery" trigger_once = no keep_particle = no}	
-		event = { time = 0.3 node = "impact_site" particle = "war/artillery_mobile_parent" trigger_once = no keep_particle = no}
+		event = { time = 0.3 node = "impact_site" particle = "arms/mobile_explosion" trigger_once = no keep_particle = no}
 
 		event = {  time = 0.3 keep_sound = no trigger_once = no sound = { soundeffect = "event:/SFX/VFX/war/artillery_mobile" } }
 		event = { keep_sound = no trigger_once = no sound  = { soundeffect = "event:/SFX/VFX/war/artillery/mobile/generic" } }

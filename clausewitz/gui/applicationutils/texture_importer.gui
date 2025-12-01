@@ -56,9 +56,12 @@ types "TextureImporter"
 	}
 }
 
+@texture_importer_width = 600
+@texture_importer_output_text_width = 560 # Relative to @texture_importer_width
+
 widget = {
 	name = "texture_importer"
-    size = { 600 840 }
+    size = { @texture_importer_width 840 }
 
 	layoutpolicy_horizontal = expanding
 	layoutpolicy_vertical = expanding
@@ -309,43 +312,24 @@ widget = {
 						flowcontainer = {
 							direction = vertical
 
-							flowcontainer = {
-								direction = horizontal
-
-								editor_checkbutton = {
-									blockoverride "checkbutton"
-									{
-										onclick = "[OutputEntry.ToggleIsSelected]"
-										checked = "[OutputEntry.IsSelected]"
-									}
-
-									blockoverride "label"
-									{
-										text = ""
-									}
-
-									raw_tooltip = "Choose whether this file should be imported or not."
-									tooltipwidget = {
-										using = dockable_tooltip
-									}
-
+							editor_checkbutton = {
+								blockoverride "checkbutton"
+								{
+									onclick = "[OutputEntry.ToggleIsSelected]"
+									checked = "[OutputEntry.IsSelected]"
 								}
 
-								container = {
+								blockoverride "label"
+								{
+									text = "[OutputEntry.GetPath]";
+									fontcolor = "[Select_CVector4f( OutputEntry.IsValid, '(CVector4f)0.6,1.0,0.6,1.0', '(CVector4f)1.0,0.6,0.6,1.0' )]"
+									multiline = yes
+									max_width = @texture_importer_output_text_width
+								}
 
-									editor_textbox = {
-										text = "[OutputEntry.GetPath]";
-										visible = "[OutputEntry.IsValid]"
-										fontcolor = { 0.6 1.0 0.6 1 }
-										autoresize = yes
-									}
-
-									editor_textbox = {
-										text = "[OutputEntry.GetPath]";
-										visible = "[Not(OutputEntry.IsValid)]"
-										fontcolor = { 1.0 0.6 0.6 1 }
-										autoresize = yes
-									}
+								raw_tooltip = "Choose whether this file should be imported or not."
+								tooltipwidget = {
+									using = dockable_tooltip
 								}
 							}
 		
@@ -359,22 +343,12 @@ widget = {
 									datamodel = "[OutputEntry.GetInputTextures]"
 			
 									item = {
-										container = {
-											editor_textbox = {
-												visible = "[TextureEntry.IsAvailable]";
-												text = "[TextureEntry.GetName]";
-												fontcolor = { 1 1 1 1 }
-												fontsize = 10
-												autoresize = yes
-											}
-			
-											editor_textbox = {
-												visible = "[Not(TextureEntry.IsAvailable)]";
-												text = "[TextureEntry.GetName]";
-												fontcolor = { 0.7 0.7 0.7 1 }
-												fontsize = 10
-												autoresize = yes
-											}
+										editor_textbox = {
+											visible = "[TextureEntry.IsAvailable]";
+											text = "[TextureEntry.GetName]";
+											fontcolor = "[Select_CVector4f( TextureEntry.IsAvailable, '(CVector4f)1.0,1.0,1.0,1.0', '(CVector4f)0.7,0.7,0.7,1.0' )]"
+											fontsize = 10
+											autoresize = yes
 										}
 									}
 								}

@@ -1,0 +1,76 @@
+pdxmesh = {
+	name = "military_transport_road_truck_generic_mesh"
+	file = "military_transport_road_truck_generic.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 6.0 }
+		lod = { index = 2 percent = 3.0 }
+		lod = { index = 3 percent = 1.0 }
+	}
+
+	animation = { id = "idle_animation" type = "military_transport_road_truck_generic_idle.anim" }
+	animation = { id = "moving_animation" type = "military_transport_road_truck_generic_moving.anim" }
+
+	meshsettings = {
+		name = "military_transport_road_truck_generic_Shape0"
+		index = 0
+		texture_diffuse = "military_transport_road_truck_generic_diffuse.dds"
+		texture_normal = "military_transport_road_truck_generic_normal.dds"
+		texture_specular = "military_transport_road_truck_generic_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_transport_road_truck_generic_Shape1"
+		index = 0
+		texture_diffuse = "military_transport_road_truck_generic_diffuse.dds"
+		texture_normal = "military_transport_road_truck_generic_normal.dds"
+		texture_specular = "military_transport_road_truck_generic_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_transport_road_truck_generic_Shape2"
+		index = 0
+		texture_diffuse = "military_transport_road_truck_generic_diffuse.dds"
+		texture_normal = "military_transport_road_truck_generic_normal.dds"
+		texture_specular = "military_transport_road_truck_generic_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_transport_road_truck_generic_Shape3"
+		index = 0
+		texture_diffuse = "military_transport_road_truck_generic_diffuse.dds"
+		texture_normal = "military_transport_road_truck_generic_normal.dds"
+		texture_specular = "military_transport_road_truck_generic_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "military_transport_road_truck_generic_entity"
+	pdxmesh = "military_transport_road_truck_generic_mesh"
+
+	locator = { name = "effects" position = { 0.0 0.0 0.0 } rotation = { 0 0 0 }}
+
+	default_state = "moving"
+	state = {
+		name = "idle"
+		animation = "idle_animation"
+	}
+	state = {
+		name = "moving"
+		animation = "moving_animation"
+		event = { time = 0 node = "suspension" particle = "vehicles/cargotruck_effects" trigger_once = yes}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/transport/road_truck/anm_military_transport_road_truck_generic" }}
+	}
+}

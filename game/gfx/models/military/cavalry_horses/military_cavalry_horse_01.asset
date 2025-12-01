@@ -1,0 +1,171 @@
+pdxmesh = {
+	name = "military_cavalry_horse_black_01_mesh"
+	file = "military_cavalry_horse_01.mesh"
+
+	meshsettings = {
+		name = "horseShape"
+		index = 0
+		texture_diffuse = "military_cavalry_horse_black_01_diffuse.dds"
+		texture_normal = "military_cavalry_horse_01_normal.dds"
+		texture_specular = "military_cavalry_horse_01_properties.dds"
+		texture = { file = "military_cavalry_horse_01_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	animation = { id = "anim_walk"												type = "military_cavalry_horse_01_walk.anim" }
+	animation = { id = "anim_defend"											type = "military_cavalry_horse_01_idle.anim" }
+	animation = { id = "anim_advance"											type = "military_cavalry_horse_01_attack.anim" }
+
+
+	### Hussars ###
+	animation = { id = "cavalry_hussar_idle_animation"							type = "military_cavalry_horse_hussar_idle.anim" }
+	animation = { id = "cavalry_hussar_warcry_animation"						type = "military_cavalry_horse_hussar_warcry.anim" }
+	animation = { id = "cavalry_hussar_charge_animation"						type = "military_cavalry_horse_hussar_charge.anim" }
+
+	### Dragoons ###
+	animation = { id = "cavalry_dragoon_idle_animation"							type = "military_cavalry_horse_dragoon_idle.anim" }
+	animation = { id = "cavalry_dragoon_fire_defensive_animation"				type = "military_cavalry_horse_dragoon_fire_defensive.anim" }
+	animation = { id = "cavalry_dragoon_fire_aggressive_animation"				type = "military_cavalry_horse_dragoon_fire_aggressive.anim" }
+
+	### Cuirassier ###
+	animation = { id = "cavalry_cuirassier_idle_animation"						type = "military_cavalry_horse_cuirassier_idle.anim" }
+	animation = { id = "cavalry_cuirassier_warcry_animation"					type = "military_cavalry_horse_cuirassier_warcry.anim" }
+	animation = { id = "cavalry_cuirassier_charge_animation"					type = "military_cavalry_horse_cuirassier_charge.anim" }
+
+	### Lancer ###
+	animation = { id = "cavalry_lancer_idle_animation"							type = "military_cavalry_horse_lancer_idle.anim" }
+	animation = { id = "cavalry_lancer_warcry_animation"						type = "military_cavalry_horse_lancer_warcry.anim" }
+	animation = { id = "cavalry_lancer_charge_animation"						type = "military_cavalry_horse_lancer_charge.anim" }
+
+}
+
+pdxmesh = {
+	name = "military_cavalry_horse_beige_01_mesh"
+	file = "military_cavalry_horse_01.mesh"
+
+	meshsettings = {
+		name = "horseShape"
+		index = 0
+		texture_diffuse = "military_cavalry_horse_beige_01_diffuse.dds"
+		texture_normal = "military_cavalry_horse_01_normal.dds"
+		texture_specular = "military_cavalry_horse_01_properties.dds"
+		texture = { file = "military_cavalry_horse_01_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	animation = { id = "anim_walk"												type = "military_cavalry_horse_01_walk.anim" }
+	animation = { id = "anim_defend"											type = "military_cavalry_horse_01_idle.anim" }
+	animation = { id = "anim_advance"											type = "military_cavalry_horse_01_attack.anim" }
+
+
+	### Hussars ###
+	animation = { id = "cavalry_hussar_idle_animation"							type = "military_cavalry_horse_hussar_idle.anim" }
+	animation = { id = "cavalry_hussar_warcry_animation"						type = "military_cavalry_horse_hussar_warcry.anim" }
+	animation = { id = "cavalry_hussar_charge_animation"						type = "military_cavalry_horse_hussar_charge.anim" }
+
+	### Dragoons ###
+	animation = { id = "cavalry_dragoon_idle_animation"							type = "military_cavalry_horse_dragoon_idle.anim" }
+	animation = { id = "cavalry_dragoon_fire_defensive_animation"				type = "military_cavalry_horse_dragoon_fire_defensive.anim" }
+	animation = { id = "cavalry_dragoon_fire_aggressive_animation"				type = "military_cavalry_horse_dragoon_fire_aggressive.anim" }
+
+	### Cuirassier ###
+	animation = { id = "cavalry_cuirassier_idle_animation"						type = "military_cavalry_horse_cuirassier_idle.anim" }
+	animation = { id = "cavalry_cuirassier_warcry_animation"					type = "military_cavalry_horse_cuirassier_warcry.anim" }
+	animation = { id = "cavalry_cuirassier_charge_animation"					type = "military_cavalry_horse_cuirassier_charge.anim" }
+
+	### Lancer ###
+	animation = { id = "cavalry_lancer_idle_animation"							type = "military_cavalry_horse_lancer_idle.anim" }
+	animation = { id = "cavalry_lancer_warcry_animation"						type = "military_cavalry_horse_lancer_warcry.anim" }
+	animation = { id = "cavalry_lancer_charge_animation"						type = "military_cavalry_horse_lancer_charge.anim" }
+
+}
+
+pdxmesh = {
+	name = "military_cavalry_horse_brown_01_mesh"
+	file = "military_cavalry_horse_01.mesh"
+
+	meshsettings = {
+		name = "horseShape"
+		index = 0
+		texture_diffuse = "military_cavalry_horse_brown_01_diffuse.dds"
+		texture_normal = "military_cavalry_horse_01_normal.dds"
+		texture_specular = "military_cavalry_horse_01_properties.dds"
+		texture = { file = "military_cavalry_horse_01_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	animation = { id = "anim_walk"												type = "military_cavalry_horse_01_walk.anim" }
+	animation = { id = "anim_defend"											type = "military_cavalry_horse_01_idle.anim" }
+	animation = { id = "anim_advance"											type = "military_cavalry_horse_01_attack.anim" }
+
+
+	### Hussars ###
+	animation = { id = "cavalry_hussar_idle_animation"							type = "military_cavalry_horse_hussar_idle.anim" }
+	animation = { id = "cavalry_hussar_warcry_animation"						type = "military_cavalry_horse_hussar_warcry.anim" }
+	animation = { id = "cavalry_hussar_charge_animation"						type = "military_cavalry_horse_hussar_charge.anim" }
+
+	### Dragoons ###
+	animation = { id = "cavalry_dragoon_idle_animation"							type = "military_cavalry_horse_dragoon_idle.anim" }
+	animation = { id = "cavalry_dragoon_fire_defensive_animation"				type = "military_cavalry_horse_dragoon_fire_defensive.anim" }
+	animation = { id = "cavalry_dragoon_fire_aggressive_animation"				type = "military_cavalry_horse_dragoon_fire_aggressive.anim" }
+
+	### Cuirassier ###
+	animation = { id = "cavalry_cuirassier_idle_animation"						type = "military_cavalry_horse_cuirassier_idle.anim" }
+	animation = { id = "cavalry_cuirassier_warcry_animation"					type = "military_cavalry_horse_cuirassier_warcry.anim" }
+	animation = { id = "cavalry_cuirassier_charge_animation"					type = "military_cavalry_horse_cuirassier_charge.anim" }
+
+	### Lancer ###
+	animation = { id = "cavalry_lancer_idle_animation"							type = "military_cavalry_horse_lancer_idle.anim" }
+	animation = { id = "cavalry_lancer_warcry_animation"						type = "military_cavalry_horse_lancer_warcry.anim" }
+	animation = { id = "cavalry_lancer_charge_animation"						type = "military_cavalry_horse_lancer_charge.anim" }
+
+}
+
+pdxmesh = {
+	name = "military_cavalry_horse_white_01_mesh"
+	file = "military_cavalry_horse_01.mesh"
+
+	meshsettings = {
+		name = "horseShape"
+		index = 0
+		texture_diffuse = "military_cavalry_horse_white_01_diffuse.dds"
+		texture_normal = "military_cavalry_horse_01_normal.dds"
+		texture_specular = "military_cavalry_horse_01_properties.dds"
+		texture = { file = "military_cavalry_horse_01_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	animation = { id = "anim_walk"												type = "military_cavalry_horse_01_walk.anim" }
+	animation = { id = "anim_defend"											type = "military_cavalry_horse_01_idle.anim" }
+	animation = { id = "anim_advance"											type = "military_cavalry_horse_01_attack.anim" }
+
+
+	### Hussars ###
+	animation = { id = "cavalry_hussar_idle_animation"							type = "military_cavalry_horse_hussar_idle.anim" }
+	animation = { id = "cavalry_hussar_warcry_animation"						type = "military_cavalry_horse_hussar_warcry.anim" }
+	animation = { id = "cavalry_hussar_charge_animation"						type = "military_cavalry_horse_hussar_charge.anim" }
+
+	### Dragoons ###
+	animation = { id = "cavalry_dragoon_idle_animation"							type = "military_cavalry_horse_dragoon_idle.anim" }
+	animation = { id = "cavalry_dragoon_fire_defensive_animation"				type = "military_cavalry_horse_dragoon_fire_defensive.anim" }
+	animation = { id = "cavalry_dragoon_fire_aggressive_animation"				type = "military_cavalry_horse_dragoon_fire_aggressive.anim" }
+
+	### Cuirassier ###
+	animation = { id = "cavalry_cuirassier_idle_animation"						type = "military_cavalry_horse_cuirassier_idle.anim" }
+	animation = { id = "cavalry_cuirassier_warcry_animation"					type = "military_cavalry_horse_cuirassier_warcry.anim" }
+	animation = { id = "cavalry_cuirassier_charge_animation"					type = "military_cavalry_horse_cuirassier_charge.anim" }
+
+	### Lancer ###
+	animation = { id = "cavalry_lancer_idle_animation"							type = "military_cavalry_horse_lancer_idle.anim" }
+	animation = { id = "cavalry_lancer_warcry_animation"						type = "military_cavalry_horse_lancer_warcry.anim" }
+	animation = { id = "cavalry_lancer_charge_animation"						type = "military_cavalry_horse_lancer_charge.anim" }
+
+}

@@ -78,16 +78,18 @@ ComputeShader =
 				float3 Normal = normalize( cross( P1, P2 ) );
 				return float3( Normal );
 			}
-			float CalcDistanceFromPlane( float3 Point, float3 Plane )
+
+			float CalcDistanceFromPlane( float3 P, float3 Plane )
 			{
-				return dot( Plane.xyz, Point );
+			 	return dot( Plane.xyz, P );
 			}
 			
 			// From https://simoncoenen.com/blog/programming/graphics/SpotlightCulling
-			bool IsPointBehindPlane( float3 Point, float3 Plane )
+			bool IsPointBehindPlane( float3 P, float3 Plane )
 			{
-				return CalcDistanceFromPlane( Point, Plane ) < 0.0;
+			  	return CalcDistanceFromPlane( P, Plane ) < 0.0;
 			}
+
 			bool IsConeBehindPlane( float3 ConeTip, float3 ConeDirection, float ConeHeight, float ConeRadius, float3 Plane )
 			{
 				float3 FurthestPointDirection = normalize( cross( cross( Plane, ConeDirection ), ConeDirection ) );
@@ -160,17 +162,17 @@ ComputeShader =
 				
 				if ( 
 				#ifdef DO_TILE_FRUSTUM_DEPTH_TEST
-					 ( ViewSpaceLightPos.z - PointLight._Radius < DepthMax ) && 
-					 ( ViewSpaceLightPos.z + PointLight._Radius > DepthMin ) &&
+					( ViewSpaceLightPos.z - PointLight._Radius < DepthMax ) && 
+					( ViewSpaceLightPos.z + PointLight._Radius > DepthMin ) &&
 				#endif
-					 ( CalcDistanceFromPlane( ViewSpaceLightPos, FrustumPlanes[0] ) < PointLight._Radius ) &&
-					 ( CalcDistanceFromPlane( ViewSpaceLightPos, FrustumPlanes[1] ) < PointLight._Radius ) &&
-					 ( CalcDistanceFromPlane( ViewSpaceLightPos, FrustumPlanes[2] ) < PointLight._Radius ) &&
-					 ( CalcDistanceFromPlane( ViewSpaceLightPos, FrustumPlanes[3] ) < PointLight._Radius ) )
+					( CalcDistanceFromPlane( ViewSpaceLightPos, FrustumPlanes[0] ) < PointLight._Radius ) &&
+					( CalcDistanceFromPlane( ViewSpaceLightPos, FrustumPlanes[1] ) < PointLight._Radius ) &&
+					( CalcDistanceFromPlane( ViewSpaceLightPos, FrustumPlanes[2] ) < PointLight._Radius ) &&
+					( CalcDistanceFromPlane( ViewSpaceLightPos, FrustumPlanes[3] ) < PointLight._Radius ) )
 				{
 					return true;
 				}
-				
+
 				return false;
 			}
 
@@ -278,7 +280,7 @@ ComputeShader =
 				}
 				
 				// Calculate pixel position clamped to resolution (note that last tile can extend outside of resolution)
-				uint2 MaxPixelPos =  _Resolution - 1.0;
+				uint2 MaxPixelPos =  uint2( _Resolution - 1.0 );
 				uint2 PixelPos = min( Input.GlobalId.xy, MaxPixelPos );
 				
 				// Sample depth buffer and calculate view space depth

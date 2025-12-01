@@ -1,11 +1,40 @@
 Includes = {
 	"cw/shadow.fxh"
+	"cw/camera.fxh"
 	"cw/utility.fxh"
 	"jomini/jomini_lighting.fxh"
 	"jomini/jomini_spline.fxh"
 	"sharedconstants.fxh"
 	"distance_fog.fxh"
 	"fog_of_war.fxh"
+}
+VertexShader =
+{
+	MainCode VS_naval_route
+	{
+		Input = "VS_INPUT"
+		Output = "VS_OUTPUT"
+		Code
+		[[
+			PDX_MAIN
+			{
+				VS_OUTPUT Out;
+
+				// Adjust to avoid clipping with water surface
+				Input.Position += 0.05f;
+
+				Out.UV 				= Input.UV;
+				Out.Tangent 		= Input.Tangent;
+				Out.Normal			= Input.Normal;
+				Out.WorldSpacePos 	= Input.Position;
+				Out.MaxU 			= Input.MaxU;
+
+				Out.Position = FixProjectionAndMul( ViewProjectionMatrix, float4( Input.Position, 1.0f ) );
+
+				return Out;
+			}
+		]]
+	}
 }
 
 PixelShader =
@@ -87,7 +116,7 @@ PixelShader =
 		SamplerType = "Compare"
 	}
 
-	MainCode PixelShader
+	MainCode PS_naval_route
 	{
 		Input = "VS_OUTPUT"
 		Output = "PDX_COLOR"
@@ -150,6 +179,9 @@ PixelShader =
 				// Distance fog
 				Color = GameApplyDistanceFog( Color, Input.WorldSpacePos );
 
+				// Close fade
+				Diffuse.a = FadeCloseAlpha( Diffuse.a );
+
 				DebugReturn( Color, MaterialProps, LightingProps, EnvironmentMap );
 				return float4( Color.rgb, Diffuse.a );
 			}
@@ -166,7 +198,8 @@ BlendState BlendState
 
 RasterizerState RasterizerState
 {
-	DepthBias = -50000
+	DepthBias = -10
+	#SlopeScaleDepthBias = 5
 	#fillmode = wireframe
 	#CullMode = none
 }
@@ -176,8 +209,8 @@ DepthStencilState DepthStencilState
 	DepthWriteEnable = no
 }
 
-Effect Default
+Effect NavalRoute
 {
-	VertexShader = "VertexShader"
-	PixelShader = "PixelShader"
+	VertexShader = "VS_naval_route"
+	PixelShader = "PS_naval_route"
 }

@@ -1,0 +1,9 @@
+entity = {
+	name = "military_arms_assets"
+
+	cull_radius = 40.0
+
+	locator = { name = "pos_1" position = { 0.0 0.7 0.0 } rotation = { 0 0 0 } }
+
+	attach = { pos_1= "military_arms_dreyseneedle_entity" }
+}

@@ -591,6 +591,107 @@ variation = {
 
 
 
+variation = {
+	name = "male_headgear_south_american_gaucho_01"
+	
+	
+	pattern = { 
+		weight = 1
+		
+		r = { textures = "generic_wool_standard_plain_01" 					layout = "slavic_fabric_layout" }
+		g = { textures = "generic_medal_metals_01" 					layout = "slavic_fabric_layout" }
+		b = { textures = "polynesian_straw_pattern_01" 				layout = "european_gold_trim_layout_02" }
+		a = { textures = "generic_wool_standard_fine_01"				layout = "plain_fabric_layout" }
+	}
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_headgear_south_american_gaucho_01.dds" }	
+}
+
+
+
+
+variation = {
+	name = "male_top_layer_south_american_bandit_lampiao"
+	
+	
+	pattern = { 
+		weight = 1
+		
+		r = { textures = "generic_cotton_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		g = { textures = "native_american_pattern_02" 					layout = "slavic_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 				layout = "european_gold_trim_layout_02" }
+		a = { textures = "generic_cotton_standard_fine_01"				layout = "plain_fabric_layout" }
+	}
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_top_layer_south_american_bandit_lampiao_01.dds" }	
+}
+
+
+variation = {
+
+	name = "male_top_layer_south_american_gaucho_01"
+	
+	
+	pattern = { 
+		weight = 1
+		
+		r = { textures = "generic_cotton_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		g = { textures = "european_wool_standard_plaid_01" 					layout = "slavic_fabric_layout" }
+		b = { textures = "arabic_cotton_pattern_01" 				layout = "european_gold_trim_layout_02" }
+		a = { textures = "generic_misc_plastic_shiny"				layout = "plain_fabric_layout" }
+	}
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_top_layer_south_american_bandit_lampiao_01.dds" }	
+}
+
+variation = {
+
+	name = "male_top_layer_south_american_gaucho_01_brazil_colors"
+	
+	
+	pattern = { 
+		weight = 1
+		
+		r = { textures = "generic_cotton_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		g = { textures = "generic_cotton_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		b = { textures = "generic_cotton_standard_fine_01" 				layout = "european_gold_trim_layout_02" }
+		a = { textures = "generic_misc_plastic_shiny"				layout = "plain_fabric_layout" }
+	}
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_top_layer_gaucho_01_brazilian_colors.dds" }	
+}
+
+
+
+variation = {
+	name = "male_legwear_south_american_bandit_lampiao_01"
+	
+	
+	pattern = { 
+		weight = 1
+		
+		r = { textures = "generic_cotton_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		g = { textures = "generic_leather_standard_plain_01" 					layout = "slavic_fabric_layout" }
+		b = { textures = "generic_leather_standard_plain_01" 				layout = "european_gold_trim_layout_02" }
+		a = { textures = "generic_medal_metals_01"				layout = "plain_fabric_layout" }
+	}
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_top_layer_south_american_bandit_lampiao_01.dds" }	
+}
+
+
+
+
+
+
+
+
+
 
 variation = {
 	name = "male_headgear_south_american_agitator_01"
@@ -718,6 +819,28 @@ variation = {
 }
 
 variation = {
+	name = "male_legwear_south_american_01_brazilian"
+	
+	# patterns are sampled using UV-set 2
+	# uv-coordinates will be modified with scale, rotation, and offset before the texture is sampled
+	# If more than one pattern_layout is provided one will be chosen at random (uniformly, no weights)
+	pattern = { 
+		weight = 1
+		#r,g,b,a here refers to the channels in the pattern_mask scripted in the entity
+		r = { textures = "generic_cotton_standard_fine_01" 				layout = "plain_fabric_layout" }
+		g = { textures = "generic_silk_standard_plain_01" 				layout = "slavic_fabric_layout" }
+		b = { textures = "generic_wool_standard_plain_01" 				layout = "european_gold_trim_layout_02" }
+		a = { textures = "generic_misc_plastic_shiny"					layout = "plain_fabric_layout" }
+	}	
+
+	# Color palette textures are 4-wide and N-high.
+	# Shaders will chose a row in the texture at random, and each column will be sampled once.
+	# First column will be masked by the red channel in the masks, second by the green, etc.
+	# If more than one color palette texture is provided one will be chosen at random (uniformly, no weights)
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_legwear_south_american_01_brazilian.dds" }	
+}
+
+variation = {
 	name = "female_sash_south_american_agitator_01"
 	
 	pattern = { 
@@ -773,4 +896,21 @@ variation = {
 	
 
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_waistcoat_historical_madero.dds" }	
+}
+
+variation = {
+	name = "male_belt_gaucho_01"
+	
+	
+	pattern = { 
+		weight = 1
+		
+		r = { textures = "generic_cotton_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		g = { textures = "generic_leather_standard_plain_01" 					layout = "slavic_fabric_layout" }
+		b = { textures = "generic_medal_metals_01" 				layout = "european_gold_trim_layout_02" }
+		a = { textures = "generic_leather_standard_fine_01"				layout = "plain_fabric_layout" }
+	}
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_belt_gaucho_01.dds" }	
 }

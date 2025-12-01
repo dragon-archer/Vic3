@@ -77,7 +77,8 @@ types NodeEditor
 
 	type node_editor_search = container {
 		
-		minimumsize = { 295 30 }
+		visible = "[NodeEditorSearch.IsVisible]"
+		minimumsize = { 315 30 }
 
 		background = {
 			texture = "gfx/editor_gui/editor_layout_window_content.png"
@@ -165,6 +166,19 @@ types NodeEditor
 				using = dockable_tooltip
 			}
 		}
+
+		editor_button = {
+			raw_tooltip = "Close Serach Widget"
+			position = { 295 8 }
+			size = { 16 16 }
+			onclick = "[NodeEditorSearch.Hide]"
+			texture = "gfx/editor_gui/editor_layout_window_close.dds"
+
+			tooltipwidget = { 
+				using = dockable_tooltip
+			}
+		}
+
 	}
 }
 
@@ -287,6 +301,14 @@ widget = {
 				raw_tooltip = "Node Editor Preferences"
 				# Opens the settings in the 'Tools' category
 				onclick = "[ExecuteConsoleCommand( 'settings Tools' )]"
+			}
+			
+			editor_toolbar_button = {
+				raw_text = "Preview"
+				raw_tooltip = "Show the previewer for the current schematic"
+				size = { 46 25 }
+				onclick = "[GraphPanel.OpenPreviewer]"
+				visible = "[GraphPanel.HasPreviewer]"
 			}
 
 			editor_toolbar_divider = {

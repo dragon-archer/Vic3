@@ -1,8 +1,9 @@
+
 node_window_type = {
 	name = "default_search_list_node"
 
 	blockoverride "config_block" {
-		hbox = {
+        hbox = {
             spacing = 5
             layoutpolicy_horizontal = expanding
             vbox = {
@@ -11,11 +12,11 @@ node_window_type = {
                 name = "node_search_list"
                 layoutpolicy_horizontal = expanding
             }
-
+    
             vbox = {
                 layoutpolicy_vertical = expanding
                 visible = "[SearchListNodeWindow.IsEntryEditingSupported]"
-
+    
                 editor_button = {
                     size = { 24 24 }
                     icon = {
@@ -29,7 +30,7 @@ node_window_type = {
                     enabled = "[SearchListNodeWindow.CanEditEntry]"
                     onclick = "[SearchListNodeWindow.OnEntryEditClick]"
                 }
-
+    
                 # Spacer
                 widget = {
                     layoutpolicy_vertical = expanding

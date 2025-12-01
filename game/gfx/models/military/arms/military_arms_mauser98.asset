@@ -1,0 +1,28 @@
+pdxmesh = {
+	name = "military_arms_mauser98_mesh"
+	file = "military_arms_mauser98.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 6.0 }
+	}
+
+	meshsettings = {
+		name = "military_arms_mauser98|LOD_0|mauser0|mauser0Shape"
+		index = 0
+		texture_diffuse = "military_arms_01_diffuse.dds"
+		texture_normal = "military_arms_01_normal.dds"
+		texture_specular = "military_arms_01_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_arms_mauser98|LOD_1|mauser1|mauser1Shape"
+		index = 0
+		texture_diffuse = "military_arms_01_diffuse.dds"
+		texture_normal = "military_arms_01_normal.dds"
+		texture_specular = "military_arms_01_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

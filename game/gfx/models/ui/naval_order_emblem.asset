@@ -1,0 +1,85 @@
+pdxmesh = {
+	name = "naval_order_base_mesh"
+	file = "flat_mesh.mesh"
+
+	meshsettings = {
+		name = "pPlaneShape1"
+		index = 0
+		texture_diffuse = "sea_node_orders_modular_emblem_base.dds"
+		texture_normal = ""
+		texture_specular = ""
+		shader = "NavalOrderBaseShader"
+		shadow_shader = ""
+		shader_file = "gfx/FX/pdxmesh_navalorder.shader"
+	}
+}
+
+pdxmesh = {
+	name = "naval_order_patrol_mesh"
+	file = "flat_mesh.mesh"
+
+	meshsettings = {
+		name = "pPlaneShape1"
+		index = 0
+		texture_diffuse = "sea_node_orders_modular_emblem_circle.dds"
+		texture_normal = ""
+		texture_specular = ""
+		shader = "NavalOrderShader"
+		shadow_shader = ""
+		shader_file = "gfx/FX/pdxmesh_navalorder.shader"
+	}
+}
+
+pdxmesh = {
+	name = "naval_order_interception_mesh"
+	file = "flat_mesh.mesh"
+
+	meshsettings = {
+		name = "pPlaneShape1"
+		index = 0
+		texture_diffuse = "sea_node_orders_modular_emblem_circle.dds"
+		texture_normal = ""
+		texture_specular = ""
+		shader = "NavalOrderShader"
+		shadow_shader = ""
+		shader_file = "gfx/FX/pdxmesh_navalorder.shader"
+	}
+}
+
+pdxmesh = {
+	name = "naval_order_raiding_mesh"
+	file = "flat_mesh.mesh"
+
+	meshsettings = {
+		name = "pPlaneShape1"
+		index = 0
+		texture_diffuse = "sea_node_orders_modular_emblem_circle.dds"
+		texture_normal = ""
+		texture_specular = ""
+		shader = "NavalOrderShader"
+		shadow_shader = ""
+		shader_file = "gfx/FX/pdxmesh_navalorder.shader"
+	}
+}
+
+
+entity = {
+	name = "naval_order_base_entity"
+	pdxmesh = "naval_order_base_mesh"
+	scale = 8.0
+}
+entity = {
+	name = "naval_order_patrol_entity"
+	pdxmesh = "naval_order_patrol_mesh"
+	scale = 8.0
+}
+entity = {
+	name = "naval_order_interception_entity"
+	pdxmesh = "naval_order_interception_mesh"
+	scale = 8.0
+}
+entity = {
+	name = "naval_order_raiding_entity"
+	pdxmesh = "naval_order_raiding_mesh"
+	scale = 8.0
+}

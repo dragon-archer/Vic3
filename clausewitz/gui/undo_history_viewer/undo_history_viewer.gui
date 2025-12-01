@@ -56,6 +56,7 @@ types "UndoHistoryViewer" {
 			align = left|nobaseline
 			layoutpolicy_horizontal = preferred
 			layoutpolicy_vertical = fixed
+			enabled = "[HistoryViewer.IsEntryExecutable(int32.GetInt)]"
 			text = "[Select_CString( HistoryViewer.IsEntryCurrent(int32.GetInt), JoinText( ' ', '#BOLD;COLOR:{0.95,1.0,0.5}', HistoryViewer.GetEntryName(int32.GetInt) ), HistoryViewer.GetEntryName(int32.GetInt))]"
 			checked = "[HistoryViewer.IsEntryCurrent(int32.GetInt)]"
 			onclick = "[HistoryViewer.SetEntryCurrent(int32.GetInt)]"

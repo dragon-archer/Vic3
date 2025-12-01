@@ -123,17 +123,17 @@
         "inputs": [
           {
             "input_channel": "red",
-            "map": "basecolor",
+            "map": "diffuse",
             "output_channel": "red"
           },
           {
             "input_channel": "green",
-            "map": "basecolor",
+            "map": "diffuse",
             "output_channel": "green"
           },
           {
             "input_channel": "blue",
-            "map": "basecolor",
+            "map": "diffuse",
             "output_channel": "blue"
           },
           {
@@ -198,6 +198,34 @@
         ],
         "name": "_properties",
         "trim": false
+      }
+    ]
+  },
+  {
+    "base_directory": "",
+    "name": "Mask",
+    "outputs": [
+      {
+        "channel_count": 3,
+        "inputs": [
+          {
+            "input_channel": "red",
+            "map": "mask",
+            "output_channel": "red"
+          },
+          {
+            "input_channel": "green",
+            "map": "mask",
+            "output_channel": "green"
+          },
+          {
+            "input_channel": "blue",
+            "map": "mask",
+            "output_channel": "blue"
+          }
+        ],
+        "name": "_mask",
+        "trim": true
       }
     ]
   },
@@ -435,6 +463,7 @@
       }
     ]
   },
+  
   {
     "base_directory": "",
     "name": "Character Clothing",
@@ -549,6 +578,123 @@
       }
     ]
   },
+
+  {
+    "base_directory": "",
+    "name": "Character Map Unit",
+    "outputs": [
+      {
+        "channel_count": 4,
+        "inputs": [
+          {
+            "input_channel": "red",
+            "map": "basecolor",
+            "output_channel": "red"
+          },
+          {
+            "input_channel": "green",
+            "map": "basecolor",
+            "output_channel": "green"
+          },
+          {
+            "input_channel": "blue",
+            "map": "basecolor",
+            "output_channel": "blue"
+          },
+          {
+            "input_channel": "blue",
+            "map": "opacity",
+            "output_channel": "alpha"
+          }
+        ],
+        "name": "_diffuse",
+        "trim": true
+      },
+      {
+        "channel_count": 4,
+        "inputs": [
+          {
+            "input_channel": "red",
+            "map": "normal",
+            "output_channel": "red"
+          },
+          {
+            "input_channel": "red",
+            "map": "normal",
+            "output_channel": "green"
+          },
+          {
+            "input_channel": "blue",
+            "map": "color6",
+            "output_channel": "blue"
+          },
+          {
+            "input_channel": "green",
+            "map": "normal",
+            "output_channel": "alpha"
+          }
+        ],
+        "name": "_normal",
+        "trim": false
+      },
+      {
+        "channel_count": 4,
+        "inputs": [
+          {
+            "input_channel": "red",
+            "map": "color5",
+            "output_channel": "red"
+          },
+          {
+            "input_channel": "blue",
+            "map": "specular",
+            "default_value": 0.42,
+            "output_channel": "green"
+          },
+          {
+            "input_channel": "blue",
+            "map": "metallic",
+            "output_channel": "blue"
+          },
+          {
+            "input_channel": "blue",
+            "map": "roughness",
+            "output_channel": "alpha"
+          }
+        ],
+        "name": "_properties",
+        "trim": false
+      },
+      {
+        "channel_count": 4,
+        "inputs": [
+          {
+            "input_channel": "red",
+            "map": "color1",
+            "output_channel": "red"
+          },
+          {
+            "input_channel": "red",
+            "map": "color2",
+            "output_channel": "green"
+          },
+          {
+            "input_channel": "red",
+            "map": "color3",
+            "output_channel": "blue"
+          },
+          {
+            "input_channel": "red",
+            "map": "color4",
+            "output_channel": "alpha"
+          }
+        ],
+        "name": "_masks",
+        "trim": false
+      }
+    ]
+  },
+
   {
     "base_directory": "",
     "name": "Character Eye",

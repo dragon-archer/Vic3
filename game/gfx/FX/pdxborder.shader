@@ -43,7 +43,7 @@ VertexShader =
 			{
 				VS_OUTPUT_PDX_BORDER Out;
 
-				float3 position = Input.Position.xyz;
+				float3 position = float3( Input.Position.x, GetHeight( Input.Center ), Input.Position.y );
 				position.y = lerp( position.y, _FlatmapHeight, _FlatmapLerp );
 				position.y += _HeightOffset;
 
@@ -121,11 +121,7 @@ PixelShader =
 				}
 
 				// Close fadeout
-				float FadeStart = ( _DistanceFadeStart - _DistanceFadeEnd );
-				float CloseZoomBlend = FadeStart - CameraPosition.y + ( _DistanceFadeEnd );
-				CloseZoomBlend = smoothstep( FadeStart, 0.0f, CloseZoomBlend );
-				Diffuse.a *= CloseZoomBlend;
-
+				Diffuse.a = FadeCloseAlpha( Diffuse.a );
 				Diffuse.a *= _Alpha;
 
 				// Output

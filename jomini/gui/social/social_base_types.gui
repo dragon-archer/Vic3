@@ -46,7 +46,7 @@ template SocialErrorTextStyle
 	{
 		font = "standard_cw_font"
 		align = left
-		fontcolor = { 1 0 0 1 }
+		fontcolor = { 1.0 0.3 0.3 1 }
 		fontsize = 13
 	}
 }
@@ -127,14 +127,14 @@ template social_dropdown_enum
 				size = { 250 30 }
 				block "active_item"
 				{
-					
+
 				}
-				
+
 				button = {
 					size = { 100% 100% }
 					using = SocialDropdownButtonStyle
 				}
-				
+
 				editor_textbox = {
 					block "item_text"
 					{
@@ -146,14 +146,14 @@ template social_dropdown_enum
 				}
 			}
 		}
-		
+
 		item = {
 			widget = {
 				size = { 250 20 }
 				block "item"
 				{
 				}
-				
+
 				button = {
 					size = { 100% 100% }
 					texture = "gfx/editor_gui/editor_dropdown_item.dds"
@@ -167,7 +167,7 @@ template social_dropdown_enum
 					disableframe = 1
 					button_trigger = none
 				}
-				
+
 				editor_textbox = {
 					block "item_text"
 					{
@@ -178,7 +178,7 @@ template social_dropdown_enum
 				}
 			}
 		}
-		
+
 		list = {
 			scrollarea = {
 				position = { 2 30 }
@@ -188,7 +188,7 @@ template social_dropdown_enum
 				block "scrollarea"
 				{
 				}
-				
+
 				background = {
 					margin = { 2 2 }
 					margin_bottom = 6
@@ -200,17 +200,17 @@ template social_dropdown_enum
 					spriteborder_bottom = 8
 					shaderfile = "gfx/FX/pdxgui_default.shader"
 				}
-				
+
 				scrollwidget = {
 					dynamicgridbox = {
 						alwaystransparent = no
 					}
 				}
-				
+
 				scrollbar_vertical = {
 					using = SocialVerticalScrollbar
 				}
-				
+
 				scrollbar_horizontal = {
 					using = SocialHorizontalScrollbar
 				}
@@ -234,7 +234,7 @@ types Social
 			size = { 5 0 }
 		}
 	}
-	
+
 	type social_window = window {
 		block "social_window"
 		{
@@ -246,12 +246,12 @@ types Social
 			filter_mouse = none
 
 			using = SocialWindowStyle
-			
+
 			editor_textbox = {
 				position = { 10 4 }
 				size = { 20 20 }
 				autoresize = yes
-				
+
 				block "title"
 				{
 					raw_text = "#BOLD;COLOR:{1.0,1.0,1.0} Untitled #!"
@@ -276,7 +276,7 @@ types Social
 					alwaystransparent = yes
 					restrictparent_min = yes
 				}
-				
+
 				widget = {
 					size = { 0 29 }
 					layoutpolicy_horizontal = Fixed
@@ -285,7 +285,7 @@ types Social
 				block "before_content"
 				{
 				}
-				
+
 				hbox = {
 					block "hbox_properties"
 					{
@@ -299,23 +299,23 @@ types Social
 					{
 						vbox = {
 							scissor = yes
-							
+
 							layoutpolicy_horizontal = expanding
 							layoutpolicy_vertical = preferred
-						
-							block "content" 
+
+							block "content"
 							{
 							}
-							
+
 							widget = {
 								layoutpolicy_vertical = preferred
 							}
 						}
 					}
-					
+
 					social_horizontal_spacer={}
 				}
-				
+
 				social_vertical_spacer={}
 			}
 		}
@@ -329,33 +329,29 @@ types Social
 		}
 
 		using = SocialButtonStyle
-		
-		buttonText = {
-			textbox = {
-				using = SocialButtonTextStyle
-			}
-		}
 	}
 
 	type social_load_indicator = progressbar
 	{
-		parentanchor = vcenter|hcenter
-		size = { 44 44 }
-		gfxtype = framedprogressbargfx
-		texture = "gfx/interface/loading_progress.dds"
-		framesize = { 44 44 }
-		loopinterval = 1.5
-		max = 0
-		block "load_indicator"
-		{
-			visible = no
+		block "social_load_indicator" {
+			parentanchor = vcenter|hcenter
+			size = { 44 44 }
+			gfxtype = framedprogressbargfx
+			texture = "gfx/interface/loading_progress.dds"
+			framesize = { 44 44 }
+			loopinterval = 1.5
+			max = 0
+			block "load_indicator"
+			{
+				visible = no
+			}
 		}
 	}
 
 	type social_button_load_indicator = social_button {
 		social_load_indicator = {}
 	}
-	
+
 	type social_textbox = textbox {
 		text = ""
 		block "textbox_size"
@@ -389,10 +385,10 @@ types Social
 		}
 		fontcolor = { 1 0 0 1 }
 	}
-	
+
 	type social_editbox = editbox {
 		using = SocialEditboxStyle
-		
+
 		background = {
 			block "social_editbox_background"
 			{
@@ -412,7 +408,7 @@ types Social
 			password = no
 		}
 	}
-	
+
 	type social_dropdown = dropDown {
 		layoutpolicy_horizontal = expanding
 		block "social_dropdown_name"
@@ -424,39 +420,55 @@ types Social
 		}
 		using = social_dropdown_enum
 	}
-	
-	type social_textbox_entry = hbox {
-		layoutpolicy_horizontal = expanding
-		restrictparent_min = yes
-		layoutpolicy_vertical = fixed
-		social_required_textbox={}
-		social_vertical_spacer={}
-		social_textbox = {
-			block "title"
+
+	type social_generic_entry = hbox {
+		block "social_generic_entry"
+		{
+			block "social_generic_entry_properties"
 			{
-				raw_text = "#D Title:#!"
+				layoutpolicy_horizontal = expanding
+				restrictparent_min = yes
+				layoutpolicy_vertical = fixed
 			}
-		}
-		social_editbox = {
-			name = "social_editbox"
-			block "editbox_text"
+
+			social_required_textbox={}
+			social_vertical_spacer={}
+			social_textbox = {
+				block "title"
+				{
+					raw_text = "#D Title:#!"
+				}
+			}
+
+			block "social_generic_entry_field"
 			{
-				raw_text = "#D Enter something#!"
 			}
 		}
 	}
-	
-	type social_dropdown_entry = hbox {
-		layoutpolicy_horizontal = expanding
-		social_required_textbox={}
-		social_vertical_spacer={}
-		social_textbox = {
-			block "title"
+
+	type social_textbox_entry = social_generic_entry {
+		blockoverride "social_generic_entry_field"
+		{
+			block "social_textbox_entry"
 			{
-				raw_text = "#D Title:#!"
+				social_editbox = {
+					name = "social_editbox"
+					block "editbox_text"
+					{
+						raw_text = "#D Enter something#!"
+					}
+				}
 			}
 		}
-		social_dropdown = {
+	}
+
+	type social_dropdown_entry = social_generic_entry {
+		blockoverride "social_generic_entry_field"
+		{
+			block "social_dropdown_entry"
+			{
+				social_dropdown = {}
+			}
 		}
 	}
 }

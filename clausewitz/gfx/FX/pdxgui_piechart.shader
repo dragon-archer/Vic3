@@ -81,8 +81,9 @@ PixelShader =
 				float4 Color = SampleImageSprite( Texture, Input.UV0 );
 
 				float4 OutColor = Color * Input.Color * Mask;
-				OutColor.rgb += HighlightColor;
-
+				#ifndef NO_HIGHLIGHT
+					OutColor.rgb += HighlightColor;
+				#endif
 				return OutColor;
 			}
 		]]
@@ -166,8 +167,9 @@ PixelShader =
 				{
 					EndSlice = FindSlice( EndSearchAngle, StartSlice );
 				}
-				
-				float Highlight = 0.0;
+				#ifndef NO_HIGHLIGHT
+					float Highlight = 0.0;
+				#endif
 				float4 SliceColor = vec4( 0.0 );
 				if ( StartSlice != EndSlice )
 				{
@@ -180,7 +182,9 @@ PixelShader =
 						int SliceDataIndex = 2 * CurrentSlice;
 						float EndAngle = ( EndSearchAngle < PieSliceData[SliceDataIndex].x ) ? PieSliceData[SliceDataIndex].y : min( PieSliceData[SliceDataIndex].y, EndSearchAngle );
 						float SliceFraction = ( EndAngle - CurrentAngle ) * FullSearchAngleInv;
-						Highlight += PieSliceData[SliceDataIndex].z * SliceFraction;
+						#ifndef NO_HIGHLIGHT
+							Highlight += PieSliceData[SliceDataIndex].z * SliceFraction;
+						#endif
 						SliceColor += PieSliceData[SliceDataIndex + 1] * SliceFraction;
 						
 						if ( CurrentSlice == EndSlice )
@@ -201,13 +205,16 @@ PixelShader =
 				{
 					// If they are the same just return the slice properties
 					int SliceDataIndex = StartSlice * 2;
-					Highlight = PieSliceData[SliceDataIndex].z;
+					#ifndef NO_HIGHLIGHT
+						Highlight = PieSliceData[SliceDataIndex].z;
+					#endif
 					SliceColor = PieSliceData[SliceDataIndex + 1];
 				}
 				
 				float4 OutColor = SliceColor * Color * Input.Color * Mask;
-				OutColor.rgb += vec3( Highlight );
-
+				#ifndef NO_HIGHLIGHT
+					OutColor.rgb += vec3( Highlight );
+				#endif
 				return OutColor;
 			}
 		]]
@@ -234,9 +241,22 @@ Effect Default
 	PixelShader = "PixelShader"
 }
 
+Effect NoHighlightDefault
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShader"
+	Defines = {"NO_HIGHLIGHT"}
+}
+
 Effect PieChartDefault
 {
 	VertexShader = "VertexShaderPieChart"
 	PixelShader = "PixelShaderPieChart"
 }
 
+Effect PieChartNoHighlightDefault
+{
+	VertexShader = "VertexShaderPieChart"
+	PixelShader = "PixelShaderPieChart"
+	Defines = {"NO_HIGHLIGHT"}
+}

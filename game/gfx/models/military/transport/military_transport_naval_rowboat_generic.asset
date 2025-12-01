@@ -1,0 +1,93 @@
+pdxmesh = {
+	name = "military_transport_naval_rowboat_generic_mesh"
+	file = "military_transport_naval_rowboat_generic.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 8.0 }
+		lod = { index = 2 percent = 4.0 }
+		lod = { index = 3 percent = 2.0 }
+	}
+
+	animation = { id = "moving_animation" type = "military_transport_naval_rowboat_generic_moving.anim" }
+	animation = { id = "idle_animation" type = "military_transport_naval_rowboat_generic_idle.anim" }
+	animation = { id = "stop_animation" type = "military_transport_naval_rowboat_generic_stop.anim" }
+	animation = { id = "still_animation" type = "military_transport_naval_rowboat_generic_still.anim" }
+
+	meshsettings = {
+		name = "military_transport_naval_rowboat_generic_Shape0"
+		index = 0
+		texture_diffuse = "military_transport_naval_rowboat_generic_diffuse.dds"
+		texture_normal = "military_transport_naval_rowboat_generic_normal.dds"
+		texture_specular = "military_transport_naval_rowboat_generic_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_transport_naval_rowboat_generic_Shape1"
+		index = 0
+		texture_diffuse = "military_transport_naval_rowboat_generic_diffuse.dds"
+		texture_normal = "military_transport_naval_rowboat_generic_normal.dds"
+		texture_specular = "military_transport_naval_rowboat_generic_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_transport_naval_rowboat_generic_Shape2"
+		index = 0
+		texture_diffuse = "military_transport_naval_rowboat_generic_diffuse.dds"
+		texture_normal = "military_transport_naval_rowboat_generic_normal.dds"
+		texture_specular = "military_transport_naval_rowboat_generic_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_transport_naval_rowboat_generic_Shape3"
+		index = 0
+		texture_diffuse = "military_transport_naval_rowboat_generic_diffuse.dds"
+		texture_normal = "military_transport_naval_rowboat_generic_normal.dds"
+		texture_specular = "military_transport_naval_rowboat_generic_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "military_transport_naval_rowboat_generic_entity" 
+	pdxmesh = "military_transport_naval_rowboat_generic_mesh"
+
+	locator = { name = "locator_root" position = { 0.0 0.02 0.0 } }
+
+	cull_radius = 10
+
+	default_state = "moving"
+	state = {
+		name = "moving"
+		animation = "moving_animation"
+		event = { time = 0 node = "locator_root" particle = "ships/naval_rowboat_moving" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/transport/naval_rowboat/anm_military_transport_naval_rowboat_generic_moving" }} 
+
+	}
+	state = {
+		name = "idle"
+		animation = "idle_animation"
+		event = { time = 0 node = "locator_root" particle = "ships/naval_rowboat_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/transport/naval_rowboat/anm_military_transport_naval_rowboat_generic_idle" }}
+	}
+	state = {
+		name = "stop"
+		animation = "stop_animation"
+		looping = no
+		event = { time = 0 node = "locator_root" particle = "ships/naval_rowboat_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/transport/naval_rowboat/anm_military_transport_naval_rowboat_generic_stop" }}
+		next_state = "still"
+	}
+	state = {
+		name = "still"
+		animation = "still_animation"
+		event = { time = 0 node = "locator_root" particle = "ships/naval_rowboat_idle" trigger_once = yes keep_particle = yes }
+	}
+}

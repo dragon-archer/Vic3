@@ -9,7 +9,8 @@ ConstantBuffer( 1 )
 
 VertexStruct VS_INPUT_PDX_BORDER
 {
-	float3 Position : TEXCOORD0;
+	float2 Position : TEXCOORD0;
 	float2 UV : TEXCOORD1;
+	float2 Center : TEXCOORD2;
 };
 

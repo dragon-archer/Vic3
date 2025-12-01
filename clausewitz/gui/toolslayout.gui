@@ -1,12 +1,14 @@
 template dockable_tooltip
 {
 	container = {
+		name  = "dockable_tooltip"
 		filter_mouse = all
 		alwaystransparent = yes
 		widgetanchor = bottom|left
 		
 		flowcontainer = {
-			direction = horizontal
+			direction = vertical
+			spacing = 8
 
 			background = {
 				texture = "gfx/editor_gui/editor_layout_button.png"
@@ -18,48 +20,53 @@ template dockable_tooltip
 				tintcolor = { 1.0 1.0 1.0 1.0 }
 			}
 
-			editor_textbox = {
-				name = "TooltipText"
-				multiline = yes
-				maximumsize = { 640 -1 }
-				margin_top = 4
-				margin_bottom = 4
-				margin_left = 8
-				fontsize = 11
+			block "above_tooltip" {}
+			flowcontainer = {
+				direction = horizontal
 
-				autoresize = yes
-				align = left|top
-				alwaystransparent = yes
-			}
+				editor_textbox = {
+					name = "TooltipText"
+					multiline = yes
+					maximumsize = { 640 -1 }
+					margin_top = 4
+					margin_bottom = 4
+					margin_left = 8
+					fontsize = 11
 
-			editor_textbox = {
-				name = "TooltipTextShortcut"
-				margin_top = 4
-				margin_bottom = 4
-				margin_left = 4
-				margin_right = 8
-				fontsize = 11
-				fontcolor = { 1 0 0 1 }
-				fontweight = BOLD
+					autoresize = yes
+					align = left|top
+					alwaystransparent = yes
+				}
 
-				autoresize = yes
-				align = left|top
-				alwaystransparent = yes
-			}
+				editor_textbox = {
+					name = "TooltipTextShortcut"
+					margin_top = 4
+					margin_bottom = 4
+					margin_left = 4
+					margin_right = 8
+					fontsize = 11
+					fontcolor = { 1 0 0 1 }
+					fontweight = BOLD
 
-			editor_textbox = {
-				name = "TooltipTextInputAction"
-				margin_top = 4
-				margin_bottom = 4
-				margin_left = 4
-				margin_right = 8
-				fontsize = 11
-				fontcolor = { 1 0 0 1 }
-				fontweight = BOLD
+					autoresize = yes
+					align = left|top
+					alwaystransparent = yes
+				}
 
-				autoresize = yes
-				align = left|top
-				alwaystransparent = yes
+				editor_textbox = {
+					name = "TooltipTextInputAction"
+					margin_top = 4
+					margin_bottom = 4
+					margin_left = 4
+					margin_right = 8
+					fontsize = 11
+					fontcolor = { 1 0 0 1 }
+					fontweight = BOLD
+
+					autoresize = yes
+					align = left|top
+					alwaystransparent = yes
+				}
 			}
 		}
 	}
@@ -168,7 +175,7 @@ types "ToolLayout"
 		frame = 1 # Frames for mouse out/in (frame 1/4) actually set via code
 
 		icon = {
-			block "Arrow"
+			block "AttachType"
 			{
 			}
 			
@@ -195,43 +202,66 @@ types "ToolLayout"
 		layoutpolicy_horizontal = preferred
 	}
 
+	type docking_area_highlight_widget = widget {
+		alwaystransparent = yes
+		hbox = {
+			icon = {
+				name = "highlight_icon"
+				alwaystransparent = yes	
+				texture = "gfx/editor_gui/editor_layout_window.dds"
+				shaderfile = "gfx/FX/pdxgui_default.shader"
+				spriteType = CorneredStretched
+				alpha = 0.5
+				tintcolor = { 0.0 0.5 0.5 1.0 }
+				spriteborder = { 5 5 }
+				framesize = { 16 16 }
+				frame = 1 
+			}
+		}
+	}
+
 	type dockable_controls = hbox {
 		hbox = {
 			dockable_attach_icon = {
 				name = "left"
-				blockoverride "Arrow"
+				blockoverride "AttachType"
 				{
-					texture = "gfx/editor_gui/attach_arrow_left.png"
+					texture = "gfx/editor_gui/attach_left.png"
 				}
 			}
 
 			vbox = {
 				dockable_attach_icon = {
 					name = "top"
-					blockoverride "Arrow"
+					blockoverride "AttachType"
 					{
-						texture = "gfx/editor_gui/attach_arrow_up.png"
+						texture = "gfx/editor_gui/attach_top.png"
 					}
 				}
 
 				dockable_attach_icon = {
-					enabled = no
+					name = "fullscreen"
+
+					blockoverride "AttachType"
+					{
+						texture = "gfx/editor_gui/attach_fullscreen.png"
+					}
 				}
 
 				dockable_attach_icon = {
 					name = "bottom"
-					blockoverride "Arrow"
+					blockoverride "AttachType"
 					{
-						texture = "gfx/editor_gui/attach_arrow_down.png"
+						texture = "gfx/editor_gui/attach_bottom.png"
 					}
 				}
 			}
 
 			dockable_attach_icon = {
 				name = "right"
-				blockoverride "Arrow"
+				blockoverride "AttachType"
 				{
-					texture = "gfx/editor_gui/attach_arrow_right.png"
+					texture = "gfx/editor_gui/attach_right.png"
 				}
 			}
 		}

@@ -1,0 +1,16 @@
+pdxmesh = {
+	name = "male_top_layer_south_american_gaucho_01_bs_fat_mesh"
+	file = "male_top_layer_south_american_gaucho_01_bs_fat.mesh"
+
+	meshsettings = {
+		name = "male_top_layer_south_american_gaucho_01_bs_fatShape"
+		index = 0
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "male_top_layer_south_american_gaucho_01_bs_fat_entity"
+	pdxmesh = "male_top_layer_south_american_gaucho_01_bs_fat_mesh"
+}

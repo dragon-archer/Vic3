@@ -10,12 +10,12 @@ ConstantBuffer( PdxFlipbookConstants )
 
 VertexStruct VS_INPUT_PARTICLE
 {
-	float2 UV0              	: TEXCOORD0;
-	float4 PosAndFlipbookTime	: TEXCOORD1; //	PosAndFlipbookTime.w contains the flipbook time.
-	float4 RotQ             	: TEXCOORD2; // Rotation relative to world or camera when billboarded.
-	float4 SizeAndOffset    	: TEXCOORD3; // SizeAndOffset.zw contains the local pivot offset
-	float4 BillboardAxis		: TEXCOORD4;
-	float4 Color            	: TEXCOORD5;
+	float2 UV0              				: TEXCOORD0;
+	float3 Position							: TEXCOORD1;	 
+	float4 RotQ             				: TEXCOORD2;	// Rotation relative to world or camera when billboarded.
+	float4 SizeAndOffset    				: TEXCOORD3;	// SizeAndOffset.zw contains the local pivot offset
+	float4 BillboardAxisAndFlipbookTime		: TEXCOORD4;	//	Position.w contains the flipbook time.
+	float4 Color            				: TEXCOORD5;
 };
 
 VertexStruct VS_OUTPUT_PARTICLE
@@ -71,16 +71,16 @@ VertexShader =
 				float Alpha = 0.0f;
 
 				#ifdef BILLBOARD
-					float3 WorldPos = Input.PosAndFlipbookTime.xyz + Offset.x * CameraRightDir + Offset.y * CameraUpDir;
+					float3 WorldPos = Input.Position.xyz + Offset.x * CameraRightDir + Offset.y * CameraUpDir;
 
-					if( Input.BillboardAxis.x != 0.0 || 
-						Input.BillboardAxis.y != 0.0 || 
-						Input.BillboardAxis.z != 0.0 )
+					if( Input.BillboardAxisAndFlipbookTime.x != 0.0 || 
+						Input.BillboardAxisAndFlipbookTime.y != 0.0 || 
+						Input.BillboardAxisAndFlipbookTime.z != 0.0 )
 					{
-						float3 Up = normalize( RotateVector( Input.RotQ, Input.BillboardAxis.xyz ) );
-						float3 ToCameraDir = normalize( CameraPosition - Input.PosAndFlipbookTime.xyz );
+						float3 Up = normalize( RotateVector( Input.RotQ, Input.BillboardAxisAndFlipbookTime.xyz ) );
+						float3 ToCameraDir = normalize( CameraPosition - Input.Position.xyz );
 						float3 Right = normalize( cross( ToCameraDir, Up ) );
-						WorldPos = Input.PosAndFlipbookTime.xyz + InitialOffset.x * Right + InitialOffset.y * Up;
+						WorldPos = Input.Position.xyz + InitialOffset.x * Right + InitialOffset.y * Up;
 
 						#ifdef FADE_STEEP_ANGLES
 							float3 Direction = cross( Right, Up );
@@ -96,16 +96,16 @@ VertexShader =
 						Alpha = Input.Color.a;
 					}
 				#else
-					float3 WorldPos = Input.PosAndFlipbookTime.xyz + Offset;
+					float3 WorldPos = Input.Position.xyz + Offset;
 					//Cannot fade steep angles because the lack of a particle normal
 					Alpha = Input.Color.a;
 				#endif
 
-				uint CurrentFrame = CalcCurrentFrame( FlipbookDimensions.x, FlipbookDimensions.y, Input.PosAndFlipbookTime.w );
+				uint CurrentFrame = CalcCurrentFrame( FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
 				Out.Pos = FixProjectionAndMul( ViewProjectionMatrix, float4( WorldPos, 1.0f ) );
-				Out.UV0 = CalcCellUV( CurrentFrame, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.PosAndFlipbookTime.w );
-				Out.UV1 = CalcCellUV( CurrentFrame + 1, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.PosAndFlipbookTime.w );
-				Out.FrameBlend = CalcFrameBlend( FlipbookDimensions.x, FlipbookDimensions.y, Input.PosAndFlipbookTime.w );
+				Out.UV0 = CalcCellUV( CurrentFrame, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
+				Out.UV1 = CalcCellUV( CurrentFrame + 1, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
+				Out.FrameBlend = CalcFrameBlend( FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
 				Out.Color = float4(Input.Color.rgb, Alpha);
 				Out.WorldSpacePos = WorldPos;
 				

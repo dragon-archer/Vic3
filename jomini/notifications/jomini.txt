@@ -127,6 +127,87 @@ jomini_social_account_created = {
 	accept_text = JOMINI_MULTIPLAYER_GUI_CLOSE
 }
 
+jomini_social_account_link_prompt = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = ACCOUNT_LINK_TITLE
+	text = ACCOUNT_LINK_PROMPT
+	accept_text = JOMINI_YES
+	decline_text = JOMINI_NO
+}
+
+jomini_social_account_link_prompt_pdx_has_link = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = ACCOUNT_LINK_TITLE
+	text = ACCOUNT_LINK_PROMPT_PDX_HAS_LINK
+	accept_text = JOMINI_YES
+	decline_text = JOMINI_NO
+}
+
+jomini_social_account_link_prompt_third_party_has_link = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = ACCOUNT_LINK_TITLE
+	text = ACCOUNT_LINK_PROMPT_TP_HAS_LINK
+	accept_text = JOMINI_YES
+	decline_text = JOMINI_NO
+}
+
+jomini_social_account_link_prompt_both_have_link = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = ACCOUNT_LINK_TITLE
+	text = ACCOUNT_LINK_PROMPT_BOTH_HAVE_LINK
+	accept_text = JOMINI_YES
+	decline_text = JOMINI_NO
+}
+
+jomini_social_account_link_success = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = ACCOUNT_LINK_TITLE
+	text = ACCOUNT_LINK_SUCCESS
+	accept_text = CLOSE
+}
+
+jomini_social_account_link_failed = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = ACCOUNT_LINK_TITLE
+	text = [PdxAccount.GetLastLinkErrorLocalized]
+	accept_text = CLOSE
+}
+
+jomini_social_account_unlink_success = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = ACCOUNT_LINK_TITLE
+	text = ACCOUNT_UNLINK_SUCCESS
+	accept_text = CLOSE
+}
+
 jomini_social_account_connect_failed = {
 	level = dialog
 	category = social
@@ -137,6 +218,18 @@ jomini_social_account_connect_failed = {
 	text = JOMINI_SOCIAL_CONNECT_FAIL_DESC
 	accept_text = JOMINI_SOCIAL_CONNECT_FAIL_RETRY
 	decline_text = JOMINI_SOCIAL_CONNECT_FAIL_CANCEL
+}
+
+jomini_third_party_auto_login_prompt = {
+	level = dialog
+	category = social
+	window_file = @default_window_file
+	window_name = @default_window_name
+	
+	title_text = ACCOUNT_THIRD_PARTY_AUTO_LOGIN_TITLE
+	text = ACCOUNT_THIRD_PARTY_AUTO_LOGIN_PROMPT
+	accept_text = JOMINI_YES
+	decline_text = JOMINI_NO
 }
 
 jomini_msgrdk_no_ugc_permission = {

@@ -419,11 +419,11 @@ PixelShader =
 				float LerpFactor = saturate( ( Input.Position.z - 0.9 ) * 10.0 );
 				clip( vec2(1.0) - ( Input.WorldSpacePos.xz - float2( lerp( 0.1, 2.0, LerpFactor ), 0.0 ) ) * _WorldSpaceToTerrain0To1 );
 
-				float3 DetailDiffuse = Input.DetailDiffuse;
-				float4 DetailMaterial = Input.DetailMaterial;
-				float3 ColorMap = Input.ColorMap;
-				float3 Flatmap = Input.Flatmap;
-				float3 Normal = Input.Normal;
+				float3 DetailDiffuse = saturate( Input.DetailDiffuse );
+				float4 DetailMaterial = saturate( Input.DetailMaterial );
+				float3 ColorMap = saturate( Input.ColorMap );
+				float3 Flatmap = saturate( Input.Flatmap );
+				float3 Normal = saturate( Input.Normal );
 
 				// UV Coordinates
 				float2 MapCoords = Input.WorldSpacePos.xz * _WorldSpaceToTerrain0To1;
@@ -462,7 +462,7 @@ PixelShader =
 
 				// Output
 				Out.Color = float4( Diffuse, 1.0f );
-				Out.SSAOColor = float4( vec4(1.0f) );
+				Out.SSAOColor = float4( vec4( 1.0f ) );
 
 				return Out;
 			}

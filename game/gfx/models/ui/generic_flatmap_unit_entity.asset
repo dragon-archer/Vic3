@@ -1,0 +1,22 @@
+pdxmesh = {
+	name = "generic_flatmap_unit_mesh"
+	file = "flat_mesh.mesh"
+
+	meshsettings = {
+		name = "pPlaneShape1"
+		index = 0
+		texture_diffuse = "flatmap_unit_triangle.dds"
+		texture_normal = ""
+		texture_specular = ""
+		shader = "flatmap_unit"
+		shadow_shader = ""
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { UNIT_COLOR }
+	}
+}
+
+entity = {
+	name = "generic_flatmap_unit_entity"
+	pdxmesh = "generic_flatmap_unit_mesh"
+	scale = 1.0
+}

@@ -1,0 +1,43 @@
+pdxmesh = {
+	name = "military_props_test_mesh"
+	file = "military_props_test.mesh"
+
+	meshsettings = {
+		name = "military_props_testShape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_props_testShape"
+		index = 1
+		texture_diffuse = "military_barbedwires_01_diffuse.dds"
+		texture_normal = "military_barbedwires_01_normal.dds"
+		texture_specular = "military_barbedwires_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+		shadow_shader = ""
+	}
+
+	meshsettings = {
+		name = "|military_props_test|LOD_0|military_props_flag|military_props_f"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "COA_TEXTURE"  }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "military_props_test_entity"
+	pdxmesh = "military_props_test_mesh"
+}

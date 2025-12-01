@@ -117,9 +117,8 @@ VertexStruct VS_OUTPUT_PDXMESHPORTRAIT
 	float2 	UV1				: TEXCOORD4;
 	float2 	UV2				: TEXCOORD5;
 	float3 	WorldSpacePos	: TEXCOORD6;
-	float4 	ShadowProj		: TEXCOORD7;
 	# This instance index is used to fetch custom user data from the Data[] array (see pdxmesh.fxh)
-	uint 	InstanceIndex	: TEXCOORD8;
+	uint 	InstanceIndex	: TEXCOORD7;
 };
 
 VertexStruct VS_INPUT_PDXMESHSTANDARD_ID
@@ -260,8 +259,6 @@ VertexShader = {
 				Out.WorldSpacePos.xyz = Out.Position.xyz;
 				Out.WorldSpacePos /= WorldMatrix[3][3];
 				Out.Position = FixProjectionAndMul( ViewProjectionMatrix, Out.Position );
-				
-				Out.ShadowProj = mul( ShadowMapTextureMatrix, float4( Out.WorldSpacePos, 1.0 ) );
 				
 				Out.UV0 = Input.UV0;
 			#ifdef PDX_MESH_UV1

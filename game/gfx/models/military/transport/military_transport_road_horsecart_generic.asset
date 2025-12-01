@@ -1,0 +1,91 @@
+pdxmesh = {
+	name = "military_transport_road_horsecart_generic_mesh"
+	file = "military_transport_road_horsecart_generic.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 6.0 }
+		lod = { index = 2 percent = 3.0 }
+		lod = { index = 3 percent = 1.5 }
+	}
+
+	animation = { id = "moving_animation" type = "military_transport_road_horsecart_generic_moving.anim" }
+
+	meshsettings = {
+		name = "cart_0Shape"
+		index = 0
+		texture_diffuse = "military_transport_road_horsecart_generic_01_diffuse.dds"
+		texture_normal = "military_transport_road_horsecart_generic_01_normal.dds"
+		texture_specular = "military_transport_road_horsecart_generic_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = {"EMISSIVE_NIGHT"  "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "cargo_0Shape"
+		index = 0
+		texture_diffuse = "horse_cart_cargo_01_diffuse.dds"
+		texture_normal = "horse_cart_cargo_01_normal.dds"
+		texture_specular = "horse_cart_cargo_01_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "cart_1Shape"
+		index = 0
+		texture_diffuse = "military_transport_road_horsecart_generic_01_diffuse.dds"
+		texture_normal = "military_transport_road_horsecart_generic_01_normal.dds"
+		texture_specular = "military_transport_road_horsecart_generic_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = {"EMISSIVE_NIGHT"  "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "cargo_1Shape"
+		index = 0
+		texture_diffuse = "horse_cart_cargo_01_diffuse.dds"
+		texture_normal = "horse_cart_cargo_01_normal.dds"
+		texture_specular = "horse_cart_cargo_01_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "cart_2Shape"
+		index = 0
+		texture_diffuse = "military_transport_road_horsecart_generic_01_diffuse.dds"
+		texture_normal = "military_transport_road_horsecart_generic_01_normal.dds"
+		texture_specular = "military_transport_road_horsecart_generic_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = {"EMISSIVE_NIGHT"  "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "cart_3Shape"
+		index = 0
+		texture_diffuse = "military_transport_road_horsecart_generic_01_diffuse.dds"
+		texture_normal = "military_transport_road_horsecart_generic_01_normal.dds"
+		texture_specular = "military_transport_road_horsecart_generic_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = {"EMISSIVE_NIGHT"  "COA_TEXTURE" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "military_transport_road_horsecart_generic_entity"
+	pdxmesh = "military_transport_road_horsecart_generic_mesh"
+	
+		
+	default_state = "moving"
+	state = {
+		name = "moving"
+		animation = "moving_animation"
+		animation_speed = 2.0
+		start_event = { time = 0 node = "loc_vfx" particle = "vehicles/military_horsecart_effects" trigger_once = yes}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/transport/road_horsecart/anm_military_transport_road_horsecart_generic" }}
+	}
+}

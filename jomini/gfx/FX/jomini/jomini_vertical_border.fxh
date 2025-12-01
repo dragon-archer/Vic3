@@ -1,5 +1,6 @@
 Includes = {
 	"cw/camera.fxh"
+	"cw/heightmap.fxh"
 }
 
 
@@ -31,7 +32,7 @@ ConstantBuffer( 3 )
 
 VertexStruct VS_INPUT_PDX_BORDER
 {
-	float3 Position				: POSITION;
+	float2 Position				: POSITION;
 	float  Extrusion			: TEXCOORD0;
 	float  DistanceToStart		: TEXCOORD1;
 	float  DistanceToEnd		: TEXCOORD2;
@@ -58,11 +59,11 @@ VertexStruct VS_OUTPUT_PDX_BORDER
 
 Code
 [[
-	float3 ScaleAndExtrudePosition( float3 InputPosition, float Extrusion )
+	float3 ScaleAndExtrudePosition( float2 InputPosition, float Extrusion )
 	{
-		float3 Position = InputPosition * float3( Scale.x, 1.0, Scale.z );
+		float3 Position = float3( InputPosition.x, 0.0f, InputPosition.y ) * float3( Scale.x, 1.0f, Scale.z );
 		float ExtrusionFactor = Scale.y * Extrusion;
-		Position.y += HeightOffset + ExtrusionFactor + abs( ExtrusionFactor );
+		Position.y = GetHeight( Position.xz ) + HeightOffset + ExtrusionFactor + abs( ExtrusionFactor );
 		
 		return Position;
 	}

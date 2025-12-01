@@ -1,0 +1,160 @@
+
+#################################################
+###       			Generic     			  ###
+#################################################
+
+entity = {
+	name =		 "military_artillery_cannon_generic_entity"
+	pdxmesh =	 "military_artillery_cannon_generic_mesh"
+
+	locator = { name = "locator_decal" 
+		position = { 0 0 0 } 
+		rotation = { 0 0 0 } 
+		scale = 1.0
+	}
+
+	attach = { locator_decal = "military_diorama_decal_6x6_entity" }
+
+	get_state_from_parent = yes
+
+	locator = { name = "impact_site" 	position = { 0.0 0.0 -10.0}	rotation = { 0 0 0} scale = 1.0}
+
+	default_state = "idle"
+
+	state = { name = "idle"
+		time_offset = { 0.0 10.0 }  
+		animation = 	"artillery_idle_animation"
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/cannon/anm_cannon_artillery_idle_animation" }}
+	}
+	
+	state = { name = "defend"
+		time_offset = { 0.0 10.0 }
+		animation = 	"artillery_fire_defensive_animation"
+		event = { time = 0.65  node = "loc_cannon" 			particle = "arms/cannon_firing"    	trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/cannon/wpn_artillery_cannon_shot" }}	
+		event = { time = 2.05  node = "impact_site" 		particle = "arms/cannon_explosion" 	trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/cannon/wpn_artillery_cannon_impact" }}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/cannon/anm_cannon_artillery_fire_defensive_animation" }}			
+	}
+	state = { name = "advance" 
+		time_offset = { 0.0 10.0 }
+		animation = 	"artillery_fire_aggressive_animation"
+		event = { time = 0.0  node = "loc_cannon" 			particle = "arms/cannon_firing"    	trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/cannon/wpn_artillery_cannon_shot" }}	
+		event = { time = 1.4  node = "impact_site" 			particle = "arms/cannon_explosion" 	trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/cannon/wpn_artillery_cannon_impact" }}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/cannon/anm_cannon_artillery_fire_aggressive_animation" }}			
+	}
+	state = { name = "defeat" 
+		animation = 	"artillery_defeat_animation"
+		looping = 		no
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/cannon/anm_cannon_artillery_defeat_animation" }}
+	}
+}
+
+entity = {
+	clone =		 "military_artillery_cannon_generic_entity"
+	name =		 "military_artillery_mobile_generic_entity"
+	pdxmesh =	 "military_artillery_mobile_generic_mesh"
+
+	state = { name = "defend"
+		time_offset = { 0.0 10.0 }
+		animation = 	"artillery_fire_defensive_animation"
+		event = { time = 1.50  node = "loc_cannon" 			particle = "arms/mobile_firing"  	 trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/mobile_artillery/wpn_artillery_mobile_shot" }}	
+		event = { time = 2.05  node = "impact_site" 		particle = "arms/mobile_explosion" 	 trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/mobile_artillery/wpn_artillery_mobile_impact" }}		
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/mobile_artillery/anm_mobile_artillery_fire_defensive_animation" }}	
+	}
+	state = { name = "advance" 
+		time_offset = { 0.0 10.0 }
+		animation = 	"artillery_fire_aggressive_animation"
+		event = { time = 0.85  node = "loc_cannon" 			particle = "arms/mobile_firing"  	 trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/mobile_artillery/wpn_artillery_mobile_shot" }}	
+		event = { time = 1.4  node = "impact_site" 			particle = "arms/mobile_explosion" 	 trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/mobile_artillery/wpn_artillery_mobile_impact" }}	
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/mobile_artillery/anm_mobile_artillery_fire_aggressive_animation" }}		
+	}
+}
+
+entity = {
+	clone =		 "military_artillery_cannon_generic_entity"
+	name =		 "military_artillery_shrapnel_generic_entity"
+	pdxmesh =	 "military_artillery_shrapnel_generic_mesh"
+
+	state = { name = "defend" 
+		time_offset = { 0.0 10.0 }
+		animation = 	"artillery_fire_defensive_animation"
+		event = { time = 1.55  node = "loc_cannon"  	  	particle = "arms/shrapnel_firing" 	 	trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/shrapnel_artillery/wpn_artillery_shrapnel_shot" }}	
+		event = { time = 2.05  node = "impact_site"	  		particle = "arms/shrapnel_explosion" 	trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/shrapnel_artillery/wpn_artillery_shrapnel_impact" }}	
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/shrapnel_artillery/anm_shrapnel_artillery_fire_defensive_animation" }}		
+	}
+	state = { name = "advance" 
+		time_offset = { 0.0 10.0 }
+		animation = 	"artillery_fire_aggressive_animation"
+		event = { time = 0.9  node = "loc_cannon"  	  		particle = "arms/shrapnel_firing" 		 trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/shrapnel_artillery/wpn_artillery_shrapnel_shot" }}	
+		event = { time = 1.4  node = "impact_site"	  		particle = "arms/shrapnel_explosion"  	 trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/shrapnel_artillery/wpn_artillery_shrapnel_impact" }}	
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/shrapnel_artillery/anm_shrapnel_artillery_fire_aggressive_animation" }}		
+	}	
+	
+}
+
+entity = {
+	clone =		 "military_artillery_cannon_generic_entity"
+	name =		 "military_artillery_siege_generic_entity"
+	pdxmesh =	 "military_artillery_siege_generic_mesh"
+
+	state = { name = "defend" 
+		time_offset = { 0.0 10.0 }
+		animation = 	"artillery_fire_defensive_animation"
+		event = { time = 1.55 node = "loc_cannon"  	  particle = "arms/siege_firing"  	trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/siege_artillery/wpn_artillery_siege_shot" }}	
+		event = { time = 2.05 node = "impact_site"	  particle = "arms/siege_explosion" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/siege_artillery/wpn_artillery_siege_impact" }}	
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/siege_artillery/anm_siege_artillery_fire_defensive_animation" }}		
+	}
+	state = { name = "advance" 
+		time_offset = { 0.0 10.0 }
+		animation = 	"artillery_fire_aggressive_animation"
+		event = { time = 0.7  node = "loc_cannon"  	  particle = "arms/siege_firing"  trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/siege_artillery/wpn_artillery_siege_shot" }}	
+		event = { time = 1.2  node = "impact_site"	  particle = "arms/siege_explosion" trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/siege_artillery/wpn_artillery_siege_impact" }}	
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/siege_artillery/anm_siege_artillery_fire_aggressive_animation" }}		
+	}
+}
+
+entity = {
+	name =		 "military_tank_heavy_generic_entity"
+	pdxmesh =	 "military_tank_heavy_generic_mesh"
+
+	get_state_from_parent = yes
+
+	locator = { name = "impact_site" 	position = { 0.0 0.0 -10.0}	rotation = { 0 0 0} scale = 1.0}
+
+	default_state = "idle"
+
+	state = { name = "idle"  
+		animation = 		"tank_idle_animation"
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/anm_heavy_tank_idle_animation" }}
+		}
+
+	state = { name = "defeat"  
+		animation = 		"tank_defeat_animation"
+		looping = 			no 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/anm_heavy_tank_defeat_animation" }}
+		}
+
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend" 
+		time_offset = { 0.0 10.0 }
+		animation = 		"tank_fire_defensive_animation"
+		event = { time = 4.9 node = "loc_cannon"  		particle = "arms/heavy_tank_firing_defensive" 	 	trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/wpn_artillery_heavy_tank_shot" }}	
+		event = { time = 5.3  node = "impact_site"		particle = "arms/heavy_tank_explosion_defensive" 	trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/wpn_artillery_heavy_tank_impact_defensive" }}
+		event = { time = 0.0 node = "loc_cannon"        keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/anm_heavy_tank_fire_defensive_animation" }}
+		}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"  
+		time_offset = { 0.0 10.0 }
+		animation = 		"tank_fire_aggressive_animation" 
+		event = { time = 0.97 node = "loc_cannon"  		particle = "arms/heavy_tank_firing"  	trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/wpn_artillery_heavy_tank_shot" }}	
+		event = { time = 1.56 node = "loc_cannon"  		trigger_once = no  keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/wpn_artillery_heavy_tank_shot" }}	
+		event = { time = 2.13 node = "loc_cannon"  	    trigger_once = no  keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/wpn_artillery_heavy_tank_shot" }}	
+		event = { time = 1.37  node = "impact_site"		particle = "arms/heavy_tank_explosion"  trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/wpn_artillery_heavy_tank_impact_aggressive" }}	
+		event = { time = 0.0 node = "loc_cannon"        keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/artillery/heavy_tank/anm_heavy_tank_fire_aggressive_animation" }}		
+		}
+}

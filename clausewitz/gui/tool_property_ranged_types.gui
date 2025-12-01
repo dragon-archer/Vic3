@@ -12,6 +12,7 @@ types ToolPropertyRangedTypes
 			blockoverride "editbox"
 			{
 				raw_text = "[ToolsPropertyRangedValueFloat.GetValue]"
+				oneditingfinished_with_changes = "[ToolsPropertyRangedValueFloat.SetValueFromText( PdxGuiWidget.AccessSelf)]"
 			}
 
 		}
@@ -29,6 +30,7 @@ types ToolPropertyRangedTypes
 			blockoverride "editbox"
 			{
 				raw_text = "[ToolsPropertyRangedValueInt.GetValue]"
+				oneditingfinished_with_changes = "[ToolsPropertyRangedValueInt.SetValueFromText( PdxGuiWidget.AccessSelf)]"
 			}
 
 		}
@@ -46,6 +48,7 @@ types ToolPropertyRangedTypes
 			blockoverride "editbox"
 			{
 				raw_text = "[ToolsPropertyRangedValueFloat.GetValue]"
+				oneditingfinished_with_changes = "[ToolsPropertyRangedValueFloat.SetValueFromText( PdxGuiWidget.AccessSelf)]"
 			}
 
 		}
@@ -63,8 +66,42 @@ types ToolPropertyRangedTypes
 			blockoverride "editbox"
 			{
 				raw_text = "[ToolsPropertyRangedValueInt.GetValue]"
+				oneditingfinished_with_changes = "[ToolsPropertyRangedValueInt.SetValueFromText( PdxGuiWidget.AccessSelf)]"
 			}
 
+		}
+	}
+	type dialog_grid_property_ranged_value_float = dialog_grid_property {
+		blockoverride "content"
+		{
+			using = tools_property_ranged_value
+			blockoverride "callbacks"
+			{
+				using = tools_property_ranged_value_callbacks_float
+			}
+
+			blockoverride "editbox"
+			{
+				text = "[ToolsPropertyRangedValueFloat.GetValue]"
+				oneditingfinished_with_changes = "[ToolsPropertyRangedValueFloat.SetValueFromText( PdxGuiWidget.AccessSelf)]"
+			}
+		}
+	}
+
+	type dialog_grid_property_ranged_value_int = dialog_grid_property {
+		blockoverride "content"
+		{
+			using = tools_property_ranged_value
+			blockoverride "callbacks"
+			{
+				using = tools_property_ranged_value_callbacks_int
+			}
+
+			blockoverride "editbox"
+			{
+				text = "[ToolsPropertyRangedValueInt.GetValue]"
+				oneditingfinished_with_changes = "[ToolsPropertyRangedValueInt.SetValueFromText( PdxGuiWidget.AccessSelf)]"
+			}
 		}
 	}
 }
@@ -87,11 +124,10 @@ template tools_property_ranged_value
 
 		block "value_textbox"
 		{
-			editor_textbox = {
+			editor_textinput = {
 				block "editbox"{}
-				autoresize = no
-				size = { 20 20 }
-				align = right|nobaseline
+				size = { 55 20 }
+				align = right
 			}
 		}
 	}
@@ -102,7 +138,7 @@ template tools_property_ranged_value_callbacks_float
 	min = "[ToolsPropertyRangedValueFloat.GetMin]"
 	max = "[ToolsPropertyRangedValueFloat.GetMax]"
 	step = "[ToolsPropertyRangedValueFloat.GetStep]"
-	wheelstep = "[ToolsPropertyRangedValueFloat.GetStep]"
+	wheelstep = "[ToolsPropertyRangedValueFloat.GetWheelStep]"
 	value = "[ToolsPropertyRangedValueFloat.GetValue]"
 	onchangestart = "[ToolsPropertyRangedValueFloat.OnSetValueStart( PdxGuiWidget.AccessSelf )]"
 	onvaluechanged = "[ToolsPropertyRangedValueFloat.SetValue]"
@@ -114,7 +150,7 @@ template tools_property_ranged_value_callbacks_int
 	min = "[ToolsPropertyRangedValueInt.GetMin]"
 	max = "[ToolsPropertyRangedValueInt.GetMax]"
 	step = "[ToolsPropertyRangedValueInt.GetStep]"
-	wheelstep = "[ToolsPropertyRangedValueInt.GetStep]"
+	wheelstep = "[ToolsPropertyRangedValueInt.GetWheelStep]"
 	value = "[ToolsPropertyRangedValueInt.GetValue]"
 	onchangestart = "[ToolsPropertyRangedValueInt.OnSetValueStart( PdxGuiWidget.AccessSelf )]"
 	onvaluechanged = "[ToolsPropertyRangedValueInt.SetValue]"

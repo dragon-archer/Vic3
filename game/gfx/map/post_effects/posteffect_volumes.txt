@@ -77,7 +77,7 @@ posteffect_values = {
 
 	# Settings
 	fog_begin = 0
-	fog_end = 600
+	fog_end = 500
 }
 
 # zoom_volume_01_night
@@ -87,7 +87,7 @@ posteffect_values = {
 
 	# Settings
 	fog_begin = 0
-	fog_end = 600
+	fog_end = 500
 }
 
 # zoom_volume_02
@@ -224,6 +224,8 @@ posteffect_values = {
 	levels_max = hsv{ 0.0 0.0 1.0 } 	# Color values adjusment
 	colorbalance = { 1.0 1.0 1.0 }	# Color balance
 
+	fog_begin = 150
+	fog_end = 4000
 	fog_max = 0.0
 }
 

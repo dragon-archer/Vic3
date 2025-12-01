@@ -136,11 +136,12 @@ PixelShader =
 		// Apply decal data for one pixel
 		void ApplyDecals( inout float3 Diffuse, inout float3 Normals, inout float4 Properties, float2 UV, uint InstanceIndex, uint DecalCount )
 		{
-#ifndef PDX_OPENGL
+#ifndef PDX_PSSL
 			[ unroll( MaxAppliedDecals ) ]
 #endif
 			for ( uint DecalIndex = 0; DecalIndex < DecalCount; ++DecalIndex )
 			{
+
 				uint DecalDataIndex = InstanceIndex + ( PackedDecalDataVec2Size * DecalIndex );
 
 				STextureDecalData Data = GetDecalData( DecalDataIndex );

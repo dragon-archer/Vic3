@@ -200,13 +200,13 @@ graph={
 			}
 		}
 		pdxns:math:GreaterThanF={
-			id=189
+			id=16
 			node={
 			}
 			inputs={
 				link={
 					pin_id="op1"
-					linked_node=190
+					linked_node=122
 					linked_pin="age"
 				}
 				link={
@@ -355,7 +355,7 @@ graph={
 			inputs={
 				link={
 					pin_id="condition"
-					linked_node=189
+					linked_node=16
 					linked_pin="value"
 				}
 			}
@@ -1347,6 +1347,11 @@ graph={
 					linked_node=135
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=237
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Float={
@@ -1534,6 +1539,11 @@ graph={
 					linked_node=46
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=247
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
@@ -1651,7 +1661,7 @@ graph={
 			id=111
 			node={
 				value={
-					0.812500 0.938477 1.000000 1.000000
+					0.811765 0.937255 1.000000 1.000000
 				}
 
 			}
@@ -1758,7 +1768,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetSystemAge={
-			id=190
+			id=122
 			node={
 			}
 			inputs={
@@ -2679,6 +2689,22 @@ graph={
 					linked_node=47
 					linked_pin="value"
 				}
+			}
+		}
+		pdxns:values:Bool={
+			id=237
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=247
+			node={
+				value=no
+			}
+			inputs={
 			}
 		}
 	}

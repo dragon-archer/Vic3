@@ -213,5 +213,10 @@ types ToolsTypes
 	type dialog_property_filterable_property_list = vbox {
 			using = filterable_property_list_properties
 		}
+
+	type dialog_grid_property_filterable_property_list = vbox {
+		using = filterable_grid_property_list_properties
+		}
 	}
+	
 }

@@ -60,6 +60,7 @@ entity = {
 		#start_event = { time = 0 node = "root" entity = "military_battle_sword_entity" keep_entity = yes }
 		
 		event = { time = 0.5 node = "root2" entity = "vfx_entity_war_start_particle" trigger_once = yes}
+		event = { time = 0.0 node = "root" keep_sound = no sound = { soundeffect = "event:/SFX/UI/Military/entity_war_start"}} 
 		
 		event = 
 		{ 
@@ -149,11 +150,8 @@ entity = {
 }
 
 entity = {
-	name = "war_center_explosion_entity"
+	name = "battle_diorama_victory_entity"
 	pdxmesh = "cube_test_mesh"
-	
-	locator = { name = "temp" position = { 0 -10 0 } }
-	locator = { name = part1 }
 	
 	default_state = "start"
 	state = 
@@ -162,7 +160,26 @@ entity = {
 		state_time = 5
 		looping = no
 		
-		start_event = { time = 0 node = "part1" entity = "vfx_entity_war_end" trigger_once = yes}
+		event = { time = 0 particle = "war/battle_victory" trigger_once = yes keep_particle = yes keep_sound = no sound = { soundeffect = "event:/SFX/UI/Military/battle_diorama_victory"} }
+		
+		next_state = "done"
+	}
+	
+	state = { name = "done" }
+}
+
+entity = {
+	name = "battle_diorama_defeat_entity"
+	pdxmesh = "cube_test_mesh"
+	
+	default_state = "start"
+	state = 
+	{ 
+		name = "start" 
+		state_time = 5
+		looping = no
+		
+		event = { time = 0 particle = "war/battle_defeat" trigger_once = yes keep_particle = yes keep_sound = no sound = { soundeffect = "event:/SFX/UI/Military/battle_diorama_defeat"} }
 		
 		next_state = "done"
 	}

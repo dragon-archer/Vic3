@@ -1,0 +1,22 @@
+pdxmesh = {
+	name = "testplane_mesh"
+	file = "testplane.mesh"
+
+	meshsettings = {
+		name = "testplaneShape"
+		index = 0
+		texture_diffuse = "military_diorama_decal_diffuse.dds"
+		texture_normal = "military_diorama_decal_normal.dds"
+		texture_specular = "military_diorama_decal_properties.dds"
+		texture = { file = "paraboloid_decal_mask.dds" index = 3 }
+		shader = "decal_world"
+		additional_shader_defines = { "TILING_1024" }
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "Decals"
+	}
+}
+
+entity = {
+	name = "testplane_entity"
+	pdxmesh = "testplane_mesh"
+}

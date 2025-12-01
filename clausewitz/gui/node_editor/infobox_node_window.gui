@@ -72,21 +72,6 @@ widget = {
 				spacing = 2
 				margin_right = 4
 
-				checkbutton = {
-					margin_top = 2
-					size = { 16 16 }
-					gfxtype = checkbuttongfx
-					shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
-					texture = "gfx/tools/padlock_checkbutton.dds"
-					framesize = { 16 16 }
-					raw_tooltip =  "Locking this box will make it so all nodes inside belong to it"
-					tooltipwidget = { 
-						using = dockable_tooltip 
-					}
-					checked = "[InfoboxNodeWindow.IsLocked]"
-					onclick = "[InfoboxNodeWindow.ToggleLocked]"
-				}
-
 				# Name button
 				node_window_button = {
 					layoutpolicy_horizontal = fixed

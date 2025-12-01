@@ -8,7 +8,7 @@ entity =
 	{ 
 		name = "idle" 
 		state_time = 10 
-		looping = yes 
+		looping = no 
 		
 		start_event = { keep_sound = yes trigger_once = yes sound  = { soundeffect = "event:/SFX/VFX/conscription_center" } }
 		
@@ -16,6 +16,29 @@ entity =
 		{ 
 			time = 0 
 			particle = "vfx_conscription" 
+			trigger_once = no 
+			keep_particle = yes
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_mobilization_entity"
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 10 
+		looping = no 
+		
+		start_event = { keep_sound = yes trigger_once = yes }
+		
+		event = 
+		{ 
+			time = 0 
+			particle = "infrastructure/mobilization_effect" 
 			trigger_once = no 
 			keep_particle = yes
 		}

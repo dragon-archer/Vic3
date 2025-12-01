@@ -1,0 +1,33 @@
+
+#################################################
+###       			Generic     			  ###
+#################################################
+
+entity = {
+	name = "military_basecamp_generic_entity"
+	pdxmesh = "military_basecamp_generic_mesh"
+
+	attach = { "loc_vfx_01" = "vfx_entity_campfire" }
+
+	locator = { name = "locator_decal_01" 
+		position = { 0 0 0 } 
+		rotation = { 0 0 0 } 
+		scale = 2
+	}
+
+	locator = { name = "locator_decal_02" 
+		position = { 3 0 2 } 
+		rotation = { 0 0 0 } 
+		scale = 2
+	}
+
+	attach = { locator_decal_01 = "military_diorama_decal_6x6_entity" }
+	attach = { locator_decal_02 = "military_diorama_decal_6x6_entity" }
+	
+	default_state = "audio"
+	state = {
+		name = "audio"
+		start_event = { keep_sound = yes sound  = { soundeffect = "event:/SFX/Ambience/3D/Hub/War/basecamp_diorama" }
+		}
+	}
+}

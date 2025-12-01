@@ -1,5 +1,8 @@
+@dialog_property_width = 192
+@dialog_property_enum_height = 20
+
 template dialog_property_size {
-	size = { 192 24 }
+	size = { @dialog_property_width 24 }
 }
 
 types ToolsProperyTypes
@@ -16,6 +19,8 @@ types ToolsProperyTypes
 		tooltip_widgetanchor = bottom|left
 
 		spacing = 16
+
+		visible = "[ToolProperty.IsVisible]"
 		
 		editor_textbox = {
 			text = "[ToolProperty.GetLabel]"
@@ -181,14 +186,14 @@ types ToolsProperyTypes
 		{
 			dropdown = {
 				name = "tools_property_enum_dropdown"
-				using = dialog_property_size
+				size = { @dialog_property_width @dialog_property_enum_height }
 				using = settings_dropdown
 				datamodel = "[CPdxEnumValue.GetDropdownEntries]"
 				onselectionchanged = "[CPdxEnumValue.SetDropdownValueIndex]"
 				selectedindex = "[CPdxEnumValue.GetDropdownValueIndex]"
-				blockoverride "dropdown_item_size" { size = { 220 20 } }
-				blockoverride "dropdown_list_position" { position = { 0 20 } }
-				blockoverride "dropdown_gridbox_size" { addcolumn = 220  addrow = 20 }
+				blockoverride "dropdown_item_size" { size = { @dialog_property_width @dialog_property_enum_height } }
+				blockoverride "dropdown_list_position" { position = { 0 @dialog_property_enum_height } }
+				blockoverride "dropdown_gridbox_size" { addcolumn = @dialog_property_width  addrow = @dialog_property_enum_height }
 				blockoverride "dropdown_item_text" { text = "[CString.GetString]" }
 			}
 		}
@@ -352,6 +357,43 @@ types ToolsProperyTypes
 					size = { 92 24 }
 					text = "[ToolPropertyVec2i.GetY]"
 					oneditingfinished_with_changes = "[ToolPropertyVec2i.SetY]"
+				}
+			}
+		}
+	}
+
+	type dialog_property_texture_selector = dialog_property {
+		blockoverride "content"
+		{
+			flowcontainer = {
+				spacing = 8
+
+				editor_textinput = {
+					size = { 230 24 }
+					raw_text = "[ToolsPropertyTextureValue.GetTexturePath]"
+					oneditingfinished_with_changes ="[ToolsPropertyTextureValue.SetValueFromText]"
+					align = right
+				}
+
+				tooloptions_button = {
+					raw_tooltip = "Click to select texture"
+					onclick = "[ToolsPropertyTextureValue.SelectTexture]"
+					size = { 24 24 }
+					toolbox_icon = {
+						texture = "[ToolsPropertyTextureValue.GetTexture]"
+						size = { 24 24 }
+					}
+					tooltip_widgetanchor = bottom|hcenter
+					tooltipwidget = {
+						using = dockable_tooltip
+						blockoverride "above_tooltip" {
+							editor_icon = {
+								size = { 256 256 }
+								texture = "[ToolsPropertyTextureValue.GetTexture]"
+								parentanchor = vcenter|hcenter
+							}
+						}
+					}
 				}
 			}
 		}

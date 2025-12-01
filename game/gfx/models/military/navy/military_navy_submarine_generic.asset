@@ -1,0 +1,96 @@
+pdxmesh = {
+	name = "military_navy_submarine_generic_mesh"
+	file = "military_navy_submarine_generic.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 32.0 }
+		lod = { index = 2 percent = 16.0 }
+		lod = { index = 3 percent = 8.0 }
+	}
+
+	meshsettings = {
+		name = "flag0ShapeDeformed"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "COA_TEXTURE"  }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "submarine0ShapeDeformed"
+		index = 0
+		texture_diffuse = "military_navy_submarine_generic_01_diffuse.dds"
+		texture_normal = "military_navy_submarine_generic_01_normal.dds"
+		texture_specular = "military_navy_submarine_generic_01_properties.dds"
+		texture = { file = "military_navy_submarine_generic_01_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "flag1ShapeDeformed"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "COA_TEXTURE"  }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "submarine1ShapeDeformed"
+		index = 0
+		texture_diffuse = "military_navy_submarine_generic_01_diffuse.dds"
+		texture_normal = "military_navy_submarine_generic_01_normal.dds"
+		texture_specular = "military_navy_submarine_generic_01_properties.dds"
+		texture = { file = "military_navy_submarine_generic_01_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "flag2ShapeDeformed"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "COA_TEXTURE"  }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "submarine2ShapeDeformed"
+		index = 0
+		texture_diffuse = "military_navy_submarine_generic_01_diffuse.dds"
+		texture_normal = "military_navy_submarine_generic_01_normal.dds"
+		texture_specular = "military_navy_submarine_generic_01_properties.dds"
+		texture = { file = "military_navy_submarine_generic_01_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "submarine3ShapeDeformed"
+		index = 0
+		texture_diffuse = "military_navy_submarine_generic_01_diffuse.dds"
+		texture_normal = "military_navy_submarine_generic_01_normal.dds"
+		texture_specular = "military_navy_submarine_generic_01_properties.dds"
+		texture = { file = "military_navy_submarine_generic_01_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	animation = { id = "ship_idle_animation" 					type = "military_navy_submarine_generic_idle.anim" }
+	animation = { id = "ship_move_animation" 					type = "military_navy_submarine_generic_move.anim" }
+	animation = { id = "ship_fire_animation" 					type = "military_navy_submarine_generic_fire.anim" }
+	animation = { id = "ship_defeat_animation" 					type = "military_navy_submarine_generic_defeat.anim" }
+}

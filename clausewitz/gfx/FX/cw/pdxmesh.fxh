@@ -2,6 +2,7 @@ Includes = {
 	"cw/camera.fxh"
 	"cw/random.fxh"
 	"cw/pdxmesh_buffers.fxh"
+	"cw/pdxmesh_blendshapes.fxh"
 }
 
 supports_additional_shader_options = {

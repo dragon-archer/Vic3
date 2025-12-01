@@ -2,7 +2,7 @@ template default_randomizable_value
 {
 	hbox = {
 		layoutpolicy_horizontal = shrinking
-		spacing = 5
+		spacing = 4
 
 		editor_textinput = {
 			using = dialog_property_size
@@ -107,6 +107,52 @@ types ToolsPropertyTypes
 			using = default_randomizable_value
 			blockoverride "value_text"
 			{
+				raw_text = "[RandomizableValueInt.GetValue]"
+			}
+
+			blockoverride "on_edit_finished"
+			{
+				oneditingfinished = "[RandomizableValueInt.SetValue]"
+			}
+
+			blockoverride "on_randomize_click"
+			{
+				onclick = "[RandomizableValueInt.Randomize]"
+			}
+		}
+	}
+
+	type dialog_grid_property_randomizable_value_float = dialog_grid_property
+	{
+		blockoverride "content"
+		{
+			using = default_randomizable_value
+			blockoverride "value_text"
+			{
+				layoutpolicy_horizontal = expanding
+				raw_text = "[RandomizableValueFloat.GetValue|3]"
+			}
+
+			blockoverride "on_edit_finished"
+			{
+				oneditingfinished = "[RandomizableValueFloat.SetValue]"
+			}
+
+			blockoverride "on_randomize_click"
+			{
+				onclick = "[RandomizableValueFloat.Randomize]"
+			}
+		}
+	}
+
+	type dialog_grid_property_randomizable_value_int = dialog_grid_property
+	{
+		blockoverride "content"
+		{
+			using = default_randomizable_value
+			blockoverride "value_text"
+			{
+				layoutpolicy_horizontal = expanding
 				raw_text = "[RandomizableValueInt.GetValue]"
 			}
 

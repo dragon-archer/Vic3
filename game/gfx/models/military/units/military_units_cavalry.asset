@@ -1,0 +1,763 @@
+
+#################################################
+###       			Generic     			  ###
+#################################################
+
+
+######		Light Tank 		######
+
+entity = {
+	name =		 "military_tank_light_generic_entity"
+	pdxmesh =	 "military_tank_light_generic_mesh"
+
+	scale = 0.75
+	locator = { name = "impact_site" 	position = { 0.0 0.0 -10.0}	rotation = { 0 0 0} scale = 1.0}
+	get_state_from_parent = yes
+	default_state = "idle"
+
+	state = { name = "idle"  
+		time_offset = { 0.0 10.0 }  
+		animation = 		"tank_idle_animation"
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/renault-ft/anm_light_tank_idle_animation" }}
+		}
+
+	state = { name = "defeat"  
+		animation = 		"tank_defeat_animation"
+		looping = 			no 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/renault-ft/anm_light_tank_defeat_animation" }}
+		}
+
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend" 
+		time_offset = { 0.0 10.0 }  
+		animation = 		"tank_fire_defensive_animation"
+		event = { time = 4.97 node = "loc_cannon"  		particle = "arms/light_tank_firing_defensive"  		trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/cavalry/renault-ft/wpn_artillery_light_tank_shot" }}	
+		event = { time = 5.37  node = "impact_site"		particle = "arms/light_tank_explosion_defensive"    trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/cavalry/renault-ft/wpn_artillery_light_tank_impact_defend" }}	
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/renault-ft/anm_light_tank_fire_defensive_animation" }}
+		}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"  
+		time_offset = { 0.0 10.0 }  
+		animation = 		"tank_fire_aggressive_animation" 
+		event = { time = 0.97 node = "loc_cannon"  		particle = "arms/light_tank_firing"  	trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/cavalry/renault-ft/wpn_artillery_light_tank_shot" }}	
+		event = { time = 1.56 node = "loc_cannon"  		trigger_once = no  keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/cavalry/renault-ft/wpn_artillery_light_tank_shot" }}	
+		event = { time = 2.13 node = "loc_cannon"  	    trigger_once = no  keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/cavalry/renault-ft/wpn_artillery_light_tank_shot" }}	
+		event = { time = 1.37  node = "impact_site"		particle = "arms/light_tank_explosion"  trigger_once = no keep_particle = no keep_sound = no sound = { soundeffect = "event:/SFX/Animation/weapons/cavalry/renault-ft/wpn_artillery_light_tank_impact_aggressive" }}	
+		event = { time = 0.0 node = "loc_cannon" 		trigger_once = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/renault-ft/anm_light_tank_fire_aggressive_animation" }}	
+		}
+					
+}
+
+#################################################
+###       			European     			  ###
+#################################################
+
+######		Hussar 		######
+
+# Rider
+entity = {
+	name =		 "military_cavalry_european_hussar_rider_entity"
+	pdxmesh =	 "military_infantry_european_t2_mesh"
+
+	attach = { name = weapon 		r_hand_attach = "military_arms_saber_entity" }
+
+	get_state_from_parent = yes
+	default_state = "idle"
+
+	state = { name = "idle"  
+		animation = 		"cavalry_saber_idle_animation"
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/generic/cavalry/anm_cavalry_saber_idle_animation" }}
+		}
+
+	state = { name = "walk"  
+		animation = 		"cavalry_saber_walk_01_animation"
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/generic/cavalry/anm_cavalry_saber_walk_01_animation" }}
+		}
+
+	state = { name = "defeat"  
+		animation = 		"cavalry_blunderbuss_defeat_02_animation"
+		looping = 			no 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/generic/cavalry/anm_cavalry_blunderbuss_defeat_02_animation" }}
+		}
+
+	state = { name = "victory"  
+		time_offset = { 0.0 10.0 }  
+		animation = 		"cavalry_blunderbuss_victory_01_animation"
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/generic/cavalry/anm_cavalry_blunderbuss_victory_01_animation" }}
+		}
+
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend" 
+		animation = 		"cavalry_saber_warcry_animation"
+		looping = 			yes 
+		#event = { time = 0.0 keep_sound = no sound  = { soundeffect = "" }}
+		}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"  
+		animation = 		"cavalry_saber_charge_animation" 
+		looping = 			yes 
+		#event = { time = 0.0 keep_sound = no sound  = { soundeffect = "" }}
+		}
+
+}
+
+
+# Horse
+entity = {
+	name =		 "military_cavalry_european_hussar_entity"
+	pdxmesh =	 "military_cavalry_horse_beige_01_mesh"
+
+	attach = { name = rider 		Saddle_Node = "military_cavalry_european_hussar_rider_entity" }
+
+	get_state_from_parent = yes
+	default_state = defend
+
+	state = { name = "idle"  
+		animation = 		"cavalry_hussar_idle_animation"
+		looping = 			yes 
+		#event = { time = 0.0 keep_sound = no sound  = { soundeffect = "" }}
+		}
+		
+	state = { name = "defeat" 			
+		animation = "anim_defend" 
+		looping = yes 
+		#event = { time = 0.0 keep_sound = no sound  = { soundeffect = "" }}
+	}
+
+	state = { name = "victory" 			
+		animation = "anim_defend" 
+		looping = yes 
+		#event = { time = 0.0 keep_sound = no sound  = { soundeffect = "" }}
+	}
+
+
+	###		DEFEND STATES		###
+	state = { name = "defend" 			
+		animation = "cavalry_hussar_warcry_animation" looping = yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/saber/anm_cavalry_hussar_warcry_animation" }}
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance" 			
+		animation = "cavalry_hussar_charge_animation" looping = yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/saber/anm_cavalry_hussar_charge_animation" }}
+	}
+}
+
+
+######		Dragoon 	######
+
+# Rider
+entity = {
+	clone =		 "military_cavalry_european_hussar_rider_entity"
+	name =		 "military_cavalry_european_dragoon_rider_entity"
+
+	attach = { name = weapon 		l_hand_attach = "military_arms_dreyseneedle_entity" }
+
+	state = { name = "idle"  
+		animation = 		"cavalry_dreyseneedlegun_idle_animation"
+		looping = 			yes 
+	}
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend" 
+		animation = 		"cavalry_dreyseneedlegun_fire_defensive_animation"
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_defensive_cavalry_01" }
+		#event = { time = 0.0 keep_sound = no sound  = { soundeffect = "" }}
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"  
+		animation = 		"cavalry_dreyseneedlegun_fire_aggressive_animation" 
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_aggressive_cavalry_01" }
+		#event = { time = 0.0 keep_sound = no sound  = { soundeffect = "" }}
+	}
+}
+
+
+# Horse
+entity = {
+	clone =		 "military_cavalry_european_hussar_entity"
+	name =		 "military_cavalry_european_dragoon_entity"
+	pdxmesh =	 "military_cavalry_horse_black_01_mesh"
+
+
+	attach = { name = rider 		Saddle_Node = "military_cavalry_european_dragoon_rider_entity" 
+}
+
+		state = { name = "idle"  
+		animation = 		"cavalry_dragoon_idle_animation"
+		looping = 			yes 
+	}
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend" 
+		animation = 		"cavalry_dragoon_fire_defensive_animation"
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/dreyse_needle_gun/anm_cavalry_dragoon_fire_defensive_animation" }}
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"  
+		animation = 		"cavalry_dragoon_fire_aggressive_animation" 
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/dreyse_needle_gun/anm_cavalry_dragoon_fire_aggressive_animation" }}
+	}
+
+}
+
+
+######		Cuirassier 	######
+
+# Rider
+entity = {
+	clone =		 "military_cavalry_european_dragoon_rider_entity"
+	name =		 "military_cavalry_european_cuirassier_rider_entity"
+
+	attach = { name = weapon 		r_hand_attach = "military_arms_sword_entity" }
+
+	state = { name = "idle"  
+		animation = 		"cavalry_sword_idle_animation"
+		looping = 			yes 
+	}
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend" 
+		animation = 		"cavalry_sword_warcry_animation"
+		looping = 			yes 
+		#event = { time = 0.0 keep_sound = no sound  = { soundeffect = "" }}
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"  
+		animation = 		"cavalry_sword_charge_animation" 
+		looping = 			yes 
+		#event = { time = 0.0 keep_sound = no sound  = { soundeffect = "" }}
+	}
+}
+
+
+# Horse
+entity = {
+	clone =		 "military_cavalry_european_dragoon_entity"
+	name =		 "military_cavalry_european_cuirassier_entity"
+	pdxmesh =	 "military_cavalry_horse_brown_01_mesh"
+	
+	attach = { name = rider 		Saddle_Node = "military_cavalry_european_cuirassier_rider_entity" }
+
+	state = { name = "idle"  
+		animation = 		"cavalry_cuirassier_idle_animation"
+		looping = 			yes 
+	}
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend" 
+		animation = 		"cavalry_cuirassier_warcry_animation"
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/sword/anm_cavalry_cuirassier_warcry_animation" }}
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"  
+		animation = 		"cavalry_cuirassier_charge_animation" 
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/sword/anm_cavalry_cuirassier_charge_animation" }}
+	}
+}
+
+
+######		Lancer 		######
+
+# Rider
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_rider_entity"
+	name =		 "military_cavalry_european_lancer_rider_entity"
+
+	attach = { name = weapon 		r_hand_attach = "military_arms_lance_entity" }
+
+	state = { name = "idle"  
+		animation = 		"cavalry_lance_idle_animation"
+		looping = 			yes 
+	}
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend" 
+		animation = 		"cavalry_lance_warcry_animation"
+		looping = 			yes 
+		#event = { time = 0.0 keep_sound = no sound  = { soundeffect = "" }}
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"  
+		animation = 		"cavalry_lance_charge_animation" 
+		looping = 			yes 
+		#event = { time = 0.0 keep_sound = no sound  = { soundeffect = "" }}
+	}
+}
+
+
+# Horse
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_entity"
+	name =		 "military_cavalry_european_lancer_entity"
+	pdxmesh =	 "military_cavalry_horse_white_01_mesh"
+	
+	attach = { name = rider 		Saddle_Node = "military_cavalry_european_lancer_rider_entity" }
+
+	state = { name = "idle"  
+		animation = 		"cavalry_lancer_idle_animation"
+		looping = 			yes 
+	}
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend" 
+		animation = 		"cavalry_lancer_warcry_animation"
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/lance/anm_cavalry_lancer_warcry_animation" }}
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"  
+		animation = 		"cavalry_lancer_charge_animation" 
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/cavalry/lance/anm_cavalry_lancer_charge_animation" }}
+	}
+}
+
+
+
+
+
+#################################################
+###       			African     			  ###
+#################################################
+
+
+######		Hussar 		######
+entity = {
+	clone =		 "military_cavalry_european_hussar_rider_entity"
+	name =		 "military_cavalry_african_hussar_rider_entity"
+	pdxmesh =	 "military_infantry_african_t2_mesh"
+}
+
+
+entity = {
+	clone =		 "military_cavalry_european_hussar_entity"
+	name =		 "military_cavalry_african_hussar_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_african_hussar_rider_entity" 
+	}
+}
+
+
+######		Dragoon 	######
+entity = {
+	clone =		 "military_cavalry_european_dragoon_rider_entity"
+	name =		 "military_cavalry_african_dragoon_rider_entity"
+	pdxmesh =	 "military_infantry_african_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_dragoon_entity"
+	name =		 "military_cavalry_african_dragoon_entity"
+
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_african_dragoon_rider_entity" 
+	}
+}
+
+
+######		Cuirassier 	######
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_rider_entity"
+	name =		 "military_cavalry_african_cuirassier_rider_entity"
+	pdxmesh =	 "military_infantry_african_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_entity"
+	name =		 "military_cavalry_african_cuirassier_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_african_cuirassier_rider_entity" 
+	}
+}
+
+
+######		Lancer 		######
+entity = {
+	clone =		 "military_cavalry_european_lancer_rider_entity"
+	name =		 "military_cavalry_african_lancer_rider_entity"
+	pdxmesh =	 "military_infantry_african_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_lancer_entity"
+	name =		 "military_cavalry_african_lancer_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_african_lancer_rider_entity" 
+	}
+}
+
+
+
+
+
+#################################################
+###       			Arabic     				  ###
+#################################################
+
+
+######		Hussar 		######
+entity = {
+	clone =		 "military_cavalry_european_hussar_rider_entity"
+	name =		 "military_cavalry_arabic_hussar_rider_entity"
+	pdxmesh =	 "military_infantry_arabic_t2_mesh"
+}
+
+
+entity = {
+	clone =		 "military_cavalry_european_hussar_entity"
+	name =		 "military_cavalry_arabic_hussar_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_arabic_hussar_rider_entity" 
+	}
+}
+
+
+######		Dragoon 	######
+entity = {
+	clone =		 "military_cavalry_european_dragoon_rider_entity"
+	name =		 "military_cavalry_arabic_dragoon_rider_entity"
+	pdxmesh =	 "military_infantry_arabic_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_dragoon_entity"
+	name =		 "military_cavalry_arabic_dragoon_entity"
+
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_arabic_dragoon_rider_entity" 
+	}
+}
+
+
+######		Cuirassier 	######
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_rider_entity"
+	name =		 "military_cavalry_arabic_cuirassier_rider_entity"
+	pdxmesh =	 "military_infantry_arabic_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_entity"
+	name =		 "military_cavalry_arabic_cuirassier_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_arabic_cuirassier_rider_entity" 
+	}
+}
+
+
+######		Lancer 		######
+entity = {
+	clone =		 "military_cavalry_european_lancer_rider_entity"
+	name =		 "military_cavalry_arabic_lancer_rider_entity"
+	pdxmesh =	 "military_infantry_arabic_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_lancer_entity"
+	name =		 "military_cavalry_arabic_lancer_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_arabic_lancer_rider_entity" 
+	}
+}
+
+
+
+
+#################################################
+###       			East Asian     			  ###
+#################################################
+
+
+######		Hussar 		######
+entity = {
+	clone =		 "military_cavalry_european_hussar_rider_entity"
+	name =		 "military_cavalry_eastasian_hussar_rider_entity"
+	pdxmesh =	 "military_infantry_eastasian_t2_mesh"
+}
+
+
+entity = {
+	clone =		 "military_cavalry_european_hussar_entity"
+	name =		 "military_cavalry_eastasian_hussar_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_eastasian_hussar_rider_entity" 
+	}
+}
+
+
+######		Dragoon 	######
+entity = {
+	clone =		 "military_cavalry_european_dragoon_rider_entity"
+	name =		 "military_cavalry_eastasian_dragoon_rider_entity"
+	pdxmesh =	 "military_infantry_eastasian_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_dragoon_entity"
+	name =		 "military_cavalry_eastasian_dragoon_entity"
+
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_eastasian_dragoon_rider_entity" 
+	}
+}
+
+
+######		Cuirassier 	######
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_rider_entity"
+	name =		 "military_cavalry_eastasian_cuirassier_rider_entity"
+	pdxmesh =	 "military_infantry_eastasian_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_entity"
+	name =		 "military_cavalry_eastasian_cuirassier_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_eastasian_cuirassier_rider_entity" 
+	}
+}
+
+
+######		Lancer 		######
+entity = {
+	clone =		 "military_cavalry_european_lancer_rider_entity"
+	name =		 "military_cavalry_eastasian_lancer_rider_entity"
+	pdxmesh =	 "military_infantry_eastasian_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_lancer_entity"
+	name =		 "military_cavalry_eastasian_lancer_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_eastasian_lancer_rider_entity" 
+	}
+}
+
+
+
+#################################################
+###       			South Asian     		  ###
+#################################################
+
+
+######		Hussar 		######
+entity = {
+	clone =		 "military_cavalry_european_hussar_rider_entity"
+	name =		 "military_cavalry_southasian_hussar_rider_entity"
+	pdxmesh =	 "military_infantry_southasian_t2_mesh"
+}
+
+
+entity = {
+	clone =		 "military_cavalry_european_hussar_entity"
+	name =		 "military_cavalry_southasian_hussar_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_southasian_hussar_rider_entity" 
+	}
+}
+
+
+######		Dragoon 	######
+entity = {
+	clone =		 "military_cavalry_european_dragoon_rider_entity"
+	name =		 "military_cavalry_southasian_dragoon_rider_entity"
+	pdxmesh =	 "military_infantry_southasian_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_dragoon_entity"
+	name =		 "military_cavalry_southasian_dragoon_entity"
+
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_southasian_dragoon_rider_entity" 
+	}
+}
+
+
+######		Cuirassier 	######
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_rider_entity"
+	name =		 "military_cavalry_southasian_cuirassier_rider_entity"
+	pdxmesh =	 "military_infantry_southasian_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_entity"
+	name =		 "military_cavalry_southasian_cuirassier_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_southasian_cuirassier_rider_entity" 
+	}
+}
+
+
+######		Lancer 		######
+entity = {
+	clone =		 "military_cavalry_european_lancer_rider_entity"
+	name =		 "military_cavalry_southasian_lancer_rider_entity"
+	pdxmesh =	 "military_infantry_southasian_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_lancer_entity"
+	name =		 "military_cavalry_southasian_lancer_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_southasian_lancer_rider_entity" 
+	}
+}
+
+
+
+#################################################
+###       		 Native American     		  ###
+#################################################
+
+
+######		Hussar 		######
+entity = {
+	clone =		 "military_cavalry_european_hussar_rider_entity"
+	name =		 "military_cavalry_nativeamerican_hussar_rider_entity"
+	pdxmesh =	 "military_infantry_nativeamerican_t1_mesh"
+}
+
+
+entity = {
+	clone =		 "military_cavalry_european_hussar_entity"
+	name =		 "military_cavalry_nativeamerican_hussar_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_nativeamerican_hussar_rider_entity" 
+	}
+}
+
+
+######		Dragoon 	######
+entity = {
+	clone =		 "military_cavalry_european_dragoon_rider_entity"
+	name =		 "military_cavalry_nativeamerican_dragoon_rider_entity"
+	pdxmesh =	 "military_infantry_nativeamerican_t1_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_dragoon_entity"
+	name =		 "military_cavalry_nativeamerican_dragoon_entity"
+
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_nativeamerican_dragoon_rider_entity" 
+	}
+}
+
+
+######		Cuirassier 	######
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_rider_entity"
+	name =		 "military_cavalry_nativeamerican_cuirassier_rider_entity"
+	pdxmesh =	 "military_infantry_nativeamerican_t1_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_cuirassier_entity"
+	name =		 "military_cavalry_nativeamerican_cuirassier_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_nativeamerican_cuirassier_rider_entity" 
+	}
+}
+
+
+######		Lancer 		######
+entity = {
+	clone =		 "military_cavalry_european_lancer_rider_entity"
+	name =		 "military_cavalry_nativeamerican_lancer_rider_entity"
+	pdxmesh =	 "military_infantry_nativeamerican_t1_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_lancer_entity"
+	name =		 "military_cavalry_nativeamerican_lancer_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_cavalry_nativeamerican_lancer_rider_entity" 
+	}
+}
+
+

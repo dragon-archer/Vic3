@@ -1,0 +1,169 @@
+pdxmesh = {
+	name = "generic_ship_of_the_line_mesh"
+	file = "generic_ship_of_the_line.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 40.0 }
+		lod = { index = 2 percent = 20.0 }
+	}
+
+	meshsettings = {
+		name = "LOD_0|generic_ship_of_the_line_hull|generic_ship_of_the_line_hu"
+		index = 0
+		texture_diffuse = "generic_ship_of_the_line_hull_diffuse.dds"
+		texture_normal = "generic_ship_of_the_line_hull_normal.dds"
+		texture_specular = "generic_ship_of_the_line_hull_properties.dds"
+		texture = { file = "generic_ship_of_the_line_hull_masks.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_0|generic_ship_of_the_line_hull|generic_ship_of_the_line_hu"
+		index = 1
+		texture_diffuse = "generic_ship_of_the_line_details_diffuse.dds"
+		texture_normal = "generic_ship_of_the_line_details_normal.dds"
+		texture_specular = "generic_ship_of_the_line_details_properties.dds"
+		texture = { file = "generic_ship_of_the_line_details_masks.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_0|generic_ship_of_the_line_sails|generic_ship_of_the_line_s"
+		index = 0
+		texture_diffuse = "generic_ship_of_the_line_sails_diffuse.dds"
+		texture_normal = "generic_ship_of_the_line_sails_normal.dds"
+		texture_specular = "generic_ship_of_the_line_sails_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_0|generic_ship_of_the_line_flags|generic_ship_of_the_line_f"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	meshsettings = {
+		name = "LOD_0|generic_ship_of_the_line_ropes|generic_ship_of_the_line_r"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_1|generic_ship_of_the_line_hull|generic_ship_of_the_line_hu"
+		index = 0
+		texture_diffuse = "generic_ship_of_the_line_hull_diffuse.dds"
+		texture_normal = "generic_ship_of_the_line_hull_normal.dds"
+		texture_specular = "generic_ship_of_the_line_hull_properties.dds"
+		texture = { file = "generic_ship_of_the_line_hull_masks.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_1|generic_ship_of_the_line_hull|generic_ship_of_the_line_hu"
+		index = 1
+		texture_diffuse = "generic_ship_of_the_line_details_diffuse.dds"
+		texture_normal = "generic_ship_of_the_line_details_normal.dds"
+		texture_specular = "generic_ship_of_the_line_details_properties.dds"
+		texture = { file = "generic_ship_of_the_line_details_masks.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+
+
+	meshsettings = {
+		name = "LOD_1|generic_ship_of_the_line_sails|generic_ship_of_the_line_s"
+		index = 0
+		texture_diffuse = "generic_ship_of_the_line_sails_diffuse.dds"
+		texture_normal = "generic_ship_of_the_line_sails_normal.dds"
+		texture_specular = "generic_ship_of_the_line_sails_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_1|generic_ship_of_the_line_flags|generic_ship_of_the_line_f"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	meshsettings = {
+		name = "LOD_1|generic_ship_of_the_line_ropes|generic_ship_of_the_line_r"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_2|generic_ship_of_the_line_hull|generic_ship_of_the_line_hu"
+		index = 0
+		texture_diffuse = "generic_ship_of_the_line_hull_diffuse.dds"
+		texture_normal = "generic_ship_of_the_line_hull_normal.dds"
+		texture_specular = "generic_ship_of_the_line_hull_properties.dds"
+		texture = { file = "generic_ship_of_the_line_hull_masks.dds" index = 6 }
+		shader = "standard"
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_2|generic_ship_of_the_line_sails|generic_ship_of_the_line_s"
+		index = 0
+		texture_diffuse = "generic_ship_of_the_line_sails_diffuse.dds"
+		texture_normal = "generic_ship_of_the_line_sails_normal.dds"
+		texture_specular = "generic_ship_of_the_line_sails_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_2|generic_ship_of_the_line_flags|generic_ship_of_the_line_f"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	# old animations
+	animation = { id = "idle_animation" type = "generic_ship_of_the_line_idle.anim" }
+	animation = { id = "attack_animation" type = "generic_ship_of_the_line_attack_1.anim" }
+
+	# new animations
+	animation = { id = "ship_idle_animation" 					type = "generic_ship_of_the_line_idle.anim" }
+	animation = { id = "ship_move_animation" 					type = "generic_ship_of_the_line_move.anim" }
+	animation = { id = "ship_fire_animation" 					type = "generic_ship_of_the_line_fire.anim" }
+	animation = { id = "ship_defeat_animation" 					type = "generic_ship_of_the_line_defeat.anim" }
+}

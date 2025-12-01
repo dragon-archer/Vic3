@@ -1,0 +1,491 @@
+
+#################################################
+###       			European     			  ###
+#################################################
+
+entity = {
+	name =		 "military_infantry_european_irregular_entity"
+	pdxmesh =	 "military_infantry_european_t1_mesh"
+
+	attach = { name = weapon 		r_hand_attach = "military_arms_blunderbuss_entity" }
+
+	get_state_from_parent = yes
+	default_state = "walk"
+
+	state = { name = "idle"  
+		animation = 		"infantry_blunderbuss_idle_01_animation"
+		looping = 			yes 
+		propagate_state = 	{ weapon = "idle" }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/generic/infantry/anm_infantry_blunderbuss_idle_01_animation" }}
+	}
+
+	state = { name = "walk"  
+		animation = 		"infantry_blunderbuss_walk_01_animation"
+		looping = 			yes 
+		propagate_state = 	{ weapon = "idle" }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/generic/infantry/anm_infantry_blunderbuss_walk_01_animation" }}
+	}
+
+	state = { name = "victory"  
+		time_offset = { 0.0 10.0 }  
+		animation = 		"infantry_blunderbuss_victory_01_animation"
+		looping = 			yes 
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/generic/infantry/anm_infantry_blunderbuss_victory_01_animation" }}
+	}
+
+
+	state = { name = "defeat" 
+		chance = 1
+		animation = 		"infantry_blunderbuss_defeat_01_animation"
+		looping = 			no 
+		propagate_state = 	{ weapon = "idle" }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/generic/infantry/anm_infantry_blunderbuss_defeat_01_animation" }}
+	}
+
+	state = { name = "defeat" 
+		chance = 1
+		animation = 		"infantry_blunderbuss_defeat_02_animation"
+		looping = 			no 
+		propagate_state = 	{ weapon = "idle" }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/generic/infantry/anm_infantry_blunderbuss_defeat_02_animation" }}
+	}
+
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend"
+		time_offset = { 0.0 10.0 } 
+		animation = 		"infantry_blunderbuss_fire_defensive_01_animation"
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_defensive_01" }
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"
+		time_offset = { 0.0 10.0 }  
+		animation = 		"infantry_blunderbuss_fire_aggressive_01_animation" 
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_aggressive_01" }
+	}
+
+	state = { name = "advance"
+		time_offset = { 0.0 10.0 }  
+		animation = 		"infantry_blunderbuss_fire_aggressive_02_animation" 
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_aggressive_02" }
+	}
+
+}
+
+entity = {
+	clone =		 "military_infantry_european_irregular_entity"
+	name =		 "military_infantry_european_line_entity"
+	pdxmesh =	 "military_infantry_european_t2_mesh"
+	
+	attach = { name = weapon 		r_hand_attach = "military_arms_brownbess_bayonet_entity" }
+
+	
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend"
+		time_offset = { 0.0 10.0 } 
+		start_event = 		{ node = l_hand_attach		entity = "military_arms_brownbess_bayonet_entity" attachment_id = weapon state = "fire_defensive_01" }
+		animation = 		"infantry_brownbess_fire_defensive_animation"
+		looping = 			yes 
+		#propagate_state = 	{ weapon = "fire_defensive_01" }
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"
+		time_offset = { 0.0 10.0 } 
+		start_event = 		{ node = l_hand_attach		entity = "military_arms_brownbess_bayonet_entity" attachment_id = weapon state = "fire_aggressive_01" }
+		animation = 		"infantry_brownbess_fire_aggressive_animation" 
+		looping = 			yes 
+		#propagate_state = 	{ weapon = "fire_aggressive_01" }
+	}
+
+}
+
+entity = {
+	clone =		 "military_infantry_european_line_entity"
+	name =		 "military_infantry_european_skirmish_entity"
+	
+	attach = { name = weapon 		r_hand_attach = "military_arms_dreyseneedle_entity" }
+
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend"
+		time_offset = { 0.0 10.0 } 
+		start_event = 		{ node = l_hand_attach		entity = "military_arms_dreyseneedle_entity" attachment_id = weapon state = "fire_defensive_01" }
+		animation = 		"infantry_dreyseneedlegun_fire_defensive_animation"
+		looping = 			yes 
+		#propagate_state = 	{ weapon = "fire_defensive_01" }
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"
+		time_offset = { 0.0 10.0 } 
+		start_event = 		{ node = l_hand_attach		entity = "military_arms_dreyseneedle_entity" attachment_id = weapon state = "fire_aggressive_01" }
+		animation = 		"infantry_dreyseneedlegun_fire_aggressive_animation" 
+		looping = 			yes 
+		#propagate_state = 	{ weapon = "fire_aggressive_01" }
+	}
+}
+
+entity = {
+	clone =		 "military_infantry_european_skirmish_entity"
+	name =		 "military_infantry_european_trench_entity"
+	pdxmesh =	 "military_infantry_european_t3_mesh"
+	
+	attach = { name = weapon 		r_hand_attach = "military_arms_mauser98_bayonet_entity" }
+
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend"
+		time_offset = { 0.0 10.0 } 
+		start_event = 		{ node = l_hand_attach		entity = "military_arms_mauser98_bayonet_entity" attachment_id = weapon state = "fire_defensive_01" }
+		animation = 		"infantry_mauser98_fire_defensive_animation"
+		looping = 			yes 
+		#propagate_state = 	{ weapon = "fire_defensive_01" }
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"
+		time_offset = { 0.0 10.0 } 
+		start_event = 		{ node = l_hand_attach		entity = "military_arms_mauser98_bayonet_entity" attachment_id = weapon state = "fire_aggressive_01" }
+		animation = 		"infantry_mauser98_fire_aggressive_animation" 
+		looping = 			yes 
+		#propagate_state = 	{ weapon = "fire_aggressive_01" }
+	}
+}
+
+entity = {
+	clone =		 "military_infantry_european_trench_entity"
+	name =		 "military_infantry_european_squad_entity"
+	
+	
+	attach = { name = weapon 		r_hand_attach = "military_arms_chauchat_entity" }
+
+	
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend"
+		time_offset = { 0.0 10.0 } 
+		animation = 		"infantry_chauchat_fire_defensive_animation"
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_defensive_01" }
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"
+		time_offset = { 0.0 10.0 }  
+		animation = 		"infantry_chauchat_fire_aggressive_animation" 
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_aggressive_01" }
+	}
+
+}
+
+entity = {
+	clone =		 "military_infantry_european_squad_entity"
+	name =		 "military_infantry_european_mechanized_entity"
+	
+	
+	attach = { name = weapon 		r_hand_attach = "military_arms_tommygun_entity" }
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend"
+		time_offset = { 0.0 10.0 } 
+		animation = 		"infantry_tommygun_fire_defensive_animation"
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_defensive_01" }
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"
+		time_offset = { 0.0 10.0 }  
+		animation = 		"infantry_tommygun_fire_aggressive_animation" 
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_aggressive_01" }
+	}
+}
+
+
+entity = {
+	clone =		 "military_infantry_european_mechanized_entity"
+	name =		 "military_support_european_flamethrower_entity"
+	
+	
+	attach = { name = weapon 		r_hand_attach = "military_arms_flamethrower_entity" }
+	attach = { name = tank 			chest = "military_arms_flamethrower_tank_entity" }
+
+	###		DEFEND STATES		###
+
+	state = { name = "defend"
+		time_offset = { 0.0 10.0 } 
+		animation = 		"infantry_flamethrower_fire_aggressive_animation"
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_defensive_01" }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/infantry/flamethrower/anm_burst_defensive_flamethrower" }}
+	}
+
+
+	###		ADVANCE STATES		###
+
+	state = { name = "advance"
+		time_offset = { 0.0 10.0 }  
+		animation = 		"infantry_flamethrower_fire_aggressive_animation" 
+		looping = 			yes 
+		propagate_state = 	{ weapon = "fire_aggressive_01" }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/weapons/infantry/flamethrower/anm_burst_aggressive_flamethrower" }}
+	}
+}
+
+
+
+
+#################################################
+###       			African     			  ###
+#################################################
+
+entity = {
+	clone =		 "military_infantry_european_irregular_entity"
+	name =		 "military_infantry_african_irregular_entity"
+	pdxmesh =	 "military_infantry_african_t1_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_line_entity"
+	name =		 "military_infantry_african_line_entity"
+	pdxmesh =	 "military_infantry_african_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_skirmish_entity"
+	name =		 "military_infantry_african_skirmish_entity"
+	pdxmesh =	 "military_infantry_african_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_trench_entity"
+	name =		 "military_infantry_african_trench_entity"
+	pdxmesh =	 "military_infantry_african_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_squad_entity"
+	name =		 "military_infantry_african_squad_entity"
+	pdxmesh =	 "military_infantry_african_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_mechanized_entity"
+	name =		 "military_infantry_african_mechanized_entity"
+	pdxmesh =	 "military_infantry_african_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_support_european_flamethrower_entity"
+	name =		 "military_support_african_flamethrower_entity"
+	pdxmesh =	 "military_infantry_african_t3_mesh"
+}
+
+
+
+
+
+#################################################
+###       			Arabic     				  ###
+#################################################
+
+entity = {
+	clone =		 "military_infantry_european_irregular_entity"
+	name =		 "military_infantry_arabic_irregular_entity"
+	pdxmesh =	 "military_infantry_arabic_t1_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_line_entity"
+	name =		 "military_infantry_arabic_line_entity"
+	pdxmesh =	 "military_infantry_arabic_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_skirmish_entity"
+	name =		 "military_infantry_arabic_skirmish_entity"
+	pdxmesh =	 "military_infantry_arabic_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_trench_entity"
+	name =		 "military_infantry_arabic_trench_entity"
+	pdxmesh =	 "military_infantry_arabic_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_squad_entity"
+	name =		 "military_infantry_arabic_squad_entity"
+	pdxmesh =	 "military_infantry_arabic_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_mechanized_entity"
+	name =		 "military_infantry_arabic_mechanized_entity"
+	pdxmesh =	 "military_infantry_arabic_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_support_european_flamethrower_entity"
+	name =		 "military_support_arabic_flamethrower_entity"
+	pdxmesh =	 "military_infantry_arabic_t3_mesh"
+}
+
+
+
+
+
+
+#################################################
+###       			East Asian     			  ###
+#################################################
+
+entity = {
+	clone =		 "military_infantry_european_irregular_entity"
+	name =		 "military_infantry_eastasian_irregular_entity"
+	pdxmesh =	 "military_infantry_eastasian_t1_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_line_entity"
+	name =		 "military_infantry_eastasian_line_entity"
+	pdxmesh =	 "military_infantry_eastasian_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_skirmish_entity"
+	name =		 "military_infantry_eastasian_skirmish_entity"
+	pdxmesh =	 "military_infantry_eastasian_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_trench_entity"
+	name =		 "military_infantry_eastasian_trench_entity"
+	pdxmesh =	 "military_infantry_eastasian_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_squad_entity"
+	name =		 "military_infantry_eastasian_squad_entity"
+	pdxmesh =	 "military_infantry_eastasian_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_mechanized_entity"
+	name =		 "military_infantry_eastasian_mechanized_entity"
+	pdxmesh =	 "military_infantry_eastasian_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_support_european_flamethrower_entity"
+	name =		 "military_support_eastasian_flamethrower_entity"
+	pdxmesh =	 "military_infantry_eastasian_t3_mesh"
+}
+
+
+
+
+
+#################################################
+###       			South Asian     		  ###
+#################################################
+
+entity = {
+	clone =		 "military_infantry_european_irregular_entity"
+	name =		 "military_infantry_southasian_irregular_entity"
+	pdxmesh =	 "military_infantry_southasian_t1_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_line_entity"
+	name =		 "military_infantry_southasian_line_entity"
+	pdxmesh =	 "military_infantry_southasian_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_skirmish_entity"
+	name =		 "military_infantry_southasian_skirmish_entity"
+	pdxmesh =	 "military_infantry_southasian_t2_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_trench_entity"
+	name =		 "military_infantry_southasian_trench_entity"
+	pdxmesh =	 "military_infantry_southasian_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_squad_entity"
+	name =		 "military_infantry_southasian_squad_entity"
+	pdxmesh =	 "military_infantry_southasian_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_mechanized_entity"
+	name =		 "military_infantry_southasian_mechanized_entity"
+	pdxmesh =	 "military_infantry_southasian_t3_mesh"
+}
+
+entity = {
+	clone =		 "military_support_european_flamethrower_entity"
+	name =		 "military_support_southasian_flamethrower_entity"
+	pdxmesh =	 "military_infantry_southasian_t3_mesh"
+}
+
+
+
+
+#################################################
+###       			Native American    		  ###
+#################################################
+
+entity = {
+	clone =		 "military_infantry_european_irregular_entity"
+	name =		 "military_infantry_nativeamerican_irregular_entity"
+	pdxmesh =	 "military_infantry_nativeamerican_t1_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_line_entity"
+	name =		 "military_infantry_nativeamerican_line_entity"
+	pdxmesh =	 "military_infantry_nativeamerican_t1_mesh"
+}
+
+entity = {
+	clone =		 "military_infantry_european_skirmish_entity"
+	name =		 "military_infantry_nativeamerican_skirmish_entity"
+	pdxmesh =	 "military_infantry_nativeamerican_t1_mesh"
+
+}
+
+entity = {
+	clone =		 "military_support_european_flamethrower_entity"
+	name =		 "military_support_nativeamerican_flamethrower_entity"
+	pdxmesh =	 "military_infantry_nativeamerican_t1_mesh"
+}

@@ -198,16 +198,20 @@ PixelShader =
 						TexelOffset * float2( 1, 1 )
 					};
 
+					
 					[ unroll( /*maximum of*/ 8 ) ]
-					for ( int OutlineIndex = 1; OutlineIndex <= TextOutlineWidth && RenderCondition == 0; ++OutlineIndex )
+					for ( int OutlineIndex = 1; OutlineIndex <= TextOutlineWidth; ++OutlineIndex )
 					{
-						[ unroll ]
-						for (int Direction = 0; Direction < 8 && RenderCondition == 0; ++Direction )
+						if( RenderCondition == 0 )
 						{
-							float2 UV = Input.UV0 + OutlineIndex * OffsetDirections[Direction];
-							if ( PdxTex2D( Texture, UV ).r > TextureAlphaThreshold )
+							[ unroll ]
+							for (int Direction = 0; Direction < 8; ++Direction )
 							{
-								RenderCondition = 1;
+								float2 UV = Input.UV0 + OutlineIndex * OffsetDirections[Direction];
+								if ( PdxTex2D( Texture, UV ).r > TextureAlphaThreshold )
+								{
+									RenderCondition = 1;
+								}
 							}
 						}
 					}

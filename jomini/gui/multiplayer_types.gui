@@ -1,5 +1,45 @@
-types JominiServerBrowser {
+template serverbrowser_haspassword_column_size_default {
+	layoutpolicy_horizontal = expanding
+	layoutpolicy_vertical = expanding
+	layoutstretchfactor_horizontal = 3
+}
 
+template serverbrowser_servername_column_size_default {
+	layoutpolicy_horizontal = expanding
+	layoutpolicy_vertical = expanding
+	layoutstretchfactor_horizontal = 10
+}
+
+template serverbrowser_version_column_size_default {
+	layoutpolicy_horizontal = expanding
+	layoutpolicy_vertical = expanding
+	layoutstretchfactor_horizontal = 6
+}
+
+template serverbrowser_numplayers_column_size_default {
+	layoutpolicy_horizontal = expanding
+	layoutpolicy_vertical = expanding
+	layoutstretchfactor_horizontal = 4
+}
+
+template serverbrowser_status_column_size_default {
+	layoutpolicy_horizontal = expanding
+	layoutpolicy_vertical = expanding
+	layoutstretchfactor_horizontal = 3
+}
+
+template serverbrowser_joinbutton_column_size_default {
+	layoutpolicy_horizontal = expanding
+	layoutpolicy_vertical = expanding
+	layoutstretchfactor_horizontal = 2
+}
+
+template serverbrowser_list_row_properties_default {
+	margin = { 5 0 }
+	spacing = 5
+}
+
+types JominiServerBrowser {
 	type JominiMultiplayerPushButton = button {
 		block "jomini_multiplayer_push_button"
 		{
@@ -17,13 +57,140 @@ types JominiServerBrowser {
 		}
 	}
 
+	type JominiServerBrowserListItem = widget {
+		block "serverbrowser_item_size" {
+			layoutpolicy_horizontal = expanding
+			size = { -1 30 }
+		}
+
+		hbox = {
+			block "serverbrowser_list_row_properties" {
+				using = serverbrowser_list_row_properties_default
+			}
+
+			block "serverbrowser_item_properties" {}
+
+			widget = {
+				icon = {
+					texture = "gfx/interface/icons/has_password_icon.dds"
+					visible = "[JominiServer.GetHasPassword]"
+					tooltip = "JOMINI_MULTIPLAYER_GUI_SERVER_PASSWORD_PROTECTED_TOOLTIP"
+					parentanchor = hcenter
+					block "has_password_icon_properties" {
+					}
+				}
+
+				icon = {
+					texture = "gfx/interface/icons/no_password_icon.dds"
+					visible = "[Not(JominiServer.GetHasPassword)]"
+					tooltip = "JOMINI_MULTIPLAYER_GUI_SERVER_NOT_PASSWORD_PROTECTED_TOOLTIP"
+					parentanchor = hcenter
+					block "no_password_icon_properties" {
+					}
+				}
+
+				block "serverbrowser_haspassword_column_size"
+				{
+					using = serverbrowser_haspassword_column_size_default
+				}
+			}
+
+			block "serverbrowser_spacer_widget" {}
+
+			JominiMultiplayerTextbox = {
+				text = "[JominiServer.GetName]"
+				align = vcenter|nobaseline
+				autoresize = no
+				elide = right
+
+				block "serverbrowser_servername_column_size"
+				{
+					using = serverbrowser_servername_column_size_default
+				}
+			}
+
+			block "serverbrowser_spacer_widget" {}
+
+			JominiMultiplayerTextbox = {
+				text = "[JominiServer.GetVersion]"
+				align = vcenter|nobaseline
+				autoresize = no
+				elide = right
+
+				block "serverbrowser_version_column_size"
+				{
+					using = serverbrowser_version_column_size_default
+				}
+			}
+
+			block "serverbrowser_spacer_widget" {}
+
+			JominiMultiplayerTextbox = {
+				raw_text = "[JominiServer.GetNumPlayers] / [JominiServer.GetMaxPlayers]"
+				align = vcenter|nobaseline
+				autoresize = no
+				elide = right
+
+				block "serverbrowser_numplayers_column_size"
+				{
+					using = serverbrowser_numplayers_column_size_default
+				}
+			}
+
+			block "serverbrowser_spacer_widget" {}
+
+			JominiMultiplayerTextbox = {
+				text = "[JominiServer.GetStatus]"
+				autoresize = no
+				align = vcenter|nobaseline
+				elide = right
+
+				block "serverbrowser_status_column_size"
+				{
+					using = serverbrowser_status_column_size_default
+				}
+			}
+
+			block "serverbrowser_spacer_widget" {}
+
+			button = {
+				block "serverbrowser_join_button" {
+					texture = "gfx/editor_gui/editor_button.dds"
+					gfxtype = framedbuttongfx
+					spriteType = CorneredStretched
+					spriteborder = { 4 4 }
+					effectname = "NoHighlight"
+					framesize = { 16 16 }
+					upframe = 1
+					downframe = 2
+					overframe = 3
+					disableframe = 4
+					intersectionmask = yes
+					fontsize = 12
+				}
+
+				block "serverbrowser_joinbutton_column_size"
+				{
+					using = serverbrowser_joinbutton_column_size_default
+				}
+
+				onclick = "[JominiServer.Join]"
+				enabled = "[JominiServer.IsSameVersion]"
+
+				tooltip_enabled = "[Not(JominiServer.IsSameVersion)]"
+				tooltip = "JOMINI_MULTIPLAYER_GUI_VERSION_MISMATCH_SERVER_BROWSER"
+
+				text = "JOMINI_MULTIPLAYER_GUI_SERVER_BROWSER_JOIN_BUTTON_IN_LIST"
+			}
+		}
+	}
+
 	type JominiServerBrowserWindow = window {
 		name = "JominiServerBrowser"
-		size = { 900 300 } 
+		size = { 80% 100% }
 		visible = no
 		position = { 0 0 }
-		parentanchor = center
-		widgetanchor = center
+		parentanchor = vcenter|right
 
 		block "serverbrowser_background" {
 			shaderfile = "gfx/FX/pdxgui_default.shader"
@@ -40,11 +207,16 @@ types JominiServerBrowser {
 			block "serverbrowser_header" {}
 
 			widget = {
-				size = { 100 50 }
-				layoutpolicy_horizontal = expanding
+				block "serverbrowser_top_hbox" {
+					size = { -1 50 }
+					layoutpolicy_horizontal = expanding
+				}
 
 				hbox = {
-					spacing = 10
+					block "serverbrowser_top_row_properties" {
+						spacing = 10
+						margin = { 10 0 }
+					}
 
 					JominiMultiplayerCheckbutton = {
 						blockoverride "checkbutton"
@@ -106,7 +278,7 @@ types JominiServerBrowser {
 			widget = {
 				block "serverbrowser_top_spacer"
 				{
-					size = { 20 10 }
+					size = { -1 10 }
 					layoutpolicy_horizontal = expanding
 				}
 			}
@@ -116,66 +288,78 @@ types JominiServerBrowser {
 				layoutpolicy_horizontal = expanding
 
 				hbox = {
+					block "serverbrowser_list_row_properties" {
+						using = serverbrowser_list_row_properties_default
+					}
+
 					widget = {
-						block "serverbrowser_haspassword_column_size" 
+						block "serverbrowser_haspassword_column_size"
 						{
-							size = { 100 20 }
+							using = serverbrowser_haspassword_column_size_default
 						}
 					}
 
 					block "serverbrowser_divider" {}
 
 					widget = {
-						block "serverbrowser_servername_column_size" 
+						block "serverbrowser_servername_column_size"
 						{
-							size = { 100 20 }
+							using = serverbrowser_servername_column_size_default
 						}
 					}
 
 					block "serverbrowser_divider" {}
 
 					widget = {
-						block "serverbrowser_version_column_size" 
+						block "serverbrowser_version_column_size"
 						{
-							size = { 100 20 }
+							using = serverbrowser_version_column_size_default
 						}
 					}
 
 					block "serverbrowser_divider" {}
 
 					widget = {
-						block "serverbrowser_numplayers_column_size" 
+						block "serverbrowser_numplayers_column_size"
 						{
-							size = { 100 20 }
+							using = serverbrowser_numplayers_column_size_default
 						}
 					}
 
 					block "serverbrowser_divider" {}
 
 					widget = {
-						block "serverbrowser_status_column_size" 
+						block "serverbrowser_status_column_size"
 						{
-							size = { 100 20 }
+							using = serverbrowser_status_column_size_default
 						}
 					}
 
+					block "serverbrowser_divider" {}
+
 					widget = {
-						layoutpolicy_horizontal = expanding
+						block "serverbrowser_joinbutton_column_size"
+						{
+							using = serverbrowser_joinbutton_column_size_default
+						}
 					}
 				}
 
 				vbox = {
-					flowcontainer = {
+					hbox = {
 						layoutpolicy_horizontal = expanding
-						direction = horizontal
+
+						block "serverbrowser_list_row_properties" {
+							using = serverbrowser_list_row_properties_default
+						}
 
 						JominiMultiplayerPushButton = {
 							onclick = "[JominiServerBrowserGui.Sort( 'has_password' )]"
 							text = "JOMINI_MULTIPLAYER_GUI_SERVER_SORT_LABEL_PASSWORD"
 
-							block "serverbrowser_haspassword_column_size" 
+							block "serverbrowser_haspassword_column_size"
 							{
-								size = { 100 20 }
+								using = serverbrowser_haspassword_column_size_default
 							}
 						}
 
@@ -185,9 +369,9 @@ types JominiServerBrowser {
 							onclick = "[JominiServerBrowserGui.Sort( 'name' )]"
 							text = "JOMINI_MULTIPLAYER_GUI_SERVER_SORT_LABEL_SERVER_NAME"
 
-							block "serverbrowser_servername_column_size" 
+							block "serverbrowser_servername_column_size"
 							{
-								size = { 100 20 }
+								using = serverbrowser_servername_column_size_default
 							}
 						}
 
@@ -199,7 +383,7 @@ types JominiServerBrowser {
 
 							block "serverbrowser_version_column_size"
 							{
-								size = { 200 20 }
+								using = serverbrowser_version_column_size_default
 							}
 						}
 
@@ -211,7 +395,7 @@ types JominiServerBrowser {
 
 							block "serverbrowser_numplayers_column_size"
 							{
-								size = { 10 20 }
+								using = serverbrowser_numplayers_column_size_default
 							}
 						}
 
@@ -223,7 +407,16 @@ types JominiServerBrowser {
 
 							block "serverbrowser_status_column_size"
 							{
-								size = { 100 20 }
+								using = serverbrowser_status_column_size_default
+							}
+						}
+
+						block "serverbrowser_spacer_widget" {}
+
+						widget = {
+							block "serverbrowser_joinbutton_column_size"
+							{
+								using = serverbrowser_joinbutton_column_size_default
 							}
 						}
 					}
@@ -239,145 +432,34 @@ types JominiServerBrowser {
 						scissor = yes
 						autoresizeviewport = yes
 						alwaystransparent = yes
-						
+
 						scrollbar_vertical = {
 							block "serverbrowser_scrollbar"
 							{
 								using = editor_vertical_scrollbar
 							}
 						}
-						
+
 						scrollwidget = {
-							vbox = {
-								fixedgridbox = {
-									addcolumn = 100%
-									block "serverbrowser_row_height"
-									{
-										addrow = 30
-									}
-
-									datamodel = "[JominiServerBrowserGui.AccessServers]"
-									item = {
-										flowcontainer = {
-											direction = horizontal
-												
-											widget = {
-												icon = {
-													texture = "gfx/interface/icons/has_password_icon.dds"
-													visible = "[JominiServer.GetHasPassword]"
-													tooltip = "JOMINI_MULTIPLAYER_GUI_SERVER_PASSWORD_PROTECTED_TOOLTIP"
-													parentanchor = hcenter
-													block "has_password_icon_properties" {
-													}
-												}
-
-												icon = {
-													texture = "gfx/interface/icons/no_password_icon.dds"
-													visible = "[Not(JominiServer.GetHasPassword)]"
-													tooltip = "JOMINI_MULTIPLAYER_GUI_SERVER_NOT_PASSWORD_PROTECTED_TOOLTIP"
-													parentanchor = hcenter
-													block "no_password_icon_properties" {
-													}
-												}
-
-												block "serverbrowser_haspassword_column_size" 
-												{
-													size = { 100 20 }
-												}
-											}
-
-											block "serverbrowser_spacer_widget" {}
-
-											JominiMultiplayerTextbox = {
-												text = "[JominiServer.GetName]"
-												align = vcenter|nobaseline
-												autoresize = no
-												elide = right
-
-												block "serverbrowser_servername_column_size" 
-												{
-													size = { 100 20 }
-												}
-											}
-
-											block "serverbrowser_spacer_widget" {}
-
-											JominiMultiplayerTextbox = {
-												text = "[JominiServer.GetVersion]"
-												align = vcenter|nobaseline
-												autoresize = no
-												elide = right
-
-												block "serverbrowser_version_column_size"
-												{
-													size = { 200 20 }
-												}
-											}
-
-											block "serverbrowser_spacer_widget" {}
-
-											JominiMultiplayerTextbox = {
-												raw_text = "[JominiServer.GetNumPlayers] / [JominiServer.GetMaxPlayers]"
-												align = vcenter|nobaseline
-												autoresize = no
-												elide = right
-
-												block "serverbrowser_numplayers_column_size"
-												{
-													size = { 100 20 }
-												}
-											}
-
-											block "serverbrowser_spacer_widget" {}
-
-											JominiMultiplayerTextbox = {
-												text = "[JominiServer.GetStatus]"
-												autoresize = no
-												align = vcenter|nobaseline
-												elide = right
-
-												block "serverbrowser_status_column_size"
-												{
-													size = { 100 20 }
-												}
-											}
-
-											button = {
-												block "serverbrowser_join_button" {
-													texture = "gfx/editor_gui/editor_button.dds"
-													gfxtype = framedbuttongfx
-													spriteType = CorneredStretched
-													spriteborder = { 4 4 }
-													effectname = "NoHighlight"
-													framesize = { 16 16 }
-													upframe = 1
-													downframe = 2
-													overframe = 3
-													disableframe = 4
-													intersectionmask = yes
-													fontsize = 12
-													size = { 40 14 } 
-												}
-
-												onclick = "[JominiServer.Join]"
-												enabled = "[JominiServer.IsSameVersion]"
-												
-												tooltip_enabled = "[Not(JominiServer.IsSameVersion)]"
-												tooltip = "JOMINI_MULTIPLAYER_GUI_VERSION_MISMATCH_SERVER_BROWSER"
-												
-												text = "JOMINI_MULTIPLAYER_GUI_SERVER_BROWSER_JOIN_BUTTON_IN_LIST"
-											}
-										}
-									}
+							fixedgridbox = {
+								addcolumn = 100%
+								block "serverbrowser_row_height"
+								{
+									addrow = 30
 								}
 
-								JominiMultiplayerTextbox = {
-									layoutpolicy_vertical = expanding
-									text = "JOMINI_MULTIPLAYER_SERVER_BROWSER_EMPTY"
-									autoresize = yes
-									visible = "[Or( IsDataModelEmpty( JominiServerBrowserGui.AccessServers ), JominiServerBrowserGui.IsRefreshing )]"
+								datamodel = "[JominiServerBrowserGui.AccessServers]"
+								item = {
+									JominiServerBrowserListItem = {}
 								}
 							}
+						}
+
+						JominiMultiplayerTextbox = {
+							parentanchor = center
+							text = "JOMINI_MULTIPLAYER_SERVER_BROWSER_EMPTY"
+							autoresize = yes
+							visible = "[Or( IsDataModelEmpty( JominiServerBrowserGui.AccessServers ), JominiServerBrowserGui.IsRefreshing )]"
 						}
 					}
 				}
@@ -393,11 +475,15 @@ types JominiServerBrowser {
 
 			widget = {
 				block "serverbrowser_bottom_hbox" {
-					size = { 20 20 }
+					size = { 20 30 }
 				}
-				layoutpolicy_horizontal = expanding 
+
+				layoutpolicy_horizontal = expanding
 				hbox = {
-					spacing = 10
+					block "serverbrowser_bottom_row_properties" {
+						spacing = 10
+					}
+
 					JominiMultiplayerTextbox = {
 						text = "JOMINI_MULTIPLAYER_GUI_SERVER_BROWSER_ID_LABEL"
 						autoresize = yes
@@ -427,7 +513,7 @@ types JominiServerBrowser {
 		parentanchor = center
 		widgetanchor = center
 
-		size = { 300 75 } 
+		size = { 300 75 }
 
 		block "serverdialog_background" {
 			shaderfile = "gfx/FX/pdxgui_default.shader"
@@ -440,7 +526,7 @@ types JominiServerBrowser {
 			spacing = 10
 			restrictparent_min = yes
 
-			block "serverdialog_margin" 
+			block "serverdialog_margin"
 			{
 				margin = { 10 10 }
 			}
@@ -501,7 +587,7 @@ types JominiMultiplayerIngame {
 		parentanchor = center
 
 		block "joinrequest_background" {
-			
+
 			shaderfile = "gfx/FX/pdxgui_default.shader"
 			texture = "gfx/editor_gui/editor_field.dds"
 			spriteType = CorneredStretched
@@ -570,44 +656,44 @@ types JominiMultiplayerIngame {
 									block "joinrequest_playername" {}
 								}
 
-								button = { 
+								button = {
 									block "buttonstyle" {
 										size = { 75 20 }
 										layoutpolicy_horizontal = fixed
 										texture = "gfx/editor_gui/editor_button.dds"
-		   								gfxtype = framedbuttongfx
-		   								spriteType = CorneredStretched
-		   								spriteborder = { 4 4 }
-		   								effectname = "NoHighlight"
-		   								framesize = { 16 16 }
-		   								upframe = 1
-		   								downframe = 2
-		   								overframe = 3
-		   								disableframe = 4
-		   								intersectionmask = yes
+										gfxtype = framedbuttongfx
+										spriteType = CorneredStretched
+										spriteborder = { 4 4 }
+										effectname = "NoHighlight"
+										framesize = { 16 16 }
+										upframe = 1
+										downframe = 2
+										overframe = 3
+										disableframe = 4
+										intersectionmask = yes
 									}
 									name = "accept_button"
 									text = "JOMINI_MULTIPLAYER_GUI_PLAYER_JOIN_REQUEST_ACCEPT"
 									onclick = "[PlayerJoinRequest.Accept]"
 								}
 
-								button = { 
+								button = {
 									block "buttonstyle" {
 										size = { 75 20 }
 										layoutpolicy_horizontal = fixed
 										texture = "gfx/editor_gui/editor_button.dds"
-		   								gfxtype = framedbuttongfx
-		   								spriteType = CorneredStretched
-		   								spriteborder = { 4 4 }
-		   								effectname = "NoHighlight"
-		   								framesize = { 16 16 }
-		   								upframe = 1
-		   								downframe = 2
-		   								overframe = 3
-		   								disableframe = 4
-		   								intersectionmask = yes
+										gfxtype = framedbuttongfx
+										spriteType = CorneredStretched
+										spriteborder = { 4 4 }
+										effectname = "NoHighlight"
+										framesize = { 16 16 }
+										upframe = 1
+										downframe = 2
+										overframe = 3
+										disableframe = 4
+										intersectionmask = yes
 									}
-									
+
 									name = "reject_button"
 									text = "JOMINI_MULTIPLAYER_GUI_PLAYER_JOIN_REQUEST_REJECT"
 									onclick = "[PlayerJoinRequest.Reject]"
@@ -629,15 +715,14 @@ types JominiMultiplayerIngame {
 		parentanchor = center
 		visible = "[DataModelHasItems( OosWindow.GetOosData )]"
 
+		block "oos_background" {
+			shaderfile = "gfx/FX/pdxgui_default.shader"
+			texture = "gfx/editor_gui/editor_field.dds"
+			spriteType = CorneredStretched
+			spriteborder = { 6 6 }
+		}
+
 		vbox = {
-
-			block "oos_background" {
-				shaderfile = "gfx/FX/pdxgui_default.shader"
-				texture = "gfx/editor_gui/editor_field.dds"
-				spriteType = CorneredStretched
-				spriteborder = { 6 6 }
-			}
-
 			margin = { 10 10 }
 			spacing = 5
 
@@ -747,6 +832,53 @@ types JominiMultiplayerIngame {
 	}
 }
 
+template jomini_multiplayer_frontendview_menu_items
+{
+	JominiMultiplayerFrontEndButton = {
+		block "menu_button_properties"
+		{
+			layoutpolicy_horizontal = expanding
+			size = { -1 50 }
+		}
+
+		onclick = "[FrontEndMultiplayerView.OnBack]"
+		text = "JOMINI_MULTIPLAYER_GUI_SERVER_BROWSER_BACK_BUTTON"
+	}
+
+	JominiMultiplayerFrontEndButton = {
+		block "menu_button_properties"
+		{
+			layoutpolicy_horizontal = expanding
+			size = { -1 50 }
+		}
+
+		onclick = "[FrontEndMultiplayerView.OnLoad]"
+		text = "JOMINI_MULTIPLAYER_GUI_SERVER_BROWSER_LOAD_AND_HOST_BUTTON"
+	}
+
+	JominiMultiplayerFrontEndButton = {
+		block "menu_button_properties"
+		{
+			layoutpolicy_horizontal = expanding
+			size = { -1 50 }
+		}
+
+		onclick = "[FrontEndMultiplayerView.OnHost]"
+		text = "JOMINI_MULTIPLAYER_GUI_SERVER_BROWSER_HOST_BUTTON"
+	}
+
+	JominiMultiplayerFrontEndButton = {
+		block "menu_button_properties"
+		{
+			layoutpolicy_horizontal = expanding
+			size = { -1 50 }
+		}
+
+		onclick = "[JominiServerBrowserGui.RefreshServers]"
+		text = "JOMINI_MULTIPLAYER_GUI_SERVER_BROWSER_SCAN_BUTTON"
+	}
+}
+
 types JominiMultiplayerFrontend
 {
 	type JominiMultiplayerFrontendView = widget {
@@ -756,36 +888,27 @@ types JominiMultiplayerFrontend
 		block "background" {}
 		block "states" {}
 
-		block "menu" 
+		block "menu"
 		{
-			flowcontainer = {
-				block "menu_properties"
-				{
-					direction = vertical
-				}
+			widget = {
+				size = { 20% 100% }
 
-				block "menu_items"
-				{
-					JominiMultiplayerFrontEndButton = {
-						onclick = "[FrontEndMultiplayerView.OnBack]"
-						text = "JOMINI_MULTIPLAYER_GUI_SERVER_BROWSER_BACK_BUTTON"
+				vbox = {
+					block "menu_properties"
+					{
+						margin = { 10 10 }
+						spacing = 10
+
+						widget = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+						}
 					}
 
-					JominiMultiplayerFrontEndButton = {
-						onclick = "[FrontEndMultiplayerView.OnLoad]"
-						text = "JOMINI_MULTIPLAYER_GUI_SERVER_BROWSER_LOAD_AND_HOST_BUTTON"
+					block "menu_items"
+					{
+						using = jomini_multiplayer_frontendview_menu_items
 					}
-					
-					JominiMultiplayerFrontEndButton = {
-						onclick = "[FrontEndMultiplayerView.OnHost]"
-						text = "JOMINI_MULTIPLAYER_GUI_SERVER_BROWSER_HOST_BUTTON"
-					}
-					
-					JominiMultiplayerFrontEndButton = {
-						onclick = "[JominiServerBrowserGui.RefreshServers]"
-						text = "JOMINI_MULTIPLAYER_GUI_SERVER_BROWSER_SCAN_BUTTON"
-					}
-					
 				}
 			}
 		}
@@ -802,7 +925,7 @@ types JominiMultiplayerSetup {
 			fontsize = 13
 			fontcolor = { 1 1 1 1 }
 			cursorcolor = { 1 1 0.5 1 }
-	
+
 			background = {
 				margin_left = 5
 				margin_top = 0
@@ -813,7 +936,7 @@ types JominiMultiplayerSetup {
 			}
 		}
 	}
-	
+
 	type JominiMultiplayerSetupTextBox = textbox {
 		align = left
 		block "setup_textbox" {
@@ -827,7 +950,7 @@ types JominiMultiplayerSetup {
 		layoutpolicy_horizontal = expanding
 		spacing = 10
 
-		checkbutton = { 
+		checkbutton = {
 			gfxtype = checkbuttongfx
 			shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
 
@@ -838,10 +961,10 @@ types JominiMultiplayerSetup {
 
 			block "checkbutton" {}
 		}
-	
+
 		JominiMultiplayerSetupTextBox = {
 			layoutpolicy_horizontal = expanding
-			block "label" 
+			block "label"
 			{
 				visible = no
 			}
@@ -857,7 +980,7 @@ types JominiMultiplayerSetup {
 
 		alwaystransparent = no
 		resizable = yes
-		
+
 		background = {
 			block "background" {
 				shaderfile = "gfx/FX/pdxgui_default.shader"
@@ -870,7 +993,7 @@ types JominiMultiplayerSetup {
 		}
 
 		block "background_border_header" {}
-	
+
 		vbox = {
 			restrictparent_min = yes
 			block "setup_margins" {
@@ -1033,7 +1156,7 @@ types JominiMultiplayerSetup {
 
 			block "game_options_rows" {}
 
-			
+
 			widget = {
 				layoutpolicy_vertical = expanding
 			}
@@ -1048,7 +1171,7 @@ types JominiMultiplayerSetup {
 				tooltip = "[MultiplayerSetupWindow.HostToolTip]"
 				layoutpolicy_horizontal = expanding
 			}
-		
+
 			JominiLobbyViewButton = {
 				name = "cancel_button"
 				size = { 0 25 }
@@ -1138,7 +1261,7 @@ types JominiMultiplayerLobby
 			raw_text = "K"
 		}
 	}
-	
+
 	type JominiLobbyViewServerInfoEntry = button {
 		block "server_info_entry_size"
 		{
@@ -1164,18 +1287,18 @@ types JominiMultiplayerLobby
 			}
 		}
 	}
-	
+
 	# Hosting status
 	type JominiLobbyViewHostingStatus = vbox {
 		layoutpolicy_horizontal = expanding
 		visible = "[LobbyView.ShowHosting]"
-		
+
 		background = {
 			block "window_background" {
 				using = JominiLobbyViewModuleBackground
 			}
 		}
-		
+
 
 		JominiMultiplayerSetupTextBox = {
 			text = "JOMINI_MULTIPLAYER_GUI_HOSTING"
@@ -1189,21 +1312,21 @@ types JominiMultiplayerLobby
 		visible = "[HasHostError]"
 		block "error_bottom_margin" {
 		}
-		
+
 		background = {
 			block "window_background" {
 				using = JominiLobbyViewModuleBackground
 			}
 		}
-		
+
 		editbox = {
 			size = { 0 60 }
 			layoutpolicy_horizontal = expanding
 			text = "[GetHostError]"
-			align = center|center	
-			block "jomini_standard_textbox" {}		
+			align = center|center
+			block "jomini_standard_textbox" {}
 		}
-		
+
 		JominiLobbyViewButton = {
 			size = { 0 20 }
 			layoutpolicy_horizontal = expanding
@@ -1227,7 +1350,7 @@ types JominiMultiplayerLobby
 			downframe = 2
 			overframe = 3
 			disableframe = 4
-	
+
 			raw_text = ">"
 		}
 	}
@@ -1245,7 +1368,7 @@ types JominiMultiplayerLobby
 			downframe = 2
 			overframe = 3
 			disableframe = 4
-	
+
 			raw_text = "v"
 		}
 	}
@@ -1263,7 +1386,7 @@ types JominiMultiplayerLobby
 		block "mp_info_properties" {
 			margin = { 10 10 }
 			spacing = 10
-			
+
 			background = {
 				using = JominiLobbyViewModuleBackground
 			}
@@ -1414,7 +1537,7 @@ types JominiMultiplayerLobby
 
 		vbox = {
 			layoutpolicy_horizontal = expanding
-			layoutpolicy_vertical = preferred 
+			layoutpolicy_vertical = preferred
 
 			hbox = {
 				layoutpolicy_horizontal = expanding
@@ -1464,10 +1587,10 @@ types JominiMultiplayerLobby
 
 		vbox = {
 			layoutpolicy_horizontal = expanding
-			layoutpolicy_vertical = preferred 
+			layoutpolicy_vertical = preferred
 			hbox = {
 				layoutpolicy_horizontal = expanding
-				layoutpolicy_vertical = preferred 
+				layoutpolicy_vertical = preferred
 				spacing = 10
 				block "mp_info_margin" {}
 
@@ -1522,22 +1645,22 @@ types JominiMultiplayerLobby
 		visible = "[And(Not(HasHostError),Not(GameIsMultiplayer))]"
 		alwaystransparent = no
 		filter_mouse = left|right
-		
+
 		block "host_background" {
 			background = {
 				using = JominiLobbyViewModuleBackground
 			}
 		}
-		
+
 		JominiLobbyViewButton = {
 			block "host_button"
 			{
 				text = "JOMINI_MULTIPLAYER_GUI_HOST_BUTTON"
 			}
-			
+
 			onclick = "[LobbyView.OpenMultiplayer]"
 			tooltip = "[LobbyView.GetOpenMultiplayerToolTip]"
-			
+
 			block "host_button_enabled"
 			{
 				enabled = "[And(JominiIsMultiplayerAccessible, JominiIsHostOrLocal)]"
@@ -1546,12 +1669,12 @@ types JominiMultiplayerLobby
 			layoutpolicy_horizontal = expanding
 		}
 	}
-	
+
 	# Playerlist item
 	type JominiLobbyViewPlayerItem = widget {
 		alwaystransparent = no
 		filter_mouse = left|right
-		
+
 		# Background
 		block "player_item_styling"
 		{
@@ -1827,7 +1950,7 @@ types JominiMultiplayerLobby
 		block "game_info" {
 		}
 	}
-	
+
 	# Module for preparation specific stuff
 	type JominiLobbyViewPreparation = vbox {
 		layoutpolicy_horizontal = expanding
@@ -1868,7 +1991,7 @@ types JominiMultiplayerLobby
 			layoutpolicy_horizontal = expanding
 		}
 	}
-	
+
 	type JominiLobbyViewEndPreparationConfirmation = widget {
 		name = "JominiMultiplayerEndPreparationConfirmation"
 
@@ -1887,8 +2010,8 @@ types JominiMultiplayerLobby
 				using = JominiLobbyViewModuleBackground
 			}
 		}
-		
-		block "content" 
+
+		block "content"
 		{
 			textbox = {
 				name = "info"
@@ -1897,7 +2020,7 @@ types JominiMultiplayerLobby
 				align = center|center
 				text = "JOMINI_MULTIPLAYER_GUI_CONFIRMATION"
 			}
-			
+
 			JominiLobbyViewButton = {
 				onclick = "[EndPrepConfirm.Cancel]"
 				size = { 50% 20% }
@@ -1905,7 +2028,7 @@ types JominiMultiplayerLobby
 				parentanchor = bottom|left
 				widgetanchor = bottom|left
 			}
-			
+
 			JominiLobbyViewButton = {
 				onclick = "[EndPrepConfirm.Confirm]"
 				size = { 50% 20% }
@@ -1919,7 +2042,7 @@ types JominiMultiplayerLobby
 	type JominiMultiplayerLobby = widget {
 		name = "lobbyview"
 		size = { 100% 100% }
-	
+
 		block "left_panel"
 		{
 			widget = {
@@ -2010,12 +2133,13 @@ types JominiMultiplayerLobby
 				parentanchor = top|right
 				widgetanchor = top|right
 
-				block "right_panel_properties" 
+				block "right_panel_properties"
 				{
 					size = { 370 100% }
 				}
 
 				vbox = {
+					block "right_panel_vbox_properties" {}
 					block "right_panel_content"
 					{
 						JominiLobbyViewGameInfoPanel = {}
@@ -2043,12 +2167,11 @@ template JominiDefaultButtonProperties {
 		disableframe = 4
 	}
 }
-	
+
 types JominiMultiplayerGameTypes
 {
 	type JominiMultiplayerFrontEndButton = button {
 		using = JominiDefaultButtonProperties
-		size = { 200 50 }
 	}
 
 	type JominiMultiplayerSortButtonAsc = button {
@@ -2061,7 +2184,7 @@ types JominiMultiplayerGameTypes
 	}
 
 	type JominiMultiplayerSortButtonDesc = button {
-		
+
 		block "desc_button_properties" {
 			using = JominiDefaultButtonProperties
 			raw_text = "v"
@@ -2078,15 +2201,15 @@ types JominiMultiplayerGameTypes
 				parentanchor = vcenter
 				texture = "gfx/editor_gui/editor_checkbox.dds"
 				framesize = { 16 16 }
-				
+
 				block "checkbutton" {}
 			}
-			
+
 			JominiMultiplayerTextbox = {
-				
+
 				position = { 20 0 }
 				autoresize = yes
-				
+
 				block "label"
 				{
 					raw_text = "#D Label#!"
@@ -2111,9 +2234,9 @@ types JominiMultiplayerGameTypes
 
 		block "jominimultiplayereditbox" {
 			font = "standard_cw_font"
-			
+
 			size = { 100 24 }
-		
+
 			background = {
 				margin_left = 5
 				margin_top = -2

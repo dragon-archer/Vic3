@@ -413,6 +413,10 @@ types ToolsTypes
 
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = preferred
+
+			block "editor_frame_properties"
+			{
+			}
 			
 			vbox = {
 				margin = { 5 5 }
@@ -996,6 +1000,9 @@ types EditorTypes
 				# TODO: Set context by default?
 				#maximumsize = [GuiContext.GetScreenResolution]
 				maximumsize = { 256 512 }
+				# Force min width to avoid autoresizescrollarea "permenently" setting the width to 0
+				# if the menu ends up with 0 entries at some point
+				min_width = 256
 				size = { 256 512 }
 				
 				background = {

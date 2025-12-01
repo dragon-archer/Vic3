@@ -270,7 +270,7 @@ Code
 	uint CalculateLightsPerTileListIndexForTile( float2 PixelPos )
 	{
 		// Calculate the "ScreenTileToLightsPerTileList" offset for the current tile
-		uint TileOffset = CalculateOffsetForTileForPixel( PixelPos );
+		uint TileOffset = CalculateOffsetForTileForPixel( uint2( PixelPos ) );
 
 		// Lookup where this tiles light data is stored, ScreenTileToLightsPerTileList contains an entry for each tile that is the offset of that tiles data in the LightsPerTileList
 		uint LightsPerTileListIndex = PdxReadBuffer( ScreenTileToLightsPerTileList, TileOffset );
@@ -281,7 +281,7 @@ Code
 	uint CalculateLightsPerTileListIndexForCluster( float2 PixelPos, float ViewSpaceDepth )
 	{
 		// Calculate the "ScreenTileToLightsPerTileList" offset for the current cluster
-		uint ClusterOffset = CalculateOffsetForClusterForPixel( PixelPos, ViewSpaceDepth );
+		uint ClusterOffset = CalculateOffsetForClusterForPixel( uint2( PixelPos ), ViewSpaceDepth );
 		
 		// Lookup where this clusters light data is stored, ScreenTileToLightsPerTileList contains an entry for each cluster that is the offset of that clusters data in the LightsPerTileList
 		uint LightsPerTileListIndex = PdxReadBuffer( ScreenTileToLightsPerTileList, ClusterOffset );

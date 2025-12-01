@@ -1,0 +1,153 @@
+pdxmesh = {
+	name = "generic_ironclad_ship_mesh"
+	file = "generic_ironclad_ship.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 40.0 }
+		lod = { index = 2 percent = 15.0 }
+		lod = { index = 3 percent = 10.0 }
+	}
+
+	meshsettings = {
+		name = "LOD_0|ironclad_ship|ironclad_shipShape"
+		index = 0
+		texture_diffuse = "generic_ironclad_ship_diffuse.dds"
+		texture_normal = "generic_ironclad_ship_normal.dds"
+		texture_specular = "generic_ironclad_ship_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_0|ironclad_ship_alpha|ironclad_ship_alphaShape"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_0|ironclad_ship_flag|ironclad_ship_flagShape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	meshsettings = {
+		name = "LOD_1|ironclad_ship|ironclad_shipShape"
+		index = 0
+		texture_diffuse = "generic_ironclad_ship_diffuse.dds"
+		texture_normal = "generic_ironclad_ship_normal.dds"
+		texture_specular = "generic_ironclad_ship_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_1|ironclad_ship_alpha|ironclad_ship_alphaShape"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_1|ironclad_ship_flag|ironclad_ship_flagShape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	meshsettings = {
+		name = "LOD_2|ironclad_ship|ironclad_shipShape"
+		index = 0
+		texture_diffuse = "generic_ironclad_ship_diffuse.dds"
+		texture_normal = "generic_ironclad_ship_normal.dds"
+		texture_specular = "generic_ironclad_ship_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_2|ironclad_ship_alpha|ironclad_ship_alphaShape"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_2|ironclad_ship_flag|ironclad_ship_flagShape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	meshsettings = {
+		name = "LOD_3|ironclad_ship|ironclad_shipShape"
+		index = 0
+		texture_diffuse = "generic_ironclad_ship_diffuse.dds"
+		texture_normal = "generic_ironclad_ship_normal.dds"
+		texture_specular = "generic_ironclad_ship_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_3|ironclad_ship_alpha|ironclad_ship_alphaShape"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard_alpha_blend"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_3|ironclad_ship_flag|ironclad_ship_flagShape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	# old animations
+	animation = { id = "idle_animation" type = "generic_ironclad_ship_idle.anim" }
+	animation = { id = "attack_animation" type = "generic_ironclad_ship_attack_1.anim" }
+
+	# new animations
+	animation = { id = "ship_idle_animation" 					type = "generic_ironclad_ship_idle.anim" }
+	animation = { id = "ship_move_animation" 					type = "generic_ironclad_ship_move.anim" }
+	animation = { id = "ship_fire_animation" 					type = "generic_ironclad_ship_fire.anim" }
+	animation = { id = "ship_defeat_animation" 					type = "generic_ironclad_ship_defeat.anim" }
+}
+

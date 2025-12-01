@@ -1,0 +1,143 @@
+pdxmesh = {
+	name = "military_transport_naval_landingcraft_generic_mesh"
+	file = "military_transport_naval_landingcraft_generic.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 8.0 }
+		lod = { index = 2 percent = 4.0 }
+		lod = { index = 3 percent = 2.0 }
+	}
+
+	animation = { id = "moving_animation" type = "military_transport_naval_landingcraft_generic_moving.anim" }
+	animation = { id = "still_animation" type = "military_transport_naval_landingcraft_generic_still.anim" }
+	animation = { id = "idle_animation" type = "military_transport_naval_landingcraft_generic_idle.anim" }
+	animation = { id = "open_animation" type = "military_transport_naval_landingcraft_generic_open.anim" }
+
+	meshsettings = {
+		name = "military_transport_naval_landingcraft_generic_Shape0"
+		index = 0
+		texture_diffuse = "military_transport_naval_landingcraft_generic_diffuse.dds"
+		texture_normal = "military_transport_naval_landingcraft_generic_normal.dds"
+		texture_specular = "military_transport_naval_landingcraft_generic_properties.dds"
+		texture = { file = "military_transport_naval_landingcraft_generic_masks.dds" index = 6 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "UNIT_COLOR" }
+	}
+
+	meshsettings = {
+		name = "military_transport_naval_landingcraft_flag_0Shape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	meshsettings = {
+		name = "military_transport_naval_landingcraft_generic_Shape1"
+		index = 0
+		texture_diffuse = "military_transport_naval_landingcraft_generic_diffuse.dds"
+		texture_normal = "military_transport_naval_landingcraft_generic_normal.dds"
+		texture_specular = "military_transport_naval_landingcraft_generic_properties.dds"
+		texture = { file = "military_transport_naval_landingcraft_generic_masks.dds" index = 6 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "UNIT_COLOR" }
+	}
+
+	meshsettings = {
+		name = "military_transport_naval_landingcraft_flag_1Shape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	meshsettings = {
+		name = "military_transport_naval_landingcraft_generic_Shape2"
+		index = 0
+		texture_diffuse = "military_transport_naval_landingcraft_generic_diffuse.dds"
+		texture_normal = "military_transport_naval_landingcraft_generic_normal.dds"
+		texture_specular = "military_transport_naval_landingcraft_generic_properties.dds"
+		texture = { file = "military_transport_naval_landingcraft_generic_masks.dds" index = 6 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "UNIT_COLOR" }
+	}
+
+	meshsettings = {
+		name = "military_transport_naval_landingcraft_flag_2Shape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+
+	meshsettings = {
+		name = "military_transport_naval_landingcraft_generic_Shape3"
+		index = 0
+		texture_diffuse = "military_transport_naval_landingcraft_generic_diffuse.dds"
+		texture_normal = "military_transport_naval_landingcraft_generic_normal.dds"
+		texture_specular = "military_transport_naval_landingcraft_generic_properties.dds"
+		texture = { file = "military_transport_naval_landingcraft_generic_masks.dds" index = 6 }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "UNIT_COLOR" }
+	}
+
+	meshsettings = {
+		name = "military_transport_naval_landingcraft_flag_3Shape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+		additional_shader_defines = { "COA_TEXTURE" }
+	}
+}
+
+entity = {
+	name = "military_transport_naval_landingcraft_generic_entity"
+	pdxmesh = "military_transport_naval_landingcraft_generic_mesh"
+
+	locator = { name = "locator_root" position = { 0.0 0.02 0.0 } }
+
+	cull_radius = 10
+
+	default_state = "moving"
+	state = {
+		name = "moving"
+		animation = "moving_animation"
+		event = { time = 0 node = "locator_root" particle = "ships/naval_landingcraft_moving" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/anm_destroyer_ship_move_animation" }}
+
+	}
+	state = {
+		name = "still"
+		animation = "still_animation"
+		event = { time = 0 node = "locator_root" particle = "ships/naval_landingcraft_idle" trigger_once = yes keep_particle = yes }
+		event = { time = 0.0 keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/anm_destroyer_ship_idle_animation" }}
+	}
+	state = {
+		name = "idle"
+		animation = "idle_animation"
+		event = { time = 0 node = "locator_root" particle = "ships/naval_landingcraft_idle" trigger_once = yes keep_particle = yes }
+		event = { time = 0.0 keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/anm_destroyer_ship_idle_animation" }}
+	}
+	state = {
+		name = "open"
+		animation = "open_animation"
+		looping = no
+		event = { time = 0 node = "locator_root" particle = "ships/naval_landingcraft_idle" trigger_once = yes keep_particle = yes }
+		next_state = "still"
+	}
+}

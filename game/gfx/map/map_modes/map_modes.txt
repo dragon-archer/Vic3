@@ -90,6 +90,7 @@ mm_default = {
 
 	is_visible = no 					# special behaviour, overriden in code
 	show_occupation = yes
+	show_formation_movement_arrows = no
 
 	gradient_border_settings = default
 }
@@ -98,11 +99,12 @@ mm_ongoing_diplo_play = {
 	map_painting_mode = countries
 	map_painting_mode_alternate = colonizable_provinces
 	map_names = countries
-	map_markers = { strategic_objective_marker battle_marker hq_marker diplomatic_play_marker construction_marker construction_summary_marker construction_queue_marker event_marker front_marker input_shortage_marker state_effect_marker sea_node_marker revolutionary_movement_marker }
+	map_markers = { colony_marker strategic_objective_marker battle_marker hq_marker diplomatic_play_marker construction_marker construction_summary_marker construction_queue_marker event_marker front_marker input_shortage_marker military_formation_marker state_effect_marker sea_node_marker revolutionary_movement_marker naval_invasion_marker }
 	map_tooltip_offset = state
 
 	is_visible = no 					# special behaviour, overriden in code
 	show_occupation = yes
+	show_formation_movement_arrows = yes
 
 	gradient_border_settings = default
 }
@@ -144,11 +146,12 @@ mm_military = {
 	map_painting_mode = player_alliances
 	map_painting_mode_secondary = player_alliances
 	map_painting_mode_alternate = player_alliances
-	map_markers = { strategic_objective_marker event_marker battle_marker front_marker commander_order_marker hq_marker sea_node_marker }
+	map_markers = { strategic_objective_marker battle_marker front_marker military_formation_marker hq_marker sea_node_marker naval_invasion_marker }
 
 	gradient_border_settings = mapmode_extra
 	is_visible = yes
 	show_occupation = yes
+	show_formation_movement_arrows = yes
 
 	# Texture usage
 	use_mapmode_textures = yes
@@ -161,20 +164,45 @@ mm_military = {
 	secondary_color_red = @war_ally_warleader
 	secondary_color_green = @war_enemy
 	secondary_color_blue = @war_enemy_warleader
-	secondary_color_alpha = @color_blue
+	secondary_color_alpha = @color_orange
 	alternate_color_red = @color_red
 	alternate_color_green = @color_green
+}
+
+# Hidden map mode, because it is currently unoptimized / unlocalized / for debug
+mm_player_military_access = {
+	map_painting_mode = player_military_access
+	map_painting_mode_secondary = player_military_access
+	map_painting_mode_alternate = player_military_access
+	map_markers = { strategic_objective_marker battle_marker front_marker military_formation_marker hq_marker sea_node_marker naval_invasion_marker }
+
+	gradient_border_settings = mapmode_extra
+	is_visible = no # Hidden!
+	show_occupation = yes
+	show_formation_movement_arrows = yes
+
+	# Texture usage
+	use_mapmode_textures = yes
+
+	# Texture slots
+	primary_color_red = @this_is_you # Player country
+	primary_color_green = @war_ally # Other country, occupied by player
+	primary_color_blue = @war_enemy # Your country, occupied by enemy
+	secondary_color_red = @war_ally_warleader # Other country, which has given player military access
+	secondary_color_green = @war_ally # Other country, occupied by country that has given player military access
+	secondary_color_blue = @war_enemy_warleader # Other country, at war with you (never gives military access)
 }
 
 mm_military_with_past_battles = {
 	map_painting_mode = player_alliances
 	map_painting_mode_secondary = player_alliances
 	map_painting_mode_alternate = player_alliances
-	map_markers = { event_marker battle_marker past_battle_marker commander_order_marker hq_marker sea_node_marker }
+	map_markers = { event_marker battle_marker past_battle_marker hq_marker sea_node_marker naval_invasion_marker military_formation_marker }
 
 	gradient_border_settings = mapmode_extra
 	is_visible = no
 	show_occupation = yes
+	show_formation_movement_arrows = yes
 
 	# Texture usage
 	use_mapmode_textures = yes
@@ -196,11 +224,12 @@ mm_peace_deal = {
 	map_painting_mode = player_alliances
 	map_painting_mode_secondary = player_alliances
 	map_painting_mode_alternate = player_alliances
-	map_markers = { event_marker front_marker war_goal_marker }
+	map_markers = { event_marker front_marker war_goal_marker military_formation_marker }
 
 	gradient_border_settings = mapmode_extra
 	is_visible = no
 	show_occupation = yes
+	show_formation_movement_arrows = yes
 
 	# Texture usage
 	use_mapmode_textures = yes
@@ -254,6 +283,18 @@ mm_population = {
 mm_literacy = {
 	map_painting_mode = literacy
 	map_markers = { }
+	map_names = states
+
+	gradient_border_settings = heatmap
+	has_fog_of_war = no
+	is_visible = yes
+
+	soundeffect = "snapshot:/Dynamic/low_pass_world"
+}
+
+mm_pollution = {
+	map_painting_mode = pollution
+	map_markers = { construction_marker construction_summary_marker employment_marker}
 	map_names = states
 
 	gradient_border_settings = heatmap
@@ -318,7 +359,7 @@ mm_religion_nationally = {
 
 mm_goods_production = {
 	map_painting_mode = goods_production
-	map_markers = { state_price_of_goods_marker }
+	map_markers = { state_production_of_goods_marker }
 
 	gradient_border_settings = heatmap
 	has_fog_of_war = no
@@ -328,7 +369,7 @@ mm_goods_production = {
 
 mm_goods_consumption = {
 	map_painting_mode = goods_consumption
-	map_markers = { state_price_of_goods_marker }
+	map_markers = { state_consumption_of_goods_marker }
 
 	gradient_border_settings = heatmap
 	has_fog_of_war = no
@@ -338,6 +379,17 @@ mm_goods_consumption = {
 
 mm_goods_potentials = {
 	map_painting_mode = player_goods_potentials
+	# unreachable marker: building_potential_marker
+	map_markers = { state_potential_of_goods_marker }
+
+	gradient_border_settings = heatmap
+	has_fog_of_war = no
+
+	soundeffect = "snapshot:/Dynamic/low_pass_world"
+}
+
+mm_goods_local_prices = {
+	map_painting_mode = goods_local_prices
 	# unreachable marker: building_potential_marker
 	map_markers = { state_price_of_goods_marker }
 
@@ -622,6 +674,26 @@ mm_recruit_admirals_interaction = {
 	soundeffect = "snapshot:/Dynamic/low_pass_world"
 }
 
+mm_create_formation_interaction = {
+	map_painting_mode = none
+	map_markers = { military_formation_marker }
+	map_names = strategic_regions
+
+	gradient_border_settings = interactive
+	has_fog_of_war = no
+	show_formation_movement_arrows = yes
+
+	# Texture usage
+	use_mapmode_textures = yes
+	primary_red_as_gradient_border = yes
+
+	# Texture slots
+	secondary_color_red = @color_green
+	secondary_color_alpha = @color_red
+
+	soundeffect = "snapshot:/Dynamic/low_pass_world"
+}
+
 mm_activate_conscripts_interaction = {
 	map_painting_mode = none
 	map_markers = { }
@@ -871,10 +943,11 @@ mm_hq_interaction = {
 
 mm_front_interaction = {
 	map_painting_mode = none
-	map_markers = { front_marker }
+	map_markers = { front_marker military_formation_marker }
 
 	gradient_border_settings = interactive
 	has_fog_of_war = no
+	show_formation_movement_arrows = yes
 
 	# Texture usage
 	use_mapmode_textures = yes

@@ -39,7 +39,7 @@ Code
 	uint Debug_CalculatePageIdentifier( float2 VirtualUV, uint Mip, SVirtualTextureClipmapConstants Constants )
 	{
 		uint MipSize = ( Constants._IndirectionSize >> Mip );
-		uint2 xy = VirtualUV * vec2( MipSize );
+		uint2 xy = uint2( VirtualUV * float2( MipSize, MipSize ) );
 		return Constants._IndirectionSize * Constants._IndirectionSize * Mip + xy.y * MipSize.x + xy.x;
 	}
 
@@ -103,7 +103,7 @@ Code
 		uint MipSize = ( Constants._IndirectionSize >> Mip );
 		uint2 IndirectionCoord = uint2( VirtualUV * MipSize ) % Constants._ClipmapSize;
 		// We do load since pointsampling does not match frac calculation on some hardware? (Intel)
-		uint4 IndirectionData = PdxTexture2DArrayLoad0( IndirectionTexture, IndirectionCoord, Mip );
+		uint4 IndirectionData = uint4( PdxTexture2DArrayLoad0( IndirectionTexture, IndirectionCoord, Mip ) );
 		return IndirectionData;
 	}
 
@@ -119,7 +119,7 @@ Code
 	void CalculateSampleParameters( float2 VirtualUV, float Lod, Texture2DArray<uint4> IndirectionTexture, SVirtualTextureClipmapConstants Constants, inout SVirtualTextureSampleParameters SampleParams )
 	{
 		// Limit mip to available range
-		uint LodTruncated = Lod;
+		uint LodTruncated = uint( Lod );
 		uint Mip = min( Constants._NumMipLevels - 1, LodTruncated );
 
 		uint4 IndirectionData = SampleIndirectionData( VirtualUV, Mip, IndirectionTexture, Constants );

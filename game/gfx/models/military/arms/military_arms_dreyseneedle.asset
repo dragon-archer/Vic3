@@ -1,0 +1,28 @@
+pdxmesh = {
+	name = "military_arms_dreyseneedle_mesh"
+	file = "military_arms_dreyseneedle.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 6.0 }
+	}
+
+	meshsettings = {
+		name = "dreyseneedle0Shape"
+		index = 0
+		texture_diffuse = "military_arms_01_diffuse.dds"
+		texture_normal = "military_arms_01_normal.dds"
+		texture_specular = "military_arms_01_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "dreyseneedle1Shape"
+		index = 0
+		texture_diffuse = "military_arms_01_diffuse.dds"
+		texture_normal = "military_arms_01_normal.dds"
+		texture_specular = "military_arms_01_properties.dds"
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

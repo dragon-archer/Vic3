@@ -124,8 +124,8 @@ container = {
 		size = { 175 14 }
 		direction = horizontal
 		parentanchor = left|vcenter
-		
-		value = "[PdxValueSetting.GetValue(PdxSetting.GetSetting)]"
+
+		value = "[PdxValueSetting.GetCurrentValue(PdxSetting.GetSetting)]"
 
 		track = {
 			using = editor_scrollbar_track
@@ -159,7 +159,8 @@ container = {
 		position = { 180 0 }
 		size = { 40 20 }
 		align = center|nobaseline
-		text = "[PdxValueSetting.GetValue(PdxSetting.GetSetting)]"
+		text = "[PdxValueSetting.GetCurrentValue(PdxSetting.GetSetting)]"
+		fontcolor = "[Select_CVector4f( PdxValueSetting.HasValueChanged(PdxSetting.GetSetting), '(CVector4f)1.0,0.0,0.0,1.0', '(CVector4f)1.0,1.0,1.0,1.0' )]"
 	}
 }
 
@@ -182,6 +183,7 @@ container = {
 		blockoverride "dropdown_item_text"
 		{
 			text = "[Localize(CString.GetString)]"
+			fontcolor = "[Select_CVector4f( PdxEnumSetting.HasValueChanged(CString.GetString), '(CVector4f)1.0,0.0,0.0,1.0', '(CVector4f)1.0,1.0,1.0,1.0' )]"
 		}
 	}
 }

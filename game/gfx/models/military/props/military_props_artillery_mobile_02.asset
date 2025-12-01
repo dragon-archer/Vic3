@@ -1,0 +1,110 @@
+pdxmesh = {
+	name = "military_props_artillery_mobile_02_mesh"
+	file = "military_props_artillery_mobile_02.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 16.0 }
+		lod = { index = 2 percent = 8.0 }
+		lod = { index = 3 percent = 4.0 }
+	}
+
+	meshsettings = {
+		name = "military_props_artillery_mobile_02|LOD_0|props0|props0Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_props_artillery_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_props_artillery_mobile_02|LOD_0|cloth0|clothShape0"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		texture = { file = "military_props_artillery_tint.dds" index = 5 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR"}
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_props_artillery_mobile_02|LOD_1|props1|props1Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_props_artillery_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_props_artillery_mobile_02|LOD_1|cloth1|clothShape1"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		texture = { file = "military_props_artillery_tint.dds" index = 5 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR"}
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_props_artillery_mobile_02|LOD_2|props2|props2Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_props_artillery_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_props_artillery_mobile_02|LOD_2|cloth2|clothShape2"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		texture = { file = "military_props_artillery_tint.dds" index = 5 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR"}
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_props_artillery_mobile_02|LOD_3|props3|props3Shape"
+		index = 0
+		texture_diffuse = "military_props_01_diffuse.dds"
+		texture_normal = "military_props_01_normal.dds"
+		texture_specular = "military_props_01_properties.dds"
+		texture = { file = "military_props_artillery_tint.dds" index = 5 }
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "military_props_artillery_mobile_02|LOD_3|cloth3|clothShape3"
+		index = 0
+		texture_diffuse = "flat_grey_diffuse.dds"
+		texture_normal = "battle_diorama_cloth_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		texture = { file = "military_diorama_cloth_mask.dds" index = 6 }
+		texture = { file = "military_props_artillery_tint.dds" index = 5 }
+		additional_shader_defines = { "UNIT_COLOR" "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR"}
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}

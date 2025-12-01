@@ -1,0 +1,517 @@
+
+#################################################
+###       			Generic     			  ###
+#################################################
+
+########################################
+###           Light Ships       	 ###
+########################################
+
+entity = {
+	name = "military_navy_frigate_generic_entity"
+	pdxmesh = "military_navy_frigate_generic_mesh"
+
+	cull_radius = 10
+
+	locator = { name = "locator_root" position = { 0.0 0.02 0.0 } scale = 1.0 }
+	locator = { name = "impact_frigate_01"  position = { -10.0 0.02 0.0} scale = 1.0}
+	locator = { name = "impact_frigate_02"  position = { -10.0 0.02 2.0} scale = 1.0}
+	locator = { name = "impact_frigate_03"  position = { -10.0 0.02 -3.0} scale = 1.0}
+	default_state = "move"
+
+	state = { name = "idle"		animation = "ship_idle_animation"
+		event = { time = 0.0  node = "locator_root"   particle = "ships/frigate_waves_idle" 	trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/frigate/anm_frigate_ship_idle_animation" }}
+	}
+
+	state = { name = "move"		animation = "ship_move_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/frigate_waves_moving" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/frigate/anm_frigate_ship_move_animation" }}
+	}
+
+	state = { name = "defend"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.7  node = "loc_cannon_01"  		particle = "ships/cannon_small" 		 	trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/frigate/wpn_frigate_shot" }}	
+		event = { time = 0.73 node = "loc_cannon_02"  		particle = "ships/cannon_small"				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/frigate/wpn_frigate_shot" }}	
+		event = { time = 0.8  node = "loc_cannon_03"  		particle = "ships/cannon_small"				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/frigate/wpn_frigate_shot" }}
+		event = { time = 1.2  node = "impact_frigate_01"    particle = "ships/cannon_splash"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.25 node = "impact_frigate_02"    particle = "ships/cannon_splash"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.35 node = "impact_frigate_03"    particle = "ships/cannon_splash"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root"   		particle = "ships/frigate_waves_idle" 		trigger_once = yes keep_particle = yes }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/frigate/anm_frigate_ship_fire_animation_defend" }}
+
+	}
+
+	state = { name = "advance"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.7  node = "loc_cannon_01"  		particle = "ships/cannon_small" 			trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/frigate/wpn_frigate_shot" }}	
+		event = { time = 0.73 node = "loc_cannon_02" 		particle = "ships/cannon_small"				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/frigate/wpn_frigate_shot" }}	
+		event = { time = 0.8  node = "loc_cannon_03"  		particle = "ships/cannon_small"				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/frigate/wpn_frigate_shot" }}	
+		event = { time = 1.2  node = "impact_frigate_01"    particle = "ships/cannon_splash"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.25 node = "impact_frigate_02"    particle = "ships/cannon_splash"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.35 node = "impact_frigate_03"    particle = "ships/cannon_splash"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root"   		particle = "ships/frigate_waves_idle" 		trigger_once = yes keep_particle = yes }	
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/frigate/anm_frigate_ship_fire_animation_advance" }}
+	
+	}
+
+	state = { name = "defeat" animation = "ship_defeat_animation" looping = no
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/frigate/anm_frigate_ship_defeat_animation" }}
+	}
+}
+
+entity = {
+	clone = "military_navy_frigate_generic_entity"
+	name = "military_navy_destroyer_generic_entity"
+	pdxmesh = "military_navy_destroyer_generic_mesh"
+
+	locator = { name = "impact_destroyer_01"  position = { -10.0 0.02 4.0} scale = 1.0}
+	locator = { name = "impact_destroyer_02"  position = { -10.0 0.02 -3.0} scale = 1.0}
+
+	state = { name = "idle"		animation = "ship_idle_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/destroyer_waves_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/anm_destroyer_ship_idle_animation" }}
+	}
+
+	state = { name = "move"		animation = "ship_move_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/destroyer_waves_moving" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/anm_destroyer_ship_move_animation"}}
+	}
+
+	state = { name = "defend"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.7  node = "loc_cannon_01" 	 	  particle = "ships/cannon_large" 				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/wpn_destroyer_shot" }}	
+		event = { time = 0.73 node = "loc_cannon_02" 	 	  particle = "ships/cannon_large" 				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/wpn_destroyer_shot" }}
+		event = { time = 1.1  node = "impact_destroyer_01"    particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.15 node = "impact_destroyer_02"    particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root"  	 	  particle = "ships/destroyer_waves_idle"    	trigger_once = yes keep_particle = yes }	
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/anm_destroyer_ship_fire_animation_defend" }}
+
+	}
+
+	state = { name = "advance"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.7  node = "loc_cannon_01" 		  particle = "ships/cannon_large" 				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/wpn_destroyer_shot" }}	
+		event = { time = 0.73 node = "loc_cannon_02" 	 	  particle = "ships/cannon_large" 				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/wpn_destroyer_shot" }}
+		event = { time = 1.1  node = "impact_destroyer_01"    particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.15 node = "impact_destroyer_02"    particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root"  	 	  particle = "ships/destroyer_waves_idle"    	trigger_once = yes keep_particle = yes }	
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/anm_destroyer_ship_fire_animation_advance" }}
+
+	}
+
+	state = { name = "defeat" animation = "ship_defeat_animation" looping = no
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/destroyer/anm_destroyer_ship_defeat_animation" }}
+	}
+}
+
+entity = {
+	clone = "military_navy_frigate_generic_entity"
+	name = "military_navy_torpedo_generic_entity"
+	pdxmesh = "military_navy_torpedo_generic_mesh"
+	cull_radius = 30
+
+	locator = { name = "locator_root_90" position = { 0.0 0.02 0.0 } rotation = { 90 0.0 0.0 } scale = 1.0 }
+
+	state = { name = "idle"		animation = "ship_idle_animation"
+		event = { time = 0.0 node = "locator_root"    particle = "ships/torpedo_waves_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/anm_torpedo_boat_ship_idle_animation" }}
+	}
+
+	state = { name = "move"		animation = "ship_move_animation"
+		event = { time = 0.0 node = "locator_root" 	  particle = "ships/torpedo_waves_moving" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/anm_torpedo_boat_ship_move_animation" }}
+	}
+
+	state = { name = "advance"	animation = "ship_fire_animation" 	time_offset = { 0.0 10.0 }
+		event = { time = 0.0  node = "locator_root_90"  particle = "ships/torpedo_waves_idle" 	trigger_once = yes keep_particle = yes }
+		event = { time = 1.42 node = "loc_torpedo" 		particle = "ships/torpedo_trail" 		trigger_once = no  keep_particle = yes }
+		event = { time = 1.05 node = "locator_root" 	particle = "ships/torpedo_splash" 		trigger_once = no  keep_particle = yes }
+		event = { time = 0.72 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/wpn_torpedo_boat_shot" }}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/anm_torpedo_boat_ship_fire_animation_advance" }}		
+	}
+
+	state = { name = "defend"	animation = "ship_fire_animation"	time_offset = { 0.0 10.0 }
+		event = { time = 0.0  node = "locator_root_90"  particle = "ships/torpedo_waves_idle" 	trigger_once = yes keep_particle = yes }
+		event = { time = 1.42 node = "loc_torpedo" 		particle = "ships/torpedo_trail" 		trigger_once = no  keep_particle = yes }
+		event = { time = 1.05 node = "locator_root" 	particle = "ships/torpedo_splash" 		trigger_once = no  keep_particle = yes }
+		event = { time = 0.72 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/wpn_torpedo_boat_shot" }}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/anm_torpedo_boat_ship_fire_animation_defend" }}
+	}
+
+	state = { name = "defeat" animation = "ship_defeat_animation" looping = no
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/anm_torpedo_boat_ship_defeat_animation" }}
+	}	
+}
+
+entity = {
+	clone = "military_navy_frigate_generic_entity"
+	name = "military_navy_scoutcruiser_generic_entity"
+	pdxmesh = "military_navy_scoutcruiser_generic_mesh"
+
+	locator = { name = "impact_cruiser_01"  position = { -10.0 0.02 2.0} scale = 1.0}
+	locator = { name = "impact_cruiser_02"  position = { -10.0 0.02 -2.0} scale = 1.0}
+
+	state = { name = "idle"		animation = "ship_idle_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/scoutcruiser_waves_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/scout_cruiser/anm_scout_cruiser_ship_idle_animation" }}
+	}
+
+	state = { name = "move"		animation = "ship_move_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/scoutcruiser_waves_moving" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/scout_cruiser/anm_scout_cruiser_ship_move_animation" }}
+	}
+
+	state = { name = "defend"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.73  node = "loc_cannon_02" 		 particle = "ships/cannon_large"				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/scout_cruiser/wpn_scout_cruiser_shot" }}	
+		event = { time = 1.75  node = "loc_cannon_01"		 particle = "ships/cannon_large" 		 		trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/scout_cruiser/wpn_scout_cruiser_shot" }}
+		event = { time = 1.13  node = "impact_cruiser_02"    particle = "ships/cannon_splash_large"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 2.15  node = "impact_cruiser_01"    particle = "ships/cannon_splash_large"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0   node = "locator_root" 		 particle = "ships/scoutcruiser_waves_idle" 	trigger_once = yes keep_particle = yes }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/scout_cruiser/anm_scout_cruiser_ship_fire_animation_defend" }}
+	}
+
+	state = { name = "advance"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.73  node = "loc_cannon_02" 		 particle = "ships/cannon_large"			 	trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/scout_cruiser/wpn_scout_cruiser_shot" }}	
+		event = { time = 1.75  node = "loc_cannon_01" 		 particle = "ships/cannon_large" 		 		trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/scout_cruiser/wpn_scout_cruiser_shot" }}	
+		event = { time = 1.13  node = "impact_cruiser_02"    particle = "ships/cannon_splash_large"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 2.15  node = "impact_cruiser_01"    particle = "ships/cannon_splash_large"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0   node = "locator_root" 		 particle = "ships/scoutcruiser_waves_idle" 	trigger_once = yes keep_particle = yes }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/scout_cruiser/anm_scout_cruiser_ship_fire_animation_advance" }}
+
+	}
+
+	state = { name = "defeat" animation = "ship_defeat_animation" looping = no
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/scout_cruiser/anm_scout_cruiser_ship_defeat_animation" }}
+	}	
+}
+
+
+
+########################################
+###           Capital Ships       	 ###
+########################################
+
+
+entity = {
+	clone = "military_navy_frigate_generic_entity"
+	name = "military_navy_manowar_generic_entity"
+	pdxmesh = "generic_ship_of_the_line_mesh"
+
+	state = { name = "idle"		animation = "ship_idle_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/ship_of_the_line_waves_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/manowar/anm_manowar_ship_idle_animation" }}
+	}
+
+	state = { name = "move"		animation = "ship_move_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/ship_of_the_line_waves_moving" trigger_once = yes keep_particle = yes  keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/manowar/anm_manowar_ship_move_animation" }}
+	}
+
+	state = { name = "defend"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.7  node = "loc_cannon_01" 		particle = "ships/cannon_small" 				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/manowar/wpn_manowar_shot" }}	
+		event = { time = 0.73 node = "loc_cannon_02"  		particle = "ships/cannon_small"				    trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/manowar/wpn_manowar_shot" }}	
+		event = { time = 0.8  node = "loc_cannon_03"  		particle = "ships/cannon_small"				    trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/manowar/wpn_manowar_shot" }}
+		event = { time = 1.2  node = "impact_frigate_01"    particle = "ships/cannon_splash"				trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.25 node = "impact_frigate_02"    particle = "ships/cannon_splash"				trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.35 node = "impact_frigate_03"    particle = "ships/cannon_splash"				trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root"   		particle = "ships/ship_of_the_line_waves_idle"  trigger_once = yes keep_particle = yes }			
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/manowar/anm_manowar_ship_fire_animation_defend" }}
+
+	}
+
+	state = { name = "advance"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.7  node = "loc_cannon_01"  		particle = "ships/cannon_small" 				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/manowar/wpn_manowar_shot" }}	
+		event = { time = 0.73 node = "loc_cannon_02"  		particle = "ships/cannon_small"				    trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/manowar/wpn_manowar_shot" }}	
+		event = { time = 0.8  node = "loc_cannon_03"  		particle = "ships/cannon_small"				    trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/manowar/wpn_manowar_shot" }}	
+		event = { time = 1.2  node = "impact_frigate_01"    particle = "ships/cannon_splash"				trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.25 node = "impact_frigate_02"    particle = "ships/cannon_splash"				trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.35 node = "impact_frigate_03"    particle = "ships/cannon_splash"				trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root"   		particle = "ships/ship_of_the_line_waves_idle"  trigger_once = yes keep_particle = yes }	
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/manowar/anm_manowar_ship_fire_animation_advance" }}
+			
+	}
+
+	state = { name = "defeat" animation = "ship_defeat_animation" looping = no
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/manowar/anm_manowar_ship_defeat_animation" }}
+	}	
+}
+
+entity = {
+	clone = "military_navy_frigate_generic_entity"
+	name = "military_navy_ironclad_generic_entity"
+	pdxmesh = "generic_ironclad_ship_mesh"
+
+	locator = { name = "impact_ironclad_01"  position = { -10.0 0.02 7.0} scale = 1.0}
+	locator = { name = "impact_ironclad_02"  position = { -10.0 0.02 -2.0} scale = 1.0}
+
+	state = { name = "idle"		animation = "ship_idle_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/ironclad_waves_idle"		  trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/ironclad/anm_ironclad_ship_idle_animation" }}
+		event = { time = 0.0 node = "locator_root" particle = "infrastructure/ironclad_lights_01" trigger_once = yes keep_particle = yes }
+	}
+
+	state = { name = "move"		animation = "ship_move_animation"
+		event = { time = 0.0 node = "locator_root" 	  particle = "ships/ironclad_waves_moving" 	 	  trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/ironclad/anm_ironclad_ship_move_animation" }}
+		event = { time = 0.0 node = "locator_root"	  particle = "infrastructure/ironclad_lights_01"  trigger_once = yes keep_particle = yes }
+	}
+
+	state = { name = "defend"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.7  node = "loc_cannon_01"  		particle = "ships/cannon_large" 	  			 trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/ironclad/wpn_ironclad_shot" }}	
+		event = { time = 0.73 node = "loc_cannon_02"  		particle = "ships/cannon_large"		  			 trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/ironclad/wpn_ironclad_shot" }}
+		event = { time = 1.10  node = "impact_ironclad_01"  particle = "ships/cannon_splash_large"			 trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.15  node = "impact_ironclad_02"  particle = "ships/cannon_splash_large"			 trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root"   		particle = "ships/ironclad_waves_idle" 		 	 trigger_once = yes keep_particle = yes}
+		event = { time = 0.0  node = "locator_root"   		particle = "infrastructure/ironclad_lights_01"   trigger_once = yes keep_particle = yes}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/ironclad/anm_ironclad_ship_fire_animation_defend" }}
+
+	}
+
+	state = { name = "advance"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.7  node = "loc_cannon_01"  		particle = "ships/cannon_large" 	  			trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/ironclad/wpn_ironclad_shot" }}	
+		event = { time = 0.73 node = "loc_cannon_02"  		particle = "ships/cannon_large"		   		  	trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/ironclad/wpn_ironclad_shot" }}
+		event = { time = 1.10  node = "impact_ironclad_01"  particle = "ships/cannon_splash_large"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.15  node = "impact_ironclad_02"  particle = "ships/cannon_splash_large"			trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root"   		particle = "ships/ironclad_waves_idle" 		  	trigger_once = yes keep_particle = yes }
+		event = { time = 0.0  node = "locator_root"   		particle = "infrastructure/ironclad_lights_01"  trigger_once = yes keep_particle = yes }	
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/ironclad/anm_ironclad_ship_fire_animation_advance" }}
+
+	}
+
+	state = { name = "defeat" animation = "ship_defeat_animation" looping = no
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/ironclad/anm_ironclad_ship_defeat_animation" }}
+	}	
+}
+
+entity = {
+	clone = "military_navy_frigate_generic_entity"
+	name = "military_navy_monitor_generic_entity"
+	pdxmesh = "military_navy_monitor_generic_mesh"
+	
+	locator = { name = "locator_root_43" position = { 0.0 0.02 0.0 } rotation = { 43.879 0.0 0.0 } scale = 1.0 }
+		
+	state = { name = "idle"		animation = "ship_idle_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/monitor_waves_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/monitor/anm_monitor_ship_idle_animation" }}
+	}
+
+	state = { name = "move"		animation = "ship_move_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/monitor_waves_moving"		 trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/monitor/anm_monitor_ship_move_animation" }}
+	}
+
+	state = { name = "defend"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.7  node = "loc_cannon_01"  	 	particle = "ships/cannon_small" 		  trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/monitor/wpn_monitor_shot" }}	
+		event = { time = 0.73 node = "loc_cannon_02"  	 	particle = "ships/cannon_small"			  trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/monitor/wpn_monitor_shot" }}
+		event = { time = 1.2  node = "impact_frigate_01"    particle = "ships/cannon_splash"		  trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.25 node = "impact_frigate_01"    particle = "ships/cannon_splash"		  trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root_43"  	particle = "ships/monitor_waves_idle" 	  trigger_once = yes keep_particle = yes }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/monitor/anm_monitor_ship_fire_animation_defend" }}
+
+	}
+
+	state = { name = "advance"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.7  node = "loc_cannon_01"  		particle = "ships/cannon_small" 		 trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/monitor/wpn_monitor_shot" }}	
+		event = { time = 0.73 node = "loc_cannon_02"  	 	particle = "ships/cannon_small"			 trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/monitor/wpn_monitor_shot" }}
+		event = { time = 1.2  node = "impact_frigate_01"    particle = "ships/cannon_splash"		 trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.25 node = "impact_frigate_01"    particle = "ships/cannon_splash"		 trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root_43"  	particle = "ships/monitor_waves_idle" 	 trigger_once = yes keep_particle = yes }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/monitor/anm_monitor_ship_fire_animation_advance" }}
+
+	
+	}
+
+	state = { name = "defeat" animation = "ship_defeat_animation" looping = no
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/monitor/anm_monitor_ship_defeat_animation" }}
+	}	
+}
+
+entity = {
+	clone = "military_navy_frigate_generic_entity"
+	name = "military_navy_dreadnought_generic_entity"
+	pdxmesh = "military_navy_dreadnought_generic_mesh"
+
+	locator = { name = "impact_dread_01"  position = { -10.0 0.02 -3.0} scale = 1.0}
+	locator = { name = "impact_dread_02"  position = { -10.0 0.02 0.0} scale = 1.0}
+	locator = { name = "impact_dread_03"  position = { -10.0 0.02 2.0} scale = 1.0}
+	locator = { name = "impact_dread_04"  position = { -10.0 0.02 4.0} scale = 1.0}
+
+	state = { name = "idle"		animation = "ship_idle_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/dreadnought_waves_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/anm_dreadnought_ship_idle_animation" }}
+	}
+
+	state = { name = "move"		animation = "ship_move_animation"
+		event = { time = 0.0 node = "locator_root"	  particle = "ships/dreadnought_waves_moving"   trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/anm_dreadnought_ship_move_animation" }}
+	}
+
+	state = { name = "defend"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.79 node = "loc_cannon_01"  	particle = "ships/cannon_large" 			trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/wpn_dreadnought_shot" }}	
+		event = { time = 1.47 node = "loc_cannon_02"  	particle = "ships/cannon_large"			 	trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/wpn_dreadnought_shot" }}	
+		event = { time = 1.96 node = "loc_cannon_03"  	particle = "ships/cannon_large"			 	trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/wpn_dreadnought_shot" }}
+		event = { time = 2.69 node = "loc_cannon_04"  	particle = "ships/cannon_large"			 	trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/wpn_dreadnought_shot" }}
+		event = { time = 1.19 node = "impact_dread_01"  particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.87 node = "impact_dread_02"  particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 2.36 node = "impact_dread_03"  particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 3.09 node = "impact_dread_04"  particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root"   	particle = "ships/dreadnought_waves_idle"  	trigger_once = yes keep_particle = yes }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/anm_dreadnought_ship_fire_animation_defend" }}
+
+	}
+
+	state = { name = "advance"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 0.79 node = "loc_cannon_01" 	particle = "ships/cannon_large" 		 	trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/wpn_dreadnought_shot" }}	
+		event = { time = 1.47 node = "loc_cannon_02"  	particle = "ships/cannon_large"			 	trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/wpn_dreadnought_shot" }}	
+		event = { time = 1.96 node = "loc_cannon_03"  	particle = "ships/cannon_large"			 	trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/wpn_dreadnought_shot" }}			
+		event = { time = 2.69 node = "loc_cannon_04"  	particle = "ships/cannon_large"			 	trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/wpn_dreadnought_shot" }}
+		event = { time = 1.19 node = "impact_dread_01"  particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 1.87 node = "impact_dread_02"  particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 2.36 node = "impact_dread_03"  particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 3.09 node = "impact_dread_04"  particle = "ships/cannon_splash_large"		trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root"   	particle = "ships/dreadnought_waves_idle" 	trigger_once = yes keep_particle = yes }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/anm_dreadnought_ship_fire_animation_advance" }}
+
+	}
+
+	state = { name = "defeat" animation = "ship_defeat_animation" looping = no
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/dreadnought/anm_dreadnought_ship_defeat_animation" }}
+	}	
+}
+
+entity = {
+	clone = "military_navy_frigate_generic_entity"
+	name = "military_navy_battleship_generic_entity"
+	pdxmesh = "generic_battleship_mesh"
+
+	locator = { name = "locator_light_base" position = { 0.0 0.025 0 } scale = 1.0 }
+	locator = { name = "locator_light_top" position = { 0.0 1.59 -2.8 } scale = 1.0 }
+	locator = { name = "impact_battleship_01"  position = { -10.0 0.02 -3.0} scale = 1.0}
+	locator = { name = "impact_battleship_02"  position = { -10.0 0.02 0.0} scale = 1.0}
+	locator = { name = "impact_battleship_03"  position = { -10.0 0.02 2.0} scale = 1.0}
+	locator = { name = "impact_battleship_04"  position = { -10.0 0.02 4.0} scale = 1.0}
+
+	state = { name = "idle"		animation = "ship_idle_animation"
+		event = { time = 0.0 node = "locator_root" 		 particle = "ships/generic_battleship_waves_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/anm_battleship_ship_idle_animation" }}
+		event = { time = 0.0 node = "locator_light_base" particle = "infrastructure/battleship_lights_01" trigger_once = yes keep_particle = yes }
+		event = { time = 0.0 node = "locator_light_top"  particle = "infrastructure/battleship_lights_02" trigger_once = yes keep_particle = yes }
+	}
+
+	state = { name = "move"		animation = "ship_move_animation"
+		event = { time = 0.0 node = "locator_root" 		 particle = "ships/battleship_waves_moving" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/anm_battleship_ship_move_animation" }}
+		event = { time = 0.0 node = "locator_light_base" particle = "infrastructure/battleship_lights_01" trigger_once = yes keep_particle = yes}
+		event = { time = 0.0 node = "locator_light_top"  particle = "infrastructure/battleship_lights_02" trigger_once = yes keep_particle = yes}
+	}
+
+	state = { name = "defend"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 2.79 node = "loc_cannon_01" 		 particle = "ships/cannon_large" 		 				trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/wpn_battleship_shot" }}	
+		event = { time = 2.73 node = "loc_cannon_02" 		 particle = "ships/cannon_large"			 			trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/wpn_battleship_shot" }}	
+		event = { time = 2.82 node = "loc_cannon_03"  		 particle = "ships/cannon_large"						trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/wpn_battleship_shot" }}			
+		event = { time = 2.69 node = "loc_cannon_04" 		 particle = "ships/cannon_large"			 			trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/wpn_battleship_shot" }}
+		event = { time = 3.19 node = "impact_battleship_01"  particle = "ships/cannon_splash_large"					trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 3.13 node = "impact_battleship_02"  particle = "ships/cannon_splash_large"					trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 3.24 node = "impact_battleship_03"  particle = "ships/cannon_splash_large"					trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 3.09 node = "impact_battleship_04"  particle = "ships/cannon_splash_large"					trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root" 		 particle = "ships/generic_battleship_waves_idle"		trigger_once = yes keep_particle = yes}
+		event = { time = 0.0  node = "locator_light_base" 	 particle = "infrastructure/battleship_lights_01" 		trigger_once = yes keep_particle = yes}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/anm_battleship_ship_fire_animation_defend" }}
+
+	}
+
+	state = { name = "advance"	animation = "ship_fire_animation"
+		time_offset = { 0.0 10.0 }
+		event = { time = 2.79 node = "loc_cannon_01"  		 particle = "ships/cannon_large" 						trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/wpn_battleship_shot" }}	
+		event = { time = 2.73 node = "loc_cannon_02"  		 particle = "ships/cannon_large"			 			trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/wpn_battleship_shot" }}	
+		event = { time = 2.82 node = "loc_cannon_03"  		 particle = "ships/cannon_large"						trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/wpn_battleship_shot" }}			
+		event = { time = 2.69 node = "loc_cannon_04"  		 particle = "ships/cannon_large"						trigger_once = no  keep_particle = no keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/wpn_battleship_shot" }}
+		event = { time = 3.19 node = "impact_battleship_01"  particle = "ships/cannon_splash_large"					trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 3.13 node = "impact_battleship_02"  particle = "ships/cannon_splash_large"					trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 3.24 node = "impact_battleship_03"  particle = "ships/cannon_splash_large"					trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 3.09 node = "impact_battleship_04"  particle = "ships/cannon_splash_large"					trigger_once = no  keep_particle = yes keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/light_ship/torpedo_boat/components/sfx_water_splash" }}
+		event = { time = 0.0  node = "locator_root" 		 particle = "ships/generic_battleship_waves_idle" 		trigger_once = yes keep_particle = yes}
+		event = { time = 0.0  node = "locator_light_base" 	 particle = "infrastructure/battleship_lights_01" 		trigger_once = yes keep_particle = yes}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/anm_battleship_ship_fire_animation_advance" }}
+
+	}
+
+	state = { name = "defeat" animation = "ship_defeat_animation" looping = no
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/capital_ship/battleship/anm_battleship_ship_defeat_animation" }}
+	}	
+}
+
+
+
+########################################
+###         Support Vessels      	 ###
+########################################
+
+entity = {
+	clone = "military_navy_frigate_generic_entity"
+	name = "military_navy_submarine_generic_entity"
+	pdxmesh = "military_navy_submarine_generic_mesh"
+
+	locator = { name = "locator_root_90" position = { 0.0 0.02 0.0 } rotation = { 90 0.0 0.0 } scale = 1.0 }
+		
+	state = { name = "idle"		animation = "ship_idle_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/submarine_waves_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/submarine/anm_submarine_ship_idle_animation" }}
+	}
+
+	state = { name = "move"		animation = "ship_move_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/submarine_waves_moving" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/submarine/anm_submarine_ship_move_animation" }}
+	}
+
+	state = { name = "advance"		animation = "ship_fire_animation" 	time_offset = { 0.0 10.0 }
+		event = { time = 0.0  node = "locator_root_90"  particle = "ships/submarine_waves_idle" 	 trigger_once = yes keep_particle = yes }
+		event = { time = 1.82 node = "loc_torpedo" 		particle = "ships/torpedo_trail" 			 trigger_once = no  keep_particle = yes }
+		event = { time = 0.72 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/submarine/wpn_submarine_shot" }}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/submarine/anm_submarine_ship_fire_animation_advance" }}	
+	}
+
+	state = { name = "defend"		animation = "ship_fire_animation"	time_offset = { 0.0 10.0 }
+		event = { time = 0.0  node = "locator_root_90"  particle = "ships/submarine_waves_idle" 	 trigger_once = yes keep_particle = yes }
+		event = { time = 1.82 node = "loc_torpedo" 		particle = "ships/torpedo_trail"			 trigger_once = no  keep_particle = yes }
+		event = { time = 0.72 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/submarine/wpn_submarine_shot" }}
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/submarine/anm_submarine_ship_fire_animation_defend" }}	
+	}
+
+	state = { name = "defeat" animation = "ship_defeat_animation" looping = no
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/submarine/anm_submarine_ship_defeat_animation" }}
+	}	
+}
+
+entity = {
+	name = "military_navy_carrier_generic_entity"
+	pdxmesh = "military_navy_carrier_generic_mesh"
+
+	locator = { name = "locator_root" position = { 0.0 0.02 0.0 } scale = 1.0 }
+	locator = { name = "plane_loc" 	  position = { 0.0 0.0 0.0 }  scale = 1.0 }
+
+	attach = { name = plane 		root = "generic_aerial_bleriotxi_01_entity" }
+
+	default_state = "move"
+
+	state = { name = "idle"		animation = "ship_idle_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/carrier_waves_idle" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_idle_animation" }}
+		propagate_state = 	{ plane = "carrier_idle" }
+	}
+
+	state = { name = "move"		animation = "ship_move_animation"
+		event = { time = 0.0 node = "locator_root" particle = "ships/carrier_waves_moving" trigger_once = yes keep_particle = yes keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_move_animation" }}
+		propagate_state = 	{ plane = "carrier_idle" }
+	}
+	
+	state = { name = "defend"	animation = "ship_idle_animation"	time_offset = { 0.0 10.0 }
+		event = { time = 0.0 node = "locator_root" particle = "ships/carrier_waves_idle" trigger_once = yes keep_particle = yes }
+		propagate_state = 	{ plane = "carrier_recon" }
+		event = { time = 0.0 keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_animation_defend" }}
+	}
+
+	state = { name = "advance"	animation = "ship_idle_animation"	time_offset = { 0.0 10.0 }
+		event = { time = 0.0 node = "locator_root" particle = "ships/carrier_waves_idle" trigger_once = yes keep_particle = yes }
+		propagate_state = 	{ plane = "carrier_recon" }
+		event = { time = 0.0 keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_animation_advance" }}
+		event = { time = 0.0 keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_idle_animation" }}
+	}
+
+	state = { name = "defeat"	animation = "ship_defeat_animation" looping = no
+		propagate_state = 	{ plane = "carrier_idle" }
+		event = { time = 0.0 keep_sound = no sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_defeat_animation" }}
+		event = { time = 0.0 keep_sound = yes sound  = { soundeffect = "event:/SFX/Animation/vehicles/naval/support_vessel/carrier/anm_carrier_ship_idle_animation" }}
+	}
+}

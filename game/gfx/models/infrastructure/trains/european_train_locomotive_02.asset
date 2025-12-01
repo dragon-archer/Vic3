@@ -88,8 +88,7 @@ entity = {
 		animation = "moving_animation" 
 		looping = yes
 
-		event = { time = 0 node = "chimney" particle = "infrastructure/train_smoke" trigger_once = yes}
-		event = { time = 0 node = "loc_lights" particle = "infrastructure/train_lights" trigger_once = yes}
+		event = { time = 0 node = "loc_lights" particle = "trains/locomotive_lights" trigger_once = yes}
 
 		start_event = { sound  = { soundeffect = "event:/SFX/Vehicles/train/european_locomotive" } keep_sound = yes }
 	}

@@ -1,0 +1,177 @@
+pdxmesh = {
+	name = "generic_battleship_mesh"
+	file = "generic_battleship.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 128.0 }
+		lod = { index = 2 percent = 64.0 }
+		lod = { index = 3 percent = 32.0 }
+		lod = { index = 4 percent = 16.0 }
+	}
+
+	meshsettings = {
+		name = "LOD_0|mesh|meshShape"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard_alpha_blend"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_0|mesh|meshShape"
+		index = 1
+		texture_diffuse = "generic_battleship_diffuse.dds"
+		texture_normal = "generic_battleship_normal.dds"
+		texture_specular = "generic_battleship_properties.dds"
+		texture = { file = "generic_battleship_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "flags0Shape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "COA_TEXTURE"  }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_1|mesh|meshShape"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard_alpha_blend"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_1|mesh|meshShape"
+		index = 1
+		texture_diffuse = "generic_battleship_diffuse.dds"
+		texture_normal = "generic_battleship_normal.dds"
+		texture_specular = "generic_battleship_properties.dds"
+		texture = { file = "generic_battleship_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "flags1Shape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "COA_TEXTURE"  }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_2|mesh|meshShape"
+		index = 0
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard_alpha_blend"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_2|mesh|meshShape"
+		index = 1
+		texture_diffuse = "generic_battleship_diffuse.dds"
+		texture_normal = "generic_battleship_normal.dds"
+		texture_specular = "generic_battleship_properties.dds"
+		texture = { file = "generic_battleship_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "flags2Shape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "COA_TEXTURE"  }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_3|mesh|meshShape"
+		index = 0
+		texture_diffuse = "generic_battleship_diffuse.dds"
+		texture_normal = "generic_battleship_normal.dds"
+		texture_specular = "generic_battleship_properties.dds"
+		texture = { file = "generic_battleship_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_3|mesh|meshShape"
+		index = 1
+		texture_diffuse = "generic_ship_alpha_diffuse.dds"
+		texture_normal = "generic_ship_alpha_normal.dds"
+		texture_specular = "generic_ship_alpha_properties.dds"
+		shader = "standard_alpha_blend"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "flags3Shape"
+		index = 0
+		texture_diffuse = "flag_wrinkles_diffuse.dds"
+		texture_normal = "flag_wrinkles_normal.dds"
+		texture_specular = "flag_wrinkles_properties.dds"
+		shader = "standard_flag_basic"
+		additional_shader_defines = { "COA_TEXTURE"  }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_4|mesh|meshShape"
+		index = 0
+		texture_diffuse = "generic_battleship_diffuse.dds"
+		texture_normal = "generic_battleship_normal.dds"
+		texture_specular = "generic_battleship_properties.dds"
+		texture = { file = "generic_battleship_masks.dds" index = 6 }
+		additional_shader_defines = { "UNIT_COLOR" "EMISSIVE_NIGHT" }
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "flags4Shape"
+		index = 0
+		texture_diffuse = "military_navy_frigate_generic_diffuse.dds"
+		texture_normal = "military_navy_frigate_generic_normal.dds"
+		texture_specular = "military_navy_frigate_generic_properties.dds"
+		shader = "standard_flag_basic"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	# old animations
+	animation = { id = "idle_animation" type = "generic_battleship_idle.anim" }
+	animation = { id = "attack_1_animation" type = "generic_battleship_attack_1.anim" }
+	animation = { id = "attack_2_animation" type = "generic_battleship_attack_2.anim" }
+	animation = { id = "attack_3_animation" type = "generic_battleship_attack_3.anim" }
+
+	# new animations
+	animation = { id = "ship_idle_animation" 					type = "generic_battleship_idle.anim" }
+	animation = { id = "ship_move_animation" 					type = "generic_battleship_move.anim" }
+	animation = { id = "ship_fire_animation" 					type = "generic_battleship_fire.anim" }
+	animation = { id = "ship_defeat_animation" 					type = "generic_battleship_defeat.anim" }
+}

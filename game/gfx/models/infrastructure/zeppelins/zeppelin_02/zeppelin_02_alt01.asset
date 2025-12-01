@@ -19,6 +19,7 @@ pdxmesh = {
 		texture_normal = "zeppelin_02_alt01_normal.dds"
 		texture_specular = "zeppelin_02_alt01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -29,6 +30,7 @@ pdxmesh = {
 		texture_normal = "zeppelin_02_alt01_normal.dds"
 		texture_specular = "zeppelin_02_alt01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -39,6 +41,7 @@ pdxmesh = {
 		texture_normal = "zeppelin_02_alt01_normal.dds"
 		texture_specular = "zeppelin_02_alt01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -49,6 +52,7 @@ pdxmesh = {
 		texture_normal = "zeppelin_02_alt01_normal.dds"
 		texture_specular = "zeppelin_02_alt01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }
@@ -57,18 +61,18 @@ entity = {
 	name = "zeppelin_02_alt01_entity"
 	pdxmesh = "zeppelin_02_alt01_mesh"
     default_state = "moving"
+	locator = { name = "loc_light_01" position = { 0 0.05 -2.1 } rotation = { 0 0 0 }}
+	locator = { name = "loc_light_02" position = { 0 0.065 0.46 } rotation = { 0 0 0 }}
+
     state = {
         name = "moving"
         animation = "moving_animation"
         looping = yes
         next_state = "moving"
-        event = {
-            time = 0.01
-            trigger_once = yes
-            sound = {
-                soundeffect = "event:/SFX/Vehicles/zeppelin"
-            }
-            keep_sound = yes
-        }
+
+		start_event = { time = 0 node = "loc_light_01" particle = "infrastructure/zeppelin_02_lights" trigger_once = yes}
+		start_event = { time = 0 node = "loc_light_02" particle = "infrastructure/zeppelin_02_lights" trigger_once = yes}
+
+        event = { time = 0.01 trigger_once = yes sound = { soundeffect = "event:/SFX/Vehicles/zeppelin" } keep_sound = yes }
     }
 }

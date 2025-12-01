@@ -21,6 +21,7 @@
 #define PDX_DomainLocation SV_DomainLocation
 #define PDX_RenderTargetArrayIndex SV_RenderTargetArrayIndex
 #define PDX_ViewportArrayIndex SV_ViewportArrayIndex
+#define PDX_Depth SV_Depth
 
 #define PdxDomainTypeTriangle "tri"
 #define PdxDomainTypeQuad "quad"

@@ -11,7 +11,6 @@ entity =
 	}
 }
 
-
 entity = {
 	name = "generic_ironclad_ship_entity"
 	pdxmesh = "generic_ironclad_ship_mesh"
@@ -22,6 +21,8 @@ entity = {
 	locator = { name = "locator_root_01" position = { 0.0 0.02 -2.5 } scale = 1.0 }
 	locator = { name = "locator_root_02" position = { 0.0 0.02 2.5 } scale = 1.0 }
 	locator = { name = "locator_root_03" position = { 0.0 0.02 0.0 } scale = 1.0 }
+
+	locator = { name = "locator_light_base" position = { 0.0 0.025 0 } scale = 1.0 }
 		
 	attach = { "locator_chimney_01" = "vfx_entity_warunits_chimneysmoke" }
 	attach = { "locator_chimney_02" = "vfx_entity_warunits_chimneysmoke" }
@@ -40,6 +41,7 @@ entity = {
 		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_light_base" particle = "infrastructure/ironclad_lights_01" trigger_once = yes keep_particle = yes}
 		
 		event = { time = 1.8 node = "locator_root_01" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
 		event = { time = 1.8 node = "locator_root_02" particle = "ships/ship_cannon_splash" keep_particle = no trigger_once = yes }
@@ -60,6 +62,7 @@ entity = {
 		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_light_base" particle = "infrastructure/ironclad_lights_01" trigger_once = yes keep_particle = yes}
 		
 		event = { time = 2.1 node = "loc_cannon_r_on_board_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
 		event = { time = 2.0 node = "loc_cannon_r_on_board_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
@@ -90,6 +93,7 @@ entity = {
 		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_light_base" particle = "infrastructure/ironclad_lights_01" trigger_once = yes keep_particle = yes}
 		
 		event = { time = 2.0 node = "loc_cannon_r_side_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
 		event = { time = 2.1 node = "loc_cannon_r_side_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
@@ -115,6 +119,7 @@ entity = {
 		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_light_base" particle = "infrastructure/ironclad_lights_01" trigger_once = yes keep_particle = yes}
 		
 		event = { time = 2.0 node = "loc_cannon_r_on_board_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
 		event = { time = 2.1 node = "loc_cannon_r_side_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
@@ -140,6 +145,7 @@ entity = {
 		start_event = { time = 0.0 node = "locator_root_01" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_02" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_03" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_light_base" particle = "infrastructure/ironclad_lights_01" trigger_once = yes keep_particle = yes}
 		
 		event = { time = 2.1 node = "loc_cannon_r_side_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
 		
@@ -300,6 +306,9 @@ entity = {
 	locator = { name = "locator_root_04" position = { 0.0 0.02 5.0 } scale = 1.0 }
 	locator = { name = "locator_root_05" position = { 0.0 0.02 -5.0 } scale = 1.0 }
 	locator = { name = "locator_root_06" position = { 0.0 0.02 7.0 } scale = 1.0 }
+
+	locator = { name = "locator_light_base" position = { 0.0 0.025 0 } scale = 1.0 }
+	locator = { name = "locator_light_top" position = { 0.0 1.59 -2.8 } scale = 1.0 }
 	
 	default_state = "idle"
 	
@@ -317,6 +326,9 @@ entity = {
 		start_event = { time = 0.0 node = "locator_root_04" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_05" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_06" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_light_base" particle = "infrastructure/battleship_lights_01" trigger_once = yes keep_particle = yes}
+		start_event = { time = 0.0 node = "locator_light_top" particle = "infrastructure/battleship_lights_02" trigger_once = yes keep_particle = yes}
+
 		
 		propagate_state = "idle"
 		next_state = "attack"
@@ -336,6 +348,8 @@ entity = {
 		start_event = { time = 0.0 node = "locator_root_04" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_05" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_06" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_light_base" particle = "infrastructure/battleship_lights_01" trigger_once = yes keep_particle = yes}
+		start_event = { time = 0.0 node = "locator_light_top" particle = "infrastructure/battleship_lights_02" trigger_once = yes keep_particle = yes}
 				
 		event = { time = 1.8 node = "loc_cannon_mid_03" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
 		event = { time = 2.1 node = "loc_cannon_ps_04" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
@@ -370,6 +384,8 @@ entity = {
 		start_event = { time = 0.0 node = "locator_root_04" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_05" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_06" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_light_base" particle = "infrastructure/battleship_lights_01" trigger_once = yes keep_particle = yes}
+		start_event = { time = 0.0 node = "locator_light_top" particle = "infrastructure/battleship_lights_02" trigger_once = yes keep_particle = yes}
 				
 		event = { time = 2.0 node = "loc_cannon_ps_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
 		event = { time = 1.9 node = "loc_cannon_ps_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
@@ -408,6 +424,8 @@ entity = {
 		start_event = { time = 0.0 node = "locator_root_04" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_05" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
 		start_event = { time = 0.0 node = "locator_root_06" entity = "vfx_ship_idle_wave_entity" keep_entity = no }
+		start_event = { time = 0.0 node = "locator_light_base" particle = "infrastructure/battleship_lights_01" trigger_once = yes keep_particle = yes}
+		start_event = { time = 0.0 node = "locator_light_top" particle = "infrastructure/battleship_lights_02" trigger_once = yes keep_particle = yes}
 				
 		event = { time = 2.0 node = "loc_cannon_mid_01" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	
 		event = { time = 1.9 node = "loc_cannon_mid_02" particle = "particle_ship_cannon" trigger_once = no keep_particle = no }	

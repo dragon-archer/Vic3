@@ -13,11 +13,11 @@ Code
 		// Offset towards camera look direction
 		float Scalar = CameraPosition.y / -CameraLookAtDir.y;
 		float3 IntersectionPoint = CameraPosition + Scalar * CameraLookAtDir;
-		float3 FogOffset = CameraLookAtDir * ( FogCloseOffset + FogFarOffset * saturate( smoothstep(0.0f, 600.0f, CameraPosition.y ) ) );
+		float3 FogOffset = CameraLookAtDir * ( _FogCloseOffset + _FogFarOffset * saturate( smoothstep(0.0f, 600.0f, CameraPosition.y ) ) );
 		FogOffset.y = 0.0f;	// Don't offset height
 
 		// Rotate and scale with view
-		float ScalingX = FogWidthScale;	
+		float ScalingX = _FogWidthScale;
 		float ScalingY = 1.0f + 1.0f * ( 1.0f + CameraLookAtDir.y );
 		float2 secondaryPrincipal = float2( CameraRightDir.z, -CameraRightDir.x );
 		float3 Diff = ( IntersectionPoint + FogOffset ) - WorldSpacePos;
@@ -38,7 +38,7 @@ Code
 	float GameApplyDistanceFog( float Value, float3 WorldSpacePos )
 	{
 		float factor = GameCalculateDistanceFogFactor( WorldSpacePos ) ;
-		
+
 		float FogValue_ = ( FogColor.x + FogColor.y + FogColor.z ) / 3;
 		FogValue_ = HardLight( Value, FogValue_ );
 

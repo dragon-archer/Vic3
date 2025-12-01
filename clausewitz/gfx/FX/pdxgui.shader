@@ -219,7 +219,7 @@ PixelShader =
 		]]
 	}
 	
-	MainCode PixelShaderTextUnderline
+	MainCode PixelShaderTextLine
 	{
 		Input = "VS_OUTPUT_PDX_GUI"
 		Output = "PDX_COLOR"
@@ -331,7 +331,13 @@ Effect PdxDefaultGUITextOutlined
 Effect PdxDefaultGUITextUnderline
 {
 	VertexShader = "VertexShader"
-	PixelShader = "PixelShaderTextUnderline"
+	PixelShader = "PixelShaderTextLine"
+}
+
+Effect PdxDefaultGUITextStrikethrough
+{
+	VertexShader = "VertexShader"
+	PixelShader = "PixelShaderTextLine"
 }
 
 Effect PdxDefaultGUIDebug

@@ -262,7 +262,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=141
+			id=14
 			node={
 				value=20.000000
 			}
@@ -278,7 +278,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=186
+			id=16
 			node={
 				value=no
 			}
@@ -286,13 +286,13 @@ graph={
 			}
 		}
 		pdxns:particle:Kill={
-			id=190
+			id=17
 			node={
 			}
 			inputs={
 				link={
 					pin_id="condition"
-					linked_node=160
+					linked_node=130
 					linked_pin="value"
 				}
 			}
@@ -572,7 +572,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=175
+					linked_node=131
 					linked_pin="value"
 				}
 			}
@@ -895,7 +895,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=186
+					linked_node=16
 					linked_pin="value"
 				}
 			}
@@ -1415,7 +1415,7 @@ graph={
 		pdxns:common:compound={
 			id=96
 			node={
-				graph="Remap"
+				graph="Remap Old"
 			}
 			inputs={
 				link={
@@ -1780,7 +1780,7 @@ graph={
 			}
 		}
 		pdxns:math:GreaterThanF={
-			id=160
+			id=130
 			node={
 			}
 			inputs={
@@ -1797,7 +1797,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=175
+			id=131
 			node={
 				value=no
 			}
@@ -1920,7 +1920,7 @@ graph={
 				}
 				link={
 					pin_id="limit2"
-					linked_node=141
+					linked_node=14
 					linked_pin="value"
 				}
 			}

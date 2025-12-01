@@ -611,11 +611,7 @@ vbox = {
 
 			editor_toolbar_divider = {}
 
-			history_toolbar = {
-				blockoverride "history_btn" {
-					#onclick = "[MapEditorGui.ToggleHistory]" # TODO: Make history window context in code and hook it here.
-				}
-			}
+			history_toolbar = {}
 		}
 
 		blockoverride "right"

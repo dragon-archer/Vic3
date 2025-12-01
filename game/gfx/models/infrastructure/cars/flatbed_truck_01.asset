@@ -18,6 +18,7 @@ pdxmesh = {
 		texture_normal = "flatbed_truck_01_normal.dds"
 		texture_specular = "flatbed_truck_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = {"EMISSIVE_NIGHT"}
 	}
 
 	meshsettings = {
@@ -27,6 +28,7 @@ pdxmesh = {
 		texture_normal = "flatbed_truck_01_normal.dds"
 		texture_specular = "flatbed_truck_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = {"EMISSIVE_NIGHT"}
 	}
 
 	meshsettings = {
@@ -36,6 +38,7 @@ pdxmesh = {
 		texture_normal = "flatbed_truck_01_normal.dds"
 		texture_specular = "flatbed_truck_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = {"EMISSIVE_NIGHT"}
 	}
 
 	meshsettings = {
@@ -45,6 +48,7 @@ pdxmesh = {
 		texture_normal = "flatbed_truck_01_normal.dds"
 		texture_specular = "flatbed_truck_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = {"EMISSIVE_NIGHT"}
 	}
 	
 	#locator_wheel_back_01
@@ -57,15 +61,17 @@ entity = {
 	pdxmesh = "flatbed_truck_01_mesh"
 
 	default_state = "moving"
+
 	state = { 
 		name = "idle" animation = "idle_animation" looping = no next_state = "idle"
 		start_event = { sound  = { soundeffect = "event:/SFX/Vehicles/flatbed_truck" } keep_sound = yes }
 	}
 			
 	state = { 
-		name = "moving" animation = "moving_animation" looping = yes 
-	
-		#event = { time = 0 node = "locator_exhaust" particle = "infrastructure/vehicle_smoke" trigger_once = yes}
+		name = "moving" 
+		animation = "moving_animation" 
+		looping = yes 
+
 		event = { time = 0 node = "locator_wheel_back_02" particle = "vehicles/truck_dust" trigger_once = yes}
 	}
 

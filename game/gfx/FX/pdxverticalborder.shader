@@ -272,7 +272,7 @@ PixelShader =
 
 				float Alpha = saturate( ParticlesAlpha + UpperEdgeFade * HeightTexFade );
 				Alpha = saturate( Alpha - LowerCut );
-				Alpha *= FlameOpacity * EdgeAlpha * ( 1.0f - FlatmapLerp );
+				Alpha *= FlameOpacity * EdgeAlpha * ( 1.0f - _FlatmapLerp );
 
 				// Output
 				Diffuse.rgb = FlameColor;

@@ -1,0 +1,12 @@
+entity = {
+	name = "african_port_01_1s_0d_0f_entity"
+	
+	locator = { name = "pos_origo" position = { 0 0 0 } rotation = { 0 0 0 } }
+	locator = { name = "pos_left" position = { -2.0 0 -1.642 } rotation = { 0 0 0 } }
+	locator = { name = "pos_center" position = { 0 0 -1.5 } rotation = { 0 0 0 } }
+	locator = { name = "pos_right" position = { 2.0 0 -1.5 } rotation = { 0 0 0 } }
+	
+	
+	attach = { pos_origo = "african_port_centerpiece_02_entity" }
+	attach = { pos_center = "african_port_shipyard_01_entity" }
+}

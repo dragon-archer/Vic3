@@ -63,9 +63,6 @@ ComputeShader =
 			
 			#define MAX_NUM_LIGHTS_PER_TILE 256
 			
-			#define NUM_VECTORS_FOR_POINTLIGHT 2
-			#define NUM_VECTORS_FOR_SPOTLIGHT 4
-			
 			groupshared uint DepthMinAsUint; // Min depth of the tile (uint so we can do atomics)
 			groupshared uint DepthMaxAsUint; // Max depth of the tile (uint so we can do atomics)
 			groupshared float3 FrustumPlanes[4]; // The 4 side frustum planes of the tile, these are in viewspace and origin is intersecting the plane, hence we only need to store the normal (distance = 0)
@@ -393,9 +390,10 @@ ComputeShader =
 #endif
 #if defined( DYNAMIC_CULLING_MODE ) || defined ( CULLING_MODE_NONE )
 				{
+					uint LightDataIndexOffset = _NumDirectionalLights * NUM_VECTORS_FOR_DIRECTIONALLIGHT; // Ignore directional lights
 					for ( uint LightIndex = Input.LocalIndex; LightIndex < _NumPointLights; LightIndex += NUM_THREADS )
 					{
-						uint LightDataIndex = LightIndex * NUM_VECTORS_FOR_POINTLIGHT; // Each pointlight takes NUM_VECTORS_FOR_POINTLIGHT entries, and pointlights comes first
+						uint LightDataIndex = LightDataIndexOffset + LightIndex * NUM_VECTORS_FOR_POINTLIGHT; // Each pointlight takes NUM_VECTORS_FOR_POINTLIGHT entries
 						if ( !HandlePointLightIntersection( LightDataIndex, FrustumAABBCenter, FrustumAABBHalfSize, DepthMin, DepthMax, FrustumPlanes ) )
 						{
 							break;
@@ -405,9 +403,10 @@ ComputeShader =
 					// We want to finish writing all pointlights first
 					GroupMemoryBarrierWithGroupSync();
 					
+					LightDataIndexOffset += _NumPointLights * NUM_VECTORS_FOR_POINTLIGHT; // Spot lights comes after point lights
 					for ( uint LightIndex = Input.LocalIndex; LightIndex < _NumSpotLights; LightIndex += NUM_THREADS )
 					{
-						uint LightDataIndex = _NumPointLights * NUM_VECTORS_FOR_POINTLIGHT + LightIndex * NUM_VECTORS_FOR_SPOTLIGHT; // Each spotlight takes NUM_VECTORS_FOR_SPOTLIGHT entries, and comes after pointlights
+						uint LightDataIndex = LightDataIndexOffset + LightIndex * NUM_VECTORS_FOR_SPOTLIGHT; // Each spotlight takes NUM_VECTORS_FOR_SPOTLIGHT entries
 						if ( !HandleSpotLightIntersection( LightDataIndex, FrustumAABBCenter, FrustumAABBHalfSize, DepthMin, DepthMax, FrustumPlanes ) )
 						{
 							break;

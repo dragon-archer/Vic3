@@ -2,7 +2,7 @@ Includes = {
 	"cw/heightmap.fxh"
 	"jomini/jomini_water.fxh"
 	"jomini/jomini_river.fxh"
-	"pdxwater_game.fxh"	
+	"pdxwater_game.fxh"
 }
 
 PixelShader =
@@ -13,10 +13,10 @@ PixelShader =
 		{
 			float Height = GetHeightMultisample( Input.WorldSpacePos.xz, 0.65 );
 			float Depth = Input.WorldSpacePos.y - Height;
-			
+
 			float WaterFade = 1.0 - saturate( (_WaterFadeShoreMaskDepth - Depth) * _WaterFadeShoreMaskSharpness );
 			float4 WaterColorAndSpec = PdxTex2D( WaterColorTexture, Input.UV01 );
-			
+
 			return float4( WaterColorAndSpec.xyz, WaterFade );
 		}
 

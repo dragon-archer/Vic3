@@ -305,9 +305,7 @@ widget = {
         }
 
         history_toolbar = {
-        	blockoverride "history_btn" {
-        		onclick = "[MapEditorGui.ToggleHistory]"
-        	}
+        	datacontext = "[MapEditor.AccessUndoHistoryViewerClient]"
         }
 
 		toolbox_button = {

@@ -59,6 +59,11 @@ graph={
 					linked_node=127
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=214
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:gfx:Texture={
@@ -874,7 +879,7 @@ graph={
 				}
 				link={
 					pin_id="variation_id"
-					linked_node=214
+					linked_node=168
 					linked_pin="value"
 				}
 			}
@@ -1111,7 +1116,7 @@ graph={
 			}
 		}
 		pdxns:values:ConstVector3f={
-			id=212
+			id=59
 			node={
 				value={ 0.000000 0.000000 1.000000 }
 			}
@@ -1354,6 +1359,11 @@ graph={
 				link={
 					pin_id="billboard_axis"
 					linked_node=140
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=280
 					linked_pin="value"
 				}
 			}
@@ -1610,7 +1620,7 @@ graph={
 				}
 				link={
 					pin_id="speed"
-					linked_node=213
+					linked_node=160
 					linked_pin="value"
 				}
 				link={
@@ -1640,7 +1650,7 @@ graph={
 				}
 				link={
 					pin_id="angular_velocity"
-					linked_node=212
+					linked_node=59
 					linked_pin="value"
 				}
 				link={
@@ -1784,6 +1794,11 @@ graph={
 				link={
 					pin_id="billboard_axis"
 					linked_node=187
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=297
 					linked_pin="value"
 				}
 			}
@@ -2445,7 +2460,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=213
+			id=160
 			node={
 				value=0.000000
 			}
@@ -2515,7 +2530,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=214
+			id=168
 			node={
 				value=0.030000
 			}
@@ -2904,6 +2919,30 @@ graph={
 			id=211
 			node={
 				value=4.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=297
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=280
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=214
+			node={
+				value=no
 			}
 			inputs={
 			}

@@ -393,7 +393,7 @@ graph={
 			inputs={
 				link={
 					pin_id="rate"
-					linked_node=340
+					linked_node=239
 					linked_pin="Value"
 				}
 				link={
@@ -644,8 +644,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=27
-					linked_pin="hsva"
+					linked_node=246
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -1071,7 +1071,7 @@ graph={
 			inputs={
 				link={
 					pin_id="rate"
-					linked_node=342
+					linked_node=237
 					linked_pin="Value"
 				}
 				link={
@@ -1158,16 +1158,27 @@ graph={
 				}
 			}
 		}
-		pdxns:particle:GetUserData={
-			id=59
+		pdxns:common:compound={
+			id=246
 			node={
-				user_data={
-					id="usr:Size"
-					label="Size"
-					type="Float"
-				}
+				graph="Night Color"
 			}
 			inputs={
+				link={
+					pin_id="color"
+					linked_node=27
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=242
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=248
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:GetUserData={
@@ -1202,29 +1213,24 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=63
+			id=247
 			node={
-				graph="ScaledCurveSampler"
+				graph="Night Color"
 			}
 			inputs={
 				link={
-					pin_id="curve"
-					linked_node=175
+					pin_id="color"
+					linked_node=73
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=245
 					linked_pin="value"
 				}
 				link={
-					pin_id="x"
-					linked_node=61
-					linked_pin="age"
-				}
-				link={
-					pin_id="scale_x"
-					linked_node=62
-					linked_pin="value"
-				}
-				link={
-					pin_id="scale_y"
-					linked_node=59
+					pin_id="nightalpha"
+					linked_node=244
 					linked_pin="value"
 				}
 			}
@@ -1326,21 +1332,12 @@ graph={
 				}
 			}
 		}
-		pdxns:particle:SetUniformScale={
-			id=69
+		pdxns:values:Float={
+			id=248
 			node={
+				value=0.600000
 			}
 			inputs={
-				link={
-					pin_id="size"
-					linked_node=63
-					linked_pin="result"
-				}
-				link={
-					pin_id="condition"
-					linked_node=58
-					linked_pin="value"
-				}
 			}
 		}
 		pdxns:math:MulF={
@@ -1521,8 +1518,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=73
-					linked_pin="hsva"
+					linked_node=247
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -1574,8 +1571,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=85
-					linked_pin="hsva"
+					linked_node=243
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -1615,7 +1612,7 @@ graph={
 			inputs={
 				link={
 					pin_id="rate"
-					linked_node=348
+					linked_node=231
 					linked_pin="Value"
 				}
 				link={
@@ -1849,7 +1846,7 @@ graph={
 				}
 				link={
 					pin_id="condition"
-					linked_node=86
+					linked_node=302
 					linked_pin="value"
 				}
 			}
@@ -2296,7 +2293,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=353
+			id=134
 			node={
 				value=0.200000
 			}
@@ -2643,18 +2640,21 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Curve={
-			id=175
+		pdxns:math:Or={
+			id=302
 			node={
-				type="Catmull-Rom"
-				curve={
-					{ x = 0.037975 y = 0.631743 }
-					{ x = 0.286086 y = 0.747174 }
-					{ x = 0.571708 y = 0.860863 }
-					{ x = 0.998856 y = 0.974220 }
-				}
 			}
 			inputs={
+				link={
+					pin_id="op1"
+					linked_node=58
+					linked_pin="value"
+				}
+				link={
+					pin_id="op2"
+					linked_node=86
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Curve={
@@ -3144,7 +3144,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=352
+			id=227
 			node={
 				value=5
 			}
@@ -3152,7 +3152,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=351
+			id=228
 			node={
 				value=0.500000
 			}
@@ -3160,7 +3160,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=350
+			id=229
 			node={
 				value=3
 			}
@@ -3168,7 +3168,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=349
+			id=230
 			node={
 				value=1.000000
 			}
@@ -3176,40 +3176,40 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=348
+			id=231
 			node={
 				graph="Zoom Step 2"
 			}
 			inputs={
 				link={
 					pin_id="Low"
-					linked_node=349
+					linked_node=230
 					linked_pin="value"
 				}
 				link={
 					pin_id="Step 1"
-					linked_node=350
+					linked_node=229
 					linked_pin="value"
 				}
 				link={
 					pin_id="Mid"
-					linked_node=351
+					linked_node=228
 					linked_pin="value"
 				}
 				link={
 					pin_id="Step 2"
-					linked_node=352
+					linked_node=227
 					linked_pin="value"
 				}
 				link={
 					pin_id="High"
-					linked_node=353
+					linked_node=134
 					linked_pin="value"
 				}
 			}
 		}
 		pdxns:values:Float={
-			id=347
+			id=232
 			node={
 				value=0.200000
 			}
@@ -3217,7 +3217,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=346
+			id=233
 			node={
 				value=5
 			}
@@ -3225,7 +3225,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=345
+			id=234
 			node={
 				value=0.600000
 			}
@@ -3233,7 +3233,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=344
+			id=235
 			node={
 				value=3
 			}
@@ -3241,7 +3241,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=343
+			id=236
 			node={
 				value=1.600000
 			}
@@ -3249,40 +3249,40 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=342
+			id=237
 			node={
 				graph="Zoom Step 2"
 			}
 			inputs={
 				link={
 					pin_id="Low"
-					linked_node=343
+					linked_node=236
 					linked_pin="value"
 				}
 				link={
 					pin_id="Step 1"
-					linked_node=344
+					linked_node=235
 					linked_pin="value"
 				}
 				link={
 					pin_id="Mid"
-					linked_node=345
+					linked_node=234
 					linked_pin="value"
 				}
 				link={
 					pin_id="Step 2"
-					linked_node=346
+					linked_node=233
 					linked_pin="value"
 				}
 				link={
 					pin_id="High"
-					linked_node=347
+					linked_node=232
 					linked_pin="value"
 				}
 			}
 		}
 		pdxns:values:Float={
-			id=341
+			id=238
 			node={
 				value=3.000000
 			}
@@ -3290,14 +3290,14 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=340
+			id=239
 			node={
 				graph="Zoom Step 2"
 			}
 			inputs={
 				link={
 					pin_id="Low"
-					linked_node=341
+					linked_node=238
 					linked_pin="value"
 				}
 				link={
@@ -3320,6 +3320,69 @@ graph={
 					linked_node=15
 					linked_pin="value"
 				}
+			}
+		}
+		pdxns:values:Float={
+			id=240
+			node={
+				value=0.600000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=241
+			node={
+				value=0.700000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=242
+			node={
+				value=0.500000
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=243
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=85
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=241
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=240
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=244
+			node={
+				value=0.600000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=245
+			node={
+				value=0.700000
+			}
+			inputs={
 			}
 		}
 	}

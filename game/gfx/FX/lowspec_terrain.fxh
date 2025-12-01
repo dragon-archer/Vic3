@@ -188,10 +188,10 @@ VertexShader =
 			STerrainVertex Vertex = CalcTerrainVertex( WithinNodePos, NodeOffset, NodeScale, LodDirection, LodLerpFactor );
 
 			#ifdef TERRAIN_FLAT_MAP_LERP
-				Vertex.WorldSpacePos.y = lerp( Vertex.WorldSpacePos.y, FlatmapHeight, FlatmapLerp );
+				Vertex.WorldSpacePos.y = lerp( Vertex.WorldSpacePos.y, _FlatmapHeight, _FlatmapLerp );
 			#endif
 			#ifdef TERRAIN_FLAT_MAP
-				Vertex.WorldSpacePos.y = FlatmapHeight;
+				Vertex.WorldSpacePos.y = _FlatmapHeight;
 			#endif
 
 			VS_OUTPUT_PDX_TERRAIN_LOW_SPEC Out;
@@ -208,7 +208,7 @@ VertexShader =
 
 			Out.Flatmap = float3( vec3( 0.5f ) ); // neutral overlay
 			#ifdef TERRAIN_FLAT_MAP_LERP
-				Out.Flatmap = lerp( Out.Flatmap, PdxTex2DLod0( FlatmapTexture, float2( ColorMapCoords.x, 1.0 - ColorMapCoords.y ) ).rgb, FlatmapLerp );
+				Out.Flatmap = lerp( Out.Flatmap, PdxTex2DLod0( FlatmapTexture, float2( ColorMapCoords.x, 1.0 - ColorMapCoords.y ) ).rgb, _FlatmapLerp );
 			#endif
 
 			Out.Normal = CalculateNormal( Vertex.WorldSpacePos.xz );

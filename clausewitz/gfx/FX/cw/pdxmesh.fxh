@@ -253,6 +253,7 @@ VertexShader =
 		Out.Position = CommonOut.Position;
 		Out.UV_InstanceIndex.xy = CommonOut.UV;
 		Out.UV_InstanceIndex.z = Input.InstanceIndices.y;
+		
 		return Out;
 	}
 	]]

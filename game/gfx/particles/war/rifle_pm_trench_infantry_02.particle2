@@ -133,8 +133,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=13
-					linked_pin="hsva"
+					linked_node=576
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -561,8 +561,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=55
-					linked_pin="hsva"
+					linked_node=578
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -1312,7 +1312,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=353
+			id=66
 			node={
 				value=3.000000
 			}
@@ -1470,7 +1470,7 @@ graph={
 			inputs={
 				link={
 					pin_id="limit1"
-					linked_node=353
+					linked_node=66
 					linked_pin="value"
 				}
 				link={
@@ -1488,7 +1488,7 @@ graph={
 			inputs={
 				link={
 					pin_id="curve"
-					linked_node=354
+					linked_node=335
 					linked_pin="value"
 				}
 				link={
@@ -1633,8 +1633,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=82
-					linked_pin="hsva"
+					linked_node=577
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -2433,8 +2433,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=98
-					linked_pin="hsva"
+					linked_node=579
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -3341,7 +3341,7 @@ graph={
 				}
 				link={
 					pin_id="scale_y"
-					linked_node=355
+					linked_node=336
 					linked_pin="value"
 				}
 			}
@@ -5372,7 +5372,7 @@ graph={
 			}
 		}
 		pdxns:values:Curve={
-			id=354
+			id=335
 			node={
 				type="Catmull-Rom"
 				curve={
@@ -5387,7 +5387,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=355
+			id=336
 			node={
 				value=0.400000
 			}
@@ -5531,6 +5531,162 @@ graph={
 			id=352
 			node={
 				value=2.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=579
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=98
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=589
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=590
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=590
+			node={
+				value=0.800000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=589
+			node={
+				value=0.500000
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=578
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=55
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=587
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=586
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=587
+			node={
+				value=0.500000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=586
+			node={
+				value=0.700000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=585
+			node={
+				value=0.800000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=584
+			node={
+				value=0.700000
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=577
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=82
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=584
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=585
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=576
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=13
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=580
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=581
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=581
+			node={
+				value=0.700000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=580
+			node={
+				value=0.500000
 			}
 			inputs={
 			}

@@ -23,6 +23,11 @@ graph={
 					linked_node=120
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=134
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
@@ -127,7 +132,7 @@ graph={
 				}
 				link={
 					pin_id="roll"
-					linked_node=137
+					linked_node=131
 					linked_pin="output_id"
 				}
 			}
@@ -214,7 +219,7 @@ graph={
 				}
 				link={
 					pin_id="speed"
-					linked_node=140
+					linked_node=23
 					linked_pin="output_id"
 				}
 				link={
@@ -224,12 +229,12 @@ graph={
 				}
 				link={
 					pin_id="texture"
-					linked_node=142
+					linked_node=133
 					linked_pin="texture"
 				}
 				link={
 					pin_id="tag"
-					linked_node=139
+					linked_node=20
 					linked_pin="value"
 				}
 				link={
@@ -249,7 +254,7 @@ graph={
 				}
 				link={
 					pin_id="render_order"
-					linked_node=141
+					linked_node=86
 					linked_pin="value"
 				}
 				link={
@@ -324,7 +329,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=139
+			id=20
 			node={
 				value=5
 			}
@@ -352,7 +357,7 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=140
+			id=23
 			node={
 				graph="Base with Variation"
 			}
@@ -1265,7 +1270,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=141
+			id=86
 			node={
 				value=8
 			}
@@ -1548,8 +1553,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=93
-					linked_pin="hsva"
+					linked_node=135
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -1821,7 +1826,7 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=137
+			id=131
 			node={
 				graph="Base with Variation"
 			}
@@ -1850,9 +1855,56 @@ graph={
 			}
 		}
 		pdxns:gfx:Texture={
-			id=142
+			id=133
 			node={
 				texture_file="gfx/particles/textures/sand_dune_curve.dds"
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=134
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=135
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=93
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=136
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=137
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=136
+			node={
+				value=0.500000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=137
+			node={
+				value=0.600000
 			}
 			inputs={
 			}

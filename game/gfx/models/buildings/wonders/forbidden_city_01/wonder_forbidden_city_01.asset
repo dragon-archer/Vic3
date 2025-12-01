@@ -10,9 +10,9 @@ pdxmesh = {
 	meshsettings = {
 		name = "LOD_0|decal_02|decal_02Shape"
 		index = 0
-		texture_diffuse = "asian_urban_city_decal_diffuse.dds"
-		texture_normal = "asian_urban_city_decal_normal.dds"
-		texture_specular = "asian_urban_city_decal_properties.dds"
+		texture_diffuse = "asian_city_decal_diffuse.dds"
+		texture_normal = "asian_city_decal_normal.dds"
+		texture_specular = "asian_city_decal_properties.dds"
 		shader = "decal_world"
 		shader_file = "gfx/FX/pdxmesh_decal.shader"
 		subpass = "Decals"
@@ -43,9 +43,9 @@ pdxmesh = {
 	meshsettings = {
 		name = "LOD_1|decal_02|decal_02Shape"
 		index = 0
-		texture_diffuse = "asian_urban_city_decal_diffuse.dds"
-		texture_normal = "asian_urban_city_decal_normal.dds"
-		texture_specular = "asian_urban_city_decal_properties.dds"
+		texture_diffuse = "asian_city_decal_diffuse.dds"
+		texture_normal = "asian_city_decal_normal.dds"
+		texture_specular = "asian_city_decal_properties.dds"
 		shader = "decal_world"
 		shader_file = "gfx/FX/pdxmesh_decal.shader"
 		subpass = "Decals"
@@ -65,9 +65,9 @@ pdxmesh = {
 	meshsettings = {
 		name = "LOD_2|decal_02|decal_02Shape"
 		index = 0
-		texture_diffuse = "asian_urban_city_decal_diffuse.dds"
-		texture_normal = "asian_urban_city_decal_normal.dds"
-		texture_specular = "asian_urban_city_decal_properties.dds"
+		texture_diffuse = "asian_city_decal_diffuse.dds"
+		texture_normal = "asian_city_decal_normal.dds"
+		texture_specular = "asian_city_decal_properties.dds"
 		shader = "decal_world"
 		shader_file = "gfx/FX/pdxmesh_decal.shader"
 		subpass = "Decals"
@@ -80,6 +80,8 @@ pdxmesh = {
 		texture_normal = "wonder_forbidden_city_01_normal.dds"
 		texture_specular = "wonder_forbidden_city_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -99,6 +101,8 @@ pdxmesh = {
 		texture_normal = "wonder_forbidden_city_01_normal.dds"
 		texture_specular = "wonder_forbidden_city_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -118,6 +122,8 @@ pdxmesh = {
 		texture_normal = "wonder_forbidden_city_01_normal.dds"
 		texture_specular = "wonder_forbidden_city_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {

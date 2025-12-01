@@ -55,7 +55,7 @@ graph={
 			}
 		}
 		pdxns:values:Curve={
-			id=112
+			id=4
 			node={
 				type="Catmull-Rom"
 				curve={
@@ -114,7 +114,7 @@ graph={
 			inputs={
 				link={
 					pin_id="rate"
-					linked_node=113
+					linked_node=21
 					linked_pin="selected_value"
 				}
 				link={
@@ -270,8 +270,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=67
-					linked_pin="hsva"
+					linked_node=178
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -326,13 +326,13 @@ graph={
 			}
 		}
 		pdxns:logic:SelectF={
-			id=113
+			id=21
 			node={
 			}
 			inputs={
 				link={
 					pin_id="select"
-					linked_node=114
+					linked_node=27
 					linked_pin="active"
 				}
 				link={
@@ -415,7 +415,7 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=114
+			id=27
 			node={
 				graph="Particle/Duration Pause Timer"
 			}
@@ -433,13 +433,13 @@ graph={
 			}
 		}
 		pdxns:logic:SelectF={
-			id=115
+			id=28
 			node={
 			}
 			inputs={
 				link={
 					pin_id="select"
-					linked_node=114
+					linked_node=27
 					linked_pin="active"
 				}
 				link={
@@ -683,7 +683,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetUserData={
-			id=116
+			id=45
 			node={
 				user_data={
 					id="usr:Lifetime"
@@ -712,6 +712,11 @@ graph={
 				link={
 					pin_id="billboard_axis"
 					linked_node=31
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=140
 					linked_pin="value"
 				}
 			}
@@ -747,13 +752,13 @@ graph={
 			}
 		}
 		pdxns:math:MulF={
-			id=117
+			id=49
 			node={
 			}
 			inputs={
 				link={
 					pin_id="factor1"
-					linked_node=118
+					linked_node=71
 					linked_pin="result"
 				}
 				link={
@@ -789,7 +794,7 @@ graph={
 			inputs={
 				link={
 					pin_id="rate"
-					linked_node=115
+					linked_node=28
 					linked_pin="selected_value"
 				}
 				link={
@@ -1039,12 +1044,12 @@ graph={
 				}
 				link={
 					pin_id="value"
-					linked_node=117
+					linked_node=49
 					linked_pin="product"
 				}
 				link={
 					pin_id="α"
-					linked_node=121
+					linked_node=97
 					linked_pin="product"
 				}
 			}
@@ -1073,29 +1078,29 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=118
+			id=71
 			node={
 				graph="ScaledCurveSampler"
 			}
 			inputs={
 				link={
 					pin_id="curve"
-					linked_node=112
+					linked_node=4
 					linked_pin="value"
 				}
 				link={
 					pin_id="x"
-					linked_node=119
+					linked_node=81
 					linked_pin="age"
 				}
 				link={
 					pin_id="scale_x"
-					linked_node=116
+					linked_node=45
 					linked_pin="value"
 				}
 				link={
 					pin_id="scale_y"
-					linked_node=120
+					linked_node=87
 					linked_pin="value"
 				}
 			}
@@ -1227,7 +1232,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetAge={
-			id=119
+			id=81
 			node={
 			}
 			inputs={
@@ -1276,7 +1281,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=120
+			id=87
 			node={
 				value=11.000000
 			}
@@ -1378,7 +1383,7 @@ graph={
 			}
 		}
 		pdxns:math:MulF={
-			id=121
+			id=97
 			node={
 			}
 			inputs={
@@ -1584,6 +1589,53 @@ graph={
 				link={
 					pin_id="variation_id"
 					linked_node=109
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=181
+			node={
+				value=1.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=180
+			node={
+				value=0.600000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=140
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=178
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=67
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=180
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=181
 					linked_pin="value"
 				}
 			}

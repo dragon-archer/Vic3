@@ -18,6 +18,7 @@ types Tweakable
 				margin_left = 15
 				
 				text = "[TweakableUiEntry.GetFriendlyName]"
+				fontcolor = "[Select_CVector4f( Tweaker.CanResetTweakable( Tweakable.Self ), '(CVector4f)0.83,0.72,0.22,1.0', '(CVector4f)1.0,1.0,1.0,1.0' )]"
 
 				raw_tooltip = "[Tweakable.GetDescription]"
 				tooltip_type = "mouse"
@@ -152,6 +153,82 @@ types Tweakable
 			}
 		}		
 	}
+
+	# Type is created from code, don't change the name.
+	type snapshot_item = hbox  {
+		layoutpolicy_horizontal = expanding
+		visible = "[Tweaker.SnapshotVisible( TweakablesSnapshot.Name )]"
+
+		widget = {
+			layoutpolicy_horizontal = expanding
+			hbox = {
+				editor_toolbar_checkbutton = {
+					layoutpolicy_horizontal = expanding
+					raw_tooltip = "Select to switch to this snapshot."
+					tooltipwidget = { using = dockable_tooltip }
+					maximumsize = { -1 20 }
+
+					checked = "[EqualTo_string( TweakablesSnapshot.Name, Tweaker.SelectedSnapshot )]"
+					onclick = "[Tweaker.ToggleSelectedSnapshot( TweakablesSnapshot.Name )]"
+						
+					editor_textbox = {
+						name = "snapshot_name_tb"
+						text = "[TweakablesSnapshot.Name]"
+						align = center|nobaseline
+						parentanchor = hcenter|vcenter
+						autoresize = yes
+						elide = right
+						fontsize = 12
+						raw_tooltip = "[TweakablesSnapshot.Name]"
+						tooltipwidget = { using = dockable_tooltip }
+					}
+				}
+			}
+		}
+
+		editor_button = {
+			raw_text = "Rename..."
+			size = {70 20}
+			fontsize = 12
+			
+			raw_tooltip = "Rename this snapshot"
+			tooltipwidget = {
+				using = dockable_tooltip
+			}
+			
+			onclick = "[Tweaker.RenameSnapshot( TweakablesSnapshot.Name )]"
+		}
+
+		editor_button = {
+			raw_text = "Update"
+			size = {70 20}
+			fontsize = 12
+			max_update_rate = 11 # About once every 100ms
+			
+			raw_tooltip = "Update this snapshot with the current values of all tweakables. It is enabled if there are changes."
+			tooltipwidget = {
+				using = dockable_tooltip
+			}
+			
+			onclick = "[Tweaker.UpdateSnapshot( TweakablesSnapshot.Name )]"
+			enabled = "[Tweaker.UpdateSnapshotEnabled( TweakablesSnapshot.Name )]" # Normally takes less than 1ms to execute
+		}
+
+		editor_button = {
+			raw_text = "Remove"
+			shortcut = "tweaker_snapshots_remove"
+			size = {70 20}
+			fontsize = 12
+			
+			raw_tooltip = "Remove this snapshot"
+			tooltipwidget = {
+				using = dockable_tooltip
+			}
+			
+			onclick = "[Tweaker.RemoveSnapshot( TweakablesSnapshot.Name )]"
+			enabled = "[Tweaker.RemoveSnapshotEnabled( TweakablesSnapshot.Name )]"
+		}
+	}
 }
 
 Tweakable = {
@@ -166,6 +243,13 @@ Tweakable = {
 			size = { 44 19 }
 			text = "[Tweakable.GetValue]"
 			oneditingfinished_with_changes = "[Tweakable.OnValueEdited]"
+			fontcolor = "[Tweaker.GetTweakableValueColor( Tweakable.Self )]"
+			raw_tooltip = "[Tweakable.GetValue]"
+			tooltip_type = "mouse"
+			tooltipwidget = {
+				using = dockable_tooltip
+			}
+			tooltip_widgetanchor = "bottom"
 		}
 		
 		widget = { 	size = { 3 0 }	}
@@ -281,6 +365,57 @@ vbox = {
 
 		widget = {
 			layoutpolicy_horizontal = expanding
+		}
+	}
+
+	hbox = {
+		layoutpolicy_horizontal = expanding
+		visible = "[Tweaker.OriginalSnapshotValid]"
+
+		editor_button = {
+			raw_text = "Take snapshot"
+			fontsize = 12
+			size = {120 20}
+			raw_tooltip = "Take a new snapshot of all tweakables with their current values"
+			onclick = "[Tweaker.TakeNewSnapshot]"
+			tooltipwidget = {
+				using = dockable_tooltip
+			}
+		}
+
+		widget = {
+			layoutpolicy_horizontal = expanding
+		}
+	}
+
+	editor_scrollarea = {
+		name = "snapshots_scrollarea"
+		alwaystransparent = no
+		minimumsize = { 100% 80 }
+		scrollbarpolicy_vertical = always_on
+		visible = "[Tweaker.OriginalSnapshotValid]"
+
+		blockoverride "Properties"
+		{
+			viewportwidget = {
+				widget = {
+					scissor = yes
+				}
+			}
+		}
+
+		blockoverride "content"
+		{
+			vbox = {
+				vbox = {
+					name = "snapshots_container" # Datamodel is set through code.
+					layoutpolicy_horizontal = expanding
+				}
+				
+				widget = {
+					layoutpolicy_vertical= expanding
+				}
+			}
 		}
 	}
 

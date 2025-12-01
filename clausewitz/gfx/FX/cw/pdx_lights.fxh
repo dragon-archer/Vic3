@@ -1,6 +1,7 @@
 Includes = {
 	"cw/lighting.fxh"
 	"cw/lighting_util.fxh"
+	"cw/pdx_shadows.fxh"
 }
 
 
@@ -8,8 +9,10 @@ ConstantBuffer( PdxLightCullingConstants )
 {
 	uint2 _NumTiles;
 	uint2 _TileSize;
+	uint _NumDirectionalLights;
 	uint _NumPointLights;
 	uint _NumSpotLights;
+	uint unused;
 	uint2 _ClusterIndexStride; 			# .x = _NumTiles.y * _NumDepthClusters, .y = _NumDepthClusters, z is implicit 1
 	float _ClusterMinDepth;				# The minimum view space depth where the cluster generation starts
 	float _ClusterDepthToClusterIndex; 	# Multiply ("ViewSpaceDepth" - _ClusterMinDepth) with this one to get the z cluster index
@@ -20,7 +23,8 @@ ConstantBuffer( PdxLightCullingConstants )
 
 
 # Only one of these are used depending on ELightListMode
-# They contain light data (a point light uses NLightCulling::NumVectorPerPointLight uint4, a spotlight uses NLightCulling::NumVectorPerSpotLight uint4). "ListEntry"._LightDataIndex specifies at what index to start reading data for a light
+# They contain light data (a directional light uses NLightCulling::NumVectorPerDirectionalLight uint4, a point light uses NLightCulling::NumVectorPerPointLight uint4, a spotlight uses NLightCulling::NumVectorPerSpotLight uint4). 
+# "ListEntry"._LightDataIndex specifies at what index to start reading data for a light
 ConstantBuffer( PdxLightList )
 {
 	uint4 _LightData[4]; # This buffer is larger than "4" but setting it to large values increases shader compilation times by at least an order of magnitude :(
@@ -54,8 +58,16 @@ BufferTexture ScreenTileToLightsPerTileList
 
 Code
 [[
-	#define PDX_LIGHTS_NO_SHADOW_INDEX UINT32_MAX
+	#define NUM_VECTORS_FOR_DIRECTIONALLIGHT 2
+	#define NUM_VECTORS_FOR_POINTLIGHT 2
+	#define NUM_VECTORS_FOR_SPOTLIGHT 4
 	
+	struct SDirectionalLight
+	{
+		float3	_Direction;
+		float3	_Color;
+		uint	_ShadowIndex;
+	};
 	struct SPointLight
 	{
 		float3	_Position;
@@ -71,6 +83,19 @@ Code
 		float		_CosOuterConeHalfAngle;
 	};
 
+	SDirectionalLight BuildDirectionalLight( float3 Direction, float3 Color, uint ShadowIndex )
+	{
+		SDirectionalLight DirectionalLight;
+		DirectionalLight._Direction = Direction;
+		DirectionalLight._Color = Color;
+		DirectionalLight._ShadowIndex = ShadowIndex;
+		return DirectionalLight;
+	}
+	SDirectionalLight BuildDirectionalLight( uint4 Data1, uint4 Data2 )
+	{
+		return BuildDirectionalLight( asfloat( Data1.xyz ), asfloat( Data2.xyz ), Data2.w );
+	}
+	
 	SPointLight BuildPointLight( float4 PositionAndRadius, float3 Color, uint ShadowIndex )
 	{
 		SPointLight PointLight;
@@ -82,7 +107,7 @@ Code
 	}
 	SPointLight BuildPointLight( float4 PositionAndRadius, float3 Color )
 	{
-		return BuildPointLight( PositionAndRadius, Color, PDX_LIGHTS_NO_SHADOW_INDEX );
+		return BuildPointLight( PositionAndRadius, Color, PDX_NO_SHADOW_INDEX );
 	}
 	SPointLight BuildPointLight( uint4 Data1, uint4 Data2 )
 	{
@@ -100,7 +125,7 @@ Code
 	}
 	SSpotLight BuildSpotLight( float4 PositionAndRadius, float4 ColorAndInnerCosAngle, float4 DirectionAndOuterCosAngle )
 	{
-		return BuildSpotLight( PositionAndRadius, ColorAndInnerCosAngle, DirectionAndOuterCosAngle, PDX_LIGHTS_NO_SHADOW_INDEX );
+		return BuildSpotLight( PositionAndRadius, ColorAndInnerCosAngle, DirectionAndOuterCosAngle, PDX_NO_SHADOW_INDEX );
 	}
 	SSpotLight BuildSpotLight( uint4 Data1, uint4 Data2, uint4 Data3, uint4 Data4 )
 	{
@@ -137,6 +162,28 @@ Code
 	static int ECullingMode_CpuClustered = 3;
 #endif
 
+
+	// Helper function to get directionallight data starting at LightDataIndex, hides the details of the different light list modes
+	SDirectionalLight GetDirectionalLight( uint LightDataIndex )
+	{
+#ifdef DYNAMIC_LIGHT_LIST
+		if ( _LightListMode == ELightListMode_Constants )
+#endif
+#if defined( DYNAMIC_LIGHT_LIST ) || defined ( CONSTANT_LIGHT_LIST )
+		{
+			return BuildDirectionalLight( _LightData[LightDataIndex], _LightData[LightDataIndex+1] );
+		}
+		
+#endif // defined( DYNAMIC_LIGHT_LIST ) || defined ( CONSTANT_LIGHT_LIST )
+#ifdef DYNAMIC_LIGHT_LIST
+		else
+#endif
+#if defined( DYNAMIC_LIGHT_LIST ) || defined ( BUFFER_LIGHT_LIST )
+		{
+			return BuildDirectionalLight( PdxReadBuffer4( LightList, LightDataIndex ), PdxReadBuffer4( LightList, LightDataIndex + 1 ) );
+		}
+#endif // defined( DYNAMIC_LIGHT_LIST ) || defined ( BUFFER_LIGHT_LIST )
+	}
 
 	// Helper function to get pointlight data starting at LightDataIndex, hides the details of the different light list modes
 	SPointLight GetPointLight( uint LightDataIndex )
@@ -271,36 +318,44 @@ Code
 	
 	// Macros to make different usage of light sources easier, expected usage is: (specifically we currently expect that you do PDX_LIGHT_LOOP_POINTLIGHTS followed by PDX_LIGHT_LOOP_SPOTLIGHTS, this can be relaxed in the future if needed)
 	//	PDX_LIGHT_LOOP_BEGIN( PixelPos, ViewSpaceDepth )
-	// 	PDX_LIGHT_LOOP_POINTLIGHTS
-	// 	Do code that uses pointlights here, variable "PointLight" is the SPointLight for the current point light
-	//	PDX_LIGHT_LOOP_SPOTLIGHTS
-	// 	Do code that uses spotlights here, variable "SpotLight" is the SSpotLight for the current spot light
+	// 	PDX_LIGHT_LOOP_DIRECTIONAL_LIGHTS
+	// 	Do code that uses directional lights here, variable "DirectionalLight" is the SDirectionalLight for the current directional light
+	// 	PDX_LIGHT_LOOP_POINT_LIGHTS
+	// 	Do code that uses point lights here, variable "PointLight" is the SPointLight for the current point light
+	//	PDX_LIGHT_LOOP_SPOT_LIGHTS
+	// 	Do code that uses spot lights here, variable "SpotLight" is the SSpotLight for the current spot light
 	//	PDX_LIGHT_LOOP_END
 	
-	#define PDX_LIGHT_LOOP_BEGIN( PixelPos, ViewSpaceDepth )                                                                    \
-		uint LightsPerTileListIndex = CalculateLightsPerTileListIndex( ( PixelPos ), ( ViewSpaceDepth ) );                      \
-																																\
-		/* First entries in the list is the number of point/spot lights for the tile */                                         \
-		uint NumPointLights = PdxReadBuffer( LightsPerTileList, LightsPerTileListIndex );                                       \
+	#define PDX_LIGHT_LOOP_BEGIN( PixelPos, ViewSpaceDepth )                                                  	\
+		uint LightsPerTileListIndex = CalculateLightsPerTileListIndex( ( PixelPos ), ( ViewSpaceDepth ) );    	\
+		/* First entries in the list is the number of point/spot lights for the tile */                       	\
+		uint NumPointLights = PdxReadBuffer( LightsPerTileList, LightsPerTileListIndex );                     	\
 		uint NumSpotLights = PdxReadBuffer( LightsPerTileList, LightsPerTileListIndex + 1 );
 
-	#define PDX_LIGHT_LOOP_POINTLIGHTS                                                                                          \
-		/* The rest of the entries are the light data indices */                                                                \
-		uint Offset = LightsPerTileListIndex + 2;  /* +2 to jump over the "NumPointLights/NumSpotLights" */                     \
-		for ( uint i = 0; i < NumPointLights; ++i )                                                                             \
-		{                                                                                                                       \
-			uint LightDataIndex = PdxReadBuffer( LightsPerTileList, Offset + i );                                               \
+	#define PDX_LIGHT_LOOP_DIRECTIONAL_LIGHTS																	\
+		for ( uint i = 0; i < _NumDirectionalLights; ++i ) 														\
+		{																										\
+			uint LightDataIndex = i * NUM_VECTORS_FOR_DIRECTIONALLIGHT;											\
+			SDirectionalLight DirectionalLight = GetDirectionalLight( LightDataIndex );
+
+	#define PDX_LIGHT_LOOP_POINT_LIGHTS                                                                        	\
+		}																									  	\
+		/* The rest of the entries are the light data indices */                                              	\
+		uint Offset = LightsPerTileListIndex + 2;  /* +2 to jump over the "NumPointLights/NumSpotLights" */   	\
+		for ( uint i = 0; i < NumPointLights; ++i )                                                           	\
+		{                                                                                                     	\
+			uint LightDataIndex = PdxReadBuffer( LightsPerTileList, Offset + i );                             	\
 			SPointLight PointLight = GetPointLight( LightDataIndex );
 		
-	#define PDX_LIGHT_LOOP_SPOTLIGHTS                                                                                           \
-		}                                                                                                                       \
-		Offset += NumPointLights; /* Jump over point lights */                                                                  \
-		for ( uint i = 0; i < NumSpotLights; ++i )                                                                              \
-		{                                                                                                                       \
-			uint LightDataIndex = PdxReadBuffer( LightsPerTileList, Offset + i );                                               \
+	#define PDX_LIGHT_LOOP_SPOT_LIGHTS                                                                         	\
+		}                                                                                                     	\
+		Offset += NumPointLights; /* Jump over point lights */                                                	\
+		for ( uint i = 0; i < NumSpotLights; ++i )                                                            	\
+		{                                                                                                     	\
+			uint LightDataIndex = PdxReadBuffer( LightsPerTileList, Offset + i );                             	\
 			SSpotLight SpotLight = GetSpotLight( LightDataIndex );
 
-	#define PDX_LIGHT_LOOP_END                                                                                           		\
+	#define PDX_LIGHT_LOOP_END                                                                               	\
 		}
 ]]
 
@@ -309,6 +364,18 @@ PixelShader =
 {
 	Code
 	[[
+		void CalculateLightingFromDirectionalLight( SDirectionalLight DirectionalLight, float3 WorldSpacePos, float ShadowTerm, SMaterialProperties MaterialProps, inout float3 DiffuseLightOut, inout float3 SpecularLightOut )
+		{
+			float3 ToCameraDir = normalize( CameraPosition - WorldSpacePos );
+			float3 ToLightDir = DirectionalLight._Direction;
+
+			float3 DiffuseLight;
+			float3 SpecularLight;
+			CalculateLightingFromLight( MaterialProps, ToCameraDir, ToLightDir, DirectionalLight._Color * ShadowTerm, DiffuseLight, SpecularLight );
+			DiffuseLightOut += DiffuseLight;
+			SpecularLightOut += SpecularLight;
+		}
+		
 		void CalculateLightingFromPointLight( SPointLight PointLight, float3 WorldSpacePos, float ShadowTerm, SMaterialProperties MaterialProps, inout float3 DiffuseLightOut, inout float3 SpecularLightOut )
 		{
 			float3 PosToLight = PointLight._Position - WorldSpacePos;
@@ -343,20 +410,29 @@ PixelShader =
 
 
 		// Helper function to loop over all lights for the current tile/cluster (tile containing [PixelPos]/cluster containing [PixelPos.xy, ViewSpaceDepth]) and perform "default" lighting
-		void CalculatePointLights( float2 PixelPos, float ViewSpaceDepth, float3 WorldSpacePos, float ShadowTerm, SMaterialProperties MaterialProps, inout float3 DiffuseLightOut, inout float3 SpecularLightOut )
+		void CalculateLightSourceLighting( float2 PixelPos, float ViewSpaceDepth, float3 WorldSpacePos, SMaterialProperties MaterialProps, inout float3 DiffuseLightOut, inout float3 SpecularLightOut )
 		{
 			PDX_LIGHT_LOOP_BEGIN( PixelPos, ViewSpaceDepth )
-			PDX_LIGHT_LOOP_POINTLIGHTS
+			
+			PDX_LIGHT_LOOP_DIRECTIONAL_LIGHTS
+				float ShadowTerm = CalculateDirectionalShadow( WorldSpacePos, DirectionalLight._ShadowIndex );
+				CalculateLightingFromDirectionalLight( DirectionalLight, WorldSpacePos, ShadowTerm, MaterialProps, DiffuseLightOut, SpecularLightOut );
+
+			PDX_LIGHT_LOOP_POINT_LIGHTS
+				float ShadowTerm = CalculateCubeShadow( WorldSpacePos, PointLight._Position, PointLight._ShadowIndex );
 				CalculateLightingFromPointLight( PointLight, WorldSpacePos, ShadowTerm, MaterialProps, DiffuseLightOut, SpecularLightOut );
-			PDX_LIGHT_LOOP_SPOTLIGHTS
+				
+			PDX_LIGHT_LOOP_SPOT_LIGHTS
+				float ShadowTerm = CalculateProjectorShadow( WorldSpacePos, SpotLight._PointLight._ShadowIndex );
 				CalculateLightingFromSpotLight( SpotLight, WorldSpacePos, ShadowTerm, MaterialProps, DiffuseLightOut, SpecularLightOut );
+				
 			PDX_LIGHT_LOOP_END
 		}
 		
 		// This one will use currently bound camera constants to calculate ViewSpaceDepth from WorldSpacePos
-		void CalculatePointLights( float2 PixelPos, float3 WorldSpacePos, float ShadowTerm, SMaterialProperties MaterialProps, inout float3 DiffuseLightOut, inout float3 SpecularLightOut )
+		void CalculateLightSourceLighting( float2 PixelPos, float3 WorldSpacePos, SMaterialProperties MaterialProps, inout float3 DiffuseLightOut, inout float3 SpecularLightOut )
 		{
-			CalculatePointLights( PixelPos, mul( ViewMatrix, float4( WorldSpacePos, 1.0 ) ).z, WorldSpacePos, ShadowTerm, MaterialProps, DiffuseLightOut, SpecularLightOut );
+			CalculateLightSourceLighting( PixelPos, mul( ViewMatrix, float4( WorldSpacePos, 1.0 ) ).z, WorldSpacePos, MaterialProps, DiffuseLightOut, SpecularLightOut );
 		}
 	]]
 }

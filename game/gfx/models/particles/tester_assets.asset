@@ -1,4 +1,25 @@
 entity = {
+	name = "tester_zeppelin_02"
+
+	locator = { name = "set_height"	position = { 0 2 0 } 	rotation = { 0 0 0 } }
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		event = 
+		{ 
+			time = 0.0
+			node = "set_height" 
+			entity = "zeppelin_02_entity"
+		}
+	}
+}
+
+entity = {
 	name = "tester_line_machine_rot"
 
 	locator = { name = "set_rotation"	position = { 0 0 0 } 	rotation = { 180 0 0 } }
@@ -18,6 +39,7 @@ entity = {
 		}
 	}
 }
+
 entity = {
 	name = "tester_plane_rot2"
 
@@ -38,7 +60,6 @@ entity = {
 		}
 	}
 }
-
 
 entity = 
 {

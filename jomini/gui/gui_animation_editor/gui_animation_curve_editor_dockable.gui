@@ -24,11 +24,9 @@ vbox = {
 
 		blockoverride "left"
 		{
-			history_toolbar = {
-				blockoverride "history_btn" {
-					#onclick = "[MapEditorGui.ToggleHistory]" # TODO: Make history window context in code and hook it here.
-				}
-			}
+			# TODO: button to open gui animation editor
+
+			history_toolbar = {}
 			
 			editor_toolbar_divider = {}
 

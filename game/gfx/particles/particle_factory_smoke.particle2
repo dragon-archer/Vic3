@@ -243,8 +243,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=23
-					linked_pin="hsva"
+					linked_node=74
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -841,7 +841,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=106
+			id=61
 			node={
 				value=0.000000
 			}
@@ -868,18 +868,18 @@ graph={
 				}
 				link={
 					pin_id="true_value"
-					linked_node=72
+					linked_node=64
 					linked_pin="value"
 				}
 				link={
 					pin_id="false_value"
-					linked_node=73
+					linked_node=70
 					linked_pin="value"
 				}
 			}
 		}
 		pdxns:values:Float={
-			id=72
+			id=64
 			node={
 				value=3.000000
 			}
@@ -915,7 +915,7 @@ graph={
 				}
 				link={
 					pin_id="true_value"
-					linked_node=106
+					linked_node=61
 					linked_pin="value"
 				}
 				link={
@@ -972,7 +972,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=73
+			id=70
 			node={
 				value=6.000000
 			}
@@ -985,6 +985,45 @@ graph={
 				value=1.400000
 			}
 			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=72
+			node={
+				value=1.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=73
+			node={
+				value=0.400000
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=74
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=23
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=73
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=72
+					linked_pin="value"
+				}
 			}
 		}
 	}

@@ -9,12 +9,13 @@ Includes = {
 ConstantBuffer( GameSharedConstants )
 {
 	float2 MapSize;
-	float2 ProvinceMapSize;
+	float2 _ProvinceMapSize;
 
-	float4 SSAOColorMesh;
-	float4 MeshTintColor;
-	float4 DecentralizedCountryColor;
-	float4 ImpassableTerrainColor;
+	float4 _SSAOColorMesh;
+	float4 _MeshTintColor;
+	float4 _DecentralizedCountryColor;
+	float4 _ImpassableTerrainColor;
+	float4 _NightLightColor;
 
 	float4 _FlatmapFoldsColor;
 	float4 _FlatmapLinesColor;
@@ -25,38 +26,37 @@ ConstantBuffer( GameSharedConstants )
 	float3 _SecondSunDir;
 
 	float GlobalTime;
-	float FlatmapHeight;
-	float FlatmapLerp;
+	float _FlatmapHeight;
+	float _FlatmapLerp;
 
-	float ShorelineMaskBlur;
-	float ShorelineExtentStr;
-	float ShorelineAlpha;
-	int	  ShoreLinesUVScale;
+	float _ShorelineMaskBlur;
+	float _ShorelineExtentStr;
+	float _ShorelineAlpha;
+	int	  _ShoreLinesUVScale;
 
 	float _FlatmapOverlayLandOpacity;
 	float _FlatmapEquatorPosition;
 	int _FlatmapEquatorTiling;
 
-	int ImpassableTerrainTiling
-	float ImpassableTerrainHeight
+	int _ImpassableTerrainTiling
+	float _ImpassableTerrainHeight
+	float _DistanceFadeStart
+	float _DistanceFadeEnd
 
-	float DistanceFadeStart
-	float DistanceFadeEnd
+	float _WaterShadowMultiplier;
 
-	float WaterShadowMultiplier;
+	float _MeshTintHeightMin;
+	float _MeshTintHeightMax;
+	float _SSAOAlphaTrees;
+	float _SSAOAlphaTerrain;
 
-	float MeshTintHeightMin;
-	float MeshTintHeightMax;
-	float SSAOAlphaTrees;
-	float SSAOAlphaTerrain;
+	float _FogCloseOffset;
+	float _FogFarOffset;
+	float _FogWidthScale;
 
-	float FogCloseOffset;
-	float FogFarOffset;
-	float FogWidthScale;
-
-	float DistanceRoughnessPosition;
-	float DistanceRoughnessBlend;
-	float DistanceRoughnessScale;
+	float _DistanceRoughnessPosition;
+	float _DistanceRoughnessBlend;
+	float _DistanceRoughnessScale;
 
 	float _OverlayOpacity;
 
@@ -66,6 +66,15 @@ ConstantBuffer( GameSharedConstants )
 	bool _UsePrimaryRedAsGradient;
 
 	bool _UseStripeOccupation;
+
+	float _NightWaterAdjustment;
+	float _DayNightBrightness;
+	float _DayNightValue;
+	float _DayValue;
+	float _NightValue;
+	float _LightsFadeTime;
+	float _LightsActivateBegin;
+	float _LightsActivateEnd;
 };
 
 PixelShader =
@@ -130,7 +139,7 @@ PixelShader =
 			float Distance = length( Intersection );
 
 			Roughness = 1.0 - Roughness;
-			float ReducedRoughness = 1.0 - RemapClamped( Distance, DistanceRoughnessPosition * Scalar, DistanceRoughnessPosition * Scalar + DistanceRoughnessBlend, Roughness, Roughness * DistanceRoughnessScale );
+			float ReducedRoughness = 1.0 - RemapClamped( Distance, _DistanceRoughnessPosition * Scalar, _DistanceRoughnessPosition * Scalar + _DistanceRoughnessBlend, Roughness, Roughness * _DistanceRoughnessScale );
 
 			return ReducedRoughness;
 		}

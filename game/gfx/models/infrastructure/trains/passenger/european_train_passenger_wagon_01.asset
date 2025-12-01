@@ -14,6 +14,7 @@ pdxmesh = {
 		texture_normal = "european_train_passenger_wagon_01_normal.dds"
 		texture_specular = "european_train_passenger_wagon_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -24,6 +25,7 @@ pdxmesh = {
 		texture_normal = "european_train_passenger_wagon_01_normal.dds"
 		texture_specular = "european_train_passenger_wagon_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -34,6 +36,7 @@ pdxmesh = {
 		texture_normal = "european_train_passenger_wagon_01_normal.dds"
 		texture_specular = "european_train_passenger_wagon_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }
@@ -41,4 +44,13 @@ pdxmesh = {
 entity = {
 	name = "european_train_passenger_wagon_01_entity"
 	pdxmesh = "european_train_passenger_wagon_01_mesh"
+
+	default_state = "moving"
+
+	state = { 
+		name = "moving" 
+		looping = no
+
+		start_event = { time = 0  particle = "infrastructure/train_passenger_lights" trigger_once = yes}
+	}
 }

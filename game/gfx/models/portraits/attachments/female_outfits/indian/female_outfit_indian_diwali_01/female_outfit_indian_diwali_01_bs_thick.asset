@@ -1,0 +1,16 @@
+pdxmesh = {
+	name = "female_outfit_indian_diwali_01_bs_thick_mesh"
+	file = "female_outfit_indian_diwali_01_bs_thick.mesh"
+
+	meshsettings = {
+		name = "female_outfit_indian_diwali_01_bs_thickShape"
+		index = 0
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "female_outfit_indian_diwali_01_bs_thick_entity"
+	pdxmesh = "female_outfit_indian_diwali_01_bs_thick_mesh"
+}

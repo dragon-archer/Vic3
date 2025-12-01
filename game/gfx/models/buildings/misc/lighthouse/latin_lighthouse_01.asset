@@ -8,6 +8,8 @@ pdxmesh = {
 		lod = { index = 3 percent = 3.0 }
 	}
 
+	animation = { id = "idle_animation" type = "generic_lighthouse_01_idle.anim" }
+
 	meshsettings = {
 		name = "LOD_0|generic_lighthouse_01|generic_lighthouse_01Shape"
 		index = 0
@@ -16,7 +18,7 @@ pdxmesh = {
 		texture_specular = "latin_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
 		shader = "standard"
-		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -28,7 +30,7 @@ pdxmesh = {
 		texture_specular = "latin_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
 		shader = "standard"
-		additional_shader_defines = { "TINT_COLOR" }
+		additional_shader_defines = { "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -40,7 +42,7 @@ pdxmesh = {
 		texture_specular = "latin_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
 		shader = "standard"
-		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -52,7 +54,7 @@ pdxmesh = {
 		texture_specular = "latin_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
 		shader = "standard"
-		additional_shader_defines = { "TINT_COLOR" }
+		additional_shader_defines = { "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -64,7 +66,7 @@ pdxmesh = {
 		texture_specular = "latin_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
 		shader = "standard"
-		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" }
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -76,7 +78,7 @@ pdxmesh = {
 		texture_specular = "latin_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
 		shader = "standard"
-		additional_shader_defines = { "TINT_COLOR" }
+		additional_shader_defines = { "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -88,7 +90,7 @@ pdxmesh = {
 		texture_specular = "latin_lighthouse_01_properties.dds"
 		texture = { file = "generic_lighthouse_tint.dds" index = 5 }
 		shader = "standard"
-		additional_shader_defines = { "TINT_COLOR" }
+		additional_shader_defines = { "TINT_COLOR" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }
@@ -104,24 +106,30 @@ entity = {
 	state =
 	{
 		name = "idle"
+		animation = "idle_animation"
 		chance = 1
 		state_time = 5
-		looping = no
+		looping = yes
 
-		event =
+		start_event =
 		{
 			time = 0
 			node = "birds"
 			entity = "seagull_port_entity"
 			trigger_once = yes
 		}
+
+		event = { time = 0	node = "loc_light" particle = "infrastructure/lighthouse" trigger_once = yes keep_particle = yes}		
 	}
 
 	state =
 	{
 		name = "idle"
+		animation = "idle_animation"
 		chance = 1
 		state_time = 5
-		looping = no
+		looping = yes
+
+		event = { time = 0 node = "loc_light" particle = "infrastructure/lighthouse" trigger_once = yes keep_particle = yes}
 	}
 }

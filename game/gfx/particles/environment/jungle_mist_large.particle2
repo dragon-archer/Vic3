@@ -59,8 +59,7 @@ graph={
 		pdxns:particle:Emitter={
 			id=3
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:Lifetime"
 						label="Lifetime"
 						type="Float"
@@ -75,7 +74,10 @@ graph={
 						label="Size"
 						type="Float"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -196,8 +198,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=33
-					linked_pin="hsva"
+					linked_node=233
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -465,6 +467,11 @@ graph={
 					linked_node=124
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=163
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:3d:YawPitchVectorRotation={
@@ -492,8 +499,7 @@ graph={
 		pdxns:particle:Emitter={
 			id=25
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:Lifetime"
 						label="Lifetime"
 						type="Float"
@@ -508,7 +514,10 @@ graph={
 						label="Size"
 						type="Float"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -704,7 +713,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=34
 			node={
-				texture_file="gfx/particles/textures/cloud_6.dds" 
+				texture_file="gfx/particles/textures/cloud_6.dds"
 			}
 			inputs={
 			}
@@ -804,7 +813,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=40
 			node={
-				texture_file="gfx/particles/textures/mist_4.dds" 
+				texture_file="gfx/particles/textures/mist_4.dds"
 			}
 			inputs={
 			}
@@ -1283,7 +1292,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=70
 			node={
-				texture_file="gfx/particles/textures/mist_3.dds" 
+				texture_file="gfx/particles/textures/mist_3.dds"
 			}
 			inputs={
 			}
@@ -1375,8 +1384,7 @@ graph={
 		pdxns:particle:Emitter={
 			id=76
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:Lifetime"
 						label="Lifetime"
 						type="Float"
@@ -1391,7 +1399,10 @@ graph={
 						label="Size"
 						type="Float"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -2034,6 +2045,53 @@ graph={
 				value=3.000000
 			}
 			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=236
+			node={
+				value=0.800000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=235
+			node={
+				value=0.400000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=163
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=233
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=33
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=235
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=236
+					linked_pin="value"
+				}
 			}
 		}
 	}

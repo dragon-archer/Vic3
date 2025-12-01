@@ -1,5 +1,4 @@
 Includes = {
-	#"fog_of_war_impl.fxh"
 	"jomini/jomini.fxh"
 	"jomini/jomini_fog_of_war.fxh"
 	"cw/utility.fxh"
@@ -10,12 +9,34 @@ PixelShader = {
 	{
 		float4 _FoWShadowColor;
 		float4 _FoWCloudsColor;
-		float4 _FoWCloudsColorSecondary;
+		float4 _FoWCloudsColorGradient;
+		float4 _FoWCloudsColorSunset;
+		float4 _FoWCloudsColorSunsetGradient;
+		float4 _FoWCloudsColorNight;
+		float4 _FoWCloudsColorNightGradient;
+		float2 _FoWMasterUVScale;
+		float2 _FoWMasterUVSpeed;
+		float2 _FoWLayer1Speed;
+		float2 _FoWLayer2Speed;
+		float2 _FoWLayer3Speed;
 
-		float _FoWCloudsColorGradientMin;
-		float _FoWCloudsColorGradientMax;
+		float _FoWCloudsColorDayGradientMin;
+		float _FoWCloudsColorDayGradientMax;
+		float _FoWCloudsColorSunsetGradientMin;
+		float _FoWCloudsColorSunsetGradientMax;
+		float _FoWCloudsColorNightGradientMin;
+		float _FoWCloudsColorNightGradientMax;
 
 		float _FoWCloudHeight;
+		float _CloudNormalStrength;
+
+		float _CloudAmbientValue;
+		float _CloudLightMultiplier;
+		float _CloudLightMin;
+		float _CloudLightMax;
+
+		float _CloudSunsetColorValueMin;
+		float _CloudSunsetColorValueMax;
 
 		float _FoWShadowMult;
 		float _FoWShadowTexStart;
@@ -38,8 +59,6 @@ PixelShader = {
 		float _FoWMasterStop;
 		int _FoWMasterUVTiling;
 		float _FoWMasterUVRotation;
-		float2 _FoWMasterUVScale;
-		float2 _FoWMasterUVSpeed;
 
 		float _FoWLayer1Min;
 		float _FoWLayer1Max;
@@ -56,13 +75,8 @@ PixelShader = {
 		int _FoWLayer3Tiling;
 
 		float _FoWShowAlphaMask;
-
-		float2 _FoWLayer1Speed;
-		float2 _FoWLayer2Speed;
-		float2 _FoWLayer3Speed;
-
 	}
-	
+
 	#// Fog of war fade out on close zoom
 	Code [[
 		#define FowFadeEnd			150.0
@@ -87,7 +101,17 @@ PixelShader = {
 		SampleModeU = "Wrap"
 		SampleModeV = "Wrap"
 	}
+	TextureSampler FogOfWarNormal
+	{
+		Ref = GameFogOfWarNormal
+		MagFilter = "Linear"
+		MinFilter = "Linear"
+		MipFilter = "Linear"
+		SampleModeU = "Wrap"
+		SampleModeV = "Wrap"
+	}
 	Code [[
+
 		float SampleFowNoiseLowSpec( in float3 Coordinate )
 		{
 				// Uv tiling
@@ -109,9 +133,8 @@ PixelShader = {
 				return Cloud;
 		}
 
-		float SampleFowNoise( in float3 Coordinate )
+		float SampleFowNoise( in float3 Coordinate, inout float3 Normal )
 		{
-
 				// Uv tiling and animation
 				float2 MasterUVTiling = _FoWMasterUVTiling * Coordinate.xz * InverseWorldSize;
 
@@ -144,6 +167,10 @@ PixelShader = {
 				// Detail noise blending
 				float Cloud = Overlay(Layer1, Layer2, _FoWLayer2Balance );
 				Cloud = Overlay(Cloud, Layer3, _FoWLayer3Balance );
+
+				Normal = PdxTex2D( FogOfWarNormal, UV ).xzy - 0.5;
+				Normal.xz *= _CloudNormalStrength;
+				Normal = saturate( Normal );
 
 				return Cloud;
 		}
@@ -235,7 +262,6 @@ PixelShader = {
 				return Color;
 			#endif
 
-
 			// Alpha fade
 			float FadeStart = FowFadeEnd - FowFadeStart;
 			float DistanceBlend = FadeStart - CameraPosition.y + FowFadeStart;
@@ -243,11 +269,11 @@ PixelShader = {
 
 			float Alpha = 1.0 - PdxTex2D( FogOfWarAlpha, Coordinate.xz * InverseWorldSize ).r;
 			Alpha = lerp( Alpha, 0.0, DistanceBlend );
-			
+
 			#ifdef PDX_DEBUG_FOW_MASK
 				return float4( Alpha.rrr, 1.0f );
 			#endif
-			if( _FoWShowAlphaMask > 0.0f ) 
+			if( _FoWShowAlphaMask > 0.0f )
 			{
 				return vec3( 1.0f - Alpha );
 			}
@@ -265,44 +291,59 @@ PixelShader = {
 			Coordinate =  Coordinate + ToSunDir * ShadowCordDist;
 
 			// Cloud and shadow texture
+			float3 Normal = float3( 0.0, 1.0, 0.0 );
 			#ifdef LOW_QUALITY_SHADERS
 				float CloudTex = smoothstep( _FoWMasterStart, _FoWMasterStop, SampleFowNoiseLowSpec( ParalaxCoord ) );
 				float ShadowTex = smoothstep( _FoWShadowTexStart, _FoWShadowTexStop, SampleFowNoiseLowSpec( Coordinate ) );
 			#else
-				float CloudTex = smoothstep( _FoWMasterStart, _FoWMasterStop, SampleFowNoise( ParalaxCoord ) );
+				float CloudTex = smoothstep( _FoWMasterStart, _FoWMasterStop, SampleFowNoise( ParalaxCoord, Normal ) );
 				float ShadowTex = smoothstep( _FoWShadowTexStart, _FoWShadowTexStop, SampleFowNoiseShadow( Coordinate ) );
 			#endif
 
+			// Apply clouds
+			float GradientControlDay = smoothstep( _FoWCloudsColorDayGradientMin, _FoWCloudsColorDayGradientMax, CloudTex );
+			float3 CloudsColor = lerp( _FoWCloudsColorGradient.rgb, _FoWCloudsColor.rgb, GradientControlDay ) ;
+
+			float GradientControlSunset = smoothstep( _FoWCloudsColorSunsetGradientMin, _FoWCloudsColorSunsetGradientMax, CloudTex );
+			float3 CloudsColorSunset = lerp( _FoWCloudsColorSunsetGradient.rgb, _FoWCloudsColorSunset.rgb, GradientControlSunset );
+
+			float GradientControlNight = smoothstep( _FoWCloudsColorNightGradientMin, _FoWCloudsColorNightGradientMax, CloudTex );
+			float3 CloudsColorNight = lerp( _FoWCloudsColorNightGradient.rgb, _FoWCloudsColorNight.rgb, GradientControlNight );
+
+			// Apply sunset and night color
+			float SunsetValue = 0.0;
+			float SunsetValueClose = 0.0;
+			if ( _DayNightValue >= 0.5 )
+			{
+				SunsetValue = 1.0;
+				SunsetValueClose = 1.0;
+			}
+			else
+			{
+				SunsetValue = Remap( _DayNightValue, 0.0f, 0.5, 0.0, 1.0 );
+				SunsetValueClose = RemapClamped( _DayNightValue, _CloudSunsetColorValueMin, _CloudSunsetColorValueMax, 0.0, 1.0 );
+			}
+			CloudsColor = lerp( CloudsColor, CloudsColorSunset, SunsetValue );
+			CloudsColor = lerp( CloudsColor, CloudsColorNight, SunsetValueClose );
+
+			// Normal calculation
+			float SunsetIntensityValue = smoothstep( 0.5, 1.0, SunsetValue );
+			float SunValue = lerp( 1.0, 0.0, SunsetIntensityValue );
+			float NightIntensityValue = smoothstep( 0.0, 0.5, _NightValue );
+			SunValue = lerp( SunValue, 1.0, NightIntensityValue );
+			float3 SunDir = ToSunDir;
+			float NdotL = saturate( dot( Normal, SunDir ) + 1e-5 );
+			CloudsColor *= _CloudAmbientValue;
+			float CloudBrightScale = saturate( smoothstep( _CloudLightMin, _CloudLightMax, NdotL ) );
+			CloudsColor += ( CloudsColor * CloudBrightScale * SunValue * _CloudLightMultiplier );
+
 			// Apply Fog of war and cloud shadow
 			float3 FinalColor = lerp( Color, _FoWShadowColor.rgb, _FoWShadowMult * ShadowAlpha );					// Fow darkness
-			FinalColor = lerp( FinalColor, _FoWShadowColor.rgb, _FoWShadowMult * ShadowTex * ShadowMultiplier );	// Cloud Shadow
-
-			// Apply clouds
-			float GradientControl = smoothstep( _FoWCloudsColorGradientMin, _FoWCloudsColorGradientMax, CloudTex );
-			float3 CloudsColor = lerp( _FoWCloudsColorSecondary.rgb, _FoWCloudsColor.rgb, GradientControl );
+			FinalColor = lerp( FinalColor, _FoWShadowColor.rgb, _FoWShadowMult * ShadowTex * ShadowMultiplier * SunValue );	// Cloud Shadow
 			FinalColor = lerp( FinalColor, CloudsColor, CloudTex * CloudsAlpha );
 
 			return FinalColor;
 		}
-
-		float3 GameApplyFogOfWarMultiSampled( in float3 Color, in float3 Coordinate, PdxTextureSampler2D FogOfWarAlphaMask )
-		{
-			#ifdef PDX_DEBUG_FOW_OFF
-			return Color;
-			#endif
-
-			float Alpha = GetFogOfWarAlphaMultiSampled( Coordinate, FogOfWarAlphaMask );
-			#ifdef PDX_DEBUG_FOW_MASK
-			return float4( Alpha.rrr, 1.0f );
-			#endif
-
-			if( _FoWShowAlphaMask > 0.0f ) 
-			{
-				return vec3( 1.0f - Alpha );
-			}
-			return FogOfWarBlend( Color, Alpha );
-		}
-
 		// Post process
 		float4 GameApplyFogOfWar( in float3 WorldSpacePos, PdxTextureSampler2D FogOfWarAlphaMask )
 		{
@@ -320,8 +361,6 @@ PixelShader = {
 		}
 
 		#undef ApplyFogOfWar
-		#undef ApplyFogOfWarMultiSampled
 		#define ApplyFogOfWar GameApplyFogOfWar
-		#define ApplyFogOfWarMultiSampled GameApplyFogOfWarMultiSampled
 	]]
 }

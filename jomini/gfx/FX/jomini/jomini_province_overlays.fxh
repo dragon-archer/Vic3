@@ -1,6 +1,5 @@
 Includes = {
 	"jomini/jomini_colormap.fxh"
-	"jomini/jomini_colormap_constants.fxh"
 	"jomini/gradient_border_constants.fxh"
 }
 

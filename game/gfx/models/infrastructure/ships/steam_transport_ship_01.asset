@@ -17,6 +17,8 @@ pdxmesh = {
 		texture_normal = "steam_transport_ship_details_normal.dds"
 		texture_specular = "steam_transport_ship_details_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -26,6 +28,8 @@ pdxmesh = {
 		texture_normal = "steam_transport_ship_hull_normal.dds"
 		texture_specular = "steam_transport_ship_hull_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -35,6 +39,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_alpha_normal.dds"
 		texture_specular = "generic_ship_alpha_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -44,6 +50,8 @@ pdxmesh = {
 		texture_normal = "steam_transport_ship_details_normal.dds"
 		texture_specular = "steam_transport_ship_details_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -53,6 +61,8 @@ pdxmesh = {
 		texture_normal = "steam_transport_ship_hull_normal.dds"
 		texture_specular = "steam_transport_ship_hull_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -62,6 +72,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_alpha_normal.dds"
 		texture_specular = "generic_ship_alpha_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -71,6 +83,8 @@ pdxmesh = {
 		texture_normal = "steam_transport_ship_details_normal.dds"
 		texture_specular = "steam_transport_ship_details_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -80,6 +94,8 @@ pdxmesh = {
 		texture_normal = "steam_transport_ship_hull_normal.dds"
 		texture_specular = "steam_transport_ship_hull_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -89,6 +105,8 @@ pdxmesh = {
 		texture_normal = "steam_transport_ship_details_normal.dds"
 		texture_specular = "steam_transport_ship_details_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -98,6 +116,8 @@ pdxmesh = {
 		texture_normal = "steam_transport_ship_hull_normal.dds"
 		texture_specular = "steam_transport_ship_hull_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }
 
@@ -116,39 +136,43 @@ entity = {
 	name = "steam_transport_ship_01_entity"
 	pdxmesh = "steam_transport_ship_01_mesh"
 
+	cull_radius = 10
+
 	default_state = "moving"
 	state = {
 		name = "moving"
 		animation = "moving_animation"
-		
+
 		event = { time = 0 node = "steam_transport_ship_01_locator_top_body_chimney_01" particle = "infrastructure/ship_chimney" trigger_once = yes}
 		event = { time = 0 node = "steam_transport_ship_01_locator_top_body_chimney_02" particle = "infrastructure/ship_chimney" trigger_once = yes}
 		event = { time = 0 node = "steam_transport_ship_01_locator_top_body_chimney_03" particle = "infrastructure/ship_chimney" trigger_once = yes}
-				
-		event = 
-		{ 
-			time = 0 
-			node = "steam_transport_ship_01_locator_front_root_water" 
-			particle = "ships/ship_water_front" 
-			trigger_once = yes 
+
+		start_event = { time = 0.0 node = "steam_transport_ship_01_locator_front_root_water" particle = "infrastructure/steam_transport_lights_01" trigger_once = yes keep_particle = yes}
+
+		event =
+		{
+			time = 0
+			node = "steam_transport_ship_01_locator_front_root_water"
+			particle = "ships/ship_water_front_01"
+			trigger_once = yes
 			keep_particle = no
 		}
-		
-		event = 
-		{ 
-			time = 0 
-			node = "steam_transport_ship_01_locator_waterwheel_right" 
-			particle = "ships/ship_water_front" 
-			trigger_once = yes 
+
+		event =
+		{
+			time = 0
+			node = "steam_transport_ship_01_locator_waterwheel_right"
+			particle = "ships/ship_water_front_01"
+			trigger_once = yes
 			keep_particle = no
 		}
-		
-		event = 
-		{ 
-			time = 0 
-			node = "steam_transport_ship_01_locator_waterwheel_left" 
-			particle = "ships/ship_water_front" 
-			trigger_once = yes 
+
+		event =
+		{
+			time = 0
+			node = "steam_transport_ship_01_locator_waterwheel_left"
+			particle = "ships/ship_water_front_01"
+			trigger_once = yes
 			keep_particle = no
 		}
 

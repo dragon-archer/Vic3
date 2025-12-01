@@ -403,7 +403,7 @@ graph={
 				}
 				link={
 					pin_id="color"
-					linked_node=182
+					linked_node=35
 					linked_pin="value"
 				}
 				link={
@@ -575,7 +575,7 @@ graph={
 				}
 				link={
 					pin_id="condition"
-					linked_node=116
+					linked_node=40
 					linked_pin="value"
 				}
 			}
@@ -599,12 +599,12 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=13
-					linked_pin="hsva"
+					linked_node=173
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
-					linked_node=116
+					linked_node=40
 					linked_pin="value"
 				}
 			}
@@ -627,7 +627,7 @@ graph={
 			}
 		}
 		pdxns:values:Color={
-			id=182
+			id=35
 			node={
 				value={
 					0.000000 0.000000 0.000000 1.000000
@@ -678,7 +678,7 @@ graph={
 			}
 		}
 		pdxns:particle:HasTag={
-			id=116
+			id=40
 			node={
 			}
 			inputs={
@@ -690,7 +690,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=117
+			id=41
 			node={
 				value=0.100000
 			}
@@ -698,7 +698,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=118
+			id=42
 			node={
 				value=1
 			}
@@ -838,7 +838,7 @@ graph={
 			}
 		}
 		pdxns:particle:Emitter={
-			id=119
+			id=53
 			node={
 				user_data_layout={ 					user_data={
 						id="usr:StartColor"
@@ -883,12 +883,12 @@ graph={
 				}
 				link={
 					pin_id="speed"
-					linked_node=117
+					linked_node=41
 					linked_pin="value"
 				}
 				link={
 					pin_id="color"
-					linked_node=182
+					linked_node=35
 					linked_pin="value"
 				}
 				link={
@@ -898,7 +898,7 @@ graph={
 				}
 				link={
 					pin_id="tag"
-					linked_node=118
+					linked_node=42
 					linked_pin="value"
 				}
 				link={
@@ -918,7 +918,7 @@ graph={
 				}
 				link={
 					pin_id="usr:StartColor"
-					linked_node=120
+					linked_node=71
 					linked_pin="value"
 				}
 				link={
@@ -1104,7 +1104,7 @@ graph={
 			}
 		}
 		pdxns:values:Color={
-			id=120
+			id=71
 			node={
 				value={
 					1.000000 1.000000 1.000000 1.000000
@@ -1317,7 +1317,7 @@ graph={
 			inputs={
 				link={
 					pin_id="tag"
-					linked_node=118
+					linked_node=42
 					linked_pin="value"
 				}
 			}
@@ -1616,6 +1616,45 @@ graph={
 				value=0
 			}
 			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=176
+			node={
+				value=0.800000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=175
+			node={
+				value=0.500000
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=173
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=13
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=175
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=176
+					linked_pin="value"
+				}
 			}
 		}
 	}

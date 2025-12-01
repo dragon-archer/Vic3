@@ -8,4 +8,5 @@ ConstantBuffer( JominiColorMapConstants )
 	float2		SecondaryProvinceColorsOffset;
 	float2		HighlightProvinceColorsOffset;
 	float2		AlternateProvinceColorsOffset;
+	float		IndirectionMapDepth;
 };

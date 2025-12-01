@@ -181,8 +181,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=9
-					linked_pin="hsva"
+					linked_node=220
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -943,8 +943,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=47
-					linked_pin="hsva"
+					linked_node=221
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -1983,31 +1983,31 @@ graph={
 			}
 		}
 		pdxns:math:GreaterThanF={
-			id=215
+			id=139
 			node={
 			}
 			inputs={
 				link={
 					pin_id="op1"
-					linked_node=214
+					linked_node=140
 					linked_pin="age"
 				}
 				link={
 					pin_id="op2"
-					linked_node=217
+					linked_node=141
 					linked_pin="value"
 				}
 			}
 		}
 		pdxns:particle:GetSystemAge={
-			id=214
+			id=140
 			node={
 			}
 			inputs={
 			}
 		}
 		pdxns:values:Float={
-			id=217
+			id=141
 			node={
 				value=10.000000
 			}
@@ -2015,13 +2015,91 @@ graph={
 			}
 		}
 		pdxns:particle:KillSystem={
-			id=216
+			id=142
 			node={
 			}
 			inputs={
 				link={
 					pin_id="condition"
-					linked_node=215
+					linked_node=139
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=227
+			node={
+				value=1.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=226
+			node={
+				value=0.600000
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=221
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=47
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=226
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=227
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=224
+			node={
+				value=0.800000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=223
+			node={
+				value=0.500000
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=220
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=9
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=223
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=224
 					linked_pin="value"
 				}
 			}

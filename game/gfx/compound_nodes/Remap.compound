@@ -1,118 +1,140 @@
 ﻿compound_node={
 	id="Remap"
+	node_context=3
 	graph={
-		Nodes={
+		nodes={
 			pdxns:common:GraphInterface={
-				Id=0
-				Node={
-					pins={
+				id=0
+				node={
+					output_pins={
 						pin={
-							id=input
-							label="Input"
-							input=no
-							type=Float
+							name="input"
+							display_text="Input"
+							type="Float"
 						}
 						pin={
-							id=low1
-							label="Low 1"
-							input=no
-							type=Float
+							name="low1"
+							display_text="Input Low"
+							type="Float"
+							default_value={
+								value=0.000000
+							}
 						}
 						pin={
-							id=low2
-							label="Low 2"
-							input=no
-							type=Float
+							name="high1"
+							display_text="Input High"
+							type="Float"
+							default_value={
+								value=0.000000
+							}
 						}
 						pin={
-							id=high1
-							label="High 1"
-							input=no
-							type=Float
+							name="low2"
+							display_text="Target Low"
+							type="Float"
+							default_value={
+								value=0.000000
+							}
 						}
 						pin={
-							id=high2
-							label="High 2"
-							input=no
-							type=Float
+							name="high2"
+							display_text="Target High"
+							type="Float"
+							default_value={
+								value=0.000000
+							}
 						}
 					}
 				}
-				Inputs={
-				}
-			}
-			pdxns:math:AddF={
-				Id=1
-				Node={
-				}
-				Inputs={
-					Link = { PinId = "term1" LinkedNode = 4 LinkedPin = "difference" }
-					Link = { PinId = "term2" LinkedNode = 0 LinkedPin = "low2" }
-				}
-			}
-			pdxns:math:SubF={
-				Id=16
-				Node={
-				}
-				Inputs={
-					Link = { PinId = "term1" LinkedNode = 0 LinkedPin = "high1" }
-					Link = { PinId = "term2" LinkedNode = 0 LinkedPin = "low1" }
+				inputs={
 				}
 			}
 			pdxns:common:GraphInterface={
-				Id=19
-				Node={
-					pins={
+				id=1
+				node={
+					input_pins={
 						pin={
-							id=output
-							label="Output"
-							input=yes
-							flags=optional
-							type=Float
+							name="output"
+							display_text="Output"
+							flags="optional"
+							type="Float"
 						}
 					}
 				}
-				Inputs={
-					Link = { PinId = "output" LinkedNode = 7 LinkedPin = "product" }
+				inputs={
+					link={
+						pin_id="output"
+						linked_node=4
+						linked_pin="value"
+					}
 				}
 			}
-			pdxns:math:SubF={
-				Id=4
-				Node={
+			pdxns:math:InvLerpF={
+				id=2
+				node={
 				}
-				Inputs={
-					Link = { PinId = "term1" LinkedNode = 0 LinkedPin = "input" }
-					Link = { PinId = "term2" LinkedNode = 0 LinkedPin = "low1" }
-				}
-			}
-			pdxns:math:DivF={
-				Id=13
-				Node={
-				}
-				Inputs={
-					Link = { PinId = "dividend" LinkedNode = 10 LinkedPin = "difference" }
-					Link = { PinId = "divisor" LinkedNode = 16 LinkedPin = "difference" }
-				}
-			}
-			pdxns:math:SubF={
-				Id=10
-				Node={
-				}
-				Inputs={
-					Link = { PinId = "term1" LinkedNode = 0 LinkedPin = "high2" }
-					Link = { PinId = "term2" LinkedNode = 0 LinkedPin = "low2" }
+				inputs={
+					link={
+						pin_id="x"
+						linked_node=0
+						linked_pin="low1"
+					}
+					link={
+						pin_id="y"
+						linked_node=0
+						linked_pin="high1"
+					}
+					link={
+						pin_id="value"
+						linked_node=3
+						linked_pin="value"
+					}
 				}
 			}
-			pdxns:math:MulF={
-				Id=7
-				Node={
+			pdxns:math:ClampF={
+				id=3
+				node={
 				}
-				Inputs={
-					Link = { PinId = "factor1" LinkedNode = 1 LinkedPin = "sum" }
-					Link = { PinId = "factor2" LinkedNode = 13 LinkedPin = "quotient" }
+				inputs={
+					link={
+						pin_id="x"
+						linked_node=0
+						linked_pin="input"
+					}
+					link={
+						pin_id="min"
+						linked_node=0
+						linked_pin="low1"
+					}
+					link={
+						pin_id="max"
+						linked_node=0
+						linked_pin="high1"
+					}
+				}
+			}
+			pdxns:math:LerpF={
+				id=4
+				node={
+				}
+				inputs={
+					link={
+						pin_id="x"
+						linked_node=0
+						linked_pin="low2"
+					}
+					link={
+						pin_id="y"
+						linked_node=0
+						linked_pin="high2"
+					}
+					link={
+						pin_id="s"
+						linked_node=2
+						linked_pin="s"
+					}
 				}
 			}
 		}
 	}
-
 }

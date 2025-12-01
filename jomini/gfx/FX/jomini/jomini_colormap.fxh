@@ -1,15 +1,19 @@
+Includes = {
+	"jomini/jomini_colormap_constants.fxh"
+}
+
 Code
 [[
 	float4 ColorSample( float2 Coord, PdxTextureSampler2D IndirectionMap, PdxTextureSampler2D ColorMap )
 	{
 		float2 ColorIndex = PdxTex2D( IndirectionMap, Coord ).rg;
-		return PdxTex2DLoad0( ColorMap, int2( ColorIndex * 255.0 + vec2(0.5f) ) );
+		return PdxTex2DLoad0( ColorMap, int2( ColorIndex * IndirectionMapDepth + vec2(0.5f) ) );
 	}
 
 	float4 ColorSampleAtOffset( float2 Coord, PdxTextureSampler2D IndirectionMap, PdxTextureSampler2D ColorMap, float2 Offset )
 	{
 		float2 ColorIndex = PdxTex2D( IndirectionMap, Coord ).rg;
-		return PdxTex2DLoad0( ColorMap, int2( ColorIndex * 255.0 + vec2(0.5) + ( Offset ) ) );
+		return PdxTex2DLoad0( ColorMap, int2( ColorIndex * IndirectionMapDepth + vec2(0.5) + ( Offset ) ) );
 	}
     
 	float4 BilinearColorSample( float2 Coord, float2 TextureSize, float2 InvTextureSize, PdxTextureSampler2D IndirectionMap, PdxTextureSampler2D ColorMap )

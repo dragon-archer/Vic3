@@ -61,7 +61,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=185
+			id=6
 			node={
 				value=0.200000
 			}
@@ -642,7 +642,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=186
+			id=52
 			node={
 				value=0.100000
 			}
@@ -829,7 +829,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=187
+			id=68
 			node={
 				value=0.300000
 			}
@@ -969,8 +969,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=46
-					linked_pin="hsva"
+					linked_node=278
+					linked_pin="rgba"
 				}
 				link={
 					pin_id="condition"
@@ -1053,7 +1053,7 @@ graph={
 				}
 				link={
 					pin_id="roll"
-					linked_node=189
+					linked_node=114
 					linked_pin="value"
 				}
 			}
@@ -1149,7 +1149,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=190
+					linked_node=119
 					linked_pin="Vector3f"
 				}
 				link={
@@ -1377,7 +1377,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=188
+			id=96
 			node={
 				value=0.150000
 			}
@@ -1407,12 +1407,12 @@ graph={
 				}
 				link={
 					pin_id="value_variation"
-					linked_node=186
+					linked_node=52
 					linked_pin="value"
 				}
 				link={
 					pin_id="alpha_variation"
-					linked_node=185
+					linked_node=6
 					linked_pin="value"
 				}
 			}
@@ -1735,7 +1735,7 @@ graph={
 			}
 		}
 		pdxns:math:randomF={
-			id=189
+			id=114
 			node={
 			}
 			inputs={
@@ -1770,12 +1770,12 @@ graph={
 			inputs={
 				link={
 					pin_id="limit1"
-					linked_node=191
+					linked_node=154
 					linked_pin="value"
 				}
 				link={
 					pin_id="limit2"
-					linked_node=192
+					linked_node=157
 					linked_pin="value"
 				}
 			}
@@ -1812,7 +1812,7 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=190
+			id=119
 			node={
 				graph="vector3f_random"
 			}
@@ -2229,7 +2229,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=191
+			id=154
 			node={
 				value=1.000000
 			}
@@ -2260,13 +2260,13 @@ graph={
 				}
 				link={
 					pin_id="pause"
-					linked_node=230
+					linked_node=175
 					linked_pin="value"
 				}
 			}
 		}
 		pdxns:values:Float={
-			id=192
+			id=157
 			node={
 				value=2.000000
 			}
@@ -2296,8 +2296,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=58
-					linked_pin="hsva"
+					linked_node=288
+					linked_pin="rgba"
 				}
 				link={
 					pin_id="condition"
@@ -2358,7 +2358,7 @@ graph={
 			}
 		}
 		pdxns:values:Color={
-			id=193
+			id=166
 			node={
 				value={
 					0.884766 0.763802 0.608276 1.000000
@@ -2385,7 +2385,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=194
+			id=169
 			node={
 				value=0.050000
 			}
@@ -2445,7 +2445,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=230
+			id=175
 			node={
 				value=0.000000
 			}
@@ -2506,12 +2506,12 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=193
+					linked_node=166
 					linked_pin="value"
 				}
 				link={
 					pin_id="hue_variation"
-					linked_node=194
+					linked_node=169
 					linked_pin="value"
 				}
 				link={
@@ -2521,12 +2521,12 @@ graph={
 				}
 				link={
 					pin_id="value_variation"
-					linked_node=188
+					linked_node=96
 					linked_pin="value"
 				}
 				link={
 					pin_id="alpha_variation"
-					linked_node=187
+					linked_node=68
 					linked_pin="value"
 				}
 			}
@@ -2571,6 +2571,220 @@ graph={
 					linked_node=183
 					linked_pin="value"
 				}
+			}
+		}
+		pdxns:values:Float={
+			id=266
+			node={
+				value=0.500000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=282
+			node={
+				value=0.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:math:MulF={
+			id=295
+			node={
+			}
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=280
+					linked_pin="output"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=293
+					linked_pin="alpha"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=281
+			node={
+				value=1.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:gfx:RgbaComponents={
+			id=293
+			node={
+			}
+			inputs={
+				link={
+					pin_id="rgba"
+					linked_node=58
+					linked_pin="hsva"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=280
+			node={
+				graph="Remap"
+			}
+			inputs={
+				link={
+					pin_id="input"
+					linked_node=276
+					linked_pin="value"
+				}
+				link={
+					pin_id="low1"
+					linked_node=282
+					linked_pin="value"
+				}
+				link={
+					pin_id="high1"
+					linked_node=266
+					linked_pin="value"
+				}
+				link={
+					pin_id="low2"
+					linked_node=270
+					linked_pin="value"
+				}
+				link={
+					pin_id="high2"
+					linked_node=281
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:GetDayValue={
+			id=279
+			node={
+			}
+			inputs={
+			}
+		}
+		pdxns:gfx:RGBA={
+			id=278
+			node={
+			}
+			inputs={
+				link={
+					pin_id="red"
+					linked_node=275
+					linked_pin="red"
+				}
+				link={
+					pin_id="green"
+					linked_node=275
+					linked_pin="green"
+				}
+				link={
+					pin_id="blue"
+					linked_node=275
+					linked_pin="blue"
+				}
+				link={
+					pin_id="α"
+					linked_node=277
+					linked_pin="product"
+				}
+			}
+		}
+		pdxns:math:MulF={
+			id=277
+			node={
+			}
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=275
+					linked_pin="alpha"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=280
+					linked_pin="output"
+				}
+			}
+		}
+		pdxns:gfx:RGBA={
+			id=288
+			node={
+			}
+			inputs={
+				link={
+					pin_id="red"
+					linked_node=293
+					linked_pin="red"
+				}
+				link={
+					pin_id="green"
+					linked_node=293
+					linked_pin="green"
+				}
+				link={
+					pin_id="blue"
+					linked_node=293
+					linked_pin="blue"
+				}
+				link={
+					pin_id="α"
+					linked_node=295
+					linked_pin="product"
+				}
+			}
+		}
+		pdxns:math:ClampF={
+			id=276
+			node={
+			}
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=279
+					linked_pin="value"
+				}
+				link={
+					pin_id="min"
+					linked_node=286
+					linked_pin="value"
+				}
+				link={
+					pin_id="max"
+					linked_node=266
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=286
+			node={
+				value=0.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:gfx:RgbaComponents={
+			id=275
+			node={
+			}
+			inputs={
+				link={
+					pin_id="rgba"
+					linked_node=46
+					linked_pin="hsva"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=270
+			node={
+				value=0.000000
+			}
+			inputs={
 			}
 		}
 	}

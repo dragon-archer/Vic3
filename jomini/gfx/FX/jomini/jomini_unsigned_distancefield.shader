@@ -100,7 +100,7 @@ PixelShader =
 		float4 GetProvinceColor( float2 Position )
 		{			
 			float2 ColorIndex = PdxTex2DLod0( ProvinceColorIndirectionTexture, TexelPosToUV( Position, IndirectionMapSize ) ).rg;
-			return PdxTex2DLoad0( ProvinceColorTexture, int2( ( ColorIndex * 255.0f ) + vec2(0.5f) ) );
+			return PdxTex2DLoad0( ProvinceColorTexture, int2( ( ColorIndex * IndirectionMapDepth ) + vec2(0.5f) ) );
 		}
 		float Diff( float4 lhs, float4 rhs )
 		{

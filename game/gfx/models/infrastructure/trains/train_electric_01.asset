@@ -16,6 +16,8 @@ pdxmesh = {
 		texture_normal = "train_electric_01_normal.dds"
 		texture_specular = "train_electric_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -25,18 +27,34 @@ pdxmesh = {
 		texture_normal = "train_electric_01_normal.dds"
 		texture_specular = "train_electric_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }
 
 entity = {
 	name = "train_electric_01_entity"
 	pdxmesh = "train_electric_01_mesh"
+	locator = { name = "loc_light_high" position = { 0 0.474 -0.7 } rotation = { 0 0 0 }}
+	locator = { name = "loc_light_low" position = { 0 0.245 -0.81 } rotation = { 0 0 0 }}
 
 	default_state = "moving"
-	state = { name = "idle" animation = "idle_animation" looping = no next_state = "idle" }
+	state = { 
+		name = "idle" 
+		animation = "idle_animation" 
+		looping = no 
+		next_state = "idle" 
+	}
 		
-	state = { name = "moving" animation = "moving_animation" looping = yes 
-	start_event = { sound  = { soundeffect = "event:/SFX/Vehicles/train/electric" } keep_sound = yes }
+	state = { 
+		name = "moving" 
+		animation = "moving_animation"
+		looping = yes 
+
+		start_event = { time = 0 node = "loc_light_high" particle = "infrastructure/train_lights_electric_02" trigger_once = yes}
+		start_event = { time = 0 node = "loc_light_low" particle = "infrastructure/train_lights_electric_01" trigger_once = yes}
+
+		start_event = { sound  = { soundeffect = "event:/SFX/Vehicles/train/electric" } keep_sound = yes }
 	}
 	
 }

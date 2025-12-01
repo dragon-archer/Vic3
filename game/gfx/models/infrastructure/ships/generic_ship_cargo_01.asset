@@ -17,6 +17,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_cargo_hull_normal.dds"
 		texture_specular = "generic_ship_cargo_hull_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -26,6 +28,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_cargo_details_normal.dds"
 		texture_specular = "generic_ship_cargo_details_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -35,6 +39,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_alpha_normal.dds"
 		texture_specular = "generic_ship_alpha_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -44,6 +50,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_cargo_sails_normal.dds"
 		texture_specular = "generic_ship_cargo_sails_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -53,6 +61,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_cargo_hull_normal.dds"
 		texture_specular = "generic_ship_cargo_hull_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -62,6 +72,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_cargo_details_normal.dds"
 		texture_specular = "generic_ship_cargo_details_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -71,6 +83,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_cargo_sails_normal.dds"
 		texture_specular = "generic_ship_cargo_sails_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -80,6 +94,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_alpha_normal.dds"
 		texture_specular = "generic_ship_alpha_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -89,6 +105,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_cargo_hull_normal.dds"
 		texture_specular = "generic_ship_cargo_hull_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -98,6 +116,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_cargo_details_normal.dds"
 		texture_specular = "generic_ship_cargo_details_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -107,6 +127,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_cargo_sails_normal.dds"
 		texture_specular = "generic_ship_cargo_sails_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -116,6 +138,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_cargo_hull_normal.dds"
 		texture_specular = "generic_ship_cargo_hull_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -125,6 +149,8 @@ pdxmesh = {
 		texture_normal = "generic_ship_cargo_sails_normal.dds"
 		texture_specular = "generic_ship_cargo_sails_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }
 
@@ -138,27 +164,29 @@ pdxmesh = {
 
 entity = {
 	name = "generic_ship_cargo_01_entity"
-	pdxmesh = "generic_ship_cargo_01_mesh"	
+	pdxmesh = "generic_ship_cargo_01_mesh"
 	default_state = "moving"
-	
+
+	cull_radius = 10
+
 	state = {
 		name = "moving"
 		animation = "moving_animation"
-		
-		event = 
-		{ 
-			time = 0 
-			node = "locator_front_root_water" 
-			particle = "ships/ship_water_front" 
-			trigger_once = yes 
+
+		event =
+		{
+			time = 0
+			node = "locator_front_root_water"
+			particle = "ships/ship_water_front_01"
+			trigger_once = yes
 			keep_particle = no
-		}	
-		
-		
+		}
+
+
 		event = { time = 0 node = "locator_top_body_chimney_01" particle = "infrastructure/ship_chimney" trigger_once = yes}
 		event = { time = 0 node = "locator_top_body_chimney_02" particle = "infrastructure/ship_chimney" trigger_once = yes}
 		start_event = { sound  = { soundeffect = "event:/SFX/Vehicles/ships/ship_cargo" } keep_sound = yes }
-				
-		
+
+
 	}
 }

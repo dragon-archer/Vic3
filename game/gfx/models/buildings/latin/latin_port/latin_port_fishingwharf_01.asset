@@ -1,0 +1,59 @@
+pdxmesh = {
+	name = "latin_port_fishingwharf_01_mesh"
+	file = "latin_port_fishingwharf_01.mesh"
+
+	lod_percentages = {
+		lod = { index = 1 percent = 10.0 }
+		lod = { index = 2 percent = 5.0 }
+		lod = { index = 3 percent = 2.5 }
+	}
+
+	meshsettings = {
+		name = "latin_port_fishingwharf_01|LOD_0|mesh|meshShape"
+		index = 0
+		texture_diffuse = "latin_port_docks_01_diffuse.dds"
+		texture_normal = "latin_port_docks_01_normal.dds"
+		texture_specular = "latin_port_docks_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "PRETTY_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "latin_port_fishingwharf_01|LOD_1|mesh|meshShape"
+		index = 0
+		texture_diffuse = "latin_port_docks_01_diffuse.dds"
+		texture_normal = "latin_port_docks_01_normal.dds"
+		texture_specular = "latin_port_docks_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "PRETTY_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "latin_port_fishingwharf_01|LOD_2|mesh|meshShape"
+		index = 0
+		texture_diffuse = "latin_port_docks_01_diffuse.dds"
+		texture_normal = "latin_port_docks_01_normal.dds"
+		texture_specular = "latin_port_docks_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "PRETTY_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "latin_port_fishingwharf_01|LOD_3|mesh|meshShape"
+		index = 0
+		texture_diffuse = "latin_port_docks_01_diffuse.dds"
+		texture_normal = "latin_port_docks_01_normal.dds"
+		texture_specular = "latin_port_docks_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "PRETTY_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+}
+
+entity = {
+	name = "latin_port_fishingwharf_01_entity"
+	pdxmesh = "latin_port_fishingwharf_01_mesh"
+}

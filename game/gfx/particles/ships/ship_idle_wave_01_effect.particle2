@@ -154,7 +154,7 @@ graph={
 			}
 		}
 		pdxns:particle:GetAge={
-			id=117
+			id=11
 			node={
 			}
 			inputs={
@@ -190,7 +190,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=172
+			id=14
 			node={
 				value=no
 			}
@@ -358,11 +358,6 @@ graph={
 					linked_pin="value"
 				}
 				link={
-					pin_id="color"
-					linked_node=40
-					linked_pin="value"
-				}
-				link={
 					pin_id="texture"
 					linked_node=79
 					linked_pin="texture"
@@ -466,7 +461,7 @@ graph={
 		pdxns:values:Float={
 			id=28
 			node={
-				value=1.000000
+				value=0.000000
 			}
 			inputs={
 			}
@@ -582,13 +577,10 @@ graph={
 				}
 			}
 		}
-		pdxns:values:Color={
-			id=40
+		pdxns:values:Float={
+			id=116
 			node={
-				value={
-					0.000000 0.000000 0.000000 1.000000
-				}
-
+				value=180.000000
 			}
 			inputs={
 			}
@@ -625,7 +617,7 @@ graph={
 				}
 				link={
 					pin_id="pitch"
-					linked_node=118
+					linked_node=66
 					linked_pin="value"
 				}
 				link={
@@ -687,7 +679,7 @@ graph={
 		pdxns:values:Float={
 			id=48
 			node={
-				value=1.000000
+				value=0.000000
 			}
 			inputs={
 			}
@@ -904,7 +896,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=118
+			id=66
 			node={
 				value=90.000000
 			}
@@ -936,7 +928,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=119
+			id=69
 			node={
 				value=1.000000
 			}
@@ -1008,7 +1000,7 @@ graph={
 				}
 				link={
 					pin_id="x"
-					linked_node=117
+					linked_node=11
 					linked_pin="age"
 				}
 				link={
@@ -1078,11 +1070,6 @@ graph={
 				link={
 					pin_id="speed"
 					linked_node=38
-					linked_pin="value"
-				}
-				link={
-					pin_id="color"
-					linked_node=40
 					linked_pin="value"
 				}
 				link={
@@ -1427,7 +1414,7 @@ graph={
 				}
 				link={
 					pin_id="variation_id"
-					linked_node=119
+					linked_node=69
 					linked_pin="value"
 				}
 			}
@@ -1562,7 +1549,7 @@ graph={
 				}
 				link={
 					pin_id="fade_steep_angles"
-					linked_node=172
+					linked_node=14
 					linked_pin="value"
 				}
 			}
@@ -1589,14 +1576,6 @@ graph={
 		pdxns:particle:GetAge={
 			id=115
 			node={
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=116
-			node={
-				value=180.000000
 			}
 			inputs={
 			}

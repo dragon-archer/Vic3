@@ -17,6 +17,8 @@ pdxmesh = {
 		texture_normal = "train_diesel_01_normal.dds"
 		texture_specular = "train_diesel_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -26,6 +28,8 @@ pdxmesh = {
 		texture_normal = "train_diesel_01_normal.dds"
 		texture_specular = "train_diesel_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
@@ -35,19 +39,33 @@ pdxmesh = {
 		texture_normal = "train_diesel_01_normal.dds"
 		texture_specular = "train_diesel_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }
 
 entity = {
 	name = "train_diesel_01_entity"
 	pdxmesh = "train_diesel_01_mesh"
+	locator = { name = "loc_light" position = { 0 0.474 -0.84 } rotation = { 0 0 0 }}
 
 	default_state = "moving"
-	state = { name = "idle" animation = "idle_animation" looping = no next_state = "idle" }
-		
-	state = { name = "moving" animation = "moving_animation" looping = yes 
-	start_event = { sound  = { soundeffect = "event:/SFX/Vehicles/train/diesel" } keep_sound = yes }
-	}
-	
 
+	state = { 
+		name = "idle"
+		animation = "idle_animation" 
+		looping = no 
+
+		next_state = "idle" 		 
+	}
+		
+	state = { 
+		name = "moving" 
+		animation = "moving_animation" 
+		looping = yes 
+
+		start_event = { time = 0 node = "loc_light" particle = "infrastructure/train_lights_diesel" trigger_once = yes}
+
+		start_event = { sound  = { soundeffect = "event:/SFX/Vehicles/train/diesel" } keep_sound = yes }
+	}
 }

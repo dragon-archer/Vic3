@@ -1,0 +1,125 @@
+pdxmesh = {
+	name = "arabic_rural_residential_mid_02_mesh"
+	file = "arabic_rural_residential_mid_02.mesh"
+
+	scale = 2
+
+lod_percentages = {
+		lod = { index = 1 percent = 6.0 }
+		lod = { index = 2 percent = 3.0 }
+		lod = { index = 3 percent = 1.5 }
+	}
+
+	meshsettings = {
+		name = "LOD_0|arabic_rural_residential_mid_tree_02|arabic_rural_residen"
+		index = 0
+		texture_diffuse = "arabic_rural_residential_mid_tree_01_diffuse.dds"
+		texture_normal = "arabic_rural_residential_mid_tree_01_normal.dds"
+		texture_specular = "arabic_rural_residential_mid_tree_01_properties.dds"
+		shader = "tree"
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_0|arabic_rural_residential_mid_02|arabic_rural_residential_"
+		index = 0
+		texture_diffuse = "arabic_rural_residential_mid_01_diffuse.dds"
+		texture_normal = "arabic_rural_residential_mid_01_normal.dds"
+		texture_specular = "arabic_rural_residential_mid_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "PRETTY_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_0|arabic_rural_residential_mid_decal_02|arabic_rural_reside"
+		index = 0
+		texture_diffuse = "arabic_rural_residential_mid_decal_02_diffuse.dds"
+		texture_normal = "arabic_rural_residential_mid_decal_02_normal.dds"
+		texture_specular = "arabic_rural_residential_mid_decal_02_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_1|arabic_rural_residential_mid_tree_02|arabic_rural_residen"
+		index = 0
+		texture_diffuse = "arabic_rural_residential_mid_tree_01_diffuse.dds"
+		texture_normal = "arabic_rural_residential_mid_tree_01_normal.dds"
+		texture_specular = "arabic_rural_residential_mid_tree_01_properties.dds"
+		shader = "tree"
+		shader_file = "gfx/FX/tree.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_1|arabic_rural_residential_mid_02|arabic_rural_residential_"
+		index = 0
+		texture_diffuse = "arabic_rural_residential_mid_01_diffuse.dds"
+		texture_normal = "arabic_rural_residential_mid_01_normal.dds"
+		texture_specular = "arabic_rural_residential_mid_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "PRETTY_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_1|arabic_rural_residential_mid_decal_02|arabic_rural_reside"
+		index = 0
+		texture_diffuse = "arabic_rural_residential_mid_decal_02_diffuse.dds"
+		texture_normal = "arabic_rural_residential_mid_decal_02_normal.dds"
+		texture_specular = "arabic_rural_residential_mid_decal_02_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_2|arabic_rural_residential_mid_02|arabic_rural_residential_"
+		index = 0
+		texture_diffuse = "arabic_rural_residential_mid_01_diffuse.dds"
+		texture_normal = "arabic_rural_residential_mid_01_normal.dds"
+		texture_specular = "arabic_rural_residential_mid_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "PRETTY_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_2|arabic_rural_residential_mid_decal_02|arabic_rural_reside"
+		index = 0
+		texture_diffuse = "arabic_rural_residential_mid_decal_02_diffuse.dds"
+		texture_normal = "arabic_rural_residential_mid_decal_02_normal.dds"
+		texture_specular = "arabic_rural_residential_mid_decal_02_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+
+	meshsettings = {
+		name = "LOD_3|arabic_rural_residential_mid_02|arabic_rural_residential_"
+		index = 0
+		texture_diffuse = "arabic_rural_residential_mid_01_diffuse.dds"
+		texture_normal = "arabic_rural_residential_mid_01_normal.dds"
+		texture_specular = "arabic_rural_residential_mid_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "PRETTY_VISUALS" "HUB_BUILDING" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_3|arabic_rural_residential_mid_decal_02|arabic_rural_reside"
+		index = 0
+		texture_diffuse = "arabic_rural_residential_mid_decal_02_diffuse.dds"
+		texture_normal = "arabic_rural_residential_mid_decal_02_normal.dds"
+		texture_specular = "arabic_rural_residential_mid_decal_02_properties.dds"
+		shader = "decal_local"
+		shader_file = "gfx/FX/pdxmesh_decal.shader"
+		subpass = "LocalDecals"
+	}
+}
+
+entity = {
+	name = "arabic_rural_residential_mid_02_entity"
+	pdxmesh = "arabic_rural_residential_mid_02_mesh"
+}

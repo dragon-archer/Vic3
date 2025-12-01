@@ -44,7 +44,7 @@ VertexShader =
 				VS_OUTPUT_PDX_BORDER Out;
 
 				float3 position = Input.Position.xyz;
-				position.y = lerp( position.y, FlatmapHeight, FlatmapLerp );
+				position.y = lerp( position.y, _FlatmapHeight, _FlatmapLerp );
 				position.y += _HeightOffset;
 
 				Out.WorldSpacePos = position;
@@ -104,25 +104,25 @@ PixelShader =
 				#ifdef COUNTRY_COLOR
 					float4 CountryColor = PdxTex2DLoad0( CountryColors, int2( _UserId, 0 ) );
 					Diffuse.rgb *= CountryColor.rgb;
-					Diffuse.rgb *= 1.0f - FlatmapLerp;
-					Diffuse.a = lerp( Diffuse.a, 0.5f, FlatmapLerp );
+					Diffuse.rgb *= 1.0f - _FlatmapLerp;
+					Diffuse.a = lerp( Diffuse.a, 0.5f, _FlatmapLerp );
 				#endif
 
 				#ifdef IMPASSABLE_BORDER
-					Diffuse.rgb *= ImpassableTerrainColor.rgb;
+					Diffuse.rgb *= _ImpassableTerrainColor.rgb;
 				#endif
 
-				if( FlatmapLerp < 1.0f )
+				if( _FlatmapLerp < 1.0f )
 				{
 					float3 Unfogged = Diffuse.rgb;
 					Diffuse.rgb = ApplyFogOfWar( Diffuse.rgb, Input.WorldSpacePos );
 					Diffuse.rgb = GameApplyDistanceFog( Diffuse.rgb, Input.WorldSpacePos );
-					Diffuse.rgb = lerp( Diffuse.rgb, Unfogged, FlatmapLerp );
+					Diffuse.rgb = lerp( Diffuse.rgb, Unfogged, _FlatmapLerp );
 				}
 
 				// Close fadeout
-				float FadeStart = ( DistanceFadeStart - DistanceFadeEnd );
-				float CloseZoomBlend = FadeStart - CameraPosition.y + ( DistanceFadeEnd );
+				float FadeStart = ( _DistanceFadeStart - _DistanceFadeEnd );
+				float CloseZoomBlend = FadeStart - CameraPosition.y + ( _DistanceFadeEnd );
 				CloseZoomBlend = smoothstep( FadeStart, 0.0f, CloseZoomBlend );
 				Diffuse.a *= CloseZoomBlend;
 
@@ -216,8 +216,8 @@ PixelShader =
 				FadeLeft = saturate( ( EDGE_FADE_DISTANCE - FadeLeft ) * EDGE_FADE_SHARPNESS );
 				float FlatmapAlpha = FadeRight * FadeLeft;
 
-				Diffuse = lerp( Diffuse, FlatmapDiffuse, FlatmapLerp );
-				Alpha = lerp( Alpha, FlatmapAlpha, FlatmapLerp );
+				Diffuse = lerp( Diffuse, FlatmapDiffuse, _FlatmapLerp );
+				Alpha = lerp( Alpha, FlatmapAlpha, _FlatmapLerp );
 			}
 
 			float GetFade( float2 UV, float Distance, float Sharpness )
@@ -331,14 +331,14 @@ PixelShader =
 				Diffuse.rgb += ApplyDevastationMaterialVFXBorder( Diffuse, DetailUV, FlameMask );
 
 				// Effects
-				if( FlatmapLerp < 1.0f )
+				if( _FlatmapLerp < 1.0f )
 				{
 					Diffuse.rgb = ApplyFogOfWar( Diffuse.rgb, Input.WorldSpacePos, 1.0 - FlameMask );
 					Diffuse.rgb = GameApplyDistanceFog( Diffuse.rgb, Input.WorldSpacePos );
 				}
 
 				// Fade alpha
-				float EdgeFade = lerp( FlameFade, GetFade( Input.UV, EDGE_FADE_DISTANCE, EDGE_FADE_SHARPNESS ), FlatmapLerp );
+				float EdgeFade = lerp( FlameFade, GetFade( Input.UV, EDGE_FADE_DISTANCE, EDGE_FADE_SHARPNESS ), _FlatmapLerp );
 				Alpha *= EdgeFade;
 
 				// Flatmap

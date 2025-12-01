@@ -1,0 +1,22 @@
+
+node_window_type = {
+	name = "select_from_int_node_window"
+
+	blockoverride "after_input_pins" {
+
+		hbox = {
+			margin_top =  5
+			layoutpolicy_horizontal = preferred
+			add_pin_button = { blockoverride "button" { onclick = "[SelectFromInputNodeWindow.AddPin]" } }
+			editor_textinput = {
+				size = { 32 16 }
+				fontsize = 10
+				align = center
+				text = "[SelectFromInputNodeWindow.GetNumberOfPins]"
+				oneditingfinished = "[SelectFromInputNodeWindow.SetNumberOfPins]"
+			}
+			remove_pin_button = { blockoverride "button" { onclick = "[SelectFromInputNodeWindow.RemovePin]" } }
+			widget = { layoutpolicy_horizontal = preferred }
+		}
+	}
+}

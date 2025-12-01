@@ -291,7 +291,7 @@ PixelShader =
 
 		float3 GameCalcRefraction( float3 WorldSpacePos, float3 Normal, float2 ScreenPos, float3 WaterColor, float Depth )
 		{
-			float3 WaterColorMap = lerp( WaterColor, _WaterColorMapTint, _WaterColorMapTintFactor );
+			float3 WaterColorMap = lerp( WaterColor, _WaterColorMapTint, _WaterColorMapTintFactor ) * _NightWaterAdjustment;
 
 			#if defined( JOMINI_REFRACTION_ENABLED )
 				float4 RefractionSample = PdxTex2DLod0( RefractionTexture, ScreenPos / _ScreenResolution );
@@ -313,7 +313,7 @@ PixelShader =
 				RefractionDepth = WorldSpacePos.y - RefractionWorldSpacePos.y;
 
 				float2 RefractionWaterColorUV = float2( RefractionWorldSpacePos.x / JOMINIWATER_MapSize.x, 1.0 - RefractionWorldSpacePos.z / JOMINIWATER_MapSize.y );
-				float3 RefractionWaterColorMap = PdxTex2D( WaterColorTexture, RefractionWaterColorUV ).rgb;
+				float3 RefractionWaterColorMap = PdxTex2D( WaterColorTexture, RefractionWaterColorUV ).rgb * _NightWaterAdjustment;
 				RefractionWaterColorMap = lerp( RefractionWaterColorMap, _WaterColorMapTint, _WaterColorMapTintFactor );
 				ApplyDevastationWater( RefractionWaterColorMap, WorldSpacePos.xz );
 				ApplyDevastationShore( RefractionSample.rgb, WorldSpacePos.xz );
@@ -341,6 +341,7 @@ PixelShader =
 			float4 WaterColorAndSpec = PdxTex2D( WaterColorTexture, Input._WorldUV );
 			float GlossMap = WaterColorAndSpec.a;
 
+
 			float3 ToCamera = CameraPosition.xyz - Input._WorldSpacePos;
 			float3 ToCameraDir = normalize( ToCamera );
 
@@ -363,7 +364,7 @@ PixelShader =
 			float3 NormalMap2 = SampleNormalMapTexture( AmbientNormalTexture, UVCoord, _WaterWave2Scale, _WaterWave2Rotation, JOMINIWATER_GlobalTime * _WaterWave2Speed * Input._WaveSpeedScale, _WaterWave2NormalFlatten * Input._WaveNoiseFlattenMult );
 			float3 NormalMap3 = SampleNormalMapTexture( AmbientNormalTexture, UVCoord, _WaterWave3Scale, _WaterWave3Rotation, JOMINIWATER_GlobalTime * _WaterWave3Speed * Input._WaveSpeedScale, _WaterWave3NormalFlatten * Input._WaveNoiseFlattenMult );
 			float3 Normal = NormalMap1 + NormalMap2 + NormalMap3;
-			
+
 			// Ocean Flow Normal
 			Normal = lerp( Normal, Input._FlowNormal, OceanFactor * WaveDistanceBlend );
 
@@ -374,6 +375,21 @@ PixelShader =
 			#else
 				Normal = normalize( Normal );
 			#endif
+
+			// Calc Depth
+			float Depth = Input._Depth;
+			#if defined( RIVER ) && defined( JOMINI_REFRACTION_ENABLED )
+				float4 RefractionSample = PdxTex2DLod0( RefractionTexture, Input._ScreenSpacePos.xy / _ScreenResolution );
+				float3 RefractionWorldSpacePos = DecompressWorldSpace( Input._WorldSpacePos, RefractionSample.a );
+				float RefractionDepth = Input._WorldSpacePos.y - RefractionWorldSpacePos.y;
+				Depth = min( Depth, RefractionDepth );
+				float WaterFade = 1.0f - saturate( (_WaterFoamShoreMaskDepth - Depth) * _WaterFoamShoreMaskSharpness ) ;
+			#else
+				float WaterFade = 1.0f - saturate( (_WaterFadeShoreMaskDepth - Depth) * _WaterFadeShoreMaskSharpness ) ;
+			#endif
+
+			// Refraction
+			float3 Refraction = GameCalcRefraction( Input._WorldSpacePos, Normal, Input._ScreenSpacePos.xy, WaterColorAndSpec.rgb, Input._Depth );
 
 			// Foam
 			float FoamFactor = GameCalcFoamFactorWaves( Input._WorldUV, Input._WorldSpacePos.xz, Input._Depth, Input._FlowFoamMask, Input._FlowNormal );
@@ -410,9 +426,9 @@ PixelShader =
 			float Alpha = 1.0 - PdxTex2D( FogOfWarAlpha, ( DistortedUV ) * InverseWorldSize ).r;
 			float CloudsAlpha = smoothstep( _FoWCloudsAlphaStart, _FoWCloudsAlphaStop, Alpha ) * _FoWCloudsColor.a ;
 			float CloudReflection = SampleFowReflection( DistortedUV );
-			float GradientControl = smoothstep( _FoWCloudsColorGradientMin, _FoWCloudsColorGradientMax, CloudReflection );
+			float GradientControl = smoothstep( _FoWCloudsColorDayGradientMin, _FoWCloudsColorDayGradientMax, CloudReflection );
 			CloudReflection *= CloudReflectionStrength;
-			float3 CloudsColor = lerp( _FoWCloudsColorSecondary.rgb, _FoWCloudsColor.rgb, GradientControl );
+			float3 CloudsColor = lerp( _FoWCloudsColorGradient.rgb, _FoWCloudsColor.rgb, GradientControl );
 			lightingProperties._Diffuse = lerp( lightingProperties._Diffuse, CloudsColor, CloudReflection * CloudsAlpha * Facing );
 
 			// Ocean gloss
@@ -424,24 +440,10 @@ PixelShader =
 			CalculateSunLight( lightingProperties, 1.0f, _WaterToSunDir, DiffuseLight, SpecularLight );
 			float3 FinalColor = ComposeLight( lightingProperties, 1.0f, _WaterToSunDir, DiffuseLight, SpecularLight * _WaterSpecularFactor );
 
-			// Refraction
-			float3 Refraction = GameCalcRefraction( Input._WorldSpacePos, Normal, Input._ScreenSpacePos.xy, WaterColorAndSpec.rgb, Input._Depth );
-
-			float Depth = Input._Depth;
-			#if defined( RIVER ) && defined( JOMINI_REFRACTION_ENABLED )
-				float4 RefractionSample = PdxTex2DLod0( RefractionTexture, Input._ScreenSpacePos.xy / _ScreenResolution );
-				float3 RefractionWorldSpacePos = DecompressWorldSpace( Input._WorldSpacePos, RefractionSample.a );
-				float RefractionDepth = Input._WorldSpacePos.y - RefractionWorldSpacePos.y;
-				Depth = min( Depth, RefractionDepth );
-				float WaterFade = 1.0f - saturate( (_WaterFoamShoreMaskDepth - Depth) * _WaterFoamShoreMaskSharpness ) ;
-			#else
-				float WaterFade = 1.0f - saturate( (_WaterFadeShoreMaskDepth - Depth) * _WaterFadeShoreMaskSharpness ) ;
-			#endif
-
 			FinalColor *= WaterFade;
 
 			// Cubemap reflection
-			float3 Reflection = CalcReflection( Normal, ToCameraDir );
+			float3 Reflection = CalcReflection( Normal, ToCameraDir ) * _NightWaterAdjustment;
 			float FresnelFactor = Fresnel( abs( dot( lightingProperties._ToCameraDir, Normal ) ), _WaterFresnelBias, _WaterFresnelPow ) * WaterFade;
 			FinalColor += lerp( Refraction, Reflection, FresnelFactor );
 
@@ -521,7 +523,7 @@ PixelShader =
 			float EdgeFade1 = smoothstep( 0.0f, _BankFade, Input.UV.y );
 			float EdgeFade2 = smoothstep( 0.0f, _BankFade, 1.0f - Input.UV.y );
 			Color.a *= EdgeFade1 * EdgeFade2;
-			
+
 			return Color;
 		}
 

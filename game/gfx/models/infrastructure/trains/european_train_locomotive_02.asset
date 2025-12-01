@@ -17,6 +17,18 @@ pdxmesh = {
 		texture_normal = "european_train_locomotive_01_normal.dds"
 		texture_specular = "european_train_locomotive_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_0|locomotive_light|locomotive_lightShape"
+		index = 0
+		texture_diffuse = "european_train_locomotive_02_diffuse.dds"
+		texture_normal = "european_train_locomotive_01_normal.dds"
+		texture_specular = "european_train_locomotive_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -27,6 +39,18 @@ pdxmesh = {
 		texture_normal = "european_train_locomotive_01_normal.dds"
 		texture_specular = "european_train_locomotive_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_1|locomotive_light|locomotive_lightShape"
+		index = 0
+		texture_diffuse = "european_train_locomotive_02_diffuse.dds"
+		texture_normal = "european_train_locomotive_01_normal.dds"
+		texture_specular = "european_train_locomotive_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -37,6 +61,18 @@ pdxmesh = {
 		texture_normal = "european_train_locomotive_01_normal.dds"
 		texture_specular = "european_train_locomotive_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "LOD_2|locomotive_light|locomotive_lightShape"
+		index = 0
+		texture_diffuse = "european_train_locomotive_02_diffuse.dds"
+		texture_normal = "european_train_locomotive_01_normal.dds"
+		texture_specular = "european_train_locomotive_01_properties.dds"
+		shader = "standard"
+		additional_shader_defines = { "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }
@@ -48,9 +84,13 @@ entity = {
 	default_state = "moving"
 	state = { name = "idle" animation = "idle_animation" looping = no next_state = "idle" }
 		
-	state = { name = "moving" animation = "moving_animation" looping = yes
-#	next_state = "moving"
+	state = { name = "moving" 
+		animation = "moving_animation" 
+		looping = yes
+
 		event = { time = 0 node = "chimney" particle = "infrastructure/train_smoke" trigger_once = yes}
+		event = { time = 0 node = "loc_lights" particle = "infrastructure/train_lights" trigger_once = yes}
+
 		start_event = { sound  = { soundeffect = "event:/SFX/Vehicles/train/european_locomotive" } keep_sound = yes }
-		}
+	}
 }

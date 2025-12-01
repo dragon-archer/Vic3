@@ -18,11 +18,11 @@ pdxmesh = {
 	meshsettings = {
 		name = "asian_tools_manufactory_01|LOD_0|mesh|meshShape"
 		index = 0
-		texture_diffuse = "asian_city_residential_mid_01_diffuse.dds"
-		texture_normal = "asian_city_residential_mid_01_normal.dds"
-		texture_specular = "asian_city_residential_mid_01_properties.dds"
+		texture_diffuse = "asian_urban_residential_mid_01_diffuse.dds"
+		texture_normal = "asian_urban_residential_mid_01_normal.dds"
+		texture_specular = "asian_urban_residential_mid_01_properties.dds"
 		shader = "standard"
-		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "PRETTY_VISUALS" "HUB_BUILDING" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -33,16 +33,16 @@ pdxmesh = {
 		texture_normal = "factories_01_m_generic_manufactory_normal.dds"
 		texture_specular = "factories_01_m_generic_manufactory_properties.dds"
 		shader = "standard"
-		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" "EMISSIVE_NIGHT_RANDOM" "PRETTY_VISUALS" "HUB_BUILDING" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
 		name = "asian_tools_manufactory_01|LOD_0|worlddecal|worlddecalShape"
 		index = 0
-		texture_diffuse = "asian_urban_city_decal_diffuse.dds"
-		texture_normal = "asian_urban_city_decal_normal.dds"
-		texture_specular = "asian_urban_city_decal_properties.dds"
+		texture_diffuse = "asian_city_decal_diffuse.dds"
+		texture_normal = "asian_city_decal_normal.dds"
+		texture_specular = "asian_city_decal_properties.dds"
 		texture = { file = "decal_city_mask_01.dds" index = 3 }
 		shader = "decal_world"
 		shader_file = "gfx/FX/pdxmesh_decal.shader"

@@ -166,8 +166,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=14
-					linked_pin="hsva"
+					linked_node=99
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -425,7 +425,7 @@ graph={
 			inputs={
 				link={
 					pin_id="rate"
-					linked_node=86
+					linked_node=62
 					linked_pin="Value"
 				}
 				link={
@@ -485,7 +485,7 @@ graph={
 				}
 				link={
 					pin_id="usr:Size"
-					linked_node=92
+					linked_node=63
 					linked_pin="product"
 				}
 				link={
@@ -794,7 +794,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=98
+			id=55
 			node={
 				value=1.400000
 			}
@@ -818,7 +818,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=97
+			id=58
 			node={
 				value=3
 			}
@@ -826,7 +826,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=96
+			id=59
 			node={
 				value=1.000000
 			}
@@ -834,30 +834,30 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=95
+			id=60
 			node={
 				graph="Zoom Step"
 			}
 			inputs={
 				link={
 					pin_id="Low"
-					linked_node=96
+					linked_node=59
 					linked_pin="value"
 				}
 				link={
 					pin_id="Step"
-					linked_node=97
+					linked_node=58
 					linked_pin="value"
 				}
 				link={
 					pin_id="High"
-					linked_node=98
+					linked_node=55
 					linked_pin="value"
 				}
 			}
 		}
 		pdxns:values:Float={
-			id=87
+			id=61
 			node={
 				value=6.000000
 			}
@@ -865,40 +865,40 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=86
+			id=62
 			node={
 				graph="Zoom Step 2"
 			}
 			inputs={
 				link={
 					pin_id="Low"
-					linked_node=87
+					linked_node=61
 					linked_pin="value"
 				}
 				link={
 					pin_id="Step 1"
-					linked_node=88
+					linked_node=67
 					linked_pin="value"
 				}
 				link={
 					pin_id="Mid"
-					linked_node=89
+					linked_node=66
 					linked_pin="value"
 				}
 				link={
 					pin_id="Step 2"
-					linked_node=90
+					linked_node=65
 					linked_pin="value"
 				}
 				link={
 					pin_id="High"
-					linked_node=91
+					linked_node=64
 					linked_pin="value"
 				}
 			}
 		}
 		pdxns:math:MulF={
-			id=92
+			id=63
 			node={
 			}
 			inputs={
@@ -909,13 +909,13 @@ graph={
 				}
 				link={
 					pin_id="factor2"
-					linked_node=95
+					linked_node=60
 					linked_pin="Value"
 				}
 			}
 		}
 		pdxns:values:Float={
-			id=91
+			id=64
 			node={
 				value=0.000000
 			}
@@ -923,7 +923,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=90
+			id=65
 			node={
 				value=5
 			}
@@ -931,7 +931,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=89
+			id=66
 			node={
 				value=3.000000
 			}
@@ -939,11 +939,50 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=88
+			id=67
 			node={
 				value=3
 			}
 			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=102
+			node={
+				value=0.700000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=101
+			node={
+				value=0.400000
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=99
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=14
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=101
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=102
+					linked_pin="value"
+				}
 			}
 		}
 	}

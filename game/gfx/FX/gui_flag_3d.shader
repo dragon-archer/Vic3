@@ -35,7 +35,7 @@ PixelShader =
 		MipFilter = "Linear"
 		SampleModeU = "Wrap"
 		SampleModeV = "Wrap"
-	}	
+	}
 	TextureSampler FlagTexture
 	{
 		Ref = PdxMeshCustomTexture0
@@ -70,7 +70,7 @@ VertexStruct VS_OUTPUT
 };
 
 ConstantBuffer( GuiFlagConstants )
-{	
+{
 	float SmallWaveScale;
 	float WaveScale;
 	float AnimationSpeed;
@@ -84,7 +84,7 @@ VertexShader =
 		VS_OUTPUT ConvertOutput( VS_OUTPUT_PDXMESH In )
 		{
 			VS_OUTPUT Out;
-			
+
 			Out.Position = In.Position;
 			Out.Normal = In.Normal;
 			Out.Tangent = In.Tangent;
@@ -97,14 +97,14 @@ VertexShader =
 		void CalculateSineAnimation( float2 UV, inout float3 Position, inout float3 Normal, inout float4 Tangent )
 		{
 			float AnimSeed = UV.x;
-			
+
 			float Time = GlobalTime * AnimationSpeed;
-			
+
 			float SmallWaveV = Time - AnimSeed * SmallWaveScale;
 			float SmallWaveD = -( AnimSeed * SmallWaveScale );
 			float SmallWave = sin( SmallWaveV );
 			float CombinedWave = SmallWave;
-			
+
 			// Wave
 			float3 AnimationDir = float3( 0, 0.08, -1 );
 			float Wave = WaveScale * smoothstep( 0.0, 0.12, AnimSeed ) * CombinedWave;
@@ -112,17 +112,17 @@ VertexShader =
 
 			// Vertex position
 			Position += AnimationDir * Wave;
-			
+
 			// Normals
 			float2 WaveTangent = normalize( float2( 1.0f, Derivative ) );
 			float3 WaveNormal = normalize( float3( WaveTangent.y, 0.0f, -WaveTangent.x ));
-			
+
 			float WaveNormalStrength = 1.0f;
 
 			Normal = normalize( lerp( Normal, WaveNormal, 0.65f ) ); // Wave normal strength
 		}
 	]]
-	
+
 	MainCode VS_standard
 	{
 		Input = "VS_INPUT_PDXMESHSTANDARD"
@@ -156,29 +156,29 @@ VertexShader =
 }
 
 PixelShader =
-{	
+{
 	MainCode PS_standard
 	{
 		Input = "VS_OUTPUT"
 		Output = "PDX_COLOR"
 		Code
-		[[		
+		[[
 			float4 GetUserColor( uint InstanceIndex )
 			{
 				return Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 0 ];
-			}	
+			}
 			float4 GetOffsetAndScale( uint InstanceIndex )
 			{
 				return Data[ InstanceIndex + PDXMESH_USER_DATA_OFFSET + 1 ];
-			}	
+			}
 			PDX_MAIN
 			{
 				float4 Diffuse = PdxTex2D( DiffuseMap, Input.UV0 );
 				clip( Diffuse.a - 0.01f );
-				
+
 				float4 Properties = PdxTex2D( SpecularMap, Input.UV0 );
 				float3 NormalSample = UnpackRRxGNormal( PdxTex2D( NormalMap, Input.UV0 ) );
-				
+
 				#ifdef FLAG
 					float4 OffsetAndScale = GetOffsetAndScale( Input.InstanceIndex );
 					float2 UV1 = OffsetAndScale.xy + ( Input.UV1 * OffsetAndScale.zw );
@@ -189,12 +189,12 @@ PixelShader =
 
 				float3 InNormal = normalize( Input.Normal );
 				float3x3 TBN = Create3x3( normalize( Input.Tangent ), normalize( Input.Bitangent ), InNormal );
-				
+
 				float3 Normal = normalize( mul( NormalSample, TBN ) );
 
 				SMaterialProperties MaterialProps = GetMaterialProperties( Diffuse.rgb, Normal, Properties.a, Properties.g, Properties.b );
 				SLightingProperties LightingProps = GetSunLightingProperties( Input.WorldSpacePos, 1.0f );
-				
+
 				float4 FinalColor = Diffuse;
 				FinalColor.rgb = CalculateSunLighting( MaterialProps, LightingProps, EnvironmentMap );
 

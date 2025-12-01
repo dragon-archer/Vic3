@@ -135,6 +135,16 @@ hbox = {
 		}
 	}
 
+	tooloptions_divider = {
+	}
+
+	toolbox_button = {
+		raw_text = "QTree"
+		onclick = "[HeightmapPainter.GenerateAndSaveHeightmapQuadTree]"
+		raw_tooltip = "Generate and Save Heightmap QuadTree."
+		shortcut = "generate_heightmap_quadtree"
+	}
+
 	widget = {
 		name = "spacer"
 		layoutpolicy_horizontal = expanding

@@ -5,7 +5,7 @@ widget = {
 	size = { 256 128 } 
 	layoutpolicy_horizontal = expanding
 	layoutpolicy_vertical = expanding
-	alpha = 0.5
+	alpha = 0.88
 
 	state = {
 		name = "default"
@@ -17,14 +17,14 @@ widget = {
 		name = "selected"
 		frame = 3
 		duration = 0.1
-		alpha = 0.3
+		alpha = 0.5
 		next = selected_end
 	}
 	
 	state = {
 		name = "selected_end"
 		duration = 0.1
-		alpha = 0.5
+		alpha = 0.88
 	}
 
     icon = { #Background
@@ -55,13 +55,13 @@ widget = {
 			
 			editor_textbox = {
 				autoresize = yes
-				maximumsize = { 160 24 }
-				fontsize = 14
+				maximumsize = { 600 30 }
+				fontsize = 24
 				text = [Node.Name]
 				align = left|vcenter
 				elide = right
 				using = editor_toolbar_font
-				fontcolor = [Node.ErrorColor]
+				fontcolor = { 1 1 1 1 }
 				tooltip = [Node.Tooltip]
 				tooltipwidget = { using = editor_tooltip }
 			}
@@ -114,13 +114,14 @@ widget = {
 
 		editor_editbox = {
 			name = "comment_desc"
+			fontsize = 17
 			text = [Node.Description]
+			fontcolor = { 0.95 0.8 0.7 1 }
 			raw_tooltip = "Comment section"
 			oneditingfinished = "[NodeWindow.SetDescription]"
 			alwaystransparent = no
 			margin = { 0 4 }
 			font = "standard_cw_font"
-			fontsize = 12
 			align = top|left
 			tooltipwidget = { using = editor_tooltip }
 			multiline = yes

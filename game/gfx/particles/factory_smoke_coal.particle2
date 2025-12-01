@@ -162,8 +162,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=14
-					linked_pin="hsva"
+					linked_node=97
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -1328,6 +1328,45 @@ graph={
 				value=5.000000
 			}
 			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=95
+			node={
+				value=1.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=96
+			node={
+				value=0.500000
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=97
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=14
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=96
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=95
+					linked_pin="value"
+				}
 			}
 		}
 	}

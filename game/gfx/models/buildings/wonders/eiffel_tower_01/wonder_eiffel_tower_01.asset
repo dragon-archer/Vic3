@@ -17,7 +17,7 @@ pdxmesh = {
 		texture_normal = "wonder_eiffel_tower_01_normal.dds"
 		texture_specular = "wonder_eiffel_tower_01_properties.dds"
 		shader = "standard"
-		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
+		additional_shader_defines = {  "EMISSIVE_NIGHT""PDX_MESH_SNAP_VERTICES_TO_TERRAIN"  }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -39,7 +39,7 @@ pdxmesh = {
 		texture_normal = "wonder_eiffel_tower_01_normal.dds"
 		texture_specular = "wonder_eiffel_tower_01_properties.dds"
 		shader = "standard"
-		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -61,7 +61,7 @@ pdxmesh = {
 		texture_normal = "wonder_eiffel_tower_01_normal.dds"
 		texture_specular = "wonder_eiffel_tower_01_properties.dds"
 		shader = "standard"
-		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
@@ -83,7 +83,7 @@ pdxmesh = {
 		texture_normal = "wonder_eiffel_tower_01_normal.dds"
 		texture_specular = "wonder_eiffel_tower_01_properties.dds"
 		shader = "standard"
-		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" }
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" }
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 

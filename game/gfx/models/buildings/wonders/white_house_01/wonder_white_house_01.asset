@@ -39,6 +39,9 @@ pdxmesh = {
 		texture_normal = "wonder_white_house_01_normal.dds"
 		texture_specular = "wonder_white_house_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+		
 	}
 
 	meshsettings = {
@@ -71,6 +74,9 @@ pdxmesh = {
 		texture_normal = "wonder_white_house_01_normal.dds"
 		texture_specular = "wonder_white_house_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+		
 	}
 
 	meshsettings = {
@@ -103,6 +109,9 @@ pdxmesh = {
 		texture_normal = "wonder_white_house_01_normal.dds"
 		texture_specular = "wonder_white_house_01_properties.dds"
 		shader = "standard"
+		additional_shader_defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "EMISSIVE_NIGHT" }
+		shader_file = "gfx/FX/pdxmesh.shader"
+		
 	}
 
 	meshsettings = {

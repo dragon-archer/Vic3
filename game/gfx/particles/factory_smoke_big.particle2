@@ -90,7 +90,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=107
+			id=5
 			node={
 				value=1.000000
 			}
@@ -146,8 +146,8 @@ graph={
 			inputs={
 				link={
 					pin_id="color"
-					linked_node=13
-					linked_pin="hsva"
+					linked_node=81
+					linked_pin="output"
 				}
 				link={
 					pin_id="condition"
@@ -425,7 +425,7 @@ graph={
 				}
 				link={
 					pin_id="speed"
-					linked_node=116
+					linked_node=70
 					linked_pin="product"
 				}
 				link={
@@ -465,12 +465,12 @@ graph={
 				}
 				link={
 					pin_id="usr:Size"
-					linked_node=113
+					linked_node=73
 					linked_pin="product"
 				}
 				link={
 					pin_id="usr:lifetime"
-					linked_node=100
+					linked_node=72
 					linked_pin="product"
 				}
 				link={
@@ -783,7 +783,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=103
+			id=52
 			node={
 				value=0
 			}
@@ -956,7 +956,7 @@ graph={
 			}
 		}
 		pdxns:math:MulF={
-			id=116
+			id=70
 			node={
 			}
 			inputs={
@@ -967,13 +967,13 @@ graph={
 				}
 				link={
 					pin_id="factor2"
-					linked_node=110
+					linked_node=76
 					linked_pin="selected_value"
 				}
 			}
 		}
 		pdxns:values:Int32={
-			id=105
+			id=71
 			node={
 				value=4
 			}
@@ -981,7 +981,7 @@ graph={
 			}
 		}
 		pdxns:math:MulF={
-			id=100
+			id=72
 			node={
 			}
 			inputs={
@@ -992,13 +992,13 @@ graph={
 				}
 				link={
 					pin_id="factor2"
-					linked_node=112
+					linked_node=74
 					linked_pin="selected_value"
 				}
 			}
 		}
 		pdxns:math:MulF={
-			id=113
+			id=73
 			node={
 			}
 			inputs={
@@ -1009,19 +1009,19 @@ graph={
 				}
 				link={
 					pin_id="factor2"
-					linked_node=110
+					linked_node=76
 					linked_pin="selected_value"
 				}
 			}
 		}
 		pdxns:logic:SelectF={
-			id=112
+			id=74
 			node={
 			}
 			inputs={
 				link={
 					pin_id="select"
-					linked_node=109
+					linked_node=77
 					linked_pin="value"
 				}
 				link={
@@ -1037,7 +1037,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=111
+			id=75
 			node={
 				value=1.400000
 			}
@@ -1045,52 +1045,91 @@ graph={
 			}
 		}
 		pdxns:logic:SelectF={
-			id=110
+			id=76
 			node={
 			}
 			inputs={
 				link={
 					pin_id="select"
-					linked_node=109
+					linked_node=77
 					linked_pin="value"
 				}
 				link={
 					pin_id="true_value"
-					linked_node=111
+					linked_node=75
 					linked_pin="value"
 				}
 				link={
 					pin_id="false_value"
-					linked_node=107
+					linked_node=5
 					linked_pin="value"
 				}
 			}
 		}
 		pdxns:math:GreaterThanI={
-			id=109
+			id=77
 			node={
 			}
 			inputs={
 				link={
 					pin_id="op1"
-					linked_node=108
+					linked_node=78
 					linked_pin="Zoom"
 				}
 				link={
 					pin_id="op2"
-					linked_node=105
+					linked_node=71
 					linked_pin="value"
 				}
 			}
 		}
 		pdxns:map:zoomstep={
-			id=108
+			id=78
 			node={
 			}
 			inputs={
 				link={
 					pin_id="Default Zoom"
-					linked_node=103
+					linked_node=52
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=79
+			node={
+				value=0.700000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=80
+			node={
+				value=0.400000
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=81
+			node={
+				graph="Night Color"
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=13
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="coloramount"
+					linked_node=80
+					linked_pin="value"
+				}
+				link={
+					pin_id="nightalpha"
+					linked_node=79
 					linked_pin="value"
 				}
 			}

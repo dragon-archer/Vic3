@@ -1,0 +1,110 @@
+﻿last_date = "1910.1.1"
+
+tests = {
+	test_for_hungry_forties = {
+		acceptable_fail_rate = 0.0
+		success = {
+			has_global_variable = hungry_forties_var
+		}
+		fail = {
+			game_date > "1860.1.1"
+		}
+	}
+	test_for_neo_absolutism = {
+		acceptable_fail_rate = 0.0
+		success = {
+			c:AUS ?= {
+				has_journal_entry = je_austrian_neo_absolutism
+			}
+		}
+		fail = {
+			game_date > "1900.1.1"
+		}
+	}
+	test_for_neo_absolutism_victory = {
+		acceptable_fail_rate = 0.0
+		success = {
+			has_global_variable = neo_absolutism_victory
+		}
+		fail = {
+			game_date > "1900.1.1"
+		}
+	}
+	test_for_dual_monarchy = {
+		acceptable_fail_rate = 0.0
+		success = {
+			any_country = {
+				has_government_type = gov_dual_monarchy
+			}
+		}
+		fail = {
+			game_date > "1900.1.1"
+		}
+	}
+	test_for_triple_monarchy = {
+		acceptable_fail_rate = 0.0
+		success = {
+			any_country = {
+				has_government_type = gov_triple_monarchy
+			}
+		}
+		fail = {
+			game_date > "1900.1.1"
+		}
+	}
+	test_for_karadordevic = {
+		acceptable_fail_rate = 0.0
+		success = {
+			c:SER ?= {
+				ruler = {
+					has_variable = house_karadordevic
+				}
+			}
+		}
+		fail = {
+			game_date > "1900.1.1"
+		}
+	}
+	test_for_bulgaria = {
+		acceptable_fail_rate = 0.0
+		success = {
+			c:BUL ?= {
+				exists = yes
+			}
+		}
+		fail = {
+			game_date > "1910.1.1"
+		}
+	}
+	test_for_grand_collapse = {
+		acceptable_fail_rate = 0.0
+		success = {
+			has_global_variable = ottoman_grand_collapse
+		}
+		fail = {
+			game_date > "1910.1.1"
+		}
+	}
+	test_for_eastern_crisis = { #checks it started, not succeed or fail
+		acceptable_fail_rate = 0.0
+		success = {
+			c:TUR ?= {
+				has_variable = eastern_crisis_happened
+			}
+		}
+		fail = {
+			game_date > "1868.1.1"
+		}
+	}
+	test_for_failed_separatism = { #checks it started, not succeed or fail
+		acceptable_fail_rate = 0.0
+		success = {
+			c:TUR ?= {
+				has_variable = failed_sick_man_separatism
+			}
+		}
+		fail = {
+			game_date > "1868.1.1"
+		}
+	}
+}

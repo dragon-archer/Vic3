@@ -78,11 +78,24 @@ struct SNavalEmblemConstantsData
 	float Padding04;
 }
 
+struct SMapmodeStripeData
+{
+	float _StripeRotation;
+	float _StripeTiling;
+	float _StripeWidth;
+	float _StripeEdgeWidth;
+
+	float _StripeEdgeColorMultiplier;
+	float _StripeEdgeHeightSteps;
+	float2 _Padding; // Align bytes
+}
+
 ConstantBuffer( GameSharedConstants )
 {
 	EdgeOfWorldConstants _EowConstants;
 	MapCoaConstants _CoaConstants;
 	SNavalEmblemConstantsData _NavalEmblemConstants;
+	SMapmodeStripeData _MapmodeStripeConstants;
 
 	float2 MapSize;
 	float2 _ProvinceMapSize;
@@ -305,6 +318,27 @@ Code
 		float w = 3000 * Tiling;			// larger value gives smaller Tiling
 
 		float StripeMask = cos( ( UV.x * cos( t ) * w ) + ( UV.y * sin( t ) * w ) + 1.0 );
+		return StripeMask;
+	}
+
+	float CalculateStripeMaskDynamic( float2 LogarithmicUv, float LogaritmicHeight, float Offset )
+	{
+		LogarithmicUv.x *= _MapmodeStripeConstants._StripeRotation;
+		float UvDistance = LogarithmicUv.x - LogarithmicUv.y;
+		float LoopAlpha = frac( LogaritmicHeight );
+
+		// Diagonal
+		float Width = RemapClamped( _MapmodeStripeConstants._StripeWidth, 0.0, 1.0, 1.0, 0.5 );
+		float StripeFraction = Width - Offset;
+		float StripeFraction1 = lerp( StripeFraction, 2.0 * StripeFraction - 1.0, LoopAlpha );
+		float StripeFraction2 = lerp( StripeFraction, 1.0f, 5.0 * LoopAlpha );
+		float StripeBlending = lerp( 0.05, 0.10, LoopAlpha );
+
+		// Blend
+		float Stripe1 = smoothstep( StripeFraction1 - StripeBlending, StripeFraction1 + StripeBlending, abs( 2.0f * frac( UvDistance ) - 1.0f ) );
+		float Stripe2 = smoothstep( StripeFraction2 - StripeBlending, StripeFraction2 + StripeBlending, abs( 2.0f * frac( UvDistance + 0.5 ) - 1.0f ) );
+		float StripeMask = saturate( Stripe1 + Stripe2 * ( 1.0f - 5.0f * LoopAlpha ) );
+
 		return StripeMask;
 	}
 

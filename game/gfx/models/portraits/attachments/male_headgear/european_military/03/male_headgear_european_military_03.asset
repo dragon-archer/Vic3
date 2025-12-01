@@ -61,3 +61,68 @@ entity = {
         }
 	}
 }
+
+entity = {
+	name = "male_headgear_european_military_03_late_russian_officer_entity"
+	pdxmesh = "male_headgear_european_military_03_mesh"
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_headgear/european_military/03/male_headgear_european_military_03_masks.dds"	
+	
+			#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_headgear_late_russian_officer"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+        }
+	}
+}
+
+
+entity = {
+	name = "male_headgear_european_military_03_late_bulgarian_entity"
+	pdxmesh = "male_headgear_european_military_03_mesh"
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_headgear/european_military/03/male_headgear_european_military_03_masks.dds"	
+	
+			#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_headgear_late_bulgarian"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+        }
+	}
+}
+
+entity = {
+	name = "male_headgear_european_military_03_late_bulgarian_green_entity"
+	pdxmesh = "male_headgear_european_military_03_mesh"
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_headgear/european_military/03/male_headgear_european_military_03_masks.dds"	
+	
+			#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_headgear_late_bulgarian_green"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+        }
+	}
+}
+
+entity = {
+	name = "male_headgear_european_military_03_romanian_entity"
+	pdxmesh = "male_headgear_european_military_03_mesh"
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_headgear/european_military/03/male_headgear_european_military_03_masks.dds"	
+	
+			#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "romanian_headgear_03"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+        }
+	}
+}

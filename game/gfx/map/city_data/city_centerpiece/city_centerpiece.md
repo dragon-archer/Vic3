@@ -12,6 +12,9 @@
 	# [Default = 0] If there are multiple centerpieces suitable for the state region and city type, the one with the highest priority is picked
 	priority = <int>
 
+	# [Default = no] Rebuild the centerpiece whenever a production method is changed in the state. It's required for certain compositions that have triggers checking active production methods
+	should_update_on_pm_change = yes/no
+
 	# [Can be repeated] Locators where the attachments will be located relative to the center point of the city
 	locator = {
 		# The name is used in 'attach' below
@@ -22,7 +25,7 @@
 	}
 
 	composition_group = {
-		# Which building types are calculated for this composition group
+		# Which building types are calculated for this composition group. It's required for compositions with 'levels' or 'ratios'
 		building_types = { <building_type_1> <building_type_2> ... <building_type_N> }
 
 		# Level thresholds which are used to transform building level into visual level which is then used in composition 'levels', i.e. 'levels = { 1 4 9 }' defines 3 level intervals { {1-3} {4-8} {9+} }
@@ -33,14 +36,18 @@
 			# The name is used in 'attach' below
 			name = <composition_name_1>
 
-			# [Mutually exclusive with 'ratios'] Defines for which visual levels this composition is suitable. For example, `levels = { 1 0 2 }` defines the composition of buildings where:
+			# [Mutually exclusive with 'levels' and 'ratios'] Trigger to pick this composition as suitable
+			# Root - state
+			trigger = { }
+
+			# [Mutually exclusive with 'trigger' and 'ratios'] Defines for which visual levels this composition is suitable. For example, 'levels = { 1 0 2 }' defines the composition of buildings where:
 			# 	<building_type_1> has visual level 1 (logic level 1-3 from the example above), no <building_type_2>, and <building_type_3> has visual level 2 (logic level 4-8 from the example above)
 			levels = {
 				# [Type: int] Each value must be in range from 0 (no buildings) to M (the number of level thresholds defined earlier)
 				<visual_level_1> <visual_level_2> ... <visual_level_N>
 			}
 
-			# [Mutually exclusive with 'levels'] Defines for which level ratios this composition is suitable. For example, 'ratios = { 1 2 5 }' defines the ratio 1:2:5 or { 0.125 0.25 0.625 }
+			# [Mutually exclusive with 'trigger' and 'levels'] Defines for which level ratios this composition is suitable. For example, 'ratios = { 1 2 5 }' defines the ratio 1:2:5 or { 0.125 0.25 0.625 }
 			ratios = {
 				# [Type: int]
 				<ratio_1> <ratio_2> ... <ratio_N>

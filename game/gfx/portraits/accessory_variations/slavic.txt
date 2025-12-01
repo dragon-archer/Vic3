@@ -522,6 +522,25 @@ variation = {
 }
 
 variation = {
+	name = "male_legwear_slavic_01_royal"
+	
+
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_wool_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		b = { textures = "generic_wool_standard_fine_01" 				layout = "european_gold_trim_layout_02" }
+		a = { textures = "generic_wool_standard_fine_01"				layout = "plain_fabric_layout" }
+	}
+
+
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_male_outfit_slavic_01_royal.dds" }	
+}
+
+variation = {
 	name = "male_headgear_russian_military_01"
 	pattern = { 
 		weight = 1
@@ -536,6 +555,43 @@ variation = {
 	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/male_headgear_russian_military_01.dds" }	
 }
 
+variation = {
+	name = "male_legwear_slavic_01_high_austrian"
+	
+
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_wool_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		b = { textures = "generic_wool_standard_fine_01" 				layout = "european_gold_trim_layout_02" }
+		a = { textures = "generic_wool_standard_fine_01"				layout = "plain_fabric_layout" }
+	}
+
+
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_austrian_uniform_legwear.dds" }	
+}
+
+variation = {
+	name = "male_legwear_slavic_01_high_austrian_blue"
+	
+
+	pattern = { 
+		weight = 1
+
+		r = { textures = "generic_wool_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		g = { textures = "generic_wool_standard_fine_01" 					layout = "slavic_fabric_layout" }
+		b = { textures = "generic_wool_standard_fine_01" 				layout = "european_gold_trim_layout_02" }
+		a = { textures = "generic_wool_standard_fine_01"				layout = "plain_fabric_layout" }
+	}
+
+
+
+
+	color_palette = { weight = 1		texture = "gfx/portraits/accessory_variations/textures/color_palettes/color_palette_austrian_uniform_legwear_blue.dds" }	
+}
 
 ## FEMALE ##
 

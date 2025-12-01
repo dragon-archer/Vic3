@@ -376,9 +376,22 @@ mm_pollution = {
 	soundeffect = "snapshot:/Dynamic/low_pass_world"
 }
 
+mm_obstinance = {
+	map_painting_mode = obstinance
+	map_markers = { obstinance_marker }
+	map_names = states
+
+	gradient_border_settings = heatmap
+	has_fog_of_war = no
+	is_visible = yes
+
+	icon = "gfx/interface/icons/map_mode_icons/obstinance.dds"
+	soundeffect = "snapshot:/Dynamic/low_pass_world"
+}
+
 mm_culture = {
 	map_painting_mode = culture_population
-	map_markers = { homeland_marker }
+	map_markers = { homeland_marker national_awakening_marker }
 
 	gradient_border_settings = heatmap
 	has_fog_of_war = no
@@ -400,7 +413,7 @@ mm_religion = {
 
 mm_culture_nationally = {
 	map_painting_mode = player_culture_population
-	map_markers = { homeland_marker }
+	map_markers = { homeland_marker national_awakening_marker }
 
 	gradient_border_settings = heatmap
 	has_fog_of_war = no
@@ -411,7 +424,8 @@ mm_culture_nationally = {
 
 mm_culture_overview = {
 	map_painting_mode = culture_overview
-	map_markers = { }
+	map_painting_mode_secondary = culture_overview_minority
+	map_markers = { national_awakening_marker }
 	map_names = cultures
 	map_mode_lists = { society }
 
@@ -426,6 +440,7 @@ mm_culture_overview = {
 
 mm_religion_overview = {
 	map_painting_mode = religion_overview
+	map_painting_mode_secondary = religion_overview_minority
 	map_markers = { }
 	map_names = religions
 	map_mode_lists = { society }
@@ -1182,8 +1197,7 @@ mm_political = {
 }
 
 mm_loyalists = {
-	map_painting_mode = state_gradient
-	map_painting_mode_secondary = loyalists
+	map_painting_mode = loyalists
 	map_markers = { colony_marker }
 	map_mode_lists = { population }
 	map_names = states
@@ -1229,8 +1243,7 @@ mm_diplomatic = {
 }
 
 mm_standard_of_living = {
-	map_painting_mode = state_gradient
-	map_painting_mode_secondary = standard_of_living
+	map_painting_mode = standard_of_living
 	map_markers = { colony_marker }
 	map_mode_lists = { population }
 	map_names = states
@@ -1245,8 +1258,7 @@ mm_standard_of_living = {
 }
 
 mm_radicals = {
-	map_painting_mode = state_gradient
-	map_painting_mode_secondary = radicals
+	map_painting_mode = radicals
 	map_markers = { colony_marker state_effect_marker revolutionary_movement_marker }
 	map_mode_lists = { population }
 	map_names = states

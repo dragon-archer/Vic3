@@ -280,7 +280,24 @@ vbox= {
 						blockoverride "content"
 						{
 							tools_properties_dialog = {
-								name = "mesh_settings_properties"
+								name = "basic_settings_properties"
+							}
+						}
+					}
+					
+					editor_frame = {
+						visible = "[MeshImporter.IsTargetMesh2]"
+						layoutpolicy_horizontal = expanding
+						
+						blockoverride "label"
+						{
+							raw_text = "Mesh2 Settings"
+						}
+
+						blockoverride "content"
+						{
+							tools_properties_dialog = {
+								name = "mesh2_settings_properties"
 							}
 						}
 					}

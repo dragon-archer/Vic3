@@ -54,7 +54,12 @@ military_support_european_flamethrower_diorama_entity = {
 		scope:attacker = yes
 
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 
 		scope:military_formation = {
@@ -144,7 +149,10 @@ military_support_nativeamerican_flamethrower_diorama_entity = {
 		scope:attacker = yes
 
 		scope:culture = {
-			has_culture_graphics = decentralised_americas
+			OR = {
+				has_culture_graphics = decentralised_americas
+				has_culture_graphics = polynesian
+			}
 		}
 
 		scope:military_formation = {
@@ -166,7 +174,12 @@ military_support_european_machinegunner_diorama_entity = {
 		scope:attacker = no
 
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 
 		scope:military_formation = {
@@ -256,7 +269,10 @@ military_support_nativeamerican_machinegunner_diorama_entity = {
 		scope:attacker = no
 
 		scope:culture = {
-			has_culture_graphics = decentralised_americas
+			OR = {
+				has_culture_graphics = decentralised_americas
+				has_culture_graphics = polynesian
+			}
 		}
 
 		scope:military_formation = {

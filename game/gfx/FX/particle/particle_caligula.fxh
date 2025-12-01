@@ -52,6 +52,7 @@ VertexShader =
 					Alpha = Input.Color.a;
 				#endif
 
+				uint2 FlipbookDimensions = UnpackFromFloat( Input.Position.w );
 				uint CurrentFrame = CalcCurrentFrame( FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
 				Out.Pos = FixProjectionAndMul( ViewProjectionMatrix, float4( WorldPos, 1.0f ) );
 				Out.UV0 = CalcCellUV( CurrentFrame, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );

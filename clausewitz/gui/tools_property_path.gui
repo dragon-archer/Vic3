@@ -1,12 +1,8 @@
 types ToolsPathProperyTypes
 {
-	type tools_property_path = tools_property {
-		blockoverride "content"
-		{
-			hbox = {
-				layoutpolicy_horizontal = expanding
+	type property_path_content = hbox {
+		layoutpolicy_horizontal = expanding
 				editor_textinput = {
-					size = { 172 24 }
 					text = "[ToolsPropertyPath.GetPathValue]"
 					fontcolor = "[ToolsPropertyPath.GetPathFontColor]"
 					oneditingfinished_with_changes = "[ToolsPropertyPath.SetPathFromText]"
@@ -21,31 +17,26 @@ types ToolsPathProperyTypes
 						}
 				using = editor_tooltip_properties
 				tooltip = "[ToolsPropertyPath.GetTooltipText]"
-			}
+	}
+
+	type tools_property_path = tools_property {
+		blockoverride "content"
+		{
+			property_path_content ={}
 		}
 	}
 
 	type dialog_property_path = dialog_property {
 		blockoverride "content"
 		{
-			hbox = {				
-				editor_textinput = {
-					size = { 172 24 }
-					text = "[ToolsPropertyPath.GetPathValue]"
-					fontcolor = "[ToolsPropertyPath.GetPathFontColor]"
-					oneditingfinished_with_changes = "[ToolsPropertyPath.SetPathFromText]"
-				}
-				editor_toolbar_button = {
-					size = { 20 22 }
-					raw_text = "..."
-					onclick = "[ToolsPropertyPath.OpenFileDialog]"
-				}
-				tooltipwidget = {
-							using = editor_tooltip
-						}
-				using = editor_tooltip_properties
-				tooltip = "[ToolsPropertyPath.GetTooltipText]"
-			}
+			property_path_content ={}
+		}
+	}
+
+	type dialog_grid_property_path = dialog_grid_property {
+		blockoverride "content"
+		{
+			property_path_content ={}
 		}
 	}
 
@@ -203,6 +194,13 @@ types ToolsPathProperyTypes
 	}
 
 	type dialog_property_vfs_mount_path = dialog_property {
+		blockoverride "content"
+		{
+			vfs_mount_path_content = {}
+		}
+	}
+
+	type dialog_grid_property_vfs_mount_path = dialog_grid_property {
 		blockoverride "content"
 		{
 			vfs_mount_path_content = {}

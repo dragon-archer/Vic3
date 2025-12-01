@@ -42,7 +42,7 @@ environment_standard = {
 		# #########################################################################
 		# #							RIGHT RIM LIGHT								#
 		# #########################################################################
-			1 = {
+		1 = {
 			type = "spot_light"
 			affected_by_shadow = yes
 
@@ -132,7 +132,7 @@ agitator_main_environment = {
 		# #########################################################################
 		# #							RIGHT RIM LIGHT								#
 		# #########################################################################
-			1 = {
+		1 = {
 			type = "spot_light"
 			affected_by_shadow = yes
 
@@ -451,14 +451,14 @@ pop_environment = {
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 1 0.9 2 }
- 			position = cylindrical{ 200 -100 100 }
+ 			color = hsv{ .25 0.2 2 }
+ 			position = cylindrical{ 200 -100 90 }
 
  			look_at = { 0 -35 0 }
  			look_at_node = camera_torso_look_at
 
- 			radius = 350
- 			falloff = 100
+ 			radius = 550
+ 			falloff = 0
 
 			outer_cone_angle = 48
 			inner_cone_angle = 0
@@ -486,15 +486,15 @@ small_pop_environment = {
  			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.4 6 }	# Hue, saturation, value. Increase value for more intense lights
- 			position = cylindrical{ @main_light_radius  650 0 }	# Radius, height, angle
+ 			color = hsv{ 0.09 0.5 9 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ @main_light_radius  450 -30 }	# Radius, height, angle
 
  			# For spot lights and directional lights
  			look_at = { 0 0 0 }
 			look_at_node = camera_torso_look_at
 
  			# For spot lights and point lights
-			radius = 600
+			radius = 440
  			falloff = 30
 
 
@@ -511,13 +511,13 @@ small_pop_environment = {
  			affected_by_shadow = yes
 
  			color = hsv{ 0.05 0.7 16 }
- 			position = cylindrical{ 200 300 140 }
+ 			position = cylindrical{ 800 300 140 }
 
- 			look_at = { 0 -35 0 }
+ 			look_at = { 0 -300 0 }
  			look_at_node = camera_torso_look_at
 
- 			radius = 500
- 			falloff = 100
+ 			radius = 1600
+ 			falloff = 0
 
 			outer_cone_angle = 48
 			inner_cone_angle = 0
@@ -530,17 +530,17 @@ small_pop_environment = {
  			type = "spot_light"
  			affected_by_shadow = yes
 
- 			color = hsv{ 0.1 0.7 8 }
- 			position = cylindrical{ 200 300 -140 }
+ 			color = hsv{ 0.6 0.2 6 }
+ 			position = cylindrical{ 2000 500 -155 }
 
- 			look_at = { 0 -35 0 }
+ 			look_at = { 0 -300 0 }
  			look_at_node = camera_torso_look_at
 
- 			radius = 350
+ 			radius = 3000
  			falloff = 100
 
-			outer_cone_angle = 48
-			inner_cone_angle = 0
+			outer_cone_angle = 78
+			inner_cone_angle = 40
  		}
  	}
 

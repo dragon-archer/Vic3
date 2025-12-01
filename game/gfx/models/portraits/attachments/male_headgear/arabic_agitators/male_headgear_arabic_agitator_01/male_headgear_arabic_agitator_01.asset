@@ -27,9 +27,26 @@ entity = {
 		game_data = {
         portrait_entity_user_data = {
 			portrait_accessory = {
-			pattern_mask = "gfx/models/portraits/attachments/male_headgear/arabic_agitators/male_headgear_arabic_agitator_01/male_headgear_arabic_agitator_01_masks.dds"	
-			variation = "male_headgear_arabic_agitator_01"	
-        }
+				pattern_mask = "gfx/models/portraits/attachments/male_headgear/arabic_agitators/male_headgear_arabic_agitator_01/male_headgear_arabic_agitator_01_masks.dds"	
+				variation = "male_headgear_arabic_agitator_01"	
+	        }
+		}
 	}
 }
+
+entity = {
+	name = "male_headgear_arabic_keffiyeh_01_entity"
+	pdxmesh = "male_headgear_arabic_agitator_01_mesh"
+
+		attribute = { name = "head_bs_fat_head"					blend_shape = "male_headgear_arabic_agitator_01_bs_fat" }
+		attribute = { name = "head_bs_gaunt_head"				blend_shape = "male_headgear_arabic_agitator_01_bs_gaunt" }
+
+		game_data = {
+        portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_headgear/arabic_agitators/male_headgear_arabic_agitator_01/male_headgear_arabic_agitator_01_masks.dds"	
+				variation = "male_headgear_arabic_keffiyeh_01"	
+	        }
+		}
+	}
 }

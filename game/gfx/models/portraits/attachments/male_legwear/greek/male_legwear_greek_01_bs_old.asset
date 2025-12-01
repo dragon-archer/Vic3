@@ -1,0 +1,16 @@
+pdxmesh = {
+	name = "male_legwear_greek_01_bs_old_mesh"
+	file = "male_legwear_greek_01_bs_old.mesh"
+
+	meshsettings = {
+		name = "male_legwear_greek_01_bs_oldShape"
+		index = 0
+		shader = "portrait_attachment_alpha_to_coverage"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "male_legwear_greek_01_bs_old_entity"
+	pdxmesh = "male_legwear_greek_01_bs_old_mesh"
+}

@@ -127,7 +127,7 @@ container = {
 		direction = horizontal
 		parentanchor = left|vcenter
 
-		value = "[PdxValueSetting.GetCurrentValue(PdxSetting.GetSetting)]"
+		value = "[PdxValueSetting.GetPendingValue(PdxSetting.GetSetting)]"
 
 		track = {
 			using = editor_scrollbar_track
@@ -161,7 +161,7 @@ container = {
 		position = { 180 0 }
 		size = { 40 20 }
 		align = center|nobaseline
-		text = "[PdxValueSetting.GetCurrentValue(PdxSetting.GetSetting)]"
+		text = "[PdxValueSetting.GetPendingValue(PdxSetting.GetSetting)]"
 		fontcolor = "[Select_CVector4f( PdxValueSetting.HasValueChanged(PdxSetting.GetSetting), '(CVector4f)1.0,0.0,0.0,1.0', '(CVector4f)1.0,1.0,1.0,1.0' )]"
 	}
 }

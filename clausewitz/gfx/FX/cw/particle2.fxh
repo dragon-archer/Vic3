@@ -3,20 +3,14 @@ Includes = {
 	"cw/quaternion.fxh"
 }
 
-ConstantBuffer( PdxFlipbookConstants )
-{
-	int2 FlipbookDimensions;
-};
-
 VertexStruct VS_INPUT_PARTICLE
 {
 	float2 UV0							: TEXCOORD0;
-	float3 Position						: TEXCOORD1;
+	float4 Position						: TEXCOORD1;	// Position.w contains the flipbook dimensions.
 	uint RotQ							: TEXCOORD2;	// Rotation relative to world or camera when billboarded.
 	float4 SizeAndOffset				: TEXCOORD3;	// SizeAndOffset.zw contains the local pivot offset
-	float4 BillboardAxisAndFlipbookTime : TEXCOORD4;	//	Position.w contains the flipbook time.
+	float4 BillboardAxisAndFlipbookTime : TEXCOORD4;	// BillboardAxisAndFlipbookTime.w contains the flipbook time.
 	float4 Color						: TEXCOORD5;
-
 };
 
 VertexStruct VS_OUTPUT_PARTICLE
@@ -111,6 +105,12 @@ Code
 
 		return float4( a, b, c, d );
 	}
+
+	uint2 UnpackFromFloat( float Packed )
+	{
+		uint PackedUint = uint( Packed );
+		return int2( PackedUint & 0xff, ( PackedUint >> 8 ) & 0xff );
+	}
 ]]
 
 VertexShader =
@@ -169,7 +169,8 @@ VertexShader =
 					Alpha = Input.Color.a;
 				#endif
 
-				uint CurrentFrame = CalcCurrentFrame( FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
+				uint2 FlipbookDimensions = UnpackFromFloat( Input.Position.w );
+				uint CurrentFrame = CalcCurrentFrame(FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w);
 				Out.Pos = FixProjectionAndMul( ViewProjectionMatrix, float4( WorldPos, 1.0f ) );
 				Out.UV0 = CalcCellUV( CurrentFrame, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );
 				Out.UV1 = CalcCellUV( CurrentFrame + 1, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.BillboardAxisAndFlipbookTime.w );

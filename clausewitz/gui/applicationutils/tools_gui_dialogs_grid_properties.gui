@@ -601,6 +601,40 @@ types ToolsProperyTypes
 		}
 	}
 
+	type dialog_grid_property_searchlist_2 = dialog_grid_property {
+		blockoverride "content"
+		{
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = preferred
+				spacing = 1
+
+				prev_button = {
+					visible = "[ToolProperty2SearchList.AreSelectButtonsVisible]"
+					enabled = "[ToolProperty2SearchList.HasPrev]"
+					onclick = "[ToolProperty2SearchList.SelectPrev]"
+					tooltip = "[ToolProperty2SearchList.PrevEntryTooltip]"
+				}
+
+				editor_toolbar_button = {
+					using = property_grid_value_column_size
+					layoutpolicy_horizontal = expanding
+					text = "[ToolProperty2SearchList.GetSelectedLabel]"
+					onclick = "[ToolProperty2SearchList.OpenSearchList]"
+					elide = middle
+					tooltip = "[ToolProperty.GetTooltip]"
+				}
+
+				next_button = {
+					visible = "[ToolProperty2SearchList.AreSelectButtonsVisible]"
+					enabled = "[ToolProperty2SearchList.HasNext]"
+					onclick = "[ToolProperty2SearchList.SelectNext]"
+					tooltip = "[ToolProperty2SearchList.NextEntryTooltip]"
+				}
+			}
+		}
+	}
+
 	type dialog_grid_property_curve = dialog_grid_property {
 		blockoverride "content"
 		{

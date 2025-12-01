@@ -39,7 +39,12 @@ military_infantry_european_irregular_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_irregular_infantry
 	}
@@ -52,7 +57,12 @@ military_infantry_european_line_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_line_infantry
 	}
@@ -65,7 +75,12 @@ military_infantry_european_skirmish_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_skirmish_infantry
 	}
@@ -78,7 +93,12 @@ military_infantry_european_trench_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_trench_infantry
 	}
@@ -91,7 +111,12 @@ military_infantry_european_squad_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_squad_infantry
 	}
@@ -104,7 +129,12 @@ military_infantry_european_mechanized_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_mechanized_infantry
 	}
@@ -453,7 +483,10 @@ military_infantry_nativeamerican_irregular_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = decentralised_americas
+			OR = {
+				has_culture_graphics = decentralised_americas
+				has_culture_graphics = polynesian
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_irregular_infantry
 	}
@@ -466,7 +499,10 @@ military_infantry_nativeamerican_line_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = decentralised_americas
+			OR = {
+				has_culture_graphics = decentralised_americas
+				has_culture_graphics = polynesian
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_line_infantry
 	}
@@ -479,7 +515,10 @@ military_infantry_nativeamerican_skirmish_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = decentralised_americas
+			OR = {
+				has_culture_graphics = decentralised_americas
+				has_culture_graphics = polynesian
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_skirmish_infantry
 	}

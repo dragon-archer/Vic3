@@ -109,6 +109,160 @@ entity = {
 }
 
 entity = {
+	name = "male_epaulettes_late_austrian_military_01_entity"
+	pdxmesh = "male_epaulettes_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_epaulettes_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_epaulettes_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_epaulettes_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_epaulettes_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_epaulettes_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_epaulettes_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_epaulettes/military_01/male_epaulettes_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_austrian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_epaulettes_late_hungarian_military_01_entity"
+	pdxmesh = "male_epaulettes_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_epaulettes_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_epaulettes_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_epaulettes_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_epaulettes_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_epaulettes_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_epaulettes_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_epaulettes/military_01/male_epaulettes_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_hungarian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_epaulettes_late_bulgarian_military_01_entity"
+	pdxmesh = "male_epaulettes_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_epaulettes_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_epaulettes_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_epaulettes_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_epaulettes_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_epaulettes_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_epaulettes_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_epaulettes/military_01/male_epaulettes_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_epaulettes_late_bulgarian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_epaulettes_late_serbian_military_01_entity"
+	pdxmesh = "male_epaulettes_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_epaulettes_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_epaulettes_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_epaulettes_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_epaulettes_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_epaulettes_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_epaulettes_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_epaulettes/military_01/male_epaulettes_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_serbian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_epaulettes_late_romanian_military_01_entity"
+	pdxmesh = "male_epaulettes_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_epaulettes_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_epaulettes_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_epaulettes_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_epaulettes_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_epaulettes_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_epaulettes_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_epaulettes/military_01/male_epaulettes_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_romanian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_epaulettes_late_greek_military_01_entity"
+	pdxmesh = "male_epaulettes_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_epaulettes_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_epaulettes_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_epaulettes_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_epaulettes_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_epaulettes_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_epaulettes_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_epaulettes/military_01/male_epaulettes_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_greek"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_epaulettes_late_montenegrin_military_01_entity"
+	pdxmesh = "male_epaulettes_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_epaulettes_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_epaulettes_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_epaulettes_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_epaulettes_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_epaulettes_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_epaulettes_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_epaulettes/military_01/male_epaulettes_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_montenegrin"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
 	name = "reza_shah_pahlavi_epaulettes_entity"
 	pdxmesh = "male_epaulettes_military_01_mesh"
 		
@@ -125,6 +279,30 @@ entity = {
 				pattern_mask = "gfx/models/portraits/attachments/male_epaulettes/military_01/male_epaulettes_military_01_masks.dds"	
 				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
 				variation = "reza_shah_pahlavi_coat"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+
+
+entity = {
+	name = "european_military_epaulettes_red_entity"
+	pdxmesh = "male_epaulettes_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_epaulettes_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_epaulettes_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_epaulettes_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_epaulettes_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_epaulettes_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_epaulettes_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_epaulettes/military_01/male_epaulettes_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "european_military_epaulettes_red"	#A "variation" object in gfx/portraits/accessory_variations/
 			} 
         }
 	}

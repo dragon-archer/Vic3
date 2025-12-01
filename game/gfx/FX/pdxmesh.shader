@@ -76,6 +76,18 @@ PixelShader =
 		SampleModeV = "Clamp"
 		Type = "Cube"
 	}
+
+	TextureSampler PapermapEnvironmentMap
+	{
+		Ref = PapermapEnvTextureRef
+		MagFilter = "Linear"
+		MinFilter = "Linear"
+		MipFilter = "Linear"
+		SampleModeU = "Clamp"
+		SampleModeV = "Clamp"
+		Type = "Cube"
+	}
+
 	TextureSampler TintMap
 	{
 		Index = 5
@@ -86,6 +98,7 @@ PixelShader =
 		SampleModeV = "Wrap"
 	}
 
+
 	TextureSampler ChannelMaskMap
 	{
 		Index = 6
@@ -95,6 +108,7 @@ PixelShader =
 		SampleModeU = "Wrap"
 		SampleModeV = "Wrap"
 	}
+
 	TextureSampler CompanyTexture
 	{
 		Ref = PdxMeshCustomTexture0
@@ -104,7 +118,6 @@ PixelShader =
 		SampleModeU = "Wrap"
 		SampleModeV = "Wrap"
 	}
-
 	BufferTexture CountryUnitColorBuffer01
 	{
 		Ref = CountryUnitColors01
@@ -289,6 +302,10 @@ VertexShader =
 				SStandardMeshUserData UserData = GetStandardMeshUserData( Input.InstanceIndices.y );
 				CalculateSineAnimation( Input.UV1, Position.xyz, Input.Normal, Input.Tangent, UserData._RandomValue );
 
+				#ifdef SNAP_TO_WATER
+					Position.y = SnapToWaterLevel( Position.y, WorldMatrix );
+				#endif
+
 				Out.Normal = normalize( mul( CastTo3x3( WorldMatrix ), Input.Normal ) );
 				Out.Tangent = normalize( mul( CastTo3x3( WorldMatrix ), Input.Tangent ) );
 				Out.Bitangent = normalize( cross( Out.Normal, Out.Tangent ) * Input.Tangent.w );
@@ -337,6 +354,10 @@ VertexShader =
 				float4 Position = float4( Input.Position.xyz, 1.0 );
 				float4x4 WorldMatrix = PdxMeshGetWorldMatrix( Input.InstanceIndices.y );
 
+				#ifdef SNAP_TO_WATER
+					Position.y = SnapToWaterLevel( Position.y, WorldMatrix );
+				#endif
+
 				// Wave Animation
 				SStandardMeshUserData UserData = GetStandardMeshUserData( Input.InstanceIndices.y );
 				CalculateSineAnimation( Input.UV1, Position.xyz, Input.Normal, Input.Tangent, UserData._RandomValue );
@@ -382,6 +403,10 @@ VertexShader =
 				float4 Position = float4( Input.Position.xyz, 1.0 );
 				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.Index24_Packed1_Opacity6_Sign1 );
 
+				#ifdef SNAP_TO_WATER
+					Position.y = SnapToWaterLevel( Position.y, WorldMatrix );
+				#endif
+
 				// Wave animation
 				SStandardMeshUserData UserData = GetStandardMeshUserData( Input.Index24_Packed1_Opacity6_Sign1 );
 				CalculateSineAnimation( Input.UV1, Position.xyz, Input.Normal, Input.Tangent, UserData._RandomValue );
@@ -418,6 +443,10 @@ VertexShader =
 				float4 Position = float4( Input.Position.xyz, 1.0 );
 				float4x4 WorldMatrix = UnpackAndGetMapObjectWorldMatrix( Input.Index24_Packed1_Opacity6_Sign1 );
 
+				#ifdef SNAP_TO_WATER
+					Position.y = SnapToWaterLevel( Position.y, WorldMatrix );
+				#endif
+
 				// Wave Animation
 				SStandardMeshUserData UserData = GetStandardMeshUserData( Input.Index24_Packed1_Opacity6_Sign1 );
 				CalculateSineAnimation( Input.UV1, Position.xyz, Input.Normal, Input.Tangent, UserData._RandomValue );
@@ -449,6 +478,15 @@ PixelShader =
 		#endif
 			return PdxMeshApplyOpacity( BaseAlpha, NoiseCoordinate, Opacity );
 		}
+
+		#if defined( COFFEE )
+		void GetCoffeeProperties( inout SLightingProperties LightingProps, inout SMaterialProperties MaterialProps, float3 Diffuse, float3 Normal, float4 Properties )
+		{
+			LightingProps._LightIntensity = 0.0;
+			LightingProps._CubemapIntensity = 4.0;
+			MaterialProps = GetMaterialProperties( Diffuse, Normal, Properties.a, Properties.g, Properties.b );
+		}
+		#endif
 	]]
 	MainCode PS_standard
 	{
@@ -658,6 +696,12 @@ PixelShader =
 				#ifndef LOW_QUALITY_SHADERS
 					#ifndef FLATLIGHT
 						Color = CalculateSunLighting( MaterialProps, LightingProps, EnvironmentMap );
+
+						// Coffee shader
+						#if defined ( COFFEE )
+							GetCoffeeProperties( LightingProps, MaterialProps, Diffuse, Normal, Properties );
+							Color = CalculateSunLighting( MaterialProps, LightingProps, PapermapEnvironmentMap );
+						#endif
 
 						// Second sun
 						#ifndef SINGLESUN

@@ -9,107 +9,114 @@ pdxmesh = {
 	}
 
 	meshsettings = {
-		name = "generic_mining_iron_localdecal_0Shape"
+		name = "generic_mining_iron_01|LOD_0|LOD_0|LOD_0Shape"
 		index = 0
+		shader = "standard"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_01|LOD_0|LOD_0|LOD_0Shape"
+		index = 1
 		shader = "decal_local"
 		shader_file = "gfx/FX/pdxmesh_decal.shader"
 		subpass = "LocalDecals"
 	}
 
 	meshsettings = {
-		name = "generic_mining_iron_worlddecal_0Shape"
-		index = 0
+		name = "generic_mining_iron_01|LOD_0|LOD_0|LOD_0Shape"
+		index = 2
 		shader = "decal_world"
 		shader_file = "gfx/FX/pdxmesh_decal.shader"
 		subpass = "Decals"
 	}
 
 	meshsettings = {
-		name = "generic_mining_iron_billboard_Shape0"
+		name = "generic_mining_iron_01|LOD_0|LOD_0|LOD_0Shape"
+		index = 3
+		shader = "standard_alpha_blend"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_01|LOD_1|LOD_1|LOD_1Shape"
 		index = 0
 		shader = "standard"
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
-		name = "generic_mining_iron_building_Shape0"
-		index = 0
-		shader = "standard"
-		shader_file = "gfx/FX/pdxmesh.shader"
-	}
-
-	meshsettings = {
-		name = "generic_mining_iron_localdecal_1Shape"
-		index = 0
+		name = "generic_mining_iron_01|LOD_1|LOD_1|LOD_1Shape"
+		index = 1
 		shader = "decal_local"
 		shader_file = "gfx/FX/pdxmesh_decal.shader"
 		subpass = "LocalDecals"
 	}
 
 	meshsettings = {
-		name = "generic_mining_iron_worlddecal_1Shape"
-		index = 0
+		name = "generic_mining_iron_01|LOD_1|LOD_1|LOD_1Shape"
+		index = 2
 		shader = "decal_world"
 		shader_file = "gfx/FX/pdxmesh_decal.shader"
 		subpass = "Decals"
 	}
 
 	meshsettings = {
-		name = "generic_mining_iron_billboard_Shape1"
+		name = "generic_mining_iron_01|LOD_1|LOD_1|LOD_1Shape"
+		index = 3
+		shader = "standard_alpha_blend"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_01|LOD_2|LOD_2|LOD_2Shape"
 		index = 0
 		shader = "standard"
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
-		name = "generic_mining_iron_building_Shape1"
-		index = 0
-		shader = "standard"
-		shader_file = "gfx/FX/pdxmesh.shader"
-	}
-
-	meshsettings = {
-		name = "generic_mining_iron_localdecal_2Shape"
-		index = 0
+		name = "generic_mining_iron_01|LOD_2|LOD_2|LOD_2Shape"
+		index = 1
 		shader = "decal_local"
 		shader_file = "gfx/FX/pdxmesh_decal.shader"
 		subpass = "LocalDecals"
 	}
 
 	meshsettings = {
-		name = "generic_mining_iron_worlddecal_2Shape"
-		index = 0
+		name = "generic_mining_iron_01|LOD_2|LOD_2|LOD_2Shape"
+		index = 2
 		shader = "decal_world"
 		shader_file = "gfx/FX/pdxmesh_decal.shader"
 		subpass = "Decals"
 	}
 
 	meshsettings = {
-		name = "generic_mining_iron_billboard_Shape2"
+		name = "generic_mining_iron_01|LOD_2|LOD_2|LOD_2Shape"
+		index = 3
+		shader = "standard_alpha_blend"
+		shader_file = "gfx/FX/pdxmesh.shader"
+	}
+
+	meshsettings = {
+		name = "generic_mining_iron_01|LOD_3|LOD_3|LOD_3Shape"
 		index = 0
 		shader = "standard"
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 
 	meshsettings = {
-		name = "generic_mining_iron_building_Shape2"
-		index = 0
-		shader = "standard"
-		shader_file = "gfx/FX/pdxmesh.shader"
-	}
-
-	meshsettings = {
-		name = "generic_mining_iron_localdecal_3Shape"
-		index = 0
+		name = "generic_mining_iron_01|LOD_3|LOD_3|LOD_3Shape"
+		index = 1
 		shader = "decal_local"
 		shader_file = "gfx/FX/pdxmesh_decal.shader"
 		subpass = "LocalDecals"
 	}
 
 	meshsettings = {
-		name = "generic_mining_iron_building_Shape3"
-		index = 0
-		shader = "standard"
+		name = "generic_mining_iron_01|LOD_3|LOD_3|LOD_3Shape"
+		index = 2
+		shader = "standard_alpha_blend"
 		shader_file = "gfx/FX/pdxmesh.shader"
 	}
 }

@@ -767,7 +767,7 @@ PixelShader =
 
 			DebugCondition( Diffuse.rgb, ConditionData );
 		}
-		
+
 		void ApplyHarvestConditionTerrainPostLight( inout float3 Diffuse, float MaterialHeight, float3 WorldSpacePos )
 		{
 			HarvestConditionData ConditionData;

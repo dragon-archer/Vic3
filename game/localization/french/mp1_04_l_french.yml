@@ -84,7 +84,7 @@
  notification_prestige_goods_steel_unlocked_tooltip: "#header $notification_prestige_goods_steel_unlocked_name$#!\n$TOOLTIP_DELIMITER$\n$notification_prestige_goods_steel_unlocked_desc$"
  je_prestige_goods_opium: "$prestige_good_generic_opium$"
  je_prestige_goods_opium_reason: "La compagnie [SCOPE.sCompany('relevant_company').GetName] s’est imposée comme un élément essentiel de notre économie. La compagnie cherche à se servir de sa prospérité actuelle pour développer sa propre marque d’#b opium de prestige#! @prestige_good_generic_opium!. Si celle-ci est un succès, elle pourra renforcer sa compétitivité sur le marché mondial de l’#b opium#! @opium!."
- je_prestige_goods_opium_goal: "Maintenez ce qui suit pendant #v [GetPlayer.MakeScope.ScriptValue('prestige_good_journal_entry_months')] mois#! (actuellement #v [ROOT.GetCountry.MakeScope.Var(‘prestige_opium_timer_var').GetValue]#!) : #indent_newline:3 "
+ je_prestige_goods_opium_goal: "Maintenez ce qui suit pendant #v [GetPlayer.MakeScope.ScriptValue('prestige_good_journal_entry_months')] mois#! (actuellement #v [ROOT.GetCountry.MakeScope.Var('prestige_opium_timer_var').GetValue]#!) : #indent_newline:3 "
  je_prestige_goods_opium_complete_tt: "A terminé l’[concept_journal_entry|l] #b $je_prestige_goods_opium$#!"
  je_prestige_goods_opium_reward_tt: "La compagnie [SCOPE.sCompany('relevant_company').GetName] pourra produire de l’#b opium de prestige#! @prestige_good_generic_opium!"
  not_prestige_good_generic_opium_var_tt: "N’a pas encore développé de l’#b opium de prestige#! @prestige_good_generic_opium!"

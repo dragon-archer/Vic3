@@ -419,7 +419,7 @@ types Settings
 			parentanchor = left|vcenter
 			size = { 350 14 }
 			minimumsize = { -1 14 }
-			value = "[PdxValueSetting.GetCurrentValue(PdxSetting.GetSetting)]"
+			value = "[PdxValueSetting.GetPendingValue(PdxSetting.GetSetting)]"
 			block "setting_value_scrollbar" {}
 
 			track = {
@@ -442,7 +442,7 @@ types Settings
 			position = { 360 0 }
 			size = { 40 30 }
 			align = center|nobaseline
-			text = "[PdxValueSetting.GetFormatedCurrentValue(PdxSetting.GetSetting)]"
+			text = "[PdxValueSetting.GetFormattedPendingValue(PdxSetting.GetSetting)]"
 			fontcolor = "[Select_CVector4f( PdxValueSetting.HasValueChanged(PdxSetting.GetSetting), '(CVector4f)1.0,0.0,0.0,1.0', '(CVector4f)1.0,1.0,1.0,1.0' )]"
 			alwaystransparent = no
 			focuspolicy = all

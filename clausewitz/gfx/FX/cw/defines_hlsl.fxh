@@ -187,6 +187,8 @@ float4x4 FixProjection( float4x4 ProjectionMatrix )
 
 #define PdxStructuredBuffer StructuredBuffer
 #define PdxRWStructuredBuffer RWStructuredBuffer
+#define PdxRawBuffer ByteAddressBuffer
+#define PdxRWRawBuffer RWByteAddressBuffer 
 #define PdxRasterizerOrderedBuffer RasterizerOrderedBuffer
 #define PdxRasterizerOrderedStructuredBuffer RasterizerOrderedStructuredBuffer
 

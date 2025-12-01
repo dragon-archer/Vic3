@@ -17,8 +17,9 @@ PixelShader =
 			PDX_MAIN
 			{
 				PS_COLOR_SSAO Out;
+
 				float4 Color = PdxTex2D( DiffuseMap, Input.UV0 ) * Input.Color;
-				float4 NextColor = PdxTex2D( DiffuseMap, Input.UV1 ) * Input.Color; 
+				float4 NextColor = PdxTex2D( DiffuseMap, Input.UV1 ) * Input.Color;
 				float2 ProvinceCoords = Input.WorldSpacePos.xz / _ProvinceMapSize;
 
 				Color = Color * ( 1.0f - Input.FrameBlend ) + NextColor * Input.FrameBlend;
@@ -91,6 +92,14 @@ Effect ParticleColor
 {
 	VertexShader = "VertexParticle"
 	PixelShader = "PixelColor"
+	RasterizerState = "RasterizerStateNoCulling"
+}
+
+Effect ParticleFlipX
+{
+	VertexShader = "VertexParticle"
+	PixelShader = "PixelTexture"
+	Defines = { "BILLBOARD" "FLIP_X" }
 	RasterizerState = "RasterizerStateNoCulling"
 }
 

@@ -1,0 +1,16 @@
+pdxmesh = {
+	name = "male_belt_austrian_01_bs_old_mesh"
+	file = "male_belt_austrian_01_bs_old.mesh"
+
+	meshsettings = {
+		name = "male_belt_austrian_01_bs_oldShape"
+		index = 0
+		shader = "portrait_attachment_pattern"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "male_belt_austrian_01_bs_old_entity"
+	pdxmesh = "male_belt_austrian_01_bs_old_mesh"
+}

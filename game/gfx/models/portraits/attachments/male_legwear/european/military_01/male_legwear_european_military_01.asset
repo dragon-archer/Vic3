@@ -65,6 +65,270 @@ entity = {
 }
 
 entity = {
+	name = "male_legwear_russian_late_military_01_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_russian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_legwear_russian_late_military_01_officer_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_russian_officer"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_legwear_montenegrin_late_military_01_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_montenegrin"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_legwear_austrian_late_military_01_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_austrian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_legwear_hungarian_late_military_01_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_hungarian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_legwear_serbian_mid_military_01_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_legwear_mid_serbian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_legwear_serbian_late_military_01_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_serbian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_legwear_serbian_late_military_01_grey_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_serbian_grey"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_legwear_romanian_late_military_01_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_romanian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_legwear_bulgarian_late_military_01_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_bulgarian"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_legwear_bulgarian_late_military_01_green_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_bulgarian_green"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
+	name = "male_legwear_greek_late_military_01_entity"
+	pdxmesh = "male_legwear_european_military_01_mesh"
+		
+		attribute = { name = "body_bs_fat"					blend_shape = "male_legwear_european_military_01_bs_fat" }
+		attribute = { name = "body_bs_gaunt"				blend_shape = "male_legwear_european_military_01_bs_gaunt" }
+		attribute = { name = "body_bs_old"					blend_shape = "male_legwear_european_military_01_bs_old" }
+		attribute = { name = "body_bs_infant"				blend_shape = "male_legwear_european_military_01_bs_infant" }
+		attribute = { name = "body_bs_thick"				blend_shape = "male_legwear_european_military_01_bs_thick" }
+		attribute = { name = "body_bs_thin"					blend_shape = "male_legwear_european_military_01_bs_thin" }
+
+		game_data = {
+            portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_legwear/european/military_01/male_legwear_european_military_01_masks.dds"	
+				#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "male_coat_late_greek"	#A "variation" object in gfx/portraits/accessory_variations/
+			} 
+        }
+	}
+}
+
+entity = {
 	name = "male_legwear_american_late_military_01_entity"
 	pdxmesh = "male_legwear_european_military_01_mesh"
 		

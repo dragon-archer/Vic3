@@ -2,18 +2,19 @@ pdxmesh = {
 	name = "female_outfit_slavic_01_mid_mesh"
 	file = "female_outfit_slavic_01_mid.mesh"
 
+
+
 	blend_shape = { id = "female_outfit_slavic_01_mid_bs_fat"						type = "female_outfit_slavic_01_mid_bs_fat.mesh" }
 	blend_shape = { id = "female_outfit_slavic_01_mid_bs_gaunt"						type = "female_outfit_slavic_01_mid_bs_gaunt.mesh" }
 	blend_shape = { id = "female_outfit_slavic_01_mid_bs_old"						type = "female_outfit_slavic_01_mid_bs_old.mesh" }
-	blend_shape = { id = "female_outfit_slavic_01_mid_bs_infant"					type = "female_outfit_slavic_01_mid_bs_infant.mesh" }
+	
 	blend_shape = { id = "female_outfit_slavic_01_mid_bs_bustsizemin"				type = "female_outfit_slavic_01_mid_bs_bustsizemin.mesh" }
 	blend_shape = { id = "female_outfit_slavic_01_mid_bs_bustsizemax"				type = "female_outfit_slavic_01_mid_bs_bustsizemax.mesh" }
 	blend_shape = { id = "female_outfit_slavic_01_mid_bs_thick"						type = "female_outfit_slavic_01_mid_bs_thick.mesh" }
 	blend_shape = { id = "female_outfit_slavic_01_mid_bs_thin"						type = "female_outfit_slavic_01_mid_bs_thin.mesh" }
 
-
 	meshsettings = {
-		name = "female_outfit_salvic_01_midShape"
+		name = "female_outfit_slavic_01_midShape"
 		index = 0
 		texture_diffuse = "female_outfit_slavic_01_mid_diffuse.dds"
 		texture_normal = "female_outfit_slavic_01_mid_normal.dds"
@@ -27,11 +28,10 @@ entity = {
 	name = "female_outfit_slavic_01_mid_entity"
 	pdxmesh = "female_outfit_slavic_01_mid_mesh"
 
-
-	attribute = { name = "body_bs_fat"					blend_shape = "female_outfit_slavic_01_mid_bs_fat" }
+		attribute = { name = "body_bs_fat"					blend_shape = "female_outfit_slavic_01_mid_bs_fat" }
 		attribute = { name = "body_bs_gaunt"				blend_shape = "female_outfit_slavic_01_mid_bs_gaunt" }
 		attribute = { name = "body_bs_old"					blend_shape = "female_outfit_slavic_01_mid_bs_old" }
-		attribute = { name = "body_bs_infant"				blend_shape = "female_outfit_slavic_01_mid_bs_infant" }
+		
 		attribute = { name = "body_bs_bustsizemin"			blend_shape = "female_outfit_slavic_01_mid_bs_bustsizemin" }
 		attribute = { name = "body_bs_bustsizemax"			blend_shape = "female_outfit_slavic_01_mid_bs_bustsizemax" }
 		attribute = { name = "body_bs_thick"				blend_shape = "female_outfit_slavic_01_mid_bs_thick" }
@@ -47,4 +47,3 @@ game_data = {
         }
 	}
 }
-

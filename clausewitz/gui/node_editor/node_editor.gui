@@ -377,6 +377,10 @@ types NodeEditor
 						visible = [Node.HasDescription]
 						layoutpolicy_vertical = expanding 
 					}
+					
+					block "after_desc"
+					{
+					}
 				}
 				node_window_selected_frame_vertical = {}
 			}

@@ -69,6 +69,43 @@ template editor_horizontal_scrollbar
 	}
 }
 
+template sticky_vertical_scrollbar
+{
+	scrollbar = {
+		name = "vertical_scrollbar"
+		size = { 14 14 }
+		wheelstep = 60
+		direction = vertical
+		sticky = yes
+
+		track = {
+			using = editor_scrollbar_track
+		}
+
+		slider = {
+			using = editor_scrollbar_slider
+		}
+
+		dec_button = {
+			editor_scrollbar_button = {
+				upframe = 1
+				downframe = 2
+				overframe = 3
+				disableframe = 4
+			}
+		}
+
+		inc_button = {
+			editor_scrollbar_button = {
+				upframe = 5
+				downframe = 6
+				overframe = 7
+				disableframe = 8
+			}
+		}
+	}
+}
+
 template editor_font
 {
 	font = "tools_font"

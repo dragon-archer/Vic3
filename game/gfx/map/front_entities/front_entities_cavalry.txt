@@ -54,7 +54,12 @@ military_cavalry_european_hussar_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 
 		scope:combat_unit_type = unit_type:combat_unit_type_hussars
@@ -68,7 +73,12 @@ military_cavalry_european_dragoon_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_dragoons
 	}
@@ -81,7 +91,12 @@ military_cavalry_european_cuirassier_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_cuirassiers
 	}
@@ -94,7 +109,12 @@ military_cavalry_european_lancer_diorama_entity = {
 	
 	trigger = {
 		scope:culture = {
-			has_culture_graphics = european
+			OR = {
+				has_culture_graphics = european
+				has_culture_graphics = french
+				has_culture_graphics = brazilian
+				has_culture_graphics = balkan
+			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_lancers
 	}
@@ -382,6 +402,7 @@ military_cavalry_nativeamerican_hussar_diorama_entity = {
 		scope:culture = {
 			OR = {
 				has_culture_graphics = decentralised_americas
+				has_culture_graphics = polynesian
 			}
 		}
 
@@ -398,6 +419,7 @@ military_cavalry_nativeamerican_dragoon_diorama_entity = {
 		scope:culture = {
 			OR = {
 				has_culture_graphics = decentralised_americas
+				has_culture_graphics = polynesian
 			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_dragoons
@@ -413,6 +435,7 @@ military_cavalry_nativeamerican_cuirassier_diorama_entity = {
 		scope:culture = {
 			OR = {
 				has_culture_graphics = decentralised_americas
+				has_culture_graphics = polynesian
 			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_cuirassiers
@@ -428,6 +451,7 @@ military_cavalry_nativeamerican_lancer_diorama_entity = {
 		scope:culture = {
 			OR = {
 				has_culture_graphics = decentralised_americas
+				has_culture_graphics = polynesian
 			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_lancers

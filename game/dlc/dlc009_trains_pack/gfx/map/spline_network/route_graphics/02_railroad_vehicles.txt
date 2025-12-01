@@ -1258,6 +1258,7 @@ military_mobilization_railroad = {
 	max_path_length = 5
 
 	possible = {
+		is_at_war = yes
 		any_military_formation = {
 			is_mobilized = yes
 		}

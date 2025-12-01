@@ -1,0 +1,16 @@
+pdxmesh = {
+	name = "male_belt_greek_01_bs_fat_mesh"
+	file = "male_belt_greek_01_bs_fat.mesh"
+
+	meshsettings = {
+		name = "male_belt_greek_01_bs_fatShape"
+		index = 0
+		shader = "portrait_attachment_alpha_to_coverage"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "male_belt_greek_01_bs_fat_entity"
+	pdxmesh = "male_belt_greek_01_bs_fat_mesh"
+}

@@ -44,8 +44,8 @@
 
 ## Interactions ##
 # Declare interest
-@delcare_interest_active = "declare_interest_blue.dds"		# Delcared interest, Can Deactivate
-@delcare_interest_orange = "declare_interest_orange.dds"	# Cannot Activate, but is valid
+@declare_interest_active = "declare_interest_blue.dds"		# Declared interest, Can Deactivate
+@declare_interest_orange = "declare_interest_orange.dds"	# Cannot Activate, but is valid
 
 # Market
 @market_connection_active = "import_export.dds"				# Trade route connected
@@ -486,9 +486,8 @@ mm_market_interaction = {
 	# Texture slots
 	secondary_color_red = @color_green					# Can Activate
 	secondary_color_green = @market_connection_active	# Active Connection
+	secondary_color_alpha = @color_red					# Cannot Activate, but is valid
 	alternate_color_green = @this_is_you				# This is you (player)
-	secondary_color_alpha = @color_orange				# Cannot Activate, but is valid
-
 
 	soundeffect = "snapshot:/Dynamic/low_pass_world"
 }
@@ -524,9 +523,9 @@ mm_declare_interest_interaction = {
 
 	# Texture slots
 	secondary_color_red = @color_green						# Can Activate
-	secondary_color_blue = @delcare_interest_active			# Can Deactivate, Has interest
-	secondary_color_alpha = @delcare_interest_orange		# Cannot Activate, but is valid
-	alternate_color_red = @delcare_interest_orange			# Activated, cannot deactivate
+	secondary_color_blue = @declare_interest_active			# Can Deactivate, Has interest
+	secondary_color_alpha = @color_red						# Cannot Activate, but is valid
+	alternate_color_red = @declare_interest_orange			# Activated, cannot deactivate
 
 	soundeffect = "snapshot:/Dynamic/low_pass_world"
 }

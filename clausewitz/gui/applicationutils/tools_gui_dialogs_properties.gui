@@ -75,7 +75,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = dialog_property_size
 				text = "[ToolPropertyString.GetString]"
-				oneditingfinished = "[ToolPropertyString.SetString]"
+				oneditingfinished_with_changes = "[ToolPropertyString.SetString]"
 				#onreturnpressed = "[ToolInputDialog.Confirm]"
 			}
 		}
@@ -87,7 +87,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = dialog_property_size
 				text = "[ToolPropertyCString.GetString]"
-				oneditingfinished = "[ToolPropertyCString.SetString]"
+				oneditingfinished_with_changes = "[ToolPropertyCString.SetString]"
 			}
 		}
 	}
@@ -98,7 +98,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = dialog_property_size
 				text = "[ToolPropertyFloat.GetFloat]"
-				oneditingfinished = "[ToolPropertyFloat.SetFloat]"
+				oneditingfinished_with_changes = "[ToolPropertyFloat.SetFloat]"
 				#onreturnpressed = "[ToolInputDialog.Confirm]"
 			}
 		}
@@ -110,7 +110,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = dialog_property_size
 				text = "[ToolPropertyInt8.GetInt8]"
-				oneditingfinished = "[ToolPropertyInt8.SetInt8]"
+				oneditingfinished_with_changes = "[ToolPropertyInt8.SetInt8]"
 			}
 		}
 	}
@@ -121,7 +121,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = dialog_property_size
 				text = "[ToolPropertyUint8.GetUint8]"
-				oneditingfinished = "[ToolPropertyUint8.SetUint8]"
+				oneditingfinished_with_changes = "[ToolPropertyUint8.SetUint8]"
 			}
 		}
 	}
@@ -132,7 +132,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = dialog_property_size
 				text = "[ToolPropertyInt16.GetInt16]"
-				oneditingfinished = "[ToolPropertyInt16.SetInt16]"
+				oneditingfinished_with_changes = "[ToolPropertyInt16.SetInt16]"
 			}
 		}
 	}
@@ -143,7 +143,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = dialog_property_size
 				text = "[ToolPropertyUint16.GetUint16]"
-				oneditingfinished = "[ToolPropertyUint16.SetUint16]"
+				oneditingfinished_with_changes = "[ToolPropertyUint16.SetUint16]"
 			}
 		}
 	}
@@ -154,7 +154,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = dialog_property_size
 				text = "[ToolPropertyInt.GetInt]"
-				oneditingfinished = "[ToolPropertyInt.SetInt]"
+				oneditingfinished_with_changes = "[ToolPropertyInt.SetInt]"
 				#onreturnpressed = "[ToolInputDialog.Confirm]"
 			}
 		}
@@ -166,7 +166,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = dialog_property_size
 				text = "[ToolPropertyUint.GetUint]"
-				oneditingfinished = "[ToolPropertyUint.SetUint]"
+				oneditingfinished_with_changes = "[ToolPropertyUint.SetUint]"
 				#onreturnpressed = "[ToolInputDialog.Confirm]"
 			}
 		}
@@ -196,7 +196,7 @@ types ToolsProperyTypes
 			tools_colorpicker = {
 				color = "[ToolPropertyColor.GetColor]"
 				#oncoloredited = "[ToolPropertyColor.SetColor]"
-				oneditingfinished = "[ToolPropertyColor.SetColor]"
+				oneditingfinished_with_changes = "[ToolPropertyColor.SetColor]"
 			}
 		}
 	}
@@ -207,7 +207,7 @@ types ToolsProperyTypes
 			tools_colorpicker = {
 				color = "[ToolPropertyCColor.GetCColor]"
 				#oncoloredited = "[ToolPropertyCColor.SetColor]"
-				oneditingfinished = "[ToolPropertyCColor.SetCColor]"
+				oneditingfinished_with_changes = "[ToolPropertyCColor.SetCColor]"
 			}
 		}
 	}
@@ -221,28 +221,28 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec4i.GetX]"
-					oneditingfinished = "[ToolPropertyVec4i.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec4i.SetX]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 				
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec4i.GetY]"
-					oneditingfinished = "[ToolPropertyVec4i.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec4i.SetY]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 				
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec4i.GetZ]"
-					oneditingfinished = "[ToolPropertyVec4i.SetZ]"
+					oneditingfinished_with_changes = "[ToolPropertyVec4i.SetZ]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 				
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec4i.GetW]"
-					oneditingfinished = "[ToolPropertyVec4i.SetW]"
+					oneditingfinished_with_changes = "[ToolPropertyVec4i.SetW]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 			}
@@ -258,21 +258,21 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3f.GetX]"
-					oneditingfinished = "[ToolPropertyVec3f.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3f.SetX]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 				
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3f.GetY]"
-					oneditingfinished = "[ToolPropertyVec3f.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3f.SetY]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 				
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3f.GetZ]"
-					oneditingfinished = "[ToolPropertyVec3f.SetZ]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3f.SetZ]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 			}
@@ -288,21 +288,21 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3i.GetX]"
-					oneditingfinished = "[ToolPropertyVec3i.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3i.SetX]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 				
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3i.GetY]"
-					oneditingfinished = "[ToolPropertyVec3i.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3i.SetY]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 				
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3i.GetZ]"
-					oneditingfinished = "[ToolPropertyVec3i.SetZ]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3i.SetZ]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 			}
@@ -318,14 +318,14 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 92 24 }
 					text = "[ToolPropertyVec2f.GetX]"
-					oneditingfinished = "[ToolPropertyVec2f.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2f.SetX]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 				
 				editor_textinput = {
 					size = { 92 24 }
 					text = "[ToolPropertyVec2f.GetY]"
-					oneditingfinished = "[ToolPropertyVec2f.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2f.SetY]"
 					#onreturnpressed = "[ToolInputDialog.Confirm]"
 				}
 			}
@@ -341,13 +341,13 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 92 24 }
 					text = "[ToolPropertyVec2i.GetX]"
-					oneditingfinished = "[ToolPropertyVec2i.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2i.SetX]"
 				}
 				
 				editor_textinput = {
 					size = { 92 24 }
 					text = "[ToolPropertyVec2i.GetY]"
-					oneditingfinished = "[ToolPropertyVec2i.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2i.SetY]"
 				}
 			}
 		}
@@ -362,13 +362,13 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 92 24 }
 					text = "[ToolPropertyVec2fPercent.GetX]"
-					oneditingfinished = "[ToolPropertyVec2fPercent.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2fPercent.SetX]"
 				}
 				
 				editor_textinput = {
 					size = { 92 24 }
 					text = "[ToolPropertyVec2fPercent.GetY]"
-					oneditingfinished = "[ToolPropertyVec2fPercent.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2fPercent.SetY]"
 				}
 			}
 		}

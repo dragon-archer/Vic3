@@ -103,14 +103,31 @@ VertexShader =
 				uint OffsetIndex = BoneIndex + JointsInstanceIndex;
 
 				float4x4 VertexMatrix = PdxMeshGetJointVertexMatrix( OffsetIndex );
-				float3x3 NormalMatrix = PdxMeshGetJointNormalMatrix( OffsetIndex );
 
 				SkinnedPosition += mul( VertexMatrix, Position ) * Weights[ i ];
 
-				// TODO [FM]: PSGE-3819 Better skinned normals
-				float3 Normal = mul( NormalMatrix, BaseNormal );
-				float3 Tangent = mul( NormalMatrix, BaseTangent );
+				float3 XAxis = float3( GetMatrixData( VertexMatrix, 0, 0 ), GetMatrixData( VertexMatrix, 0, 1 ), GetMatrixData( VertexMatrix, 0, 2 ) );
+				float3 YAxis = float3( GetMatrixData( VertexMatrix, 1, 0 ), GetMatrixData( VertexMatrix, 1, 1 ), GetMatrixData( VertexMatrix, 1, 2 ) );
+				float3 ZAxis = float3( GetMatrixData( VertexMatrix, 2, 0 ), GetMatrixData( VertexMatrix, 2, 1 ), GetMatrixData( VertexMatrix, 2, 2 ) );
+				
+				float XSqMagnitude = dot( XAxis, XAxis );
+				float YSqMagnitude = dot( YAxis, YAxis );
+				float ZSqMagnitude = dot( ZAxis, ZAxis );
+				
+				float3 SqScale = float3( XSqMagnitude, YSqMagnitude, ZSqMagnitude );
+				float3 SqScaleReciprocal = float3( 1.f, 1.f, 1.f ) / SqScale;
+				
+				float3 ScaledNormal = BaseNormal * SqScaleReciprocal;
+				float3 ScaledTangent = BaseTangent * SqScaleReciprocal;
+				
+				float3x3 VertexRotationMatrix = CastTo3x3( VertexMatrix );
+				
+				float3 Normal = mul( VertexRotationMatrix, ScaledNormal );
+				float3 Tangent = mul( VertexRotationMatrix, ScaledTangent );
 				float3 Bitangent = cross( Normal, Tangent ) * Input.Tangent.w;
+
+				Normal = normalize( Normal );
+				Tangent = normalize( Tangent );
 				Bitangent = normalize( Bitangent );
 
 				SkinnedNormal += Normal * Weights[i];

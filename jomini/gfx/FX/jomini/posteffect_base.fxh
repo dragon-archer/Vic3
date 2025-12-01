@@ -53,7 +53,7 @@ PixelShader =
 
 	Code
 	[[
-		float GetViewSpaceDepth( float2 UV, float2 Resolution )
+		float SampleDepthBuffer( float2 UV, float2 Resolution )
 		{
 		#ifdef MULTI_SAMPLED
 			int2 PixelIndex = int2( UV * Resolution );
@@ -61,6 +61,11 @@ PixelShader =
 		#else
 			float Depth = PdxTex2DLod0( DepthBuffer, UV ).r;
 		#endif
+			return Depth;
+		}
+		float GetViewSpaceDepth( float2 UV, float2 Resolution )
+		{
+			float Depth = SampleDepthBuffer( UV, Resolution );
 			return CalcViewSpaceDepth( Depth );
 		}
 

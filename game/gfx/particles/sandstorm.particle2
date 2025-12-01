@@ -6,8 +6,7 @@ graph={
 		pdxns:particle:Emitter={
 			id=0
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:lifetime"
 						label="Lifetime"
 						type="Float"
@@ -27,7 +26,10 @@ graph={
 						label="StartColor"
 						type="Color"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -86,6 +88,11 @@ graph={
 					linked_pin="value"
 				}
 				link={
+					pin_id="render_order"
+					linked_node=324
+					linked_pin="value"
+				}
+				link={
 					pin_id="usr:lifetime"
 					linked_node=80
 					linked_pin="output_id"
@@ -110,7 +117,7 @@ graph={
 		pdxns:values:Float={
 			id=1
 			node={
-				value=10.000000
+				value=5.000000
 			}
 			inputs={
 			}
@@ -662,7 +669,7 @@ graph={
 				}
 				link={
 					pin_id="y"
-					linked_node=50
+					linked_node=320
 					linked_pin="value"
 				}
 				link={
@@ -672,10 +679,10 @@ graph={
 				}
 			}
 		}
-		pdxns:values:Float={
-			id=50
+		pdxns:values:Int32={
+			id=324
 			node={
-				value=1.000000
+				value=5
 			}
 			inputs={
 			}
@@ -1721,9 +1728,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=141
+			id=317
 			node={
-				value=1.000000
+				value=0.800000
 			}
 			inputs={
 			}
@@ -1768,7 +1775,7 @@ graph={
 		pdxns:values:Float={
 			id=146
 			node={
-				value=25.000000
+				value=10.000000
 			}
 			inputs={
 			}
@@ -2146,7 +2153,7 @@ graph={
 				}
 				link={
 					pin_id="y"
-					linked_node=141
+					linked_node=316
 					linked_pin="value"
 				}
 				link={
@@ -2461,8 +2468,7 @@ graph={
 		pdxns:particle:Emitter={
 			id=197
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:lifetime"
 						label="Lifetime"
 						type="Float"
@@ -2482,7 +2488,10 @@ graph={
 						label="StartColor"
 						type="Color"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -2802,6 +2811,64 @@ graph={
 			id=213
 			node={
 				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=322
+			node={
+				value=1.600000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=321
+			node={
+				value=1.250000
+			}
+			inputs={
+			}
+		}
+		pdxns:math:randomF={
+			id=320
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=321
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=322
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:math:randomF={
+			id=316
+			node={
+			}
+			inputs={
+				link={
+					pin_id="limit1"
+					linked_node=317
+					linked_pin="value"
+				}
+				link={
+					pin_id="limit2"
+					linked_node=318
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=318
+			node={
+				value=1.250000
 			}
 			inputs={
 			}

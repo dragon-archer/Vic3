@@ -1,0 +1,297 @@
+types Tweakable
+{
+	type Tweakable = widget {
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+
+			margin_left = "[Add_int32( TweakableUiEntry.GetMargin, '(int32)5' )]"
+			margin_right = 5
+
+			# Spacer
+			widget = {
+				size = { 15 20 }
+			}
+
+			editor_textbox = {
+				name = "tweakable_title"
+
+				alwaystransparent = no
+				layoutpolicy_horizontal = preferred
+				fontsize = 12
+				maximumsize = { 350 20 }
+				
+				text = "[TweakableUiEntry.GetFriendlyName]"
+
+				raw_tooltip = "'[Tweakable.GetTweakableId]' Right click to copy this Id to the clipboard."
+				tooltip_type = "mouse"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+
+				align = nobaseline
+
+				autoresize = yes
+				elide = right
+			}
+
+			# Spacer
+			widget = {
+				layoutpolicy_horizontal = expanding
+			}
+
+			block "tweakable_specialized"
+			{
+
+			}
+		}
+	}
+
+	type expand_button = checkbutton {
+		gfxtype = checkbuttongfx
+		shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
+		texture = "gfx/editor_gui/editor_tree_expand.dds"
+		framesize = { 16 16 }
+	}
+
+	# Type is created from code, don't change the name.
+	type category_header = widget {
+
+		hbox = {
+			spacing = 3
+			layoutpolicy_horizontal = expanding
+
+			margin_left = "[TweakableCategory.GetMargin]"
+
+			expand_button = {
+				onclick = "[TweakableCategory.ToggleExpanded]"
+				onclick = "[Tweaker.RebuildTree]" # It's easier to rebuild the entire tree, which is quite fast anyway
+				checked = "[TweakableCategory.IsExpanded]"
+			}
+
+			editor_textbox = {
+				layoutpolicy_horizontal = preferred
+				fontsize = 13
+				autoresize = yes
+				text = "[TweakableCategory.GetName]"
+				elide = right
+				align = nobaseline
+			}
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+				icon = {
+					alpha = 0.3
+					texture = "gfx/editor_gui/separator.dds"
+					size = { 100% 3 }
+					position = { 0 55% }
+				}
+			}
+		}
+	}
+}
+
+Tweakable = {
+	name = "tweakable_value"
+	
+	blockoverride "tweakable_specialized"
+	{
+		editor_editbox = {
+			name = "tweakable_value_eb"
+			using = property_editbox
+			alwaystransparent = no
+			size = { 44 19 }
+			text = "[Tweakable.GetValue]"
+		}
+		
+		widget = { 	size = { 3 0 }	}
+		
+		editor_button = {
+			name = "tweakable_value_button"
+			size = { 33 19 }
+			fontcolor = { 1 1 1 1 }
+			raw_text = "+/-"
+			align = center|nobaseline
+		}
+	}
+	
+}
+
+Tweakable = {
+	name = "tweakable_bool"
+	blockoverride "tweakable_specialized"
+	{
+		widget = {
+			size = { 20 20 }
+
+			checkbutton = {
+				using = editor_checkbutton
+				name = "tweakable_bool_cb"
+				parentanchor = left|vcenter
+				checked = "[Tweakable.GetBool]"
+			}
+		}
+	}
+}
+
+Tweakable = {
+	name = "tweakable_string"
+	blockoverride "tweakable_specialized"
+	{
+		editor_editbox = {
+			name = "tweakable_string_eb"
+			using = property_editbox
+			alwaystransparent = no
+			size = { 160 20 }
+			text = "[Tweakable.GetValue]"
+		}
+	}
+}
+
+Tweakable = {
+	name = "tweakable_color"
+	blockoverride "tweakable_specialized"
+	{	
+		editor_editbox = {
+			name = "tweakable_color_eb"
+			using = property_editbox
+			fontsize = 13
+			alwaystransparent = no
+			size = { 56 19 }
+			text = "[Tweakable.GetValue]"
+		}
+		
+		widget = {
+			size = { 4 20 }
+		}
+
+		widget = {
+			size = { 20 20 }
+			tools_colorpicker = {
+				name = "tweakable_color_picker"
+				color = "[Tweakable.GetColor]"
+				position = { -1 -1 } # colorpicker is a bit wierd
+			}
+		}
+	}
+}
+
+Tweakable = {
+	name = "tweakable_callback"
+	
+	blockoverride "tweakable_specialized"
+	{
+		editor_editbox = {
+			name = "tweakable_callback_eb"
+			using = property_editbox
+			alwaystransparent = no
+			size = { 150 20 }
+			text = "[Tweakable.GetValue]"
+		}
+		
+		editor_button = {
+			name = "tweakable_callback_button"
+			size = { 85 20 }
+			text = "[Tweakable.GetGuiName]"
+			fontsize = 12
+			align = center|nobaseline
+		}
+	}
+}
+
+vbox = {
+	name = "tweaker_window"
+
+	layoutpolicy_horizontal = expanding
+	layoutpolicy_vertical = expanding
+
+	using = tools_spacing
+	spacing = 10
+
+	hbox = {
+		layoutpolicy_horizontal = expanding
+		history_toolbar = {	}
+
+		widget = {
+			layoutpolicy_horizontal = expanding
+		}
+	}
+
+	hbox = {
+		spacing = 5
+		layoutpolicy_horizontal = expanding
+
+		editor_textbox = {
+			using = tools_label
+			layoutpolicy_horizontal = preferred
+			layoutpolicy_vertical = fixed
+			raw_text = "Filter:"
+			autoresize = yes
+			margin_right = 8
+			align = left|nobaseline
+		}
+
+		editor_editbox = {
+			using = tools_editbox
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = fixed
+			align = left
+			margin_left = 4
+			using = property_editbox
+			size = { 0 20 }
+			
+			ontextedited = "[Tweaker.SetSearchString]"
+			text = "[Tweaker.GetSearchString]"
+
+			editor_button = {
+				raw_tooltip = "Clear Text"
+				onclick = "[Tweaker.ClearSearchString]"
+				alpha = 0.5
+				position = { -3 0 }
+				parentanchor = vcenter|right
+				size = { 16 16 }
+				texture = "gfx/editor_gui/editor_layout_window_close.dds"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+			}
+		}
+
+		editor_toolbar_button = {
+			size = { 22 22 }
+			editor_toolbar_icon = {
+				texture = "gfx/tools/material/settings.png"
+			}
+			raw_tooltip = "Tweaker Options"
+			onclick = "[Tweaker.OnOptionsPressed]"
+		}
+	}
+
+	hbox = {
+		layoutpolicy_horizontal = expanding
+		layoutpolicy_vertical = expanding
+		using = tools_spacing
+
+		editor_scrollarea = {
+
+			blockoverride "Properties"
+			{
+				viewportwidget = {
+					widget = {
+						scissor = yes
+					}
+				}
+			}
+
+			blockoverride "content"
+			{
+				fixedgridbox = {
+					name = "tweaker_tree" # Datamodel is set through code.
+					addcolumn = 100%
+					addrow = 21
+					setitemsizefromcell = yes
+				}
+			}
+		}
+	}
+}

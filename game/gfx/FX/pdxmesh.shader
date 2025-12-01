@@ -358,13 +358,15 @@ PixelShader =
 				SMaterialProperties MaterialProps = GetMaterialProperties( Diffuse.rgb, Normal, Properties.a, Properties.g, Properties.b );
 				SLightingProperties LightingProps = GetSunLightingProperties( Input.WorldSpacePos, ShadowMap );
 				#ifndef LOW_QUALITY_SHADERS
-					Color = CalculateSunLighting( MaterialProps, LightingProps, EnvironmentMap );
+					#ifndef FLATLIGHT
+						Color = CalculateSunLighting( MaterialProps, LightingProps, EnvironmentMap );
 
-					// Second sun
-					#ifndef SINGLESUN
-						SLightingProperties SecondLightingProps = GetSecondSunLightingProperties( Input.WorldSpacePos );
-						float3 SecondSunColor = CalculateSecondSunLighting( MaterialProps, SecondLightingProps );
-						Color += SecondSunColor;
+						// Second sun
+						#ifndef SINGLESUN
+							SLightingProperties SecondLightingProps = GetSecondSunLightingProperties( Input.WorldSpacePos );
+							float3 SecondSunColor = CalculateSecondSunLighting( MaterialProps, SecondLightingProps );
+							Color += SecondSunColor;
+						#endif
 					#endif
 				#endif
 
@@ -740,6 +742,7 @@ Effect snap_to_terrain_atlas_alpha_to_coverage_colormapShadow
 	Defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "ALPHA_TO_COVERAGE" }
 }
 
+
 # Tree trunk
 Effect standard_treetrunk
 {
@@ -825,6 +828,7 @@ Effect snap_to_terrain_treetrunk_tallShadow
 	Defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "WINDTRANSFORM" "TREE_TALL" }
 }
 
+
 # Flatmap
 Effect flatmap_alpha_blend
 {
@@ -855,6 +859,38 @@ Effect flatmap_alpha_blend_no_bordersShadow
 	VertexShader = "VS_standard_shadow"
 	PixelShader = "PixelPdxMeshAlphaBlendShadow"
 	Defines = { "NO_FOG" }
+	RasterizerState = ShadowRasterizerState
+}
+
+# Standard flat light
+Effect standard_flat
+{
+	VertexShader = "VS_standard"
+	PixelShader = "PS_standard"
+
+	Defines = { "FLATLIGHT" }
+}
+Effect standard_flatShadow
+{
+	VertexShader = "VS_standard_shadow"
+	PixelShader = "PixelPdxMeshStandardShadow"
+	RasterizerState = ShadowRasterizerState
+}
+
+# Standard flat light + alpha blend
+Effect standard_flat_alpha_blend
+{
+	VertexShader = "VS_standard"
+	PixelShader = "PS_standard"
+	BlendState = "alpha_blend"
+	DepthStencilState = "depth_test_no_write"
+
+	Defines = { "FLATLIGHT" }
+}
+Effect standard_flat_alpha_blendShadow
+{
+	VertexShader = "VS_standard_shadow"
+	PixelShader = "PixelPdxMeshAlphaBlendShadow"
 	RasterizerState = ShadowRasterizerState
 }
 
@@ -1223,4 +1259,36 @@ Effect snap_to_terrain_atlas_alpha_to_coverage_colormapShadow_mapobject
 	PixelShader = "PS_jomini_mapobject_shadow_alphablend"
 	RasterizerState = ShadowRasterizerState
 	Defines = { "PDX_MESH_SNAP_VERTICES_TO_TERRAIN" "ALPHA_TO_COVERAGE" }
+}
+
+# Standard flat light
+Effect standard_flat_mapobject
+{
+	VertexShader = "VS_mapobject"
+	PixelShader = "PS_standard"
+
+	Defines = { "FLATLIGHT" }
+}
+Effect standard_flatShadow_mapobject
+{
+	VertexShader = "VS_jomini_mapobject_shadow"
+	PixelShader = "PS_jomini_mapobject_shadow"
+	RasterizerState = ShadowRasterizerState
+}
+
+# Standard flat light + alpha blend
+Effect standard_flat_alpha_blend_mapobject
+{
+	VertexShader = "VS_mapobject"
+	PixelShader = "PS_standard"
+	BlendState = "alpha_blend"
+	DepthStencilState = "depth_test_no_write"
+
+	Defines = { "FLATLIGHT" }
+}
+Effect standard_flat_alpha_blendShadow_mapobject
+{
+	VertexShader = "VS_jomini_mapobject_shadow"
+	PixelShader = "PS_jomini_mapobject_shadow_alphablend"
+	RasterizerState = ShadowRasterizerState
 }

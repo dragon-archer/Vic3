@@ -65,6 +65,24 @@ PixelShader =
 		SampleModeU = "Clamp"
 		SampleModeV = "Clamp"
 	}
+	TextureSampler LensFlareTexture
+	{
+		Index = 6
+		MagFilter = "Point"
+		MinFilter = "Point"
+		MipFilter = "Point"
+		SampleModeU = "Clamp"
+		SampleModeV = "Clamp"
+	}
+	TextureSampler LensDirtTexture
+	{
+		Index = 7
+		MagFilter = "Point"
+		MinFilter = "Point"
+		MipFilter = "Point"
+		SampleModeU = "Clamp"
+		SampleModeV = "Clamp"
+	}
 
 
 	MainCode PixelShader
@@ -131,6 +149,13 @@ PixelShader =
 			#ifdef BLOOM_ENABLED
 				float3 bloom = PdxTex2DLod0( RestoreBloom, Input.uv * BloomToScreenScale ).rgb;
 				color.rgb = bloom.rgb + color.rgb; // todo * bloomscale?
+
+				#ifdef LENS_FLARE_ENABLED
+					float3 LensFlare = PdxTex2DLod0( LensFlareTexture, Input.uv ).rgb;
+					float3 LensDirt = PdxTex2DLod0( LensDirtTexture, Input.uv ).rgb;
+					color.rgb = ( LensFlare.rgb * LensDirt ) + color.rgb;
+				#endif
+
 			#endif
 
 				// Tonemapping

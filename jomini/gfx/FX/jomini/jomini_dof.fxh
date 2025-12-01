@@ -15,7 +15,7 @@ ConstantBuffer( JominiDofConstants )
 
 	float _BlurMin;
 	float _BlurMax;
-	float _BlurScale
+	float _BlurScale;
 	float _BlurExponent;
 	float _HeightMin;
 	float _HeightMax;

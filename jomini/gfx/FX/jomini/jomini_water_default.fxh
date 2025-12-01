@@ -164,6 +164,14 @@ PixelShader =
 			#endif
 		};
 		
+		struct SWaterOutput
+		{
+			float4  _Color;
+			float	_Depth;
+			float3	_Normal;
+			float	_ReflectionAmount;
+		};
+		
 		float CalcFoamFactor( float2 UV01, float2 WorldSpacePosXZ, float Depth, float FlowFoamMask, float3 FlowNormal )
 		{
 			float2 NoiseUV = WorldSpacePosXZ * _WaterFoamNoiseScale;
@@ -385,7 +393,7 @@ PixelShader =
 		}
 		
 		
-		float4 CalcWater( in SWaterParameters Input )
+		SWaterOutput CalcWater( in SWaterParameters Input )
 		{
 			float4 WaterColorAndSpec = PdxTex2D( WaterColorTexture, Input._WorldUV );
 			float GlossMap = WaterColorAndSpec.a;
@@ -451,36 +459,33 @@ PixelShader =
 				float ExtraFade = 1.0f - ( Input._WorldUV.x - 1.0f ) / JOMINIWATER_BorderLerpSize;
 				WaterFade *= ExtraFade;
 			#endif
-			
-			return float4( FinalColor, WaterFade );
+			SWaterOutput Out;
+			Out._Color = float4( FinalColor, WaterFade );
+			Out._Depth = Input._Depth;
+			Out._Normal = Normal;
+			Out._ReflectionAmount = FresnelFactor;
+			return Out;
 		}
 		
-		float4 CalcWater( VS_OUTPUT_WATER Input, out float Depth )
+		SWaterOutput CalcWater( VS_OUTPUT_WATER Input )
 		{
 			float2 HeightmapCoordinate = Input.WorldSpacePos.xz;
 			#ifdef JOMINIWATER_BORDER_LERP
 				HeightmapCoordinate.x -= JOMINIWATER_MapSize.x;
 			#endif
 			float Height = GetHeightMultisample( HeightmapCoordinate, 0.65 );
-			Depth = Input.WorldSpacePos.y - Height;
 			
 			SWaterParameters Params;
 			Params._ScreenSpacePos = Input.Position;
 			Params._WorldSpacePos = Input.WorldSpacePos;
 			Params._WorldUV = Input.UV01;
-			Params._Depth = Depth;
+			Params._Depth = Input.WorldSpacePos.y - Height;
 			Params._NoiseScale = 0.05f;
 			Params._WaveSpeedScale = 1.0f;
 			Params._WaveNoiseFlattenMult = 1.0f;
 			Params._FlowNormal = CalcFlow( FlowMapTexture, FlowNormalTexture, Params._WorldUV, Params._WorldSpacePos.xz, Params._FlowFoamMask );
 			
 			return CalcWater( Params );
-		}
-		
-		float4 CalcWater( VS_OUTPUT_WATER Input )
-		{
-			float Depth;
-			return CalcWater( Input, Depth );
 		}
 	]]
 	
@@ -492,7 +497,7 @@ PixelShader =
 		[[			
 			PDX_MAIN
 			{
-				float4 Water = CalcWater( Input ); 
+				float4 Water = CalcWater( Input )._Color; 
 				Water.rgb = ApplyDistanceFog( Water.rgb, Input.WorldSpacePos );
 				return Water;
 			}

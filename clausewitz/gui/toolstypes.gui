@@ -82,6 +82,17 @@ template editor_toolbar_font
 	fontsize = 10
 }
 
+template editor_toolbar_background
+{
+	background = {
+		texture = "gfx/editor_gui/editor_toolbar_background.dds"
+		spriteType = CorneredStretched
+		spriteborder = { 5 5 }
+		margin = { -1 0 }
+		shaderfile = "gfx/FX/pdxgui_default.shader"
+	}
+}
+
 types ToolsTypes
 {
 	type editor_icon = icon {}
@@ -339,13 +350,7 @@ types ToolsTypes
 		
 		block "background"
 		{
-			background = {
-				texture = "gfx/editor_gui/editor_toolbar_background.dds"
-				spriteType = CorneredStretched
-				spriteborder = { 5 5 }
-				margin = { -1 0 }
-				shaderfile = "gfx/FX/pdxgui_default.shader"
-			}
+			using = editor_toolbar_background
 		}
 		
 		block "left"
@@ -528,7 +533,7 @@ types ToolsTypes
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = preferred
 					
-						block "content" 
+						block "content"
 						{
 						}
 						

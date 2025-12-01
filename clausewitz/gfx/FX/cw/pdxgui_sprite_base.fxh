@@ -274,18 +274,19 @@ PixelShader =
 			{
 				ReturnBlend = float4( Darken( Base.rgb, Blend.rgb, Opacity ), Base.a );
 			}
-			else if ( ModeId == 6 ) // AlphaMultiply
+			else if ( ModeId == 6 ) // Mask
 			{
-				ReturnBlend = float4( Base.rgb, Base.a * lerp( 1.0, Blend.a, Opacity ) );
-			} 
-			else if ( ModeId == 7 ) // Mask
-			{
-				int ChannelIdx = Mode >> 4;
+				int ChannelIdx = ( 0xf & ( Mode >> 4 ) );
 				BlendMask = Blend[ChannelIdx] * Opacity;
 			}
-			else if ( ModeId == 8 ) // Normal
+			else if ( ModeId == 7 ) // Normal
 			{
 				ReturnBlend = float4( lerp( Base, Blend, Opacity * Blend.a ).rgb, Base.a );
+			}
+			else if ( ModeId == 8 ) // AlphaMultiply
+			{				
+				int ChannelIdx = ( 0xf & ( Mode >> 4 ) );
+				ReturnBlend = float4( Base.rgb, Base.a * lerp( 1.0, Blend[ ChannelIdx ], Opacity ) );
 			}
 			
 			return ReturnBlend;

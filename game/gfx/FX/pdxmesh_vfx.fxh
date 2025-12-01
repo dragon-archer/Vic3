@@ -11,7 +11,7 @@ VertexShader =
 		#define UI_PANNING_TEXTURE_UV0_MULT float2 ( 5.0f, 1.0f )
 		#define UI_PANNING_TEXTURE_UV0_SPEED float2 ( 0.0f, 0.4f )
 
-		#define UI_PANNING_TEXTURE_UV2_MULT float2( 2.5f, 0.5f )
+		#define UI_PANNING_TEXTURE_UV2_MULT float2( 3.0f, 0.5f )
 		#define UI_PANNING_TEXTURE_UV2_SPEED float2 ( 0.05f, 0.05f)
 	]]
 }
@@ -20,7 +20,7 @@ PixelShader =
 {		
 	Code
 	[[
-		#define UV_DIST_STRENGTH 0.2f
+		#define UV_DIST_STRENGTH 0.1f
 
 		#define LOWER_EDGE_FALLOFF 0.8f
 		#define LOWER_EDGE_MULT 1.0f

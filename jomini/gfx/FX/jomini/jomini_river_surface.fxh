@@ -45,12 +45,12 @@ PixelShader =
 			Params._FlowNormal = normalize(FlowNormal);
 			Params._FlowFoamMask = FlowNormalSample.a * _RiverFoamFactor;
 			
-			float4 Color = CalcWater( Params );
+			float4 Color = CalcWater( Params )._Color;
 			Color.a = saturate( Depth * 2.0f / _Depth ) * Input.Transparency * saturate( ( Input.DistanceToMain - 0.1f ) * 5.0f );
 			return Color;
 		}
 
-		float4 CalcRiverAdvanced( in VS_OUTPUT_RIVER Input )
+		SWaterOutput CalcRiverAdvanced( in VS_OUTPUT_RIVER Input )
 		{			
 			float Depth = CalcDepth( Input.UV );
 			
@@ -82,19 +82,19 @@ PixelShader =
 			Params._FlowFoamMask = FlowNormalSample.a * _RiverFoamFactor;
 
 			// Water color
-			float4 Color = CalcWater( Params );
-
+			SWaterOutput Out = CalcWater( Params );
+			
 			// Ocean and river connection fade
 			#ifdef JOMINI_REFRACTION_ENABLED
-				Color.a = Input.Transparency * saturate( ( Input.DistanceToMain - 0.1f ) * 5.0f );
+				Out._Color.a = Input.Transparency * saturate( ( Input.DistanceToMain - 0.1f ) * 5.0f );
 			#endif
 
 			// Edge fade
 			float EdgeFade1 = smoothstep( 0.0f, _BankFade, Input.UV.y );
 			float EdgeFade2 = smoothstep( 0.0f, _BankFade, 1.0f - Input.UV.y );
-			Color.a *= EdgeFade1 * EdgeFade2;
+			Out._Color.a *= EdgeFade1 * EdgeFade2;
 
-			return Color;
+			return Out;
 		}
 	]]
 }

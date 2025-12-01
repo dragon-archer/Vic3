@@ -40,7 +40,7 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyString.GetString]"
-				oneditingfinished = "[ToolPropertyString.SetString]"
+				oneditingfinished_with_changes = "[ToolPropertyString.SetString]"
 			}
 		}
 	}
@@ -52,7 +52,7 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyCString.GetString]"
-				oneditingfinished = "[ToolPropertyCString.SetString]"
+				oneditingfinished_with_changes = "[ToolPropertyCString.SetString]"
 			}
 		}
 	}
@@ -64,7 +64,7 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyFloat.GetFloat]"
-				oneditingfinished = "[ToolPropertyFloat.SetFloat]"
+				oneditingfinished_with_changes = "[ToolPropertyFloat.SetFloat]"
 			}
 		}
 	}
@@ -76,7 +76,7 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyInt8.GetInt8]"
-				oneditingfinished = "[ToolPropertyInt8.SetInt8]"
+				oneditingfinished_with_changes = "[ToolPropertyInt8.SetInt8]"
 			}
 		}
 	}
@@ -88,7 +88,7 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyUint8.GetUint8]"
-				oneditingfinished = "[ToolPropertyUint8.SetUint8]"
+				oneditingfinished_with_changes = "[ToolPropertyUint8.SetUint8]"
 			}
 		}
 	}
@@ -100,7 +100,7 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyInt16.GetInt16]"
-				oneditingfinished = "[ToolPropertyInt16.SetInt16]"
+				oneditingfinished_with_changes = "[ToolPropertyInt16.SetInt16]"
 			}
 		}
 	}
@@ -112,7 +112,7 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyUint16.GetUint16]"
-				oneditingfinished = "[ToolPropertyUint16.SetUint16]"
+				oneditingfinished_with_changes = "[ToolPropertyUint16.SetUint16]"
 			}
 		}
 	}
@@ -124,7 +124,7 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyInt.GetInt]"
-				oneditingfinished = "[ToolPropertyInt.SetInt]"
+				oneditingfinished_with_changes = "[ToolPropertyInt.SetInt]"
 			}
 		}
 	}
@@ -136,7 +136,7 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyUint.GetUint]"
-				oneditingfinished = "[ToolPropertyUint.SetUint]"
+				oneditingfinished_with_changes = "[ToolPropertyUint.SetUint]"
 			}
 		}
 	}
@@ -164,7 +164,7 @@ types ToolsProperyTypes
 			tools_colorpicker = {
 				color = "[ToolPropertyColor.GetColor]"
 				#oncoloredited = "[ToolPropertyColor.SetColor]"
-				oneditingfinished = "[ToolPropertyColor.SetColor]"
+				oneditingfinished_with_changes = "[ToolPropertyColor.SetColor]"
 			}
 		}
 	}
@@ -184,7 +184,7 @@ types ToolsProperyTypes
 			tools_colorpicker = {
 				color = "[ToolPropertyCColor.GetCColor]"
 				#oncoloredited = "[ToolPropertyCColor.SetColor]"
-				oneditingfinished = "[ToolPropertyCColor.SetCColor]"
+				oneditingfinished_with_changes = "[ToolPropertyCColor.SetCColor]"
 			}
 		}
 	}
@@ -196,28 +196,28 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec4i.GetX]"
-				oneditingfinished = "[ToolPropertyVec4i.SetX]"
+				oneditingfinished_with_changes = "[ToolPropertyVec4i.SetX]"
 			}
 			
 			editor_textinput = {
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec4i.GetY]"
-				oneditingfinished = "[ToolPropertyVec4i.SetY]"
+				oneditingfinished_with_changes = "[ToolPropertyVec4i.SetY]"
 			}
 			
 			editor_textinput = {
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec4i.GetZ]"
-				oneditingfinished = "[ToolPropertyVec4i.SetZ]"
+				oneditingfinished_with_changes = "[ToolPropertyVec4i.SetZ]"
 			}
 			
 			editor_textinput = {
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec4i.GetW]"
-				oneditingfinished = "[ToolPropertyVec4i.SetW]"
+				oneditingfinished_with_changes = "[ToolPropertyVec4i.SetW]"
 			}
 		}
 	}
@@ -229,21 +229,21 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec3f.GetX]"
-				oneditingfinished = "[ToolPropertyVec3f.SetX]"
+				oneditingfinished_with_changes = "[ToolPropertyVec3f.SetX]"
 			}
 			
 			editor_textinput = {
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec3f.GetY]"
-				oneditingfinished = "[ToolPropertyVec3f.SetY]"
+				oneditingfinished_with_changes = "[ToolPropertyVec3f.SetY]"
 			}
 			
 			editor_textinput = {
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec3f.GetZ]"
-				oneditingfinished = "[ToolPropertyVec3f.SetZ]"
+				oneditingfinished_with_changes = "[ToolPropertyVec3f.SetZ]"
 			}
 		}
 	}
@@ -255,21 +255,21 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec3i.GetX]"
-				oneditingfinished = "[ToolPropertyVec3i.SetX]"
+				oneditingfinished_with_changes = "[ToolPropertyVec3i.SetX]"
 			}
 			
 			editor_textinput = {
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec3i.GetY]"
-				oneditingfinished = "[ToolPropertyVec3i.SetY]"
+				oneditingfinished_with_changes = "[ToolPropertyVec3i.SetY]"
 			}
 			
 			editor_textinput = {
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec3i.GetZ]"
-				oneditingfinished = "[ToolPropertyVec3i.SetZ]"
+				oneditingfinished_with_changes = "[ToolPropertyVec3i.SetZ]"
 			}
 		}
 	}
@@ -281,14 +281,14 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec2f.GetX]"
-				oneditingfinished = "[ToolPropertyVec2f.SetX]"
+				oneditingfinished_with_changes = "[ToolPropertyVec2f.SetX]"
 			}
 			
 			editor_textinput = {
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec2f.GetY]"
-				oneditingfinished = "[ToolPropertyVec2f.SetY]"
+				oneditingfinished_with_changes = "[ToolPropertyVec2f.SetY]"
 			}
 		}
 	}
@@ -300,14 +300,14 @@ types ToolsProperyTypes
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec2i.GetX]"
-				oneditingfinished = "[ToolPropertyVec2i.SetX]"
+				oneditingfinished_with_changes = "[ToolPropertyVec2i.SetX]"
 			}
 			
 			editor_textinput = {
 				size = { 48 16 }
 				fontsize = 10
 				text = "[ToolPropertyVec2i.GetY]"
-				oneditingfinished = "[ToolPropertyVec2i.SetY]"
+				oneditingfinished_with_changes = "[ToolPropertyVec2i.SetY]"
 			}
 		}
 	}
@@ -385,7 +385,7 @@ types ToolsProperyTypes
 	}
 	
 	type editor_dockable_properties = vbox {
-	    spacing = 4
+		spacing = 4
 		editor_property_categories = {}
 	}
 
@@ -418,9 +418,9 @@ template filterable_property_list_properties
 		editor_editbox = {
 			margin_left = 6
 			using = tools_editbox
-            align = left|nobaseline
-            layoutpolicy_horizontal = expanding
-            layoutpolicy_vertical = fixed
+			align = left|nobaseline
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = fixed
 			ontextchanged = "[FilterablePropertyList.Search]"
 			alwaystransparent = no
 			text = "[FilterablePropertyList.GetSearchText]"
@@ -428,30 +428,30 @@ template filterable_property_list_properties
 			fontsize = 14
 
 			editor_button = {
-                raw_tooltip = "Clear Text"
-                onclick = "[FilterablePropertyList.ClearSearchText]"
-                alpha = 0.4
-                position = { -3 0 }
-                parentanchor = vcenter|right
-                size = { 16 16 }
-                texture = "gfx/editor_gui/editor_layout_window_close.dds"
-				tooltipwidget = { 
+				raw_tooltip = "Clear Text"
+				onclick = "[FilterablePropertyList.ClearSearchText]"
+				alpha = 0.4
+				position = { -3 0 }
+				parentanchor = vcenter|right
+				size = { 16 16 }
+				texture = "gfx/editor_gui/editor_layout_window_close.dds"
+				tooltipwidget = {
 					using = dockable_tooltip
 				}
-            }
+			}
 		}
 	}
 
 	editor_frame = {
 		layoutpolicy_vertical = expanding
-        layoutpolicy_horizontal = preferred
+		layoutpolicy_horizontal = preferred
 		
-		blockoverride "label" { 
+		blockoverride "label" {
 			text = "[FilterablePropertyList.GetPropertiesLabel]"
 		}
-        
+
 		blockoverride "content" {
-            editor_scrollarea = {
+			editor_scrollarea = {
 				blockoverride "content"
 				{
 					vbox = {
@@ -471,8 +471,8 @@ template filterable_property_list_properties
 					}
 				}
 			}
-        }
-    }
+		}
+	}
 }
 
 template tools_property_curve

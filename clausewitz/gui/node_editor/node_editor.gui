@@ -124,24 +124,30 @@ types NodeEditor
 				margin_left = 4
 				margin_right = 4
 				margin_bottom = 4
-				background = { 
-					texture = "gfx/editor_gui/node_editor/node_editor_title_background.dds" 
-					margin_top = 4
-					color = { 0.05 0.05 0.05 1 }
+				block "title_background"
+				{
+					background = { 
+						texture = "gfx/editor_gui/node_editor/node_editor_title_background.dds" 
+						margin_top = 4
+						color = { 0.05 0.05 0.05 1 }
+					}
 				}
 
 				spacing = 4
 
 				layoutpolicy_horizontal = expanding
-				widget = { 
-				size = { 8 8 }
-					icon = {
-						position = { 0 0 }
+				block "node_icon"
+				{
+					widget = { 
 						size = { 8 8 }
-						texture = [Node.Texture]
-						tooltip = "[Node.TypeName]"
-						tooltipwidget = { 
-							using = editor_tooltip 
+						icon = {
+							position = { 0 0 }
+							size = { 8 8 }
+							texture = "[Node.Texture]"
+							tooltip = "[Node.TypeName]"
+							tooltipwidget = { 
+								using = editor_tooltip 
+							}
 						}
 					}
 				}
@@ -225,6 +231,11 @@ types NodeEditor
 					vbox = {
 						name = "input_pins"
 						spacing = 2
+
+						block "before_input_pins"
+						{
+						}
+
 						# List for dynamic properties
 						vbox = {
 							margin_left = 8
@@ -460,7 +471,7 @@ node_window_type = {
 
 			size = { 88 88 }
 			icon = {
-				name = config_texture
+				name = "config_texture"
 				parentanchor = vcenter|hcenter
 				size = { 64 64 }
 
@@ -564,4 +575,7 @@ icon = {
 	position = { -4 -4 }
 	#color = [NodePin.Color]
 	texture = "gfx/editor_gui/editor_pin.dds"
+	tooltipwidget = {
+		using = dockable_tooltip
+	}
 }

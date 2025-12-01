@@ -12,9 +12,9 @@ f263bd36b73699d1117578042a302956  binaries/fmodstudio.dll
 e034d987448b3f5130794637a375e792  binaries/pops_api.dll
 eb8091c04da1bb8a61dfdceb0c8ae152  binaries/steam_api64.dll
 72ea330404a78bee7375bad7857a8f71  binaries/steam_api64_o.dll
-034a65deae460baeb75634169c90b4bc  binaries/victoria3.exe
+8fc1f288245a1f05694d3330597ad41f  binaries/victoria3.exe
 e662b083c927cfbeffa43f63d31c50dd  binaries/victoria3.exe.manifest
-17d5b67391bde64cf4ff21b2e654ade9  binaries/victoria3_win_console.exe
+96081fa3915d7a02202d8beb7b9a40f7  binaries/victoria3_win_console.exe
 e662b083c927cfbeffa43f63d31c50dd  binaries/victoria3_win_console.exe.manifest
 c511d61e9bfe10bfcd8d8b06b1e739a0  clausewitz/fonts/Open_Sans/OpenSans-Bold.ttf
 dc6310ed2a7c2cba5df089dcaba78222  clausewitz/fonts/Open_Sans/OpenSans-BoldItalic.ttf
@@ -111,7 +111,7 @@ d2033c01bb1d9ed1807d3b6d79fcc356  clausewitz/gfx/editor_gui/editor_icon_vbox.dds
 97981cfa2b89bda148edc8accb0c0698  clausewitz/gfx/editor_gui/editor_icon_widget.dds
 8644447cacbddc6ed3813177c5d2744b  clausewitz/gfx/editor_gui/editor_icon_window.dds
 4a779a2764a4b000b4ab2b38ddeb4a68  clausewitz/gfx/editor_gui/editor_invisible.dds
-24d3b838602db602ce121f92a365691f  clausewitz/gfx/editor_gui/editor_keyframe.dds
+b78ebb0891d3e7154b07609e7c4d3682  clausewitz/gfx/editor_gui/editor_keyframe.dds
 a1f4c2a3fb4df30bd0d84a9fd12a92b5  clausewitz/gfx/editor_gui/editor_keyframe_player_lock.dds
 3fc1e52b3873d8dd0e3c9fb80e1147ee  clausewitz/gfx/editor_gui/editor_layout_attach_bg.png
 9a430f3546ce1073774b490860594c39  clausewitz/gfx/editor_gui/editor_layout_button.png
@@ -154,6 +154,7 @@ e9e26ce9473beb5052323271870c2c16  clausewitz/gfx/editor_gui/graph.dds
 fa37f85c247189f20fad5f2c747427fc  clausewitz/gfx/editor_gui/loop.dds
 f1cfa8b960d59fa578ac2eb390e296ba  clausewitz/gfx/editor_gui/next.dds
 aa8f0888a05ed8a593a8803d09520bc7  clausewitz/gfx/editor_gui/node_editor/control_panel_preferences.png
+b25e36ad2406f644ee5a21add2cfea0b  clausewitz/gfx/editor_gui/node_editor/isolate_emitter_checkbutton.dds
 0948a6ecadc61a6d8b1b1d5d05e28047  clausewitz/gfx/editor_gui/node_editor/node_editor_field.dds
 652514c44f594de3acd45b413ba0d1aa  clausewitz/gfx/editor_gui/node_editor/node_editor_frame_filled.dds
 ab78c50ddb37efcc8d43d5cbd013fc25  clausewitz/gfx/editor_gui/node_editor/node_editor_layout_window_button.dds
@@ -169,7 +170,7 @@ c32e8a7b53c386ef7d229ab17c3f640a  clausewitz/gfx/editor_gui/remove.dds
 5113bc77fc072ca8dbcfbf00fbbddbee  clausewitz/gfx/editor_gui/reset.dds
 0d5a0d5ee1f8ab5e6a2b346c86d6be3e  clausewitz/gfx/editor_gui/rollback.dds
 1ef3cf407dd43fcef7a7ec1c7372c908  clausewitz/gfx/editor_gui/rollforward.dds
-076b47ad3ab8f7bfd90b10b433dd21e2  clausewitz/gfx/editor_gui/separator.dds
+6de90edf0be1f4cf3c9dbd6ff901f9ec  clausewitz/gfx/editor_gui/separator.dds
 3e953fb3805548cce2743f58abef5c46  clausewitz/gfx/editor_gui/sound_off.dds
 ea0b32d3ed614a5da95a681eee658aba  clausewitz/gfx/editor_gui/sound_on.dds
 55e1115f9a64c4b296753b521c02ebf8  clausewitz/gfx/editor_gui/step_backwards.dds
@@ -3109,7 +3110,6 @@ c5f207499cf6369702889fc73c3682a8  game/gfx/interface/backgrounds/header_bg_dec.d
 fe17ecf221c82b8ca500daecfb260699  game/gfx/interface/backgrounds/header_color.dds
 00e8faf7b9beb3face709d5baf8f4411  game/gfx/interface/backgrounds/illu_color.dds
 e5aa2d785cb5d2bb9368cc28f9f7b88e  game/gfx/interface/backgrounds/light_bg.dds
-9ffa685cf7fbef33a95261c07afd918f  game/gfx/interface/backgrounds/list_entry_fade.dds
 11491dae86f09a4785af96d31d69d60b  game/gfx/interface/backgrounds/not_yet_initialized.dds
 02c497447879fb98551e7a3d4d867bb0  game/gfx/interface/backgrounds/paper_bg.dds
 cf1c0e63697c09fab51416e800a37865  game/gfx/interface/backgrounds/paper_bg_dark.dds
@@ -3201,7 +3201,6 @@ df377a0f9fda32160a7ce0eba5ff59e9  game/gfx/interface/buttons/expand_button_bg.dd
 1c3ffb9444c15fb4f1bda7ef4b2e5d89  game/gfx/interface/buttons/expand_button_bg_mouse_enter.dds
 43052e3a5e1027533b7996038c57e3f5  game/gfx/interface/buttons/glow_button.dds
 88dcd308c59fe53268e3f39abbd48297  game/gfx/interface/buttons/glow_button_border.dds
-110cdad27291fd06694e96db39a2f240  game/gfx/interface/buttons/glow_button_intense.dds
 d9ed0149118715a5bd5df306e3df1a10  game/gfx/interface/buttons/radio_button.dds
 dd0e8e0bd5c0420d3b0c675df85d4995  game/gfx/interface/buttons/red_button_bevel.dds
 c17b5223449494e89fc0ea240f8f15fe  game/gfx/interface/buttons/red_button_bg.dds
@@ -3421,6 +3420,7 @@ d9585aecfa342ae06dd1a7a086a5981e  game/gfx/interface/icons/alert_icons/bankruptc
 11fc0dcbd6b299c3345b2d9b2dc0045b  game/gfx/interface/icons/alert_icons/has_decreasing_interests.dds
 4d7b6b2f12b9a4214e368e2012b0ee3b  game/gfx/interface/icons/alert_icons/has_navy_in_reserve.dds
 97e089739524de210470c5436c2f5fba  game/gfx/interface/icons/alert_icons/has_no_research.dds
+7d94c73f4044f5d2352929fb03d86d0e  game/gfx/interface/icons/alert_icons/has_no_war_goal.dds
 dba940669ba37a88cc2aff2e9fdde30a  game/gfx/interface/icons/alert_icons/high_attrition.dds
 3b83a31fc4148a564957b1efdb0de426  game/gfx/interface/icons/alert_icons/idle_mobilized_general.dds
 75fb9a24b6c8ca5ebeef1595a27c90a9  game/gfx/interface/icons/alert_icons/is_losing_rank.dds
@@ -3434,7 +3434,6 @@ a2c285e94c03638ffb1b1800310bd5b2  game/gfx/interface/icons/alert_icons/unused/ad
 d40fec5397a71a0f4bce0a76754ef854  game/gfx/interface/icons/alert_icons/unused/can_mobilize.dds
 2c1c66e0f8983dd8b8302052bb3070fa  game/gfx/interface/icons/alert_icons/unused/critical_supply_network.dds
 d99f24b660738418925be32db3432c9a  game/gfx/interface/icons/alert_icons/unused/diplomatic_play.dds
-7d94c73f4044f5d2352929fb03d86d0e  game/gfx/interface/icons/alert_icons/unused/has_no_war_goal.dds
 bcc2817147afe304263fed72095aa4bd  game/gfx/interface/icons/alert_icons/unused/invalid_advance_assault_orders.dds
 8abde813d229fdb03c51c9cf8bd3831e  game/gfx/interface/icons/alert_icons/unused/low_legitimacy.dds
 3c57df2a05372b49e43e07c21275f3a9  game/gfx/interface/icons/alert_icons/unused/market_over_capacity.dds
@@ -3443,8 +3442,8 @@ bcc2817147afe304263fed72095aa4bd  game/gfx/interface/icons/alert_icons/unused/in
 bab76af5f26d681c7a79be2aafd0b41b  game/gfx/interface/icons/alert_icons/unused/suboptimal_army.dds
 fef158cf3ccb51a08e889892b39af0af  game/gfx/interface/icons/alert_icons/unused/suboptimal_navy.dds
 1134e4915ecfedac57d19bb58b02c07c  game/gfx/interface/icons/alert_icons/unused/supply_low.dds
-f650ef615a71848bc02d50ff18b6374d  game/gfx/interface/icons/alert_icons/unused/wasted_construction.dds
 0df075e98cd4da76a4292c6ce7c406c5  game/gfx/interface/icons/alert_icons/vaulnarable_front.dds
+f650ef615a71848bc02d50ff18b6374d  game/gfx/interface/icons/alert_icons/wasted_construction.dds
 31d94ba9cc88a7b3da074eeb300d1023  game/gfx/interface/icons/battle_conditions/battle_condition_aggressive_maneuver.dds
 5226b5634795afffe1ebd76c6b79ae01  game/gfx/interface/icons/battle_conditions/battle_condition_blunder.dds
 0d7f61be3df65d539f9579723455b8be  game/gfx/interface/icons/battle_conditions/battle_condition_broken_supply_line.dds
@@ -5146,6 +5145,8 @@ db586da76f3136fb916067eb310073a2  game/gfx/interface/map_markers/market_frame_bo
 6a353df0cf4baecbbdf8a56e216c521c  game/gfx/interface/map_markers/market_frame_top.dds
 89c12a881fa535352f81a51a56bab8af  game/gfx/interface/map_markers/naval_battle_icon.dds
 dc9e16a47f9d112ba468dd94496a3a95  game/gfx/interface/map_markers/round_highlight.dds
+7336cb50b8092077240ff1c586f528bd  game/gfx/interface/map_markers/round_highlight_green.dds
+b79a9b97bb5c6a6422a8c35e471875b9  game/gfx/interface/map_markers/round_highlight_orange.dds
 b30f42291c0921b8c19d2275c67536fe  game/gfx/interface/map_markers/sea_node.dds
 f8fb86955f1f395463846a1f2d0d568a  game/gfx/interface/map_markers/sea_node_have_supply.dds
 88a7d9794003e9a4dc78e88914f495b8  game/gfx/interface/map_markers/small_nib.dds
@@ -5153,7 +5154,6 @@ f8fb86955f1f395463846a1f2d0d568a  game/gfx/interface/map_markers/sea_node_have_s
 737974401741bb885c3d1d3e5a69a352  game/gfx/interface/map_markers/state_to_state_infra_linked.dds
 bc21af0e2a9ad9dadecc93298ad54d1d  game/gfx/interface/map_markers/state_to_state_infra_water.dds
 1c72ab4b1ffe6d0044776e4abab78ee9  game/gfx/interface/map_markers/unused/ce_stars.dds
-a4d869167cb24a7a52feeff3609046d5  game/gfx/interface/map_markers/what_round_highlight.dds
 a6ae4283d935bafa17dbec5100149ebe  game/gfx/interface/market_view/filter_industrial_goods.dds
 70d11ec3093b2b50a91e7d84f8afaa11  game/gfx/interface/market_view/filter_industrial_goods_selected.dds
 04d2018beb8b6f3ca3da974465c76c19  game/gfx/interface/market_view/filter_luxury_goods.dds
@@ -5257,11 +5257,12 @@ f1bef78085779b94529de2e7253c228a  game/gfx/interface/production_methods/subsidiz
 1df4fc2b9569ba7372b82f83744c7bf1  game/gfx/interface/progressbar/bar_horizontal_marker_fade.dds
 10792742c098190fcf889d63e7afe1ed  game/gfx/interface/progressbar/bar_horizontal_marker_line.dds
 e36600a4833d06581ccf8c4aa7718653  game/gfx/interface/progressbar/Copy of progressbar_glow_mask.dds
+db3940241891d85c39c9ab0359adf895  game/gfx/interface/progressbar/progressbar_active_level.dds
 b9ac04a0ac8471d9cc1692c60a790c5b  game/gfx/interface/progressbar/progressbar_arrow.dds
 fa0b3b1a22ed129746fc1f2f899bc868  game/gfx/interface/progressbar/progressbar_bad.dds
 d87cdde3252cc5eee306425e5810c1cb  game/gfx/interface/progressbar/progressbar_bad_glow.dds
 cd8a6fcf4295c51c2c78f24b1e489299  game/gfx/interface/progressbar/progressbar_bad_glow_line.dds
-7bd88789d6630eb6a576a9e832e55a69  game/gfx/interface/progressbar/progressbar_center_divider.dds
+caae87c2475953ca8856441fdc3a57e9  game/gfx/interface/progressbar/progressbar_center_divider.dds
 9985dd909f523b479c1daf1951fccabd  game/gfx/interface/progressbar/progressbar_default.dds
 d5572de0f27eef7d61d4ea4dba0334ca  game/gfx/interface/progressbar/progressbar_default_glow.dds
 c59b20cc3365984054205de5dcceb73f  game/gfx/interface/progressbar/progressbar_default_glow_line.dds
@@ -10791,7 +10792,7 @@ ccea1f83d6e632979dbf9135e2f550f4  game/gfx/models/vfx/residential/hammer_anvil_d
 523ad2dcca7b13db82f57e94df974afc  game/gfx/models/vfx/residential/hammer_anvil_normal.dds
 d70a200cf810e0a66c589255a8170689  game/gfx/models/vfx/residential/hammer_anvil_properties.dds
 958dce621c2e2dbf4f36c87352c89cb5  game/gfx/models/vfx/ui_to_arms_fire_lut.dds
-f2aff636031ef61d425deb28a0488a90  game/gfx/models/vfx/ui_to_arms_fire_noises.dds
+9153294ef9df21a145c174fd8a0a3d9d  game/gfx/models/vfx/ui_to_arms_fire_noises.dds
 d15f2c96a214f989675f5ae999865eca  game/gfx/models/vfx/vfx_ui_plane_battle_progressbar.mesh
 1d157e3dd65805cc4beef4e08c3bdc20  game/gfx/models/vfx/vfx_ui_plane_gameover.mesh
 560c859ee50e782371aafbc04b33a8b6  game/gfx/models/vfx/vfx_ui_plane_war_panel_fire_plane.mesh
@@ -11385,14 +11386,14 @@ accbf3dcc5ae2ca11cca61b79b6a564f  game/map_data/rivers.png
 79bede1d941bfdbf148ef0536ed0f294  game/node_editor_node_input.tga
 b5f2b64258691ab205fca27753603bc3  game/node_editor_title_background.tga
 d82eb2f4a699f744bed45576b9dcccce  game/rotate_glow_mask3.tga
-01817d73d3ee6d2be933244f1b1e8980  game/sound/banks/Ambient.bank
-a8dccd25492931d2d2e448778b3113ae  game/sound/banks/Events.bank
-b06b4bb43a475431d0170c28c3a2c11d  game/sound/banks/Interface.bank
-3a7eb30737158fe5ac4d9227d243a46b  game/sound/banks/Master Bank.bank
-afa5128cf6a44a20d4a733eace5becc7  game/sound/banks/Master Bank.strings.bank
-5e4fc7d212b632baa18302a396ca6198  game/sound/banks/Soundtrack.bank
-7904fbfc3d1f7101987bf741ee6eada0  game/sound/banks/Vehicles.bank
-286808a20a5b889ab5a890c164ed08ca  game/sound/banks/VFX.bank
+c47909a87c6fc6bf265376ed713b59b5  game/sound/banks/Ambient.bank
+3f6dd4b81fbbb238c3a1a751d145e01f  game/sound/banks/Events.bank
+f8383a43d3f3be507da5ca985c664108  game/sound/banks/Interface.bank
+0bb4b2f8eed9989fadabc53998f1f49b  game/sound/banks/Master Bank.bank
+31680fce6d0eb862597c6ef8e583d03c  game/sound/banks/Master Bank.strings.bank
+af0d162f3d68202f3e761620af8e3b99  game/sound/banks/Soundtrack.bank
+bfe4024803f94e7bf61c325376189380  game/sound/banks/Vehicles.bank
+ea4e8da7bc8e73d3e30505b02d3884f7  game/sound/banks/VFX.bank
 a5c066a15dba1cbc36f34518218ca64d  game/sound/map/ambience/sensor_mask_default.png
 395d98264842c4a8e11f6d8d7efa104f  game/soundtrack/original_game_soundtrack/FLAC/01 - Victoria III (Official Game Soundtrack) - A Prospering Country.flac
 19050368361b64d3a249bde43afcb478  game/soundtrack/original_game_soundtrack/FLAC/02 - Victoria III (Official Game Soundtrack) - Rule The World.flac
@@ -11450,6 +11451,31 @@ ba9b9466a60321fb4a5eec4932ed22c2  jomini/gfx/browser/home.png
 1c399c341f21a2a7ee2d79b563cd26e2  jomini/gfx/editor_gui/gui_timeline/editor_animation_timeline_lane_background.png
 b6f0f6e0046bdf9ba0f7eda14b2fbd94  jomini/gfx/editor_terrain/reference_overlay_example.png
 11c866f5230d71a09400230ff6c3b990  jomini/gfx/editor_terrain/select_all_objects.dds
+a7cdb701863bf6f2324bbe9eaceccc94  jomini/gfx/gui_animation_editor/add_keyframe.png
+08894b5b2527e2f078d33aec6e87117a  jomini/gfx/gui_animation_editor/add_keyframes_mode.png
+3a075e100cf2f8a7b0bf1ab528066530  jomini/gfx/gui_animation_editor/align_selected_keyframes.png
+bdcac45ac0607a1a45568b10e54140be  jomini/gfx/gui_animation_editor/button_bg.tga
+a38876a4c10e914bb541c12ef7957ab5  jomini/gfx/gui_animation_editor/change_animset_parent.png
+896de55abf183bdb5c1b8a17bb3f339a  jomini/gfx/gui_animation_editor/checkbutton_bg.tga
+77c6562d087468b4b3fea7890b3eda14  jomini/gfx/gui_animation_editor/collapse_animations.png
+eaa8d69702b303fcea8d471855eb8820  jomini/gfx/gui_animation_editor/curve_editor.png
+6651010bcc50868215644abaa722d82f  jomini/gfx/gui_animation_editor/curve_type_catmullrom.png
+4f7cc3c6b5c6cbe46ed202d51a2bf354  jomini/gfx/gui_animation_editor/curve_type_linear.png
+292ae46cc0829e65827b815e9d376c4a  jomini/gfx/gui_animation_editor/delete_selected_keyframes.png
+fc484af8bfd4dca3206cd25e055d68a1  jomini/gfx/gui_animation_editor/deselect_all_keyframes.png
+10f3253dbebdd0945a9b8be498e705bc  jomini/gfx/gui_animation_editor/editor_keyframe.png
+f840a530886480132906ca8b21f4c73b  jomini/gfx/gui_animation_editor/edit_mode_move.png
+9d440d216449cddb26b25d896d1d35a1  jomini/gfx/gui_animation_editor/edit_mode_scale.png
+ce887dbd7f97c9a7a181690f50b9b092  jomini/gfx/gui_animation_editor/graph_editor_keyframe.png
+df94304af2302ccedd4250b783d35a40  jomini/gfx/gui_animation_editor/keyframe_stretch_mode.png
+8f6c8f5f3afcc4827e3b188609ed643c  jomini/gfx/gui_animation_editor/needle_head.png
+fb6121dc1176b6df87932f12ad6d38c8  jomini/gfx/gui_animation_editor/needle_line.png
+bcd47705ecf8364d613e768fa5bf2d71  jomini/gfx/gui_animation_editor/preview_btn.png
+0486a6af70adad717174a631a7d98eaf  jomini/gfx/gui_animation_editor/select_all_keyframes.png
+a87b8acabb4f72b2e5c3cfaeef1dc019  jomini/gfx/gui_animation_editor/snap_btn.png
+0a05dcf9e405e9be99423f6bdb19edfa  jomini/gfx/gui_animation_editor/timeline_editor.png
+56eaa0b554dc80a1966ec65c62984eb8  jomini/gfx/gui_animation_editor/time_resolution_step.png
+bdc2ae5936573ddd707e816fc25b37cc  jomini/gfx/gui_animation_editor/track_duration.png
 db357540e7d6363c61a39162684611eb  jomini/gfx/interface/icons/has_password_icon.dds
 39eede838315e30e0ad7dd130c08dd5d  jomini/gfx/interface/icons/no_password_icon.dds
 94400ed5e45265f8b903c77624c25c02  jomini/gfx/interface/loading_progress.dds
@@ -11504,6 +11530,6 @@ d46e55a2c3b1c55963fc36d2ee7ba1e2  launcher/assets/launcher-background.jpg
 18551a206fae4d2b15fa347ae00c8108  launcher/assets/theme-settings.json
 e1b48950523fd2ea617dea573c8a91da  launcher/dowser.exe
 8ce5af0e1a6f47825a9d51f9ee701d58  launcher/launcher-installer-windows.msi
-c2421c6d1da8ee672ee3df8e166607a4  launcher/launcher-settings.json
+c0c3d0ee8c865988839336fab19950d4  launcher/launcher-settings.json
 90f51dda5e0cb15e737b9a148e6eeffb  launcher/settings-layout.json
 cabfd2ab7be2078a7ebe6357b3907e62  launcher/ThirdPartyLicenses.txt

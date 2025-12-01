@@ -66,12 +66,6 @@ ConstantBuffer( PdxMeshJointVertexInstanceData )
 	float4 JointVertexMatrices[3];
 };
 
-ConstantBuffer( PdxMeshJointNormalInstanceData )
-{
-	# Stored as 34 matrices
-	float4 JointNormalMatrices[3];
-};
-
 Code
 [[
 	static const int PDXMESH_MAX_INFLUENCE = 4;
@@ -99,19 +93,6 @@ Code
 		float4 Translation = float4( JointVertexMatrices[ BeginIndex + 2 ].y, JointVertexMatrices[ BeginIndex + 2 ].z, JointVertexMatrices[ BeginIndex + 2 ].w, 1.0f );
 
 		return Create4x4( XAxis, YAxis, ZAxis, Translation );
-	}
-
-	// OffsetJointIndex -> JointsInstanceIndex + JointIndex
-	float3x3 PdxMeshGetJointNormalMatrix( uint OffsetJointIndex )
-	{
-		uint BeginIndex = OffsetJointIndex * 3;
-
-		// Read transposed... because Create3x3 is inverted
-		float3 XAxis = float3( JointNormalMatrices[ BeginIndex ].x, JointNormalMatrices[ BeginIndex ].w, JointNormalMatrices[ BeginIndex + 1 ].z );
-		float3 YAxis = float3( JointNormalMatrices[ BeginIndex ].y, JointNormalMatrices[ BeginIndex + 1 ].x, JointNormalMatrices[ BeginIndex + 1 ].w );
-		float3 ZAxis = float3( JointNormalMatrices[ BeginIndex ].z, JointNormalMatrices[ BeginIndex + 1 ].y, JointNormalMatrices[ BeginIndex + 2 ].x );
-
-		return Create3x3( XAxis, YAxis, ZAxis );
 	}
 
 	float PdxMeshGetOpacity( uint ObjectInstanceIndex )

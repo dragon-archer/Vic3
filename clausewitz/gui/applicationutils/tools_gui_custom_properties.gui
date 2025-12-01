@@ -41,7 +41,7 @@ types ToolsProperyTypes
 				using = custom_property_size
 				layoutpolicy_horizontal = growing
 				text = "[ToolPropertyString.GetString]"
-				oneditingfinished = "[ToolPropertyString.SetString]"
+				oneditingfinished_with_changes = "[ToolPropertyString.SetString]"
 			}
 		}
 	}
@@ -53,7 +53,7 @@ types ToolsProperyTypes
 				using = custom_property_size
 				layoutpolicy_horizontal = growing
 				text = "[ToolPropertyCString.GetString]"
-				oneditingfinished = "[ToolPropertyCString.SetString]"
+				oneditingfinished_with_changes = "[ToolPropertyCString.SetString]"
 			}
 		}
 	}
@@ -64,7 +64,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = custom_property_size
 				text = "[ToolPropertyFloat.GetFloat]"
-				oneditingfinished = "[ToolPropertyFloat.SetFloat]"
+				oneditingfinished_with_changes = "[ToolPropertyFloat.SetFloat]"
 				fontcolor = "[ToolPropertyFloat.GetValueColor]"
 				align = right
 			}
@@ -81,7 +81,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = custom_property_size
 				text = "[ToolPropertyInt.GetInt]"
-				oneditingfinished = "[ToolPropertyInt.SetInt]"
+				oneditingfinished_with_changes = "[ToolPropertyInt.SetInt]"
 				fontcolor = "[ToolPropertyInt.GetValueColor]"
 				align = right
 			}
@@ -98,7 +98,7 @@ types ToolsProperyTypes
 			editor_textinput = {
 				using = custom_property_size
 				text = "[ToolPropertyUint.GetUint]"
-				oneditingfinished = "[ToolPropertyUint.SetUint]"
+				oneditingfinished_with_changes = "[ToolPropertyUint.SetUint]"
 				fontcolor = "[ToolPropertyUint.GetValueColor]"
 				align = right
 			}
@@ -118,7 +118,7 @@ types ToolsProperyTypes
 				tools_colorpicker = {
 					color = "[ToolPropertyColor.GetColor]"
 					#oncoloredited = "[ToolPropertyColor.SetColor]"
-					oneditingfinished = "[ToolPropertyColor.SetColor]"
+					oneditingfinished_with_changes = "[ToolPropertyColor.SetColor]"
 				}
 				
 				widget = {layoutpolicy_horizontal = expanding}
@@ -135,7 +135,7 @@ types ToolsProperyTypes
 				tools_colorpicker = {
 					color = "[ToolPropertyCColor.GetCColor]"
 					#oncoloredited = "[ToolPropertyCColor.SetColor]"
-					oneditingfinished = "[ToolPropertyCColor.SetCColor]"
+					oneditingfinished_with_changes = "[ToolPropertyCColor.SetCColor]"
 				}
 				
 				widget = {layoutpolicy_horizontal = expanding}
@@ -154,7 +154,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec4i.GetX]"
-					oneditingfinished = "[ToolPropertyVec4i.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec4i.SetX]"
 					fontcolor = "[ToolPropertyVec4i.GetValueColor]"
 					align = right
 				}
@@ -162,7 +162,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec4i.GetY]"
-					oneditingfinished = "[ToolPropertyVec4i.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec4i.SetY]"
 					fontcolor = "[ToolPropertyVec4i.GetValueColor]"
 					align = right
 				}
@@ -170,7 +170,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec4i.GetZ]"
-					oneditingfinished = "[ToolPropertyVec4i.SetZ]"
+					oneditingfinished_with_changes = "[ToolPropertyVec4i.SetZ]"
 					fontcolor = "[ToolPropertyVec4i.GetValueColor]"
 					align = right
 				}
@@ -178,7 +178,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec4i.GetW]"
-					oneditingfinished = "[ToolPropertyVec4i.SetW]"
+					oneditingfinished_with_changes = "[ToolPropertyVec4i.SetW]"
 					fontcolor = "[ToolPropertyVec4i.GetValueColor]"
 					align = right
 				}
@@ -201,7 +201,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3f.GetX]"
-					oneditingfinished = "[ToolPropertyVec3f.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3f.SetX]"
 					fontcolor = "[ToolPropertyVec3f.GetValueColor]"
 					align = right
 				}
@@ -209,7 +209,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3f.GetY]"
-					oneditingfinished = "[ToolPropertyVec3f.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3f.SetY]"
 					fontcolor = "[ToolPropertyVec3f.GetValueColor]"
 					align = right
 				}
@@ -217,7 +217,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3f.GetZ]"
-					oneditingfinished = "[ToolPropertyVec3f.SetZ]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3f.SetZ]"
 					fontcolor = "[ToolPropertyVec3f.GetValueColor]"
 					align = right
 				}
@@ -240,7 +240,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3i.GetX]"
-					oneditingfinished = "[ToolPropertyVec3i.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3i.SetX]"
 					fontcolor = "[ToolPropertyVec3i.GetValueColor]"
 					align = right
 				}
@@ -248,7 +248,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3i.GetY]"
-					oneditingfinished = "[ToolPropertyVec3i.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3i.SetY]"
 					fontcolor = "[ToolPropertyVec3i.GetValueColor]"
 					align = right
 				}
@@ -256,7 +256,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					size = { 58 24 }
 					text = "[ToolPropertyVec3i.GetZ]"
-					oneditingfinished = "[ToolPropertyVec3i.SetZ]"
+					oneditingfinished_with_changes = "[ToolPropertyVec3i.SetZ]"
 					fontcolor = "[ToolPropertyVec3i.GetValueColor]"
 					align = right
 				}
@@ -279,7 +279,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					using = custom_property_size
 					text = "[ToolPropertyVec2f.GetX]"
-					oneditingfinished = "[ToolPropertyVec2f.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2f.SetX]"
 					fontcolor = "[ToolPropertyVec2f.GetValueColor]"
 					align = right
 				}
@@ -287,7 +287,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					using = custom_property_size
 					text = "[ToolPropertyVec2f.GetY]"
-					oneditingfinished = "[ToolPropertyVec2f.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2f.SetY]"
 					fontcolor = "[ToolPropertyVec2f.GetValueColor]"
 					align = right
 				}
@@ -309,7 +309,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					using = custom_property_size
 					text = "[ToolPropertyVec2i.GetX]"
-					oneditingfinished = "[ToolPropertyVec2i.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2i.SetX]"
 					fontcolor = "[ToolPropertyVec2i.GetValueColor]"
 					align = right
 				}
@@ -317,7 +317,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					using = custom_property_size
 					text = "[ToolPropertyVec2i.GetY]"
-					oneditingfinished = "[ToolPropertyVec2i.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2i.SetY]"
 					fontcolor = "[ToolPropertyVec2i.GetValueColor]"
 					align = right
 				}
@@ -339,7 +339,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					using = custom_property_size
 					text = "[ToolPropertyVec2fPercent.GetX]"
-					oneditingfinished = "[ToolPropertyVec2fPercent.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2fPercent.SetX]"
 					fontcolor = "[ToolPropertyVec2fPercent.GetValueColor]"
 					align = right
 				}
@@ -347,7 +347,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					using = custom_property_size
 					text = "[ToolPropertyVec2fPercent.GetY]"
-					oneditingfinished = "[ToolPropertyVec2fPercent.SetY]"
+					oneditingfinished_with_changes = "[ToolPropertyVec2fPercent.SetY]"
 					fontcolor = "[ToolPropertyVec2fPercent.GetValueColor]"
 					align = right
 				}
@@ -369,7 +369,7 @@ types ToolsProperyTypes
 				editor_textinput = {
 					using = custom_property_size
 					text = "[ToolPropertyVec1fPercent.GetX]"
-					oneditingfinished = "[ToolPropertyVec1fPercent.SetX]"
+					oneditingfinished_with_changes = "[ToolPropertyVec1fPercent.SetX]"
 					fontcolor = "[ToolPropertyVec1fPercent.GetValueColor]"
 					align = right
 				}

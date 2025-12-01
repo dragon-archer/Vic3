@@ -199,7 +199,7 @@ types ToolsGuiAnimationTypes
 			editor_textinput = {
 				using = custom_property_size
 				text = "[ToolPropertyFloat.GetFloat]"
-				oneditingfinished = "[ToolPropertyFloat.SetFloat]"
+				oneditingfinished_with_changes = "[ToolPropertyFloat.SetFloat]"
 				fontcolor = "[ToolPropertyFloat.GetValueColor]"
 				align = right|nobaseline
 				layoutpolicy_horizontal = expanding
@@ -215,7 +215,7 @@ types ToolsGuiAnimationTypes
 			editor_textinput = {
 				using = custom_property_size
 				text = "[ToolPropertyInt.GetInt]"
-				oneditingfinished = "[ToolPropertyInt.SetInt]"
+				oneditingfinished_with_changes = "[ToolPropertyInt.SetInt]"
 				fontcolor = "[ToolPropertyInt.GetValueColor]"
 				align = right|nobaseline
 				layoutpolicy_horizontal = expanding
@@ -231,7 +231,7 @@ types ToolsGuiAnimationTypes
 			editor_textinput = {
 				using = custom_property_size
 				text = "[ToolPropertyVec2f.GetX]"
-				oneditingfinished = "[ToolPropertyVec2f.SetX]"
+				oneditingfinished_with_changes = "[ToolPropertyVec2f.SetX]"
 				fontcolor = "[ToolPropertyVec2f.GetValueColor]"
 				align = right|nobaseline
 				layoutpolicy_horizontal = expanding
@@ -241,7 +241,7 @@ types ToolsGuiAnimationTypes
 			editor_textinput = {
 				using = custom_property_size
 				text = "[ToolPropertyVec2f.GetY]"
-				oneditingfinished = "[ToolPropertyVec2f.SetY]"
+				oneditingfinished_with_changes = "[ToolPropertyVec2f.SetY]"
 				fontcolor = "[ToolPropertyVec2f.GetValueColor]"
 				align = right|nobaseline
 				layoutpolicy_horizontal = expanding
@@ -257,7 +257,7 @@ types ToolsGuiAnimationTypes
 			editor_textinput = {
 				using = custom_property_size
 				text = "[ToolPropertyCString.GetString]"
-				oneditingfinished = "[ToolPropertyCString.SetString]"
+				oneditingfinished_with_changes = "[ToolPropertyCString.SetString]"
 				align = right|nobaseline
 				layoutpolicy_horizontal = expanding
 				oneditingstart = "[AnimationCurveValue.CacheCurrentAnimationTime]"

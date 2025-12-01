@@ -136,6 +136,7 @@ types NodeEditor
 			raw_tooltip = "Next Node"
 			onclick = "[NodeEditorSearch.GoToNextNode]"
 			enabled = "[NodeEditorSearch.HasOccurrences]"
+			shortcut = "node_search_go_to_next"
 			position = { 250 7 }
 			size = { 18 18 }
 			editor_toolbar_icon = {
@@ -152,6 +153,7 @@ types NodeEditor
 			raw_tooltip = "Previous Node"
 			onclick = "[NodeEditorSearch.GoToPreviousNode]"
 			enabled = "[NodeEditorSearch.HasOccurrences]"
+			shortcut = "node_search_go_to_prev"
 			position = { 270 7 }
 			size = { 18 18 }
 			editor_toolbar_icon = {
@@ -262,7 +264,7 @@ widget = {
 				size = { 25 25 }
 				raw_tooltip = "Show Node Search"
 				onclick = "[GraphPanel.ShowNodeEditorSearch]"
-				shortcut = "show_node_search"
+				shortcut = "node_search_show"
 			}
 
 			editor_toolbar_button = {
@@ -306,6 +308,7 @@ widget = {
 				raw_tooltip = "Set zoom level to 100%"
 				size = { 32 25 }
 				onclick = "[GraphPanel.SetZoom('(int32)100')]"
+				shortcut = "nodes_100%"
 			}
 
 			editor_toolbar_divider = {

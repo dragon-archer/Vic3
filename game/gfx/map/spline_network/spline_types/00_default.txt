@@ -51,3 +51,11 @@ pavedroadsandstone = {
 	anchor_sparsity = 1 # Number of NavMesh vertices to skip between each anchor
 	anchor_type = 0
 }
+
+river = {
+	id = 15
+	default_style = 255
+	color = { 0.0 0.0 1.0 }
+	merge_with_types = { }	# Specifed with id numbers
+	anchor_type = 0
+}

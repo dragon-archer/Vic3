@@ -2864,6 +2864,14 @@ container = {
 	onmousehierarchyenter = "[AccessHighlightManager.HighlightPoliticalMovement(PoliticalMovement.Self)]"
 	onmousehierarchyleave = "[AccessHighlightManager.RemoveHighlight]"
 
+	state = {
+		name = revolutionary_sound
+		trigger_when = "[PoliticalMovement.IsInsurrectionary]"
+		
+		start_sound = {
+			soundeffect = "event:/SFX/DLC/1.3_ip1/UI/item_revolutionary_movt"
+		}
+	}
 
 	tooltipwidget = {
 		FancyTooltip_PoliticalMovement = {}

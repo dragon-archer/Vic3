@@ -4278,6 +4278,15 @@ types information_panels_types
 			}
 		}
 
+		state = {
+			name = revolutionary_sound
+			trigger_when = "[PoliticalMovement.IsInsurrectionary]"
+			
+			start_sound = {
+				soundeffect = "event:/SFX/DLC/1.3_ip1/UI/item_revolutionary_movt"
+			}
+		}
+
 		###NORMAL NON-REVOLUTIONARY MOVEMENT###
 		widget = {
 			visible = "[Not(PoliticalMovement.IsInsurrectionary)]"

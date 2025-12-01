@@ -12,7 +12,7 @@ je_matter_of_hungary_completion_autonomy_tt: "We have established the #bold Dual
 je_matter_of_hungary_fail_hungary_is_free: "#bold $HUN$#! has broken free from [ROOT.GetCountry.GetAdjective] control"
 je_matter_of_hungary_fail_not_at_war_with_hungary: "#bold $HUN$#! is #bold not#! opposing [ROOT.GetCountry.GetName] in a [concept_diplomatic_play]"
 je_matter_of_hungary_on_fail_lose_control: "Any remaining territories in Hungary under the control of [ROOT.GetCountry.GetName] or her [Concept('concept_subject','$concept_subjects$')] will #bold secede#!. Nationalist rebels will rise in revolt in our non-German lands."
-hungarian_above_80_acceptance_for_a_while_tt: "The average [concept_acceptance] of [GetCulture('hungarian').GetName] in [ROOT.GetCountry.GetNameNoFlag] has been greater than or equal to #v 80#! for #b 60 months#! (currently [ROOT.GetCountry.MakeScope.Var('hungarian_acceptance_var').GetValue|v0])"
+hungarian_above_80_acceptance_for_a_while_tt: "The average [concept_acceptance] of [GetCulture('hungarian').GetName] in [ROOT.GetCountry.GetNameNoFlag] has been greater than or equal to #v 70#! for #b 60 months#! (currently [ROOT.GetCountry.MakeScope.Var('hungarian_acceptance_var').GetValue|v0])" # Actually 70, not 80
 hungarian_movements_pacified_tt: "No [GetCulture('hungarian').GetName] #v $movement_cultural_minority$#! has [Concept('concept_activism','$concept_activism_short$')] of $RADICALISM_AGITATING$ (#v 25%#!) or above"
 
 je_austrian_neo_absolutism: "Autocracy in the Age of Liberty"

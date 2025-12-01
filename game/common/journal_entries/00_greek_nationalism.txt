@@ -75,28 +75,8 @@
 	}
 
 	on_monthly_pulse = {
-		effect = {
-		}
-	}
-
-	on_yearly_pulse = {
-		effect = {
-			if = {
-				limit = {
-					NOT = { has_variable = embrace_ambitious_agenda_var }
-					has_variable = embrace_megali_idea_var
-					any_scope_state = {
-						state_region = s:STATE_IONIAN_ISLANDS
-					}
-					NOT = { has_game_rule = plausible_formable_nations }
-					has_law_or_variant = law_type:law_monarchy
-					government_legitimacy >= 75
-				}
-				random_list = {
-					90 = { trigger_event = { id = greece.2 days = 7 popup = yes } } # For Taking the The Great Idea™ Too Far
-					10 = { } # nothing happens this year
-				}
-			}
+		events = {
+			greece.2
 		}
 	}
 

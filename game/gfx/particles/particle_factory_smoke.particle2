@@ -36,7 +36,7 @@ graph={
 			}
 		}
 		pdxns:values:ConstVector3f={
-			id=59
+			id=3
 			node={
 				value={ 0.000000 0.000000 0.000000 }
 			}
@@ -44,7 +44,7 @@ graph={
 			}
 		}
 		pdxns:particle:SetUniformScale={
-			id=60
+			id=4
 			node={
 			}
 			inputs={
@@ -61,7 +61,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=88
+			id=5
 			node={
 				value=0.100000
 			}
@@ -84,7 +84,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=87
+			id=8
 			node={
 				value=0.200000
 			}
@@ -120,18 +120,18 @@ graph={
 			}
 		}
 		pdxns:math:randomF={
-			id=86
+			id=10
 			node={
 			}
 			inputs={
 				link={
 					pin_id="limit1"
-					linked_node=88
+					linked_node=5
 					linked_pin="value"
 				}
 				link={
 					pin_id="limit2"
-					linked_node=87
+					linked_node=8
 					linked_pin="value"
 				}
 			}
@@ -176,7 +176,7 @@ graph={
 			}
 		}
 		pdxns:particle:Kill={
-			id=61
+			id=14
 			node={
 			}
 			inputs={
@@ -234,7 +234,7 @@ graph={
 			}
 		}
 		pdxns:particle:SetColor={
-			id=62
+			id=19
 			node={
 			}
 			inputs={
@@ -335,7 +335,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=72
+			id=24
 			node={
 				value=1
 			}
@@ -363,7 +363,7 @@ graph={
 			}
 		}
 		pdxns:values:ConstVector3f={
-			id=64
+			id=27
 			node={
 				value={ 0.000000 0.000000 0.000000 }
 			}
@@ -384,7 +384,7 @@ graph={
 			inputs={
 				link={
 					pin_id="tag"
-					linked_node=66
+					linked_node=55
 					linked_pin="value"
 				}
 			}
@@ -402,7 +402,7 @@ graph={
 			}
 		}
 		pdxns:common:compound={
-			id=81
+			id=31
 			node={
 				graph="ScaledCurveSampler"
 			}
@@ -424,7 +424,7 @@ graph={
 				}
 				link={
 					pin_id="scale_y"
-					linked_node=68
+					linked_node=33
 					linked_pin="value"
 				}
 			}
@@ -438,7 +438,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=68
+			id=33
 			node={
 				value=1.000000
 			}
@@ -479,7 +479,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=79
+			id=37
 			node={
 				value=yes
 			}
@@ -512,13 +512,13 @@ graph={
 			}
 		}
 		pdxns:particle:EffectFlags={
-			id=78
+			id=40
 			node={
 			}
 			inputs={
 				link={
 					pin_id="billboard"
-					linked_node=79
+					linked_node=37
 					linked_pin="value"
 				}
 				link={
@@ -528,7 +528,7 @@ graph={
 				}
 				link={
 					pin_id="billboard_axis"
-					linked_node=77
+					linked_node=52
 					linked_pin="value"
 				}
 			}
@@ -536,8 +536,7 @@ graph={
 		pdxns:particle:Emitter={
 			id=41
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:StartColor"
 						label="StartColor"
 						type="Color"
@@ -552,7 +551,10 @@ graph={
 						label="Lifetime"
 						type="Float"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -567,7 +569,7 @@ graph={
 				}
 				link={
 					pin_id="position"
-					linked_node=64
+					linked_node=27
 					linked_pin="value"
 				}
 				link={
@@ -577,7 +579,7 @@ graph={
 				}
 				link={
 					pin_id="speed"
-					linked_node=86
+					linked_node=10
 					linked_pin="value"
 				}
 				link={
@@ -592,12 +594,12 @@ graph={
 				}
 				link={
 					pin_id="tag"
-					linked_node=72
+					linked_node=24
 					linked_pin="value"
 				}
 				link={
 					pin_id="effect_flags"
-					linked_node=78
+					linked_node=40
 					linked_pin="effect_flags"
 				}
 				link={
@@ -607,7 +609,7 @@ graph={
 				}
 				link={
 					pin_id="angular_velocity"
-					linked_node=59
+					linked_node=3
 					linked_pin="value"
 				}
 				link={
@@ -634,7 +636,7 @@ graph={
 			inputs={
 				link={
 					pin_id="factor1"
-					linked_node=81
+					linked_node=31
 					linked_pin="result"
 				}
 				link={
@@ -655,7 +657,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=44
 			node={
-				texture_file="gfx/particles/smoke_4.dds"
+				texture_file="gfx/particles/textures/smoke_4.dds"
 			}
 			inputs={
 			}
@@ -741,7 +743,7 @@ graph={
 			}
 		}
 		pdxns:values:ConstVector3f={
-			id=77
+			id=52
 			node={
 				value={ 0.000000 0.000000 0.000000 }
 			}
@@ -768,7 +770,7 @@ graph={
 			}
 		}
 		pdxns:values:Int32={
-			id=66
+			id=55
 			node={
 				value=1
 			}
@@ -795,7 +797,7 @@ graph={
 			id=58
 			node={
 				value={
-					1.000000 1.000000 1.000000 0.392157
+					0.000000 0.000000 0.000000 0.392157
 				}
 
 			}

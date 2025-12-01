@@ -20,13 +20,13 @@ Code
 	
 	float CalcNoise( float2 Pos ) 
 	{
-		float2 i = floor( Pos );
+		int2 i = int2( floor( Pos ) );
 		float2 f = frac( Pos );
 
-		float a = CalcRandom(i);
-		float b = CalcRandom(i + float2(1.0, 0.0));
-		float c = CalcRandom(i + float2(0.0, 1.0));
-		float d = CalcRandom(i + float2(1.0, 1.0));
+		float a = CalcRandom( i );
+		float b = CalcRandom( i + int2( 1, 0 ) );
+		float c = CalcRandom( i + int2( 0, 1 ) );
+		float d = CalcRandom( i + int2( 1, 1 ) );
 		
 		float2 u = f*f*(3.0-2.0*f);
 		return lerp(a, b, u.x) + 

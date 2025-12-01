@@ -1,5 +1,6 @@
 Includes = {
 	"cw/pdxterrain.fxh"
+	"cw/upscale_utils.fxh"
 	"jomini/jomini_river.fxh"
 }
 
@@ -242,9 +243,9 @@ PixelShader =
 			WorldSpacePos.y = Input.WorldSpacePos.y - WorldSpaceDepth;
 
 			// Sampling
-			float4 Diffuse = PdxTex2D( BottomDiffuse, WorldUV );
-			float4 Properties = PdxTex2D( BottomProperties, WorldUV );
-			float3 NormalSample = UnpackRRxGNormal( PdxTex2D( BottomNormal, WorldUV ) );
+			float4 Diffuse = PdxTex2DUpscale( BottomDiffuse, WorldUV );
+			float4 Properties = PdxTex2DUpscale( BottomProperties, WorldUV );
+			float3 NormalSample = UnpackRRxGNormal( PdxTex2DUpscale( BottomNormal, WorldUV ) );
 
 			// normals
 			float SampleWidth = 0.1f;
@@ -305,9 +306,9 @@ PixelShader =
 			WorldSpacePos.y = Input.WorldSpacePos.y - WorldSpaceDepth;
 
 			// Sampling
-			float4 Diffuse = PdxTex2D( BottomDiffuse, TangentUV );
-			float4 Properties = PdxTex2D( BottomProperties, TangentUV );
-			float3 NormalSample = UnpackRRxGNormal( PdxTex2D( BottomNormal, TangentUV ) );
+			float4 Diffuse = PdxTex2DUpscale( BottomDiffuse, TangentUV );
+			float4 Properties = PdxTex2DUpscale( BottomProperties, TangentUV );
+			float3 NormalSample = UnpackRRxGNormal( PdxTex2DUpscale( BottomNormal, TangentUV ) );
 
 			// Normals
 			float SampleWidth = 0.1f;

@@ -2,229 +2,351 @@
 max_particles=105
 pause_invisible=no
 graph={
-	Nodes={
+	nodes={
 		pdxns:particle:GetUserData={
-			Id=0
-			Node={
+			id=0
+			node={
 				user_data={
 					id="usr:StartColor"
 					label="StartColor"
 					type="Color"
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:gfx:HsvaComponents={
-			Id=1
-			Node={
+			id=1
+			node={
 			}
-			Inputs={
-				Link = { PinId = "hsva" LinkedNode = 0 LinkedPin = "value" }
-			}
-		}
-		pdxns:common:compound={
-			Id=2
-			Node={
-				graph="Base with Variation"
-			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 146 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 147 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="hsva"
+					linked_node=0
+					linked_pin="value"
+				}
 			}
 		}
-		pdxns:particle:GetAge={
-			Id=3
-			Node={
+		pdxns:values:Float={
+			id=368
+			node={
+				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:GetAge={
-			Id=4
-			Node={
+			id=3
+			node={
 			}
-			Inputs={
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=233
+			node={
+				user_data={
+					id="usr:StartColor"
+					label="StartColor"
+					type="Color"
+				}
+			}
+			inputs={
 			}
 		}
 		pdxns:common:compound={
-			Id=5
-			Node={
+			id=5
+			node={
 				graph="ScaledCurveSampler"
 			}
-			Inputs={
-				Link = { PinId = "curve" LinkedNode = 148 LinkedPin = "value" }
-				Link = { PinId = "x" LinkedNode = 4 LinkedPin = "age" }
-				Link = { PinId = "scale_x" LinkedNode = 25 LinkedPin = "value" }
-				Link = { PinId = "scale_y" LinkedNode = 149 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=148
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=15
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=16
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=149
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=6
-			Node={
+			id=6
+			node={
 				graph="ScaledCurveSampler"
 			}
-			Inputs={
-				Link = { PinId = "curve" LinkedNode = 152 LinkedPin = "value" }
-				Link = { PinId = "x" LinkedNode = 3 LinkedPin = "age" }
-				Link = { PinId = "scale_x" LinkedNode = 21 LinkedPin = "value" }
-				Link = { PinId = "scale_y" LinkedNode = 153 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=152
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=3
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=21
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=153
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=7
-			Node={
+			id=7
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 157 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 156 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=157
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=156
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:GetAge={
-			Id=8
-			Node={
+			id=8
+			node={
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:math:MulV3FF={
-			Id=9
-			Node={
+			id=9
+			node={
 			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 14 LinkedPin = "value" }
-				Link = { PinId = "factor2" LinkedNode = 158 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=14
+					linked_pin="value"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=158
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=10
-			Node={
+			id=10
+			node={
 				graph="ScaledCurveSampler"
 			}
-			Inputs={
-				Link = { PinId = "curve" LinkedNode = 160 LinkedPin = "value" }
-				Link = { PinId = "x" LinkedNode = 15 LinkedPin = "age" }
-				Link = { PinId = "scale_x" LinkedNode = 16 LinkedPin = "value" }
-				Link = { PinId = "scale_y" LinkedNode = 29 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=160
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=15
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=16
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=29
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:ApplyForce={
-			Id=11
-			Node={
+			id=11
+			node={
 			}
-			Inputs={
-				Link = { PinId = "force" LinkedNode = 9 LinkedPin = "product" }
-				Link = { PinId = "condition" LinkedNode = 57 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="force"
+					linked_node=9
+					linked_pin="product"
+				}
+				link={
+					pin_id="condition"
+					linked_node=57
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:GetUserData={
-			Id=12
-			Node={
+			id=12
+			node={
 				user_data={
 					id="usr:lifetime"
 					label="Lifetime"
 					type="Float"
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:gfx:HSVA={
-			Id=13
-			Node={
+			id=13
+			node={
 			}
-			Inputs={
-				Link = { PinId = "hue" LinkedNode = 1 LinkedPin = "hue" }
-				Link = { PinId = "saturation" LinkedNode = 1 LinkedPin = "saturation" }
-				Link = { PinId = "value" LinkedNode = 66 LinkedPin = "product" }
-				Link = { PinId = "α" LinkedNode = 5 LinkedPin = "result" }
+			inputs={
+				link={
+					pin_id="hue"
+					linked_node=1
+					linked_pin="hue"
+				}
+				link={
+					pin_id="saturation"
+					linked_node=1
+					linked_pin="saturation"
+				}
+				link={
+					pin_id="value"
+					linked_node=66
+					linked_pin="product"
+				}
+				link={
+					pin_id="α"
+					linked_node=5
+					linked_pin="result"
+				}
 			}
 		}
 		pdxns:values:Vector3f={
-			Id=14
-			Node={
+			id=14
+			node={
 			}
-			Inputs={
-				Link = { PinId = "x" LinkedNode = 170 LinkedPin = "value" }
-				Link = { PinId = "y" LinkedNode = 27 LinkedPin = "product" }
-				Link = { PinId = "z" LinkedNode = 171 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=170
+					linked_pin="value"
+				}
+				link={
+					pin_id="y"
+					linked_node=27
+					linked_pin="product"
+				}
+				link={
+					pin_id="z"
+					linked_node=171
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:GetAge={
-			Id=15
-			Node={
+			id=15
+			node={
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:GetUserData={
-			Id=16
-			Node={
+			id=16
+			node={
 				user_data={
 					id="usr:lifetime"
 					label="Lifetime"
 					type="Float"
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Int32={
-			Id=17
-			Node={
+			id=17
+			node={
 				value=1
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:common:compound={
-			Id=18
-			Node={
+			id=18
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 174 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 173 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=174
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=173
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:GreaterThanF={
-			Id=19
-			Node={
+			id=19
+			node={
 			}
-			Inputs={
-				Link = { PinId = "op1" LinkedNode = 8 LinkedPin = "age" }
-				Link = { PinId = "op2" LinkedNode = 12 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="op1"
+					linked_node=8
+					linked_pin="age"
+				}
+				link={
+					pin_id="op2"
+					linked_node=12
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Color={
-			Id=20
-			Node={
+			id=20
+			node={
 				value={
 					0.406250 0.399505 0.379272 1.000000
 				}
 
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:GetUserData={
-			Id=21
-			Node={
+			id=21
+			node={
 				user_data={
 					id="usr:lifetime"
 					label="Lifetime"
 					type="Float"
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:Emitter={
-			Id=22
-			Node={
-				user_data_layout={
-					user_data={
+			id=22
+			node={
+				user_data_layout={ 					user_data={
 						id="usr:StartColor"
 						label="StartColor"
 						type="Color"
@@ -239,481 +361,764 @@ graph={
 						label="Lifetime"
 						type="Float"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
-			Inputs={
-				Link = { PinId = "rate" LinkedNode = 132 LinkedPin = "value" }
-				Link = { PinId = "size" LinkedNode = 178 LinkedPin = "value" }
-				Link = { PinId = "position" LinkedNode = 61 LinkedPin = "value" }
-				Link = { PinId = "direction" LinkedNode = 140 LinkedPin = "value" }
-				Link = { PinId = "speed" LinkedNode = 139 LinkedPin = "value" }
-				Link = { PinId = "color" LinkedNode = 30 LinkedPin = "value" }
-				Link = { PinId = "texture" LinkedNode = 24 LinkedPin = "texture" }
-				Link = { PinId = "tag" LinkedNode = 17 LinkedPin = "value" }
-				Link = { PinId = "effect_flags" LinkedNode = 105 LinkedPin = "effect_flags" }
-				Link = { PinId = "orientation" LinkedNode = 23 LinkedPin = "rotation" }
-				Link = { PinId = "angular_velocity" LinkedNode = 177 LinkedPin = "value" }
-				Link = { PinId = "render_order" LinkedNode = 39 LinkedPin = "value" }
-				Link = { PinId = "usr:StartColor" LinkedNode = 20 LinkedPin = "value" }
-				Link = { PinId = "usr:Size" LinkedNode = 7 LinkedPin = "output_id" }
-				Link = { PinId = "usr:lifetime" LinkedNode = 26 LinkedPin = "output_id" }
+			inputs={
+				link={
+					pin_id="rate"
+					linked_node=278
+					linked_pin="value"
+				}
+				link={
+					pin_id="size"
+					linked_node=178
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=61
+					linked_pin="value"
+				}
+				link={
+					pin_id="direction"
+					linked_node=140
+					linked_pin="value"
+				}
+				link={
+					pin_id="speed"
+					linked_node=139
+					linked_pin="value"
+				}
+				link={
+					pin_id="color"
+					linked_node=30
+					linked_pin="value"
+				}
+				link={
+					pin_id="texture"
+					linked_node=24
+					linked_pin="texture"
+				}
+				link={
+					pin_id="tag"
+					linked_node=17
+					linked_pin="value"
+				}
+				link={
+					pin_id="effect_flags"
+					linked_node=105
+					linked_pin="effect_flags"
+				}
+				link={
+					pin_id="orientation"
+					linked_node=23
+					linked_pin="rotation"
+				}
+				link={
+					pin_id="angular_velocity"
+					linked_node=177
+					linked_pin="value"
+				}
+				link={
+					pin_id="render_order"
+					linked_node=39
+					linked_pin="value"
+				}
+				link={
+					pin_id="usr:StartColor"
+					linked_node=20
+					linked_pin="value"
+				}
+				link={
+					pin_id="usr:Size"
+					linked_node=7
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="usr:lifetime"
+					linked_node=26
+					linked_pin="output_id"
+				}
 			}
 		}
 		pdxns:3d:YawPitchVectorRotation={
-			Id=23
-			Node={
+			id=23
+			node={
 			}
-			Inputs={
-				Link = { PinId = "yaw" LinkedNode = 191 LinkedPin = "value" }
-				Link = { PinId = "pitch" LinkedNode = 190 LinkedPin = "value" }
-				Link = { PinId = "roll" LinkedNode = 28 LinkedPin = "output_id" }
+			inputs={
+				link={
+					pin_id="yaw"
+					linked_node=191
+					linked_pin="value"
+				}
+				link={
+					pin_id="pitch"
+					linked_node=190
+					linked_pin="value"
+				}
+				link={
+					pin_id="roll"
+					linked_node=28
+					linked_pin="output_id"
+				}
 			}
 		}
 		pdxns:gfx:Texture={
-			Id=24
-			Node={
-				texture_file="gfx/particles/sand_dune_curve.dds"
+			id=24
+			node={
+				texture_file="gfx/particles/textures/sand_dune_curve.dds"
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:particle:GetUserData={
-			Id=25
-			Node={
-				user_data={
-					id="usr:lifetime"
-					label="Lifetime"
-					type="Float"
-				}
+		pdxns:values:Float={
+			id=234
+			node={
+				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:common:compound={
-			Id=26
-			Node={
+			id=26
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 193 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 194 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=193
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=194
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:MulF={
-			Id=27
-			Node={
+			id=27
+			node={
 			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 34 LinkedPin = "difference" }
-				Link = { PinId = "factor2" LinkedNode = 18 LinkedPin = "output_id" }
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=34
+					linked_pin="difference"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=18
+					linked_pin="output_id"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=28
-			Node={
+			id=28
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 106 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 197 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=106
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=197
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:GetUserData={
-			Id=29
-			Node={
+			id=29
+			node={
 				user_data={
 					id="usr:Size"
 					label="Size"
 					type="Float"
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Color={
-			Id=30
-			Node={
+			id=30
+			node={
 				value={
 					1.000000 0.000000 0.000000 0.000000
 				}
 
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:particle:SetSize={
-			Id=31
-			Node={
+		pdxns:particle:SetUniformScale={
+			id=31
+			node={
 			}
-			Inputs={
-				Link = { PinId = "size" LinkedNode = 10 LinkedPin = "result" }
-				Link = { PinId = "condition" LinkedNode = 45 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="size"
+					linked_node=10
+					linked_pin="result"
+				}
+				link={
+					pin_id="condition"
+					linked_node=57
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:Kill={
-			Id=32
-			Node={
+			id=32
+			node={
 			}
-			Inputs={
-				Link = { PinId = "condition" LinkedNode = 19 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="condition"
+					linked_node=19
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:SetColor={
-			Id=33
-			Node={
+			id=33
+			node={
 			}
-			Inputs={
-				Link = { PinId = "color" LinkedNode = 13 LinkedPin = "hsva" }
-				Link = { PinId = "condition" LinkedNode = 45 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=13
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="condition"
+					linked_node=57
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:SubF={
-			Id=34
-			Node={
+			id=34
+			node={
 			}
-			Inputs={
-				Link = { PinId = "term1" LinkedNode = 6 LinkedPin = "result" }
-				Link = { PinId = "term2" LinkedNode = 112 LinkedPin = "value" }
-			}
-		}
-		pdxns:math:MulF={
-			Id=35
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 42 LinkedPin = "value" }
-				Link = { PinId = "factor2" LinkedNode = 114 LinkedPin = "value" }
-			}
-		}
-		pdxns:math:AddF={
-			Id=36
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "term1" LinkedNode = 35 LinkedPin = "product" }
-				Link = { PinId = "term2" LinkedNode = 116 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="term1"
+					linked_node=6
+					linked_pin="result"
+				}
+				link={
+					pin_id="term2"
+					linked_node=112
+					linked_pin="value"
+				}
 			}
 		}
-		pdxns:values:Vector3f={
-			Id=37
-			Node={
+		pdxns:values:Float={
+			id=235
+			node={
+				value=10.000000
 			}
-			Inputs={
-				Link = { PinId = "x" LinkedNode = 43 LinkedPin = "sum" }
-				Link = { PinId = "y" LinkedNode = 38 LinkedPin = "product" }
-				Link = { PinId = "z" LinkedNode = 118 LinkedPin = "value" }
+			inputs={
 			}
 		}
-		pdxns:math:MulF={
-			Id=38
-			Node={
+		pdxns:values:Float={
+			id=236
+			node={
+				value=6.000000
 			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 36 LinkedPin = "sum" }
-				Link = { PinId = "factor2" LinkedNode = 121 LinkedPin = "value" }
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=237
+			node={
+				value=3.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=238
+			node={
+				value=1.000000
+			}
+			inputs={
 			}
 		}
 		pdxns:values:Int32={
-			Id=39
-			Node={
+			id=39
+			node={
 				value=1
 			}
-			Inputs={
-			}
-		}
-		pdxns:math:MulF={
-			Id=40
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 42 LinkedPin = "value" }
-				Link = { PinId = "factor2" LinkedNode = 123 LinkedPin = "value" }
-			}
-		}
-		pdxns:particle:GetSystemAge={
-			Id=41
-			Node={
-			}
-			Inputs={
-			}
-		}
-		pdxns:math:SinF={
-			Id=42
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "operand" LinkedNode = 41 LinkedPin = "age" }
-			}
-		}
-		pdxns:math:AddF={
-			Id=43
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "term1" LinkedNode = 40 LinkedPin = "product" }
-				Link = { PinId = "term2" LinkedNode = 133 LinkedPin = "value" }
-			}
-		}
-		pdxns:common:compound={
-			Id=44
-			Node={
-				graph="Base with Variation"
-			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 136 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 135 LinkedPin = "value" }
-			}
-		}
-		pdxns:particle:HasTag={
-			Id=45
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "tag" LinkedNode = 137 LinkedPin = "value" }
-			}
-		}
-		pdxns:values:ConstantVector3={
-			Id=46
-			Node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			Inputs={
-			}
-		}
-		pdxns:particle:ApplyForce={
-			Id=47
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "force" LinkedNode = 50 LinkedPin = "product" }
-				Link = { PinId = "condition" LinkedNode = 48 LinkedPin = "value" }
-			}
-		}
-		pdxns:particle:HasTag={
-			Id=48
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "tag" LinkedNode = 142 LinkedPin = "value" }
-			}
-		}
-		pdxns:values:Vector3f={
-			Id=49
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "x" LinkedNode = 53 LinkedPin = "output_id" }
-				Link = { PinId = "y" LinkedNode = 169 LinkedPin = "value" }
-				Link = { PinId = "z" LinkedNode = 56 LinkedPin = "output_id" }
-			}
-		}
-		pdxns:math:MulV3FF={
-			Id=50
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 49 LinkedPin = "value" }
-				Link = { PinId = "factor2" LinkedNode = 151 LinkedPin = "value" }
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=51
-			Node={
-				value=0.050000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=52
-			Node={
-				value=0.060000
-			}
-			Inputs={
-			}
-		}
-		pdxns:common:compound={
-			Id=53
-			Node={
-				graph="Base with Variation"
-			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 52 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 51 LinkedPin = "value" }
-			}
-		}
-		pdxns:values:Float={
-			Id=54
-			Node={
-				value=0.050000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=55
-			Node={
+			id=239
+			node={
 				value=0.100000
 			}
-			Inputs={
-			}
-		}
-		pdxns:common:compound={
-			Id=56
-			Node={
-				graph="Base with Variation"
-			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 55 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 54 LinkedPin = "value" }
-			}
-		}
-		pdxns:particle:HasTag={
-			Id=57
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "tag" LinkedNode = 196 LinkedPin = "value" }
-			}
-		}
-		pdxns:values:Int32={
-			Id=58
-			Node={
-				value=2
-			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Bool={
-			Id=59
-			Node={
+			id=41
+			node={
 				value=no
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:particle:SetWorldSpace={
-			Id=60
-			Node={
+		pdxns:gfx:HsvaComponents={
+			id=240
+			node={
 			}
-			Inputs={
-				Link = { PinId = "condition" LinkedNode = 107 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="hsva"
+					linked_node=233
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Bool={
+			id=359
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:common:compound={
+			id=44
+			node={
+				graph="Base with Variation"
+			}
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=136
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=135
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:GetAge={
+			id=241
+			node={
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=46
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:ApplyForce={
+			id=47
+			node={
+			}
+			inputs={
+				link={
+					pin_id="force"
+					linked_node=50
+					linked_pin="product"
+				}
+				link={
+					pin_id="condition"
+					linked_node=102
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:HasTag={
+			id=48
+			node={
+			}
+			inputs={
+				link={
+					pin_id="tag"
+					linked_node=142
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Vector3f={
-			Id=61
-			Node={
+			id=49
+			node={
 			}
-			Inputs={
-				Link = { PinId = "x" LinkedNode = 62 LinkedPin = "output_id" }
-				Link = { PinId = "y" LinkedNode = 63 LinkedPin = "output_id" }
-				Link = { PinId = "z" LinkedNode = 64 LinkedPin = "output_id" }
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=53
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="y"
+					linked_node=169
+					linked_pin="value"
+				}
+				link={
+					pin_id="z"
+					linked_node=56
+					linked_pin="output_id"
+				}
+			}
+		}
+		pdxns:math:MulV3FF={
+			id=50
+			node={
+			}
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=49
+					linked_pin="value"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=151
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=51
+			node={
+				value=0.050000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=52
+			node={
+				value=0.060000
+			}
+			inputs={
 			}
 		}
 		pdxns:common:compound={
-			Id=62
-			Node={
+			id=53
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 195 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 165 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=52
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=51
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Float={
+			id=54
+			node={
+				value=0.050000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=55
+			node={
+				value=0.100000
+			}
+			inputs={
 			}
 		}
 		pdxns:common:compound={
-			Id=63
-			Node={
+			id=56
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 164 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 141 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=55
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=54
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:particle:HasTag={
+			id=57
+			node={
+			}
+			inputs={
+				link={
+					pin_id="tag"
+					linked_node=17
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:Int32={
+			id=58
+			node={
+				value=2
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=59
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:GetUserData={
+			id=242
+			node={
+				user_data={
+					id="usr:lifetime"
+					label="Lifetime"
+					type="Float"
+				}
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Vector3f={
+			id=61
+			node={
+			}
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=62
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="y"
+					linked_node=63
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="z"
+					linked_node=64
+					linked_pin="output_id"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=64
-			Node={
+			id=62
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 138 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 134 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=195
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=165
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=65
-			Node={
+			id=63
+			node={
+				graph="Base with Variation"
+			}
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=164
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=141
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=64
+			node={
+				graph="Base with Variation"
+			}
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=138
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=134
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=65
+			node={
 				graph="ScaledCurveSampler"
 			}
-			Inputs={
-				Link = { PinId = "curve" LinkedNode = 119 LinkedPin = "value" }
-				Link = { PinId = "x" LinkedNode = 4 LinkedPin = "age" }
-				Link = { PinId = "scale_x" LinkedNode = 25 LinkedPin = "value" }
-				Link = { PinId = "scale_y" LinkedNode = 117 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=119
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=15
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=16
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=117
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:MulF={
-			Id=66
-			Node={
+			id=66
+			node={
 			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 65 LinkedPin = "result" }
-				Link = { PinId = "factor2" LinkedNode = 1 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=65
+					linked_pin="result"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=1
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:MulF={
-			Id=67
-			Node={
+			id=67
+			node={
 			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 78 LinkedPin = "value" }
-				Link = { PinId = "factor2" LinkedNode = 155 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=78
+					linked_pin="value"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=155
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:AddF={
-			Id=68
-			Node={
+			id=68
+			node={
 			}
-			Inputs={
-				Link = { PinId = "term1" LinkedNode = 67 LinkedPin = "product" }
-				Link = { PinId = "term2" LinkedNode = 161 LinkedPin = "value" }
-			}
-		}
-		pdxns:common:compound={
-			Id=69
-			Node={
-				graph="Base with Variation"
-			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 175 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 179 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="term1"
+					linked_node=67
+					linked_pin="product"
+				}
+				link={
+					pin_id="term2"
+					linked_node=161
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=70
-			Node={
+			id=69
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 181 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 183 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=175
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=179
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=71
-			Node={
+			id=70
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 184 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 185 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=181
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=183
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=71
+			node={
+				graph="Base with Variation"
+			}
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=368
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=185
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:Emitter={
-			Id=72
-			Node={
-				user_data_layout={
-					user_data={
+			id=72
+			node={
+				user_data_layout={ 					user_data={
 						id="usr:StartColor"
 						label="StartColor"
 						type="Color"
@@ -728,403 +1133,664 @@ graph={
 						label="Lifetime"
 						type="Float"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
-			Inputs={
-				Link = { PinId = "rate" LinkedNode = 131 LinkedPin = "value" }
-				Link = { PinId = "size" LinkedNode = 187 LinkedPin = "value" }
-				Link = { PinId = "position" LinkedNode = 79 LinkedPin = "value" }
-				Link = { PinId = "direction" LinkedNode = 75 LinkedPin = "value" }
-				Link = { PinId = "speed" LinkedNode = 82 LinkedPin = "output_id" }
-				Link = { PinId = "color" LinkedNode = 86 LinkedPin = "value" }
-				Link = { PinId = "texture" LinkedNode = 85 LinkedPin = "texture" }
-				Link = { PinId = "tag" LinkedNode = 80 LinkedPin = "value" }
-				Link = { PinId = "effect_flags" LinkedNode = 168 LinkedPin = "effect_flags" }
-				Link = { PinId = "orientation" LinkedNode = 91 LinkedPin = "rotation" }
-				Link = { PinId = "angular_velocity" LinkedNode = 186 LinkedPin = "value" }
-				Link = { PinId = "render_order" LinkedNode = 58 LinkedPin = "value" }
-				Link = { PinId = "usr:StartColor" LinkedNode = 126 LinkedPin = "hsva" }
-				Link = { PinId = "usr:Size" LinkedNode = 96 LinkedPin = "output_id" }
-				Link = { PinId = "usr:lifetime" LinkedNode = 101 LinkedPin = "output_id" }
+			inputs={
+				link={
+					pin_id="rate"
+					linked_node=319
+					linked_pin="value"
+				}
+				link={
+					pin_id="size"
+					linked_node=187
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=79
+					linked_pin="value"
+				}
+				link={
+					pin_id="direction"
+					linked_node=75
+					linked_pin="value"
+				}
+				link={
+					pin_id="speed"
+					linked_node=82
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="color"
+					linked_node=86
+					linked_pin="value"
+				}
+				link={
+					pin_id="texture"
+					linked_node=85
+					linked_pin="texture"
+				}
+				link={
+					pin_id="tag"
+					linked_node=80
+					linked_pin="value"
+				}
+				link={
+					pin_id="effect_flags"
+					linked_node=168
+					linked_pin="effect_flags"
+				}
+				link={
+					pin_id="orientation"
+					linked_node=91
+					linked_pin="rotation"
+				}
+				link={
+					pin_id="angular_velocity"
+					linked_node=186
+					linked_pin="value"
+				}
+				link={
+					pin_id="render_order"
+					linked_node=58
+					linked_pin="value"
+				}
+				link={
+					pin_id="usr:StartColor"
+					linked_node=126
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="usr:Size"
+					linked_node=96
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="usr:lifetime"
+					linked_node=101
+					linked_pin="output_id"
+				}
 			}
 		}
 		pdxns:math:MulF={
-			Id=73
-			Node={
+			id=73
+			node={
 			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 78 LinkedPin = "value" }
-				Link = { PinId = "factor2" LinkedNode = 125 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=78
+					linked_pin="value"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=125
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:AddF={
-			Id=74
-			Node={
+			id=74
+			node={
 			}
-			Inputs={
-				Link = { PinId = "term1" LinkedNode = 73 LinkedPin = "product" }
-				Link = { PinId = "term2" LinkedNode = 145 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="term1"
+					linked_node=73
+					linked_pin="product"
+				}
+				link={
+					pin_id="term2"
+					linked_node=145
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Vector3f={
-			Id=75
-			Node={
+			id=75
+			node={
 			}
-			Inputs={
-				Link = { PinId = "x" LinkedNode = 68 LinkedPin = "sum" }
-				Link = { PinId = "y" LinkedNode = 74 LinkedPin = "sum" }
-				Link = { PinId = "z" LinkedNode = 44 LinkedPin = "output_id" }
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=68
+					linked_pin="sum"
+				}
+				link={
+					pin_id="y"
+					linked_node=74
+					linked_pin="sum"
+				}
+				link={
+					pin_id="z"
+					linked_node=44
+					linked_pin="output_id"
+				}
 			}
 		}
 		pdxns:particle:GetSystemAge={
-			Id=76
-			Node={
+			id=76
+			node={
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:GetSystemAge={
-			Id=77
-			Node={
+			id=77
+			node={
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:math:SinF={
-			Id=78
-			Node={
+			id=78
+			node={
 			}
-			Inputs={
-				Link = { PinId = "operand" LinkedNode = 77 LinkedPin = "age" }
+			inputs={
+				link={
+					pin_id="operand"
+					linked_node=77
+					linked_pin="age"
+				}
 			}
 		}
 		pdxns:values:Vector3f={
-			Id=79
-			Node={
+			id=79
+			node={
 			}
-			Inputs={
-				Link = { PinId = "x" LinkedNode = 69 LinkedPin = "output_id" }
-				Link = { PinId = "y" LinkedNode = 70 LinkedPin = "output_id" }
-				Link = { PinId = "z" LinkedNode = 71 LinkedPin = "output_id" }
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=69
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="y"
+					linked_node=70
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="z"
+					linked_node=71
+					linked_pin="output_id"
+				}
 			}
 		}
 		pdxns:values:Int32={
-			Id=80
-			Node={
+			id=80
+			node={
 				value=2
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:GetUserData={
-			Id=81
-			Node={
+			id=81
+			node={
 				user_data={
 					id="usr:StartColor"
 					label="StartColor"
 					type="Color"
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:common:compound={
-			Id=82
-			Node={
+			id=82
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 111 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 189 LinkedPin = "value" }
-			}
-		}
-		pdxns:particle:GetUserData={
-			Id=83
-			Node={
-				user_data={
-					id="usr:lifetime"
-					label="Lifetime"
-					type="Float"
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=111
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=189
+					linked_pin="value"
 				}
 			}
-			Inputs={
+		}
+		pdxns:values:Bool={
+			id=243
+			node={
+				value=no
+			}
+			inputs={
 			}
 		}
 		pdxns:values:Color={
-			Id=84
-			Node={
+			id=84
+			node={
 				value={
 					0.406250 0.399505 0.379272 1.000000
 				}
 
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:gfx:Texture={
-			Id=85
-			Node={
-				texture_file="gfx/particles/smoke_4.dds"
+			id=85
+			node={
+				texture_file="gfx/particles/textures/smoke_4.dds"
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Color={
-			Id=86
-			Node={
+			id=86
+			node={
 				value={
 					1.000000 0.000000 0.000000 0.000000
 				}
 
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:gfx:HsvaComponents={
-			Id=87
-			Node={
+			id=87
+			node={
 			}
-			Inputs={
-				Link = { PinId = "hsva" LinkedNode = 81 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="hsva"
+					linked_node=81
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:GetAge={
-			Id=88
-			Node={
+			id=88
+			node={
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:common:compound={
-			Id=89
-			Node={
+			id=89
+			node={
 				graph="ScaledCurveSampler"
 			}
-			Inputs={
-				Link = { PinId = "curve" LinkedNode = 115 LinkedPin = "value" }
-				Link = { PinId = "x" LinkedNode = 90 LinkedPin = "age" }
-				Link = { PinId = "scale_x" LinkedNode = 83 LinkedPin = "value" }
-				Link = { PinId = "scale_y" LinkedNode = 94 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=115
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=88
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=92
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=94
+					linked_pin="value"
+				}
 			}
 		}
-		pdxns:particle:GetAge={
-			Id=90
-			Node={
+		pdxns:values:Float={
+			id=302
+			node={
+				value=3.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:3d:YawPitchVectorRotation={
-			Id=91
-			Node={
+			id=91
+			node={
 			}
-			Inputs={
-				Link = { PinId = "yaw" LinkedNode = 154 LinkedPin = "value" }
-				Link = { PinId = "pitch" LinkedNode = 163 LinkedPin = "value" }
-				Link = { PinId = "roll" LinkedNode = 93 LinkedPin = "output_id" }
+			inputs={
+				link={
+					pin_id="yaw"
+					linked_node=154
+					linked_pin="value"
+				}
+				link={
+					pin_id="pitch"
+					linked_node=163
+					linked_pin="value"
+				}
+				link={
+					pin_id="roll"
+					linked_node=93
+					linked_pin="output_id"
+				}
 			}
 		}
 		pdxns:particle:GetUserData={
-			Id=92
-			Node={
+			id=92
+			node={
 				user_data={
 					id="usr:lifetime"
 					label="Lifetime"
 					type="Float"
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:common:compound={
-			Id=93
-			Node={
+			id=93
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 159 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 172 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=159
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=172
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:GetUserData={
-			Id=94
-			Node={
+			id=94
+			node={
 				user_data={
 					id="usr:Size"
 					label="Size"
 					type="Float"
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:common:compound={
-			Id=95
-			Node={
+			id=95
+			node={
 				graph="ScaledCurveSampler"
 			}
-			Inputs={
-				Link = { PinId = "curve" LinkedNode = 113 LinkedPin = "value" }
-				Link = { PinId = "x" LinkedNode = 88 LinkedPin = "age" }
-				Link = { PinId = "scale_x" LinkedNode = 92 LinkedPin = "value" }
-				Link = { PinId = "scale_y" LinkedNode = 188 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=113
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=88
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=92
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=188
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=96
-			Node={
+			id=96
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 124 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 150 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=124
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=150
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=97
-			Node={
+			id=97
+			node={
 				graph="ScaledCurveSampler"
 			}
-			Inputs={
-				Link = { PinId = "curve" LinkedNode = 122 LinkedPin = "value" }
-				Link = { PinId = "x" LinkedNode = 88 LinkedPin = "age" }
-				Link = { PinId = "scale_x" LinkedNode = 92 LinkedPin = "value" }
-				Link = { PinId = "scale_y" LinkedNode = 120 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=122
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=88
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=92
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=120
+					linked_pin="value"
+				}
 			}
 		}
-		pdxns:particle:SetSize={
-			Id=98
-			Node={
+		pdxns:particle:SetUniformScale={
+			id=98
+			node={
 			}
-			Inputs={
-				Link = { PinId = "size" LinkedNode = 89 LinkedPin = "result" }
-				Link = { PinId = "condition" LinkedNode = 102 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="size"
+					linked_node=89
+					linked_pin="result"
+				}
+				link={
+					pin_id="condition"
+					linked_node=102
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:math:MulF={
-			Id=99
-			Node={
+			id=99
+			node={
 			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 97 LinkedPin = "result" }
-				Link = { PinId = "factor2" LinkedNode = 87 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=97
+					linked_pin="result"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=87
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:gfx:HSVA={
-			Id=100
-			Node={
+			id=100
+			node={
 			}
-			Inputs={
-				Link = { PinId = "hue" LinkedNode = 87 LinkedPin = "hue" }
-				Link = { PinId = "saturation" LinkedNode = 87 LinkedPin = "saturation" }
-				Link = { PinId = "value" LinkedNode = 99 LinkedPin = "product" }
-				Link = { PinId = "α" LinkedNode = 95 LinkedPin = "result" }
+			inputs={
+				link={
+					pin_id="hue"
+					linked_node=87
+					linked_pin="hue"
+				}
+				link={
+					pin_id="saturation"
+					linked_node=87
+					linked_pin="saturation"
+				}
+				link={
+					pin_id="value"
+					linked_node=99
+					linked_pin="product"
+				}
+				link={
+					pin_id="α"
+					linked_node=95
+					linked_pin="result"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=101
-			Node={
+			id=101
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 109 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 110 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=109
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=110
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:HasTag={
-			Id=102
-			Node={
+			id=102
+			node={
 			}
-			Inputs={
-				Link = { PinId = "tag" LinkedNode = 192 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="tag"
+					linked_node=80
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:SetColor={
-			Id=103
-			Node={
+			id=103
+			node={
 			}
-			Inputs={
-				Link = { PinId = "color" LinkedNode = 100 LinkedPin = "hsva" }
-				Link = { PinId = "condition" LinkedNode = 102 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=100
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="condition"
+					linked_node=102
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Bool={
-			Id=104
-			Node={
+			id=104
+			node={
 				value=no
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:EffectFlags={
-			Id=105
-			Node={
+			id=105
+			node={
 			}
-			Inputs={
-				Link = { PinId = "billboard" LinkedNode = 104 LinkedPin = "value" }
-				Link = { PinId = "emissive" LinkedNode = 59 LinkedPin = "value" }
-				Link = { PinId = "billboard_axis" LinkedNode = 46 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="billboard"
+					linked_node=104
+					linked_pin="value"
+				}
+				link={
+					pin_id="emissive"
+					linked_node=59
+					linked_pin="value"
+				}
+				link={
+					pin_id="billboard_axis"
+					linked_node=46
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=359
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Float={
-			Id=106
-			Node={
+			id=106
+			node={
 				value=-70.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:Bool={
-			Id=107
-			Node={
-				value=no
+		pdxns:values:Int32={
+			id=245
+			node={
+				value=4
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=108
-			Node={
+			id=108
+			node={
 				value=-0.300000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=109
-			Node={
+			id=109
+			node={
 				value=10.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=110
-			Node={
+			id=110
+			node={
 				value=2.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=111
-			Node={
+			id=111
+			node={
 				value=0.200000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=112
-			Node={
+			id=112
+			node={
 				value=0.500000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Curve={
-			Id=113
-			Node={
+			id=113
+			node={
 				type="Catmull-Rom"
 				curve={
 					{ x = 0.000000 y = 0.000000 }
@@ -1133,20 +1799,30 @@ graph={
 					{ x = 0.998948 y = 0.000000 }
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:Float={
-			Id=114
-			Node={
-				value=0.050000
+		pdxns:common:compound={
+			id=246
+			node={
+				graph="Base with Variation"
 			}
-			Inputs={
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=234
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=235
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Curve={
-			Id=115
-			Node={
+			id=115
+			node={
 				type="Catmull-Rom"
 				curve={
 					{ x = 0.060525 y = 0.663964 }
@@ -1155,36 +1831,46 @@ graph={
 					{ x = 1.000000 y = 0.960676 }
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=116
-			Node={
-				value=0.600000
+			id=247
+			node={
+				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=117
-			Node={
+			id=117
+			node={
 				value=2.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:Float={
-			Id=118
-			Node={
-				value=0.700000
+		pdxns:common:compound={
+			id=248
+			node={
+				graph="Base with Variation"
 			}
-			Inputs={
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=236
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=237
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Curve={
-			Id=119
-			Node={
+			id=119
+			node={
 				type="Catmull-Rom"
 				curve={
 					{ x = 0.015823 y = 0.498871 }
@@ -1192,28 +1878,38 @@ graph={
 					{ x = 0.952365 y = 0.794043 }
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=120
-			Node={
+			id=120
+			node={
 				value=1.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:Float={
-			Id=121
-			Node={
-				value=3.000000
+		pdxns:common:compound={
+			id=249
+			node={
+				graph="Base with Variation"
 			}
-			Inputs={
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=238
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=239
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Curve={
-			Id=122
-			Node={
+			id=122
+			node={
 				type="Catmull-Rom"
 				curve={
 					{ x = 0.015823 y = 0.498871 }
@@ -1221,221 +1917,371 @@ graph={
 					{ x = 0.952365 y = 0.794043 }
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=123
-			Node={
-				value=0.200000
+			id=319
+			node={
+				value=10.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=124
-			Node={
+			id=124
+			node={
 				value=4.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=125
-			Node={
+			id=125
+			node={
 				value=0.050000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:gfx:HSVA={
-			Id=126
-			Node={
+			id=126
+			node={
 			}
-			Inputs={
-				Link = { PinId = "hue" LinkedNode = 127 LinkedPin = "output_id" }
-				Link = { PinId = "saturation" LinkedNode = 128 LinkedPin = "output_id" }
-				Link = { PinId = "value" LinkedNode = 129 LinkedPin = "output_id" }
-				Link = { PinId = "α" LinkedNode = 130 LinkedPin = "alpha" }
-			}
-		}
-		pdxns:common:compound={
-			Id=127
-			Node={
-				graph="Base with Variation"
-			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 130 LinkedPin = "hue" }
-				Link = { PinId = "variation_id" LinkedNode = 182 LinkedPin = "value" }
-			}
-		}
-		pdxns:common:compound={
-			Id=128
-			Node={
-				graph="Base with Variation"
-			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 130 LinkedPin = "saturation" }
-				Link = { PinId = "variation_id" LinkedNode = 180 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="hue"
+					linked_node=127
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="saturation"
+					linked_node=128
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="value"
+					linked_node=129
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="α"
+					linked_node=130
+					linked_pin="alpha"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=129
-			Node={
+			id=127
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 130 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 176 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=130
+					linked_pin="hue"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=182
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=128
+			node={
+				graph="Base with Variation"
+			}
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=130
+					linked_pin="saturation"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=180
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:common:compound={
+			id=129
+			node={
+				graph="Base with Variation"
+			}
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=130
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=176
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:gfx:HsvaComponents={
-			Id=130
-			Node={
+			id=130
+			node={
 			}
-			Inputs={
-				Link = { PinId = "hsva" LinkedNode = 84 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="hsva"
+					linked_node=84
+					linked_pin="value"
+				}
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=251
+			node={
+				value={ 0.000000 0.000000 1.000000 }
+			}
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=131
-			Node={
-				value=10.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=132
-			Node={
-				value=2.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=133
-			Node={
-				value=0.400000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=134
-			Node={
-				value=2.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=135
-			Node={
-				value=0.200000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=136
-			Node={
-				value=0.900000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Int32={
-			Id=137
-			Node={
-				value=1
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=138
-			Node={
-				value=4.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=139
-			Node={
+			id=252
+			node={
 				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:ConstantVector3={
-			Id=140
-			Node={
-				value={ 0.000000 0.000000 0.000000 }
+		pdxns:particle:Emitter={
+			id=253
+			node={
+				user_data_layout={ 					user_data={
+						id="usr:StartColor"
+						label="StartColor"
+						type="Color"
+					}
+ 					user_data={
+						id="usr:Size"
+						label="Size"
+						type="Float"
+					}
+ 					user_data={
+						id="usr:lifetime"
+						label="Lifetime"
+						type="Float"
+					}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
-			Inputs={
+			inputs={
+				link={
+					pin_id="rate"
+					linked_node=302
+					linked_pin="value"
+				}
+				link={
+					pin_id="size"
+					linked_node=252
+					linked_pin="value"
+				}
+				link={
+					pin_id="position"
+					linked_node=258
+					linked_pin="value"
+				}
+				link={
+					pin_id="direction"
+					linked_node=259
+					linked_pin="value"
+				}
+				link={
+					pin_id="speed"
+					linked_node=247
+					linked_pin="value"
+				}
+				link={
+					pin_id="color"
+					linked_node=227
+					linked_pin="value"
+				}
+				link={
+					pin_id="texture"
+					linked_node=218
+					linked_pin="texture"
+				}
+				link={
+					pin_id="tag"
+					linked_node=245
+					linked_pin="value"
+				}
+				link={
+					pin_id="effect_flags"
+					linked_node=223
+					linked_pin="effect_flags"
+				}
+				link={
+					pin_id="orientation"
+					linked_node=214
+					linked_pin="rotation"
+				}
+				link={
+					pin_id="angular_velocity"
+					linked_node=251
+					linked_pin="value"
+				}
+				link={
+					pin_id="render_order"
+					linked_node=228
+					linked_pin="value"
+				}
+				link={
+					pin_id="usr:StartColor"
+					linked_node=211
+					linked_pin="value"
+				}
+				link={
+					pin_id="usr:Size"
+					linked_node=206
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="usr:lifetime"
+					linked_node=199
+					linked_pin="output_id"
+				}
 			}
 		}
 		pdxns:values:Float={
-			Id=141
-			Node={
+			id=134
+			node={
+				value=2.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=135
+			node={
 				value=0.200000
 			}
-			Inputs={
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=136
+			node={
+				value=0.900000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=254
+			node={
+				value=0.050000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=138
+			node={
+				value=4.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=139
+			node={
+				value=0.000000
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=140
+			node={
+				value={ 0.000000 0.000000 0.000000 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Float={
+			id=141
+			node={
+				value=0.200000
+			}
+			inputs={
 			}
 		}
 		pdxns:values:Int32={
-			Id=142
-			Node={
+			id=142
+			node={
 				value=2
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=143
-			Node={
+			id=143
+			node={
 				value=-1.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:math:SinF={
-			Id=144
-			Node={
+			id=144
+			node={
 			}
-			Inputs={
-				Link = { PinId = "operand" LinkedNode = 76 LinkedPin = "age" }
+			inputs={
+				link={
+					pin_id="operand"
+					linked_node=76
+					linked_pin="age"
+				}
 			}
 		}
 		pdxns:values:Float={
-			Id=145
-			Node={
+			id=145
+			node={
 				value=0.600000
 			}
-			Inputs={
+			inputs={
+			}
+		}
+		pdxns:math:MulF={
+			id=255
+			node={
+			}
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=144
+					linked_pin="value"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=254
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Float={
-			Id=146
-			Node={
-				value=0.200000
+			id=256
+			node={
+				value=0.600000
 			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=147
-			Node={
-				value=0.002000
-			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Curve={
-			Id=148
-			Node={
+			id=148
+			node={
 				type="Catmull-Rom"
 				curve={
 					{ x = 0.000000 y = 0.000000 }
@@ -1445,36 +2291,36 @@ graph={
 					{ x = 0.998948 y = 0.000000 }
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=149
-			Node={
+			id=149
+			node={
 				value=1.500000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=150
-			Node={
+			id=150
+			node={
 				value=2.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=151
-			Node={
+			id=151
+			node={
 				value=0.600000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Curve={
-			Id=152
-			Node={
+			id=152
+			node={
 				type="Catmull-Rom"
 				curve={
 					{ x = 0.000000 y = 0.483776 }
@@ -1486,68 +2332,68 @@ graph={
 					{ x = 0.998783 y = 0.503341 }
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=153
-			Node={
+			id=153
+			node={
 				value=1.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=154
-			Node={
+			id=154
+			node={
 				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=155
-			Node={
+			id=155
+			node={
 				value=0.200000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=156
-			Node={
+			id=156
+			node={
 				value=1.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=157
-			Node={
+			id=157
+			node={
 				value=5.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=158
-			Node={
+			id=158
+			node={
 				value=0.500000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=159
-			Node={
+			id=159
+			node={
 				value=-10.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Curve={
-			Id=160
-			Node={
+			id=160
+			node={
 				type="Catmull-Rom"
 				curve={
 					{ x = 0.000000 y = 0.135129 }
@@ -1558,471 +2404,637 @@ graph={
 					{ x = 0.997274 y = 0.990021 }
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=161
-			Node={
+			id=161
+			node={
 				value=0.400000
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:ConstantVector3={
-			Id=162
-			Node={
+		pdxns:values:ConstVector3f={
+			id=162
+			node={
 				value={ 0.000000 0.000000 0.000000 }
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=163
-			Node={
+			id=163
+			node={
 				value=90.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=164
-			Node={
+			id=164
+			node={
 				value=0.300000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=165
-			Node={
+			id=165
+			node={
 				value=5.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Bool={
-			Id=166
-			Node={
+			id=166
+			node={
 				value=no
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Bool={
-			Id=167
-			Node={
+			id=167
+			node={
 				value=no
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:EffectFlags={
-			Id=168
-			Node={
+			id=168
+			node={
 			}
-			Inputs={
-				Link = { PinId = "billboard" LinkedNode = 167 LinkedPin = "value" }
-				Link = { PinId = "emissive" LinkedNode = 166 LinkedPin = "value" }
-				Link = { PinId = "billboard_axis" LinkedNode = 162 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="billboard"
+					linked_node=167
+					linked_pin="value"
+				}
+				link={
+					pin_id="emissive"
+					linked_node=166
+					linked_pin="value"
+				}
+				link={
+					pin_id="billboard_axis"
+					linked_node=162
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=243
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Float={
-			Id=169
-			Node={
+			id=169
+			node={
 				value=0.050000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=170
-			Node={
+			id=170
+			node={
 				value=0.100000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=171
-			Node={
+			id=171
+			node={
 				value=0.100000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=172
-			Node={
+			id=172
+			node={
 				value=15.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=173
-			Node={
+			id=173
+			node={
 				value=0.200000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=174
-			Node={
+			id=174
+			node={
 				value=1.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=175
-			Node={
+			id=175
+			node={
 				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=176
-			Node={
+			id=176
+			node={
 				value=0.200000
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:ConstantVector3={
-			Id=177
-			Node={
+		pdxns:values:ConstVector3f={
+			id=177
+			node={
 				value={ 0.000000 0.000000 1.000000 }
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=178
-			Node={
-				value=4.000000
+			id=178
+			node={
+				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=179
-			Node={
+			id=179
+			node={
 				value=5.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=180
-			Node={
+			id=180
+			node={
 				value=0.200000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=181
-			Node={
+			id=181
+			node={
 				value=0.300000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=182
-			Node={
+			id=182
+			node={
 				value=0.100000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=183
-			Node={
+			id=183
+			node={
 				value=0.100000
 			}
-			Inputs={
+			inputs={
+			}
+		}
+		pdxns:math:AddF={
+			id=257
+			node={
+			}
+			inputs={
+				link={
+					pin_id="term1"
+					linked_node=255
+					linked_pin="product"
+				}
+				link={
+					pin_id="term2"
+					linked_node=256
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Float={
-			Id=184
-			Node={
-				value=5.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=185
-			Node={
+			id=185
+			node={
 				value=2.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:ConstantVector3={
-			Id=186
-			Node={
+		pdxns:values:ConstVector3f={
+			id=186
+			node={
 				value={ 0.000000 0.000000 1.000000 }
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=187
-			Node={
-				value=4.000000
+			id=187
+			node={
+				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=188
-			Node={
+			id=188
+			node={
 				value=0.400000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=189
-			Node={
+			id=189
+			node={
 				value=0.200000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=190
-			Node={
+			id=190
+			node={
 				value=90.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=191
-			Node={
+			id=191
+			node={
 				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:Int32={
-			Id=192
-			Node={
-				value=2
+		pdxns:values:Vector3f={
+			id=258
+			node={
 			}
-			Inputs={
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=246
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="y"
+					linked_node=249
+					linked_pin="output_id"
+				}
+				link={
+					pin_id="z"
+					linked_node=248
+					linked_pin="output_id"
+				}
 			}
 		}
 		pdxns:values:Float={
-			Id=193
-			Node={
+			id=193
+			node={
 				value=12.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=194
-			Node={
+			id=194
+			node={
 				value=2.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=195
-			Node={
+			id=195
+			node={
 				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:Int32={
-			Id=196
-			Node={
-				value=1
+		pdxns:values:Vector3f={
+			id=259
+			node={
 			}
-			Inputs={
+			inputs={
+				link={
+					pin_id="x"
+					linked_node=143
+					linked_pin="value"
+				}
+				link={
+					pin_id="y"
+					linked_node=257
+					linked_pin="sum"
+				}
+				link={
+					pin_id="z"
+					linked_node=108
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Float={
-			Id=197
-			Node={
+			id=197
+			node={
 				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:SetColor={
-			Id=198
-			Node={
+			id=198
+			node={
 			}
-			Inputs={
-				Link = { PinId = "color" LinkedNode = 204 LinkedPin = "hsva" }
-				Link = { PinId = "condition" LinkedNode = 203 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=204
+					linked_pin="hsva"
+				}
+				link={
+					pin_id="condition"
+					linked_node=203
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=199
-			Node={
+			id=199
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 201 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 200 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=201
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=200
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Float={
-			Id=200
-			Node={
+			id=200
+			node={
 				value=2.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=201
-			Node={
+			id=201
+			node={
 				value=12.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:Int32={
-			Id=202
-			Node={
-				value=4
+		pdxns:values:Float={
+			id=278
+			node={
+				value=2.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:HasTag={
-			Id=203
-			Node={
+			id=203
+			node={
 			}
-			Inputs={
-				Link = { PinId = "tag" LinkedNode = 202 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="tag"
+					linked_node=245
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:gfx:HSVA={
-			Id=204
-			Node={
+			id=204
+			node={
 			}
-			Inputs={
-				Link = { PinId = "hue" LinkedNode = 240 LinkedPin = "hue" }
-				Link = { PinId = "saturation" LinkedNode = 240 LinkedPin = "saturation" }
-				Link = { PinId = "value" LinkedNode = 205 LinkedPin = "product" }
-				Link = { PinId = "α" LinkedNode = 208 LinkedPin = "result" }
+			inputs={
+				link={
+					pin_id="hue"
+					linked_node=240
+					linked_pin="hue"
+				}
+				link={
+					pin_id="saturation"
+					linked_node=240
+					linked_pin="saturation"
+				}
+				link={
+					pin_id="value"
+					linked_node=205
+					linked_pin="product"
+				}
+				link={
+					pin_id="α"
+					linked_node=208
+					linked_pin="result"
+				}
 			}
 		}
 		pdxns:math:MulF={
-			Id=205
-			Node={
+			id=205
+			node={
 			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 212 LinkedPin = "result" }
-				Link = { PinId = "factor2" LinkedNode = 240 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=212
+					linked_pin="result"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=240
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=206
-			Node={
+			id=206
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 210 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 209 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=210
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=209
+					linked_pin="value"
+				}
 			}
 		}
-		pdxns:particle:SetSize={
-			Id=207
-			Node={
+		pdxns:particle:SetUniformScale={
+			id=207
+			node={
 			}
-			Inputs={
-				Link = { PinId = "size" LinkedNode = 217 LinkedPin = "result" }
-				Link = { PinId = "condition" LinkedNode = 203 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="size"
+					linked_node=217
+					linked_pin="result"
+				}
+				link={
+					pin_id="condition"
+					linked_node=203
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=208
-			Node={
+			id=208
+			node={
 				graph="ScaledCurveSampler"
 			}
-			Inputs={
-				Link = { PinId = "curve" LinkedNode = 215 LinkedPin = "value" }
-				Link = { PinId = "x" LinkedNode = 241 LinkedPin = "age" }
-				Link = { PinId = "scale_x" LinkedNode = 242 LinkedPin = "value" }
-				Link = { PinId = "scale_y" LinkedNode = 216 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=215
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=241
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=242
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=216
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Float={
-			Id=209
-			Node={
+			id=209
+			node={
 				value=1.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=210
-			Node={
+			id=210
+			node={
 				value=15.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Color={
-			Id=211
-			Node={
+			id=211
+			node={
 				value={
 					0.042969 0.038965 0.035751 1.000000
 				}
 
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:common:compound={
-			Id=212
-			Node={
+			id=212
+			node={
 				graph="ScaledCurveSampler"
 			}
-			Inputs={
-				Link = { PinId = "curve" LinkedNode = 219 LinkedPin = "value" }
-				Link = { PinId = "x" LinkedNode = 241 LinkedPin = "age" }
-				Link = { PinId = "scale_x" LinkedNode = 242 LinkedPin = "value" }
-				Link = { PinId = "scale_y" LinkedNode = 220 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=219
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=241
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=242
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=220
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:common:compound={
-			Id=213
-			Node={
+			id=213
+			node={
 				graph="Base with Variation"
 			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 221 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 222 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="base_id"
+					linked_node=221
+					linked_pin="value"
+				}
+				link={
+					pin_id="variation_id"
+					linked_node=222
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:3d:YawPitchVectorRotation={
-			Id=214
-			Node={
+			id=214
+			node={
 			}
-			Inputs={
-				Link = { PinId = "yaw" LinkedNode = 224 LinkedPin = "value" }
-				Link = { PinId = "pitch" LinkedNode = 225 LinkedPin = "value" }
-				Link = { PinId = "roll" LinkedNode = 213 LinkedPin = "output_id" }
+			inputs={
+				link={
+					pin_id="yaw"
+					linked_node=224
+					linked_pin="value"
+				}
+				link={
+					pin_id="pitch"
+					linked_node=225
+					linked_pin="value"
+				}
+				link={
+					pin_id="roll"
+					linked_node=213
+					linked_pin="output_id"
+				}
 			}
 		}
 		pdxns:values:Curve={
-			Id=215
-			Node={
+			id=215
+			node={
 				type="Catmull-Rom"
 				curve={
 					{ x = 0.000000 y = 0.000000 }
@@ -2032,40 +3044,56 @@ graph={
 					{ x = 0.998948 y = 0.000000 }
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=216
-			Node={
+			id=216
+			node={
 				value=0.300000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:common:compound={
-			Id=217
-			Node={
+			id=217
+			node={
 				graph="ScaledCurveSampler"
 			}
-			Inputs={
-				Link = { PinId = "curve" LinkedNode = 229 LinkedPin = "value" }
-				Link = { PinId = "x" LinkedNode = 244 LinkedPin = "age" }
-				Link = { PinId = "scale_x" LinkedNode = 243 LinkedPin = "value" }
-				Link = { PinId = "scale_y" LinkedNode = 226 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="curve"
+					linked_node=229
+					linked_pin="value"
+				}
+				link={
+					pin_id="x"
+					linked_node=241
+					linked_pin="age"
+				}
+				link={
+					pin_id="scale_x"
+					linked_node=242
+					linked_pin="value"
+				}
+				link={
+					pin_id="scale_y"
+					linked_node=226
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:gfx:Texture={
-			Id=218
-			Node={
-				texture_file="gfx/particles/fire03_des.dds"
+			id=218
+			node={
+				texture_file="gfx/particles/textures/fire03_des.dds"
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Curve={
-			Id=219
-			Node={
+			id=219
+			node={
 				type="Catmull-Rom"
 				curve={
 					{ x = 0.015823 y = 0.498871 }
@@ -2073,93 +3101,110 @@ graph={
 					{ x = 0.952365 y = 0.794043 }
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=220
-			Node={
+			id=220
+			node={
 				value=1.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=221
-			Node={
+			id=221
+			node={
 				value=-10.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=222
-			Node={
+			id=222
+			node={
 				value=180.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:EffectFlags={
-			Id=223
-			Node={
+			id=223
+			node={
 			}
-			Inputs={
-				Link = { PinId = "billboard" LinkedNode = 232 LinkedPin = "value" }
-				Link = { PinId = "emissive" LinkedNode = 231 LinkedPin = "value" }
-				Link = { PinId = "billboard_axis" LinkedNode = 230 LinkedPin = "value" }
+			inputs={
+				link={
+					pin_id="billboard"
+					linked_node=232
+					linked_pin="value"
+				}
+				link={
+					pin_id="emissive"
+					linked_node=231
+					linked_pin="value"
+				}
+				link={
+					pin_id="billboard_axis"
+					linked_node=230
+					linked_pin="value"
+				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=41
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Float={
-			Id=224
-			Node={
+			id=224
+			node={
 				value=0.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Float={
-			Id=225
-			Node={
+			id=225
+			node={
 				value=90.000000
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:particle:GetUserData={
-			Id=226
-			Node={
+			id=226
+			node={
 				user_data={
 					id="usr:Size"
 					label="Size"
 					type="Float"
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Color={
-			Id=227
-			Node={
+			id=227
+			node={
 				value={
 					1.000000 0.000000 0.000000 0.000000
 				}
 
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Int32={
-			Id=228
-			Node={
+			id=228
+			node={
 				value=1
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Curve={
-			Id=229
-			Node={
+			id=229
+			node={
 				type="Catmull-Rom"
 				curve={
 					{ x = 0.037975 y = 0.631743 }
@@ -2168,300 +3213,31 @@ graph={
 					{ x = 0.997274 y = 0.990021 }
 				}
 			}
-			Inputs={
+			inputs={
 			}
 		}
-		pdxns:values:ConstantVector3={
-			Id=230
-			Node={
+		pdxns:values:ConstVector3f={
+			id=230
+			node={
 				value={ 0.000000 0.000000 0.000000 }
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Bool={
-			Id=231
-			Node={
+			id=231
+			node={
 				value=no
 			}
-			Inputs={
+			inputs={
 			}
 		}
 		pdxns:values:Bool={
-			Id=232
-			Node={
+			id=232
+			node={
 				value=no
 			}
-			Inputs={
-			}
-		}
-		pdxns:particle:GetUserData={
-			Id=233
-			Node={
-				user_data={
-					id="usr:StartColor"
-					label="StartColor"
-					type="Color"
-				}
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=234
-			Node={
-				value=0.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=235
-			Node={
-				value=10.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=236
-			Node={
-				value=6.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=237
-			Node={
-				value=3.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=238
-			Node={
-				value=1.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=239
-			Node={
-				value=0.100000
-			}
-			Inputs={
-			}
-		}
-		pdxns:gfx:HsvaComponents={
-			Id=240
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "hsva" LinkedNode = 233 LinkedPin = "value" }
-			}
-		}
-		pdxns:particle:GetAge={
-			Id=241
-			Node={
-			}
-			Inputs={
-			}
-		}
-		pdxns:particle:GetUserData={
-			Id=242
-			Node={
-				user_data={
-					id="usr:lifetime"
-					label="Lifetime"
-					type="Float"
-				}
-			}
-			Inputs={
-			}
-		}
-		pdxns:particle:GetUserData={
-			Id=243
-			Node={
-				user_data={
-					id="usr:lifetime"
-					label="Lifetime"
-					type="Float"
-				}
-			}
-			Inputs={
-			}
-		}
-		pdxns:particle:GetAge={
-			Id=244
-			Node={
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Int32={
-			Id=245
-			Node={
-				value=4
-			}
-			Inputs={
-			}
-		}
-		pdxns:common:compound={
-			Id=246
-			Node={
-				graph="Base with Variation"
-			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 234 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 235 LinkedPin = "value" }
-			}
-		}
-		pdxns:values:Float={
-			Id=247
-			Node={
-				value=0.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:common:compound={
-			Id=248
-			Node={
-				graph="Base with Variation"
-			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 236 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 237 LinkedPin = "value" }
-			}
-		}
-		pdxns:common:compound={
-			Id=249
-			Node={
-				graph="Base with Variation"
-			}
-			Inputs={
-				Link = { PinId = "base_id" LinkedNode = 238 LinkedPin = "value" }
-				Link = { PinId = "variation_id" LinkedNode = 239 LinkedPin = "value" }
-			}
-		}
-		pdxns:values:Float={
-			Id=250
-			Node={
-				value=3.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:ConstantVector3={
-			Id=251
-			Node={
-				value={ 0.000000 0.000000 1.000000 }
-			}
-			Inputs={
-			}
-		}
-		pdxns:values:Float={
-			Id=252
-			Node={
-				value=4.000000
-			}
-			Inputs={
-			}
-		}
-		pdxns:particle:Emitter={
-			Id=253
-			Node={
-				user_data_layout={
-					user_data={
-						id="usr:StartColor"
-						label="StartColor"
-						type="Color"
-					}
- 					user_data={
-						id="usr:Size"
-						label="Size"
-						type="Float"
-					}
- 					user_data={
-						id="usr:lifetime"
-						label="Lifetime"
-						type="Float"
-					}
- 				}
-			}
-			Inputs={
-				Link = { PinId = "rate" LinkedNode = 250 LinkedPin = "value" }
-				Link = { PinId = "size" LinkedNode = 252 LinkedPin = "value" }
-				Link = { PinId = "position" LinkedNode = 258 LinkedPin = "value" }
-				Link = { PinId = "direction" LinkedNode = 259 LinkedPin = "value" }
-				Link = { PinId = "speed" LinkedNode = 247 LinkedPin = "value" }
-				Link = { PinId = "color" LinkedNode = 227 LinkedPin = "value" }
-				Link = { PinId = "texture" LinkedNode = 218 LinkedPin = "texture" }
-				Link = { PinId = "tag" LinkedNode = 245 LinkedPin = "value" }
-				Link = { PinId = "effect_flags" LinkedNode = 223 LinkedPin = "effect_flags" }
-				Link = { PinId = "orientation" LinkedNode = 214 LinkedPin = "rotation" }
-				Link = { PinId = "angular_velocity" LinkedNode = 251 LinkedPin = "value" }
-				Link = { PinId = "render_order" LinkedNode = 228 LinkedPin = "value" }
-				Link = { PinId = "usr:StartColor" LinkedNode = 211 LinkedPin = "value" }
-				Link = { PinId = "usr:Size" LinkedNode = 206 LinkedPin = "output_id" }
-				Link = { PinId = "usr:lifetime" LinkedNode = 199 LinkedPin = "output_id" }
-			}
-		}
-		pdxns:values:Float={
-			Id=254
-			Node={
-				value=0.050000
-			}
-			Inputs={
-			}
-		}
-		pdxns:math:MulF={
-			Id=255
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "factor1" LinkedNode = 144 LinkedPin = "value" }
-				Link = { PinId = "factor2" LinkedNode = 254 LinkedPin = "value" }
-			}
-		}
-		pdxns:values:Float={
-			Id=256
-			Node={
-				value=0.600000
-			}
-			Inputs={
-			}
-		}
-		pdxns:math:AddF={
-			Id=257
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "term1" LinkedNode = 255 LinkedPin = "product" }
-				Link = { PinId = "term2" LinkedNode = 256 LinkedPin = "value" }
-			}
-		}
-		pdxns:values:Vector3f={
-			Id=258
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "x" LinkedNode = 246 LinkedPin = "output_id" }
-				Link = { PinId = "y" LinkedNode = 249 LinkedPin = "output_id" }
-				Link = { PinId = "z" LinkedNode = 248 LinkedPin = "output_id" }
-			}
-		}
-		pdxns:values:Vector3f={
-			Id=259
-			Node={
-			}
-			Inputs={
-				Link = { PinId = "x" LinkedNode = 143 LinkedPin = "value" }
-				Link = { PinId = "y" LinkedNode = 257 LinkedPin = "sum" }
-				Link = { PinId = "z" LinkedNode = 108 LinkedPin = "value" }
+			inputs={
 			}
 		}
 	}

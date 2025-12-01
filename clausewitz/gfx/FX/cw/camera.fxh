@@ -7,6 +7,8 @@ ConstantBuffer( PdxCamera )
 	float4x4	ProjectionMatrix;
 	float4x4	InvProjectionMatrix;
 
+	float4x4 	ShadowMapTextureMatrix;
+	
 	float3		CameraPosition;
 	float		ZNear;
 	float3		CameraLookAtDir;
@@ -14,9 +16,11 @@ ConstantBuffer( PdxCamera )
 	float3		CameraUpDir;
 	float 		CameraFoV;
 	float3		CameraRightDir;
-	float camera_dummy2;
-	
-	float4x4 	ShadowMapTextureMatrix;
+	float 		_UpscaleLodBias;
+	float 		_UpscaleLodBiasNative;
+	float 		_UpscaleLodBiasMultiplier;
+	float 		_UpscaleLodBiasMultiplierNative;
+	float 		_UpscaleLodBiasEnabled;
 }
 
 Code

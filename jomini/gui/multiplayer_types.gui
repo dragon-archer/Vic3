@@ -648,7 +648,7 @@ types JominiMultiplayerIngame {
 			}
 
 			textbox = {
-				margin { 50 0 }
+				margin = { 50 0 }
 				text = "JOMINI_MULTIPLAYER_GUI_OOS_MESSAGE_MY"
 				minimumsize = { 0 50 }
 				multiline = yes
@@ -658,7 +658,7 @@ types JominiMultiplayerIngame {
 			}
 
 			textbox = {
-				margin { 50 0 }
+				margin = { 50 0 }
 				text = "JOMINI_MULTIPLAYER_GUI_OOS_MESSAGE_DESC"
 				visible = "[Not( OosWindow.IsLocalOos )]"
 				minimumsize = { 0 50 }
@@ -668,7 +668,7 @@ types JominiMultiplayerIngame {
 			}
 
 			textbox = {
-				margin { 50 0 }
+				margin = { 50 0 }
 				text = "JOMINI_MULTIPLAYER_GUI_OOS_MESSAGE_DESC_LOCAL"
 				visible = "[OosWindow.IsLocalOos]"
 				layoutpolicy_horizontal = expanding

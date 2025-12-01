@@ -1,5 +1,6 @@
 Includes = {
 	"cw/utility.fxh"
+	"cw/upscale_utils.fxh"
 }
 
 ConstantBuffer( JominiWater )
@@ -88,7 +89,7 @@ PixelShader =
 			UVCoord *= Scale;
 			UVCoord.x += Offset;
 			
-			float3 Normal = UnpackNormal( PdxTex2D( Texture, UVCoord ) ).xzy;
+			float3 Normal = UnpackNormal( PdxTex2DUpscaleNative( Texture, UVCoord ) ).xzy;
 			
 			float2 InvRotate = float2( cos( -Rotation ), sin( -Rotation ) );
 			Normal.xz = float2( Normal.x * InvRotate.x - Normal.z * InvRotate.y, Normal.x * InvRotate.y + Normal.z * InvRotate.x );
@@ -127,8 +128,8 @@ PixelShader =
 			//BlendFactor = 1.0 - abs( 2.0 * frac( FlowCoord ) - 1.0 );
 			
 			float2 NormalCoord = NormalMapUV * _WaterFlowNormalScale;
-			float2 DDX = ddx( NormalCoord );
-			float2 DDY = ddy( NormalCoord );
+			float2 DDX = ApplyUpscaleNativeLodBiasMultiplier( ddx( NormalCoord ) );
+			float2 DDY = ApplyUpscaleNativeLodBiasMultiplier( ddy( NormalCoord ) );
 			
 			float2 Offset = float2( 0.0, -_WaterFlowTime );
 			

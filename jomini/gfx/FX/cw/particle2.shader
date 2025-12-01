@@ -123,3 +123,71 @@ Effect ParticleCE
 	BlendState = "AdditiveBlendState"
 	RasterizerState = "RasterizerStateNoCulling"
 }
+
+Effect ParticleColorFade
+{
+	VertexShader = "VertexParticle"
+	PixelShader = "PixelColor"
+	Defines = { "FADE_STEEP_ANGLES" }
+	RasterizerState = "RasterizerStateNoCulling"
+}
+
+Effect ParticleTextureFade
+{
+	VertexShader = "VertexParticle"
+	PixelShader = "PixelTexture"
+	Defines = { "FADE_STEEP_ANGLES" }
+	RasterizerState = "RasterizerStateNoCulling"
+}
+
+Effect ParticleCFE
+{
+	VertexShader = "VertexParticle"
+	PixelShader = "PixelColor"
+	BlendState = "AdditiveBlendState"
+	Defines = { "FADE_STEEP_ANGLES" }
+	RasterizerState = "RasterizerStateNoCulling"
+}
+
+Effect ParticleTFE
+{
+	VertexShader = "VertexParticle"
+	PixelShader = "PixelTexture"
+	BlendState = "AdditiveBlendState"
+	Defines = { "FADE_STEEP_ANGLES" }
+	RasterizerState = "RasterizerStateNoCulling"
+}
+
+Effect ParticleCFB
+{
+	VertexShader = "VertexParticle"
+	PixelShader = "PixelColor"
+	Defines = { "FADE_STEEP_ANGLES" "BILLBOARD" }
+	RasterizerState = "RasterizerStateNoCulling"
+}
+
+Effect ParticleTFB
+{
+	VertexShader = "VertexParticle"
+	PixelShader = "PixelTexture"
+	Defines = { "FADE_STEEP_ANGLES" "BILLBOARD" }
+	RasterizerState = "RasterizerStateNoCulling"
+}
+
+Effect ParticleCFBE
+{
+	VertexShader = "VertexParticle"
+	PixelShader = "PixelColor"
+	BlendState = "AdditiveBlendState"
+	Defines = { "FADE_STEEP_ANGLES" "BILLBOARD" }
+	RasterizerState = "RasterizerStateNoCulling"
+}
+
+Effect ParticleTFBE
+{
+	VertexShader = "VertexParticle"
+	PixelShader = "PixelTexture"
+	BlendState = "AdditiveBlendState"
+	Defines = { "FADE_STEEP_ANGLES" "BILLBOARD" }
+	RasterizerState = "RasterizerStateNoCulling"
+}

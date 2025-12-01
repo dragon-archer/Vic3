@@ -16,7 +16,6 @@
 			
 			possible = {
 				scope:state = {
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -36,7 +35,6 @@
 			
 			possible = {
 				scope:state = {
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -56,7 +54,6 @@
 			
 			possible = {
 				scope:state = {
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -76,7 +73,6 @@
 			
 			possible = {
 				scope:state = {
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -96,7 +92,6 @@
 			
 			possible = {
 				scope:state = {
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -116,7 +111,6 @@
 			
 			possible = {
 				scope:state = {
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_electric_trains
 					}
@@ -136,7 +130,6 @@
 			
 			possible = {
 				scope:state = {
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_diesel_trains
 					}
@@ -272,7 +265,6 @@ mining_train = {
 						has_building = building_steel_mills
 						has_building = building_sulfur_mine
 					}
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -298,7 +290,6 @@ mining_train = {
 						has_building = building_steel_mills
 						has_building = building_sulfur_mine
 					}
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -324,7 +315,6 @@ mining_train = {
 						has_building = building_steel_mills
 						has_building = building_sulfur_mine
 					}
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -350,7 +340,6 @@ mining_train = {
 						has_building = building_steel_mills
 						has_building = building_sulfur_mine
 					}
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -376,7 +365,6 @@ mining_train = {
 						has_building = building_steel_mills
 						has_building = building_sulfur_mine
 					}
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -402,7 +390,6 @@ mining_train = {
 						has_building = building_steel_mills
 						has_building = building_sulfur_mine
 					}
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_electric_trains
 					}
@@ -428,7 +415,6 @@ mining_train = {
 						has_building = building_steel_mills
 						has_building = building_sulfur_mine
 					}
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_diesel_trains
 					}
@@ -890,7 +876,6 @@ forestry_train = {
 			possible = {
 				scope:state = {
 					has_building = building_logging_camp
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -911,7 +896,6 @@ forestry_train = {
 			possible = {
 				scope:state = {
 					has_building = building_logging_camp
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -932,7 +916,6 @@ forestry_train = {
 			possible = {
 				scope:state = {
 					has_building = building_logging_camp
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -953,7 +936,6 @@ forestry_train = {
 			possible = {
 				scope:state = {
 					has_building = building_logging_camp
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -974,7 +956,6 @@ forestry_train = {
 			possible = {
 				scope:state = {
 					has_building = building_logging_camp
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_steam_trains
 					}
@@ -995,7 +976,6 @@ forestry_train = {
 			possible = {
 				scope:state = {
 					has_building = building_logging_camp
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_electric_trains
 					}
@@ -1016,7 +996,6 @@ forestry_train = {
 			possible = {
 				scope:state = {
 					has_building = building_logging_camp
-					has_building = building_railway
 					any_scope_building = {
 						has_active_production_method = pm_diesel_trains
 					}
@@ -1188,7 +1167,7 @@ forestry_train = {
 
 					market = {
 						mg:hardwood = {
-							market_goods_sell_orders > 100
+							market_goods_sell_orders > 10
 						}
 					}
 				}
@@ -1203,7 +1182,7 @@ forestry_train = {
 						}
 					}
 				}
-				divide = 1000
+				divide = 500
 				add = 1
 				max = 5
 			}
@@ -1223,7 +1202,7 @@ forestry_train = {
 
 					market = {
 						mg:hardwood = {
-							market_goods_sell_orders > 100
+							market_goods_sell_orders > 10
 						}
 					}
 				}
@@ -1238,7 +1217,7 @@ forestry_train = {
 						}
 					}
 				}
-				divide = 1000
+				divide = 500
 				add = 1
 				max = 5
 			}
@@ -1258,7 +1237,7 @@ forestry_train = {
 
 					market = {
 						mg:hardwood = {
-							market_goods_sell_orders > 100
+							market_goods_sell_orders > 10
 						}
 					}
 				}
@@ -1273,7 +1252,7 @@ forestry_train = {
 						}
 					}
 				}
-				divide = 1000
+				divide = 500
 				add = 1
 				max = 5
 			}
@@ -1293,7 +1272,7 @@ forestry_train = {
 
 					market = {
 						mg:hardwood = {
-							market_goods_sell_orders > 100
+							market_goods_sell_orders > 10
 						}
 					}
 				}
@@ -1308,7 +1287,7 @@ forestry_train = {
 						}
 					}
 				}
-				divide = 1000
+				divide = 500
 				add = 1
 				max = 5
 			}

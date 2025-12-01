@@ -8,11 +8,6 @@ types Tweakable
 			margin_left = "[Add_int32( TweakableUiEntry.GetMargin, '(int32)5' )]"
 			margin_right = 5
 
-			# Spacer
-			widget = {
-				size = { 15 20 }
-			}
-
 			editor_textbox = {
 				name = "tweakable_title"
 
@@ -20,6 +15,7 @@ types Tweakable
 				layoutpolicy_horizontal = preferred
 				fontsize = 12
 				maximumsize = { 350 20 }
+				margin_left = 15
 				
 				text = "[TweakableUiEntry.GetFriendlyName]"
 
@@ -38,6 +34,29 @@ types Tweakable
 			# Spacer
 			widget = {
 				layoutpolicy_horizontal = expanding
+			}
+
+
+			editor_button = {
+				visible = "[Tweaker.CanResetTweakable( Tweakable.Self )]"
+
+				icon = {
+					parentanchor = vcenter|hcenter
+					texture = "gfx/editor_gui/reset.dds"
+					size = { 13 13 }
+				}
+				
+				size = { 19 19 }
+				raw_tooltip = "Reset variable to initial value: '[Tweaker.GetTweakableOriginalValue( Tweakable.Self )]'"
+				tooltipwidget = {
+					using = dockable_tooltip
+				}
+				
+				onclick = "[Tweaker.ResetTweakable( Tweakable.AccessSelf )]"
+			}
+
+			widget = {
+				size = { 10 20 }
 			}
 
 			block "tweakable_specialized"
@@ -72,6 +91,7 @@ types Tweakable
 			editor_textbox = {
 				layoutpolicy_horizontal = preferred
 				fontsize = 13
+				fontweight = bold
 				autoresize = yes
 				text = "[TweakableCategory.GetName]"
 				elide = right
@@ -89,6 +109,37 @@ types Tweakable
 			}
 		}
 	}
+
+	type category_list = fixedgridbox {
+		
+		addcolumn = 138
+		addrow = 28
+		datamodel_wrap = 4
+		setitemsizefromcell = yes
+		datamodel = "[Tweaker.RootCategories]"
+		item = {
+			widget = {
+				visible = "[Not( EqualTo_string( CString.GetString, 'Uncategorized' ) )]" #Don't show the uncategorized.
+				editor_toolbar_checkbutton = {
+					size = { 135 25 }
+					layoutpolicy_horizontal = preferred
+					raw_tooltip = "Select to only display results for this category."
+					tooltipwidget = { using = dockable_tooltip }
+
+					checked = "[EqualTo_string( CString.GetString, Tweaker.GetSelectedCategory )]"
+					onclick = "[Tweaker.ToggleSelectedCategory( CString.GetString )]"
+					
+					editor_textbox = {
+						text = "[CString.GetString]"
+						align = center|nobaseline
+						parentanchor = hcenter|vcenter
+						autoresize = yes
+						elide = right
+					}
+				}
+			}
+		}		
+	}
 }
 
 Tweakable = {
@@ -102,6 +153,7 @@ Tweakable = {
 			alwaystransparent = no
 			size = { 44 19 }
 			text = "[Tweakable.GetValue]"
+			oneditingfinished_with_changes = "[Tweakable.OnValueEdited]"
 		}
 		
 		widget = { 	size = { 3 0 }	}
@@ -144,6 +196,7 @@ Tweakable = {
 			alwaystransparent = no
 			size = { 160 20 }
 			text = "[Tweakable.GetValue]"
+			oneditingfinished_with_changes = "[Tweakable.OnValueEdited]"
 		}
 	}
 }
@@ -159,8 +212,9 @@ Tweakable = {
 			alwaystransparent = no
 			size = { 56 19 }
 			text = "[Tweakable.GetValue]"
+			oneditingfinished_with_changes = "[Tweakable.OnValueEdited]"
 		}
-		
+
 		widget = {
 			size = { 4 20 }
 		}
@@ -187,6 +241,7 @@ Tweakable = {
 			alwaystransparent = no
 			size = { 150 20 }
 			text = "[Tweakable.GetValue]"
+			oneditingfinished_with_changes = "[Tweakable.OnValueEdited]"
 		}
 		
 		editor_button = {
@@ -216,6 +271,8 @@ vbox = {
 			layoutpolicy_horizontal = expanding
 		}
 	}
+
+	category_list = {}
 
 	hbox = {
 		spacing = 5

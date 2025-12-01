@@ -72,6 +72,7 @@ VertexShader =
 				VS_OUTPUT_PARTICLE Out;
 				float3 InitialOffset = float3( (Input.UV0 - 0.5f) * Input.Size, 0 );
 				float3 Offset = QRotVector( Input.RotQ, InitialOffset );
+				float Alpha = 0.0f;
 
 				#ifdef BILLBOARD
 					float3 WorldPos = Input.Pos.xyz + Offset.x * CameraRightDir + Offset.y * CameraUpDir;
@@ -102,9 +103,23 @@ VertexShader =
 						float3 Direction = normalize(RotatedBillboardAxis);
 						float3 Up = normalize(cross(Direction, ToCameraDir));
 						WorldPos = Input.Pos.xyz + Offset.x * Direction + Offset.y * Up;
+
+						#ifdef FADE_STEEP_ANGLES
+							float fresnel = saturate(pow( 1.0f - abs(dot(ToCameraDir, Direction)), 2.0f ) * 2.5f);
+							Alpha = Input.Color.a * fresnel;
+						#else
+							Alpha = Input.Color.a;
+						#endif
+					}
+					else
+					{
+						//Cannot fade steep angles because the lack of a particle normal
+						Alpha = Input.Color.a;
 					}
 				#else
 					float3 WorldPos = Input.Pos.xyz + Offset;
+					//Cannot fade steep angles because the lack of a particle normal
+					Alpha = Input.Color.a;
 				#endif
 
 				uint CurrentFrame = CalcCurrentFrame( FlipbookDimensions.x, FlipbookDimensions.y, Input.Pos.w );
@@ -112,7 +127,7 @@ VertexShader =
 				Out.UV0 = CalcCellUV( CurrentFrame, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.Pos.w );
 				Out.UV1 = CalcCellUV( CurrentFrame + 1, float2( Input.UV0.x, 1.0f - Input.UV0.y ), FlipbookDimensions.x, FlipbookDimensions.y, Input.Pos.w );
 				Out.FrameBlend = CalcFrameBlend( FlipbookDimensions.x, FlipbookDimensions.y, Input.Pos.w );
-				Out.Color = Input.Color;
+				Out.Color = float4(Input.Color.rgb, Alpha);
 				Out.WorldSpacePos = WorldPos;
 				
 				return Out;

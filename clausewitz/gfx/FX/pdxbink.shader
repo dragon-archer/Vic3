@@ -18,20 +18,25 @@ VertexShader =
         float4 ConstUV_Y;
         float4 ConstUV_W;
     }
+	
+	VertexStruct VS_INPUT_BINK
+	{
+		int2 position	: POSITION;
+	};
 
     MainCode VertexShaderBink
     {
-		Input = "VS_INPUT_PDX_GUI"
+		Input = "VS_INPUT_BINK"
 		Output = "VS_OUTPUT_BINK"
 		Code 
 		[[
 			PDX_MAIN
 			{
-                VS_OUTPUT_PDX_GUI Default = PdxGuiDefaultVertexShader( Input );
-
                 VS_OUTPUT_BINK o;
-                o.Position = Default.Position;
-                o.UV = ( Default.UV0.x * ConstUV_X ) + ( Default.UV0.y * ConstUV_Y ) + ConstUV_W;
+                o.Position = float4( Input.position, 0.0, 1.0 );
+				float2 UV = Input.position.xy * 0.5 + 0.5;
+				UV.y = 1.0 - UV.y;
+                o.UV = ( UV.x * ConstUV_X ) + ( UV.y * ConstUV_Y ) + ConstUV_W;
                 return o;
 			}
 		]]
@@ -109,17 +114,23 @@ PixelShader =
 				
                 FinalColor = ( y * yscale ) + ( cr * crc ) + ( cb * cbc ) + adj;
 
-                #ifdef ALPHA
-                FinalColor.w = PdxTex2D(ATexture, Input.UV.xy).r;				
+				#ifdef ALPHA
+                FinalColor.a = PdxTex2D(ATexture, Input.UV.xy).r;
                 #endif
 
                 FinalColor *= consta;
 
                 #ifdef SRGB				
                 FinalColor.xyz = FinalColor.xyz * ( FinalColor.xyz * ( ( FinalColor.xyz * 0.305306011 ) + 0.682171111 ) + 0.012522878 );				
-				#endif	
-
-                return FinalColor;                
+				#endif
+			
+				FinalColor = FinalColor.SWIZZLE;
+				
+				#ifdef ALPHA_ONE
+				FinalColor.a = 1.0f;
+				#endif
+				
+				return FinalColor;
             }
         ]]
     }

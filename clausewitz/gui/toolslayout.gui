@@ -46,6 +46,21 @@ template dockable_tooltip
 				align = left|top
 				alwaystransparent = yes
 			}
+
+			editor_textbox = {
+				name = "TooltipTextInputAction"
+				margin_top = 4
+				margin_bottom = 4
+				margin_left = 4
+				margin_right = 8
+				fontsize = 11
+				fontcolor = { 1 0 0 1 }
+				fontweight = BOLD
+
+				autoresize = yes
+				align = left|top
+				alwaystransparent = yes
+			}
 		}
 	}
 }

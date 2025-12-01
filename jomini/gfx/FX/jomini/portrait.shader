@@ -8,7 +8,6 @@ Includes = {
 	"jomini/jomini_lighting.fxh"
 	"jomini/jomini_fog.fxh"
 	"jomini/portrait_accessory_variation.fxh"
-	"jomini/portrait_coa.fxh"
 	"jomini/portrait_decals.fxh"
 	"jomini/portrait_user_data.fxh"
 	"constants.fxh"
@@ -89,15 +88,6 @@ PixelShader =
 		SampleModeU = "Wrap"
 		SampleModeV = "Wrap"
 	}
-	TextureSampler CoaTexture 
-	{
-		Index = 12
-		MagFilter = "Linear"
-		MinFilter = "Linear"
-		MipFilter = "Linear"
-		SampleModeU = "Clamp"
-		SampleModeV = "Clamp"
-	}
 	TextureSampler ShadowTexture
 	{
 		Ref = PdxShadowmap
@@ -177,9 +167,6 @@ ConstantBuffer( 5 )
 	int 		_; // Alignment
 
 	float4 		PatternColorOverrides[16];
-	float4		CoaColor1;
-	float4		CoaColor2;
-	float4		CoaOffsetAndScale;
 
 	float		HasDiffuseMapOverride;
 	float		HasNormalMapOverride;
@@ -660,10 +647,7 @@ PixelShader =
 				float4 Properties = PdxTex2D( PropertiesMap, UV0 );
 				float3 NormalSample = UnpackRRxGNormal( PdxTex2D( NormalMap, UV0 ) );		
 				Properties.r = 1.0; // wipe this clean now, ready to be modified later
-				
-				#ifdef COA_ENABLED
-					ApplyCoa( Input, Diffuse, CoaColor1, CoaColor2, CoaOffsetAndScale.xy, CoaOffsetAndScale.zw, CoaTexture );
-				#endif
+
 				#ifdef VARIATIONS_ENABLED
 					ApplyVariationPatterns( Input, Diffuse, Properties, NormalSample );
 				#endif
@@ -790,12 +774,8 @@ DepthStencilState hair_alpha_blend
 
 BlendState alpha_to_coverage
 {
-	BlendEnable = yes
-	SourceBlend = "SRC_ALPHA"
-	DestBlend = "INV_SRC_ALPHA"
+	BlendEnable = no
 	WriteMask = "RED|GREEN|BLUE|ALPHA"
-	SourceAlpha = "ONE"
-	DestAlpha = "INV_SRC_ALPHA"
 	AlphaToCoverage = yes
 }
 
@@ -912,7 +892,7 @@ Effect portrait_attachment_pattern_alpha_to_coverage
 Effect portrait_attachment_pattern_alpha_to_coverageShadow
 {
 	VertexShader = "VertexPdxMeshStandardShadow"
-	PixelShader = "PixelPdxMeshStandardShadow"
+	PixelShader = "PixelPdxMeshAlphaBlendShadow"
 	RasterizerState = "ShadowRasterizerState"
 	Defines = { "PDXMESH_DISABLE_DITHERED_OPACITY" "PDX_MESH_BLENDSHAPES" }
 }
@@ -936,23 +916,9 @@ Effect portrait_attachment_alpha_to_coverage
 Effect portrait_attachment_alpha_to_coverageShadow
 {
 	VertexShader = "VertexPdxMeshStandardShadow"
-	PixelShader = "PixelPdxMeshStandardShadow"
+	PixelShader = "PixelPdxMeshAlphaBlendShadow"
 	RasterizerState = "ShadowRasterizerState"
 	Defines = { "PDX_MESH_BLENDSHAPES" }
-}
-
-Effect portrait_attachment_with_coa
-{
-	VertexShader = "VS_portrait_blend_shapes"
-	PixelShader = "PS_attachment"
-	Defines = { "COA_ENABLED" }
-}
-
-Effect portrait_attachment_with_coa_and_variations
-{
-	VertexShader = "VS_portrait_blend_shapes"
-	PixelShader = "PS_attachment"
-	Defines = { "COA_ENABLED" "VARIATIONS_ENABLED" }
 }
 
 Effect portrait_hair
@@ -976,7 +942,7 @@ Effect portrait_hair_transparency_hack
 Effect portrait_hairShadow
 {
 	VertexShader = "VertexPdxMeshStandardShadow"
-	PixelShader = "PixelPdxMeshStandardShadow"
+	PixelShader = "PixelPdxMeshAlphaBlendShadow"
 	RasterizerState = "ShadowRasterizerState"
 	Defines = { "PDXMESH_DISABLE_DITHERED_OPACITY" }
 }
@@ -1027,7 +993,7 @@ Effect portrait_attachment_alpha
 Effect portrait_attachment_alphaShadow
 {
 	VertexShader = "VertexPdxMeshStandardShadow"
-	PixelShader = "PixelPdxMeshStandardShadow"
+	PixelShader = "PixelPdxMeshAlphaBlendShadow"
 	RasterizerState = "ShadowRasterizerState"
 	Defines = { "PDX_MESH_BLENDSHAPES" }
 }

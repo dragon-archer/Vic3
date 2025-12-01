@@ -5,6 +5,7 @@ Includes = {
 
 ConstantBuffer( JominiLensFlareConstants )
 {
+	float _LensToScreenScale;
 	float _Scale;
 	float _Bias;
 	float _GhostDispersal;

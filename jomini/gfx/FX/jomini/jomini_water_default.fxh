@@ -175,12 +175,12 @@ PixelShader =
 		float CalcFoamFactor( float2 UV01, float2 WorldSpacePosXZ, float Depth, float FlowFoamMask, float3 FlowNormal )
 		{
 			float2 NoiseUV = WorldSpacePosXZ * _WaterFoamNoiseScale;
-			float FoamNoise1 = PdxTex2D( FoamNoiseTexture, NoiseUV + float2(1,1) * JOMINIWATER_GlobalTime * _WaterFoamNoiseSpeed ).r * 0.75;
-			float FoamNoise2 = (PdxTex2D( FoamNoiseTexture, NoiseUV * 3 + float2(1,-1) * JOMINIWATER_GlobalTime * _WaterFoamNoiseSpeed ).r - 0.5) * 0.5; // +/-0.25
-			float FoamNoise3 = (PdxTex2D( FoamNoiseTexture, NoiseUV * 5 + float2(-1,0) * JOMINIWATER_GlobalTime * _WaterFoamNoiseSpeed ).r - 0.5) * 0.25; // +/-0.125
+			float FoamNoise1 = PdxTex2DUpscaleNative( FoamNoiseTexture, NoiseUV + float2(1,1) * JOMINIWATER_GlobalTime * _WaterFoamNoiseSpeed ).r * 0.75;
+			float FoamNoise2 = (PdxTex2DUpscaleNative( FoamNoiseTexture, NoiseUV * 3 + float2(1,-1) * JOMINIWATER_GlobalTime * _WaterFoamNoiseSpeed ).r - 0.5) * 0.5; // +/-0.25
+			float FoamNoise3 = (PdxTex2DUpscaleNative( FoamNoiseTexture, NoiseUV * 5 + float2(-1,0) * JOMINIWATER_GlobalTime * _WaterFoamNoiseSpeed ).r - 0.5) * 0.25; // +/-0.125
 			float FoamNoise = ( FoamNoise1 + FoamNoise2 + FoamNoise3 );
 
-			float FoamMap = 1.0 - PdxTex2D( FoamMapTexture, UV01 ).r;
+			float FoamMap = 1.0 - PdxTex2DUpscaleNative( FoamMapTexture, UV01 ).r;
 			float FoamBase = pow( FoamMap, 2.0 ) * 2.375 - 1.0;
 			
 			float NoiseCeiling = 2.0;
@@ -190,7 +190,7 @@ PixelShader =
 			
 			FoamFactor *= _WaterFoamStrength * FoamShoreMask;
 			
-			float3 Foam = PdxTex2D( FoamTexture, WorldSpacePosXZ * _WaterFoamScale + FlowNormal.xz * _WaterFoamDistortFactor ).rgb;
+			float3 Foam = PdxTex2DUpscaleNative( FoamTexture, WorldSpacePosXZ * _WaterFoamScale + FlowNormal.xz * _WaterFoamDistortFactor ).rgb;
 			float3 FoamRamp = PdxTex2DLod0( FoamRampTexture, float2( FoamFactor * FlowFoamMask, 0.5 ) ).rgb;
 			
 			FoamFactor = saturate( dot( Foam, FoamRamp ) );
@@ -223,10 +223,12 @@ PixelShader =
 				
 				float RefractionShoreMask = 1.0 - saturate( ( _WaterRefractionShoreMaskDepth - Depth ) * _WaterRefractionShoreMaskSharpness );
 				
-				float2 RefractionOffset = mul( ViewMatrix, float4( Normal.x, 0, Normal.z, 0 ) ).xy * float2(-1, 1);
+				// Use 1080p as the normalizing factor for the refraction offset
+				// Note, previous implementation had the refraction offset scaled by current resolution which made the effect stronger for lower resolutions and weaker for high resolutions, now the effect should stay consistent across resolutions
+				float2 RefractionOffset = mul( ViewMatrix, float4( Normal.x, 0, Normal.z, 0 ) ).xy * float2( -1.0 / 1920.0, 1.0 / 1080.0 );
 				RefractionOffset *= _WaterRefractionScale * RefractionShoreMask * _WaterRefractionFade;
 			
-				float4 OffsetRefractionSample = PdxTex2DLod0( RefractionTexture, ( ScreenPos + RefractionOffset ) / _ScreenResolution );
+				float4 OffsetRefractionSample = PdxTex2DLod0( RefractionTexture, ScreenPos / _ScreenResolution + RefractionOffset );
 				float3 OffsetRefractionWorldSpacePos = DecompressWorldSpace( WorldSpacePos, OffsetRefractionSample.a );
 				
 				float OffsetStep = step( WorldSpacePos.y, OffsetRefractionWorldSpacePos.y );

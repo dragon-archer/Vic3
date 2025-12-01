@@ -326,11 +326,22 @@ vbox =
         margin = { 5 5 }
 
         editor_textbox = {
-            visible = [PdxSettingsWindow.RequiresRestart]
+            visible = [PdxSettingsWindow.AppliedOnRestart]
             fontcolor = { 1 0.1 0.1 1 }
             fontsize = 14
-            size = { 220 20 }
+            size = { 130 20 }
             raw_text = "Restart Required"
+            elide = right
+            align = vcenter|nobaseline
+            margin_right = 20
+        }        
+		
+		editor_textbox = {
+            visible = [PdxSettingsWindow.HasChanged]
+            fontcolor = { 1 0.1 0.1 1 }
+            fontsize = 14
+            size = { 120 20 }
+            raw_text = "Save Required"
             elide = right
             align = vcenter|nobaseline
             margin_right = 20
@@ -340,10 +351,17 @@ vbox =
             layoutpolicy_horizontal = expanding
         }
         editor_button = {
+            name = "apply"
+            size = { 80 22 }
+            raw_text = "Apply"
+            enabled = [PdxSettingsWindow.AllowApply]
+            onclick = [PdxSettingsWindow.OnApply]
+        }
+		editor_button = {
             name = "restore"
             size = { 80 22 }
             raw_text = "Restore"
-            enabled = [PdxSettingsWindow.HasChanged]
+            enabled = [PdxSettingsWindow.AllowRestore]
             onclick = [PdxSettingsWindow.OnRestore]
         }
         editor_button = {
@@ -355,7 +373,7 @@ vbox =
         editor_button = {
             name = "save"
             size = { 80 22 }
-            raw_text = "Save"
+            raw_text = "Ok"
             onclick = [PdxSettingsWindow.OnSave]
         }
     }

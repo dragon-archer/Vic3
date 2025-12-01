@@ -48,6 +48,8 @@ ConstantBuffer( GameSharedConstants )
 	float DistanceRoughnessPosition;
 	float DistanceRoughnessBlend;
 	float DistanceRoughnessScale;
+	
+	float _OverlayOpacity;
 
 	int _MapPaintingTextureTiling;
 	int _MapPaintingFlatmapTextureTiling;

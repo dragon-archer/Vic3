@@ -336,6 +336,9 @@ PixelShader = {
 			#endif
 
 			ApplyCoaColorBlend( ColorMapCoords, ParalaxCoord.xz, ColorOverlay, PreLightingBlend, PostLightingBlend );
+			
+			PreLightingBlend *= _OverlayOpacity;
+			PostLightingBlend *= _OverlayOpacity;
 		}
 
 		float3 ApplyDynamicFlatmap( float3 FlatMapDiffuse, float2 ColorMapCoords, float2 WorldSpacePosXZ )

@@ -5,6 +5,7 @@ Includes = {
 ConstantBuffer( PdxConstantBuffer0 )
 {
 	int SampleCount;
+	int2 Offset;
 }
 
 PixelShader =
@@ -32,7 +33,7 @@ PixelShader =
 				
 				for( int i = 0; i < SampleCount; ++i )
 				{
-					float4 Sample = PdxTex2DMultiSampled( Texture, int2(Input.position.xy), i );
+					float4 Sample = PdxTex2DMultiSampled( Texture, int2(Input.position.xy) + Offset, i );
 					
 					#ifdef NORMALIZE_RGB_AVERAGE_ALPHA
 					Sample.rgb *= Sample.a;
@@ -73,7 +74,7 @@ Effect IgnoreTransparent	#This effect will ignore the color of transparent sampl
 	Defines = { "NORMALIZE_RGB_AVERAGE_ALPHA" }
 }
 
-Effect Average	#There's really no point with this one. A normal resolve is probably faster
+Effect Average
 {
 	VertexShader = "VertexShaderFullscreen"
 	PixelShader = "PixelShader"

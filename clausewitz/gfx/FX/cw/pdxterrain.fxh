@@ -1,6 +1,7 @@
 Includes = {
 	"cw/heightmap.fxh"
 	"cw/utility.fxh"
+	"cw/upscale_utils.fxh"
 }
 
 ConstantBuffer( PdxTerrainConstants )
@@ -327,9 +328,9 @@ PixelShader
 			}
 
 			float2 DetailUV = CalcDetailUV( WorldSpacePosXZ );
-
-			float2 DDX = ddx(DetailUV);
-			float2 DDY = ddy(DetailUV);
+			
+			float2 DDX = ApplyUpscaleLodBiasMultiplier( ddx(DetailUV) );
+			float2 DDY = ApplyUpscaleLodBiasMultiplier( ddy(DetailUV) );
 
 			float4 DetailTexture0 = PdxTex2DGrad( DetailTextures, float3( DetailUV, DetailIndex[0] ), DDX, DDY ) * smoothstep( 0.0, 0.1, DetailMask[0] );
 			float4 DetailTexture1 = PdxTex2DGrad( DetailTextures, float3( DetailUV, DetailIndex[1] ), DDX, DDY ) * smoothstep( 0.0, 0.1, DetailMask[1] );

@@ -46,7 +46,7 @@ PixelShader =
 					float2 Offset = frac( UV + GhostVec * float( i ) );
 					float D = distance( Offset, vec2( 0.5f ) );
 					float Weight = 1.0f - smoothstep( 0.0f, 0.25f, D ); //Fades out ghosts the further from the center that the sample is
-					vColor.rgb += ChromaticSample( MainScene, Offset * BloomToScreenScale, ChromaticDirection, ChromaticDistortion ) * Weight;
+					vColor.rgb += ChromaticSample( MainScene, Offset, ChromaticDirection, ChromaticDistortion ) * Weight;
 				}
 
 				// Apply lens color
@@ -63,7 +63,30 @@ PixelShader =
 				float HaloWeight = WindowCubic( d, _HaloRadius, _HaloPow );
 				HaloVec *= _HaloRadius;
 
-				vColor.rgb += ChromaticSample( MainScene, ( ( UV + HaloVec ) * HaloWeight ) * BloomToScreenScale, ChromaticDirection, ChromaticDistortion* _DistortionFactorHalo ) * smoothstep( 0.0f, 0.95f, HaloWeight );
+				vColor.rgb += ChromaticSample( MainScene, ( ( UV + HaloVec ) * HaloWeight ), ChromaticDirection, ChromaticDistortion * _DistortionFactorHalo ) * smoothstep( 0.0f, 0.95f, HaloWeight );
+				return vColor;
+			}
+		]]
+	}
+
+	MainCode PixelShaderAnamorphicLensFlare
+	{
+		Input = "VS_OUTPUT_FULLSCREEN"
+		Output = "PDX_COLOR" 
+		Code
+		[[
+			PDX_MAIN
+			{
+				float2 UV = Input.uv * float2( _LensToScreenScale, 1.0f );
+				float2 DistortionVec = ( UV * normalize( float2( 0.0f, 1.0f ) ) );
+
+				float3 ChromaticDistortion = float3( -InvDownSampleSize.x, 0.0f, InvDownSampleSize.x ) * _DistortionFactor;
+				float2 ChromaticDirection = normalize( DistortionVec );
+
+				float4 vColor = vec4( 0.0f );
+
+				vColor.rgb += ChromaticSample( MainScene, UV, ChromaticDirection, ChromaticDistortion * _DistortionFactor );
+
 				return vColor;
 			}
 		]]
@@ -84,4 +107,10 @@ Effect LensFlare
 {
 	VertexShader = "VertexShaderFullscreen"
 	PixelShader = "PixelShaderLensFlare"
+}
+
+Effect AnamorphicLensFlare
+{
+	VertexShader = "VertexShaderFullscreen"
+	PixelShader = "PixelShaderAnamorphicLensFlare"
 }

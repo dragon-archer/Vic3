@@ -7,9 +7,10 @@ Includes = {
 ConstantBuffer( 1 )
 {
 	float2 InvDownSampleSize;
-	float2 BloomToScreenScale;
 	float2 ScreenResolution;
 	float2 InvScreenResolution;
+	float LumWhite2;
+	float FixedExposureValue;
 	float3 HSV;
 	float BrightThreshold;
 	float3 ColorBalance;
@@ -17,8 +18,6 @@ ConstantBuffer( 1 )
 	float3 LevelsMin;
 	float MiddleGrey;
 	float3 LevelsMax;
-	float LumWhite2;
-	float FixedExposureValue;
 	
 	float TonemapShoulderStrength;
 	float TonemapLinearStrength;

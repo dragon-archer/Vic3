@@ -192,6 +192,7 @@ widget = {
 				size = { 32 25 }
 				onclick = "[GraphPanel.New]"
 				shortcut = "nodes_new"
+				enabled = "[GraphPanel.IsButtonEnabled('New')]"
 			}
 
 			editor_toolbar_button = {
@@ -200,6 +201,7 @@ widget = {
 				size = { 32 25 }
 				onclick = "[GraphPanel.Load]"
 				shortcut = "nodes_open"
+				enabled = "[GraphPanel.IsButtonEnabled('Open')]"
 			}
 
 			editor_toolbar_button = {
@@ -217,6 +219,7 @@ widget = {
 				size = { 64 25 }
 				onclick = "[GraphPanel.SaveAs]"
 				shortcut = "nodes_save_as"
+				enabled = "[GraphPanel.IsButtonEnabled('SaveAs')]"
 			}
 
 			editor_toolbar_button = {
@@ -361,10 +364,31 @@ widget = {
 			}
 
 			editor_toolbar_button = {
+				raw_text = "IBox"
+				raw_tooltip = "Create Commentable Info Box Node"
+				onclick = "[GraphPanel.CreateInfoBoxNode]"
+				shortcut = "create_infobox_node"
+			}
+			
+			editor_toolbar_button = {
 				raw_text = "Grp"
-				raw_tooltip = "Create Commentable Group Node"
-				onclick = "[GraphPanel.CreateGroupNode]"
+				raw_tooltip = "Collapse selection into a group node"
+				onclick = "[GraphPanel.SelectionToGroupNode]"
 				shortcut = "create_group_node"
+			}				
+			
+			editor_toolbar_button = {
+				raw_text = "Cmp"
+				raw_tooltip = "Collapse selection into a reusable compound node"
+				onclick = "[GraphPanel.SelectionToCompoundNode]"
+				shortcut = "create_compound_node"
+			}		
+			
+			editor_toolbar_button = {
+				raw_text = "Shtr"
+				raw_tooltip = "Shatter a group or compound node in-place"
+				onclick = "[GraphPanel.ShatterSelectedGroup]"
+				shortcut = "shatter_selected_group"
 			}
 
 			widget = {

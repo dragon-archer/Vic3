@@ -6,8 +6,7 @@ graph={
 		pdxns:particle:Emitter={
 			id=0
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:lifetime"
 						label="Lifetime"
 						type="Float"
@@ -22,7 +21,10 @@ graph={
 						label="StartColor"
 						type="Color"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -591,12 +593,21 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Float={
-			id=46
+		pdxns:math:MulF={
+			id=89
 			node={
-				value=0.000000
 			}
 			inputs={
+				link={
+					pin_id="factor1"
+					linked_node=84
+					linked_pin="result"
+				}
+				link={
+					pin_id="factor2"
+					linked_node=24
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:GetUserData={
@@ -623,12 +634,21 @@ graph={
 				}
 			}
 		}
-		pdxns:values:Float={
-			id=49
+		pdxns:particle:SetUniformScale={
+			id=90
 			node={
-				value=180.000000
 			}
 			inputs={
+				link={
+					pin_id="size"
+					linked_node=86
+					linked_pin="result"
+				}
+				link={
+					pin_id="condition"
+					linked_node=78
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:ConstVector3f={
@@ -782,6 +802,11 @@ graph={
 					linked_node=64
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=118
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Bool={
@@ -808,48 +833,62 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:3d:YawPitchVectorRotation={
-			id=65
+		pdxns:gfx:HSVA={
+			id=91
 			node={
 			}
 			inputs={
 				link={
-					pin_id="yaw"
-					linked_node=66
+					pin_id="hue"
+					linked_node=87
+					linked_pin="hue"
+				}
+				link={
+					pin_id="saturation"
+					linked_node=87
+					linked_pin="saturation"
+				}
+				link={
+					pin_id="value"
+					linked_node=87
 					linked_pin="value"
 				}
 				link={
-					pin_id="pitch"
-					linked_node=67
-					linked_pin="value"
+					pin_id="α"
+					linked_node=89
+					linked_pin="product"
+				}
+			}
+		}
+		pdxns:particle:SetColor={
+			id=92
+			node={
+			}
+			inputs={
+				link={
+					pin_id="color"
+					linked_node=91
+					linked_pin="hsva"
 				}
 				link={
-					pin_id="roll"
-					linked_node=68
+					pin_id="condition"
+					linked_node=78
 					linked_pin="value"
 				}
 			}
 		}
-		pdxns:values:Float={
-			id=66
+		pdxns:values:Bool={
+			id=93
 			node={
-				value=0.000000
+				value=no
 			}
 			inputs={
 			}
 		}
-		pdxns:values:Float={
-			id=67
+		pdxns:values:Bool={
+			id=94
 			node={
-				value=180.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=68
-			node={
-				value=0.000000
+				value=yes
 			}
 			inputs={
 			}
@@ -882,10 +921,10 @@ graph={
 				}
 			}
 		}
-		pdxns:values:Float={
-			id=71
+		pdxns:values:Bool={
+			id=120
 			node={
-				value=0.000000
+				value=no
 			}
 			inputs={
 			}
@@ -918,13 +957,17 @@ graph={
 					linked_node=50
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=120
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:Emitter={
 			id=74
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:lifetime"
 						label="Lifetime"
 						type="Float"
@@ -939,7 +982,10 @@ graph={
 						label="StartColor"
 						type="Color"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -1147,26 +1193,12 @@ graph={
 				}
 			}
 		}
-		pdxns:3d:YawPitchVectorRotation={
-			id=85
+		pdxns:values:Bool={
+			id=118
 			node={
+				value=no
 			}
 			inputs={
-				link={
-					pin_id="yaw"
-					linked_node=71
-					linked_pin="value"
-				}
-				link={
-					pin_id="pitch"
-					linked_node=49
-					linked_pin="value"
-				}
-				link={
-					pin_id="roll"
-					linked_node=46
-					linked_pin="value"
-				}
 			}
 		}
 		pdxns:common:compound={
@@ -1240,100 +1272,6 @@ graph={
 					linked_node=29
 					linked_pin="value"
 				}
-			}
-		}
-		pdxns:math:MulF={
-			id=89
-			node={
-			}
-			inputs={
-				link={
-					pin_id="factor1"
-					linked_node=84
-					linked_pin="result"
-				}
-				link={
-					pin_id="factor2"
-					linked_node=24
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:SetUniformScale={
-			id=90
-			node={
-			}
-			inputs={
-				link={
-					pin_id="size"
-					linked_node=86
-					linked_pin="result"
-				}
-				link={
-					pin_id="condition"
-					linked_node=78
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:gfx:HSVA={
-			id=91
-			node={
-			}
-			inputs={
-				link={
-					pin_id="hue"
-					linked_node=87
-					linked_pin="hue"
-				}
-				link={
-					pin_id="saturation"
-					linked_node=87
-					linked_pin="saturation"
-				}
-				link={
-					pin_id="value"
-					linked_node=87
-					linked_pin="value"
-				}
-				link={
-					pin_id="α"
-					linked_node=89
-					linked_pin="product"
-				}
-			}
-		}
-		pdxns:particle:SetColor={
-			id=92
-			node={
-			}
-			inputs={
-				link={
-					pin_id="color"
-					linked_node=91
-					linked_pin="hsva"
-				}
-				link={
-					pin_id="condition"
-					linked_node=78
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Bool={
-			id=93
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=94
-			node={
-				value=yes
-			}
-			inputs={
 			}
 		}
 	}

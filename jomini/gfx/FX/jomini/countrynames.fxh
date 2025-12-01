@@ -1,5 +1,6 @@
 Includes = {
 	"cw/camera.fxh"
+	"cw/upscale_utils.fxh"
 }
 ConstantBuffer( PdxConstantBuffer0 )
 {
@@ -59,14 +60,14 @@ PixelShader =
 		//}
 		float CalcTexelPixelRatio( float2 TextureCoordinate )
 		{
-			float2 DX = ddx( TextureCoordinate );
-			float2 DY = ddy( TextureCoordinate );
+			float2 DX = ApplyUpscaleNativeLodBiasMultiplier( ddx( TextureCoordinate ) );
+			float2 DY = ApplyUpscaleNativeLodBiasMultiplier( ddy( TextureCoordinate ) );
 			float MaxSquared = max( dot( DX, DX ), dot( DY, DY ) );
 			return sqrt( MaxSquared );
 		}
 		float CalcAlphaDistanceField( in PdxTextureSampler2D FontAtlas, in float2 UV )
 		{
-			float Sample = PdxTex2D( FontAtlas, UV ).r;
+			float Sample = PdxTex2DUpscaleNative( FontAtlas, UV ).r;
 			
 			float2 TextureCoordinate = UV * TextureSize;
 			float Ratio = CalcTexelPixelRatio( TextureCoordinate );

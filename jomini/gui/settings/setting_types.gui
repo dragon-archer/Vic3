@@ -393,7 +393,7 @@ types Settings
 		margin_left = 16
 		block "setting_title" {}
 		jomini_settings_restart_required_indicator = {
-			visible = "[And(And(JominiGUISetting.ShouldShow,PdxSetting.HasChanged),PdxSetting.GetSettingPromoted.RequireRestart)]"
+			visible = "[And( And( JominiGUISetting.ShouldShow, JominiGUISetting.HasChanged ), And( JominiSettingsWindow.AppliedOnRestart, PdxSetting.GetSettingPromoted.RequireRestart ) )]"
 			parentanchor = vcenter|left
 		}
 	}
@@ -620,7 +620,7 @@ types Settings
 			raw_text = "x"
 			align = center|nobaseline
 			shortcut = "close_window"
-			onclick = [JominiSettingsWindow.Hide]
+			onclick = [JominiSettingsWindow.Close]
 		}
 
 		vbox = {
@@ -758,16 +758,16 @@ types Settings
 				}
 				widget = {
 					layoutpolicy_horizontal = expanding
-					visible = "[Not(JominiSettingsWindow.RequireRestart)]"
+					visible = "[Not(JominiSettingsWindow.AppliedOnRestart)]"
 				}
 
 				jomini_settings_restart_required_indicator = {
-					visible = "[JominiSettingsWindow.RequireRestart]"
+					visible = "[JominiSettingsWindow.AppliedOnRestart]"
 				}
 
 				editor_textbox  = {
 					layoutpolicy_horizontal = expanding
-					visible = "[JominiSettingsWindow.RequireRestart]"
+					visible = "[JominiSettingsWindow.AppliedOnRestart]"
 					fontsize = 16
 					text = "REQUIRE_RESTART_DESCRIPTION"
 					elide = right
@@ -822,7 +822,16 @@ types Settings
 				widget = {
 					size = { 50 0 }
 				}
-
+				
+				settings_save_button = {
+					size = { 20 20 }
+					fontcolor = { 1 1 1 1 }
+					text = "APPLY"
+					align = center|nobaseline
+					onclick = [JominiSettingsWindow.OnApply]
+					enabled = [JominiSettingsWindow.AllowApply]
+				}
+				
 				settings_save_button = {
 					size = { 20 20 }
 					fontcolor = { 1 1 1 1 }
@@ -830,17 +839,6 @@ types Settings
 					align = center|nobaseline
 					onclick = [JominiSettingsWindow.Restore]
 					enabled = [JominiSettingsWindow.HasChanged]
-				}
-
-				widget = {
-					size = { 5 0 }
-				}
-
-				settings_save_button = {
-					fontcolor = { 1 1 1 1 }
-					text = "SAVE"
-					align = center|nobaseline
-					onclick = [JominiSettingsWindow.Save]
 				}
 
 				widget = {

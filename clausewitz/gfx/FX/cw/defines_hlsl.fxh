@@ -144,7 +144,9 @@ struct PdxTextureSampler2DCmp
 
 #define PdxTex2DCmpLod0(samp,uv,value) (samp)._Texture.SampleCmpLevelZero( (samp)._Sampler, (uv), (value) )
 
-#define PdxCalculateLod(samp,uv) (samp)._Texture.CalculateLevelOfDetail( (samp)._Sampler, (uv) )
+// Vulkan fails to compile shaders with this function call properly
+// Commenting it out until we can fix this issue
+//#define PdxCalculateLod(samp,uv) (samp)._Texture.CalculateLevelOfDetail( (samp)._Sampler, (uv) )
 
 float4x4 FixProjection( float4x4 ProjectionMatrix )
 {

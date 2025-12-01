@@ -1,0 +1,146 @@
+widget = {
+	name = "infobox_node_window"
+	filter_mouse = left
+	alwaystransparent = no
+	size = { 256 128 } 
+	layoutpolicy_horizontal = expanding
+	layoutpolicy_vertical = expanding
+	alpha = 0.5
+
+	state = {
+		name = "default"
+		frame = 1
+		duration = 0.0
+	}
+
+	state = {
+		name = "selected"
+		frame = 3
+		duration = 0.1
+		alpha = 0.3
+		next = selected_end
+	}
+	
+	state = {
+		name = "selected_end"
+		duration = 0.1
+		alpha = 0.5
+	}
+
+    icon = { #Background
+        size = { 100% 100% }
+        texture = "gfx/editor_gui/editor_frame_striped.dds"
+        spriteType = CorneredTiled
+        spriteborder = { 5 5 }
+        framesize = { 64 64 }
+        frame = 1
+    }
+
+	widget = {
+		name = "nodes_container"
+		size = { 100% 100% }
+	}
+
+ 	vbox = {
+		restrictparent_min = yes
+		margin_top = 4
+		margin_bottom = 2
+		margin_left = 12
+		margin_right = 6
+
+		# Titlebar
+		hbox = {
+			spacing = 4
+			layoutpolicy_horizontal = expanding
+			
+			editor_textbox = {
+				autoresize = yes
+				maximumsize = { 160 24 }
+				fontsize = 14
+				text = [Node.Name]
+				align = left|vcenter
+				elide = right
+				using = editor_toolbar_font
+				fontcolor = [Node.ErrorColor]
+				tooltip = [Node.Tooltip]
+				tooltipwidget = { using = editor_tooltip }
+			}
+
+			widget = { layoutpolicy_horizontal = expanding }
+
+			flowcontainer = {
+				spacing = 2
+				margin_right = 4
+
+				checkbutton = {
+					margin_top = 2
+					size = { 16 16 }
+					gfxtype = checkbuttongfx
+					shaderfile = "gfx/FX/pdxgui_pushbutton.shader"
+					texture = "gfx/tools/padlock_checkbutton.dds"
+					framesize = { 16 16 }
+					raw_tooltip =  "Locking this box will make it so all nodes inside belong to it"
+					tooltipwidget = { 
+						using = dockable_tooltip 
+					}
+					checked = "[InfoboxNodeWindow.IsLocked]"
+					onclick = "[InfoboxNodeWindow.ToggleLocked]"
+				}
+
+				# Name button
+				node_window_button = {
+					layoutpolicy_horizontal = fixed
+					blockoverride "button" { onclick = [NodeWindow.NameDialog] }
+					blockoverride "icon" { texture = "gfx/editor_gui/16px/menu.png" }
+				}
+
+				# TODO: Color button
+
+				# Description button
+				#node_window_button = {
+				#	layoutpolicy_horizontal = fixed
+				#	blockoverride "button" { onclick = [NodeWindow.DescriptionDialog] }
+				#	blockoverride "icon" { texture = "gfx/editor_gui/editor_icon_edit_box.dds" }
+				#}
+
+				# Close button
+				node_window_button = {
+					layoutpolicy_horizontal = fixed
+					blockoverride "button" { onclick = [NodeWindow.Close] }
+					blockoverride "icon" { texture = "gfx/editor_gui/16px/close.png" }
+				}
+			}
+		}
+
+		editor_editbox = {
+			name = "comment_desc"
+			text = [Node.Description]
+			raw_tooltip = "Comment section"
+			oneditingfinished = "[NodeWindow.SetDescription]"
+			alwaystransparent = no
+			margin = { 0 4 }
+			font = "standard_cw_font"
+			fontsize = 12
+			align = top|left
+			tooltipwidget = { using = editor_tooltip }
+			multiline = yes
+			layoutpolicy_vertical = fixed
+			layoutpolicy_horizontal = preferred
+			size = { 0 120 }
+		}
+
+		widget = { layoutpolicy_vertical = expanding }
+
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			widget = { layoutpolicy_horizontal = expanding }
+			margin_bottom = 4
+			icon = {
+				name = "resize_icon" # Do not rename. Expected by application.
+				size = { 16 16 }
+				texture = "gfx/tools/resize_window.dds"
+				alwaystransparent = no # Icon by default has yes but we need to override. We can't use button because it eats mouse events.
+			}
+		}
+	}
+}

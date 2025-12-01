@@ -64,7 +64,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=4
 			node={
-				texture_file="gfx/particles/cloud.dds"
+				texture_file="gfx/particles/textures/cloud.dds"
 			}
 			inputs={
 			}
@@ -91,8 +91,7 @@ graph={
 		pdxns:particle:Emitter={
 			id=7
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:StartColor"
 						label="StartColor"
 						type="Color"
@@ -112,7 +111,10 @@ graph={
 						label="Per Particle Random"
 						type="Float"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -222,10 +224,10 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:values:Float={
-			id=10
+		pdxns:values:ConstVector3f={
+			id=213
 			node={
-				value=2.000000
+				value={ 0.000000 0.000000 1.000000 }
 			}
 			inputs={
 			}
@@ -888,7 +890,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=48
 			node={
-				texture_file="gfx/particles/smoke_6.dds"
+				texture_file="gfx/particles/textures/smoke_6.dds"
 			}
 			inputs={
 			}
@@ -916,8 +918,7 @@ graph={
 		pdxns:particle:Emitter={
 			id=51
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:StartColor"
 						label="StartColor"
 						type="Color"
@@ -937,7 +938,10 @@ graph={
 						label="Per Particle Random"
 						type="Float"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -1549,8 +1553,7 @@ graph={
 		pdxns:particle:Emitter={
 			id=92
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:StartColor"
 						label="StartColor"
 						type="Color"
@@ -1570,7 +1573,10 @@ graph={
 						label="Per Particle Random"
 						type="Float"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -1807,7 +1813,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=101
 			node={
-				texture_file="gfx/particles/mist_4.dds"
+				texture_file="gfx/particles/textures/mist_4.dds"
 			}
 			inputs={
 			}
@@ -2928,14 +2934,6 @@ graph={
 			id=212
 			node={
 				value=0.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=213
-			node={
-				value={ 0.000000 0.000000 1.000000 }
 			}
 			inputs={
 			}

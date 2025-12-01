@@ -279,7 +279,7 @@ PixelShader =
 				}
 				
 				// If we didn't find any border point, return 1 (max), otherwise, return closest point normalized by MaxSearchDist
-				return float4( ClosestBorderPoint == ClosestBorderPointDefault ? vec2(1) : ClosestBorderPoint / MaxSearchDist, 0.0f, 1.0f );
+				return float4( ( all( ClosestBorderPoint == ClosestBorderPointDefault ) ? vec2(1) : ( ClosestBorderPoint / MaxSearchDist ) ), 0.0f, 1.0f );
 			}		
 		]]
 	}

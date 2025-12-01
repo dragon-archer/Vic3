@@ -182,7 +182,6 @@ types POPS
 					blockoverride "pops_editbox"
 					{
 						ontextchanged = "[POPSLoginView.SetEmail]"
-						onreturnpressed = "[POPSLoginView.ResetPassword]"
 					}
 				}
 
@@ -200,6 +199,7 @@ types POPS
 					pops_button = {
 						text = "POPS_LOGIN_RESET_PASSWORD_SEND"
 						layoutpolicy_horizontal = fixed
+						onclick = "[POPSLoginView.ResetPassword]"
 						onclick = "[POPSLoginView.SetState( 'email_sent' )]"
 					}
 				}

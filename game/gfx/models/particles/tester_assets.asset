@@ -1,0 +1,189 @@
+entity = {
+	name = "tester_war_after_center_smoke"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "war/war_after_center_smoke" keep_particle = yes trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "tester_artillery_breech_explosion"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "war/artillery_breech_explosion" keep_particle = yes trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "tester_war_artillery_breech_explosion_2"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "war/war_artillery_breech_explosion_2" keep_particle = yes trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "tester_infrastructure_demote"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "infrastructure/demote" keep_particle = yes trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "tester_war_active_center_smoke"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "war/war_active_center_smoke" keep_particle = yes trigger_once = yes}
+	}
+}
+
+entity = {
+	name = "tester_war_center_ground_effect"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "war/war_active_center_ground_effect" keep_particle = yes trigger_once = yes}
+	}
+}
+entity = {
+	name = "tester_artillery_mobile_explosion"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "war/artillery_mobile_explosion" keep_particle = yes trigger_once = yes}
+	}
+}
+entity = {
+	name = "tester_artillery_chemical_explosion"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "war/artillery_chemical_explosion" keep_particle = yes trigger_once = yes}
+	}
+}
+entity = {
+	name = "tester_sandstorm_start"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "sandstorm_start" keep_particle = yes trigger_once = yes}
+	}
+}
+entity = {
+	name = "tester_siege_explosion_s"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "siege_explosion_s" keep_particle = yes trigger_once = yes}
+	}
+}
+entity = {
+	name = "tester_pollution_smoke_pillar"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "pollution_smoke_pillar" keep_particle = yes trigger_once = yes}
+	}
+}
+entity = {
+	name = "tester_pollution_smoke_stage_3"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "pollution_smoke_stage_3" keep_particle = yes trigger_once = yes}
+	}
+}
+entity = {
+	name = "tester_pollution_smoke_stage_2"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "pollution_smoke_stage_2" keep_particle = yes trigger_once = yes}
+	}
+}
+entity = {
+	name = "tester_pollution_smoke_stage_1"
+	
+	default_state = "idle"
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 5
+		looping = no
+		
+		start_event = { particle = "pollution_smoke_stage_1" keep_particle = yes trigger_once = yes}
+	}
+}
+
+

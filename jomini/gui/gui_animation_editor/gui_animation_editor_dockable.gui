@@ -375,8 +375,8 @@ types GuiAnimationEditorTypes
 					gfxtype = buttongfx
 					framesize = { 21 @gui_animation_editor_common_btn_size }
 					visible = "[GuiAnimationEditorUniversalTrack.IsTrackTypeAnimation]"
-					onpressed = "[GuiAnimationEditorUserInput.BeginDragDuration(GuiAnimationEditorUniversalTrack.AccessSelf)]"
-					#enabled = "[GuiAnimationEditorUserInput.CanBeginDragDuration]" #TODO: Lock other buttons but not the one that is being dragged.
+					onpressed = "[GuiAnimationTimelineViewport.BeginDragDuration(GuiAnimationEditorUniversalTrack.AccessSelf)]"
+					#enabled = "[GuiAnimationTimelineViewport.CanBeginDragDuration]" #TODO: Lock other buttons but not the one that is being dragged.
 
 					# Note [TK]: This button cannot be attached to the "track_column_right" due to mouse intersection issues (when "track_column_right"
 					# width is 0, then this button would never get mouse events), it must be placed as a sibling to "track_column_right" instead.
@@ -977,14 +977,14 @@ vbox = {
 									margin_left = 5
 									name = "preset_curve_list"
 									layoutpolicy_horizontal = shrinking
-									visible = "[GuiAnimationEditorUserInput.IsKeyframeSelectionValidForCurvePreset]"
+									visible = "[GuiAnimationEditor.IsKeyframeSelectionValidForCurvePreset]"
 								}
 
 								# Placeholder for curve list discoverability, since we can't disable search lists.
 								dockable_button = {
 									enabled = no
 									layoutpolicy_horizontal = shrinking
-									visible = "[Not( GuiAnimationEditorUserInput.IsKeyframeSelectionValidForCurvePreset )]"
+									visible = "[Not( GuiAnimationEditor.IsKeyframeSelectionValidForCurvePreset )]"
 									raw_text = "Select pairs of keyframes for curve preset selection"
 									fontsize = 11
 									size = { 265 26 }
@@ -1070,9 +1070,9 @@ vbox = {
 
 		icon = {
 			name = "drag_rect_overlay"
-			visible = "[GuiAnimationEditorUserInput.IsDraggingSelectionRect]"
-			size = "[GuiAnimationEditorUserInput.GetSelectionDragRectSize]"
-			position = "[GuiAnimationEditorUserInput.GetSelectionDragRectPosition( PdxGuiWidget.AccessParent.Self )]"
+			visible = "[GuiAnimationEditorViewportUserInput.IsDraggingSelectionRect]"
+			size = "[GuiAnimationEditorViewportUserInput.GetSelectionDragRectSize]"
+			position = "[GuiAnimationEditorViewportUserInput.GetSelectionDragRectPosition( PdxGuiWidget.AccessParent.Self )]"
 			texture = "gfx/editor_gui/editor_frame_striped.dds"
 			spriteType = CorneredTiled
 			spriteborder = { 5 5 }

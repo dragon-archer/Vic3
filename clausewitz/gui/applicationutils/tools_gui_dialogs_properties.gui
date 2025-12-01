@@ -32,6 +32,10 @@ types ToolsProperyTypes
 	}
 
 	type vertical_dialog_property = vbox {
+		tooltipwidget = {
+			using = dockable_tooltip
+		}
+		
 		layoutpolicy_horizontal = preferred
 		layoutpolicy_vertical = preferred
 

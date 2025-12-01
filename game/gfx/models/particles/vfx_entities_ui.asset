@@ -540,6 +540,712 @@ entity =
 }
 
 
+entity = 
+{
+	name = "vfx_entity_ui_state_farmland_arabic"
+
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_farmland_arabic"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_farmland_asian"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_farmland_asian"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_farmland_generic"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_farmland_generic"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_farmland_subtropic"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_farmland_subtropic"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_arctic"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_arctic"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_tundra"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_tundra"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
 
 
+entity = 
+{
+	name = "vfx_entity_ui_state_wetland"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_wetland"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
 
+entity = 
+{
+	name = "vfx_entity_ui_state_forest"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_biome_forest"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_ui_state_jungle"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_biome_jungle"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_ocean"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_biome_ocean"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_mountains"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_mountains"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_mountains_arid"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_mountains_arid"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_mountains_northamerica"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_mountains_northamerica"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_plains"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_plains"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_plains_arid"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_plains_arid"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_ui_state_plains_northamerica"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_plains_northamerica"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_ui_state_hills"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_hills"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_hills_jungle"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_hills_jungle"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+
+entity = 
+{
+	name = "vfx_entity_ui_state_hills_subtropic"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_hills_subtropic"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_desert"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_desert"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_desert_northamerica"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_desert_northamerica"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_urban_african"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_urban_african"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_urban_arabic"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_urban_arabic"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_urban_asian"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_urban_asian"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_urban_latin_american"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_urban_latin_american"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_urban_european"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_urban_european"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_docks"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_docks"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_mining"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_mining"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_cleared_land"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_cleared_land"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_plantation"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_plantation"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_forestry"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_forestry"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}
+
+entity = 
+{
+	name = "vfx_entity_ui_state_pasture"
+	scale = 1
+	default_state = "idle"
+	
+	state = 
+	{ 
+		name = "idle" 
+		state_time = 1
+		looping = no 
+		
+		start_event = 
+		{ 
+			time = 0 
+			particle = "particle_ui_state_pasture"			
+			trigger_once = yes 
+			keep_particle = no
+		}
+	}
+}

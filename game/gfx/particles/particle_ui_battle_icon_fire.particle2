@@ -6,8 +6,7 @@ graph={
 		pdxns:particle:Emitter={
 			id=0
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:lifetime"
 						label="Lifetime"
 						type="Float"
@@ -22,7 +21,10 @@ graph={
 						label="StartColor"
 						type="Color"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -188,7 +190,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=12
 			node={
-				texture_file="gfx/particles/water_foam_1.dds"
+				texture_file="gfx/particles/textures/water_foam_3.dds"
 			}
 			inputs={
 			}
@@ -588,9 +590,9 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=46
+			id=101
 			node={
-				value=0.000000
+				value=0.500000
 			}
 			inputs={
 			}
@@ -619,18 +621,27 @@ graph={
 				}
 			}
 		}
-		pdxns:values:Float={
+		pdxns:math:GreaterThanF={
 			id=49
 			node={
-				value=180.000000
 			}
 			inputs={
+				link={
+					pin_id="op1"
+					linked_node=68
+					linked_pin="age"
+				}
+				link={
+					pin_id="op2"
+					linked_node=18
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Float={
-			id=50
+			id=102
 			node={
-				value=0.000000
+				value=1.000000
 			}
 			inputs={
 			}
@@ -778,6 +789,11 @@ graph={
 					linked_node=64
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=127
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:values:Bool={
@@ -804,48 +820,37 @@ graph={
 			inputs={
 			}
 		}
-		pdxns:3d:YawPitchVectorRotation={
-			id=65
+		pdxns:values:ConstVector3f={
+			id=103
 			node={
-			}
-			inputs={
-				link={
-					pin_id="yaw"
-					linked_node=66
-					linked_pin="value"
-				}
-				link={
-					pin_id="pitch"
-					linked_node=67
-					linked_pin="value"
-				}
-				link={
-					pin_id="roll"
-					linked_node=68
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:values:Float={
-			id=66
-			node={
-				value=0.000000
+				value={ 0.000000 0.000000 0.000000 }
 			}
 			inputs={
 			}
 		}
-		pdxns:values:Float={
+		pdxns:values:Bool={
+			id=129
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:particle:Kill={
 			id=67
 			node={
-				value=180.000000
 			}
 			inputs={
+				link={
+					pin_id="condition"
+					linked_node=49
+					linked_pin="value"
+				}
 			}
 		}
-		pdxns:values:Float={
+		pdxns:particle:GetAge={
 			id=68
 			node={
-				value=0.000000
 			}
 			inputs={
 			}
@@ -914,13 +919,17 @@ graph={
 					linked_node=6
 					linked_pin="value"
 				}
+				link={
+					pin_id="fade_steep_angles"
+					linked_node=129
+					linked_pin="value"
+				}
 			}
 		}
 		pdxns:particle:Emitter={
 			id=74
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:lifetime"
 						label="Lifetime"
 						type="Float"
@@ -935,7 +944,10 @@ graph={
 						label="StartColor"
 						type="Color"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
@@ -1013,7 +1025,7 @@ graph={
 		pdxns:gfx:Texture={
 			id=75
 			node={
-				texture_file="gfx/particles/cloud_6.dds"
+				texture_file="gfx/particles/textures/cloud_6.dds"
 			}
 			inputs={
 			}
@@ -1143,26 +1155,12 @@ graph={
 				}
 			}
 		}
-		pdxns:3d:YawPitchVectorRotation={
-			id=85
+		pdxns:values:Bool={
+			id=127
 			node={
+				value=no
 			}
 			inputs={
-				link={
-					pin_id="yaw"
-					linked_node=50
-					linked_pin="value"
-				}
-				link={
-					pin_id="pitch"
-					linked_node=49
-					linked_pin="value"
-				}
-				link={
-					pin_id="roll"
-					linked_node=46
-					linked_pin="value"
-				}
 			}
 		}
 		pdxns:common:compound={
@@ -1325,7 +1323,7 @@ graph={
 			}
 		}
 		pdxns:gfx:Texture={
-			id=156
+			id=94
 			node={
 				texture_file="gfx/particles/textures/vfx_tex_snowparticles.dds"
 			}
@@ -1333,7 +1331,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=146
+			id=95
 			node={
 				value=0.000000
 			}
@@ -1341,7 +1339,7 @@ graph={
 			}
 		}
 		pdxns:values:ConstVector3f={
-			id=145
+			id=96
 			node={
 				value={ 0.000000 -1.000000 0.000000 }
 			}
@@ -1349,7 +1347,7 @@ graph={
 			}
 		}
 		pdxns:values:ConstVector3f={
-			id=144
+			id=97
 			node={
 				value={ 0.000000 0.000000 0.000000 }
 			}
@@ -1357,7 +1355,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=143
+			id=98
 			node={
 				value=0.000000
 			}
@@ -1365,7 +1363,7 @@ graph={
 			}
 		}
 		pdxns:values:Float={
-			id=142
+			id=99
 			node={
 				value=10.000000
 			}
@@ -1373,10 +1371,9 @@ graph={
 			}
 		}
 		pdxns:particle:Emitter={
-			id=141
+			id=100
 			node={
-				user_data_layout={
-					user_data={
+				user_data_layout={ 					user_data={
 						id="usr:lifetime"
 						label="Lifetime"
 						type="Float"
@@ -1391,32 +1388,35 @@ graph={
 						label="StartColor"
 						type="Color"
 					}
- 				}
+ }
+				emitter_isolated=no
+				emitter_enabled=yes
+				emitter_visually_enabled=yes
 			}
 			inputs={
 				link={
 					pin_id="rate"
-					linked_node=142
+					linked_node=99
 					linked_pin="value"
 				}
 				link={
 					pin_id="size"
-					linked_node=143
+					linked_node=98
 					linked_pin="value"
 				}
 				link={
 					pin_id="position"
-					linked_node=144
+					linked_node=97
 					linked_pin="value"
 				}
 				link={
 					pin_id="direction"
-					linked_node=145
+					linked_node=96
 					linked_pin="value"
 				}
 				link={
 					pin_id="speed"
-					linked_node=146
+					linked_node=95
 					linked_pin="value"
 				}
 				link={
@@ -1426,7 +1426,7 @@ graph={
 				}
 				link={
 					pin_id="texture"
-					linked_node=156
+					linked_node=94
 					linked_pin="texture"
 				}
 				link={
@@ -1446,17 +1446,17 @@ graph={
 				}
 				link={
 					pin_id="angular_velocity"
-					linked_node=147
+					linked_node=103
 					linked_pin="value"
 				}
 				link={
 					pin_id="usr:lifetime"
-					linked_node=148
+					linked_node=102
 					linked_pin="value"
 				}
 				link={
 					pin_id="usr:size"
-					linked_node=149
+					linked_node=101
 					linked_pin="value"
 				}
 				link={
@@ -1464,30 +1464,6 @@ graph={
 					linked_node=88
 					linked_pin="output"
 				}
-			}
-		}
-		pdxns:values:Float={
-			id=149
-			node={
-				value=0.500000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Float={
-			id=148
-			node={
-				value=1.000000
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=147
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
 			}
 		}
 	}

@@ -1,6 +1,4 @@
 ﻿l_russian:
- ideology_montenegrin_moralist: "Черногорские моралисты"
- ideology_montenegrin_moralist_desc: "#lore Эта группа выступает за строгие религиозные нравы и считает плюрализм мнений угрозой.#!"
  mon_build_biljarda: "Построить Бильярду"
  mon_build_biljarda_desc: "Возведите дворец, достойный нашего независимого народа."
  treaty_name_mon_orthodox_donations: "Щедрый доступ к помощи и торговле"
@@ -103,11 +101,11 @@
  #Raiding
  concept_raiding: "Налёты"
  concept_raiding_short: "Налёты"
- concept_raiding_desc: "Доход, получаемый от грабежа, разорения и мародёрства на соседних землях. Из-за скудности пахотных угодий Черногория вынуждена полагаться на налёты и [Concept('concept_russian_aid','помощь русских')], чтобы выжить.\n\nНаш доход от налётов зависит от частоты налётов, умноженной на [Concept('concept_power_projection','демонстрацию силы')] армии. Максимально возможный доход от налётов составляет #g @money!+[GetPlayer.MakeScope.ScriptValue('max_raiding_income')]#!."
+ concept_raiding_desc: "Доход, получаемый от грабежа, разорения и мародёрства на соседних землях. Из-за скудности пахотных угодий Черногория вынуждена полагаться на налёты и [Concept('concept_russian_aid','помощь русских')], чтобы выжить.\n\nНаш доход от налётов зависит от [Concept('concept_raiding_frequency','частоты налётов')], умноженной на [Concept('concept_power_projection','демонстрацию силы')] армии. Максимально возможный доход от налётов составляет #g @money!+[GetPlayer.MakeScope.ScriptValue('max_raiding_income')]#!."
  #"Raiding Fervor"
  concept_raiding_frequency: "Страсть к налётам"
  concept_raiding_frequency_short: "Страсть к налётам"
- concept_raiding_frequency_desc: "$concept_raiding_frequency$ определяет, как часто племенам разрешено совершать [Concept('concept_raiding', 'налёты')].\n\nПомимо увеличения дохода от налётов, каждые #v 1%#! частоты налётов также оказывают следующие эффекты:\n[GetStaticModifier('modifier_montenegrin_disobedience').GetDesc]"
+ concept_raiding_frequency_desc: "$concept_raiding_frequency$ определяет, как часто племенам разрешено совершать [Concept('concept_raiding','налёты')].\n\nПомимо увеличения дохода от [Concept('concept_raiding','налётов')] каждый #v 1%#! частоты налётов также оказывает следующие эффекты:\n[GetStaticModifier('modifier_montenegrin_disobedience').GetDesc]"
  #Russian Aid
  concept_russian_aid: "Помощь русских"
  concept_russian_aid_short: "Помощь русских"
@@ -168,7 +166,7 @@
  montenegrin_raiding.1.f: "#italic Племя моё мёртвым сном уснуло,\nи слеза моя безродной стала,\nглухо небо надо мной замкнулось\nи не внемлет плачу и молитве. #!\n\n— Пётр II Петрович Негош, #italic «Горный венок»#!"
  montenegrin_raiding.1.a: "Горе объединит нас."
  montenegrin_raiding.1.b: "Пусть мёртвые хоронят мёртвых. Мы займёмся восстановлением."
- mon_lost_men_tt: "Часть сооружений «[GetBuildingType('building_barracks').GetName]» (#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#!) будет уничтожена, а в остальных начнётся неразбериха."
+ mon_lost_men_tt: "Часть сооружений «[GetBuildingType('building_barrack').GetName]» (#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#!) будет уничтожена, а в остальных начнётся неразбериха."
  #montenegrin_raiding.2
  montenegrin_raiding.2.t: "Османская контратака"
  montenegrin_raiding.2.d: "Войска [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetAltName('RU_CL_RP'), 'Османской Империи')] терроризируют наше население и пресекают все попытки налётов."
@@ -273,14 +271,14 @@
  mon_state_formation.8.t: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] ищет жену"
  mon_state_formation.8.d: "Приготовления к королевской свадьбе в самом разгаре; [ROOT.GetCountry.GetNameNoFlag] гадает, кого же [SCOPE.sCharacter('danilo').GetFullName] избрал в невесты."
  mon_state_formation.8.d2: "Теперь, когда [SCOPE.sCharacter('danilo').GetFullName] [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle|l], пришло время выбрать [SelectLocalization(ROOT.GetCountry.GetRuler.IsFemale, 'ей', 'ему' )] жену."
- mon_state_formation.8.f: "— Фельдмаршал Мармула! Ну, как прошла свадьба? Эти горные племена устроили представление?\n\n— Бедняжка была белее привидения, когда мы сопровождали её из порта. Кто бы её винил? Представь: принцесса среди этих волков! Но едва прозвучали клятвы, как она заговорила на их языке, стала раздавать приказания, пить, как сапожник, и ругаться, как боцман. Иным это не по нраву, но она и ухом не повела. Если [SCOPE.sCharacter('danilo').GetFirstName] не остережётся, скоро она будет заправлять всем лагерем — а у нас наконец появится разумный собеседник."
+ mon_state_formation.8.f: "— Фельдмаршал Мармула! Ну, как прошла свадьба? Эти горные племена устроили представление?\n\n— Бедняжка была белее привидения, когда мы сопровождали её из порта. Кто бы её винил? Представь: принцесса среди этих волков! Но едва прозвучали клятвы, как она заговорила на их языке, стала раздавать приказания, пить, как сапожник, и ругаться, как боцман. Иным это не по нраву, но она и ухом не повела. Если [SCOPE.sCharacter('danilo').GetFirstNameNoFormatting] не остережётся, скоро она будет заправлять всем лагерем — а у нас наконец появится разумный собеседник."
  mon_state_formation.8.f2: "— Не видывал я такого варварства! [SCOPE.sCharacter('danilo').GetPrimaryRoleTitle] [SCOPE.sCharacter('danilo').GetFirstNameNoFormatting] явился в боевых доспехах, хвастаясь ночными похождениями. Всадник привёз ему свежеотрубленную голову турка. «Как и обещал!» — крикнул Данило и, о боже, пил из шеи под хохот дружины. Затем все взгляды устремились на несчастную невесту, привезённую из порта. Но она, храбрее всех моих солдат, шагнула вперёд, и священник — под дулом пистолета и сквозь протесты — обвенчал их под смущённым взором Господа... Молюсь, чтоб меня никогда больше не посылали на Балканы."
  mon_state_formation.8.a: "Надо жениться на сербской принцессе Клеопатре Карагеоргиевич из чувства долга."
  mon_state_formation.8.b: "Надо жениться на баронессе Анастасии фон Сине из Вены ради денег."
  mon_state_formation.8.c: "Надо жениться на Даринке Квекич из Триеста по любви."
  mon_state_formation.9.t: "Строительство Бильярды"
  mon_state_formation.9.d: "[ROOT.GetCountry.GetRuler.GetFullName] [SelectLocalization(ROOT.GetCountry.GetRuler.IsFemale, 'повелела', 'повелел')] возвести дворец с двадцатью пятью комнатами и круглой оборонительной башней. Мастера-строители ожидают указаний о том, на чём сделать акцент в убранстве резиденции."
- mon_state_formation.9.f: "«На скале прямо над монастырём высится круглая башня со множеством бойниц, но без пушки, а на парапете виднеются колья с двенадцатью головами турок — победные трофеи черногорцев… И всё это — рядом с женским монастырём и епископским дворцом. Престранное зрелище для христианской страны».\n\n— Джон Гарден Уилкинсон о своём путешествии в Черногорию"
+ mon_state_formation.9.f: "«На скале прямо над монастырём высится круглая башня со множеством бойниц, но без пушки, а на парапете виднеются колья с двадцатью головами турок — победные трофеи черногорцев… И всё это — рядом с женским монастырём и епископским дворцом. Престранное зрелище для христианской страны»." #–John Gardner Wilkinson, visitor to Montenegro"
  mon_state_formation.9.a: "Попросим крепких парней вытащить из моря бильярдный стол."
  mon_state_formation.9.b: "Освятим часовню фрагментом черепа святого Харалампия."
  mon_state_formation.9.c: "Зачем ограничиваться башней? Наставим голов в каждом зале!"
@@ -299,6 +297,7 @@
  mon_school_helper: "Со временем это значительно увеличит грамотность страны"
  mon_state_formation.11.c: "[SelectLocalization(ROOT.GetCountry.GetRuler.IsFemale, 'Она', 'Он')] позаботится, чтобы дети учились сражаться."
  #Taxes?
+ #Taxes?
  mon_state_formation.12.t: "Налоги?"
  mon_state_formation.12.d: "После многолетних расправ над османскими сборщиками податей народ [ROOT.GetCountry.GetAltNameNoFlag('RU_CL_RP')] в принципе не приемлет идею налогов — даже если их собирает [SelectLocalization(ROOT.GetCountry.GetRuler.IsFemale, 'сама', 'сам')] [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]."
  mon_state_formation.12.f: "— Значит, [ROOT.GetCountry.GetRuler.GetSheHe|l] нас грабит?\n— Нет, это называется #italic налоги#!.\n— А в чём разница?\n— Ну, эти деньги пойдут нам же на благо.\n— То есть нам выдадут муку или починят крышу?\n— Нет... Слушай, если не заплатим, придут солдаты с оружием и...\n— Значит, [ROOT.GetCountry.GetRuler.GetSheHe|l] нас всё-таки #italic грабит#!!"
@@ -306,6 +305,7 @@
  mon_state_formation.12.b: "Выслушаем все опасения."
  mon_state_formation.12.c: "Припугнём всех непокорных."
  mon_state_formation.12.e: "«Какие ещё налоги? Вам послышалось!»"
+ #first arms
  #first arms
  mon_state_formation.13.t: "Подлинная цель"
  mon_state_formation.13.d: "[SCOPE.sBuilding('arms').GetName] — первое в своём роде сооружение, вызывает бесконечную гордость в сердцах народа [ROOT.GetCountry.GetAltNameNoFlag('RU_CL_RP')]."
@@ -362,7 +362,7 @@
  mon_state_formation.20.t: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFirstName] или король [ROOT.GetCountry.GetRuler.GetFirstName]"
  mon_state_formation.20.d: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName] [SelectLocalization(ROOT.GetCountry.GetRuler.IsFemale, 'предложила', 'предложил' )] официально превратить нашу страну в королевство."
  ### https://en.wikisource.org/wiki/Translation:There,_Over_There
- mon_state_formation.20.f: "#italic Туда! Туда! За этими горами\nЕсть, говорят, цветущий, светлый край\nС дечанскими священными стенами,\nМолитва там душе дарует рай.\n\nТуда! Туда! За выси те крутые,\nГде небо в свод скруглилось голубой!\nТуда! Туда! В долины боевые —\nВ наш сербский край мы путь направим свой!#! \n\n Никола I Петрович-Негош, #italic «Туда, туда!»#!"
+ mon_state_formation.20.f: "#italic  Туда! Туда! За этими горами\nЕсть, говорят, цветущий светлый край\nС дечанскими священными стенами,\nМолитва там душе дарует рай.\n\nТуда! Туда! За выси те крутые,\nГде небо в свод скруглилось голубой!\nТуда! Туда! В долины боевые —\nВ наш сербский край мы путь направим свой!#!\nНикола I Петрович-Негош, #italic «Туда, туда!»#!"
  mon_state_formation.20.a: "Сообщим народу."
  mon_state_formation.20.b: "Сообщим всем странам!"
  mon_state_formation.20.c: "Сообщим солдатам."

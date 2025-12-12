@@ -17,8 +17,6 @@ entity = {
 	name = "male_headgear_european_religious_catholic_01_entity"
 	pdxmesh = "male_headgear_european_religious_catholic_01_mesh"
 
-
-
 	game_data = {
         portrait_entity_user_data = {
 			portrait_accessory = {
@@ -34,13 +32,81 @@ entity = {
 	name = "male_headgear_european_religious_catholic_01_colors_entity"
 	pdxmesh = "male_headgear_european_religious_catholic_01_mesh"
 
-	
+
 
 	game_data = {
         portrait_entity_user_data = {
 			portrait_accessory = {
 				pattern_mask = "gfx/models/portraits/attachments/male_headgear/european_religious/male_headgear_european_religious_catholic_01/male_headgear_european_religious_catholic_01_masks.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
 				variation = "religious_catholic_01_colors"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+        }
+	}
+}
+
+entity = {
+	name = "male_headgear_european_religious_catholic_01_red_entity"
+	pdxmesh = "male_headgear_european_religious_catholic_01_mesh"
+
+
+
+	game_data = {
+        portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_headgear/european_religious/male_headgear_european_religious_catholic_01/male_headgear_european_religious_catholic_01_masks.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "religious_catholic_01_red"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+        }
+	}
+}
+
+entity = {
+	name = "male_headgear_european_religious_catholic_01_black_entity"
+	pdxmesh = "male_headgear_european_religious_catholic_01_mesh"
+
+
+
+	game_data = {
+        portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_headgear/european_religious/male_headgear_european_religious_catholic_01/male_headgear_european_religious_catholic_01_masks.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "religious_catholic_01_black"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+        }
+	}
+}
+
+entity = {
+	name = "male_headgear_european_religious_catholic_01_purple_entity"
+	pdxmesh = "male_headgear_european_religious_catholic_01_mesh"
+
+	game_data = {
+        portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_headgear/european_religious/male_headgear_european_religious_catholic_01/male_headgear_european_religious_catholic_01_masks.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "religious_catholic_01_purple"	#A "variation" object in gfx/portraits/accessory_variations/
+			}
+        }
+	}
+}
+
+entity = {
+	name = "male_headgear_european_religious_catholic_02_entity"
+	pdxmesh = "male_headgear_european_religious_catholic_01_mesh"
+
+	meshsettings = {
+		texture_diffuse = "male_headgear_european_religious_catholic_02_diffuse.dds"
+		texture_normal = "male_headgear_european_religious_catholic_01_normal.dds"
+		texture_specular = "male_headgear_european_religious_catholic_01_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+
+	game_data = {
+        portrait_entity_user_data = {
+			portrait_accessory = {
+				pattern_mask = "gfx/models/portraits/attachments/male_headgear/european_religious/male_headgear_european_religious_catholic_01/male_headgear_european_religious_catholic_01_masks.dds"	#Any 4-channel texture. Each channel will be used to mask a pattern from the variation object
+				variation = "religious_catholic_01"	#A "variation" object in gfx/portraits/accessory_variations/
 			}
         }
 	}

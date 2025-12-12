@@ -34,8 +34,6 @@
  SETTING_ANISOTROPIC_FILTERING_TOOLTIP: "#T $SETTING_ANISOTROPIC_FILTERING$\n#!이방성 필터링을 사용해 텍스처 처리된 표면의 모습을 개선합니다.\n\n설정값을 낮추면 성능이 향상됩니다."
  SETTING_RESOLUTION: "해상도"
  SETTING_RESOLUTION_TOOLTIP: "#T $SETTING_RESOLUTION$\n#!게임의 이미지 품질을 설정합니다.\n\n해상도를 낮추면 성능이 향상됩니다.\n\n#X 지원되지 않는 비율의 게임 해상도를 사용할 경우 인터페이스가 화면 바깥에 표시될 수도 있습니다.#!"
- SETTING_WINDOWED_RESOLUTION: "창 화면 해상도"
- SETTING_WINDOWED_RESOLUTION_TOOLTIP: "#T $SETTING_WINDOWED_RESOLUTION$\n#!창 모드로 게임 실행 시 게임 창의 해상도를 설정합니다.\n\n#b 숫자#!x#b 숫자#! 형식이어야 합니다.\n\n#X 지원되지 않는 비율의 게임 해상도를 사용할 경우 인터페이스가 화면 바깥에 표시될 수도 있습니다.#!"
  SETTING_RENDER_SCALE: "렌더링 비율"
  SETTING_RENDER_SCALE_TOOLTIP: "#T $SETTING_RENDER_SCALE$#!\n게임의 렌더링 해상도 비율은 사용자 인터페이스를 제외한 주 해상도와 관련되어 있습니다.\n\n설정값을 낮추면 성능이 향상되지만, 전반적인 선명도는 감소합니다. 100% 이상으로 높이면 선명도는 증가하지만 성능이 하락합니다."
  SETTING_RENDER_SCALE_FORMAT: "$VALUE|%0$"
@@ -60,6 +58,7 @@
  OPTION_LOW: "낮음"
  OPTION_MEDIUM: "보통"
  OPTION_HIGH: "높음"
+ OPTION_VERY_HIGH: "매우 높음"
  OPTION_ULTRA: "최상"
  OPTION_CUSTOM: "커스텀"
  OPTION_DEFAULT: "기본"
@@ -174,7 +173,7 @@
  NO_AUTOSAVE: "자동 저장 없음"
  #Multiplayer
  SETTINGS_FILE_TRANSFER_SPEED: "파일 전송 속도"
- SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $File Transfer Speed$\n#!멀티플레이 대기실에서 저장 게임 파일을 전송할 최대 속도를 결정합니다.\n\n설정값을 낮추면 멀티플레이 게임 참여 시의 네트워크 안정성이 향상되지만, 멀티플레이 불러오기 시간에 부정적인 영향이 있을 수 있습니다."
+ SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $SETTINGS_FILE_TRANSFER_SPEED$#!\n멀티플레이 대기실에서 저장 게임 파일을 전송할 최대 속도를 결정합니다.\n\n설정값을 낮추면 멀티플레이 게임 참여 시의 네트워크 안정성이 향상되지만, 멀티플레이 불러오기 시간에 부정적인 영향이 있을 수 있습니다.\n\n멀티 플레이 호스트가 최대 속도를 결정합니다.\n"
  #Tools
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES: "지도 에디터 자동 저장 (분)"
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES_TOOLTIP: "지도 에디터 자동 저장 간격 (분)"

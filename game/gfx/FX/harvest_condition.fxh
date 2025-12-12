@@ -1,6 +1,8 @@
 Includes = {
 	"cw/camera.fxh"
+
 	"jomini/jomini_province_overlays.fxh"
+
 	"coloroverlay_powerbloc.fxh"
 	"sharedconstants.fxh"
 	"dynamic_masks.fxh"
@@ -21,6 +23,7 @@ struct HarvestConditionData
 	float _LocustSwarm;
 	float _Heatwave;
 	float _DiseaseOutbreak;
+	float _Earthquake;
 };
 
 Code
@@ -32,6 +35,20 @@ Code
 		return PdxReadBuffer4( HarvestConditionProvinceDataBuffer, Index );
 	}
 
+	float CalculateCondition( float4 C11, float4 C21, float4 C12, float4 C22, float2 x1x2, float2 FracCoord, float ConditionIndex, float LowImpactValue, float HighImpactValue, float LowRange, float HighRange )
+	{
+		// Calculate impact
+		float InterpolatedValue = lerp( x1x2.x, x1x2.y, FracCoord.y );
+		float Impact = RemapClamped( InterpolatedValue, 0.0, LowImpactValue, 0.0, LowRange );
+		Impact += RemapClamped( InterpolatedValue, LowImpactValue, HighImpactValue, 0.0, HighRange );
+
+		// Calculate condition value with lerps
+		float Cond1 = lerp( C11.r == ConditionIndex, C21.r == ConditionIndex, FracCoord.x );
+		float Cond2 = lerp( C12.r == ConditionIndex, C22.r == ConditionIndex, FracCoord.x );
+
+		return lerp( Cond1, Cond2, FracCoord.y ) * Impact;
+	}
+
 	void SampleHarvestConditionMask( float2 MapCoords, inout HarvestConditionData ConditionData )
 	{
 		// HarvestCondition mask
@@ -41,71 +58,23 @@ Code
 		float4 C11 = SampleHarvestCondition( Pixel );
 		float4 C21 = SampleHarvestCondition( Pixel + float2( InvIndirectionMapSize.x, 0.0 ) * ( 1.0 ) );
 		float4 C12 = SampleHarvestCondition( Pixel + float2( 0.0, InvIndirectionMapSize.y ) * ( 1.0 ) );
-		float4 C22 = SampleHarvestCondition( Pixel + InvIndirectionMapSize * ( 1.0  ) );
+		float4 C22 = SampleHarvestCondition( Pixel + InvIndirectionMapSize * ( 1.0 ) );
 		float x1 = lerp( C11.g, C21.g, FracCoord.x );
 		float x2 = lerp( C12.g, C22.g, FracCoord.x );
+		float2 x1x2 = float2( x1, x2 );
 
-		// Opacity
-		float Impact = lerp( x1, x2, FracCoord.y );
-		Impact = RemapClamped( lerp( x1, x2, FracCoord.y ), 0.0, OpacityLowImpactValue, 0.0, 0.6 );
-		Impact += RemapClamped( lerp( x1, x2, FracCoord.y ), OpacityLowImpactValue, OpacityHighImpactValue, 0.0, 0.4 );
-
-		// Harvest condition filtering
-		float Dro1 = lerp( C11.r == DROUGHT_INDEX, C21.r == DROUGHT_INDEX, FracCoord.x );
-		float Dro2 = lerp( C12.r == DROUGHT_INDEX, C22.r == DROUGHT_INDEX, FracCoord.x );
-		ConditionData._Drought = lerp( Dro1, Dro2, FracCoord.y ) * Impact;
-
-		float Flo1 = lerp( C11.r == FLOOD_INDEX, C21.r == FLOOD_INDEX, FracCoord.x );
-		float Flo2 = lerp( C12.r == FLOOD_INDEX, C22.r == FLOOD_INDEX, FracCoord.x );
-		ConditionData._Flood = lerp( Flo1, Flo2, FracCoord.y ) * Impact;
-
-		float FrostImapact = RemapClamped( lerp( x1, x2, FracCoord.y ), 0.0, FrostLowImpactValue, 0.0, 0.5 );
-		FrostImapact += RemapClamped( lerp( x1, x2, FracCoord.y ), FrostLowImpactValue, FrostHighImpactValue, 0.0, 0.5 );
-		float Fro1 = lerp( C11.r == FROST_INDEX, C21.r == FROST_INDEX, FracCoord.x );
-		float Fro2 = lerp( C12.r == FROST_INDEX, C22.r == FROST_INDEX, FracCoord.x );
-		ConditionData._Frost = lerp( Fro1, Fro2, FracCoord.y ) * FrostImapact;
-
-		float WildfireImpact = RemapClamped( lerp( x1, x2, FracCoord.y ), 0.0, WildfireLowImpactValue, 0.0, 0.5 );
-		WildfireImpact += RemapClamped( lerp( x1, x2, FracCoord.y ), WildfireLowImpactValue, WildfireHighImpactValue, 0.0, 0.5 );
-		float Wil1 = lerp( C11.r == WILDFIRE_INDEX, C21.r == WILDFIRE_INDEX, FracCoord.x );
-		float Wil2 = lerp( C12.r == WILDFIRE_INDEX, C22.r == WILDFIRE_INDEX, FracCoord.x );
-		ConditionData._Wildfire = lerp( Wil1, Wil2, FracCoord.y ) * WildfireImpact;
-
-		float TorrentialRainsImpact = RemapClamped( lerp( x1, x2, FracCoord.y ), 0.0, TorrFloodLowImpactValue, 0.0, 0.5 );
-		TorrentialRainsImpact += RemapClamped( lerp( x1, x2, FracCoord.y ), TorrFloodLowImpactValue, TorrFloodHighImpactValue, 0.0, 0.5 );
-		float Tor1 = lerp( C11.r == TORRENTIAL_RAINS_INDEX, C21.r == TORRENTIAL_RAINS_INDEX, FracCoord.x );
-		float Tor2 = lerp( C12.r == TORRENTIAL_RAINS_INDEX, C22.r == TORRENTIAL_RAINS_INDEX, FracCoord.x );
-		ConditionData._TorrentialRains = lerp( Tor1, Tor2, FracCoord.y ) * TorrentialRainsImpact;
-
-		float HailImpact = RemapClamped( lerp( x1, x2, FracCoord.y ), 0.0, HailLowImpactValue, 0.0, 0.5 );
-		HailImpact += RemapClamped( lerp( x1, x2, FracCoord.y ), HailLowImpactValue, HailHighImpactValue, 0.0, 0.5 );
-		float Hail1 = lerp( C11.r == HAIL_INDEX, C21.r == HAIL_INDEX, FracCoord.x );
-		float Hail2 = lerp( C12.r == HAIL_INDEX, C22.r == HAIL_INDEX, FracCoord.x );
-		ConditionData._Hail = lerp( Hail1, Hail2, FracCoord.y ) * HailImpact;
-
-		float ExtremeWindsImpact = RemapClamped( lerp( x1, x2, FracCoord.y ), 0.0, ExtremeWindsLowImpactValue, 0.0, 0.5 );
-		ExtremeWindsImpact += RemapClamped( lerp( x1, x2, FracCoord.y ), ExtremeWindsLowImpactValue, ExtremeWindsHighImpactValue, 0.0, 0.5 );
-		float Extw1 = lerp( C11.r == EXTREME_WINDS_INDEX, C21.r == EXTREME_WINDS_INDEX, FracCoord.x );
-		float Extw2 = lerp( C12.r == EXTREME_WINDS_INDEX, C22.r == EXTREME_WINDS_INDEX, FracCoord.x );
-		ConditionData._ExtremeWinds = lerp( Extw1, Extw2, FracCoord.y ) * ExtremeWindsImpact;
-
-		float LocustSwarmImpact = RemapClamped( lerp( x1, x2, FracCoord.y ), 0.0, LocustSwarmLowImpactValue, 0.0, 0.5 );
-		LocustSwarmImpact += RemapClamped( lerp( x1, x2, FracCoord.y ), LocustSwarmLowImpactValue, LocustSwarmHighImpactValue, 0.0, 0.5 );
-		float Locu1 = lerp( C11.r == LOCUST_SWARM_INDEX, C21.r == LOCUST_SWARM_INDEX, FracCoord.x );
-		float Locu2 = lerp( C12.r == LOCUST_SWARM_INDEX, C22.r == LOCUST_SWARM_INDEX, FracCoord.x );
-		ConditionData._LocustSwarm = lerp( Locu1, Locu2, FracCoord.y ) * LocustSwarmImpact;
-
-		float HeatwaveImpact = RemapClamped( lerp( x1, x2, FracCoord.y ), 0.0, HeatwaveLowImpactValue, 0.0, 0.6 );
-		HeatwaveImpact += RemapClamped( lerp( x1, x2, FracCoord.y ), HeatwaveLowImpactValue, HeatwaveHighImpactValue, 0.0, 0.4 );
-		float Heat1 = lerp( C11.r == HEATWAVE_INDEX, C21.r == HEATWAVE_INDEX, FracCoord.x );
-		float Heat2 = lerp( C12.r == HEATWAVE_INDEX, C22.r == HEATWAVE_INDEX, FracCoord.x );
-		ConditionData._Heatwave = lerp( Heat1, Heat2, FracCoord.y ) * HeatwaveImpact;
-
-		float DiseaseOutbreakImpact = RemapClamped( lerp( x1, x2, FracCoord.y ), 0.0, DiseaseOutbreakLowImpactValue, 0.0, 0.6 );
-		DiseaseOutbreakImpact += RemapClamped( lerp( x1, x2, FracCoord.y ), DiseaseOutbreakLowImpactValue, DiseaseOutbreakHighImpactValue, 0.0, 0.4 );
-		float Dis1 = lerp( C11.r == DISEASE_OUTBREAK_INDEX, C21.r == DISEASE_OUTBREAK_INDEX, FracCoord.x );
-		float Dis2 = lerp( C12.r == DISEASE_OUTBREAK_INDEX, C22.r == DISEASE_OUTBREAK_INDEX, FracCoord.x );
-		ConditionData._DiseaseOutbreak = lerp( Dis1, Dis2, FracCoord.y ) * DiseaseOutbreakImpact;
+		// Calculate all conditions using the merged function
+		ConditionData._Drought = CalculateCondition( C11, C21, C12, C22, x1x2, FracCoord, DROUGHT_INDEX, OpacityLowImpactValue, OpacityHighImpactValue, 0.6, 0.4 );
+		ConditionData._Flood = CalculateCondition( C11, C21, C12, C22, x1x2, FracCoord, FLOOD_INDEX, OpacityLowImpactValue, OpacityHighImpactValue, 0.6, 0.4 );
+		ConditionData._Frost = CalculateCondition( C11, C21, C12, C22, x1x2, FracCoord, FROST_INDEX, FrostLowImpactValue, FrostHighImpactValue, 0.5, 0.5 );
+		ConditionData._Wildfire = CalculateCondition( C11, C21, C12, C22, x1x2, FracCoord, WILDFIRE_INDEX, WildfireLowImpactValue, WildfireHighImpactValue, 0.5, 0.5 );
+		ConditionData._TorrentialRains = CalculateCondition( C11, C21, C12, C22, x1x2, FracCoord, TORRENTIAL_RAINS_INDEX, TorrFloodLowImpactValue, TorrFloodHighImpactValue, 0.5, 0.5 );
+		ConditionData._Hail = CalculateCondition( C11, C21, C12, C22, x1x2, FracCoord, HAIL_INDEX, HailLowImpactValue, HailHighImpactValue, 0.5, 0.5 );
+		ConditionData._ExtremeWinds = CalculateCondition( C11, C21, C12, C22, x1x2, FracCoord, EXTREME_WINDS_INDEX, ExtremeWindsLowImpactValue, ExtremeWindsHighImpactValue, 0.5, 0.5 );
+		ConditionData._LocustSwarm = CalculateCondition( C11, C21, C12, C22, x1x2, FracCoord, LOCUST_SWARM_INDEX, LocustSwarmLowImpactValue, LocustSwarmHighImpactValue, 0.5, 0.5 );
+		ConditionData._Heatwave = CalculateCondition( C11, C21, C12, C22, x1x2, FracCoord, HEATWAVE_INDEX, HeatwaveLowImpactValue, HeatwaveHighImpactValue, 0.6, 0.4 );
+		ConditionData._DiseaseOutbreak = CalculateCondition( C11, C21, C12, C22, x1x2, FracCoord, DISEASE_OUTBREAK_INDEX, DiseaseOutbreakLowImpactValue, DiseaseOutbreakHighImpactValue, 0.6, 0.4 );
+		ConditionData._Earthquake = CalculateCondition( C11, C21, C12, C22, x1x2, FracCoord, EARTHQUAKE_INDEX, EarthquakeLowImpactValue, EarthquakeHighImpactValue, 0.8, 0.2 );
 	}
 ]]
 
@@ -168,9 +137,6 @@ PixelShader =
 				Diffuse.rgb = lerp( Diffuse.rgb, float3( 1.0, 0.0, 0.0 ), ConditionData._Drought );
 			#endif
 		}
-
-
-
 
 
 		/////////////////////////////////////////////
@@ -268,7 +234,6 @@ PixelShader =
 			ApplyDryTerrain( Diffuse, Normal, Properties, WorldSpacePosXz, ConditionData._Heatwave, HeatwaveOverlayColor );
 		}
 
-
 		//// Flooding ////
 		void ApplyFloodingDiffuseTerrain( inout float4 Diffuse, inout float3 Normal, inout float4 Properties, float2 WorldSpacePosXz, HarvestConditionData ConditionData, inout float WaterNormalLerp )
 		{
@@ -313,10 +278,6 @@ PixelShader =
 			Properties = lerp( Properties, FloodProperties, LowerValueAdjust );
 		}
 
-
-
-
-
 		//// Frost ////
 		void ApplyFrostDiffuseTerrain( inout float4 Diffuse, inout float3 Normal, inout float4 Properties, float2 WorldSpacePosXz, HarvestConditionData ConditionData )
 		{
@@ -342,10 +303,6 @@ PixelShader =
 			Normal = lerp( Normal, FrostTexNormal, FrostBlendFactors.y );
 			Properties = lerp( Properties, FrostTexProperties, FrostBlendFactors.y );
 		}
-
-
-
-
 
 		//// Wildfire ////
 		void ApplyWildfireDiffuseTerrain( inout float4 Diffuse, inout float3 Normal, inout float4 Properties, float2 WorldSpacePosXz, HarvestConditionData ConditionData )
@@ -489,10 +446,6 @@ PixelShader =
 			Diffuse.rgb = lerp( Diffuse.rgb, BurnColour, FlameColorMask * FlameMask );
 		}
 
-
-
-
-
 		//// Torrential Rain ////
 		float2 GetRainDropWater( float2 Position )
 		{
@@ -529,7 +482,7 @@ PixelShader =
 			float2 RainNormal2Dx = GetRainDropWater( Uv + e );
 			float2 RainNormal2Dy = GetRainDropWater( Uv + e.yx );
 
-			//// Normal
+			// Normal
 			float2 Normal = float2( RainNormal2Dx.x - RainNormal2D.x, RainNormal2Dy.x - RainNormal2D.x );
 
 			return Normal;
@@ -586,10 +539,6 @@ PixelShader =
 			Properties = lerp( Properties, FloodProperties, LowerValueAdjust );
 		}
 
-
-
-
-
 		//// Hail ////
 		void ApplyHailDiffuseTerrain( inout float4 Diffuse, inout float3 Normal, inout float4 Properties, float2 WorldSpacePosXz, HarvestConditionData ConditionData )
 		{
@@ -618,10 +567,6 @@ PixelShader =
 			float HailNoise = PdxTex2D( HailMask, FrostDetailUV * 20.0 ).r;
 			Diffuse.rgb = lerp( Diffuse.rgb, FrostOverlayColor, HailNoise * 0.5 * ConditionData._Hail );
 		}
-
-
-
-
 
 		//// Locust Swarm ////
 		void ApplyLocustDiffuseTerrain( inout float4 Diffuse, inout float3 Normal, inout float4 Properties, float3 WorldSpacePos, HarvestConditionData ConditionData )
@@ -706,13 +651,33 @@ PixelShader =
 			NoiseLocusts *= LowerValueAdjust;
 			NoiseLocusts = saturate( NoiseLocusts );
 
-
 			// Apply
 			Diffuse.rgb = lerp( Diffuse.rgb, float3( 0.034, 0.01, 0.0 ), NoiseLocusts );
 		}
 
+		//// Earthquake ////
+		void ApplyEarthquakeDiffuseTerrain( inout float4 Diffuse, inout float3 Normal, inout float4 Properties, float2 WorldSpacePosXz, HarvestConditionData ConditionData )
+		{
+			float2 MapCoords = WorldSpacePosXz * _WorldSpaceToTerrain0To1;
+			float2 TextureUv = MapCoords * float2( 2.0, 1.0 );
+			float2 EarthquakeDetailUv = CalcDetailUV( WorldSpacePosXz ) * EarthquakeTextureTiling;
 
+			float LowerValueAdjust = smoothstep( 0.0, 0.1, ConditionData._Earthquake );
+			float Earthquake = RemapClamped( ConditionData._Earthquake, 0.0, 1.0, 0.0, 0.55 );
 
+			float4 EarthquakeTexDiffuse = PdxTex2D( DetailTextures, float3( EarthquakeDetailUv, EarthquakeTextureIndex ) );
+			float4 EarthquakeTexNormalRRxG = PdxTex2D( NormalTextures, float3( EarthquakeDetailUv, EarthquakeTextureIndex ) );
+			float3 EarthquakeTexNormal = UnpackRRxGNormal( EarthquakeTexNormalRRxG ).xyz;
+			float4 EarthquakeTexProperties = PdxTex2D( MaterialTextures, float3( EarthquakeDetailUv, EarthquakeTextureIndex ) );
+
+			float2 EarthquakeBlendFactors = CalcHeightBlendFactors( float2( Diffuse.a, EarthquakeTexDiffuse.a ), float2( 1.0 - Earthquake, Earthquake ), _DetailBlendRange );
+			EarthquakeBlendFactors *= LowerValueAdjust;
+
+			// Apply
+			Diffuse = lerp( Diffuse, EarthquakeTexDiffuse, EarthquakeBlendFactors.y );
+			Normal = lerp( Normal, EarthquakeTexNormal, EarthquakeBlendFactors.y );
+			Properties = lerp( Properties, EarthquakeTexProperties, EarthquakeBlendFactors.y );
+		}
 
 		////////////////////////////////////////
 		//////// Apply Harvest conditons ////////
@@ -764,6 +729,11 @@ PixelShader =
 			{
 				ApplyLocustDiffuseTerrain( Diffuse, Normal, Properties, WorldSpacePos, ConditionData );
 			}
+			if ( ConditionData._Earthquake > 0.0 )
+			{
+				ApplyEarthquakeDiffuseTerrain( Diffuse, Normal, Properties, WorldSpacePos.xz, ConditionData );
+			}
+
 
 			DebugCondition( Diffuse.rgb, ConditionData );
 		}
@@ -781,7 +751,6 @@ PixelShader =
 				ApplyWildfireTerrainPostLight( Diffuse, MaterialHeight, WorldSpacePos.xz, ConditionData );
 			}
 		}
-
 
 		//// Tree ////
 		void ApplyHarvestConditionTree( inout float4 Diffuse, float2 Uv, float2 MapCoords, float3 WorldSpacePos )
@@ -836,7 +805,6 @@ PixelShader =
 			DebugCondition( Diffuse.rgb, ConditionData );
 		}
 
-
 		//// Decal ////
 		void ApplyHarvestConditionDecal( inout float4 Diffuse, float2 MapCoords, float2 WorldSpacePosXz )
 		{
@@ -865,6 +833,33 @@ PixelShader =
 				float4 FrostTexDiffuse = PdxTex2D( DetailTextures, float3( FrostDetailUV, 21 ) );
 				FrostTexDiffuse.rgb = Overlay( FrostTexDiffuse.rgb, FrostOverlayColor );
 				Diffuse = lerp( Diffuse, FrostTexDiffuse, Frost );
+			}
+
+			DebugCondition( Diffuse.rgb, ConditionData );
+		}
+
+		//// Building ////
+		void ApplyHarvestConditionBuilding( inout float4 Diffuse, inout float4 Normal, inout float4 Properties, float2 MapCoords, float2 Uv )
+		{
+			HarvestConditionData ConditionData;
+
+			// HarvestCondition mask
+			SampleHarvestConditionMask( MapCoords, ConditionData );
+
+			// Apply earthquake
+			if ( ConditionData._Earthquake > 0.0 )
+			{
+				float2 EarthquakeDetailUV = CalcDetailUV( Uv ) * ( EarthquakeBuildingTextureTiling );
+				float4 EarthquakeDiffuse = PdxTex2D( DetailTextures, float3( EarthquakeDetailUV, EarthquakeTextureIndex ) );
+				float4 EarthquakeNormal = PdxTex2D( NormalTextures, float3( EarthquakeDetailUV, EarthquakeTextureIndex ) );
+				EarthquakeNormal.r = 0.0; // Prune unused data
+				EarthquakeNormal.b = 0.0; // Prune unused data
+				float4 EarthquakeProperties = PdxTex2D( MaterialTextures, float3( EarthquakeDetailUV, EarthquakeTextureIndex ) );
+				float EarthquakeMask = LevelsScan( EarthquakeDiffuse.a, 0.25, 0.5 );
+				EarthquakeDiffuse.rgb = AdjustSaturation( EarthquakeDiffuse.rgb, 0.5 );
+				Diffuse.rgb = lerp( Diffuse.rgb, EarthquakeDiffuse.rgb * 0.2, EarthquakeMask * ConditionData._Earthquake );
+				Normal.rgb = lerp( Normal.rgb, EarthquakeNormal.rgb, EarthquakeMask * ConditionData._Earthquake );
+				Properties = lerp( Properties, EarthquakeProperties, EarthquakeMask * ConditionData._Earthquake );
 			}
 
 			DebugCondition( Diffuse.rgb, ConditionData );

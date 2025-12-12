@@ -65,7 +65,7 @@ PixelShader =
 
 				HarvestConditionColor = lerp( vec3( 1.0 ), HarvestConditionColor, FadeStateOpacity );
 			}
-			
+
 			// Apply the pattern texture if needed
 			{
 				int PatternTextureIndex = (int)TypeData.r;

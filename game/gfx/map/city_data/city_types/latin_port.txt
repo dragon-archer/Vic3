@@ -1,6 +1,27 @@
 ﻿latin_port = {
-	graphical_culture = "latin"
+	#graphical_culture = "latin"
 	city_type = port
+	
+	trigger = {
+		any_scope_state = {
+			OR = {
+				region = sr:region_brazil
+                region = sr:region_iberia
+                region = sr:region_andes
+                region = sr:region_la_plata
+                region = sr:region_gran_colombia
+                region = sr:region_mexico
+                region = sr:region_central_america
+                region = sr:region_caribbean
+				# etc.
+				state_region = s:STATE_MINDANAO
+				state_region = s:STATE_LUZON
+				state_region = s:STATE_VISAYAS
+                # etc.
+			}
+		}
+	}
+	weight = 100
 
 	rich_building_meshes = {
 		"latin_urban_city_residential_rich_01_mesh"
@@ -38,6 +59,6 @@
 	building_whaling_station = {}
 	building_port = {}
 	building_naval_base = {"latin_port_navalbase_01_mesh"}
-	building_shipyards = {}
-	building_military_shipyards = {}
+	building_shipyard = {}
+	building_military_shipyard = {}
 }

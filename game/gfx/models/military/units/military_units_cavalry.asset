@@ -763,3 +763,22 @@ entity = {
 }
 
 
+
+
+######		Carlists		######
+entity = {
+	clone =		 "military_cavalry_european_lancer_rider_entity"
+	name =		 "military_infantry_carlists_lancer_rider_entity"
+	pdxmesh =	 "military_infantry_carlists_mesh"
+}
+
+entity = {
+	clone =		 "military_cavalry_european_lancer_entity"
+	name =		 "military_infantry_carlists_lancer_entity"
+	
+	attach = { 
+		name = rider
+		Saddle_Node = "military_infantry_carlists_lancer_rider_entity" 
+	}
+}
+

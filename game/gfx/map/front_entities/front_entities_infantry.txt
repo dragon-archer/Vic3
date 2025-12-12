@@ -27,6 +27,25 @@
 #####					INFANTRY UNITS						#####
 #################################################################
 
+#################################################
+###       			Carlists!     			  ###
+#################################################
+
+military_infantry_carlist_line_diorama_entity = {
+	entity = "military_infantry_carlists_irregular_entity" # DONE
+
+	group = "infantry"
+	
+	trigger = {
+		scope:country = { c:SPC ?= this }
+		has_dlc_feature = ip4_cosmetics
+		OR = {
+			scope:combat_unit_type = unit_type:combat_unit_type_irregular_infantry
+			scope:combat_unit_type = unit_type:combat_unit_type_line_infantry
+			scope:combat_unit_type = unit_type:combat_unit_type_skirmish_infantry
+		}
+	}
+}
 
 #################################################
 ###       			European     			  ###
@@ -44,6 +63,15 @@ military_infantry_european_irregular_diorama_entity = {
 				has_culture_graphics = french
 				has_culture_graphics = brazilian
 				has_culture_graphics = balkan
+			}
+		}
+		scope:country = { 
+			OR = {
+				NOT = { c:SPC ?= this }
+				AND = {
+					c:SPC ?= this
+					NOT = { has_dlc_feature = ip4_cosmetics }
+				}
 			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_irregular_infantry
@@ -64,6 +92,15 @@ military_infantry_european_line_diorama_entity = {
 				has_culture_graphics = balkan
 			}
 		}
+		scope:country = { 
+			OR = {
+				NOT = { c:SPC ?= this }
+				AND = {
+					c:SPC ?= this
+					NOT = { has_dlc_feature = ip4_cosmetics }
+				}
+			}
+		}
 		scope:combat_unit_type = unit_type:combat_unit_type_line_infantry
 	}
 }
@@ -80,6 +117,15 @@ military_infantry_european_skirmish_diorama_entity = {
 				has_culture_graphics = french
 				has_culture_graphics = brazilian
 				has_culture_graphics = balkan
+			}
+		}
+		scope:country = { 
+			OR = {
+				NOT = { c:SPC ?= this }
+				AND = {
+					c:SPC ?= this
+					NOT = { has_dlc_feature = ip4_cosmetics }
+				}
 			}
 		}
 		scope:combat_unit_type = unit_type:combat_unit_type_skirmish_infantry

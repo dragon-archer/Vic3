@@ -141,8 +141,10 @@ types LoadGameTypes
 						}
 					}
 
+					###ORIGINAL
 					hbox = {
 						margin = { 10 20 }
+						visible = no
 						spacing = 10
 						layoutpolicy_horizontal = fixed
 						max_width = 680
@@ -213,6 +215,103 @@ types LoadGameTypes
 							}
 							name = "load_button"
 							size = { 300 50 }
+							#parentanchor = right|vcenter
+							text = "LOAD"
+							using = start_game_button_sound
+							#clicksound = "event:/SFX/UI/Frontend/start_game"
+
+							block "button_load_save" {
+								onclick = "[FrontEndLoadView.OnLoad]"
+							}
+
+							#button_primary = {
+								### v3 replacement
+								#enabled = "[SaveGameItem.CanLoad]"
+								#tooltip = "[SaveGameItem.CanLoadDesc]"
+								#enabled = "[Not( SaveGameItem.HasMissingDLCs )]"
+								#tooltip = "[SaveGameItem.GetMissingDLCInfo]"
+								### to here
+
+							#}
+						}
+					}
+
+					###B
+					hbox = {
+						margin = { 0 20 }
+						spacing = 20
+						layoutpolicy_horizontal = fixed
+						max_width = 680
+						block "selected_save"
+						{
+							datacontext = "[FrontEndLoadView.GetSelectedSavegame]"
+						}
+
+						vbox = {
+							spacing = 5
+
+							### v3 Delete button. New layout for this button.
+							button = {
+								using = default_button_tertiary
+								name = "delete_button"
+								text = "DELETE_GAME"
+								using = select_button_sound
+								block "has_selected_save"
+								{
+									enabled = "[FrontEndLoadView.HasSelectedSavegame]"
+								}
+								size = { 200 30 }
+
+								block "button_delete_save" {
+									onclick = "[FrontEndLoadView.OnDelete]"
+								}
+
+								button_icon = {
+									name = "button_close"
+									texture = "gfx/frontend/interface/icons/flat_icons/window_close.dds"
+									parentanchor = left|vcenter
+									position = { 6 0 }
+									size = { 20 20 }
+								}
+							}
+
+							button = {
+								using = default_button_tertiary
+								using = select_button_sound
+
+								name = "delete_all"
+								text = "DELETE_ALL"
+								size = { 200 30 }
+
+								block "enabled"
+								{
+									enabled = "[Not(FrontEndLoadView.IsEmpty)]"
+								}
+
+								block "button_delete_all_saves"
+								{
+									onclick = "[FrontEndLoadView.OnDeleteAll]"
+								}
+
+								button_icon = {
+									texture = "gfx/frontend/interface/icons/flat_icons/window_close.dds"
+									parentanchor = left|vcenter
+									position = { 6 0 }
+									size = { 20 20 }
+								}
+							}
+
+						}
+
+						#V3 Load Savegame button. new layout for this button
+						button = {
+							using = default_button_primary_action
+							block "has_selected_save"
+							{
+								enabled = "[FrontEndLoadView.HasSelectedSavegame]"
+							}
+							name = "load_button"
+							size = { 390 65 }
 							#parentanchor = right|vcenter
 							text = "LOAD"
 							using = start_game_button_sound

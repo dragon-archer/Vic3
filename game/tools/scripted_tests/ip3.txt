@@ -88,9 +88,7 @@ tests = {
 	test_for_eastern_crisis = { #checks it started, not succeed or fail
 		acceptable_fail_rate = 0.0
 		success = {
-			c:TUR ?= {
-				has_variable = eastern_crisis_happened
-			}
+			has_global_variable = eastern_crisis_happened
 		}
 		fail = {
 			game_date > "1868.1.1"

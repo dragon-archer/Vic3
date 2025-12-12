@@ -1,6 +1,4 @@
 ﻿l_turkish:
- ideology_montenegrin_moralist: "Karadağ Ahlakçısı"
- ideology_montenegrin_moralist_desc: "#lore Bu grubun dine dayalı ahlak düzenine inanıyor ve farklı fikirleri bu düzene karşı bir tehdit olarak görüyor.#!"
  mon_build_biljarda: "Biljarda'yı İnşa Et"
  mon_build_biljarda_desc: "Bağımsız ulusumuza yaraşır bir saray inşa edilsin."
  treaty_name_mon_orthodox_donations: "Yardım ve Ticarete Rahat Erişim"
@@ -168,7 +166,7 @@
  montenegrin_raiding.1.f: "#italic Halkım derin ve nefessiz uyuyup durur,\nGözyaşlarımı silecek anam babam yoktur.\nCennet'in kapıları kapanmış sıkı sıkı,\nDuymaz çığlıklarımı ve dualarımı.#!\n\n–II. Petar Petrović-Njegoš, #italic Dağ Çelengi#!"
  montenegrin_raiding.1.a: "Yas tutup bir olacağız."
  montenegrin_raiding.1.b: "Ölen öldü. Toparlanmalıyız."
- mon_lost_men_tt: "#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#! [GetBuildingType('building_barracks').GetName] yok edilecek ve kalanlarda da nizamsızlık görülecek."
+ mon_lost_men_tt: "#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#! [GetBuildingType('building_barrack').GetName] yok edilecek ve kalanlarda da nizamsızlık görülecek."
  #montenegrin_raiding.2
  montenegrin_raiding.2.t: "Osmanlı Karşı Saldırısı"
  montenegrin_raiding.2.d: "[SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')] askerleri halkımıza rahatsızlık vermeye ve yağmalarımızı durdurmaya geldi."
@@ -273,14 +271,14 @@
  mon_state_formation.8.t: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] bir eş istiyor"
  mon_state_formation.8.d: "Bir kraliyet düğünü gerçekleşecek ve [ROOT.GetCountry.GetNameNoFlag] halkı, [SCOPE.sCharacter('danilo').GetFullName] için kimin gelin olacağını merak ediyor."
  mon_state_formation.8.d2: "[SCOPE.sCharacter('danilo').GetFullName] bir [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] oldu ve kendisine bir eş seçmesinin vakti geldi."
- mon_state_formation.8.f: "\"Mareşal Marmula! Düğün nasıldı? Dağdaki kabileler güzel bir gösteri ortaya koydular mı?\"\n\n\"Zavallı kızcağızı limandan yukarı götürürken beti benzi atmıştı. Kimse onu yargılayamaz tabii. Bu çakalların arasında bir prenses olduğunu düşün. Yemin ettikten sonra onların dilinde konuşmaya başladı, sağa sola emirler yağdırmaya başladı ve içip içip küfretti. Bu durum bazılarının hoşuna gitmedi ama onları pek önemsemedi. Eğer [SCOPE.sCharacter('danilo').GetFirstName] dikkat etmezse çok sürmeden prenses ipleri eline alır ve nihayet mantıklı biriyle oturup konuşma fırsatımız olur.\""
+ mon_state_formation.8.f: "\"Mareşal Marmula! Düğün nasıldı? Dağdaki kabileler güzel bir gösteri ortaya koydular mı?\"\n\n\"Zavallı kızcağızı limandan yukarı götürürken beti benzi atmıştı. Kimse onu yargılayamaz tabii. Bu çakalların arasında bir prenses olduğunu düşün. Yemin ettikten sonra onların dilinde konuşmaya başladı, sağa sola emirler yağdırmaya başladı ve içip içip küfretti. Bu durum bazılarının hoşuna gitmedi ama onları pek önemsemedi. Eğer [SCOPE.sCharacter('danilo').GetFirstNameNoFormatting] dikkat etmezse çok sürmeden prenses ipleri eline alır ve nihayet mantıklı biriyle oturup konuşma fırsatımız olur.\""
  mon_state_formation.8.f2: "\"Daha önce hiç böyle bir barbarlık görmemiştim! [SCOPE.sCharacter('danilo').GetPrimaryRoleTitle] [SCOPE.sCharacter('danilo').GetFirstNameNoFormatting] düğüne değil de savaşa gidiyormuş gibi giyinmişti, bir gece önceden ziyaret ettiği evler hakkında övünüp duruyordu. Atlı bir yağmacı ona yeni kesilmiş bir Türk kafası getirdi ve Danilo \"Söz verdiğim gibi!\" deyip kafanın kan damlayan boynundan içmeye başladı. Tanrı affetsin, herkes sevinçten kahkaha atmaya başladı. Sonrasında da sıra limandan onunla evlenmesi için getirdiğimiz zavallı kıza geldi. Tüm askerlerimden daha büyük bir cesaret göstererek ileri adım attı ve rahip istemeye istemeye, silah zoruyla da olsa ikisini Tanrı'nın gözleri önünde maalesef evlendirdi... Samimiyetle söylüyorum, umarım bir daha yolum Balkanlara düşmez.\""
  mon_state_formation.8.a: "Vazife uğruna Sırbistan'dan Prenses Kleopatra Karacorceviç ile evlen."
  mon_state_formation.8.b: "Para uğruna Viyana'dan Barones Anastasia von Sina ile evlen."
  mon_state_formation.8.c: "Aşk uğruna Trieste'den Darinka Kvekić ile evlen."
  mon_state_formation.9.t: "Biljarda'nın İnşası"
  mon_state_formation.9.d: "[ROOT.GetCountry.GetRuler.GetFullName] yirmi beş odalı ve bir de savunma kulesi olan bir sarayın inşasını emretti. Ustalar sarayın dekorunun nasıl olması gerektiğini soruyorlar."
- mon_state_formation.9.f: "\"Manastırın hemen üzerindeki bir kayanın üzerine bir kule yapılmış. Üzerine birçok mazgal deliği açılmış ancak top yok. Kulenin üzerindeki istihkamın etrafında kazıklara dikilmiş yirmi Türk kafası vardı. Karadağ'ın zaferini yansıtan ganimetler... Manastırın ve bir piskoposun sarayının hemen yanında, hele bir Hristiyan ülkesinde görmesi çok garip bir sahneydi.\"\n\n–Karadağ'ı ziyaret eden John Gardner Wilkinson"
+ mon_state_formation.9.f: "\"Manastırın hemen üzerindeki bir kayanın üzerine bir kule yapılmış. Üzerine birçok mazgal deliği açılmış ancak top yok. Kulenin üzerindeki istihkamın etrafında kazıklara dikilmiş yirmi Türk kafası vardı. Karadağ'ın zaferini yansıtan ganimetler... Manastırın ve bir piskoposun sarayının hemen yanında, hele bir Hıristiyan ülkesinde görmesi çok garip bir sahneydi.\"" #–John Gardner Wilkinson, visitor to Montenegro"
  mon_state_formation.9.a: "Güçlü adamların bilardo masasını limandan taşımasını sağla."
  mon_state_formation.9.b: "Aziz Haralambos'un kafatasının bir parçasıyla şapeli kutsa."
  mon_state_formation.9.c: "Kazıklardan neden sadece kulede var? Her odaya koyulsun!"
@@ -299,6 +297,7 @@
  mon_school_helper: "Ulusun okuryazarlık oranını zaman içinde büyük ölçüde artırır"
  mon_state_formation.11.c: "[ROOT.GetCountry.GetRuler.GetSheHe|U] bizzat çocuklara dövüşmeyi öğretecek."
  #Taxes?
+ #Taxes?
  mon_state_formation.12.t: "Vergiler?"
  mon_state_formation.12.d: "Yıllar boyu Osmanlı'nın vergi tahsildarlarını öldüren [ROOT.GetCountry.GetNameNoFlag] halkı, [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] hazinesine girecek olmasına rağmen vergi ödemeye direnç gösteriyor."
  mon_state_formation.12.f: "\"Hükümdarımız bizi soyuyor mu yani?\"\n\"Hayır, bizden #italic vergi#! alıyor.\"\n\"Ne farklı var ki?\"\n\"O vergiler bizim yararımıza kullanılacak.\"\n\"Yani bize un verip ev mi yapacaklar?\"\n\"Hayır... Bak, eğer ödeme yapmazsak silahlı askerler gelip-\"\n\"Hükümdarımız bizi #italic cidden#! soyuyor!\""
@@ -306,6 +305,7 @@
  mon_state_formation.12.b: "Herkesin endişelerine kulak ver."
  mon_state_formation.12.c: "Direnen herkesi tehdit et."
  mon_state_formation.12.e: "\"Vergi yok, kıyım var!\""
+ #first arms
  #first arms
  mon_state_formation.13.t: "Gerçek Nişancılık"
  mon_state_formation.13.d: "Kurulan ilk [SCOPE.sBuilding('arms').GetName] nedeniyle [ROOT.GetCountry.GetNameNoFlag] halkı çok gururlu."
@@ -362,7 +362,7 @@
  mon_state_formation.20.t: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFirstName] veya Kral [ROOT.GetCountry.GetRuler.GetFirstName]"
  mon_state_formation.20.d: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName], ülkemizi resmi olarak Krallık'a dönüştürmeyi teklif etti."
  ### https://en.wikisource.org/wiki/Translation:There,_Over_There
- mon_state_formation.20.f: "#italic Orada, tam şurada... şu tepelerin ötesinde,\nYeşil bir koru var diyorlar,\nKutsal Dečani onun altından yükselirmiş,\nCenneti vaat eden dualar eşliğinde.\n\nOrada, işte orada... O tepelerin ardında,\nMavi gökyüzünün, kemerini aşağı doğru eğdiği yerde;\nSırp topraklarına, savaş alanlarına doğru,\nHadi kardeşlerim, taarruza hazırlanın!#! \n\nNikola I Petrović-Njegoš, #italic Onamo, 'namo!#!"
+ mon_state_formation.20.f: "#italic  Orada, tam şurada... şu tepelerin ötesinde,\nYeşil bir koru var diyorlar,\nKutsal Dečani onun altından yükselirmiş,\nCenneti vaat eden dualar eşliğinde.\n\nOrada, işte orada... O tepelerin ardında,\nMavi gökyüzünün, kemerini aşağı doğru eğdiği yerde;\nSırp topraklarına, savaş alanlarına doğru,\nHadi kardeşlerim, taarruza hazırlanın!#!\n–Nikola I Petrović-Njegoš, #italic Onamo, 'namo!#!"
  mon_state_formation.20.a: "Halk duysun."
  mon_state_formation.20.b: "Tüm uluslar duysun!"
  mon_state_formation.20.c: "Askerler duysun."

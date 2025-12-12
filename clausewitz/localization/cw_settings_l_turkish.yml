@@ -34,8 +34,6 @@
  SETTING_ANISOTROPIC_FILTERING_TOOLTIP: "#T $SETTING_ANISOTROPIC_FILTERING$\n#!Eşyönsüz filtreleme dokulu yüzeylerin daha iyi görünmesini sağlar.\n\nBu ayarın düşürülmesi performansı arttırabilir."
  SETTING_RESOLUTION: "Çözünürlük"
  SETTING_RESOLUTION_TOOLTIP: "#T $SETTING_RESOLUTION$\n#!Oyunun görüntü kalitesini belirler.\n\nÇözünürlüğün düşürülmesi performansı arttırabilir.\n\n#X Desteklenmeyen görüntü oranlarını gerektiren çözünürlükler, arayüzlerin ekranın dışına taşmasına sebep olabilir.#!"
- SETTING_WINDOWED_RESOLUTION: "Pencere Çözünürlüğü"
- SETTING_WINDOWED_RESOLUTION_TOOLTIP: "#T $SETTING_WINDOWED_RESOLUTION$\n#!Oyunun pencereli modda çalışması halinde oyun penceresinin çözünürlüğünü belirler.\n\n#b SAYI#!x#b SAYI#! formatında olmalıdır.\n\n#X Desteklenmeyen görüntü oranlarını gerektiren çözünürlükler, arayüzlerin ekranın dışına taşmasına sebep olabilir.#!"
  SETTING_RENDER_SCALE: "İşleme Ölçeği"
  SETTING_RENDER_SCALE_TOOLTIP: "#T $SETTING_RENDER_SCALE$#!\nOyunun işlendiği çözünürlüğün ana çözünürlüğe oranı. Kullanıcı arayüzünün çözünürlüğü buna dahil değildir.\n\nBu ayarın düşürülmesi performansı arttırabilir fakat genel görüntü kalitesini düşürür. Öte yandan bu ayarın %100'ün üzerine çıkarılması görüntü kalitesini arttırabilir fakat performansı düşürebilir."
  SETTING_RENDER_SCALE_FORMAT: "$VALUE|%0$"
@@ -60,6 +58,7 @@
  OPTION_LOW: "Düşük"
  OPTION_MEDIUM: "Orta"
  OPTION_HIGH: "Yüksek"
+ OPTION_VERY_HIGH: "Çok Yüksek"
  OPTION_ULTRA: "Ultra"
  OPTION_CUSTOM: "Özel"
  OPTION_DEFAULT: "Varsayılan"
@@ -174,7 +173,7 @@
  NO_AUTOSAVE: "Otomatik Kaydı Kapat"
  #Multiplayer
  SETTINGS_FILE_TRANSFER_SPEED: "Dosya Aktarım Hızı"
- SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $Dosya Aktarım Hızı$\n#!Çok oyunculu lobide kayıt dosyalarının maksimum aktarım hızını belirler.\n\nBu ayarın düşürülmesi çok oyunculu oyunlara bağlanırken ağ istikrarını geliştirebilir ancak çok oyunculu yükleme sürelerine olumsuz etki eder."
+ SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $SETTINGS_FILE_TRANSFER_SPEED$#!\nÇok oyunculu lobide kayıt dosyalarının maksimum aktarım hızını belirler.\n\nBu ayarın düşürülmesi çok oyunculu oyunlara bağlanırken ağ istikrarını geliştirebilir ancak çok oyunculu yükleme sürelerine olumsuz etki eder.\n\nMaksimum hızı çok oyunculu oyun kurucusu belirler.\n"
  #Tools
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES: "Harita Editöründe Otomatik Kayıt (dakika)"
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES_TOOLTIP: "Harita Editörü Otomatik Kayıt Aralığı (dakika)"

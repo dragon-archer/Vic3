@@ -1833,6 +1833,11 @@ graph={
 					linked_pin="value"
 				}
 				link={
+					pin_id="local_space"
+					linked_node=541
+					linked_pin="value"
+				}
+				link={
 					pin_id="effect_flags"
 					linked_node=79
 					linked_pin="effect_flags"
@@ -2199,6 +2204,11 @@ graph={
 				link={
 					pin_id="tag"
 					linked_node=373
+					linked_pin="value"
+				}
+				link={
+					pin_id="local_space"
+					linked_node=542
 					linked_pin="value"
 				}
 				link={
@@ -2836,6 +2846,11 @@ graph={
 				link={
 					pin_id="tag"
 					linked_node=371
+					linked_pin="value"
+				}
+				link={
+					pin_id="local_space"
+					linked_node=541
 					linked_pin="value"
 				}
 				link={
@@ -3550,6 +3565,22 @@ graph={
 		}
 		pdxns:values:Bool={
 			id=155
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=542
+			node={
+				value=no
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Bool={
+			id=541
 			node={
 				value=no
 			}

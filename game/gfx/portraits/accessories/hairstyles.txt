@@ -21,6 +21,9 @@ male_hair_african_01 = {
 	
 }
 
+
+
+
 male_hair_african_02 = {
 	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
 	entity = { required_tags = "cap1"				shared_pose_entity = head		entity = "male_hair_african_01_cap1_entity" }
@@ -47,6 +50,14 @@ male_hair_chinese_01 = {
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "male_hair_chinese_01_entity" }
 	
 }
+
+
+male_hair_frankenstein_01 = {
+	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
+	entity = { required_tags = ""					shared_pose_entity = head		entity = "male_hair_frankenstein_01_entity" }
+	
+}
+
 
 
 
@@ -147,6 +158,10 @@ male_hair_indian_01 = {
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "male_hair_indian_01_entity" }
 	
 }
+
+
+
+
 
 male_hair_indian_02 = {
 	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
@@ -292,24 +307,37 @@ male_hair_art_test_01 = {
 
 female_hair_african_02 = {
 	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
+	entity = { required_tags = "bonnet"				shared_pose_entity = head		entity = "female_hair_european_01_bonnet_entity" }
+	entity = { required_tags = "headgear"			shared_pose_entity = head		entity = "female_hair_european_01_headgear_entity" }
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "female_hair_african_02_entity" }
 	
 }
 
 female_hair_african_01 = {
 	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
+	entity = { required_tags = "bonnet"				shared_pose_entity = head		entity = "female_hair_european_01_bonnet_entity" }
+	entity = { required_tags = "headgear"			shared_pose_entity = head		entity = "female_hair_arabic_01_headgear_entity" }
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "female_hair_african_01_entity" }
 	
 }
 
 
+female_hair_portuguese_01 = {
+	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
+	entity = { required_tags = "bonnet"				shared_pose_entity = head		entity = "female_hair_european_01_bonnet_entity" }
+	entity = { required_tags = "headgear"			shared_pose_entity = head		entity = "female_hair_european_01_headgear_entity" }
+	entity = { required_tags = ""					shared_pose_entity = head		entity = "female_hair_portuguese_01_entity" }
+	
+}
+
 
 ## ARABIC ##
 
 female_hair_arabic_01 = {
-	entity = { required_tags = "no_hair"					shared_pose_entity = head		 }
-	entity = { required_tags = "headgear"					shared_pose_entity = head		entity = "female_hair_arabic_01_headgear_entity" }
-	entity = { required_tags = ""							shared_pose_entity = head		entity = "female_hair_arabic_01_entity" }
+	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
+	entity = { required_tags = "bonnet"				shared_pose_entity = head		entity = "female_hair_european_01_bonnet_entity" }
+	entity = { required_tags = "headgear"			shared_pose_entity = head		entity = "female_hair_arabic_01_headgear_entity" }
+	entity = { required_tags = ""					shared_pose_entity = head		entity = "female_hair_arabic_01_entity" }
 	
 }
 
@@ -319,6 +347,8 @@ female_hair_arabic_01 = {
 
 female_hair_chinese_01 = {
 	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
+	entity = { required_tags = "bonnet"				shared_pose_entity = head		entity = "female_hair_european_01_bonnet_entity" }
+	entity = { required_tags = "headgear"			shared_pose_entity = head		entity = "female_hair_european_01_headgear_entity" }
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "female_hair_chinese_01_entity" }
 	
 }
@@ -327,9 +357,9 @@ female_hair_chinese_01 = {
 
 ## EUROPEAN ##
 female_hair_european_01 = {
-	entity = { required_tags = "headgear"			shared_pose_entity = head		entity = "female_hair_european_01_headgear_entity" }
-	entity = { required_tags = "bonnet"				shared_pose_entity = head		entity = "female_hair_european_01_bonnet_entity" }
 	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
+	entity = { required_tags = "bonnet"				shared_pose_entity = head		entity = "female_hair_european_01_bonnet_entity" }
+	entity = { required_tags = "headgear"			shared_pose_entity = head		entity = "female_hair_european_01_headgear_entity" }
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "female_hair_european_01_entity" }
 	
 }
@@ -337,6 +367,7 @@ female_hair_european_01 = {
 female_hair_european_02 = {
 	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
 	entity = { required_tags = "bonnet"				shared_pose_entity = head		entity = "female_hair_european_01_bonnet_entity" }
+	entity = { required_tags = "headgear"			shared_pose_entity = head		entity = "female_hair_european_01_headgear_entity" }
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "female_hair_european_02_entity" }
 
 	
@@ -345,6 +376,7 @@ female_hair_european_02 = {
 female_hair_european_03 = {
 	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
 	entity = { required_tags = "bonnet"				shared_pose_entity = head		entity = "female_hair_european_01_bonnet_entity" }
+	entity = { required_tags = "headgear"			shared_pose_entity = head		entity = "female_hair_european_01_headgear_entity" }
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "female_hair_european_03_entity" }
 	
 }
@@ -352,12 +384,15 @@ female_hair_european_03 = {
 female_hair_european_04 = {
 	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
 	entity = { required_tags = "bonnet"				shared_pose_entity = head		entity = "female_hair_european_01_bonnet_entity" }
+	entity = { required_tags = "headgear"			shared_pose_entity = head		entity = "female_hair_european_01_headgear_entity" }
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "female_hair_european_04_entity" }
 	
 }
 
 female_hair_european_short_haircut_01 = {
 	entity = { required_tags = "no_hair"			shared_pose_entity = head		 }
+	entity = { required_tags = "bonnet"				shared_pose_entity = head		entity = "female_hair_european_01_bonnet_entity" }
+	entity = { required_tags = "headgear"			shared_pose_entity = head		entity = "female_hair_european_01_headgear_entity" }
 	entity = { required_tags = ""					shared_pose_entity = head		entity = "female_hair_european_short_haircut_01_entity" }
 	
 }

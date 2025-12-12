@@ -1,6 +1,4 @@
 ﻿l_korean:
- ideology_montenegrin_moralist: "몬테네그로 도덕주의"
- ideology_montenegrin_moralist_desc: "#lore 해당 집단은 종교적인 도덕 질서를 강력히 지지하고 다양한 의견은 이 질서에 위협이 된다고 봅니다.#!"
  mon_build_biljarda: "빌야르다 건설"
  mon_build_biljarda_desc: "독립 국가에 걸맞은 궁전을 세웁니다."
  treaty_name_mon_orthodox_donations: "원조와 무역에 대한 관대한 접근권"
@@ -107,7 +105,7 @@
  #"Raiding Fervor"
  concept_raiding_frequency: "약탈 열의"
  concept_raiding_frequency_short: "약탈 열의"
- concept_raiding_frequency_desc: "$concept_raiding_frequency$는 부족들이 얼마나 자주 [concept_raiding]할 수 있는지 나타냅니다.\n\n이는 [concept_raiding] 수입을 증가시킬 뿐만 아니라, $concept_raiding_frequency$가 #v 1%#! 증가할 때마다 다음과 같은 효과도 적용됩니다:\n[GetStaticModifier('modifier_montenegrin_disobedience').GetDesc]"
+ concept_raiding_frequency_desc: "$concept_raiding_frequency$는 부족들이 얼마나 자주 [concept_raiding]할 수 있는지 나타냅니다.\n\n이는 [concept_raiding] 수입을 증가시킬 뿐만 아니라, $concept_raiding_frequency$가 #v 1%#! 증가할 때마다 다음과 같은 효과도 적용됩니다.\n[GetStaticModifier('modifier_montenegrin_disobedience').GetDesc]"
  #Russian Aid
  concept_russian_aid: "러시아의 원조"
  concept_russian_aid_short: "러시아의 원조"
@@ -168,7 +166,7 @@
  montenegrin_raiding.1.f: "#italic 나의 백성은 깊고도 생기 없는 잠에 빠졌도다.\n내 눈물을 닦아줄 부모의 손길은 없고\n머리 위 하늘은 굳게 닫혀\n나의 울부짖음도, 기도도 들으려 하지 않는다.#!\n\n–페타르 2세 페트로비치 네고시, #italic 산의 화관#!"
  montenegrin_raiding.1.a: "모두가 함께 슬퍼해야 할 때다."
  montenegrin_raiding.1.b: "죽은 자는 죽은 자끼리 묻히게 하라. 우린 다시 일어서야 한다."
- mon_lost_men_tt: "#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#!개 [GetBuildingType('building_barracks').GetName](이)가 파괴되며, 나머지도 심각한 혼란에 빠짐."
+ mon_lost_men_tt: "#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#!개 [GetBuildingType('building_barrack').GetName](이)가 파괴되며, 나머지도 심각한 혼란에 빠짐."
  #montenegrin_raiding.2
  montenegrin_raiding.2.t: "오스만의 반격"
  montenegrin_raiding.2.d: "[SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')] 병력이 우리 백성을 괴롭히고 약탈을 막기 위해 들이닥쳤다."
@@ -273,14 +271,14 @@
  mon_state_formation.8.t: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]의 신부 간택"
  mon_state_formation.8.d: "공작가의 결혼식이 눈앞으로 다가왔다. [ROOT.GetCountry.GetNameNoFlag]의 모든 사람이 [SCOPE.sCharacter('danilo').GetFullName]의 신부가 누구일지 궁금해하고 있다."
  mon_state_formation.8.d2: "이제 [SCOPE.sCharacter('danilo').GetFullName](이)가 [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle](이)가 되었으니, [ROOT.GetCountry.GetRuler.GetHerHim]가 배우자를 고를 때가 되었다."
- mon_state_formation.8.f: "\"마물라 원수! 그 결혼식은 어땠소? 산악 부족들이 잔치는 제대로 벌였소?\"\n\n\"우리가 항구에서 데려올 때만 해도 그 불쌍한 아가씨는 유령처럼 창백한 얼굴이었지. 그 심정이야 당연하오. 공주로 태어나 늑대들 틈으로 시집을 왔으니. 그런데 서약이 끝나기가 무섭게 현지 말을 하고 사람들을 부려 먹는 거 아니겠소. 술을 물처럼 들이붓고 뱃사람처럼 욕을 해대기 시작하더군. 못마땅하게 보는 남자들도 있었지만, 그 여자한테는 상대도 안 됐지. [SCOPE.sCharacter('danilo').GetFirstName] 그 양반이 정신 안 차리면 조만간 진짜 주인 노릇을 하게 생겼어. 우리 입장에선 이제야 말 붙일 상대가 생긴다고 봐도 될 거요.\""
+ mon_state_formation.8.f: "\"마물라 원수! 그 결혼식은 어땠소? 산악 부족들이 잔치는 제대로 벌였소?\"\n\n\"우리가 항구에서 데려올 때만 해도 그 불쌍한 아가씨는 유령처럼 창백한 얼굴이었지. 그 심정이야 당연하오. 공주로 태어나 늑대들 틈으로 시집을 왔으니. 그런데 서약이 끝나기가 무섭게 현지 말을 하고 사람들을 부려 먹는 거 아니겠소. 술을 물처럼 들이붓고 뱃사람처럼 욕을 해대기 시작하더군. 못마땅하게 보는 남자들도 있었지만, 그 여자한테는 상대도 안 됐지. [SCOPE.sCharacter('danilo').GetFirstNameNoFormatting] 그 양반이 정신 안 차리면 조만간 진짜 주인 노릇을 하게 생겼어. 우리 입장에선 이제야 말 붙일 상대가 생긴다고 봐도 될 거요.\""
  mon_state_formation.8.f2: "\"난 그렇게 야만적인 광경은 처음 봤소! [SCOPE.sCharacter('danilo').GetPrimaryRoleTitle] [SCOPE.sCharacter('danilo').GetFirstNameNoFormatting](은)는 결혼보단 전쟁에나 어울릴 복장으로 나타났지. 그리고 전날 밤 들렀던 집들에 대해 떠벌리기 시작하더군. 그러더니 한 기수가 튀르크인들을 습격하고 잘라 온 머리를 바쳤는데... 다닐로는 '약속했던 대로!'라고 외치더니... 신이시여... 그 목에서 뚝뚝 떨어지는 피를 마셔버렸어. 놈의 부하들은 배를 잡고 웃었고, 드디어 모두의 시선이 그 불쌍한 처녀에게 쏠렸다오. 우리가 그 괴물과 결혼시키려 항구에서 데려온 그 가엾은 여자 말이오. 다만 내 부하 누구보다도 용감했던 그 여인은 앞으로 걸어 나갔고, 총구 앞에서도 반항하던 사제는 수치스럽게도 신들이 보는 가운데 결혼을 집전했소... 다시는 발칸으로 갈 일이 없기만을 바랄 뿐이오.\""
  mon_state_formation.8.a: "의무를 위해, 세르비아의 클레오파트라 카라조르제비치 공주와 결혼한다."
  mon_state_formation.8.b: "돈을 위해, 빈의 아나스타샤 폰 지나 남작부인과 결혼한다."
  mon_state_formation.8.c: "사랑을 위해, 트리에스테의 다린카 크베키치와 결혼한다."
  mon_state_formation.9.t: "빌야르다 건설"
  mon_state_formation.9.d: "[ROOT.GetCountry.GetRuler.GetFullName](은)는 방 25개 규모의 거처를 짓도록 명령했다. 거기에는 둥근 방어탑도 포함되어 있었다. 장인들은 궁전 장식에서 무엇을 강조할지 묻고 있다."
- mon_state_formation.9.f: "\"수도원 바로 위 바위에는, 총안구가 있지만 대포는 없는 둥근 탑 하나가 서 있었다. 거기엔 튀르크인 머리 스무 개가 말뚝에 꽂혀 난간을 두르고 있었고, 이는 몬테네그로의 승리를 상징하는 전리품이었다... 기독교 국가, 그리고 수도원과 주교 관저 바로 옆에 있기엔 이상한 광경이었다.\"\n\n–존 가드너 윌킨슨, 몬테네그로 방문자"
+ mon_state_formation.9.f: "수도원 바로 위 바위에는, 총안구가 있지만 대포는 없는 둥근 탑 하나가 서 있었다. 거기엔 튀르크인 머리 스무 개가 말뚝에 꽂혀 난간을 두르고 있었고, 이는 몬테네그로의 승리를 상징하는 전리품이었다... 기독교 국가, 그리고 수도원과 주교 관저 바로 옆에 있기엔 이상한 광경이었다." #–John Gardner Wilkinson, visitor to Montenegro"
  mon_state_formation.9.a: "튼튼한 사내들을 시켜 바닷가에서 당구대를 실어 오게 한다."
  mon_state_formation.9.b: "성 하랄람보스의 두개골 조각으로 예배당을 축성한다."
  mon_state_formation.9.c: "왜 머리를 탑에만 꽂지? 모든 방에 꽂자!"
@@ -299,6 +297,7 @@
  mon_school_helper: "시간이 지남에 따라 국가의 식자율이 대폭 증가하게 됨"
  mon_state_formation.11.c: "[ROOT.GetCountry.GetRuler.GetSheHe|U]는 아이들에게 싸움을 가르칠 것이다."
  #Taxes?
+ #Taxes?
  mon_state_formation.12.t: "세금이라고?"
  mon_state_formation.12.d: "수년간 오스만 제국의 세금 징수원을 죽여온 [ROOT.GetCountry.GetNameNoFlag] 사람들은, 그 돈이 [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]에게 돌아간다 해도 세금이라는 개념 자체에 거부감을 보이고 있다."
  mon_state_formation.12.f: "\"그래서 [ROOT.GetCountry.GetRuler.GetSheHe]가 우릴 턴다는 거야?\"\n\"아니, #italic 세금#!을 걷는 거지.\"\n\"그게 뭐가 다른데?\"\n\"세금은 결국 우리한테 쓸 거잖아.\"\n\"그럼 밀가루를 주든가, 아니면 지붕이라도 고쳐 주나?\"\n\"아니... 그러니까, 우리가 안 내면 무장한 놈들이 와서...\"\n\"결국 우릴 #italic 턴다는#! 거잖아!\""
@@ -306,6 +305,7 @@
  mon_state_formation.12.b: "모두의 우려를 듣는다."
  mon_state_formation.12.c: "저항하는 놈들은 위협한다."
  mon_state_formation.12.e: "\"세금이 아니라 도끼를!\""
+ #first arms
  #first arms
  mon_state_formation.13.t: "진정한 조준"
  mon_state_formation.13.d: "[ROOT.GetCountry.GetNameNoFlag] 사람들은 자국 최초의 [SCOPE.sBuilding('arms').GetName]에 엄청난 자부심을 느끼고 있다."
@@ -362,7 +362,7 @@
  mon_state_formation.20.t: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFirstName] 또는 국왕 [ROOT.GetCountry.GetRuler.GetFirstName]"
  mon_state_formation.20.d: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName](은)는 우리나라를 왕국으로 바꾸자고 공식적으로 제안했다."
  ### https://en.wikisource.org/wiki/Translation:There,_Over_There
- mon_state_formation.20.f: "#italic 저기, 저 너머에... 저 언덕 너머에,\n푸른 숲이 있구나, 있다고 하는구나,\n그 아래엔 신성한 데카니가 솟고\n천국에서 올린 기도가 울려 퍼진다.\n\n저기, 저 너머에... 저 언덕 너머에,\n푸른 하늘이 아치처럼 드리운 그곳에\n세르비아의 들판으로, 전장의 들판으로,\n가자, 형제들이여, 행군을 준비하라!#! \n\n니콜라 1세 페트로비치 네고시, #italic 저기, 저곳으로!#!"
+ mon_state_formation.20.f: "#italic  저기, 저 너머에... 저 언덕 너머에,\n 푸른 숲이 있구나, 있다고 하는구나,\n그 아래엔 신성한 데카니가 솟고\n천국에서 올린 기도가 울려 퍼진다.\n\n저기, 저 너머에... 저 언덕 너머에,\n푸른 하늘이 아치처럼 드리운 그곳에\n세르비아의 들판으로, 전장의 들판으로,\n가자, 형제들이여, 행군을 준비하라!#!\n–니콜라 1세 페트로비치 네고시, #italic 저기, 저곳으로!#!"
  mon_state_formation.20.a: "백성들에게 알리자."
  mon_state_formation.20.b: "모든 나라에 알리자!"
  mon_state_formation.20.c: "군인들에게 알리자."

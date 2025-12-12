@@ -497,6 +497,24 @@ types TooltipTypes
 								}
 							}
 						}
+
+						block "zoom_to_button" {
+							button_icon_zoom = {
+								size = { 30 30 }
+								input_action = "zoom_to"
+								using = tooltip_above
+
+								block "zoom_to_button_tooltip" {
+									tooltip = "ZOOM_TO_LOCATION"
+								}
+
+								block "zoom_to_button_visibility" {
+									visible = no
+								}
+
+								block "zoom_to_button_properties" { }
+							}
+						}
 					}
 				}
 

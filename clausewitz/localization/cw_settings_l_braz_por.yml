@@ -34,8 +34,6 @@
  SETTING_ANISOTROPIC_FILTERING_TOOLTIP: "#T $SETTING_ANISOTROPIC_FILTERING$\n#!Usar a filtragem anisotrópica melhorará a aparência de superfícies texturizadas.\n\nConfigurações mais baixas podem aumentar o desempenho."
  SETTING_RESOLUTION: "Resolução"
  SETTING_RESOLUTION_TOOLTIP: "#T $SETTING_RESOLUTION$\n#!Define a qualidade das imagens do jogo.\n\nConfigurações mais baixas podem aumentar o desempenho.\n\n#X Uma resolução de jogo com proporções não suportadas pode fazer com que as interfaces apareçam fora da tela#!"
- SETTING_WINDOWED_RESOLUTION: "Resolução em Janela"
- SETTING_WINDOWED_RESOLUTION_TOOLTIP: "#T $SETTING_WINDOWED_RESOLUTION$\n#!Define a resolução da janela do jogo se ele estiver no Modo de Janela.\n\nDeve estar no formato #b NÚMERO#!x#b NÚMERO#!.\n\n#X Uma resolução de jogo com proporções não suportadas pode fazer com que as interfaces apareçam fora da tela#!"
  SETTING_RENDER_SCALE: "Escala de Renderização"
  SETTING_RENDER_SCALE_TOOLTIP: "#T $SETTING_RENDER_SCALE$#!\nA escala da resolução de renderização do jogo relativa à resolução principal, exceto a interface do usuário.\n\nConfigurações mais baixas podem aumentar o desempenho, mas diminuirão a fidelidade geral, enquanto passar de 100% pode aumentar a fidelidade, mas provavelmente comprometerá o desempenho."
  SETTING_RENDER_SCALE_FORMAT: "$VALUE|%0$"
@@ -60,6 +58,7 @@
  OPTION_LOW: "Baixo"
  OPTION_MEDIUM: "Médio"
  OPTION_HIGH: "Alto"
+ OPTION_VERY_HIGH: "Muito Alta"
  OPTION_ULTRA: "Ultra"
  OPTION_CUSTOM: "Personalizado"
  OPTION_DEFAULT: "Padrão"
@@ -174,7 +173,7 @@
  NO_AUTOSAVE: "Sem Salvamento Automático"
  #Multiplayer
  SETTINGS_FILE_TRANSFER_SPEED: "Velocidade de Transferência de Arquivos"
- SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $File Transfer Speed$\n#!Define a velocidade máxima para transferências de arquivos de jogos salvos no lobby de multijogador.\n\nConfigurações mais baixas podem melhorar a estabilidade da rede ao ingressar em partidas multijogador, mas têm um efeito negativo nos tempos de carregamento."
+ SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $SETTINGS_FILE_TRANSFER_SPEED$#!\nDefine a velocidade máxima para transferências de arquivos de jogos salvos no lobby de multijogador.\n\nConfigurações mais baixas podem melhorar a estabilidade da rede ao ingressar em partidas multijogador, mas têm um efeito negativo nos tempos de carregamento.\n\nO anfitrião do modo multijogador determina a velocidade máxima.\n"
  #Tools
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES: "Salvamento Automático do Editor de Mapas (minutos)"
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES_TOOLTIP: "Intervalo do Salvamento Automático do Editor de Mapas (minutos)"

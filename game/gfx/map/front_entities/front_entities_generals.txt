@@ -27,6 +27,19 @@
 #####					GENERAL UNITS						#####
 #################################################################
 
+#################################################
+###       			Carlists!	     		  ###
+#################################################
+military_infantry_carlist_general_diorama_entity = {
+	entity = "military_infantry_carlists_general_entity" # 
+
+	group = "general"
+	
+	trigger = {
+		scope:country = { c:SPC ?= this }
+		has_dlc_feature = ip4_cosmetics
+	}
+}
 
 #################################################
 ###       			European     			  ###
@@ -40,6 +53,15 @@ military_infantry_european_general_diorama_entity = {
 	trigger = {
 		scope:culture ?= {
 			has_culture_graphics = european
+		}
+		scope:country = { 
+			OR = {
+				NOT = { c:SPC ?= this }
+				AND = {
+					c:SPC ?= this
+					NOT = { has_dlc_feature = ip4_cosmetics }
+				}
+			}
 		}
 	}
 }

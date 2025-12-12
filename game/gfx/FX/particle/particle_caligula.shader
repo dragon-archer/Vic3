@@ -159,6 +159,9 @@ PixelShader =
 					Color.rgb = lerp( Color.rgb, PostEffectsColor, 1.0 - _FlatmapLerp );
 				#endif
 
+				// Terrain height fade
+				FadeTerrainHeight( Input.WorldSpacePos, Color.a );
+
 				// Output
 				Out.Color = Color;
 
@@ -257,6 +260,9 @@ PixelShader =
 					Color.rgb = lerp( Color.rgb, PostEffectsColor, 1.0 - _FlatmapLerp );
 				#endif
 
+				// Terrain height fade
+				FadeTerrainHeight( Input.WorldSpacePos, Color.a );
+
 				// Output
 				Out.Color = Color;
 
@@ -330,6 +336,9 @@ PixelShader =
 					Color.rgb = lerp( Color.rgb, PostEffectsColor, 1.0 - _FlatmapLerp );
 				#endif
 
+				// Terrain height fade
+				FadeTerrainHeight( Input.WorldSpacePos, Color.a );
+
 				// Output
 				Out.Color = Color;
 
@@ -402,6 +411,9 @@ PixelShader =
 					PostEffectsColor = GameApplyDistanceFog( PostEffectsColor, Input.WorldSpacePos );
 					Color.rgb = lerp( Color.rgb, PostEffectsColor, 1.0 - _FlatmapLerp );
 				#endif
+
+				// Terrain height fade
+				FadeTerrainHeight( Input.WorldSpacePos, Color.a );
 
 				// Output
 				Out.Color = Color;

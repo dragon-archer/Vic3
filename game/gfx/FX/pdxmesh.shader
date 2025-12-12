@@ -8,10 +8,12 @@ Includes = {
 	"cw/camera.fxh"
 	"cw/heightmap.fxh"
 	"cw/alpha_to_coverage.fxh"
+
 	"jomini/jomini_lighting.fxh"
 	"jomini/jomini_water.fxh"
 	"jomini/jomini_mapobject.fxh"
 	"jomini/jomini_province_overlays.fxh"
+
 	"dynamic_masks.fxh"
 	"pdxmesh_functions.fxh"
 	"sharedconstants.fxh"
@@ -20,6 +22,7 @@ Includes = {
 	"coloroverlay.fxh"
 	"ssao_struct.fxh"
 	"constants_ig_colors.fxh"
+	"harvest_condition.fxh"
 }
 
 PixelShader =
@@ -536,6 +539,12 @@ PixelShader =
 
 				// Normal calculation
 				float4 NormalSample = PdxTex2D( NormalMap, NORMAL_UV_SET );
+
+				// Harvest Condition
+				#if !defined( GUI_SHADER ) && defined( HUB_BUILDING )
+					ApplyHarvestConditionBuilding( Diffuse, NormalSample, Properties, MapCoords, DIFFUSE_UV_SET + UNIQUE_UV_SET * 0.1 );
+				#endif
+
 				float3 InNormal = normalize( Input.Normal );
 				float3x3 TBN = Create3x3( normalize( Input.Tangent ), normalize( Input.Bitangent ), InNormal );
 				float3 Normal = normalize( mul( UnpackRRxGNormal( NormalSample ), TBN ) );

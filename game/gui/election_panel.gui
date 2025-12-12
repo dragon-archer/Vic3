@@ -158,22 +158,39 @@ types election_panel_types
 
 					flowcontainer = {
 						direction = vertical
-						parentanchor = center
+						parentanchor = vcenter
+						position = { 20 0 }
 						
 						textbox = {
-							text = "DATE_OF_ELECTION"
 							autoresize = yes
-							parentanchor = hcenter
 							align = nobaseline
+							text = "DATE_OF_ELECTION"
 						}
+
 						textbox = {
-							text = "[Election.GetDateFormatted]"
 							autoresize = yes
-							parentanchor = hcenter
 							using = fontsize_large
 							align = nobaseline
 							default_format = "#v"
+							using = elide_fontsize_min
+							max_width = 230
+							text = "[Election.GetDateFormatted]"
 						}
+					}
+
+					vertical_divider = {
+						parentanchor = center
+					}
+
+					textbox = {
+						parentanchor = vcenter|right
+						position = { -20 0 }
+						autoresize = yes
+						using = fontsize_large
+						align = hcenter|nobaseline
+						using = elide_fontsize_min
+						max_width = 230
+						text = "ELECTORAL_CONFIDENCE_WITH_VALUE"
 					}
 				}
 

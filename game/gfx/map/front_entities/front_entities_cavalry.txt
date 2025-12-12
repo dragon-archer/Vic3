@@ -42,6 +42,21 @@ military_tank_light_generic_diorama_entity = {
 	}
 }
 
+#################################################
+###       			Carlists!	     		  ###
+#################################################
+military_infantry_carlist_cavalry_diorama_entity = {
+	entity = "military_infantry_carlists_lancer_entity"
+
+	group = "cavalry"
+	
+	trigger = {
+		scope:country = { c:SPC ?= this }
+		has_dlc_feature = ip4_cosmetics
+		NOT = { scope:combat_unit_type = unit_type:combat_unit_type_light_tanks }
+	}
+}
+
 
 #################################################
 ###       			European     			  ###
@@ -60,6 +75,10 @@ military_cavalry_european_hussar_diorama_entity = {
 				has_culture_graphics = brazilian
 				has_culture_graphics = balkan
 			}
+		}
+		NOT = {
+			scope:country = { c:SPC ?= this }
+			has_dlc_feature = ip4_cosmetics
 		}
 
 		scope:combat_unit_type = unit_type:combat_unit_type_hussars
@@ -80,6 +99,11 @@ military_cavalry_european_dragoon_diorama_entity = {
 				has_culture_graphics = balkan
 			}
 		}
+		NOT = {
+			scope:country = { c:SPC ?= this }
+			has_dlc_feature = ip4_cosmetics
+		}
+
 		scope:combat_unit_type = unit_type:combat_unit_type_dragoons
 	}
 }
@@ -98,6 +122,11 @@ military_cavalry_european_cuirassier_diorama_entity = {
 				has_culture_graphics = balkan
 			}
 		}
+		NOT = {
+			scope:country = { c:SPC ?= this }
+			has_dlc_feature = ip4_cosmetics
+		}
+
 		scope:combat_unit_type = unit_type:combat_unit_type_cuirassiers
 	}
 }
@@ -116,6 +145,11 @@ military_cavalry_european_lancer_diorama_entity = {
 				has_culture_graphics = balkan
 			}
 		}
+		NOT = {
+			scope:country = { c:SPC ?= this }
+			has_dlc_feature = ip4_cosmetics
+		}
+		
 		scope:combat_unit_type = unit_type:combat_unit_type_lancers
 	}
 }

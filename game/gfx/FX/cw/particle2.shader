@@ -1,7 +1,9 @@
 Includes = {
 	"cw/particle2.fxh"
-	"distance_fog.fxh"
+	"cw/heightmap.fxh"
+
 	"coloroverlay.fxh"
+	"distance_fog.fxh"
 	"fog_of_war.fxh"
 	"ssao_struct.fxh"
 }
@@ -42,6 +44,9 @@ PixelShader =
 					PostEffectsColor = GameApplyDistanceFog( PostEffectsColor, Input.WorldSpacePos );
 					Color.rgb = lerp( Color.rgb, PostEffectsColor, 1.0 - _FlatmapLerp );
 				#endif
+
+				// Terrain height fade
+				FadeTerrainHeight( Input.WorldSpacePos, Color.a );
 
 				// Output
 				Out.Color = Color;
@@ -218,5 +223,21 @@ Effect ParticleTFBE
 	PixelShader = "PixelTexture"
 	BlendState = "AdditiveBlendState"
 	Defines = { "FADE_STEEP_ANGLES" "BILLBOARD" }
+	RasterizerState = "RasterizerStateNoCulling"
+}
+
+Effect ParticleTextureDepthFade
+{
+	VertexShader = "VertexParticle"
+	PixelShader = "PixelTexture"
+	Defines = { "PARTICLE_FADE_HEIGHT"}
+	RasterizerState = "RasterizerStateNoCulling"
+}
+
+Effect ParticleTextureBillboardDepthFade
+{
+	VertexShader = "VertexParticle"
+	PixelShader = "PixelTexture"
+	Defines = { "BILLBOARD" "PARTICLE_FADE_HEIGHT"}
 	RasterizerState = "RasterizerStateNoCulling"
 }

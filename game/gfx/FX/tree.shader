@@ -4,9 +4,11 @@ Includes = {
 	"cw/utility.fxh"
 	"cw/shadow.fxh"
 	"cw/alpha_to_coverage.fxh"
+
 	"jomini/jomini_lighting.fxh"
 	"jomini/jomini_mapobject.fxh"
 	"jomini/jomini_province_overlays.fxh"
+
 	"pdxmesh_functions.fxh"
 	"coloroverlay.fxh"
 	"distance_fog.fxh"

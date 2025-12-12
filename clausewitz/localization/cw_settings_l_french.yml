@@ -33,9 +33,7 @@
  SETTING_ANISOTROPIC_FILTERING: "Filtrage anisotrope"
  SETTING_ANISOTROPIC_FILTERING_TOOLTIP: "#T $SETTING_ANISOTROPIC_FILTERING$#!\nLe filtrage anisotrope améliore la qualité des textures de surface.\n\nUne valeur moins élevée peut accroître les performances du jeu."
  SETTING_RESOLUTION: "Résolution du plein écran"
- SETTING_RESOLUTION_TOOLTIP: "#T $SETTING_RESOLUTION$#!\nDéfinit la qualité de l'image.\n\nUne résolution plus basse peut accroître les performances du jeu.\n\n#X Une résolution de jeu avec un format d'image non pris en charge peut faire apparaître les interfaces en dehors de l'écran.#!"
- SETTING_WINDOWED_RESOLUTION: "Résolution du mode fenêtré"
- SETTING_WINDOWED_RESOLUTION_TOOLTIP: "#T $SETTING_WINDOWED_RESOLUTION$\n#!Définit la résolution de la fenêtre de jeu si le jeu est en mode fenêtré.\n\nDoit être au format #b NOMBRE#!x#b NOMBRE#!.\n\n#X Une résolution de jeu avec un format d'image non pris en charge peut faire apparaître les interfaces en dehors de l'écran#!"
+ SETTING_RESOLUTION_TOOLTIP: "#T $SETTING_RESOLUTION$\n#!Définit la qualité de l'image.\n\nUne résolution plus basse peut accroître les performances du jeu.\n\n#X Une résolution de jeu avec un format d'image non pris en charge peut faire apparaître les interfaces en dehors de l'écran.#!"
  SETTING_RENDER_SCALE: "Échelle de rendu"
  SETTING_RENDER_SCALE_TOOLTIP: "#T $SETTING_RENDER_SCALE$#!\nL'échelle de la résolution de rendu du jeu par rapport à la résolution principale, à l'exclusion de l'interface utilisateur.\n\nUn réglage plus bas peut augmenter les performances mais réduire la fidélité globale, tandis qu'un réglage plus élevé que 100 % peut augmenter la fidélité mais dégradera probablement les performances."
  SETTING_RENDER_SCALE_FORMAT: "$VALUE|%0$"
@@ -60,6 +58,7 @@
  OPTION_LOW: "Bas"
  OPTION_MEDIUM: "Moyen"
  OPTION_HIGH: "Haut"
+ OPTION_VERY_HIGH: "Très élevée"
  OPTION_ULTRA: "Ultra"
  OPTION_CUSTOM: "Personnalisé"
  OPTION_DEFAULT: "Défaut"
@@ -174,7 +173,7 @@
  NO_AUTOSAVE: "Aucune sauv. auto."
  #Multiplayer
  SETTINGS_FILE_TRANSFER_SPEED: "Vitesse de transfert de fichiers"
- SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $SETTINGS_FILE_TRANSFER_SPEED$#!\nDéfinit la vitesse maximale pour les transferts de fichiers de sauvegarde dans le lobby multijoueur.\n\nDes paramètres plus bas peuvent améliorer la stabilité du réseau pour rejoindre des parties multijoueurs mais ont un impact négatif sur leur temps de chargement."
+ SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $SETTINGS_FILE_TRANSFER_SPEED$#!\nDéfinit la vitesse maximale pour les transferts de fichiers de sauvegarde dans le lobby multijoueur.\n\nDes paramètres plus bas peuvent améliorer la stabilité du réseau pour rejoindre des parties multijoueurs mais ont un impact négatif sur leur temps de chargement.\n\nL’hôte d'une partie multijoueur détermine la vitesse maximale.\n"
  #Tools
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES: "Sauv. auto. de l'éditeur de carte (minutes)"
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES_TOOLTIP: "Intervalle de sauv. auto. de l'éditeur de carte (minutes)"

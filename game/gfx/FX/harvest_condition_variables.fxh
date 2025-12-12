@@ -1,9 +1,3 @@
-BufferTexture HarvestConditionProvinceDataBuffer
-{
-    Ref = HarvestConditionProvinceMiscData
-    type = float4
-}
-
 Code
 [[
 		//#define DEBUG_INCIDENT_MASK 					// Enable to debug mask
@@ -18,7 +12,7 @@ Code
 		#define LOCUST_SWARM_INDEX 8
 		#define HEATWAVE_INDEX 9
 		#define DISEASE_OUTBREAK_INDEX 10
-
+		#define EARTHQUAKE_INDEX 11
 
 		// General
 		#define OpacityLowImpactValue				2.0
@@ -30,7 +24,6 @@ Code
 		#define HarvestConditionFadeStateFaded 		1	// Transparent
 		#define HarvestConditionFadeStateFadingIn 	2	// Becomes opaque
 		#define HarvestConditionFadeStateFadingOut 	3	// Becomes transparent
-
 
 		// Drought
 		#define DroughtSlopeMin						0.2
@@ -152,4 +145,17 @@ Code
 		#define DiseaseOutbreakLowImpactValue	3.0
 		#define DiseaseOutbreakHighImpactValue	7.0
 		#define DiseaseOverlayColor 			float3( 0.490, 0.507, 0.412 )
+
+		// Earthquake
+		#define EarthquakeLowImpactValue			0.5
+		#define EarthquakeHighImpactValue			1.0
+		#define EarthquakeTextureTiling				1.0
+		#define EarthquakeBuildingTextureTiling		10.0
+		#define EarthquakeTextureIndex				47
 ]]
+
+BufferTexture HarvestConditionProvinceDataBuffer
+{
+	Ref = HarvestConditionProvinceMiscData
+	type = float4
+}

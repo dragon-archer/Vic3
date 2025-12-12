@@ -86,21 +86,6 @@ idle = {
 			}
 		}
 
-		basket_pop_idle = {
-			animation = { head = "idle_head_pop_basket" torso = "idle_body_basket" }
-
-			weight = {
-				base = 0
-
-				modifier = {
-					add = 50
-					poor_clothes_pop_trigger = yes
-					struggling_pop_trigger = no
-				}
-			}
-			portrait_modifier = { animations_props = basket_attachment	 }
-		}
-
 		saber_pop_idle= {
 			animation = { head = "idle_head_pop_saber" torso = "idle_body_saber" }
 
@@ -175,7 +160,7 @@ idle = {
 		}
 
 		bureaucrat_pop_idle = {
-			animation = { head = "idle_head_pop_calipers" torso = "idle_body_General_VS_Right_Cross" }
+			animation = { head = "idle_head_pop_calipers" torso = "idle7" }
 
 			weight = {
 				base = 0
@@ -901,7 +886,7 @@ idle = {
 				modifier = {
 					add = 50
 					poor_clothes_pop_trigger = yes
-					struggling_pop_trigger = no
+ 					struggling_pop_trigger = no
 				}
 			}
 			portrait_modifier = { animations_props = basket_attachment	 }
@@ -966,7 +951,7 @@ idle = {
 		}
 
 		holy_pop_idle = {
-			animation = { head = "idle_head_pop_ledger" torso = "idle_body_General_VS_Left_Cross" }
+			animation = { head = "idle_head_pop_ledger" torso = "idle_body_general_vs_left_cross" }
 
 			weight = {
 				base = 0
@@ -979,7 +964,7 @@ idle = {
 			}
 		}
 				officer_pop_idle = {
-			animation = { head = "idle_head_pop_ledger" torso = "idle_body_General_VS_Left_HandsHips" }
+			animation = { head = "idle_head_pop_ledger" torso = "idle_body_general_vs_left_handships" }
 
 			weight = {
 				base = 0
@@ -1140,29 +1125,37 @@ commander_vs_left = {
 	male = {
 		default = { head = "idle_entry" torso = "idle_entry" }
 
-		General_VS_Left_Saber= {
+		general_vs_left_saber= {
 
-			animation = { head = "idle_head_General_VS_Left_Saber" torso = "idle_body_General_VS_Left_Saber" }
+			animation = { head = "idle_head_general_vs_left_saber" torso = "idle_body_general_vs_left_saber" }
 
 			portrait_modifier = {
 				animations_props = saber_attachment
 			}
 		}
 
-		General_VS_Left_Point = {
-			animation = { head = "idle_head_General_VS_Left_Point" torso = "idle_body_General_VS_Left_Point" }
+		general_vs_left_napoleon = {
+			animation = { head = "idle_head_general_vs_left_napoleon" torso = "idle_body_general_vs_left_napoleon" }
+
+			portrait_modifier = {
+				animations_props = walkingcane_attachment
+			}
 		}
 
-		General_VS_Left_Fist = {
-			animation = { head = "idle_head_General_VS_Left_Fist" torso = "idle_body_General_VS_Left_Fist" }
+		general_vs_left_rider = {
+			animation = { head = "idle_head_general_vs_left_rider" torso = "idle_body_general_vs_left_rider" }
+			
+			portrait_modifier = {
+				animations_props = walkingcane_attachment
+			}
 		}
 
-		General_VS_Left_Cross = {
-			animation = { head = "idle_head_General_VS_Left_Cross" torso = "idle_body_General_VS_Left_Cross" }
-		}
-
-		General_VS_Left_HandsHips = {
-			animation = { head = "idle_head_General_VS_Left_HandsHips" torso = "idle_body_General_VS_Left_HandsHips" }
+		general_vs_left_caneback = {
+			animation = { head = "idle_head_general_vs_left_caneback" torso = "idle_body_general_vs_left_caneback" }
+			
+			portrait_modifier = {
+				animations_props = walkingcane_attachment
+			}
 		}
 	}
 
@@ -1192,28 +1185,36 @@ commander_vs_right = {
 	male = {
 		default = { head = "idle_entry" torso = "idle_entry" }
 
-		General_VS_Right_Saber= {
-			animation = { head = "idle_head_General_VS_Right_Saber" torso = "idle_body_General_VS_Right_Saber" }
+		general_vs_right_saber= {
+			animation = { head = "idle_head_general_vs_right_saber" torso = "idle_body_general_vs_right_saber" }
 
 			portrait_modifier = {
 				animations_props = saber_attachment
 			}
 		}
 
-		General_VS_Right_Point = {
-			animation = { head = "idle_head_General_VS_Right_Point" torso = "idle_body_General_VS_Right_Point" }
+		general_vs_right_napoleon = {
+			animation = { head = "idle_head_general_vs_right_napoleon" torso = "idle_body_general_vs_right_napoleon" }
+
+			portrait_modifier = {
+				animations_props = walkingcane_attachment
+			}
 		}
 
-		General_VS_Right_Fist = {
-			animation = { head = "idle_head_General_VS_Right_Fist" torso = "idle_body_General_VS_Right_Fist" }
+		general_vs_right_rider = {
+			animation = { head = "idle_head_general_vs_right_rider" torso = "idle_body_general_vs_right_rider" }
+			
+			portrait_modifier = {
+				animations_props = walkingcane_attachment
+			}
 		}
 
-		General_VS_Right_Cross = {
-			animation = { head = "idle_head_General_VS_Right_Cross" torso = "idle_body_General_VS_Right_Cross" }
-		}
-
-		General_VS_Right_HandsHips = {
-			animation = { head = "idle_head_General_VS_Right_HandsHips" torso = "idle_body_General_VS_Right_HandsHips" }
+		general_vs_right_caneback = {
+			animation = { head = "idle_head_general_vs_right_caneback" torso = "idle_body_general_vs_right_caneback" }
+			
+			portrait_modifier = {
+				animations_props = walkingcane_attachment
+			}
 		}
 	}
 

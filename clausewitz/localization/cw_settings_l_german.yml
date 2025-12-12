@@ -34,8 +34,6 @@
  SETTING_ANISOTROPIC_FILTERING_TOOLTIP: "#T $SETTING_ANISOTROPIC_FILTERING$\n#!Die Nutzung von anisotropem Filtern führt dazu, dass Oberflächen besser aussehen.\n\nEine niedrigere Einstellung kann die Leistung verbessern."
  SETTING_RESOLUTION: "Auflösung"
  SETTING_RESOLUTION_TOOLTIP: "#T $SETTING_RESOLUTION$\n#!Legt die Auflösungsqualität des Spiels fest.\n\nEine niedrigere Auflösung kann die Leistung erhöhen.\n\n#X Die Spielauflösung bei nicht unterstützten Seitenverhältnissen kann dafür sorgen, dass die Oberfläche außerhalb des Bildschirms angezeigt wird#!"
- SETTING_WINDOWED_RESOLUTION: "Fensterauflösung"
- SETTING_WINDOWED_RESOLUTION_TOOLTIP: "#T $SETTING_WINDOWED_RESOLUTION$\n#!Legt die Auflösung des Spiels fest, wenn das Spiel im Fenster läuft.\n\nMuss im Format #b ZAHL#!x#b ZAHL#! vorliegen.\n\n#X Die Spielauflösung bei nicht unterstützten Seitenverhältnissen kann dafür sorgen, dass die Oberfläche außerhalb des Bildschirms angezeigt wird#!"
  SETTING_RENDER_SCALE: "Render-Skalierung"
  SETTING_RENDER_SCALE_TOOLTIP: "#T $SETTING_RENDER_SCALE$#!\nDas Skalieren der Render-Auflösung des Spiels im Verhältnis zur Hauptauflösung mit Ausnahme der Benutzeroberfläche.\n\nNiedrigere Einstellungen können die Leistung verbessern, aber die allgemeine Bildqualität verschlechtern. Werden 100 % Bildqualität überschritten, wird dies sehr wahrscheinlich die Leistung verschlechtern."
  SETTING_RENDER_SCALE_FORMAT: "$VALUE|%0$"
@@ -60,6 +58,7 @@
  OPTION_LOW: "Niedrig"
  OPTION_MEDIUM: "Mittel"
  OPTION_HIGH: "Hoch"
+ OPTION_VERY_HIGH: "Sehr hoch"
  OPTION_ULTRA: "Ultra"
  OPTION_CUSTOM: "Benutzerdefiniert"
  OPTION_DEFAULT: "Standard"
@@ -174,7 +173,7 @@
  NO_AUTOSAVE: "Kein Autospeichern"
  #Multiplayer
  SETTINGS_FILE_TRANSFER_SPEED: "Datenübertragungstempo"
- SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $File Transfer Speed$\n#!Legt das Maximaltempo für Speicherstandübertragungen in der Mehrspieler-Lobby fest.\n\nNiedrigere Einstellungen können die Netzwerkstabilität beim Beitritt zu Mehrspieler-Spielen verbessern, sich aber negativ auf die Mehrspieler-Ladezeiten auswirken."
+ SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $SETTINGS_FILE_TRANSFER_SPEED$#!\nLegt das Maximaltempo für Speicherstandübertragungen in der Mehrspieler-Lobby fest.\n\nNiedrigere Einstellungen können die Netzwerkstabilität beim Beitritt zu Mehrspieler-Spielen verbessern, sich aber negativ auf die Mehrspieler-Ladezeiten auswirken.\n\nDer Mehrspieler-Host bestimmt über die Maximalgeschwindigkeit.\n"
  #Tools
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES: "Karten-Editor-Autospeichern (Minuten)"
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES_TOOLTIP: "Karten-Editor-Autospeichern-Intervall (Minuten)"

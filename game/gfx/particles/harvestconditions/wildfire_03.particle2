@@ -1220,6 +1220,33 @@ graph={
 				}
 			}
 		}
+		pdxns:particle:CustomEffect={
+			id=60
+			node={
+			}
+			inputs={
+				link={
+					pin_id="billboard"
+					linked_node=110
+					linked_pin="value"
+				}
+				link={
+					pin_id="billboard_axis"
+					linked_node=93
+					linked_pin="value"
+				}
+				link={
+					pin_id="shader_file"
+					linked_node=92
+					linked_pin="value"
+				}
+				link={
+					pin_id="effect_name"
+					linked_node=91
+					linked_pin="value"
+				}
+			}
+		}
 		pdxns:particle:EffectFlags={
 			id=58
 			node={
@@ -1270,33 +1297,6 @@ graph={
 				link={
 					pin_id="fade_steep_angles"
 					linked_node=88
-					linked_pin="value"
-				}
-			}
-		}
-		pdxns:particle:EffectFlags={
-			id=60
-			node={
-			}
-			inputs={
-				link={
-					pin_id="billboard"
-					linked_node=93
-					linked_pin="value"
-				}
-				link={
-					pin_id="emissive"
-					linked_node=92
-					linked_pin="value"
-				}
-				link={
-					pin_id="billboard_axis"
-					linked_node=110
-					linked_pin="value"
-				}
-				link={
-					pin_id="fade_steep_angles"
-					linked_node=91
 					linked_pin="value"
 				}
 			}
@@ -1590,7 +1590,7 @@ graph={
 				link={
 					pin_id="effect_flags"
 					linked_node=60
-					linked_pin="effect_flags"
+					linked_pin="effect"
 				}
 				link={
 					pin_id="orientation"
@@ -1604,7 +1604,7 @@ graph={
 				}
 				link={
 					pin_id="render_order"
-					linked_node=205
+					linked_node=321
 					linked_pin="value"
 				}
 				link={
@@ -1945,23 +1945,7 @@ graph={
 			}
 		}
 		pdxns:values:Bool={
-			id=91
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=92
-			node={
-				value=no
-			}
-			inputs={
-			}
-		}
-		pdxns:values:Bool={
-			id=93
+			id=110
 			node={
 				value=no
 			}
@@ -2029,6 +2013,14 @@ graph={
 			id=99
 			node={
 				value={ 2 2 }
+			}
+			inputs={
+			}
+		}
+		pdxns:values:ConstVector3f={
+			id=93
+			node={
+				value={ 0.000000 0.000000 0.000000 }
 			}
 			inputs={
 			}
@@ -2107,14 +2099,6 @@ graph={
 		}
 		pdxns:values:ConstVector3f={
 			id=109
-			node={
-				value={ 0.000000 0.000000 0.000000 }
-			}
-			inputs={
-			}
-		}
-		pdxns:values:ConstVector3f={
-			id=110
 			node={
 				value={ 0.000000 0.000000 0.000000 }
 			}
@@ -2995,6 +2979,30 @@ graph={
 			id=214
 			node={
 				value=0
+			}
+			inputs={
+			}
+		}
+		pdxns:values:Int32={
+			id=321
+			node={
+				value=16
+			}
+			inputs={
+			}
+		}
+		pdxns:values:String={
+			id=91
+			node={
+				value=ParticleTextureDepthFade
+			}
+			inputs={
+			}
+		}
+		pdxns:values:String={
+			id=92
+			node={
+				value=gfx/FX/cw/particle2.shader
 			}
 			inputs={
 			}

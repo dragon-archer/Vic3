@@ -1,6 +1,8 @@
 Includes = {
 	"cw/camera.fxh"
 	"cw/quaternion.fxh"
+	"cw/heightmap.fxh"
+	"jomini/jomini_water.fxh"
 }
 
 VertexStruct VS_INPUT_PARTICLE
@@ -111,6 +113,17 @@ Code
 		uint PackedUint = uint( Packed );
 		return int2( PackedUint & 0xff, ( PackedUint >> 8 ) & 0xff );
 	}
+
+	void FadeTerrainHeight( float3 WorldSpacePos, inout float Alpha )
+	{
+		#if defined( PARTICLE_FADE_HEIGHT )
+			float TerrainHeight = GetHeight( WorldSpacePos.xz );
+			TerrainHeight = max( _WaterHeight, TerrainHeight );
+			float HeightDiff = saturate( WorldSpacePos.y - TerrainHeight );
+			float FadeFactor = saturate( HeightDiff / 0.25 );
+			Alpha *= FadeFactor;
+		#endif
+	}
 ]]
 
 VertexShader =
@@ -149,9 +162,9 @@ VertexShader =
 								Input.SizeAndOffset.zw = float2( - Input.SizeAndOffset.z, Input.SizeAndOffset.w );
 								InitialOffset = float3( ( Input.UV0 - Input.SizeAndOffset.zw - 0.5f ) * Input.SizeAndOffset.xy, 0 );
 								Input.UV0.x = ( 1.0 - Input.UV0.x );
-								WorldPos = Input.Position.xyz + InitialOffset.x * Right + InitialOffset.y * Up;								
+								WorldPos = Input.Position.xyz + InitialOffset.x * Right + InitialOffset.y * Up;
 							}
-						#endif						
+						#endif
 
 						#ifdef FADE_STEEP_ANGLES
 							float3 Direction = cross( Right, Up );

@@ -34,8 +34,6 @@
  SETTING_ANISOTROPIC_FILTERING_TOOLTIP: "#T $SETTING_ANISOTROPIC_FILTERING$\n#!Włączenie funkcji filtrowania anizotropowego poprawi wygląd tekstur powierzchni.\n\nNiższe ustawienia mogą zwiększyć wydajność."
  SETTING_RESOLUTION: "Rozdzielczość"
  SETTING_RESOLUTION_TOOLTIP: "#T $SETTING_RESOLUTION$\n#!Opcja ta wpływa na jakość obrazu w grze.\n\nNiższa rozdzielczość może zwiększyć wydajność.\n\n#X Wybranie rozdzielczości o nieobsługiwanych wymiarach obrazu może spowodować wyświetlanie się interfejsów poza ekranem.#!"
- SETTING_WINDOWED_RESOLUTION: "Rozdzielczość w trybie okna"
- SETTING_WINDOWED_RESOLUTION_TOOLTIP: "#T $SETTING_WINDOWED_RESOLUTION$\n#!Funkcja ta umożliwia określenie rozdzielczości gry w trybie okna.\n\nWymagany format to #b LICZBA#!×#b LICZBA#!.\n\n#X Wybranie rozdzielczości o nieobsługiwanych wymiarach obrazu może spowodować wyświetlanie się interfejsów poza ekranem.#!"
  SETTING_RENDER_SCALE: "Skala renderowania"
  SETTING_RENDER_SCALE_TOOLTIP: "#T $SETTING_RENDER_SCALE$#!\nSkala rozdzielczości renderowania w grze związana z rozdzielczością główną. Nie dotyczy interfejsu użytkownika.\n\nNiższe ustawienia mogą zwiększyć wydajność, ale spowodują zmniejszenie ogólnej wierności obrazu. Przekroczenie wartości 100% może z kolei zwiększyć wierność obrazu, ale prawdopodobnie spowoduje spadek wydajności."
  SETTING_RENDER_SCALE_FORMAT: "$VALUE|%0$"
@@ -60,6 +58,7 @@
  OPTION_LOW: "Niska"
  OPTION_MEDIUM: "Średnia"
  OPTION_HIGH: "Wysoka"
+ OPTION_VERY_HIGH: "Bardzo wysoka"
  OPTION_ULTRA: "Ultra"
  OPTION_CUSTOM: "Niestandardowa"
  OPTION_DEFAULT: "Domyślnie"
@@ -174,7 +173,7 @@
  NO_AUTOSAVE: "Brak automatycznego zapisu"
  #Multiplayer
  SETTINGS_FILE_TRANSFER_SPEED: "Prędkość przesyłania plików"
- SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T Prędkość przesyłania plików\n#!Ustawienie to pozwala określić maksymalną prędkość przesyłania pliku z zapisanym stanem gry w lobby w trybie wieloosobowym.\n\nNiższe ustawienia mogą zwiększyć stabilność sieci podczas dołączania do gier w trybie wieloosobowym, ale wydłużają czas wczytywania trybu wieloosobowego."
+ SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $SETTINGS_FILE_TRANSFER_SPEED$#!\nUstawienie to pozwala określić maksymalną prędkość przesyłania pliku z zapisanym stanem gry w lobby w trybie wieloosobowym.\n\nNiższe ustawienia mogą zwiększyć stabilność sieci podczas dołączania do gier w trybie wieloosobowym, ale wydłużają czas wczytywania trybu wieloosobowego.\n\nGospodarz trybu wieloosobowego określa maksymalną szybkość.\n"
  #Tools
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES: "Automatyczny zapis w edytorze mapy (w minutach)"
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES_TOOLTIP: "Interwał automatycznego zapisu w edytorze mapy (w minutach)"

@@ -33,9 +33,7 @@
  SETTING_ANISOTROPIC_FILTERING: "材质过滤"
  SETTING_ANISOTROPIC_FILTERING_TOOLTIP: "#T $SETTING_ANISOTROPIC_FILTERING$\n#!采用各向异性过滤能够使贴图表面表现更佳。\n\n降低设置可能会提高性能。"
  SETTING_RESOLUTION: "分辨率"
- SETTING_RESOLUTION_TOOLTIP: "#T $SETTING_RESOLUTION$#!\n设定游戏的图像质量。\n\n降低分辨率会提高性能。\n\n#X 使用不受支持的纵横比的分辨率可能会导致界面超出屏幕#!"
- SETTING_WINDOWED_RESOLUTION: "窗口化分辨率"
- SETTING_WINDOWED_RESOLUTION_TOOLTIP: "#T $SETTING_WINDOWED_RESOLUTION$#!\n设置当游戏在窗口模式下运行时使用的分辨率。\n\n格式必须为#b 数字#!x#b 数字#!。\n\n#X 设置的分辨率如果是游戏不支持的屏幕长宽比，将会导致界面溢出屏幕#!"
+ SETTING_RESOLUTION_TOOLTIP: "#T $SETTING_RESOLUTION$\n#!设定游戏的图像质量。\n\n降低分辨率会提高性能。\n\n#X 使用不受支持的纵横比的分辨率可能会导致界面超出屏幕#!"
  SETTING_RENDER_SCALE: "渲染比例"
  SETTING_RENDER_SCALE_TOOLTIP: "#T $SETTING_RENDER_SCALE$#!\n除开用户界面，游戏的渲染分辨率相对于主分辨率的比例。\n\n较低的设置可能会提高性能并降低整体的精确度，超过100%则会提高精确度但降低性能。"
  SETTING_RENDER_SCALE_FORMAT: "$VALUE|%0$"
@@ -60,6 +58,7 @@
  OPTION_LOW: "低"
  OPTION_MEDIUM: "中"
  OPTION_HIGH: "高"
+ OPTION_VERY_HIGH: "极高"
  OPTION_ULTRA: "极致"
  OPTION_CUSTOM: "自定义"
  OPTION_DEFAULT: "默认"
@@ -174,7 +173,7 @@
  NO_AUTOSAVE: "禁用自动存档"
  #Multiplayer
  SETTINGS_FILE_TRANSFER_SPEED: "文件传输速度"
- SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T 文件传输速度\n#!设置多人游戏大厅里存档文件传输时的最大速度。\n\n降低设置可能会改善加入多人游戏时的网络稳定程度，但对于多人游戏的载入时间会产生负面效果。"
+ SETTINGS_FILE_TRANSFER_SPEED_TOOLTIP: "#T $SETTINGS_FILE_TRANSFER_SPEED$#!\n#!设置多人游戏大厅里存档文件传输时的最大速度。\n\n降低设置可能会改善加入多人游戏时的网络稳定程度，但对于多人游戏的载入时间会产生负面效果。\n\n多人游戏主机决定最大游戏速度。\n"
  #Tools
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES: "地图编辑器自动保存（分钟）"
  SETTING_MAP_EDITOR_AUTOSAVE_INTERVAL_MINUTES_TOOLTIP: "地图编辑器自动保存间隔（分钟）"

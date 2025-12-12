@@ -1,6 +1,4 @@
 ﻿l_polish:
- ideology_montenegrin_moralist: "Czarnogórscy moraliści"
- ideology_montenegrin_moralist_desc: "#lore Ta grupa cechuje się silną wiarą w religijny ład moralny i postrzega różnorodność opinii jako zagrożenie dla tego ładu.#!"
  mon_build_biljarda: "Zbuduj Bilardówkę"
  mon_build_biljarda_desc: "Wybuduj pałac godny twojego niepodległego narodu."
  treaty_name_mon_orthodox_donations: "Swobodny dostęp do wsparcia i handlu"
@@ -168,7 +166,7 @@
  montenegrin_raiding.1.f: "#italic Mój lud zasnął głębokim, wiecznym snem;\nnie ma już dłoni rodzica, która otarłaby moje łzy.\nNiebiosa nad moją głową są szczelnie zamknięte;\nnie słyszą moich modlitw ni płaczu.#!\n\n– Piotr II Petrowić-Niegosz, #italic Górski wieniec#!"
  montenegrin_raiding.1.a: "Jednoczymy się w żałobie."
  montenegrin_raiding.1.b: "Niech umarli grzebią umarłych. My musimy zacząć odbudowę."
- mon_lost_men_tt: "#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#! – tyle budynków o nazwie [GetBuildingType('building_barracks').GetName|l] zostanie zniszczonych. Reszta pogrąży się w chaosie."
+ mon_lost_men_tt: "#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#! – tyle budynków o nazwie [GetBuildingType('building_barrack').GetName|l] zostanie zniszczonych. Reszta pogrąży się w chaosie."
  #montenegrin_raiding.2
  montenegrin_raiding.2.t: "Osmański kontratak"
  montenegrin_raiding.2.d: "Państwo o nazwie [SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')] przysłało swoich wojskowych, aby prześladowali naszą ludność i zapobiegali naszym najazdom."
@@ -273,14 +271,14 @@
  mon_state_formation.8.t: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] chce pojąć żonę"
  mon_state_formation.8.d: "Królewskie zaślubiny mają niebawem się rozpocząć i wszyscy w państwie znanym jako [ROOT.GetCountry.GetNameNoFlag] zastanawiają się, kogo [SCOPE.sCharacter('danilo').GetFullName] wybrał na swoją przyszłą żonę."
  mon_state_formation.8.d2: "Ponieważ [SCOPE.sCharacter('danilo').GetFullName] to [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle], musi wybrać sobie żonę."
- mon_state_formation.8.f: "– Marszałku polowy Marmulo! Jak tam ślub? Górskie plemiona dały dobre przedstawienie?\n\n– Biedna dziewczyna była blada jak ściana, gdy eskortowaliśmy ją z portu. I kto by się jej dziwił? Wyobraź sobie bycie księżniczką pośród tych wilków. Ale niedługo po złożeniu przysięgi zaczęła mówić w ich języku, wysyłać mężczyzn po swoje rzeczy, pić jak smok i kląć jak szewc. Nie wszystkim się to spodobało, ale nie obchodziło jej to. Jeśli [SCOPE.sCharacter('danilo').GetFirstName] nie będzie uważać, niedługo to ona będzie rządzić tym państwem, a wtedy wreszcie będziemy mieli do czynienia z kimś rozsądnym."
+ mon_state_formation.8.f: "– Marszałku polowy Marmulo! Jak tam ślub? Górskie plemiona dały dobre przedstawienie?\n\n– Biedna dziewczyna była blada jak ściana, gdy eskortowaliśmy ją z portu. I kto by się jej dziwił? Wyobraź sobie bycie księżniczką pośród tych wilków. Ale niedługo po złożeniu przysięgi zaczęła mówić w ich języku, wysyłać mężczyzn po swoje rzeczy, pić jak smok i kląć jak szewc. Nie wszystkim się to spodobało, ale nie obchodziło jej to. Jeśli [SCOPE.sCharacter('danilo').GetFirstNameNoFormatting] nie będzie uważać, niedługo to ona będzie rządzić tym państwem, a wtedy wreszcie będziemy mieli do czynienia z kimś rozsądnym."
  mon_state_formation.8.f2: "– To największe barbarzyństwo jakiego przyszło mi doświadczyć! [SCOPE.sCharacter('danilo').GetPrimaryRoleTitle] [SCOPE.sCharacter('danilo').GetFirstNameNoFormatting] zjawił się ubrany bardziej jak na wojnę niż na ślub, chwaląc się liczbą domów publicznych, które odwiedził poprzedniej nocy. Jeździec przywiózł mu z wypadu na Turków świeżo obciętą głowę, a Daniel wykrzyczał: „Tak jak obiecałem!”. Chwilę później, niech niebiosa nam wybaczą, wypił ściekającą z odciętej szyi krew ku uciesze swego ludu. W końcu spojrzenia zwróciły się na biedną dziewczynę, którą przywiedliśmy z portu, by poślubiła tego potwora. Odważniejsza niż którykolwiek z moich ludzi wyszła naprzód, a kapłan, trzymany na muszce i nieszczędzący protestu, udzielił im ślubu przed zawstydzonym obliczem Boga… Szczerze modlę się, by nigdy więcej nie wysłano mnie na Bałkany."
  mon_state_formation.8.a: "Poślub – z obowiązku – księżną Kleopatrę Karadziordziewić z Serbii."
  mon_state_formation.8.b: "Poślub – dla pieniędzy – baronową Anastazję von Sina z Wiednia."
  mon_state_formation.8.c: "Poślub – z miłości – Darię Kvekić z Triestu."
  mon_state_formation.9.t: "Budowa Bilardówki"
  mon_state_formation.9.d: "[ROOT.GetCountry.GetRuler.GetFullName] nakazuje budowę rezydencji o dwudziestu pięciu komnatach wraz z okrągłą wieżą obronną. Budowniczowie chcą wiedzieć, na co powinni położyć nacisk, dekorując pałac."
- mon_state_formation.9.f: "„Na skale, tuż ponad klasztorem, znajduje się okrągła wieża z otworami strzelniczymi, lecz bez armat. Na jej blankach naliczyłem nabite na pale głowy dwudziestu Turków – trofea czarnogórskiego zwycięstwa… Osobliwy widok, jak na chrześcijański kraj, i to w bezpośrednim sąsiedztwie klasztoru oraz pałacu biskupiego”.\n\n– John Gardner Wilkinson, gość w Czarnogórze"
+ mon_state_formation.9.f: "„Na skale, tuż ponad klasztorem, znajduje się okrągła wieża z otworami strzelniczymi, lecz bez armat. Na jej blankach naliczyłem nabite na pale głowy dwudziestu Turków – trofea czarnogórskiego zwycięstwa… Osobliwy widok, jak na chrześcijański kraj, i to w bezpośrednim sąsiedztwie klasztoru oraz pałacu biskupiego”." #–John Gardner Wilkinson, visitor to Montenegro"
  mon_state_formation.9.a: "Każ kilku silnym mężczyznom wnieść stół bilardowy od strony morza."
  mon_state_formation.9.b: "Pobłogosław kaplicę fragmentem czaszki świętego Charłampa."
  mon_state_formation.9.c: "Dlaczego głowy Turków są tylko na wieży? Umieśćmy je w każdej komnacie!"
@@ -299,6 +297,7 @@
  mon_school_helper: "Dzięki temu piśmienność naszego narodu zdecydowanie zwiększy się z czasem"
  mon_state_formation.11.c: "Zapewni, że dzieci nauczą się walczyć."
  #Taxes?
+ #Taxes?
  mon_state_formation.12.t: "Podatki?"
  mon_state_formation.12.d: "Lud państwa o nazwie [ROOT.GetCountry.GetNameNoFlag], który przez wiele lat zabijał osmańskich poborców podatkowych, opiera się samej idei płacenia podatków, mimo że to [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] ma otrzymać pozyskane w ten sposób pieniądze."
  mon_state_formation.12.f: "– A więc chce nas okraść?\n– Nie, nakłada na nas #italic podatki#!.\n– A co to za różnica?\n– Pieniądze z podatków zostaną wydane z korzyścią dla nas.\n– Znaczy, że dadzą nam mąkę lub naprawią dachy?\n– Nie… Posłuchaj, jeśli nie będziemy płacić, przyjdą do nas z bronią w ręku i…\n– Czyli jednak nas #italic okrada#!!"
@@ -306,6 +305,7 @@
  mon_state_formation.12.b: "Wysłuchaj zmartwień ludu."
  mon_state_formation.12.c: "Gróź każdemu, kto będzie się opierać."
  mon_state_formation.12.e: "– Nie! Nie podatki, tylko pułapki!"
+ #first arms
  #first arms
  mon_state_formation.13.t: "Prawdziwy cel"
  mon_state_formation.13.d: "Lud państwa znanego jako [ROOT.GetCountry.GetNameNoFlag] jest dumny, że nareszcie posiada budynek o nazwie [SCOPE.sBuilding('arms').GetName|l]."
@@ -362,7 +362,7 @@
  mon_state_formation.20.t: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFirstName] albo król [ROOT.GetCountry.GetRuler.GetFirstName]"
  mon_state_formation.20.d: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] [ROOT.GetCountry.GetRuler.GetFullName] proponuje oficjalną zmianę statusu naszego narodu na królestwo."
  ### https://en.wikisource.org/wiki/Translation:There,_Over_There
- mon_state_formation.20.f: "#italic Tam… tam, za wzgórzami,\nGdzie zielony gaj spoczywa w ciszy, jak mówią,\nPod którym wznosi się monaster Dečani:\nModlitwa tam wznoszona rozbrzmiewa po niebiosa.\n\nTam… tam, za wzgórzami,\nGdzie niebo błękitne chyli się ku ziemi,\nNa serbskie pola, na pola bitew,\nTam, bracia, kierujcie swe kroki!#!\n\nMikołaj I Petrowić-Niegosz, #italic Onamo, ’namo!#!"
+ mon_state_formation.20.f: "#italic Tam… tam, za wzgórzami,\nGdzie zielony gaj spoczywa w ciszy, jak mówią,\nPod którym wznosi się monaster Dečani:\nModlitwa tam wznoszona rozbrzmiewa po niebiosa.\n\nTam… tam, za wzgórzami,\nGdzie niebo błękitne chyli się ku ziemi,\nNa serbskie pola, na pola bitew,\nTam, bracia, kierujcie swe kroki!#!\nMikołaj I Petrowić-Niegosz, #italic Onamo, ’namo!#!"
  mon_state_formation.20.a: "Trzeba poinformować lud."
  mon_state_formation.20.b: "Wszyscy muszą się o tym dowiedzieć!"
  mon_state_formation.20.c: "Trzeba poinformować wojskowych."

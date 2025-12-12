@@ -1,6 +1,4 @@
 ﻿l_french:
- ideology_montenegrin_moralist: "Moraliste monténégrin"
- ideology_montenegrin_moralist_desc: "#lore Ce groupe croit fermement en un ordre moral religieux et considère la diversité des opinions comme une menace.#!"
  mon_build_biljarda: "Construire la Biljarda"
  mon_build_biljarda_desc: "Construisez un palais digne de notre nation indépendante."
  treaty_name_mon_orthodox_donations: "Accès charitable à l’aide et au commerce"
@@ -168,7 +166,7 @@
  montenegrin_raiding.1.f: "#italic Mon peuple dort d’un mortel sommeil, \nEt je n’ai personne pour essuyer mes larmes.\nLe ciel est fermé au-dessus de ma tête,\nIl n’écoute ni mes gémissements ni mes prières.#!\n\n– Petar II Petrović Njegoš, #italic Les Lauriers de la montagne#!"
  montenegrin_raiding.1.a: "Nous serons unis dans le deuil."
  montenegrin_raiding.1.b: "Laissons les morts enterrer les morts. Nous devons reconstruire."
- mon_lost_men_tt: "#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#! [GetBuildingType('building_barracks').GetName|l] seront détruites, et les autres seront désaffectées."
+ mon_lost_men_tt: "#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#! [GetBuildingType('building_barrack').GetName|l] seront détruites, et les autres seront désaffectées."
  #montenegrin_raiding.2
  montenegrin_raiding.2.t: "Contre-attaque ottomane"
  montenegrin_raiding.2.d: "Des soldats de l’[SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')] sont arrivés pour importuner notre peuple et mettre fin à nos pillages."
@@ -201,7 +199,7 @@
  mon_state_formation.1.c: "Bien sûr, nous allons #italic complètement#! arrêter les pillages."
  mon_stop_raiding_deal_tt: "Nous acceptons d’arrêter les pillages, réduisant notre revenu de #r -[GetPlayer.MakeScope.ScriptValue('raiding_income')] @money!#!"
  mon_stop_aid_deal_tt: "En remplacement de l’[concept_russian_aid|l], la #v $RUS$#! financera la fondation de notre Trésor d’État, qui nous garantira un [concept_budget_minting|l] permanent de #g 1 000@money!#! :"
- mon_stop_aid_nodeal_tt: "La #v $RUS$#! va interrompre son aide, mais nous n’arrêterons pas le [concept_raiding|l]"
+ mon_stop_aid_nodeal_tt: "La #v $RUS$#! va interrompre son [Concept('concept_russian_aid','aide')], mais nous n’arrêterons pas le [concept_raiding|l]"
  mon_stop_aid_liars_tt: "Nous n’arrêterons #v pas#! nos pillages."
  russia_no_longer_guarantor_tt: "La $RUS$ ne garantit plus notre indépendance."
  no_more_raids_for_a_while: "L’[SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')] ne devrait plus lancer de pillage contre nous pendant au moins #v 10#! ans."
@@ -273,14 +271,14 @@
  mon_state_formation.8.t: "[ROOT.GetCountry.GetRuler.GetCustom('FR_LeLa')|U] [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle] veut se marier"
  mon_state_formation.8.d: "Le mariage princier est sur le point de commencer. [ROOT.GetCountry.GetAltNameNoFormatting('Le')|U][ROOT.GetCountry.GetNameNoFlag] se demande qui [SCOPE.sCharacter('danilo').GetFullName] a choisi pour épouse."
  mon_state_formation.8.d2: "Maintenant que [SCOPE.sCharacter('danilo').GetFullName] a accédé au rang de [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle], il est temps qu’[ROOT.GetCountry.GetRuler.GetCustom('FR_IlElle')] se marie."
- mon_state_formation.8.f: "« Maréchal Mamula ! Comment était le mariage ? Comment avez-vous trouvé les tribus des montagnes ? » \n\n« La pauvre fille était pâle comme un linge quand nous l’avons escortée depuis le port. Et qui pourrait lui en vouloir ? Imaginez être une princesse au milieu de ces loups. Mais peu de temps après les vœux, elle s’est mise à parler leur langue, à envoyer des hommes chercher ses affaires, à boire comme un chameau et à jurer comme un pirate. Certains hommes n’aimaient pas ce comportement, mais elle s’en fichait complètement. Si [SCOPE.sCharacter('danilo').GetFirstName] ne fait pas attention, elle dirigera bientôt le camp, et nous aurons enfin quelqu’un de raisonnable avec qui traiter. »"
+ mon_state_formation.8.f: "« Maréchal Mamula ! Comment était le mariage ? Comment avez-vous trouvé les tribus des montagnes ? » \n\n« La pauvre fille était pâle comme un linge quand nous l’avons escortée depuis le port. Et qui pourrait lui en vouloir ? Imaginez être une princesse au milieu de ces loups. Mais peu de temps après les vœux, elle s’est mise à parler leur langue, à envoyer des hommes chercher ses affaires, à boire comme un chameau et à jurer comme un pirate. Certains hommes n’aimaient pas ce comportement, mais elle s’en fichait complètement. Si [SCOPE.sCharacter('danilo').GetFirstNameNoFormatting] ne fait pas attention, elle dirigera bientôt le camp, et nous aurons enfin quelqu’un de raisonnable avec qui traiter. »"
  mon_state_formation.8.f2: "« Je n’avais jamais vu une telle barbarie ! [ROOT.GetCountry.GetRuler.GetCustom('FR_LeLa')|U] [SCOPE.sCharacter('danilo').GetPrimaryRoleTitle|l] [SCOPE.sCharacter('danilo').GetFirstNameNoFormatting] est arrivé, plus habillé pour la guerre que pour un mariage, en se vantant des maisons où il s’était rendu la veille. Un cavalier lui a apporté une tête fraîchement coupée lors d’un pillage contre les Turcs, et Danilo s’est écrié : \"Comme promis !\" Puis, Dieu nous pardonne, il a bu à même le cou dégoulinant, devant ses hommes hilares. Les regards se sont enfin tournés sur la pauvre fille que nous avions escortée depuis le port pour épouser ce monstre. Plus courageuse que n’importe lequel de mes hommes, elle s’est avancée, et le prêtre, qui se trouvait sous la menace d’une arme, les a mariés sous le regard plein de honte de Dieu... J’espère sincèrement que je ne retournerai jamais dans les Balkans. »"
  mon_state_formation.8.a: "Épouser la princesse Kleopatra Karadjordević de Serbie, par devoir."
  mon_state_formation.8.b: "Épouser la baronne Anastasia von Sina de Vienne, pour l’argent."
  mon_state_formation.8.c: "Épouser Darinka Kvekić de Trieste, par amour."
  mon_state_formation.9.t: "Construction de la Biljarda"
  mon_state_formation.9.d: "[ROOT.GetCountry.GetRuler.GetFullName] a ordonné la construction d’une résidence de vingt-cinq pièces, dotée d’une tour de défense ronde. Les maîtres d’œuvre veulent savoir sur quoi mettre l’accent dans la décoration du palais."
- mon_state_formation.9.f: "« Sur un rocher, juste au-dessus du couvent, se trouve une tour ronde percée d’embrasures, mais sans canon, sur laquelle j’ai compté les têtes de vingt Turcs fixées sur des pieux autour du parapet, tels des trophées de la victoire du Monténégro... Un étrange spectacle dans un pays chrétien, surtout à proximité d’un couvent et du palais d’un évêque. »\n\n– John Gardner Wilkinson, en voyage au Monténégro"
+ mon_state_formation.9.f: "« Sur un rocher, juste au-dessus du couvent, se trouve une tour ronde percée d’embrasures, mais sans canon, sur laquelle j’ai compté les têtes de vingt Turcs fixées sur des pieux autour du parapet, tels des trophées de la victoire du Monténégro... Un étrange spectacle dans un pays chrétien, surtout à proximité d’un couvent et du palais d’un évêque." #–John Gardner Wilkinson, visitor to Montenegro"
  mon_state_formation.9.a: "Demandez à des hommes forts de porter une table de billard depuis la mer."
  mon_state_formation.9.b: "Bénissez la chapelle avec un morceau du crâne de saint Haralambos."
  mon_state_formation.9.c: "Pourquoi ne mettre des pieux que sur la tour ? Mettez-en dans toutes les pièces !"
@@ -299,6 +297,7 @@
  mon_school_helper: "Le degré d’alphabétisation s’en trouvera grandement augmenté au fil du temps"
  mon_state_formation.11.c: "[ROOT.GetCountry.GetRuler.GetSheHe|U] s’assurera que les enfants apprennent à se battre."
  #Taxes?
+ #Taxes?
  mon_state_formation.12.t: "Des impôts ?"
  mon_state_formation.12.d: "Après avoir tué des collecteurs d’impôts ottomans pendant de nombreuses années, les habitants [ROOT.GetCountry.GetAltNameNoFormatting('Du')][ROOT.GetCountry.GetNameNoFlag] s’opposent au concept même des impôts, même si l’argent est destiné [ROOT.GetCountry.GetRuler.GetCustom('FR_AuAla')] [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle|l]."
  mon_state_formation.12.f: "« Alors, [ROOT.GetCountry.GetRuler.GetCustom('FR_IlElle')] nous dépouille ? » \n« Non, [ROOT.GetCountry.GetRuler.GetCustom('FR_IlElle')] nous #italic taxe#!. » \n« Quelle différence ? » \n« Eh bien, les impôts sont ensuite dépensés pour notre propre bien. » \n« Alors, on va nous donner de la farine et réparer le toit ? » \n« Non... Mais si on ne paie pas, des hommes armés viendront et... » \n« Ah, alors [ROOT.GetCountry.GetRuler.GetCustom('FR_IlElle')] nous dépouille #italic bien#! ! »"
@@ -306,6 +305,7 @@
  mon_state_formation.12.b: "Écoutez les préoccupations de chacun."
  mon_state_formation.12.c: "Menacez tous ceux qui résisteront."
  mon_state_formation.12.e: "« Pas des taxes, des haches ! »"
+ #first arms
  #first arms
  mon_state_formation.13.t: "Véritable objectif"
  mon_state_formation.13.d: "Les habitants [ROOT.GetCountry.GetAltNameNoFormatting('Du')][ROOT.GetCountry.GetNameNoFlag] sont incroyablement fiers de leurs [SCOPE.sBuilding('arms').GetName|l]."
@@ -362,7 +362,7 @@
  mon_state_formation.20.t: "[ROOT.GetCountry.GetRuler.GetCustom('FR_LeLa')|U] [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle|l] [ROOT.GetCountry.GetRuler.GetFirstName] ou le roi [ROOT.GetCountry.GetRuler.GetFirstName]"
  mon_state_formation.20.d: "[ROOT.GetCountry.GetRuler.GetCustom('FR_LeLa')|U] [ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle|l] [ROOT.GetCountry.GetRuler.GetFullName] a proposé de changer officiellement notre nation en royaume."
  ### https://en.wikisource.org/wiki/Translation:There,_Over_There
- mon_state_formation.20.f: "#italic Là-bas... derrière ces collines,\nSe trouve un bosquet verdoyant, dit-on,\nSous lequel se lève le Saint Dečani :\nUne prière récitée au paradis.\n\nLà-bas... derrière ces collines,\nOù le ciel bleu forme une voûte,\nVers les champs serbes, vers les champs de bataille,\nLà-bas, mes frères, préparez-vous à avancer !#! \n\nNicolas Ier Petrović Njegoš, #italic Onamo, ’namo !#!"
+ mon_state_formation.20.f: "#italic  Là-bas... derrière ces collines,\nSe trouve un bosquet verdoyant, dit-on,\nSous lequel se lève le Saint Dečani :\nUne prière récitée au paradis.\n\nLà-bas... derrière ces collines,\nOù le ciel bleu forme une voûte,\nVers les champs serbes, vers les champs de bataille,\nLà-bas, mes frères, préparez-vous à avancer !#!\n– Nicolas Ier Petrović Njegoš, #italic Onamo, ’namo !#!"
  mon_state_formation.20.a: "Prévenez le peuple."
  mon_state_formation.20.b: "Prévenez toutes les nations !"
  mon_state_formation.20.c: "Prévenez les soldats."

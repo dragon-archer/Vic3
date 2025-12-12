@@ -271,7 +271,7 @@ environment_front_generals_left = {
 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
 			affected_by_shadow = yes
 
-			color = hsv{ 0.5 0.2 8.5 }	# Hue, saturation, value. Increase value for more intense lights
+			color = hsv{ 0.57 0.4 9 }	# Hue, saturation, value. Increase value for more intense lights
 			position = cylindrical{  80 180 -40 }	# Radius, height, angle
 
 			look_at = { 0 0 0 }
@@ -288,14 +288,14 @@ environment_front_generals_left = {
 		1 = {
 			type = "spot_light"
 			affected_by_shadow = no
-			color = hsv{ 0.02 1 50 }
-			position = cylindrical{ @main_light_radius -50 -40 }
+			color = hsv{ 0.02 .5 10 }
+			position = cylindrical{ 150 -10 -30 }
 
 			look_at = { 0 -55 -10 }
 			look_at_node = camera_torso_look_at
 
-			radius = 322
-			falloff = 100
+			radius = 250
+			falloff = 10
 
 			outer_cone_angle = 28
 			inner_cone_angle = 0
@@ -359,14 +359,14 @@ environment_front_generals_right = {
 		1 = {
 			type = "spot_light"
 			affected_by_shadow = no
-			color = hsv{ 0.02 1 50 }
-			position = cylindrical{ @main_light_radius -40 30 }
+			color = hsv{ 0.02 .5 10 }
+			position = cylindrical{ 150 -10 30 }
 
 			look_at = { 0 -55 -10 }
 			look_at_node = camera_torso_look_at
 
-			radius = 322
-			falloff = 100
+			radius = 250
+			falloff = 10
 
 			outer_cone_angle = 28
 			inner_cone_angle = 0

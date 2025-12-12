@@ -1,6 +1,4 @@
 ﻿l_simp_chinese:
- ideology_montenegrin_moralist: "黑山道德主义者"
- ideology_montenegrin_moralist_desc: "#lore 这个集团对宗教道德秩序有强烈的信念，并认为观点的多样性是对这一秩序的威胁。#!"
  mon_build_biljarda: "建造比利亚尔达宫"
  mon_build_biljarda_desc: "建造一座配得上我们独立国家的宫殿。"
  treaty_name_mon_orthodox_donations: "慷慨的援助与贸易通道"
@@ -168,7 +166,7 @@
  montenegrin_raiding.1.f: "#italic 我看到人们都沉睡得那么香酣，\n什么人还会来擦干我的泪眼？\n上帝的天堂在我头上紧闭大门，\n听任我声嘶力竭地乞求怜悯。#!\n\n——佩塔尔·彼得罗维奇‑涅戈什二世，#italic 《山地花环》#!"
  montenegrin_raiding.1.a: "我们将在哀悼中团结。"
  montenegrin_raiding.1.b: "让死者埋葬死者。我们必须重建。"
- mon_lost_men_tt: "#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#!座[GetBuildingType('building_barracks').GetName]会被摧毁，剩余的将陷入混乱。"
+ mon_lost_men_tt: "#v [GetPlayer.MakeScope.ScriptValue('barracks_burned')]#!座[GetBuildingType('building_barrack').GetName]会被摧毁，剩余的将陷入混乱。"
  #montenegrin_raiding.2
  montenegrin_raiding.2.t: "奥斯曼反击"
  montenegrin_raiding.2.d: "[SelectLocalization(SCOPE.sCountry('ottoman').IsValid, SCOPE.sCountry('ottoman').GetName, 'dyn_c_ottoman_empire')]的士兵不断攻击我们的人民，以阻止我们的劫掠。"
@@ -252,7 +250,7 @@
  mon_state_formation.6.t: "诗人大公逝世"
  mon_state_formation.6.d: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]因肺结核去世。[SCOPE.sCharacter('danilo').GetFullName]登上了王位，尽管他的叔父[SCOPE.sCharacter('betrayer').GetFirstName]曾试图阻挠他继位。"
  mon_state_formation.6.d2: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]去世。[SCOPE.sCharacter('danilo').GetFullName]登上了王位，尽管他的叔叔[SCOPE.sCharacter('betrayer').GetFirstName]试图阻止继承。"
- mon_state_formation.6.d3: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]因肺结核去世。[SCOPE.sCharacter('danilo').GetFullName]继位登基。"
+ mon_state_formation.6.d3: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]因肺结核去世。[SCOPE.sCharacter('danilo').GetFullName]登上了王位。"
  mon_state_formation.6.d4: "[SelectLocalization(SCOPE.sCharacter('petar').IsValid, SCOPE.sCharacter('petar').GetFirstName, 'Petar2')]去世。[SCOPE.sCharacter('danilo').GetFullName]登上了王位。"
  mon_state_formation.6.f: "#italic 啊，只要我的双目还能够看端详，\n看到祖国遭受的损失获得补偿！\n我就会相信正义已得到伸张。\n我的心灵就会感到宁静的安慰，\n正如一个美好春天的明朗早晨，\n缓慢吹拂的煦风，朵朵移动的轻云，\n在大海的怀抱里安睡得香酣深沉。#!\n\n——佩塔尔·彼得罗维奇‑涅戈什二世，#italic 《山地花环》#!"
  mon_state_formation.6.a: "将[SCOPE.sCharacter('petar').GetFirstName]封为圣人。"
@@ -273,14 +271,14 @@
  mon_state_formation.8.t: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]希望结婚"
  mon_state_formation.8.d: "王室婚姻即将开始，[ROOT.GetCountry.GetNameNoFlag]所有人都想知道[SCOPE.sCharacter('danilo').GetFullName]选择了谁作为他的新娘。"
  mon_state_formation.8.d2: "如今[SCOPE.sCharacter('danilo').GetFullName]已是[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]，是时候为[ROOT.GetCountry.GetRuler.GetHerHim]选择一位妻子了。"
- mon_state_formation.8.f: "“马尔穆拉元帅！那场婚礼怎么样？那些山地部落有没有好好表现？”\n\n“我们护送那可怜姑娘从港口过来时，她脸色苍白得像鬼一样。这能怪她吗？想象一下公主落到狼群中间。不过，宣誓仪式刚结束没多久，她就说起他们的语言，差人取来她的东西，喝起酒来像鱼喝水，骂起人来像水手。有些男人看不惯，但她可不会对他们留情。要是[SCOPE.sCharacter('danilo').GetFirstName]不小心点，用不了多久，这营地就得由她来掌管，我们好歹也能有个明白事理的人打交道了。”"
+ mon_state_formation.8.f: "“马尔穆拉元帅！那场婚礼怎么样？那些山地部落有没有好好表现？”\n\n“我们护送那可怜姑娘从港口过来时，她脸色苍白得像鬼一样。这能怪她吗？想象一下公主落到狼群中间。不过，宣誓仪式刚结束没多久，她就说起他们的语言，差人取来她的东西，喝起酒来像鱼喝水，骂起人来像水手。有些男人看不惯，但她可不会对他们留情。要是[SCOPE.sCharacter('danilo').GetFirstNameNoFormatting]不小心点，用不了多久，这营地就得由她来掌管，我们好歹也能有个明白事理的人打交道了。”"
  mon_state_formation.8.f2: "“我从未见过如此野蛮的行径！[SCOPE.sCharacter('danilo').GetPrimaryRoleTitle][SCOPE.sCharacter('danilo').GetFirstNameNoFormatting]出现了，穿的是战袍而非礼服，还吹嘘起他前一天晚上去过哪些人家。一名骑兵从突袭土耳其人的行动中带回了一颗刚砍下的头颅献给他，达尼洛大声喊道：‘如我所言！’接着——愿上天宽恕我们——他竟从滴血的脖颈处饮起血，引得手下人哄笑不止。最后，众人的目光终于落到了那个我们从港口带来、要嫁给这个恶魔的可怜姑娘身上。她比我的任何士兵都要勇敢，走上前去，而那名神父——在枪口的威逼下，一边极力反对，一边在上帝羞愧的目光中为他们主持了婚礼……我真心希望自己永远不要再被派回巴尔干半岛。”"
  mon_state_formation.8.a: "为了职责，与塞尔维亚的克莱奥帕特拉·卡拉乔尔杰维奇公主结婚。"
  mon_state_formation.8.b: "为了钱，与维也纳的安娜斯塔西娅·冯·西纳女男爵结婚。"
  mon_state_formation.8.c: "为了爱，与的里雅斯特的达琳卡·克韦基奇结婚。"
  mon_state_formation.9.t: "建造比利亚尔达宫"
  mon_state_formation.9.d: "[ROOT.GetCountry.GetRuler.GetFullName]下令建造一座拥有二十五个房间的住宅，并配以一座圆形防御塔。建造大师们想知道这座宫殿的装饰布局该凸显什么。"
- mon_state_formation.9.f: "“在修道院正上方的一块岩石上，有一座圆塔，塔上开了炮孔，但没有大炮，绕着围墙，有20个土耳其人的头被插在木桩上，这是黑山的战利品……在一个基督教国家，在修道院和主教宫周围，这可真是罕见。”\n\n——约翰·加德纳·威尔金森，黑山游客"
+ mon_state_formation.9.f: "“在修道院正上方的一块岩石上，有一座圆塔，塔上开了炮孔，但没有大炮，绕着围墙，有20个土耳其人的头被插在木桩上，这是黑山的战利品……在一个基督教国家，在修道院和主教宫周围，这可真是罕见。”" #–John Gardner Wilkinson, visitor to Montenegro"
  mon_state_formation.9.a: "让一些大力士把一张台球桌从海上搬上来。"
  mon_state_formation.9.b: "以圣哈拉蓝博的头骨碎片祝福小教堂。"
  mon_state_formation.9.c: "为什么只在塔上插人头？每个房间都插上！"
@@ -299,6 +297,7 @@
  mon_school_helper: "这会随时间大幅提高国家的识字率"
  mon_state_formation.11.c: "[ROOT.GetCountry.GetRuler.GetSheHe|U]会确保孩子们学会战斗。"
  #Taxes?
+ #Taxes?
  mon_state_formation.12.t: "赋税？"
  mon_state_formation.12.d: "在接连杀死奥斯曼税吏许多年后，[ROOT.GetCountry.GetNameNoFlag]的民众对纳税这个概念本身就很抵触，即便税款是交给[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]的。"
  mon_state_formation.12.f: "“所以[ROOT.GetCountry.GetRuler.GetSheHe]是在抢我们的钱？”\n“不，[ROOT.GetCountry.GetRuler.GetSheHe]是在向我们#italic 征税#!。”\n“有什么区别？”\n“呃，税款会用来造福我们。”\n“所以他们会给我们面粉，或者帮我们修屋顶？”\n“不……听着，要是我们不交，武装人员就会来——”\n“所以[ROOT.GetCountry.GetRuler.GetSheHe]#italic 还是#!在抢我们的钱！”"
@@ -306,6 +305,7 @@
  mon_state_formation.12.b: "倾听每个人的顾虑。"
  mon_state_formation.12.c: "威胁所有反抗者。"
  mon_state_formation.12.e: "“不，不是赋税。我说的是斧子！”"
+ #first arms
  #first arms
  mon_state_formation.13.t: "真正的目的"
  mon_state_formation.13.d: "[ROOT.GetCountry.GetNameNoFlag]的人民为他们的第一座[SCOPE.sBuilding('arms').GetName]感到无比自豪。"
@@ -347,7 +347,7 @@
  mon_get_back_land: "我们将收回[SCOPE.sStateRegion('state').GetName]国境内所有奥斯曼土地。"
  mon_state_formation.18.t: "重新装修"
  mon_state_formation.18.d: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle]文明的小妻子建议我们将比利亚尔达宫的人头取下来。"
- mon_state_formation.18.f: "“她老家那怎么装饰宫殿，头儿？”\n“不知道，米尔科。听说是柱子、雕像和花朵之类的垃圾。”\n“听起来很无聊。”\n“非常无聊！柱子怎么帮我打土耳其人？”\n“是啊，指着比利亚尔达宫说‘那个是我搞来的’让人振奋。”\n“不过味道……”\n“是啊，最好换勤一些。”\n“确实……答案一直是更多的人头。”"
+ mon_state_formation.18.f: "“她老家那怎么装饰宫殿，头儿？”\n“不知道，米尔科。听说是柱子、雕像和花朵之类的垃圾。”\n“听起来很无聊。”\n“非常无聊！柱子怎么帮我打土耳其人？”\n“是啊，指着比利亚尔达宫说，‘那个是我搞来的’，多带劲。”\n“不过味道……”\n“是啊，最好换勤一些。”\n“确实……答案永远是更多的人头。”"
  mon_state_formation.18.a: "是时候让[SelectLocalization(SCOPE.sCountry('montenegro').IsValid, SCOPE.sCountry('montenegro').GetNameNoFlag, 'MON')]走向文明了。"
  mon_state_formation.18.b: "不！[SCOPE.sCharacter('danilo').GetFirstName]不能在士兵面前丢脸。"
  mon_state_formation.18.c: "如果有必要，我们需要#italic 多挂#!几个脑袋。"
@@ -362,7 +362,7 @@
  mon_state_formation.20.t: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle][ROOT.GetCountry.GetRuler.GetFirstName]或国王[ROOT.GetCountry.GetRuler.GetFirstName]"
  mon_state_formation.20.d: "[ROOT.GetCountry.GetRuler.GetPrimaryRoleTitle][ROOT.GetCountry.GetRuler.GetFullName]已提议正式将我们的国家转变为王国。"
  ### https://en.wikisource.org/wiki/Translation:There,_Over_There
- mon_state_formation.20.f: "#italic 那边，在那远方……越过重重山岗，\n传说有一片葱郁的树林静静延展，\n圣德查尼寺巍然矗立其间：\n它能实现天堂里所有的祈愿。\n\n那边，在那远方……越过层层山峦，\n湛蓝天穹低垂她弧形的穹顶；\n面向塞尔维亚的原野，面向战场，\n弟兄们，整装待发吧！#!\n\n尼古拉一世·彼得罗维奇-涅戈什，#italic 在那远方！#!"
+ mon_state_formation.20.f: "#italic 那边，在那远方……越过重重山岗，\n传说有一片葱郁的树林静静延展，\n圣德查尼寺巍然矗立其间：\n它能实现天堂里所有的祈愿。\n\n那边，在那远方……越过层层山峦，\n湛蓝天穹低垂她弧形的穹顶；\n面向塞尔维亚的原野，面向战场，\n弟兄们，整装待发吧！#!\n\n——尼古拉一世·彼得罗维奇‑涅戈什，#italic 《在那远方！》#!"
  mon_state_formation.20.a: "让人民知晓。"
  mon_state_formation.20.b: "让整个国家知晓。"
  mon_state_formation.20.c: "让士兵知晓。"

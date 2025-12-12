@@ -1450,54 +1450,7 @@ types politics_panel_types
 												layoutpolicy_vertical = expanding
 											}
 										}
-
-										### POLITICAL LOBBIES
-										vbox = {
-											name = "tutorial_highlight_lobbies_list"
-											layoutpolicy_horizontal = expanding
-											layoutpolicy_vertical = preferred
-
-											default_header_clean_faded = {
-												layoutpolicy_horizontal = expanding
-												size = { 0 44 }
-												blockoverride "text" {
-													text = "POLITICAL_LOBBIES"
-												}
-											}
-
-											vbox = {
-												layoutpolicy_horizontal = expanding
-												layoutpolicy_vertical = preferred
-												visible = "[Not(IsDataModelEmpty(AccessPlayer.GetPoliticalLobbies))]"
-												datamodel = "[AccessPlayer.GetPoliticalLobbies]"
-												spacing = 10
-												margin = { 10 10 }
-
-												item = {
-													political_lobby_list_item = {
-														widgetid = "[Concatenate('tutorial_highlight_lobby_', PoliticalLobby.GetNameNoFormatting)]"
-														layoutpolicy_horizontal = expanding
-													}
-												}
-											}
-
-											empty_state_dynamic_width = {
-												layoutpolicy_vertical = expanding
-												size = { 0 50 }
-
-												visible = "[IsDataModelEmpty(AccessPlayer.GetPoliticalLobbies)]"
-												text = "NO_POLITICAL_LOBBIES"
-											}
-
-											widget = {
-												visible = "[Not(IsDataModelEmpty(AccessPlayer.GetPoliticalLobbies))]"
-												layoutpolicy_horizontal = expanding
-												layoutpolicy_vertical = expanding
-											}
-										}
 									}
-
-
 
 									vertical_divider_full = {
 										size = { 2 0 }
@@ -1669,6 +1622,52 @@ types politics_panel_types
 											}
 										}
 
+										### POLITICAL LOBBIES
+										vbox = {
+											name = "tutorial_highlight_lobbies_list"
+											layoutpolicy_horizontal = expanding
+											layoutpolicy_vertical = preferred
+											margin_top = 10
+
+											default_header_clean_faded = {
+												layoutpolicy_horizontal = expanding
+												size = { 0 44 }
+												blockoverride "text" {
+													text = "POLITICAL_LOBBIES"
+												}
+											}
+
+											vbox = {
+												layoutpolicy_horizontal = expanding
+												layoutpolicy_vertical = preferred
+												visible = "[Not(IsDataModelEmpty(AccessPlayer.GetPoliticalLobbies))]"
+												datamodel = "[AccessPlayer.GetPoliticalLobbies]"
+												spacing = 10
+												margin = { 10 10 }
+
+												item = {
+													political_lobby_list_item = {
+														widgetid = "[Concatenate('tutorial_highlight_lobby_', PoliticalLobby.GetNameNoFormatting)]"
+														layoutpolicy_horizontal = expanding
+													}
+												}
+											}
+
+											empty_state_dynamic_width = {
+												layoutpolicy_vertical = expanding
+												size = { 0 50 }
+
+												visible = "[IsDataModelEmpty(AccessPlayer.GetPoliticalLobbies)]"
+												text = "NO_POLITICAL_LOBBIES"
+											}
+
+											widget = {
+												visible = "[Not(IsDataModelEmpty(AccessPlayer.GetPoliticalLobbies))]"
+												layoutpolicy_horizontal = expanding
+												layoutpolicy_vertical = expanding
+											}
+										}
+
 										widget = {
 											layoutpolicy_horizontal = expanding
 											layoutpolicy_vertical = expanding
@@ -1680,7 +1679,7 @@ types politics_panel_types
 								vbox = {
 									visible = "[Not(GetVariableSystem.Exists('politics_overview_exile_pool'))]"
 									layoutpolicy_horizontal = expanding
-									layoutpolicy_vertical = preferred
+									layoutpolicy_vertical = expanding
 									using = default_fade_in_out
 
 									datacontext = "[Country.GetElection]"
@@ -1715,18 +1714,37 @@ types politics_panel_types
 										margin = { 10 10 }
 										spacing = 10
 
-										### is not in campaign period
-										textbox = {
+										vbox = {
 											visible = "[Not(AccessPlayer.IsInElectionCampaignPeriod)]"
 											layoutpolicy_horizontal = expanding
-											size = { 0 70 }
-											margin = { 10 0 }
-											using = fontsize_large
-											text = "NEXT_ELECTION_DATE"
-											align = center|nobaseline
-											elide = right
-											fontsize_min = 14
-											using = empty_state_text_properties
+											layoutpolicy_vertical = preferred
+
+											expand = {}
+
+											textbox = {
+												layoutpolicy_horizontal = expanding
+												size = { 0 30 }
+												margin = { 10 0 }
+												using = fontsize_large
+												align = hcenter|nobaseline
+												using = elide_fontsize_min
+												text = "ELECTORAL_CONFIDENCE_WITH_VALUE"
+											}
+
+											### is not in campaign period
+											textbox = {
+												layoutpolicy_horizontal = expanding
+												size = { 0 70 }
+												margin = { 10 0 }
+												using = fontsize_large
+												text = "NEXT_ELECTION_DATE"
+												align = center|nobaseline
+												elide = right
+												fontsize_min = 14
+												using = empty_state_text_properties
+											}
+
+											expand = {}
 										}
 
 										### is in campaign period
@@ -1735,36 +1753,57 @@ types politics_panel_types
 											layoutpolicy_horizontal = expanding
 											layoutpolicy_vertical = preferred
 
-											button = {
+											vbox = {
 												layoutpolicy_horizontal = expanding
-												size = { 0 45 }
-												using = default_button
 
-												onclick = "[InformationPanelBar.OpenElectionPanel(AccessPlayer)]"
-												tooltip = "[AccessPlayer.GetElectionPollTooltip]"
+												background = {
+													using = entry_bg
+													margin_top = -2
+													margin_left = -2
+													margin_right = -2
+													margin_bottom = 2
+												}
 
-												hbox = {
-													margin = { 15 0 }
-													spacing = 5
+												button = {
+													layoutpolicy_horizontal = expanding
+													size = { 0 45 }
+													using = default_button
+													onclick = "[InformationPanelBar.OpenElectionPanel(AccessPlayer)]"
+													tooltip = "[AccessPlayer.GetElectionPollTooltip]"
 
-													icon = {
-														size = { 30 30 }
-														texture = "gfx/interface/icons/event_icons/event_default.dds"
+													hbox = {
+														margin = { 15 0 }
+														spacing = 5
+
+														icon = {
+															size = { 30 30 }
+															texture = "gfx/interface/icons/event_icons/event_default.dds"
+														}
+
+														textbox = {
+															layoutpolicy_horizontal = expanding
+															size = { 0 30 }
+															align = nobaseline
+															elide = right
+															text = "DAYS_UNTIL_ELECTION"
+														}
+
+														textbox = {
+															autoresize = yes
+															align = nobaseline
+															text = "[Election.GetDateFormatted]"
+														}
 													}
+												}
 
-													textbox = {
-														layoutpolicy_horizontal = expanding
-														size = { 0 30 }
-														text = "DAYS_UNTIL_ELECTION"
-														align = left|nobaseline
-														elide = right
-													}
-
-													textbox = {
-														autoresize = yes
-														text = "[Election.GetDateFormatted]"
-														align = nobaseline
-													}
+												textbox = {
+													visible = "[AccessPlayer.HasElections]"
+													layoutpolicy_horizontal = expanding
+													size = { 0 30 }
+													margin = { 10 0 }
+													align = hcenter|nobaseline
+													using = elide_fontsize_min
+													text = "ELECTORAL_CONFIDENCE_WITH_VALUE"
 												}
 											}
 
@@ -2038,6 +2077,8 @@ types politics_panel_types
 											}
 										}
 									}
+
+									expand = {}
 								}
 
 								### EXILE POOL
@@ -2094,7 +2135,6 @@ types politics_panel_types
 									}
 
 									empty_state_dynamic_width = {
-										#layoutpolicy_vertical = expanding
 										size = { 0 100 }
 										visible = "[IsDataModelEmpty(GetExilePool.GetExiles)]"
 										text = "NO_EXILED_AGITATORS"

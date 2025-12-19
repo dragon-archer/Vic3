@@ -1500,7 +1500,7 @@
                     limit = {
                         monarchy_clothes_trigger = yes
                     }
-                    owner ?= {
+                    scope:character.owner ?= {
                         has_technology_researched = military_statistics
                     }
                 }

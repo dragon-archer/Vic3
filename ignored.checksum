@@ -1,6 +1,6 @@
 64e8b5c162a34d08d3bb4724339ae4f6  binaries/bink2w32.dll
 6ca8d96ed9c8640470dcaf2bb3567373  binaries/bink2w64.dll
-78785222e6049a9189490888ad083f08  binaries/checksum.txt
+f43eb6e4be37919e2065972d132397f9  binaries/checksum.txt
 e03b975eebb4faa0d04d924b0fc2a82d  binaries/crash_reporter/binaries/CrashReporter.exe
 2f3ed665014bdb0ddb99a02edea92f1e  binaries/cream_api.ini
 0edb00ec028121a0c4e03e9fba3ea234  binaries/D3D12MemAlloc.natvis
@@ -35,9 +35,9 @@ e034d987448b3f5130794637a375e792  binaries/pops_api.dll
 72ea330404a78bee7375bad7857a8f71  binaries/steam_api64.dll
 6392acae79da837e3a638fbd0743bc0f  binaries/steam_api64.lib
 72ea330404a78bee7375bad7857a8f71  binaries/steam_api64_o.dll
-4335d104cbe0fcbf6435e7b668f0591d  binaries/victoria3.exe
+c4d091c950d5035cdc770980397aee92  binaries/victoria3.exe
 e662b083c927cfbeffa43f63d31c50dd  binaries/victoria3.exe.manifest
-510561c308d4f070a3757949158ffef8  binaries/victoria3_win_console.exe
+4fa9321d720c7716ac907cd595f1b4d3  binaries/victoria3_win_console.exe
 e662b083c927cfbeffa43f63d31c50dd  binaries/victoria3_win_console.exe.manifest
 d98fba4512b1a284523e17f28f0a873a  binaries/WinPixEventRuntime.dll
 aabd41c0a2fecb9384201bbfc7dc25af  binaries/WinPixEventRuntime.lib
@@ -542,7 +542,7 @@ dd724683b76fd757998d9486ac7826ee  game/content_source/map_objects/masks/mask_pin
 ff2eee2a198960a72067392fec26ec5a  game/content_source/map_objects/masks/mask_rainforest_01.png
 b676c45afd45dbe3a0934161a820317d  game/content_source/map_objects/masks/mask_savanna_tree_01.png
 a9c4696eb51759e1cd818ae6069e9a79  game/content_source/map_objects/masks/mask_sparse_rainforest_01.png
-d714d4315de89d69d87d8c7521045aa1  game/dlc/dlc001_preorder/sound/banks/DLC_V2_OST.bank
+e18f07b1c910b89c626f892b7a9634aa  game/dlc/dlc001_preorder/sound/banks/DLC_V2_OST.bank
 7312d039505a9ae018f4bab660b8ce97  game/dlc/dlc001_preorder/thumbnail.png
 ee56245b10937d9adcd2def9b9e26927  game/dlc/dlc001_preorder/Victoria 2 Remastered Soundtrack/Flac/01 - Victoria 2 OST Remastered - For God and Queen.flac
 cecd847778d3f9f89595e4be6f4689dd  game/dlc/dlc001_preorder/Victoria 2 Remastered Soundtrack/Flac/02 - Victoria 2 OST Remastered - Coronation.flac
@@ -2537,6 +2537,8 @@ ea6cd10c2f64078544edd118583b09dd  game/gfx/coat_of_arms/colored_emblems/ce_hamme
 55207455d4f99e7a27ca61de92e7bc74  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_india.dds
 2861537b91033bac292e67a56f15f314  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_india_02.dds
 5f72e420bd4760e208ea3b0355989019  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_italy.dds
+a84b0258388da63f8b130e75c28caa1e  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_pcdi.dds
+e2e1565982030e18cce79411c6ced79d  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_portugal.dds
 be393988377bf75d6b607df8ff75935c  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_spain.dds
 5c216c01ec2ff292c1dba962c9f1dfd6  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_spain_wreath.dds
 aba2b6c31a518cbac941db4ea7211f7c  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_spain_wreath_star.dds
@@ -2544,6 +2546,7 @@ aba2b6c31a518cbac941db4ea7211f7c  game/gfx/coat_of_arms/colored_emblems/ce_hamme
 01268691f09c3148d867f1bd0984257c  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_star_ussr.dds
 b46497f64cf192c7eb0b84b966ac937c  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_star_wreath.dds
 9f22cfdf9278d945aba286cd8de5d586  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_wreath.dds
+a234491bc7601d0fbc8ee42d1c12e157  game/gfx/coat_of_arms/colored_emblems/ce_hammer_sickle_wreath_pcdi.dds
 eb4fc6009ee072ecdd1ad7aba4db20c2  game/gfx/coat_of_arms/colored_emblems/ce_hammer_wheat.dds
 a3b46ae62b4b1b1589e1d3d1ffa558a9  game/gfx/coat_of_arms/colored_emblems/ce_hand.dds
 5fe9cc66c090317668757001846ba104  game/gfx/coat_of_arms/colored_emblems/ce_hand_dreaming.dds
@@ -2562,6 +2565,7 @@ d6ed477a2cee86b3623a9ad0a0f32dd4  game/gfx/coat_of_arms/colored_emblems/ce_horse
 629e55ce5109ff79388b3e3bc1fc5832  game/gfx/coat_of_arms/colored_emblems/ce_inuksuk.dds
 94042ddb0f92c459670697ef82aad73f  game/gfx/coat_of_arms/colored_emblems/ce_irish_republic.dds
 4d8ec5da32a7c8455f4370fd0ebd7c55  game/gfx/coat_of_arms/colored_emblems/ce_iron_cross.dds
+e5cffee4c1ef56142d7854c172021b49  game/gfx/coat_of_arms/colored_emblems/ce_italian_wheat_wreath.dds
 f3aded313ad85df29a75e370feec2ddd  game/gfx/coat_of_arms/colored_emblems/ce_joseon_centre_element.dds
 2715c19797dc1b9226503e5a53edafcf  game/gfx/coat_of_arms/colored_emblems/ce_joseon_trigrams.dds
 6f2ef7f55411de2b59ea03809745cc7b  game/gfx/coat_of_arms/colored_emblems/ce_junagadh_badge.dds
@@ -16733,7 +16737,7 @@ a8db1d36a24166aa971f48859a9aceb8  game/sound/banks/Events.bank
 c5367e3646854cb53ce49e2a6cb8936c  game/sound/banks/Interface.bank
 6ff9abe15e65d828eb3970845a3320a4  game/sound/banks/Master Bank.bank
 b849bda4bd8491fd594f806e4e852966  game/sound/banks/Master Bank.strings.bank
-fd5efbded9a19fa620372aa28a1be0bc  game/sound/banks/Soundtrack.bank
+8bb71a5b79cdaacaef0a0b1e2464b846  game/sound/banks/Soundtrack.bank
 cb3e02273531a5e474cca52d09712a05  game/sound/banks/Vehicles.bank
 57d3bd05104f7e264440581e8a721952  game/sound/banks/VFX.bank
 a5c066a15dba1cbc36f34518218ca64d  game/sound/map/ambience/sensor_mask_default.png
@@ -16857,7 +16861,7 @@ d46e55a2c3b1c55963fc36d2ee7ba1e2  launcher/assets/launcher-background.jpg
 18551a206fae4d2b15fa347ae00c8108  launcher/assets/theme-settings.json
 2b793071971429d90fbf923a18adc4c1  launcher/dowser.exe
 bbde44894e240ad389f06aeeaf6e3e0e  launcher/launcher-installer-windows_2025.14.exe
-be72346ad5542ab00e3cbf353aedc629  launcher/launcher-settings.json
+50743773bc6fea1a63022353b0bbcf58  launcher/launcher-settings.json
 145f16799832559189a9084c891e2c0e  launcher/settings-layout.json
 cf90ffe8888dbe0990d538c5d8a13339  platform_specific_game_data/default_log_settings_live.json
 bfdbb86a10e35e96760e487ebc6a81c1  platform_specific_game_data/log_settings_live.json

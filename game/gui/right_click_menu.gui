@@ -1875,7 +1875,7 @@ right_click_menu = {
 			blockoverride "properties" {
 				enabled = "[IsValid(AccessPlayer.StartNegotiationWith(InterestGroup.Self))]"
 				onclick = "[Execute(AccessPlayer.StartNegotiationWith(InterestGroup.Self))]"
-				tooltip = "NEGOTIATE_LAW_INTEREST_GROUP_BUTTON_TOOLTIP" 
+				tooltip = "NEGOTIATE_LAW_INTEREST_GROUP_BUTTON_TOOLTIP"
 			}
 
 			blockoverride "texture" {
@@ -5053,7 +5053,7 @@ right_click_menu = {
 				item = {
 					container = {
 						right_click_menu_item = {
-							visible = "[Not(Law.IsActive)]"
+							visible = "[And(Not(Law.IsActive), Law.IsVisible)]"
 
 							blockoverride "properties" {
 								tooltip = "IMPOSE_LAW_TOOLTIP"
@@ -8021,20 +8021,20 @@ template article_input_fixed_bottom {
 				spacing = 5
 				margin = { 10 10 }
 				using = tooltip_se
-				tooltip = "[SwayOffer.GetWouldAcceptSwayDesc(SwayCountryPanel.GetDiplomaticPlay, GetPlayer.Self, SwayCountryPanel.GetCountry)]"
+				tooltip = "[SwayOffer.GetWouldAcceptSwayDescWithArticle(SwayCountryPanel.GetDiplomaticPlay, GetPlayer.Self, SwayCountryPanel.GetCountry, ArticleDraft.Self)]"
 
 				background = {
 					using = simple_frame
 				}
 
 				icon = {
-					visible = "[SwayOffer.WouldAcceptSway(SwayCountryPanel.GetDiplomaticPlay, GetPlayer.Self, SwayCountryPanel.GetCountry)]"
+					visible = "[SwayOffer.WouldAcceptSwayWithArticle(SwayCountryPanel.GetDiplomaticPlay, GetPlayer.Self, SwayCountryPanel.GetCountry, ArticleDraft.Self)]"
 					size = { 22 22 }
 					texture = "gfx/interface/icons/generic_icons/approval_icon.dds"
 				}
 
 				icon = {
-					visible = "[Not(SwayOffer.WouldAcceptSway(SwayCountryPanel.GetDiplomaticPlay, GetPlayer.Self, SwayCountryPanel.GetCountry))]"
+					visible = "[Not(SwayOffer.WouldAcceptSwayWithArticle(SwayCountryPanel.GetDiplomaticPlay, GetPlayer.Self, SwayCountryPanel.GetCountry, ArticleDraft.Self))]"
 					size = { 22 22 }
 					texture = "gfx/interface/icons/generic_icons/disapproval_icon.dds"
 				}
@@ -8045,7 +8045,7 @@ template article_input_fixed_bottom {
 					align = nobaseline
 					max_width = 40
 					using = elide_fontsize_min
-					text = "[SwayOffer.GetAcceptSwayScore(SwayCountryPanel.GetDiplomaticPlay, GetPlayer.Self, SwayCountryPanel.GetCountry)|+=0]"
+					text = "[SwayOffer.GetAcceptSwayScoreWithArticle(SwayCountryPanel.GetDiplomaticPlay, GetPlayer.Self, SwayCountryPanel.GetCountry, ArticleDraft.Self)|+=0]"
 				}
 			}
 		}

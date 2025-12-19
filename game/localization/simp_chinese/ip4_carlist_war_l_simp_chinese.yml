@@ -99,3 +99,8 @@
  # Triggers
  CARLIST_WAR_ROYAL_EXPEDITION_MINIMUM_SCORE: "#b 分数#!的最小值至少为[SCOPE.ScriptValue('carlist_war_royal_expedition_min_score')|v0]"
  the_two_spains_tt: "我们很快将面临#b $je_the_two_spains$#!的现实"
+ # Notifications
+ notification_carlist_war_carlist_terror_name: "$spa_carlist_terror$"
+ notification_carlist_war_carlist_terror_desc: "卡洛斯派支持者以及当地土匪正在[SCOPE.sState('upper_andalusia_scope').GetName]和[SCOPE.sState('lower_andalusia_scope').GetName]散播恐惧！\n$notification_carlist_War_carlist_terror_TT_HAS_HAPPENED$"
+ notification_carlist_war_carlist_terror_tooltip: "#header $notification_carlist_war_carlist_terror_name$#!\n$TOOLTIP_DELIMITER$\n$notification_carlist_war_carlist_terror_desc$"
+ notification_carlist_War_carlist_terror_TT_HAS_HAPPENED: "已经发生：\n#indent_newline:3 $EFFECT_LIST_BULLET$将[SCOPE.ScriptValue('carlist_war_carlist_terror_devastation')|n0][concept_devastation]和#tooltippable;tooltip:[GetRawTextTooltipTag(GetStaticModifier('spa_carlist_terror').GetDesc)] [GetStaticModifier('spa_carlist_terror').GetName]#!添加到[SCOPE.sState('upper_andalusia_scope').GetName]和[SCOPE.sState('lower_andalusia_scope').GetName]#!"

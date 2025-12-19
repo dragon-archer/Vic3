@@ -140,6 +140,7 @@
  spanish_new_world_events.4.b_2: "Регионом [GetStrategicRegion('region_caribbean').GetName] будут управлять из [SCOPE.sCountry('new_spain_scope').GetAltName('RU_CL_RP')]."
  spanish_new_world_events.4.c: "Сохранить текущую администрацию."
  modifier_maintained_local_rule: "Осталось местное правление"
+ modifier_reformed_captaincy_general: "Реформированное генерал-капитанство"
  set_up_new_spain_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetName] буд[SCOPE.sCountry('relevant_country_scope').GetAltNameNoFormatting('RU_CL_END_UT')] владеть всеми [Concept('concept_state', 'областями')] или [Concept('concept_subject', 'субъектами')] [ROOT.GetCountry.GetAltName('RU_CL_RP')] в Северной Америке"
  set_up_new_grenada_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetName] буд[SCOPE.sCountry('relevant_country_scope').GetAltNameNoFormatting('RU_CL_END_UT')] владеть всеми [Concept('concept_state', 'областями')] или [Concept('concept_subject', 'субъектами')] [ROOT.GetCountry.GetAltName('RU_CL_RP')] в [GetStrategicRegion('region_gran_colombia').GetAltName('RU_CL_PP')]"
  set_up_peru_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetName] буд[SCOPE.sCountry('relevant_country_scope').GetAltNameNoFormatting('RU_CL_END_UT')] владеть всеми [Concept('concept_state', 'областями')] или [Concept('concept_subject', 'субъектами')] [ROOT.GetCountry.GetAltName('RU_CL_RP')] в [GetStrategicRegion('region_andes').GetAltName('RU_CL_PP')]"

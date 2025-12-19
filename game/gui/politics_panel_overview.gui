@@ -1808,6 +1808,7 @@ types politics_panel_types
 											}
 
 											hbox = {
+												tooltip = "ELECTION_VOTER_TURNOUT_TOOLTIP"
 												layoutpolicy_horizontal = expanding
 												layoutpolicy_vertical = preferred
 												margin = { 10 10 }
@@ -1827,27 +1828,26 @@ types politics_panel_types
 													textbox = {
 														layoutpolicy_horizontal = expanding
 														size = { 0 30 }
-														text = "[Election.GetTotalVotersRaw|K]"
+														raw_text = "[Election.GetVoterTurnout|%0]"
 														using = fontsize_large
 														default_format = "#variable"
 													}
 
 													widget = { size = { 10 15 }}
 
-													# Politically Unaligned
+													# eligible voters
 													textbox = {
 														layoutpolicy_horizontal = expanding
 														size = { 0 30 }
-														text = "concept_politically_unaligned"
+														text = "ELIGIBLE_VOTERS"
 														elide = right
 														default_format = "#title"
 													}
 													textbox = {
 														layoutpolicy_horizontal = expanding
 														size = { 0 30 }
-														text = "[GetPlayer.GetInactivePopulation|kv]"
+														raw_text = "@population![Election.GetEligibleVoters|K]"
 														using = fontsize_large
-														tooltip = "POLITICALLY_UNALIGNED_POPULATION_TOOLTIP"
 														default_format = "#variable"
 													}
 
@@ -2003,6 +2003,7 @@ types politics_panel_types
 											}
 
 											vbox = {
+												tooltip = "ELECTION_VOTER_TURNOUT_TOOLTIP"
 												layoutpolicy_horizontal = expanding
 												layoutpolicy_vertical = preferred
 
@@ -2026,8 +2027,6 @@ types politics_panel_types
 													# total voters
 													vbox = {
 														layoutpolicy_horizontal = expanding
-														tooltip = "POLITICALLY_INVOLVED_POPULATION_TOOLTIP"
-
 														textbox = {
 															layoutpolicy_horizontal = expanding
 															size = { 0 25 }
@@ -2040,7 +2039,7 @@ types politics_panel_types
 															layoutpolicy_horizontal = expanding
 															size = { 0 25 }
 															align = right|nobaseline
-															text = "[Election.GetTotalVotersRaw|K]"
+															raw_text = "[Election.GetVoterTurnout|%0]"
 															default_format = "#variable"
 														}
 													}
@@ -2050,24 +2049,22 @@ types politics_panel_types
 														layoutpolicy_vertical = preferred
 													}
 
-													# Politically Unaligned
+													# eligible voters
 													vbox = {
 														layoutpolicy_horizontal = expanding
-														tooltip = "POLITICALLY_UNALIGNED_POPULATION_TOOLTIP"
-
 														textbox = {
 															layoutpolicy_horizontal = expanding
 															size = { 0 25 }
-															text = "concept_politically_unaligned"
+															text = "ELIGIBLE_VOTERS"
 															elide = right
-															align = nobaseline
+															align = right|nobaseline
 															default_format = "#title"
 														}
 														textbox = {
 															layoutpolicy_horizontal = expanding
 															size = { 0 25 }
-															align = nobaseline
-															text = "[GetPlayer.GetInactivePopulation|kv]"
+															align = right|nobaseline
+															raw_text = "@population![Election.GetEligibleVoters|K]"
 															default_format = "#variable"
 														}
 													}

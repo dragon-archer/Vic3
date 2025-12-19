@@ -1965,7 +1965,7 @@ types TooltipTypes
 				parentanchor = hcenter
 				spacing = 2
 				direction = vertical
-				
+
 				block "war_goal_before_text" {}
 
 				flowcontainer = {
@@ -2284,21 +2284,7 @@ types TooltipTypes
 				}
 			}
 
-			custom_tooltip_newline = {
-				visible = "[Not(Or(Law.IsActive, Law.IsBeingEnacted))]"
-			}
-
-			custom_tooltip_textbox = {
-				visible = "[Not(StringIsEmpty(Law.GetLawType.GetBlockingRequirements(GetPlayer.Self)))]"
-				default_format = "#title"
-				text = "DATA_LAW_REQUIREMENTS_HEADER"
-			}
-
-			custom_tooltip_textbox_with_empty_line = {
-				visible = "[Not(StringIsEmpty(Law.GetLawType.GetBlockingRequirements(GetPlayer.Self)))]"
-				margin_left = 10
-				text = "[Law.GetLawType.GetBlockingRequirements(GetPlayer.Self)]"
-			}
+			custom_tooltip_newline = {}
 
 			custom_tooltip_textbox = {
 				visible = "[Not(StringIsEmpty(Law.GetLawType.GetAdditionalEffectDesc))]"
@@ -2318,7 +2304,7 @@ types TooltipTypes
 				text = "DATA_LAW_EFFECTS_HEADER"
 			}
 
-			custom_tooltip_textbox = {
+			custom_tooltip_textbox_with_empty_line = {
 				visible = "[Not(StringIsEmpty(Law.GetLawType.GetEffectDesc(GetPlayer.Self)))]"
 				margin_left = 10
 				text = "[Law.GetLawType.GetEffectDesc(GetPlayer.Self)]"
@@ -2342,13 +2328,17 @@ types TooltipTypes
 				text = "[Law.GetOnActivateDesc]"
 			}
 
+			custom_tooltip_newline = {
+				visible = "[And(Or(Not(StringIsEmpty(Law.GetOnEnactDesc)), Not(StringIsEmpty(Law.GetOnActivateDesc))), Not(Law.IsActive))]"
+			}
+
 			custom_tooltip_textbox = {
 				visible = "[And(Not(StringIsEmpty(Law.GetOnDeactivateDesc)), Law.IsActive)]"
 				default_format = "#title"
 				text = "ON_REVOKE"
 			}
 
-			custom_tooltip_textbox = {
+			custom_tooltip_textbox_with_empty_line = {
 				visible = "[And(Not(StringIsEmpty(Law.GetOnDeactivateDesc)), Law.IsActive)]"
 				margin_left = 10
 				text = "[Law.GetOnDeactivateDesc]"
@@ -2356,7 +2346,9 @@ types TooltipTypes
 
 			amendment_list_flowcontainer = {}
 
-			custom_tooltip_newline = {}
+			custom_tooltip_newline = {
+				visible = "[Not(IsDataModelEmpty(Law.GetAllAmendments))]"
+			}
 
 			custom_tooltip_textbox = {
 				visible = "[Law.IsSupported]"
@@ -2373,7 +2365,7 @@ types TooltipTypes
 			custom_tooltip_textbox = {
 				text = "DATA_LAW_MOVEMENT_AND_AGITATORS_TITLE"
 			}
-			
+
 			agitators_movements_endorsement_list = {
 				margin_left = 10
 			}
@@ -2488,27 +2480,6 @@ types TooltipTypes
 			custom_tooltip_newline = {}
 
 			custom_tooltip_textbox = {
-				visible = "[Not(StringIsEmpty(Amendment.GetType.GetUnlocks))]"
-				text = "[Amendment.GetType.GetUnlocks]"
-			}			
-
-			tooltip_divider = {
-				visible = "[Not(StringIsEmpty(Amendment.GetType.GetUnlocks))]"
-			}		
-		
-			custom_tooltip_textbox = {
-				visible = "[Not(StringIsEmpty(Amendment.GetType.GetEffectsDesc))]"
-				default_format = "#title"
-				text = "DATA_AMENDMENTS_EFFECTS_HEADER"
-			}
-
-			custom_tooltip_textbox_with_empty_line = {
-				visible = "[Not(StringIsEmpty(Amendment.GetType.GetEffectsDesc))]"
-				margin_left = 10
-				text = "[Amendment.GetType.GetEffectsDesc]"
-			}
-
-			custom_tooltip_textbox = {
 				visible = "[Not(Amendment.GetType.GetModifier.IsEmpty)]"
 				default_format = "#title"
 				text = "DATA_AMENDMENTS_MODIFIERS_HEADER"
@@ -2547,6 +2518,39 @@ types TooltipTypes
 				visible = "[Not(Amendment.GetType.GetSponsorModifier.IsEmpty)]"
 				margin_left = 10
 				text = "[Amendment.GetType.GetSponsorModifier.GetDesc]"
+			}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(Amendment.GetType.GetUnlocks))]"
+				text = "[Amendment.GetType.GetUnlocks]"
+			}
+
+			tooltip_divider = {
+				visible = "[Not(StringIsEmpty(Amendment.GetType.GetUnlocks))]"
+			}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(Amendment.GetOnAmendedEffectsDesc))]"
+				default_format = "#title"
+				text = "DATA_AMENDMENTS_AMENDED_HEADER"
+			}
+
+			custom_tooltip_textbox_with_empty_line = {
+				visible = "[Not(StringIsEmpty(Amendment.GetOnAmendedEffectsDesc))]"
+				margin_left = 10
+				text = "[Amendment.GetOnAmendedEffectsDesc]"
+			}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(Amendment.GetOnRepealEffectsDesc))]"
+				default_format = "#title"
+				text = "DATA_AMENDMENTS_REPEAL_HEADER"
+			}
+
+			custom_tooltip_textbox_with_empty_line = {
+				visible = "[Not(StringIsEmpty(Amendment.GetOnRepealEffectsDesc))]"
+				margin_left = 10
+				text = "[Amendment.GetOnRepealEffectsDesc]"
 			}
 
 			tooltip_divider = {}
@@ -2713,10 +2717,16 @@ types TooltipTypes
 				text = "DATA_LAW_EFFECTS_HEADER"
 			}
 
-			custom_tooltip_textbox_with_empty_line = {
+			custom_tooltip_textbox = {
 				visible = "[Not(StringIsEmpty(Law.GetLawType.GetEffectDesc(Country.Self)))]"
 				margin_left = 10
 				text = "[Law.GetLawType.GetEffectDesc(Country.Self)]"
+			}
+
+			amendment_list_flowcontainer = {}
+
+			custom_tooltip_newline = {
+				visible = "[Not(IsDataModelEmpty(Law.GetAllAmendments))]"
 			}
 
 			custom_tooltip_textbox = {
@@ -2818,6 +2828,95 @@ types TooltipTypes
 				text = "[AmendmentType.GetSponsorModifier.GetDesc]"
 			}
 			
+			tooltip_divider = {}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(AmendmentType.GetDesc))]"
+				default_format = "#lore"
+				text = "[AmendmentType.GetDesc]"
+			}
+		}
+	}
+
+	type FancyTooltip_AmendmentTypeWithLaw = FancyTooltipWidgetType {
+		blockoverride "text" {} # Fully replaced by everything in tooltip_content_after
+
+		blockoverride "icon_size" {
+			size = { 70% 70% }
+		}
+
+		blockoverride "name" {
+			raw_text = "[AmendmentType.GetNameNoFormatting]"
+		}
+
+		blockoverride "type" {
+			text = "[concept_amendment]"
+		}
+
+		blockoverride "tooltip_content_after" {
+			custom_tooltip_textbox = {
+				text = "DATA_AMENDMENT_TYPE_PARENT_LAW_OR_NONE"
+			}
+
+			tooltip_divider = {
+				visible = "[Not(StringIsEmpty(AmendmentType.GetUnlocks))]"
+			}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(AmendmentType.GetUnlocks))]"
+				text = "[AmendmentType.GetUnlocks]"
+			}
+
+			tooltip_divider = {}
+
+			custom_tooltip_textbox = {
+				text = "EFFECTS_TITLE"
+			}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(AmendmentType.GetModifier.GetDesc))]"
+				default_format = "#lore"
+				text = "[AmendmentType.GetModifier.GetDesc]"
+			}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(AmendmentType.GetSponsorModifier.GetDesc))]"
+				default_format = "#lore"
+				text = "SPONSOR_MODIFIER_HEADER"
+			}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(AmendmentType.GetSponsorModifier.GetDesc))]"
+				default_format = "#lore"
+				text = "[AmendmentType.GetSponsorModifier.GetDesc]"
+			}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(AmendmentType.GetOnAmendedEffectsDesc(Law.Self)))]"
+				default_format = "#lore"
+				text = "DATA_AMENDMENTS_AMENDED_HEADER"
+			}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(AmendmentType.GetOnAmendedEffectsDesc(Law.Self)))]"
+				default_format = "#lore"
+				margin_left = 10
+				text = "[AmendmentType.GetOnAmendedEffectsDesc(Law.Self)]"
+			}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(AmendmentType.GetOnRepealEffectsDesc(Law.Self)))]"
+				default_format = "#lore"
+				text = "DATA_AMENDMENTS_REPEAL_HEADER"
+			}
+
+			custom_tooltip_textbox = {
+				visible = "[Not(StringIsEmpty(AmendmentType.GetOnRepealEffectsDesc(Law.Self)))]"
+				default_format = "#lore"
+				margin_left = 10
+				text = "[AmendmentType.GetOnRepealEffectsDesc(Law.Self)]"
+			}
+
 			tooltip_divider = {}
 
 			custom_tooltip_textbox = {
@@ -8285,7 +8384,7 @@ types TooltipTypes
 		blockoverride "type" {
 			text = "TOOLTIP_TYPE_GEOGRAPHIC_REGION"
 		}
-		
+
 		blockoverride "tooltip_content_after" {
 			custom_tooltip_textbox = {
 				visible = "[Not(StringIsEmpty(GeographicRegion.GetUnlocks))]"
@@ -10336,6 +10435,29 @@ types TooltipTypes
 				blockoverride "mobilization_icon_size" {
 					size = { 50 50 }
 				}
+			}
+		}
+		flowcontainer = {
+			min_width = @tooltip_fixed_width
+			max_width = @tooltip_fixed_width
+			direction = vertical
+			visible = "[InDebugMode]"
+
+			DefaultTooltipTextBox = {
+				text = "[MilitaryFormation.GetCommonDebugInfo]"
+				align = nobaseline
+				autoresize = yes
+				multiline = yes
+				maximumsize = { 500 -1 }
+			}
+
+			DefaultTooltipTextBox = {
+				visible = "[Not(MilitaryFormation.GetCountry.IsPlayer)]"
+				text = "[MilitaryFormation.GetAIDebugInfo]"
+				align = nobaseline
+				autoresize = yes
+				multiline = yes
+				maximumsize = { 500 -1 }
 			}
 		}
 	}

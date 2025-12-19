@@ -2940,7 +2940,7 @@ types information_panels_types
 					using = dark_area
 					alpha = 0.35
 				}
-				
+
 				icon = {
 					visible = "[Law.IsSelected]"
 					size = { 100% 100% }
@@ -3933,23 +3933,13 @@ types information_panels_types
 			}
 
 			textbox = {
-				visible = "[Not(StringIsEmpty(Amendment.GetType.GetUnlocks))]"
+				visible = "[Not(StringIsEmpty(Amendment.GetType.GetSponsorModifier.GetDesc))]"
 				autoresize = yes
 				align = nobaseline
 				min_width = 500
 				max_width = 500
 				multiline = yes
-				text = "[Amendment.GetType.GetUnlocks]"
-			}
-
-			textbox = {
-				visible = "[Not(StringIsEmpty(Amendment.GetType.GetEffectsDesc))]"
-				autoresize = yes
-				align = nobaseline
-				min_width = 500
-				max_width = 500
-				multiline = yes
-				text = "[Amendment.GetType.GetEffectsDesc]"
+				text = "DATA_AMENDMENTS_SPONSOR_MODIFIERS_HEADER"
 			}
 
 			textbox = {
@@ -3960,6 +3950,16 @@ types information_panels_types
 				max_width = 500
 				multiline = yes
 				text = "[Amendment.GetType.GetSponsorModifier.GetDesc]"
+			}
+
+			textbox = {
+				visible = "[Not(StringIsEmpty(Amendment.GetType.GetModifier.GetDesc))]"
+				autoresize = yes
+				align = nobaseline
+				min_width = 500
+				max_width = 500
+				multiline = yes
+				text = "DATA_AMENDMENTS_MODIFIERS_HEADER"
 			}
 
 			textbox = {
@@ -3990,6 +3990,56 @@ types information_panels_types
 				max_width = 500
 				multiline = yes
 				text = "[Amendment.GetType.GetInstitutionModifierDesc]"
+			}
+
+			textbox = {
+				visible = "[Not(StringIsEmpty(Amendment.GetType.GetUnlocks))]"
+				autoresize = yes
+				align = nobaseline
+				min_width = 500
+				max_width = 500
+				multiline = yes
+				text = "[Amendment.GetType.GetUnlocks]"
+			}
+
+			textbox = {
+				visible = "[Not(StringIsEmpty(Amendment.GetOnAmendedEffectsDesc))]"
+				autoresize = yes
+				align = nobaseline
+				min_width = 500
+				max_width = 500
+				multiline = yes
+				text = "DATA_AMENDMENTS_AMENDED_HEADER"
+			}
+
+			textbox = {
+				visible = "[Not(StringIsEmpty(Amendment.GetOnAmendedEffectsDesc))]"
+				autoresize = yes
+				align = nobaseline
+				min_width = 500
+				max_width = 500
+				multiline = yes
+				text = "[Amendment.GetOnAmendedEffectsDesc]"
+			}
+
+			textbox = {
+				visible = "[Not(StringIsEmpty(Amendment.GetOnRepealEffectsDesc))]"
+				autoresize = yes
+				align = nobaseline
+				min_width = 500
+				max_width = 500
+				multiline = yes
+				text = "DATA_AMENDMENTS_REPEAL_HEADER"
+			}
+
+			textbox = {
+				visible = "[Not(StringIsEmpty(Amendment.GetOnRepealEffectsDesc))]"
+				autoresize = yes
+				align = nobaseline
+				min_width = 500
+				max_width = 500
+				multiline = yes
+				text = "[Amendment.GetOnRepealEffectsDesc]"
 			}
 		}
 	}
@@ -4115,24 +4165,11 @@ types information_panels_types
 				}
 
 				textbox = {
-					visible = "[Not(StringIsEmpty(Amendment.GetType.GetUnlocks))]"
+					visible = "[Not(StringIsEmpty(Amendment.GetType.GetSponsorModifier.GetDesc))]"
 					autoresize = yes
 					align = nobaseline
 					multiline = yes
-					text = "[Amendment.GetType.GetUnlocks]"
-
-					block "effects_min_max_widths" {
-						min_width = 550
-						max_width = 550
-					}
-				}
-
-				textbox = {
-					visible = "[Not(StringIsEmpty(Amendment.GetType.GetEffectsDesc))]"
-					autoresize = yes
-					align = nobaseline
-					multiline = yes
-					text = "[Amendment.GetType.GetEffectsDesc]"
+					text = "DATA_AMENDMENTS_SPONSOR_MODIFIERS_HEADER"
 
 					block "effects_min_max_widths" {
 						min_width = 550
@@ -4145,7 +4182,21 @@ types information_panels_types
 					autoresize = yes
 					align = nobaseline
 					multiline = yes
+					margin_left = 10
 					text = "[Amendment.GetType.GetSponsorModifier.GetDesc]"
+
+					block "effects_min_max_widths" {
+						min_width = 550
+						max_width = 550
+					}
+				}
+
+				textbox = {
+					visible = "[Not(StringIsEmpty(Amendment.GetType.GetModifier.GetDesc))]"
+					autoresize = yes
+					align = nobaseline
+					multiline = yes
+					text = "DATA_AMENDMENTS_MODIFIERS_HEADER"
 
 					block "effects_min_max_widths" {
 						min_width = 550
@@ -4167,7 +4218,7 @@ types information_panels_types
 				}
 
 				widget = {
-					visible = "[And( Or4( Not(StringIsEmpty(Amendment.GetType.GetUnlocks)), Not(StringIsEmpty(Amendment.GetType.GetEffectsDesc)), Not(StringIsEmpty(Amendment.GetType.GetSponsorModifier.GetDesc)), Not(StringIsEmpty(Amendment.GetType.GetModifier.GetDesc)) ), Or( Not(StringIsEmpty(Amendment.GetType.GetTaxModifierDesc(GetPlayer.Self))), Not(StringIsEmpty(Amendment.GetType.GetInstitutionModifierDesc)) ))]"
+					visible = "[And( Or5( Not(StringIsEmpty(Amendment.GetType.GetUnlocks)), Not(StringIsEmpty(Amendment.GetOnAmendedEffectsDesc)), Not(StringIsEmpty(Amendment.GetOnRepealEffectsDesc)), Not(StringIsEmpty(Amendment.GetType.GetSponsorModifier.GetDesc)), Not(StringIsEmpty(Amendment.GetType.GetModifier.GetDesc)) ), Or( Not(StringIsEmpty(Amendment.GetType.GetTaxModifierDesc(GetPlayer.Self))), Not(StringIsEmpty(Amendment.GetType.GetInstitutionModifierDesc)) ))]"
 					size = { 15 15 }
 				}
 
@@ -4190,6 +4241,73 @@ types information_panels_types
 					align = nobaseline
 					multiline = yes
 					text = "[Amendment.GetType.GetInstitutionModifierDesc]"
+
+					block "effects_min_max_widths" {
+						min_width = 550
+						max_width = 550
+					}
+				}
+
+				textbox = {
+					visible = "[Not(StringIsEmpty(Amendment.GetType.GetUnlocks))]"
+					autoresize = yes
+					align = nobaseline
+					multiline = yes
+					text = "[Amendment.GetType.GetUnlocks]"
+
+					block "effects_min_max_widths" {
+						min_width = 550
+						max_width = 550
+					}
+				}
+
+				textbox = {
+					visible = "[Not(StringIsEmpty(Amendment.GetOnAmendedEffectsDesc))]"
+					autoresize = yes
+					align = nobaseline
+					multiline = yes
+					text = "DATA_AMENDMENTS_AMENDED_HEADER"
+
+					block "effects_min_max_widths" {
+						min_width = 550
+						max_width = 550
+					}
+				}
+
+				textbox = {
+					visible = "[Not(StringIsEmpty(Amendment.GetOnAmendedEffectsDesc))]"
+					autoresize = yes
+					align = nobaseline
+					multiline = yes
+					margin_left = 10
+					text = "[Amendment.GetOnAmendedEffectsDesc]"
+
+					block "effects_min_max_widths" {
+						min_width = 550
+						max_width = 550
+					}
+				}
+
+				textbox = {
+					visible = "[Not(StringIsEmpty(Amendment.GetOnRepealEffectsDesc))]"
+					autoresize = yes
+					align = nobaseline
+					multiline = yes
+					text = "DATA_AMENDMENTS_REPEAL_HEADER"
+
+					block "effects_min_max_widths" {
+						min_width = 550
+						max_width = 550
+					}
+				}
+
+				textbox = {
+					visible = "[Not(StringIsEmpty(Amendment.GetOnRepealEffectsDesc))]"
+					autoresize = yes
+					align = nobaseline
+					multiline = yes
+					margin_left = 10
+					text = "[Amendment.GetOnRepealEffectsDesc]"
 
 					block "effects_min_max_widths" {
 						min_width = 550

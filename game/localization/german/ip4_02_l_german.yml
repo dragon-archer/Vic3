@@ -140,6 +140,7 @@
  spanish_new_world_events.4.b_2: "Die [GetStrategicRegion('region_caribbean').GetName] soll [SCOPE.sCountry('new_spain_scope').GetAltName('VON')] verwaltet werden."
  spanish_new_world_events.4.c: "Lassen wir die derzeitige Verwaltung, wie sie ist."
  modifier_maintained_local_rule: "Örtliche Herrschaft belassen"
+ modifier_reformed_captaincy_general: "Reformiertes Generalkapitanat"
  set_up_new_spain_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetAltName('NOM')|U] erhält alle [Concept('concept_state', 'Staaten')] in Nordamerika im Besitz [ROOT.GetCountry.GetAltName('VON')] oder den [Concept('concept_subject','$concept_subjects$n')] dieser Nation"
  set_up_new_grenada_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetAltName('NOM')|U] erhält alle [Concept('concept_state', 'Staaten')] in [GetStrategicRegion('region_gran_colombia').GetName] im Besitz [ROOT.GetCountry.GetAltName('VON')] oder den [Concept('concept_subject','$concept_subjects$n')] dieser Nation"
  set_up_peru_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetAltName('NOM')|U] erhält alle [Concept('concept_state', 'Staaten')] in [GetStrategicRegion('region_andes').GetName] im Besitz [ROOT.GetCountry.GetAltName('VON')] oder den [Concept('concept_subject','$concept_subjects$n')] dieser Nation"

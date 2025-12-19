@@ -140,6 +140,7 @@
  spanish_new_world_events.4.b_2: "El [GetStrategicRegion('region_caribbean').GetName] debería administrarse desde [SCOPE.sCountry('new_spain_scope').GetName]."
  spanish_new_world_events.4.c: "Dejar las administraciones actuales como están."
  modifier_maintained_local_rule: "Gobierno local mantenido"
+ modifier_reformed_captaincy_general: "Capitanía general reformada"
  set_up_new_spain_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetName] recibirá todos los [concept_states|l] de Norteamérica propiedad de [ROOT.GetCountry.GetName] o sus [Concept('concept_subject','$concept_subjects$')|l]"
  set_up_new_grenada_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetName] recibirá todos los [concept_states|l] de [GetStrategicRegion('region_gran_colombia').GetName] propiedad de [ROOT.GetCountry.GetName] o sus [Concept('concept_subject','$concept_subjects$')|l]"
  set_up_peru_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetName] recibirá todos los [concept_states|l] de [GetStrategicRegion('region_andes').GetName] propiedad de [ROOT.GetCountry.GetName] o sus [Concept('concept_subject','$concept_subjects$')|l]"

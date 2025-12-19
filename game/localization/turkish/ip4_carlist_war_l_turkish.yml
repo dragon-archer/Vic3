@@ -99,3 +99,8 @@
  # Triggers
  CARLIST_WAR_ROYAL_EXPEDITION_MINIMUM_SCORE: "En az [SCOPE.ScriptValue('carlist_war_royal_expedition_min_score')|v0] değerinde #b Puana#! sahip"
  the_two_spains_tt: "Yakında #b $je_the_two_spains$#! gerçeğiyle yüzleşeceğiz"
+ # Notifications
+ notification_carlist_war_carlist_terror_name: "$spa_carlist_terror$"
+ notification_carlist_war_carlist_terror_desc: "Karlist destekçileri ve yerel haydutlar [SCOPE.sState('upper_andalusia_scope').GetName] ve [SCOPE.sState('lower_andalusia_scope').GetName] eyaletlerinde dehşet saçıyor!\n$notification_carlist_War_carlist_terror_TT_HAS_HAPPENED$"
+ notification_carlist_war_carlist_terror_tooltip: "#header $notification_carlist_war_carlist_terror_name$#!\n$TOOLTIP_DELIMITER$\n$notification_carlist_war_carlist_terror_desc$"
+ notification_carlist_War_carlist_terror_TT_HAS_HAPPENED: "Gerçekleşti:\n#indent_newline:3 $EFFECT_LIST_BULLET$[SCOPE.sState('upper_andalusia_scope').GetName] ve [SCOPE.sState('lower_andalusia_scope').GetName] eyaletlerine [SCOPE.ScriptValue('carlist_war_carlist_terror_devastation')|n0] [concept_devastation] ve #tooltippable;tooltip:[GetRawTextTooltipTag(GetStaticModifier('spa_carlist_terror').GetDesc)] [GetStaticModifier('spa_carlist_terror').GetName]#! ekler#!"

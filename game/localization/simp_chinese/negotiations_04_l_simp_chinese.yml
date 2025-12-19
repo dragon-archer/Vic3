@@ -17,6 +17,7 @@
  amenability_ig_additional_adds: "#indent_newline:3 [InterestGroup.GetName]额外修正：\n[InterestGroup.GetModifier.GetDescFor('interest_group_amenability_add')]#!"
  amenability_country_additional_adds: "#indent_newline:3 额外修正：\n[InterestGroup.GetCountry.GetModifier.GetDescFor('country_amenability_add')]#!"
  amenability_already_letting_go: "由于高[concept_approval]，已经允许法律通过"
+ amenability_too_large_gap: "通过大于#v 2#!个步骤[Concept('concept_endorse_oppose','$concept_opposes$')][concept_law]"
  ##modifiers
  bribed_ig_benefits: "礼物与补贴"
  failed_negotiations_ig: "失败的谈判"

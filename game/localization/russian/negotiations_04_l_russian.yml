@@ -17,6 +17,7 @@
  amenability_ig_additional_adds: "#indent_newline:3 Дополнительные модификаторы #tooltippable_name #tooltip:[InterestGroup.GetTooltipTag],EMPTY_STRING,IGTooltip [InterestGroup.GetCustom('RU_IG_RP')|l]#!#!:\n[InterestGroup.GetModifier.GetDescFor('interest_group_amenability_add')]#!"
  amenability_country_additional_adds: "#indent_newline:3 Дополнительные модификаторы:\n[InterestGroup.GetCountry.GetModifier.GetDescFor('country_amenability_add')]#!"
  amenability_already_letting_go: "Закон уже проходит из-за высокого [Concept('concept_approval', 'одобрения')]"
+ amenability_too_large_gap: "[Concept('concept_endorse_oppose', 'Возражает')] против [Concept('concept_law', 'закона')] больше чем на #v 2#! ступени"
  ##modifiers
  bribed_ig_benefits: "Подарки и субсидии"
  failed_negotiations_ig: "Проваленные переговоры"

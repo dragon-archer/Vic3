@@ -140,6 +140,7 @@
  spanish_new_world_events.4.b_2: "[GetStrategicRegion('region_caribbean').GetName] – tym regionem strategicznym powinno rządzić państwo o nazwie [SCOPE.sCountry('new_spain_scope').GetName]."
  spanish_new_world_events.4.c: "Zachowaj obecny stan administracji."
  modifier_maintained_local_rule: "Zachowano miejscowy rząd"
+ modifier_reformed_captaincy_general: "Zreformowana kapitania generalna"
  set_up_new_spain_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetName] – to państwo otrzyma każdy [concept_state|l] w Ameryce Północnej należący do następującego państwa lub jego [Concept('concept_subject', 'państw poddańczych')]: [ROOT.GetCountry.GetName]"
  set_up_new_grenada_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetName] – to państwo otrzyma każdy [concept_state|l] w regionie strategicznym o nazwie [GetStrategicRegion('region_gran_colombia').GetName] należący do następującego państwa lub jego [Concept('concept_subject', 'państw poddańczych')]: [ROOT.GetCountry.GetName]"
  set_up_peru_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetName] – to państwo otrzyma każdy [concept_state|l] w regionie strategicznym o nazwie [GetStrategicRegion('region_andes').GetName] należący do następującego państwa lub jego [Concept('concept_subject', 'państw poddańczych')]: [ROOT.GetCountry.GetName]"

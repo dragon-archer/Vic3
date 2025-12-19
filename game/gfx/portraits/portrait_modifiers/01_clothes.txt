@@ -6448,13 +6448,7 @@
                 mode = add
                 gene = coats
                 template = russian_uniform_coats
-                range = { 0 0 }
-            }
-            accessory = {
-                mode = add
-                gene = aiguillettes
-                template = all_aiguillettes
-                range = { 0 1 } # For the randomness to work correctly
+                accessory = male_coat_russian_03
             }
             accessory = { # Necklaces have clipping issues with sashes
                 mode = add
@@ -6496,7 +6490,7 @@
         weight = {
             base = 0
             modifier = {
-                add = 10000
+                add = 11000
                 scope:character ?= {
                     age >= define:NCharacters|ADULT_AGE
                     owner ?= {
@@ -6536,6 +6530,12 @@
                 accessory = male_belt_austrian_01_white
             }
             accessory = {
+               mode = add
+               gene = medals
+               template = ip4_medals
+               range = { 0.3 0.6 }
+            }
+            accessory = {
                 mode = add
                 gene = sashes
                 template = european_sashes_colours
@@ -6557,7 +6557,7 @@
         weight = {
             base = 0
             modifier = {
-                add = 11000
+                add = 12000
                 scope:character ?= {
                     age >= define:NCharacters|ADULT_AGE
                     owner ?= {
@@ -6626,6 +6626,7 @@
                         }
                     }
                 }
+                monarchy_clothes_trigger = no
             }
         }
     }
@@ -6678,6 +6679,7 @@
                         }
                     }
                 }
+                monarchy_clothes_trigger = no
             }
         }
     }
@@ -6908,6 +6910,7 @@
                         }
                     }
                 }
+                monarchy_clothes_trigger = no
             }
         }
     }
@@ -6978,6 +6981,7 @@
                     month < 3
                     month > 10
                 }
+                monarchy_clothes_trigger = no
             }
         }
     }
@@ -11664,7 +11668,7 @@
         weight = {
             base = 0
             modifier = {
-                add = 12000
+                add = 13000
                 portuguese_empire_clothes_pop_trigger = yes
                 OR = {
                     soldier_clothes_pop_trigger = yes
@@ -11838,8 +11842,8 @@
             accessory = {
                mode = add
                gene = medals
-               template = all_medals
-               range = { 0 1 }
+               template = ip4_medals
+               range = { 1 1 }
             }
             accessory = {
                 mode = add
@@ -11935,7 +11939,7 @@
                 mode = add
                 gene = coats
                 template = spanish_uniform_coats
-                range = { 0 0.30 }
+                range = { 0.10 0.27 }
             }
             accessory = {
                 mode = add
@@ -11953,8 +11957,8 @@
             accessory = {
                mode = add
                gene = medals
-               template = no_medals # No medals until we get medals compatible with this coat
-               range = { 0 1 }
+               template = ip4_medals
+               range = { 0.6 0.6 }
             }
             accessory = {
                 mode = add
@@ -12023,8 +12027,8 @@
             accessory = {
                mode = add
                gene = medals
-               template = no_medals # No medals until we get medals compatible with this coat
-               range = { 0 1 }
+               template = ip4_medals
+               range = { 1 1 }
             }
             accessory = {
                 mode = add

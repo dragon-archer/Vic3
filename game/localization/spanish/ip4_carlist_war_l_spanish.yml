@@ -99,3 +99,8 @@
  # Triggers
  CARLIST_WAR_ROYAL_EXPEDITION_MINIMUM_SCORE: "Tiene una #b puntuación#! mínima de al menos [SCOPE.ScriptValue('carlist_war_royal_expedition_min_score')|v0]"
  the_two_spains_tt: "Pronto nos las veremos con la realidad de #b $je_the_two_spains$#!"
+ # Notifications
+ notification_carlist_war_carlist_terror_name: "$spa_carlist_terror$"
+ notification_carlist_war_carlist_terror_desc: "¡Los partidarios carlistas y los bandidos de la región siembran el terror en [SCOPE.sState('upper_andalusia_scope').GetName] y [SCOPE.sState('lower_andalusia_scope').GetName]!\n$notification_carlist_War_carlist_terror_TT_HAS_HAPPENED$"
+ notification_carlist_war_carlist_terror_tooltip: "#header $notification_carlist_war_carlist_terror_name$#!\n$TOOLTIP_DELIMITER$\n$notification_carlist_war_carlist_terror_desc$"
+ notification_carlist_War_carlist_terror_TT_HAS_HAPPENED: "Ha ocurrido:\n#indent_newline:3 $EFFECT_LIST_BULLET$Añade [SCOPE.ScriptValue('carlist_war_carlist_terror_devastation')|n0] de [concept_devastation|l] y #tooltippable;tooltip:[GetRawTextTooltipTag(GetStaticModifier('spa_carlist_terror').GetDesc)] [GetStaticModifier('spa_carlist_terror').GetName]#! a [SCOPE.sState('upper_andalusia_scope').GetName] y [SCOPE.sState('lower_andalusia_scope').GetName]#!"

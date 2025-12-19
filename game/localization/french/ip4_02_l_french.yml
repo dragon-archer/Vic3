@@ -140,6 +140,7 @@
  spanish_new_world_events.4.b_2: "Les [GetStrategicRegion('region_caribbean').GetName] devraient être administrées depuis [SCOPE.sCountry('new_spain_scope').GetAltNameNoFormatting('Le')][SCOPE.sCountry('new_spain_scope').GetName]."
  spanish_new_world_events.4.c: "Laissez l’administration actuelle en place."
  modifier_maintained_local_rule: "Autorité locale maintenue"
+ modifier_reformed_captaincy_general: "Réforme de la capitainerie générale"
  set_up_new_spain_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetAltNameNoFormatting('Le')|U][SCOPE.sCountry('relevant_country_scope').GetName] recevra chaque [concept_state] d’Amérique du Nord détenu par [ROOT.GetCountry.GetAltNameNoFormatting('Le')][ROOT.GetCountry.GetName] ou ses [Concept('concept_subject','$concept_subjects$')|l]"
  set_up_new_grenada_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetAltNameNoFormatting('Le')|U][SCOPE.sCountry('relevant_country_scope').GetName] recevra chaque [concept_state] de [GetStrategicRegion('region_gran_colombia').GetName] détenu par [ROOT.GetCountry.GetAltNameNoFormatting('Le')][ROOT.GetCountry.GetName] ou ses [Concept('concept_subject','$concept_subjects$')|l]"
  set_up_peru_default_tt: "[SCOPE.sCountry('relevant_country_scope').GetAltNameNoFormatting('Le')|U][SCOPE.sCountry('relevant_country_scope').GetName] recevra chaque [concept_state] des Andes détenu par [ROOT.GetCountry.GetAltNameNoFormatting('Le')][ROOT.GetCountry.GetName] ou ses [Concept('concept_subject','$concept_subjects$')|l]"

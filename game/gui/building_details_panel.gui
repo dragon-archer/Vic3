@@ -815,7 +815,7 @@ types building_panels
 							text = "[concept_infrastructure_usage]"
 						}
 						blockoverride "text_right" {
-							raw_text = "#variable [Building.CalcInfrastructureUsage|=0]#!"
+							raw_text = "#variable [Building.CalcInfrastructureUsage|=1]#!"
 						}
 					}
 				}
@@ -3851,7 +3851,7 @@ types building_panels
 					text = "[concept_infrastructure_usage]"
 				}
 				blockoverride "text_right" {
-					raw_text = "#variable [Building.CalcInfrastructureUsage|=0]#!"
+					raw_text = "#variable [Building.CalcInfrastructureUsage|=1]#!"
 				}
 			}
 		}

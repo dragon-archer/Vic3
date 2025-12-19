@@ -17,6 +17,7 @@
  amenability_ig_additional_adds: "#indent_newline:3 Dodatkowe modyfikatory z grupą interesu o nazwie [InterestGroup.GetName|l]:\n[InterestGroup.GetModifier.GetDescFor('interest_group_amenability_add')]#!"
  amenability_country_additional_adds: "#indent_newline:3 Dodatkowe modyfikatory:\n[InterestGroup.GetCountry.GetModifier.GetDescFor('country_amenability_add')]#!"
  amenability_already_letting_go: "Dopuszczono do ustanowienia prawa w związku z wysoką [Concept('concept_approval', 'aprobatą')]"
+ amenability_too_large_gap: "[Concept('concept_endorse_oppose', '$concept_opposes$')] [Concept('concept_law', 'prawu')] o więcej niż #v 2#! stopnie"
  ##modifiers
  bribed_ig_benefits: "Prezenty i dofinansowania"
  failed_negotiations_ig: "Nieudane negocjacje"

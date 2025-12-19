@@ -664,7 +664,7 @@ template notification_icon_go_to
 
 	# Treaty
 	message_feed_go_to_button = {
-		visible = "[Scope.GetTreaty.IsValid]"
+		visible = "[And(Scope.GetTreaty.IsValid, Not(Scope.GetTreaty.IsDraft))]"
 		datacontext = "[Scope.GetTreaty]"
 		tooltip = "GO_TO_TREATY"
 		onclick = "[InformationPanelBar.OpenTreatyPanel(Treaty.Self)]"

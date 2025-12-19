@@ -3074,7 +3074,7 @@ types custom_popup_types
 										button_icon_round = {
 											visible = "[And(Not(DiplomaticPlay.WouldAcceptAnySway( GetPlayer.Self, Country.Self )), Or(DiplomaticPlay.IsInitiator( GetPlayer.Self ),DiplomaticPlay.IsTarget( GetPlayer.Self )))]"
 											size = { 100% 100% }
-											enabled = "[DiplomaticPlay.CanSwayCountry(GetPlayer.Self, Country.Self)]"
+											enabled = "[And(DiplomaticPlay.CanSwayCountry(GetPlayer.Self, Country.Self), DiplomaticPlay.PlayerHasPotentialSwayOffers(Country.Self))]"
 											onclick = "[InformationPanelBar.OpenSwayCountryPanel( DiplomaticPlay.Self, Country.Self )]"
 											tooltip = "SWAY_COUNTRY_TOOLTIP"
 
